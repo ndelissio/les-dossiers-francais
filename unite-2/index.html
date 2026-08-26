@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 2 · Dossier Français — v1.2.3.3</title>
+<title>Unité 2 · Dossier Français — v1.2.4</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -76,6 +76,8 @@
   .card + .card{margin-top:14px}
 
   /* ---- dashboard ---- */
+  .ledhead{margin:14px 0 4px; font-size:13px; color:var(--ink-2); border-bottom:1px solid var(--line); padding-bottom:4px}
+  .ledhead:first-child{margin-top:0}
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
   .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
   .stat{display:flex; flex-direction:column; gap:2px}
@@ -294,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v1.2.3.3</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v1.2.4</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -336,9 +338,10 @@
     </div>
 
     <div class="card">
-      <div class="grid2">
-        <div class="stat"><span class="n" id="dVerbs">0</span><span class="l">Verbs marked known</span></div>
-        <div class="stat"><span class="n" id="dVocab">0</span><span class="l" id="dVocabL">Vocab known · to Ch —</span></div>
+      <div class="grid3">
+        <div class="stat"><span class="n" id="dVocab" style="color:var(--accent)">0</span><span class="l" id="dVocabL"><b>Vocab known</b> · to Ch —</span></div>
+        <div class="stat"><span class="n" id="dGram">—</span><span class="l">Grammar coverage</span></div>
+        <div class="stat"><span class="n" id="dVerbs">0</span><span class="l">Verbs mastered</span></div>
       </div>
     </div>
 
@@ -351,7 +354,7 @@
   <!-- ===================== VERBS ===================== -->
   <section class="panel" id="p-verbs" role="tabpanel">
     <h2 class="sec">Conjugaison</h2>
-    <p class="lead">Every Chapter 6 verb — modaux, glossaire -er, <b>peindre</b>, plus <b>être/avoir</b> (révision). Type all six forms.</p>
+    <p class="lead">Unit 2 verbs — Chapter 6 modaux, glossaire -er and <b>peindre</b>, <b>être/avoir</b> (révision), plus <b>savoir/connaître</b> (Ch 8). Type all six forms. <b>Drill ciblé</b> below searches the cumulative U1–U2 pool for reps in any of the three tenses.</p>
     <ul class="lead-list">
       <li>Accents count; each card grades once.</li>
       <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
@@ -401,6 +404,20 @@
     <button class="ghost" id="verbTableToggle" style="margin-top:14px">Hide progress table ▴</button>
     <button class="ghost" id="resetVerbs" style="margin-top:14px; margin-left:8px">Reset marks</button>
     <div class="voctable" id="verbTable"><!-- filled by JS --></div>
+
+    <h2 class="sec" style="margin-top:30px">Drill ciblé</h2>
+    <p class="lead">Search any verb from Units 1–2 and drill présent, passé composé or imparfait — reps only, nothing recorded. The cumulative pool: U1 regulars, spelling-change verbs, pronominals, and irregulars, plus the Unit 2 glossaire verbs.</p>
+    <div class="card">
+      <div class="frow"><span class="flabel">Verbe</span>
+        <input class="txt" id="cibSearch" list="cibList" placeholder="tapez un infinitif… (ex. se lever, boire, choisir)" style="max-width:340px" autocapitalize="none" spellcheck="false">
+        <datalist id="cibList"></datalist>
+        <span class="flabel" style="margin-left:10px">Temps</span>
+        <select class="filter" id="cibTense"></select>
+        <button class="btn go" id="cibGo" style="padding:10px 20px">Drill</button>
+      </div>
+      <div id="cibHost" style="margin-top:14px"></div>
+    </div>
+
   </section>
 
   <!-- ===================== VOCABULAIRE ===================== -->
@@ -532,7 +549,7 @@
   <!-- ===================== ORAL / OPI ===================== -->
   <section class="panel" id="p-oral" role="tabpanel">
     <h2 class="sec">Oral practice — OPI prompts</h2>
-    <p class="lead">Speaking trains out loud. Cards mirror the Chapter 6 tasks — pick one, hit a timer, talk. 45 → 30 → 15 seconds. No grading, just reps.</p>
+    <p class="lead">Speaking trains out loud. Cards mirror the Unit 2 tasks (Ch 6–9) — pick one, hit a timer, talk. 45 → 30 → 15 seconds. No grading, just reps.</p>
     <div class="opicard" id="opiCard"><!-- filled by JS --></div>
     <div class="vnav">
       <button id="opiPrev">‹ Prev</button>
@@ -542,8 +559,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v1.2.3.3</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v1.2.4</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.2.4 (26 Aug 2026): <strong>Unit 3 parity — coverage scoring, Drill ciblé, dashboard.</strong> Bringing Unit 2 up to Unit 3's standard. <strong>Grammar drills now track coverage</strong>: each drill counts which distinct bank items you've answered right at least once (<em>couverture n/24</em> on the drill header and per-drill on the dashboard), with best-round scores kept as the secondary figure — matching Unit 3. <strong>New: Drill ciblé</strong> in the Conjugaison tab — search any verb from the cumulative Unit 1–2 pool (124 verbs: regulars, spelling-change, pronominals, irregulars, plus the Ch 7–9 glossaire verbs) and drill présent, passé composé or imparfait, reps only, nothing recorded. Pronominal and être-auxiliary passé composé (<em>je me suis levé(e)</em>, <em>je suis parti(e)</em>) and pronominal imparfait are composed correctly; participles for regular -ir/-re verbs now derive (<em>choisi</em>, <em>attendu</em>). <strong>Dashboard restructured</strong> to Unit 3's layout — Vocabulaire leads (per-chapter bars), then per-drill Grammaire coverage, then Conjugaison mastery; the top stat row now leads with vocab known and a global grammar-coverage figure. <strong>Vocab topic groups chunked</strong>: five oversized Vocabulaire groups split so every group sits at ~10–23 cards (was up to 32) — Ch 7 <em>At the market</em> → fruit / vegetables; Ch 8 <em>The human body</em> → head &amp; face / torso &amp; organs / limbs; Ch 8 <em>At the hospital</em> → symptoms &amp; injuries / care, staff &amp; equipment; Ch 8 verbs → health &amp; body / assess &amp; carry out; Ch 9 <em>Events &amp; invitations</em> → invitations, gifts &amp; objects / outings, receptions &amp; guests. Card content, answers and scoring unchanged — topic tags only; saved progress is keyed on the word and carries over. Stale tab intros fixed — the Conjugaison and Pratique orale leads still described "Chapter 6" only. The "I'm currently in" chapter picker was audited against the masthead — clean. No item, answer, or existing-scoring changes.</span>
     <span style="color:var(--mute)">v1.2.3.3 (25 Aug 2026): <strong>School references removed.</strong> An institutional tag is dropped from the browser-tab title, the header eyebrow, and the footer masthead. No content, drills, scoring, or saved progress change. v1.2.3.2 (25 Aug 2026): <strong>Trainer intros span the full width.</strong> The instruction paragraph and bullet list under the Conjugaison and Vocabulaire trainers were capped at a narrow prose measure, so they wrapped well short of the controls below them and pushed the training card down the page. They now span the content width like everything else, so the card sits higher — on-screen without scrolling on a typical desktop. CSS only. v1.2.3.1 (25 Aug 2026): <strong>Back-link restyled.</strong> The <strong>‹ Tous les dossiers</strong> header link is now a bordered pill button (hairline border, card fill, red on hover) instead of bare text, so it reads clearly as a button. CSS only. v1.2.3 (25 Aug 2026): <strong>Achievement bug fix — "Accent aigu".</strong> The ✍️ trophy awarded after 20 graded answers with zero accent-only misses — but a run of <em>all-wrong</em> answers also has zero accent-only misses, so bombing 20 spelling checks in a row earned it. It now also requires a solid majority (70%) of the session's answers to be correct. Matches the fix shipped to Unit 3 v1.2.2. No other changes. v1.2.2 (25 Aug 2026): <strong>Landing-page link + tab title.</strong> The header gains a <strong>‹ Tous les dossiers</strong> link back to the dossier index, and the browser tab now reads <strong>Unité 2 · Dossier Français</strong> (unit first) instead of leading with the version string. No content, drill, or scoring changes. v1.2.1 (24 Aug 2026): <strong>class-agnostic test date + phases</strong>. The DLPT/OPI countdown chip in the header is now clickable — set your own test date, saved to this browser and shared automatically across all three unit dossiers (one date, not per-unit). The dashboard's four study-plan phases (Foundation/Volume/Conditioning/Taper) now key off weeks remaining until your test instead of a hardcoded course-start date; their labels changed from fixed calendar months to relative week-ranges so they hold up for any cohort. The old hardcoded DLPT date, course-start date, and the "Course week (of 35)" dashboard stat are removed. Masthead now reads <strong>Le Dossier Français</strong>. v1.2.0 (3 Aug 2026): <strong>Mémos étymologiques — every vocab card.</strong> All 458 cards now carry a one-line etymology + mnemonic (the <em>y</em> field): real cognate lineage where it exists (poitrine → pectoral, guérir → the g/w swap of guerre/war), keyword-method sound-alikes where it doesn’t, faux amis flagged (blessure, raisin, assister). Shown <strong>only in Training mode</strong> — recall training displays it in the answer block, spelling training under the Modèle line — styled as an italic accent-barred note. Graded modes are untouched: no mémo on reveal, nothing changes in recording, mastery, or Analyse. v1.1.0 (23 Jul 2026): <strong>Unit 2 practice exam — built from the Test 2 study guide.</strong> The Examen blanc picker gains the <strong>Unit 2 practice exam</strong>: <strong>Compréhension</strong> — 3 of 6 passages matching the guide’s passage types (housewarming e-mail, restaurant texts, doctor’s instructions, rental ad, supermarket sign, voice message), MCQ plus self-graded short answers in English; <strong>Vocabulaire</strong> — 12 of 93, the complete Test 2 word list, EN → FR, articles required per the standing rule, accents strict, œ-words accept oe spellings; <strong>Grammaire</strong> — 12 of 32, four items per study-guide structure (PC avec avoir / avec être / pronominaux, imparfait, pronoms COD · COI · en, savoir vs connaître, présent, devoir · pouvoir · vouloir au présent). Fresh random draw every attempt; fill-ins feed Analyse with chapter and pronoun tags (the engine now passes ch/m through the exam Vocabulaire section). The à venir placeholders are gone; tab and history copy updated. v1.0.1 (17 Jul 2026): <strong>all Unit 2 chapters.</strong> Chapters 7 (Food), 8 (Health), and 9 (Social events) land in one release; Chapter 10 is review-only and carries no new content, so it is dropped from every picker. <strong>Vocabulaire</strong>: ~315 new glossaire cards — Ch 7 market/fish shop/supermarket/dairy/condiments/butcher/bakery/utensils/cooking verbs/quantities/adjectives plus a taught restaurant set (flagged exception, like the Ch 6 exterior set); Ch 8 body/hospital/illnesses/nutrition/verbs; Ch 9 events &amp; invitations/verbs/pronominals/verbs with à/adjectives. EN nouns carry their article per the standing rule. <strong>Conjugaison</strong>: new <strong>Imparfait</strong> segment next to Présent | Passé composé — reps only, like PC (root = nous-form minus -ons, être → ét-, ç/ge boot handled, il fallait only); mastery accountability lives in the new Imparfait drill. <strong>savoir</strong> and <strong>connaître</strong> join the mastery tables (Ch 8 taught paradigms); all other Ch 7–9 glossaire verbs are vocab infinitive cards per the split-verb rule. <strong>Grammaire</strong>: 19 new drills, each opened by a rule explainer — Ch 7: PC avec être, être ou avoir (verbes spéciaux), verbes pronominaux au PC, partitifs &amp; quantités (one merged drill), pronom en (with COD contrast items), adverbes en -ment, vocab en contexte; Ch 8: imparfait, durée, cause &amp; conséquence, savoir vs connaître, avoir mal à, vocab en contexte; Ch 9: relatifs qui/que/où, COI, COD ou COI, révision quatre temps, questions, vocab en contexte. Drill count: 28. <strong>Examen blanc</strong>: 24-item quiz banks for Ch 7, 8, and 9 (10 drawn per attempt); the Unit 2 exam stays <em>à venir</em> pending the study guide. <strong>Pratique orale</strong>: 18 new prompts, six per chapter. Analyse picks up the new structure tags and chapter tagging automatically. v1.0.0 (17 Jul 2026): <strong>live release.</strong> The beta series (b1–b7) closes. Beta badge and labels dropped. <strong>Rule explainers on every Grammaire drill</strong> — a boxed quick-reference note now opens each of the nine drills, tailored to the structure being drilled (avoir + participle paradigm, PC negation/question frames, COD pronoun placement, modal conjugations + il faut, feminine endings incl. doubling and irregulars, BANGS with vowel forms and des → de, participle patterns, word-bank instruction, compound vs. simple prepositions with du/des). <strong>Article toggle removed</strong> — articles are always part of the answer in Vocabulaire Spelling: wrong or missing <em>le/la</em> is a miss (words without an article grade bare, and the hint only mentions the article when the word carries one). Article-gender misses keep feeding the Vocabulaire donut. The Unit 2 exam and study-guide-dependent content stay <em>à venir</em> until the Unit 2 study guide lands, then ship in an update. v1.0.0-b7 (15 Jul 2026): <strong>reset stats + weakest chapter; dashboard Weakest areas retired.</strong> A red <strong>Reset stats</strong> pill now sits right of the "Misses by source" header on Analyse: one tap (no confirm) wipes the four donuts, the Error types rate bars, the pronoun ledger, the quiz-tag tallies, and every struggle flag (card-level and slot-level consecutive-miss counters). Trophies, greens, streaks, lifetime ✓/✗ counts, best drill scores, and test history are untouched. The "Counting fresh from v1.0.0-b5" line is replaced by a live <strong>"Depuis : [date]"</strong> stamp that moves on each reset. New <strong>Weakest chapter</strong> stat at the top of Analyse — the recording layer is now chapter-tagged across all four sources (vocab cards carry their chapter, drills their minCh, quiz items their bank chapter, conjugation defaults to the unit chapter until verbs carry one), and the chapter with the highest miss rate is called out once it has 5+ graded answers; single-chapter content reads Ch 6 until Ch 7 lands, and it resets with the rest. The dashboard "Weakest areas" ledger row is retired in its favor. v1.0.0-b6 (13 Jul 2026): <strong>slot-level struggle tracking + empty-entry guards.</strong> Each of the six Conjugaison slots now keeps its own consecutive-miss counter on graded présent checks (PC and Training excluded): a form missed <strong>3+ times in a row</strong> joins the struggle list as e.g. <em>peindre · vous → peignez</em>, and clears the moment that slot is right once; Je connais déjà clears a verb’s slot streaks too. Card-level flagging is unchanged and can coexist with slot rows. <strong>Empty entries no longer skew Analyse</strong>: a fully empty Conjugaison Check now does nothing (matching the Vocabulaire trainer), empty slots on a partial check never tally into the analytics or the slot streaks (the card still grades normally, so mastery behavior is untouched), and pressing Enter on an empty drill box no longer grades a blank as a spelling miss — Check all already skipped empties. Deliberately unchanged: blanks on a submitted quiz still count as misses; a blank under test conditions is a real error. v1.0.0-b5 (13 Jul 2026): <strong>misses-by-source donut grid.</strong> The single donut is replaced by four: <strong>Vocabulaire</strong> (accents / gender via Articles: required / spelling), <strong>Conjugaison</strong> (misses by pronoun, six slices, présent grading only — the PC toggle stays reps-only), <strong>Grammaire</strong> (by structure: passé composé, participes, COD, modaux + il faut, adjectifs, BANGS, vocab en contexte, prépositions — drill items now carry a structure tag), and <strong>Examen</strong> (error type). Recording is now source-tagged in the analytics layer; pre-b5 data has no source dimension, so it stays in the overall Error types bars and the donuts count fresh from this build. Overall bars, pronoun ledger, struggle list, and trophies unchanged. v1.0.0-b4 (13 Jul 2026): <strong>passé composé — reps toggle + participles drill.</strong> The Conjugaison tab gains a <strong>Présent | Passé composé</strong> segment. PC cards grade the full six-form table (j’ai peint, tu as peint…) with instant accent-strict feedback, but are <strong>reps only</strong> — no greens, no streaks, no Analyse, nothing recorded, inputs never lock, Reveal shows answers freely, and the card chip reads "PC reps · not recorded." Présent remains the only mastery table, per the decision that PC-with-avoir is one variable fact per verb (the participle) plus avoir, and per-tense greens would double the grind for redundant knowledge. The Training toggle stacks with either tense. Where PC accountability lives: a new <strong>Participes passés</strong> Grammaire drill — infinitive → participle, bank of 24 covering the textbook’s pattern list (-é / -i / -u regulars plus mis, pris, compris, appris, fait, satisfait, construit, détruit, eu, été, voulu, pu, dû, vu, lu, reçu, suivi) with a saved best score, feeding Analyse under passé composé. Drill count: 9. v1.0.0-b3 (13 Jul 2026): <strong>copy tightened app-wide.</strong> "Miss buckets" is now <strong>Error types</strong> with bare labels (Accents · Gender &amp; agreement · Spelling) in both the ledger and the donut legend; parenthetical explainers dropped wherever the word carries the meaning. The Conjugaison, Vocabulaire, Grammaire, Examen, Pratique orale, and Analyse leads are cut to roughly half — one-line intros, terse bullets, no restated mechanics. Struggle list lead ends at "missed 3+ times in a row." No functional changes; saved progress untouched. v1.0.0-b2 (13 Jul 2026): <strong>masthead, French tabs, Analyse everywhere, donut.</strong> <strong>Unité 2</strong> now sits bold at the front of the masthead so the working file is unmistakable. Tabs are French and reordered — Tableau de bord · Conjugaison · Vocabulaire · Grammaire · Examen blanc · <strong>Pratique orale</strong> · <strong>Analyse</strong> (last; formerly Insights). <strong>Analyse now ingests every graded answer</strong>: each Conjugaison fill-in slot records into the buckets tagged by pronoun and verb group (the six-slot cards are the richest pronoun data in the app), and each graded Vocabulaire spelling answer records accent-close and — in Articles: required mode — article-gender misses. The Training toggle remains fully excluded; trainer slots feed buckets only and never double-count the per-card streak/lifetime counters. Tab copy updated to match. <strong>New miss-composition donut</strong> at the top of Analyse (vanilla SVG, offline): the share of all recorded misses by bucket — accents / gender &amp; agreement / spelling-other — with counts and percentages, alongside the existing per-bucket rate bars which answer the different question (how often you miss each type). Accent-clean achievement description updated to "20+ graded answers." v1.0.0-b1 (13 Jul 2026): <strong>Unit 2 beta — Chapter 6 + Insights + achievements.</strong> Forked from the frozen Unit 1 engine (v3.1.0.1); Unit 2 progress saves under its own key, so the Unit 1 file is untouched. <strong>Chapter 6 content</strong>: 138 glossaire vocab cards (housing types, rooms, kitchen, furniture, bathroom, colors, materials, shapes, adjectives, verbs, prepositions of place) plus a 7-word taught exterior set (portail, toit, porte d’entrée, fenêtre, garage, jardin, trottoir — activity-sourced, flagged exception to glossaire parity); 22 conjugation verbs (devoir/pouvoir/vouloir + il faut, the glossaire -er verbs incl. spelling-change nettoyer/percer/agencer/aménager/arranger/emménager, peindre, and être/avoir as révision); 8 grammar drills mined from the Chapter 6 activités (passé composé forms / negation &amp; questions, COD pronouns, devoir·pouvoir·vouloir + il faut, feminine adjective forms, BANGS placement, Vocab in context, prepositions of place with the glossaire word bank); a 24-item Chapter 6 quiz bank; 10 OPI prompt cards. The Unit 2 practice exam ships in a later beta. <strong>New: Insights tab</strong> — miss diagnostics built from graded drill and quiz answers only (trainers are a safe space and feed just the struggle list). Buckets: accents (right word, wrong accents), gender/agreement, spelling/recall; conjugation misses break down by subject pronoun; minimum sample sizes before any pattern is called out (10 per bucket, 5 per pronoun). First grade per item counts; re-checks don’t stack. <strong>Struggle list</strong>: any trainer word missed 3+ times in a row is flagged until you break the streak. <strong>New: 12 achievements</strong> with toast pop-ups and a trophy case (streaks of 10/25/50, Chapter 6 vocab mastered, all conjugations mastered, perfect quiz, three perfect quizzes, perfect drill round, 20+ accent-clean session, comeback on a struggle word, 100 and 500 lifetime graded answers). Achievement set is beta — it gets refined on vibes.</span>
     </details><br>
     Progress is stored in this browser only — open the same downloaded file in the same browser to keep it. Clearing site data or using private mode resets it.
@@ -571,6 +589,7 @@ var state = loadState();
 state.verbs = state.verbs || {};      // fr -> "known" | "learn"
 state.drills = state.drills || {};    // drillId -> best {correct,total}
 ["spell1","spell2","spell3","spell4"].forEach(function(k){ delete state.drills[k]; }); // v3.1.0: Spelling watch retired
+state.gramCov = state.gramCov || {};  // v1.2.4: drillId -> {bankIndex:1} per-item coverage (matches Unit 3)
 state.tests = state.tests || [];      // [{kind,score,total,date}]
 state.missTally = state.missTally || {}; // tag -> {w,t} from quiz/exam scoring
 state.verbStats = state.verbStats || {};   // fr -> {c:correct, w:wrong}
@@ -782,7 +801,11 @@ function pronForm(v,i,f){
 }
 /* passé composé (avec avoir) forms: aux + participle. pp explicit on irregulars; -er derives -é. */
 var AUX_AVOIR=["ai","as","a","avons","avez","ont"];
-function ppOf(v){ if(v.pp) return v.pp; if(v.type==="er"||/er$/.test(v.fr)) return v.fr.slice(0,-2)+"é"; return "?"; }
+function ppOf(v){ if(v.pp) return v.pp;
+  if(v.type==="er"||/er$/.test(v.fr)) return v.fr.slice(0,-2)+"é";
+  if(v.type==="ir2") return v.fr.slice(0,-1);        /* v1.2.4: choisir → choisi (for Drill ciblé) */
+  if(v.type==="re")  return v.fr.slice(0,-2)+"u";    /* attendre → attendu */
+  return "?"; }
 function pcOf(v){
   var pp=ppOf(v), pres=conjOf(v);
   return AUX_AVOIR.map(function(aux,i){ return pres[i]==="—" ? "—" : aux+" "+pp; });
@@ -1108,12 +1131,12 @@ document.getElementById("verbTable").addEventListener("click",function(e){
 /* entry: {f:french, e:english, c:chapter(6-9), t:topic, x:1 if tricky-to-spell, y:etymology mnemonic (Training only)} */
 var VTOPICS={
   log:"Types of housing", room:"The rooms", kit:"The kitchen", meuble:"Furniture", sdb:"The bathroom",
-  color:"Colors", mat:"Materials", forme:"Shapes", adj:"Adjectives", verb:"Verbs (infinitives)",
+  color:"Colors", mat:"Materials", forme:"Shapes", adj:"Adjectives", verb:"Verbs (infinitives)", verbg:"Verbs — assess & carry out",
   prep:"Prepositions of place", ext:"Exterior of the house",
-  mar:"At the market", poiss:"Fish shop", superm:"At the supermarket", lait:"Dairy products",
+  mar:"At the market — fruit", marl:"At the market — vegetables", poiss:"Fish shop", superm:"At the supermarket", lait:"Dairy products",
   cond:"Condiments", bouch:"Meat shop", boul:"Bakery", ust:"Utensils", qty:"Quantities", resto:"At the restaurant",
-  corps:"The human body", hop:"At the hospital", mal:"Illnesses & germs", nut:"Nutrition & lifestyle",
-  evt:"Events & invitations", vpr:"Reflexive verbs", va:"Verbs with à"
+  corps:"The body — head & face", corpst:"The body — torso & organs", corpsm:"The body — limbs", hop:"Hospital — symptoms & injuries", hopm:"Hospital — care, staff & equipment", mal:"Illnesses & germs", nut:"Nutrition & lifestyle",
+  evt:"Invitations, gifts & objects", evts:"Outings, receptions & guests", vpr:"Reflexive verbs", va:"Verbs with à"
 };
 var VOCAB=[
  /* ===== Chapter 6 : Housing — end-of-chapter glossaire + taught exterior set ===== */
@@ -1276,33 +1299,33 @@ var VOCAB=[
  {f:"le trottoir",e:"the sidewalk",c:6,t:"ext",y:"From trotter — the strip where you trot along."}
  ,
  /* ===== Chapter 7 : Food — end-of-chapter glossaire + taught restaurant set ===== */
- /* --- Au marché --- */
- {f:"l'ail",e:"the garlic",c:7,t:"mar",n:"m.",y:"Latin allium — garlic's botanical name; ail = allium clipped short."},
+ /* --- Au marché (split: fruits · légumes) --- */
+ {f:"l'ail",e:"the garlic",c:7,t:"marl",n:"m.",y:"Latin allium — garlic's botanical name; ail = allium clipped short."},
  {f:"l'ananas",e:"the pineapple",c:7,t:"mar",n:"m.",y:"Tupi naná (South America); nearly every language says ananas — English pineapple is the outlier."},
- {f:"l'asperge",e:"the asparagus",c:7,t:"mar",n:"f.",y:"Latin asparagus squeezed down to asperge."},
- {f:"l'aubergine",e:"the eggplant",c:7,t:"mar",n:"f.",y:"Arabic al-bāḏinjān via Catalan; British English uses aubergine — same word."},
+ {f:"l'asperge",e:"the asparagus",c:7,t:"marl",n:"f.",y:"Latin asparagus squeezed down to asperge."},
+ {f:"l'aubergine",e:"the eggplant",c:7,t:"marl",n:"f.",y:"Arabic al-bāḏinjān via Catalan; British English uses aubergine — same word."},
  {f:"la cerise",e:"the cherry",c:7,t:"mar",y:"Latin cerasium → English cherry; cerise is also English for cherry-red."},
- {f:"le champignon",e:"the mushroom",c:7,t:"mar",y:"From champ (field, Latin campus) — the field-grower; English champignon = button mushroom."},
- {f:"le chou",e:"the cabbage",c:7,t:"mar",x:1,y:"Latin caulis → English cauliflower (chou-fleur!) and coleslaw; chou = cole."},
+ {f:"le champignon",e:"the mushroom",c:7,t:"marl",y:"From champ (field, Latin campus) — the field-grower; English champignon = button mushroom."},
+ {f:"le chou",e:"the cabbage",c:7,t:"marl",x:1,y:"Latin caulis → English cauliflower (chou-fleur!) and coleslaw; chou = cole."},
  {f:"le citron",e:"the lemon",c:7,t:"mar",y:"Citrus family — but faux ami: citron = lemon, not 'citron.'"},
- {f:"la courgette",e:"the zucchini",c:7,t:"mar",y:"Little courge (gourd, Latin cucurbita); British courgette — the little gourd."},
- {f:"les épinards",e:"the spinach",c:7,t:"mar",n:"m. pl.",y:"Persian via Arabic → English spinach; é- masks the s: épinard ≈ spinach."},
+ {f:"la courgette",e:"the zucchini",c:7,t:"marl",y:"Little courge (gourd, Latin cucurbita); British courgette — the little gourd."},
+ {f:"les épinards",e:"the spinach",c:7,t:"marl",n:"m. pl.",y:"Persian via Arabic → English spinach; é- masks the s: épinard ≈ spinach."},
  {f:"la fraise",e:"the strawberry",c:7,t:"mar",y:"Latin fragum — kin of fragrant; Fragaria is the strawberry genus."},
  {f:"la framboise",e:"the raspberry",c:7,t:"mar",y:"Frankish brambasi, bramble-berry; fram- ≈ bram(ble), where raspberries grow."},
- {f:"le haricot vert",e:"the green bean",c:7,t:"mar",y:"Aztec ayacotl via Spanish → English haricot beans; vert → verdant, green."},
- {f:"la laitue",e:"the lettuce",c:7,t:"mar",y:"Latin lactuca — from lac, milk (the milky sap); lait hides inside laitue, lettuce."},
- {f:"les légumes",e:"the vegetables",c:7,t:"mar",n:"m. pl.",y:"Latin legumen → English legume; French widened it to all vegetables."},
- {f:"l'oignon",e:"the onion",c:7,t:"mar",n:"m.",x:1,y:"→ English onion — same word; French kept the g in spelling."},
+ {f:"le haricot vert",e:"the green bean",c:7,t:"marl",y:"Aztec ayacotl via Spanish → English haricot beans; vert → verdant, green."},
+ {f:"la laitue",e:"the lettuce",c:7,t:"marl",y:"Latin lactuca — from lac, milk (the milky sap); lait hides inside laitue, lettuce."},
+ {f:"les légumes",e:"the vegetables",c:7,t:"marl",n:"m. pl.",y:"Latin legumen → English legume; French widened it to all vegetables."},
+ {f:"l'oignon",e:"the onion",c:7,t:"marl",n:"m.",x:1,y:"→ English onion — same word; French kept the g in spelling."},
  {f:"l'orange",e:"the orange",c:7,t:"mar",n:"f.",y:"Sanskrit nāranga via Arabic — the same journey as English orange."},
  {f:"le pamplemousse",e:"the grapefruit",c:7,t:"mar",y:"Dutch pompelmoes, 'swollen lemon' — say it out loud: pample-moose."},
  {f:"la pêche",e:"the peach",c:7,t:"mar",y:"Latin persica, 'the Persian fruit' → English peach; pêche ≈ peach."},
- {f:"les petits pois",e:"the peas",c:7,t:"mar",n:"m. pl.",y:"'Little peas' — pois → English pease/pea (pease porridge hot)."},
- {f:"le poireau",e:"the leek",c:7,t:"mar",y:"Latin porrum (leek); poireau ≈ porrum with a tail."},
+ {f:"les petits pois",e:"the peas",c:7,t:"marl",n:"m. pl.",y:"'Little peas' — pois → English pease/pea (pease porridge hot)."},
+ {f:"le poireau",e:"the leek",c:7,t:"marl",y:"Latin porrum (leek); poireau ≈ porrum with a tail."},
  {f:"la poire",e:"the pear",c:7,t:"mar",y:"Latin pirum → English pear; poire ≈ pear with the vowels swapped."},
- {f:"le poivron vert",e:"the green pepper",c:7,t:"mar",y:"Big poivre — the bell pepper is the pepper plant's fruit without the heat."},
+ {f:"le poivron vert",e:"the green pepper",c:7,t:"marl",y:"Big poivre — the bell pepper is the pepper plant's fruit without the heat."},
  {f:"la pomme",e:"the apple",c:7,t:"mar",y:"Latin pomum (fruit) → English pomade (apple-scented) and pomegranate, the grainy apple."},
- {f:"la pomme de terre",e:"the potato",c:7,t:"mar",y:"'Earth-apple' — the apple of the ground."},
- {f:"le radis",e:"the radish",c:7,t:"mar",y:"Latin radix (root) → English radish and radical; the root vegetable."},
+ {f:"la pomme de terre",e:"the potato",c:7,t:"marl",y:"'Earth-apple' — the apple of the ground."},
+ {f:"le radis",e:"the radish",c:7,t:"marl",y:"Latin radix (root) → English radish and radical; the root vegetable."},
  {f:"le raisin",e:"the grape",c:7,t:"mar",y:"Latin racemus (cluster); faux ami — raisin = fresh grape; a raisin is a raisin sec."},
  {f:"la tomate",e:"the tomato",c:7,t:"mar",y:"Nahuatl tomatl — the same path as English tomato."},
  /* --- La poissonnerie --- */
@@ -1438,64 +1461,64 @@ var VOCAB=[
 
  ,
  /* ===== Chapter 8 : Health — end-of-chapter glossaire ===== */
- /* --- Le corps humain --- */
- {f:"l'avant-bras",e:"the forearm",c:8,t:"corps",n:"m.",y:"'Before-arm' — the same compound as English forearm."},
+ /* --- Le corps humain (split: tête/visage · tronc/organes · membres) --- */
+ {f:"l'avant-bras",e:"the forearm",c:8,t:"corpsm",n:"m.",y:"'Before-arm' — the same compound as English forearm."},
  {f:"la bouche",e:"the mouth",c:8,t:"corps",y:"Latin bucca → English buccal (of the mouth)."},
- {f:"le bras",e:"the arm",c:8,t:"corps",y:"Latin bracchium → English brace, bracelet, embrace — the bracelet goes on the bras."},
+ {f:"le bras",e:"the arm",c:8,t:"corpsm",y:"Latin bracchium → English brace, bracelet, embrace — the bracelet goes on the bras."},
  {f:"le cerveau",e:"the brain",c:8,t:"corps",y:"Latin cerebrum → English cerebral; cerveau = cerebrum worn down."},
- {f:"la cheville",e:"the ankle",c:8,t:"corps",y:"Latin clavicula, 'little key' — the same word that gave English clavicle; the leg's key-pin."},
- {f:"le coeur",e:"the heart",c:8,t:"corps",a:["le cœur"],x:1,y:"Latin cor/cordis → English cordial, courage, accord; cœur = your core."},
+ {f:"la cheville",e:"the ankle",c:8,t:"corpsm",y:"Latin clavicula, 'little key' — the same word that gave English clavicle; the leg's key-pin."},
+ {f:"le coeur",e:"the heart",c:8,t:"corpst",a:["le cœur"],x:1,y:"Latin cor/cordis → English cordial, courage, accord; cœur = your core."},
  {f:"le cou",e:"the neck",c:8,t:"corps",y:"Latin collum → English collar — the collar goes on the cou."},
- {f:"le coude",e:"the elbow",c:8,t:"corps",y:"Latin cubitus → English cubit, the elbow-to-fingertip measure."},
+ {f:"le coude",e:"the elbow",c:8,t:"corpsm",y:"Latin cubitus → English cubit, the elbow-to-fingertip measure."},
  {f:"les dents",e:"the teeth",c:8,t:"corps",n:"f. pl.",y:"Latin dens/dentis → English dental, dentist."},
- {f:"les doigts",e:"the fingers",c:8,t:"corps",n:"m. pl.",x:1,y:"Latin digitus → English digit — fingers are digits; digital!"},
- {f:"le dos",e:"the back",c:8,t:"corps",y:"Latin dorsum → English dorsal (fin) and endorse — to write on the back."},
- {f:"l'épaule",e:"the shoulder",c:8,t:"corps",n:"f.",y:"Latin spatula, 'little blade' (the shoulder blade) → English epaulette; é- masks the s."},
+ {f:"les doigts",e:"the fingers",c:8,t:"corpsm",n:"m. pl.",x:1,y:"Latin digitus → English digit — fingers are digits; digital!"},
+ {f:"le dos",e:"the back",c:8,t:"corpst",y:"Latin dorsum → English dorsal (fin) and endorse — to write on the back."},
+ {f:"l'épaule",e:"the shoulder",c:8,t:"corpst",n:"f.",y:"Latin spatula, 'little blade' (the shoulder blade) → English epaulette; é- masks the s."},
  {f:"le front",e:"the forehead",c:8,t:"corps",y:"Latin frons → English front; the forehead is the front of the head — an affront is to the face."},
- {f:"le genou",e:"the knee",c:8,t:"corps",n:"pl. les genoux",y:"Latin genu → English genuflect — to bend the knee."},
+ {f:"le genou",e:"the knee",c:8,t:"corpsm",n:"pl. les genoux",y:"Latin genu → English genuflect — to bend the knee."},
  {f:"la gorge",e:"the throat",c:8,t:"corps",y:"Latin gurges (gullet) → English gorge — the canyon, and to gorge yourself."},
- {f:"la hanche",e:"the hip",c:8,t:"corps",y:"Frankish → English haunch; hanche = haunch."},
- {f:"la jambe",e:"the leg",c:8,t:"corps",y:"Late Latin gamba → English gambol (kicking legs); jambon is the leg-ham."},
+ {f:"la hanche",e:"the hip",c:8,t:"corpsm",y:"Frankish → English haunch; hanche = haunch."},
+ {f:"la jambe",e:"the leg",c:8,t:"corpsm",y:"Late Latin gamba → English gambol (kicking legs); jambon is the leg-ham."},
  {f:"la langue",e:"the tongue",c:8,t:"corps",y:"Latin lingua → English language, bilingual — language lives on the tongue."},
- {f:"la main",e:"the hand",c:8,t:"corps",y:"Latin manus → English manual, manufacture, manicure — hand-work words."},
- {f:"le muscle",e:"the muscle",c:8,t:"corps",y:"Latin musculus, 'little mouse' under the skin — same word as la moule the mussel."},
+ {f:"la main",e:"the hand",c:8,t:"corpsm",y:"Latin manus → English manual, manufacture, manicure — hand-work words."},
+ {f:"le muscle",e:"the muscle",c:8,t:"corpst",y:"Latin musculus, 'little mouse' under the skin — same word as la moule the mussel."},
  {f:"l'oreille",e:"the ear",c:8,t:"corps",n:"f.",y:"Latin auricula → English auricle, aural; oreille = auricula smoothed."},
- {f:"les os",e:"the bones",c:8,t:"corps",n:"m. pl.",y:"Latin os/ossis → English ossify — to turn to bone."},
- {f:"la peau",e:"the skin",c:8,t:"corps",y:"Latin pellis → English pelt and peel; your skin is your pelt."},
- {f:"le pied",e:"the foot",c:8,t:"corps",y:"Latin pes/pedis → English pedal, pedestrian, pedicure."},
- {f:"le poignet",e:"the wrist",c:8,t:"corps",x:1,y:"Little poing (fist, Latin pugnus → pugilist, pugnacious); the wrist cocks the pugilist's fist."},
- {f:"la poitrine",e:"the chest",c:8,t:"corps",y:"Latin pectus/pector- → English pectoral; poi-trine ≈ pec-toral, French sanded off the c."},
- {f:"les poumons",e:"the lungs",c:8,t:"corps",n:"m. pl.",y:"Latin pulmo → English pulmonary; poumons = pulmon-."},
- {f:"le sang",e:"the blood",c:8,t:"corps",y:"Latin sanguis → English sanguine and sangfroid — 'cold blood.'"},
+ {f:"les os",e:"the bones",c:8,t:"corpst",n:"m. pl.",y:"Latin os/ossis → English ossify — to turn to bone."},
+ {f:"la peau",e:"the skin",c:8,t:"corpst",y:"Latin pellis → English pelt and peel; your skin is your pelt."},
+ {f:"le pied",e:"the foot",c:8,t:"corpsm",y:"Latin pes/pedis → English pedal, pedestrian, pedicure."},
+ {f:"le poignet",e:"the wrist",c:8,t:"corpsm",x:1,y:"Little poing (fist, Latin pugnus → pugilist, pugnacious); the wrist cocks the pugilist's fist."},
+ {f:"la poitrine",e:"the chest",c:8,t:"corpst",y:"Latin pectus/pector- → English pectoral; poi-trine ≈ pec-toral, French sanded off the c."},
+ {f:"les poumons",e:"the lungs",c:8,t:"corpst",n:"m. pl.",y:"Latin pulmo → English pulmonary; poumons = pulmon-."},
+ {f:"le sang",e:"the blood",c:8,t:"corpst",y:"Latin sanguis → English sanguine and sangfroid — 'cold blood.'"},
  {f:"la tête",e:"the head",c:8,t:"corps",y:"Latin testa, 'pot' — Roman slang for head; circumflex hides the s: teste."},
- {f:"le ventre",e:"the stomach area / belly",c:8,t:"corps",y:"Latin venter → English ventral (belly-side) and ventriloquist, the belly-speaker."},
+ {f:"le ventre",e:"the stomach area / belly",c:8,t:"corpst",y:"Latin venter → English ventral (belly-side) and ventriloquist, the belly-speaker."},
  {f:"le visage",e:"the face",c:8,t:"corps",y:"From Latin visus (sight → visual, visor); the face is what's seen — the visor covers the visage."},
  {f:"les yeux",e:"the eyes",c:8,t:"corps",n:"m. pl. — sing. l'oeil",x:1,y:"Latin oculi → English ocular; the singular œil keeps the oc- shape better."},
- /* --- À l'hôpital --- */
- {f:"l'accouchement",e:"the (baby) delivery",c:8,t:"hop",n:"m.",y:"From coucher (to lie down → English couch); delivery is the lying-in."},
- {f:"l'aide-soignant",e:"the nursing assistant",c:8,t:"hop",n:"m. — f. l'aide-soignante",y:"aide (helper) + soigner (to care) — the care-helper."},
+ /* --- À l'hôpital (split: symptômes/blessures · soins/personnel/matériel) --- */
+ {f:"l'accouchement",e:"the (baby) delivery",c:8,t:"hopm",n:"m.",y:"From coucher (to lie down → English couch); delivery is the lying-in."},
+ {f:"l'aide-soignant",e:"the nursing assistant",c:8,t:"hopm",n:"m. — f. l'aide-soignante",y:"aide (helper) + soigner (to care) — the care-helper."},
  {f:"la blessure",e:"the injury / the wound",c:8,t:"hop",y:"From blesser, to wound — faux ami: nothing blessed about it; Frankish 'to bruise.'"},
- {f:"le brancard",e:"the stretcher",c:8,t:"hop",y:"From branche — carrying-poles cut from branches; a stretcher is two branches and cloth."},
- {f:"le brancardier",e:"the stretcher bearer",c:8,t:"hop",n:"f. la brancardière",y:"The branch-pole carrier — stretcher bearer."},
+ {f:"le brancard",e:"the stretcher",c:8,t:"hopm",y:"From branche — carrying-poles cut from branches; a stretcher is two branches and cloth."},
+ {f:"le brancardier",e:"the stretcher bearer",c:8,t:"hopm",n:"f. la brancardière",y:"The branch-pole carrier — stretcher bearer."},
  {f:"la brûlure",e:"the burn",c:8,t:"hop",x:1,y:"From brûler (circumflex hides the s: brusler); crème brûlée = burnt cream."},
- {f:"la civière",e:"the gurney",c:8,t:"hop",y:"Old French hand-barrow; think: the gurney carries civilians."},
+ {f:"la civière",e:"the gurney",c:8,t:"hopm",y:"Old French hand-barrow; think: the gurney carries civilians."},
  {f:"la courbature",e:"the soreness",c:8,t:"hop",y:"From courber (to bend, Latin curvare → curve); soreness that keeps you curved over."},
  {f:"les démangeaisons",e:"the itching",c:8,t:"hop",n:"f. pl.",y:"From démanger — itching 'eats at' you (manger = eat); the skin-nibbles."},
  {f:"la diarrhée",e:"the diarrhea",c:8,t:"hop",x:1,y:"Greek dia + rhein, 'flow through' — identical to English diarrhea."},
  {f:"l'effet secondaire",e:"the side effect",c:8,t:"hop",n:"m.",y:"Cognate: the secondary effect = side effect."},
  {f:"la guérison",e:"the healing",c:8,t:"hop",y:"From guérir (ward off); healing is warding the illness off."},
  {f:"la fièvre",e:"the fever",c:8,t:"hop",y:"Latin febris → English fever, febrile; fièvre = febr-."},
- {f:"l'interne",e:"the intern",c:8,t:"hop",n:"m./f.",y:"Cognate intern — the same hospital rank."},
- {f:"le médicament",e:"the medicine (pill)",c:8,t:"hop",n:"Un médecin = a doctor; la médecine = the science.",y:"Latin medicus → English medicament; the medicine."},
+ {f:"l'interne",e:"the intern",c:8,t:"hopm",n:"m./f.",y:"Cognate intern — the same hospital rank."},
+ {f:"le médicament",e:"the medicine (pill)",c:8,t:"hopm",n:"Un médecin = a doctor; la médecine = the science.",y:"Latin medicus → English medicament; the medicine."},
  {f:"la morsure",e:"the bite",c:8,t:"hop",y:"From mordre (Latin mordere → mordant, remorse — the bite-back of conscience); the bite."},
- {f:"la pédiatrie",e:"the pediatric medicine",c:8,t:"hop",y:"Greek paid- (child) + iatros (healer) — same as English pediatrics."},
+ {f:"la pédiatrie",e:"the pediatric medicine",c:8,t:"hopm",y:"Greek paid- (child) + iatros (healer) — same as English pediatrics."},
  {f:"la plaie",e:"the wound",c:8,t:"hop",y:"Latin plaga, blow/wound → English plague — a plague is a great wound."},
  {f:"la piqûre",e:"the injection / the sting",c:8,t:"hop",x:1,y:"From piquer (→ English pique, piquant); the little prick — shot or sting."},
- {f:"les premiers soins",e:"the first aid",c:8,t:"hop",n:"m. pl.",y:"First cares = first aid; soin = care."},
- {f:"la prise en charge",e:"the patient admission",c:8,t:"hop",y:"The 'taking into charge' — patient admission."},
- {f:"la seringue",e:"the syringe",c:8,t:"hop",y:"Greek syrinx, reed-pipe → English syringe; same word."},
- {f:"les soins médicaux",e:"the medical care",c:8,t:"hop",n:"m. pl.",y:"The medical cares — soigner family."},
- {f:"les urgences",e:"the emergency room",c:8,t:"hop",n:"f. pl.",y:"Plural: short for le service des urgences — the department of urgent cases."},
+ {f:"les premiers soins",e:"the first aid",c:8,t:"hopm",n:"m. pl.",y:"First cares = first aid; soin = care."},
+ {f:"la prise en charge",e:"the patient admission",c:8,t:"hopm",y:"The 'taking into charge' — patient admission."},
+ {f:"la seringue",e:"the syringe",c:8,t:"hopm",y:"Greek syrinx, reed-pipe → English syringe; same word."},
+ {f:"les soins médicaux",e:"the medical care",c:8,t:"hopm",n:"m. pl.",y:"The medical cares — soigner family."},
+ {f:"les urgences",e:"the emergency room",c:8,t:"hopm",n:"f. pl.",y:"Plural: short for le service des urgences — the department of urgent cases."},
  {f:"les voies respiratoires",e:"the airways",c:8,t:"hop",n:"f. pl.",y:"The respiratory ways; voie = way (Latin via → viaduct)."},
  {f:"le vomissement",e:"the vomiting",c:8,t:"hop",y:"Latin vomere — straight cognate."},
  /* --- Maladies et microbes --- */
@@ -1514,37 +1537,37 @@ var VOCAB=[
  {f:"le mode de vie",e:"the lifestyle",c:8,t:"nut",y:"The mode of life — literal lifestyle."},
  {f:"sain",e:"healthy",c:8,t:"nut",n:"f. saine",y:"Latin sanus → English sane, sanitary; mens sana — healthy and sane are one word."},
  {f:"la santé mentale",e:"the mental health",c:8,t:"nut",y:"santé from Latin sanitas → English sanity; à ta santé!"},
- /* --- Verbes (Ch 8, infinitive cards) --- */
+ /* --- Verbes (Ch 8, infinitive cards) (split: santé/corps · évaluer/mettre en oeuvre) --- */
  {f:"allonger",e:"to lay down / to stretch",c:8,t:"verb",y:"From long — to make long: stretch out, lay flat."},
- {f:"combattre",e:"to fight",c:8,t:"verb",y:"com + battre — to batter together; English combat."},
+ {f:"combattre",e:"to fight",c:8,t:"verbg",y:"com + battre — to batter together; English combat."},
  {f:"s'écorcher",e:"to scrape oneself",c:8,t:"verb",y:"From écorce (bark, Latin cortex → English cortex); to scrape your bark off."},
  {f:"être enrhumé",e:"to be sick with a cold",c:8,t:"verb",y:"From rhume (Greek rheuma, flow → English rheum); stuffed full of flowing cold."},
- {f:"éviter",e:"to avoid",c:8,t:"verb",y:"Latin evitare — what you can't éviter is inevitable."},
- {f:"examiner",e:"to examine",c:8,t:"verb",y:"Straight cognate: examine."},
- {f:"éradiquer",e:"to eradicate",c:8,t:"verb",y:"Latin e + radix, 'out by the root' → eradicate — and radix gave the radish too."},
+ {f:"éviter",e:"to avoid",c:8,t:"verbg",y:"Latin evitare — what you can't éviter is inevitable."},
+ {f:"examiner",e:"to examine",c:8,t:"verbg",y:"Straight cognate: examine."},
+ {f:"éradiquer",e:"to eradicate",c:8,t:"verbg",y:"Latin e + radix, 'out by the root' → eradicate — and radix gave the radish too."},
  {f:"guérir",e:"to heal / to cure",c:8,t:"verb",y:"Frankish warjan, ward off — the g/w swap of guerre/war, Guillaume/William; heal = ward off."},
- {f:"faire un bilan",e:"to assess",c:8,t:"verb",y:"bilan from Italian bilancio → English balance; to run the balance sheet = assess."},
+ {f:"faire un bilan",e:"to assess",c:8,t:"verbg",y:"bilan from Italian bilancio → English balance; to run the balance sheet = assess."},
  {f:"se fouler",e:"to twist / to sprain",c:8,t:"verb",y:"From fouler, to press/trample; you sprain it by pressing it wrong."},
  {f:"lever",e:"to lift",c:8,t:"verb",y:"Latin levare → English lever, elevate, levitate; to lift."},
- {f:"maintenir",e:"to maintain",c:8,t:"verb",y:"main + tenir, 'hold in hand' — English maintain is this exact compound."},
- {f:"mettre en place",e:"to implement",c:8,t:"verb",y:"Put in place — cooking's mise en place; to implement."},
+ {f:"maintenir",e:"to maintain",c:8,t:"verbg",y:"main + tenir, 'hold in hand' — English maintain is this exact compound."},
+ {f:"mettre en place",e:"to implement",c:8,t:"verbg",y:"Put in place — cooking's mise en place; to implement."},
  {f:"mourir",e:"to die",c:8,t:"verb",y:"Latin mori → English mortal, mortuary."},
  {f:"perdre connaissance",e:"to faint",c:8,t:"verb",y:"'Lose knowledge' — English loses consciousness the same way."},
  {f:"se porter",e:"to feel (health)",c:8,t:"verb",y:"'To carry oneself' — how you're carrying is how you feel: Comment vous portez-vous ?"},
- {f:"poursuivre",e:"to continue",c:8,t:"verb",y:"pour + suivre (Latin sequi → sue, suit) → English pursue."},
- {f:"préconiser",e:"to recommend",c:8,t:"verb",y:"Latin praeco, the herald — to herald something = recommend it officially."},
- {f:"prendre en charge",e:"to admit (a patient)",c:8,t:"verb",y:"Take into one's charge — to admit; English 'take charge of.'"},
- {f:"privilégier",e:"to prioritize",c:8,t:"verb",y:"Cognate privilege → to give priority to."},
+ {f:"poursuivre",e:"to continue",c:8,t:"verbg",y:"pour + suivre (Latin sequi → sue, suit) → English pursue."},
+ {f:"préconiser",e:"to recommend",c:8,t:"verbg",y:"Latin praeco, the herald — to herald something = recommend it officially."},
+ {f:"prendre en charge",e:"to admit (a patient)",c:8,t:"verbg",y:"Take into one's charge — to admit; English 'take charge of.'"},
+ {f:"privilégier",e:"to prioritize",c:8,t:"verbg",y:"Cognate privilege → to give priority to."},
  {f:"récupérer",e:"to recover",c:8,t:"verb",y:"Cognate recuperate — to recover."},
  {f:"respirer",e:"to breathe",c:8,t:"verb",y:"Latin respirare → English respire, respiratory — to re-breathe."},
  {f:"retirer",e:"to pull out",c:8,t:"verb",y:"re + tirer (pull) — English retire is literally 'pull back.'"},
  {f:"se sentir",e:"to feel",c:8,t:"verb",y:"Latin sentire → English sense, sentiment; to feel."},
  {f:"soigner",e:"to treat / to care for",c:8,t:"verb",y:"From soin (care); English soigné = impeccably cared-for."},
  {f:"tousser",e:"to cough",c:8,t:"verb",y:"Latin tussire → medical English tussis; pertussis = whooping cough."},
- {f:"tuer",e:"to kill",c:8,t:"verb",y:"Originally 'to snuff out a flame' — to kill is to extinguish."},
- {f:"vaincre",e:"to conquer",c:8,t:"verb",y:"Latin vincere → English victory, vanquish; what you can't vaincre is invincible."},
+ {f:"tuer",e:"to kill",c:8,t:"verbg",y:"Originally 'to snuff out a flame' — to kill is to extinguish."},
+ {f:"vaincre",e:"to conquer",c:8,t:"verbg",y:"Latin vincere → English victory, vanquish; what you can't vaincre is invincible."},
  /* ===== Chapter 9 : Social events — end-of-chapter glossaire ===== */
- /* --- Noms --- */
+ /* --- Noms (split: invitations/cadeaux/objets · sorties/réceptions/convives) --- */
  {f:"l'abonnement",e:"the membership / the subscription",c:9,t:"evt",n:"m.",y:"From abonner, originally 'fix within bounds' — a subscription is a bounded deal; think: a bon deal monthly."},
  {f:"l'apéritif",e:"the pre-meal drink",c:9,t:"evt",a:["l'apéro"],n:"m. — fam. l'apéro",y:"Latin aperire, to open → English aperture; the drink that opens the meal."},
  {f:"le bon",e:"the voucher",c:9,t:"evt",y:"Literally 'the good (thing)' — a voucher is a good-for-one."},
@@ -1552,29 +1575,29 @@ var VOCAB=[
  {f:"le carton d'invitation",e:"the invitation card",c:9,t:"evt",y:"carton → English carton/card; the invitation card."},
  {f:"le chèque-cadeau",e:"the gift card",c:9,t:"evt",y:"Check-gift — chèque → English cheque; the gift card."},
  {f:"le coffret",e:"the gift set",c:9,t:"evt",y:"Little coffre (chest, Greek kophinos → English coffer and coffin); a mini treasure chest."},
- {f:"la comédie musicale",e:"the musical (play)",c:9,t:"evt",y:"The 'musical comedy' — French kept the full original phrase."},
- {f:"le convive",e:"the guest (at a meal)",c:9,t:"evt",n:"m./f.",y:"Latin convivium, feast (con + vivere, live together → English convivial); the convivial one at table."},
- {f:"la croisière",e:"the cruise",c:9,t:"evt",y:"From croiser (cross, croix); a cruise crosses the sea — cruise and croisière share the root."},
- {f:"la dégustation de vin",e:"the wine tasting",c:9,t:"evt",y:"Latin gustare, to taste → English gusto and disgust; tasting with gusto."},
- {f:"la détente",e:"the relaxation",c:9,t:"evt",y:"dé + tendre, 'un-tense' → English détente, the Cold War thaw; relaxation is de-tensioning."},
- {f:"l'exposition",e:"the exhibit",c:9,t:"evt",n:"f.",y:"Cognate exposition — works ex-posed to view."},
+ {f:"la comédie musicale",e:"the musical (play)",c:9,t:"evts",y:"The 'musical comedy' — French kept the full original phrase."},
+ {f:"le convive",e:"the guest (at a meal)",c:9,t:"evts",n:"m./f.",y:"Latin convivium, feast (con + vivere, live together → English convivial); the convivial one at table."},
+ {f:"la croisière",e:"the cruise",c:9,t:"evts",y:"From croiser (cross, croix); a cruise crosses the sea — cruise and croisière share the root."},
+ {f:"la dégustation de vin",e:"the wine tasting",c:9,t:"evts",y:"Latin gustare, to taste → English gusto and disgust; tasting with gusto."},
+ {f:"la détente",e:"the relaxation",c:9,t:"evts",y:"dé + tendre, 'un-tense' → English détente, the Cold War thaw; relaxation is de-tensioning."},
+ {f:"l'exposition",e:"the exhibit",c:9,t:"evts",n:"f.",y:"Cognate exposition — works ex-posed to view."},
  {f:"le faire-part",e:"the wedding invitation / announcement",c:9,t:"evt",x:1,y:"Literally 'make-known' — faire part de = to inform; the formal announcement."},
  {f:"les félicitations",e:"the congratulations",c:9,t:"evt",n:"f. pl.",y:"Latin felix, happy → English felicity, felicitations."},
  {f:"la fête prénatale",e:"the baby shower",c:9,t:"evt",a:["la baby shower"],y:"The before-birth fête; circumflex hides the s — feste → English feast."},
- {f:"le feu d'artifice",e:"the fireworks show",c:9,t:"evt",y:"'Fire of artifice' — artificial fire = fireworks."},
+ {f:"le feu d'artifice",e:"the fireworks show",c:9,t:"evts",y:"'Fire of artifice' — artificial fire = fireworks."},
  {f:"le foyer",e:"the home",c:9,t:"evt",y:"Latin focus — the hearth! Home is the family's focus; English foyer too."},
- {f:"les goûts",e:"the tastes",c:9,t:"evt",n:"m. pl.",y:"Latin gustus → English gusto, gustatory; circumflex hides the s: gousts."},
- {f:"l'hôte",e:"the host",c:9,t:"evt",n:"m. — f. l'hôtesse",x:1,y:"Latin hospes → English host, hospitality; circumflex hides the s: hoste = host — but hôte can mean host OR guest."},
- {f:"l'impair",e:"the mess-up / the blunder",c:9,t:"evt",n:"m.",y:"Literally 'un-even' (pair → English pair, par); a blunder leaves things odd, not even."},
- {f:"l'invité",e:"the guest",c:9,t:"evt",n:"m. — f. l'invitée",y:"The invited one — cognate invitee."},
+ {f:"les goûts",e:"the tastes",c:9,t:"evts",n:"m. pl.",y:"Latin gustus → English gusto, gustatory; circumflex hides the s: gousts."},
+ {f:"l'hôte",e:"the host",c:9,t:"evts",n:"m. — f. l'hôtesse",x:1,y:"Latin hospes → English host, hospitality; circumflex hides the s: hoste = host — but hôte can mean host OR guest."},
+ {f:"l'impair",e:"the mess-up / the blunder",c:9,t:"evts",n:"m.",y:"Literally 'un-even' (pair → English pair, par); a blunder leaves things odd, not even."},
+ {f:"l'invité",e:"the guest",c:9,t:"evts",n:"m. — f. l'invitée",y:"The invited one — cognate invitee."},
  {f:"la journée portes ouvertes",e:"the open house",c:9,t:"evt",y:"'Open-doors day' — the open house, literally."},
  {f:"la montre",e:"the watch",c:9,t:"evt",y:"From montrer (Latin monstrare → demonstrate); the watch shows the time."},
  {f:"le panier",e:"the basket",c:9,t:"evt",y:"Latin panarium, bread basket — panis again; the basket was for pain."},
- {f:"la pendaison de crémaillère",e:"the housewarming party",c:9,t:"evt",x:1,y:"'Hanging of the pot-hook' — the medieval move-in ritual: hang the hearth hook, feed your helpers."},
- {f:"la reconnaissance",e:"the gratitude",c:9,t:"evt",y:"re + connaissance, 're-knowing' → English recognition AND reconnaissance; gratitude is recognizing what was done."},
- {f:"la rencontre",e:"the meeting / the encounter",c:9,t:"evt",y:"re + encontre → English encounter, the same word."},
- {f:"le traiteur",e:"the caterer",c:9,t:"evt",y:"From traiter — the caterer treats your guests."},
- {f:"le vernissage",e:"the exhibit opening event",c:9,t:"evt",x:1,y:"From vernis (varnish) — artists varnished paintings at the private view: varnishing day."},
+ {f:"la pendaison de crémaillère",e:"the housewarming party",c:9,t:"evts",x:1,y:"'Hanging of the pot-hook' — the medieval move-in ritual: hang the hearth hook, feed your helpers."},
+ {f:"la reconnaissance",e:"the gratitude",c:9,t:"evts",y:"re + connaissance, 're-knowing' → English recognition AND reconnaissance; gratitude is recognizing what was done."},
+ {f:"la rencontre",e:"the meeting / the encounter",c:9,t:"evts",y:"re + encontre → English encounter, the same word."},
+ {f:"le traiteur",e:"the caterer",c:9,t:"evts",y:"From traiter — the caterer treats your guests."},
+ {f:"le vernissage",e:"the exhibit opening event",c:9,t:"evts",x:1,y:"From vernis (varnish) — artists varnished paintings at the private view: varnishing day."},
  /* --- Verbes (Ch 9) --- */
  {f:"avoir envie de",e:"to feel like",c:9,t:"verb",y:"envie from Latin invidia → English envy; wanting is a small envy toward the thing."},
  {f:"avoir hâte de",e:"to look forward to",c:9,t:"verb",y:"hâte → English haste (circumflex hides the s); to have haste for it — can't wait."},
@@ -2600,12 +2623,17 @@ function pickRound(bank,n){
   for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
   return a.slice(0, Math.min(n, a.length));
 }
+/* v1.2.4: coverage — how many distinct bank items you've answered right at least once */
+function covOf(d){ var bank=d.bankItems||d.items||[]; var cv=state.gramCov[d.id]||{}; var n=0;
+  for(var k in cv) if(cv[k]) n++; return {n:Math.min(n,bank.length), t:bank.length}; }
+function drillMeta(d){ var best=state.drills[d.id]; var c=covOf(d);
+  return d.ch+(c.t?" · couverture "+c.n+"/"+c.t:"")+(best?" · best "+best.correct+"/"+best.total:""); }
 function buildDrillAcc(d){
   if(d.gen) d.items=d.gen();
   else { d.bankItems=d.bankItems||d.items; d.items=pickRound(d.bankItems,10); }
   var det=el("details","acc"); var best=state.drills[d.id];
   var sum=el("summary");
-  sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+d.ch+(best?" · best "+best.correct+"/"+best.total:"")+"</span>";
+  sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
   var body=el("div","body");
   if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }   /* v1.0.0: rule explainer at the top of each drill */
@@ -2629,6 +2657,9 @@ function buildDrillAcc(d){
       else if(close && got.trim()){ v.className="verdict warn"; v.textContent="≈ Right word — mind the accents: "+ans[0]; }
       else { v.className="verdict no"; v.textContent="✗ "+ans[0]; }
       if(!q._graded){ q._graded=true; anaRecord(ok, (!ok && close && !!got.trim()), withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }  /* first grade per item counts */
+      if(ok){ var bank=d.bankItems||d.items, bi=bank.indexOf(it);   /* v1.2.4: mark this bank item covered */
+        if(bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState();
+          var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); } }
       scoreDrill(d);
     }
     inp.addEventListener("keydown",function(e){ if(e.key==="Enter") check(); });
@@ -2665,10 +2696,204 @@ function scoreDrill(d){
     if(correct===d.items.length && d.items.length>=10) award("a_round");
     var prev=state.drills[d.id];
     if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
-      det.querySelector(".meta").innerHTML=d.ch+" · best "+correct+"/"+d.items.length;
+      det.querySelector(".meta").innerHTML=drillMeta(d);
     }
   }
 }
+
+/* =============== v1.2.4 — DRILL CIBLÉ (reps only, searchable U1+U2 pool) =============== */
+var TENSES=[
+  {id:"pres", lbl:"Présent",       long:"présent de l'indicatif"},
+  {id:"pc",   lbl:"Passé composé", long:"passé composé"},
+  {id:"imp",  lbl:"Imparfait",     long:"imparfait"}
+];
+var REFL=["me","te","se","nous","vous","se"];
+function vowelStart(x){ return /^[aeéèêiîoôuh]/i.test(x); }
+function reflFor(i,next){ var r=REFL[i]; if((r==="me"||r==="te"||r==="se") && vowelStart(next)) return r.charAt(0)+"'"; return r+" "; }
+/* passé composé avec être (motion + pronominal), with agreement alternates joined by "/" */
+function pcEtreOf(v){ var pp=ppOf(v);
+  var ET=["suis","es","est","sommes","êtes","sont"];
+  function agr(i){
+    if(i===3||i===5) return [pp+"s",pp+"es"];
+    if(i===4) return [pp,pp+"e",pp+"s",pp+"es"];
+    return [pp,pp+"e"];
+  }
+  return ET.map(function(a,i){ if(conjOf(v)[i]==="—") return "—";
+    var head;
+    if(v.pron){ head = (i===0?"me suis":(i===1?"t'es":(i===2?"s'est":(i===3?"nous sommes":(i===4?"vous êtes":"se sont"))))); }
+    else head=a;
+    return agr(i).map(function(p){ return head+" "+p; }).join("/"); }); }
+/* imparfait of a pronominal verb — reflexive pronoun + nous-stem + endings */
+function cibImpPron(v){
+  var stem=altSplit(conjOf(v)[3])[0].replace(/^nous\s+/,"").replace(/ons$/,"");
+  var pres=conjOf(v);
+  return IMP_END.map(function(end,i){
+    if(pres[i]==="—") return "—";
+    var r=stem; if(i===3||i===4) r=r.replace(/ç$/,"c").replace(/ge$/,"g");
+    var form=r+end;
+    return reflFor(i,form)+form;
+  });
+}
+function cibForms(v,t){
+  if(t==="pc")  return (v.pron||v.aux==="e") ? pcEtreOf(v) : pcOf(v);
+  if(t==="imp") return v.pron ? cibImpPron(v) : impOf(v);
+  return conjOf(v);
+}
+/* pool — same shape as V entries; conj:[6] for irregular/pronominal/spelling-change, type for regulars */
+var EXTRA_CIB=[
+ /* --- U1 irregulars --- */
+ {fr:"prendre",en:"to take",conj:["prends","prends","prend","prenons","prenez","prennent"],pp:"pris"},
+ {fr:"apprendre",en:"to learn",conj:["apprends","apprends","apprend","apprenons","apprenez","apprennent"],pp:"appris"},
+ {fr:"comprendre",en:"to understand",conj:["comprends","comprends","comprend","comprenons","comprenez","comprennent"],pp:"compris"},
+ {fr:"mettre",en:"to put / to put on",conj:["mets","mets","met","mettons","mettez","mettent"],pp:"mis"},
+ {fr:"dire",en:"to say / to tell",conj:["dis","dis","dit","disons","dites","disent"],pp:"dit"},
+ {fr:"lire",en:"to read",conj:["lis","lis","lit","lisons","lisez","lisent"],pp:"lu"},
+ {fr:"écrire",en:"to write",conj:["écris","écris","écrit","écrivons","écrivez","écrivent"],pp:"écrit"},
+ {fr:"boire",en:"to drink",conj:["bois","bois","boit","buvons","buvez","boivent"],pp:"bu"},
+ {fr:"revenir",en:"to come back",conj:["reviens","reviens","revient","revenons","revenez","reviennent"],pp:"revenu"},
+ {fr:"partir",en:"to leave",conj:["pars","pars","part","partons","partez","partent"],pp:"parti"},
+ {fr:"sortir",en:"to go out",conj:["sors","sors","sort","sortons","sortez","sortent"],pp:"sorti"},
+ {fr:"dormir",en:"to sleep",conj:["dors","dors","dort","dormons","dormez","dorment"],pp:"dormi"},
+ {fr:"sentir",en:"to feel / to smell",conj:["sens","sens","sent","sentons","sentez","sentent"],pp:"senti"},
+ {fr:"servir",en:"to serve",conj:["sers","sers","sert","servons","servez","servent"],pp:"servi"},
+ {fr:"ouvrir",en:"to open",conj:["ouvre","ouvres","ouvre","ouvrons","ouvrez","ouvrent"],pp:"ouvert"},
+ {fr:"conduire",en:"to drive",conj:["conduis","conduis","conduit","conduisons","conduisez","conduisent"],pp:"conduit"},
+ {fr:"suivre",en:"to follow",conj:["suis","suis","suit","suivons","suivez","suivent"],pp:"suivi"},
+ {fr:"peindre",en:"to paint",conj:["peins","peins","peint","peignons","peignez","peignent"],pp:"peint"},
+ {fr:"rejoindre",en:"to join / to meet up with",conj:["rejoins","rejoins","rejoint","rejoignons","rejoignez","rejoignent"],pp:"rejoint"},
+ {fr:"connaître",en:"to know (people, places)",conj:["connais","connais","connaît","connaissons","connaissez","connaissent"],pp:"connu"},
+ /* --- U1 spelling-change -er --- */
+ {fr:"préférer",en:"to prefer",conj:["préfère","préfères","préfère","préférons","préférez","préfèrent"],pp:"préféré"},
+ {fr:"acheter",en:"to buy",conj:["achète","achètes","achète","achetons","achetez","achètent"],pp:"acheté"},
+ {fr:"manger",en:"to eat",conj:["mange","manges","mange","mangeons","mangez","mangent"],pp:"mangé"},
+ {fr:"voyager",en:"to travel",conj:["voyage","voyages","voyage","voyageons","voyagez","voyagent"],pp:"voyagé"},
+ {fr:"nager",en:"to swim",conj:["nage","nages","nage","nageons","nagez","nagent"],pp:"nagé"},
+ {fr:"commencer",en:"to begin",conj:["commence","commences","commence","commençons","commencez","commencent"],pp:"commencé"},
+ {fr:"payer",en:"to pay",conj:["paie/paye","paies/payes","paie/paye","payons","payez","paient/payent"],pp:"payé"},
+ {fr:"balayer",en:"to sweep",conj:["balaie/balaye","balaies/balayes","balaie/balaye","balayons","balayez","balaient/balayent"],pp:"balayé"},
+ {fr:"appeler",en:"to call",conj:["appelle","appelles","appelle","appelons","appelez","appellent"],pp:"appelé"},
+ /* --- U1 regular -er --- */
+ {fr:"parler",en:"to speak",type:"er"},{fr:"habiter",en:"to live / to reside",type:"er"},
+ {fr:"travailler",en:"to work",type:"er"},{fr:"regarder",en:"to watch",type:"er"},
+ {fr:"écouter",en:"to listen (to)",type:"er"},{fr:"chercher",en:"to look for",type:"er"},
+ {fr:"trouver",en:"to find",type:"er"},{fr:"donner",en:"to give",type:"er"},
+ {fr:"demander",en:"to ask",type:"er"},{fr:"penser",en:"to think",type:"er"},
+ {fr:"jouer",en:"to play",type:"er"},{fr:"étudier",en:"to study",type:"er"},
+ {fr:"rester",en:"to stay",type:"er"},{fr:"rentrer",en:"to go/come home",type:"er"},
+ {fr:"arriver",en:"to arrive",type:"er"},{fr:"marcher",en:"to walk",type:"er"},
+ {fr:"danser",en:"to dance",type:"er"},{fr:"compter",en:"to count",type:"er"},
+ {fr:"fermer",en:"to close",type:"er"},{fr:"pleurer",en:"to cry",type:"er"},
+ {fr:"cuisiner",en:"to cook",type:"er"},{fr:"visiter",en:"to visit (a place)",type:"er"},
+ {fr:"laver",en:"to wash (something)",type:"er"},{fr:"tourner",en:"to turn",type:"er"},
+ {fr:"traverser",en:"to cross",type:"er"},{fr:"continuer",en:"to continue",type:"er"},
+ {fr:"passer",en:"to go by / to pass",type:"er"},
+ /* --- U1 -ir (choisir group) --- */
+ {fr:"finir",en:"to finish",type:"ir2"},{fr:"choisir",en:"to choose",type:"ir2"},
+ {fr:"réfléchir",en:"to think / reflect",type:"ir2"},{fr:"réussir",en:"to succeed",type:"ir2"},
+ {fr:"grandir",en:"to grow (up)",type:"ir2"},{fr:"grossir",en:"to gain weight",type:"ir2"},
+ {fr:"maigrir",en:"to lose weight",type:"ir2"},{fr:"obéir",en:"to obey",type:"ir2"},
+ {fr:"remplir",en:"to fill (out)",type:"ir2"},{fr:"ralentir",en:"to slow down",type:"ir2"},
+ {fr:"punir",en:"to punish",type:"ir2"},{fr:"atterrir",en:"to land",type:"ir2"},
+ /* --- U1 -re --- */
+ {fr:"attendre",en:"to wait (for)",type:"re"},{fr:"entendre",en:"to hear",type:"re"},
+ {fr:"répondre",en:"to answer",type:"re"},{fr:"vendre",en:"to sell",type:"re"},
+ {fr:"perdre",en:"to lose",type:"re"},{fr:"rendre",en:"to give back",type:"re"},
+ {fr:"descendre",en:"to go down / get off",type:"re"},{fr:"défendre",en:"to defend / forbid",type:"re"},
+ /* --- U1 pronominals --- */
+ {fr:"s'appeler",en:"to be called",pron:true,conj:["m'appelle","t'appelles","s'appelle","nous appelons","vous appelez","s'appellent"],pp:"appelé"},
+ {fr:"se lever",en:"to get up",pron:true,conj:["me lève","te lèves","se lève","nous levons","vous levez","se lèvent"],pp:"levé"},
+ {fr:"se réveiller",en:"to wake up",pron:true,conj:["me réveille","te réveilles","se réveille","nous réveillons","vous réveillez","se réveillent"],pp:"réveillé"},
+ {fr:"se laver",en:"to wash (oneself)",pron:true,conj:["me lave","te laves","se lave","nous lavons","vous lavez","se lavent"],pp:"lavé"},
+ {fr:"s'habiller",en:"to get dressed",pron:true,conj:["m'habille","t'habilles","s'habille","nous habillons","vous habillez","s'habillent"],pp:"habillé"},
+ {fr:"se préparer",en:"to get ready",pron:true,conj:["me prépare","te prépares","se prépare","nous préparons","vous préparez","se préparent"],pp:"préparé"},
+ {fr:"se dépêcher",en:"to hurry",pron:true,conj:["me dépêche","te dépêches","se dépêche","nous dépêchons","vous dépêchez","se dépêchent"],pp:"dépêché"},
+ {fr:"se coucher",en:"to go to bed",pron:true,conj:["me couche","te couches","se couche","nous couchons","vous couchez","se couchent"],pp:"couché"},
+ {fr:"se reposer",en:"to rest",pron:true,conj:["me repose","te reposes","se repose","nous reposons","vous reposez","se reposent"],pp:"reposé"},
+ {fr:"se promener",en:"to take a walk",pron:true,conj:["me promène","te promènes","se promène","nous promenons","vous promenez","se promènent"],pp:"promené"},
+ {fr:"s'amuser",en:"to have fun",pron:true,conj:["m'amuse","t'amuses","s'amuse","nous amusons","vous amusez","s'amusent"],pp:"amusé"},
+ {fr:"se marier",en:"to get married",pron:true,conj:["me marie","te maries","se marie","nous marions","vous mariez","se marient"],pp:"marié"},
+ {fr:"s'ennuyer",en:"to be / get bored",pron:true,conj:["m'ennuie","t'ennuies","s'ennuie","nous ennuyons","vous ennuyez","s'ennuient"],pp:"ennuyé"},
+ {fr:"se doucher",en:"to take a shower",pron:true,conj:["me douche","te douches","se douche","nous douchons","vous douchez","se douchent"],pp:"douché"},
+ {fr:"se raser",en:"to shave",pron:true,conj:["me rase","te rases","se rase","nous rasons","vous rasez","se rasent"],pp:"rasé"},
+ {fr:"s'arrêter",en:"to stop (oneself)",pron:true,conj:["m'arrête","t'arrêtes","s'arrête","nous arrêtons","vous arrêtez","s'arrêtent"],pp:"arrêté"},
+ {fr:"se rendre",en:"to go (to a place)",pron:true,conj:["me rends","te rends","se rend","nous rendons","vous rendez","se rendent"],pp:"rendu"},
+ /* --- U2 glossaire verbs not already in the mastery pool --- */
+ {fr:"soigner",en:"to treat / care for",type:"er"},{fr:"tousser",en:"to cough",type:"er"},
+ {fr:"éviter",en:"to avoid",type:"er"},{fr:"examiner",en:"to examine",type:"er"},
+ {fr:"guérir",en:"to heal / to cure",type:"ir2"},{fr:"respirer",en:"to breathe",type:"er"},
+ {fr:"récupérer",en:"to recover",conj:["récupère","récupères","récupère","récupérons","récupérez","récupèrent"],pp:"récupéré"},
+ {fr:"inviter",en:"to invite",type:"er"},{fr:"fêter",en:"to celebrate",type:"er"}
+];
+["partir","sortir","descendre","rester","rentrer","arriver","revenir"].forEach(function(n){
+  EXTRA_CIB.forEach(function(v){ if(v.fr===n) v.aux="e"; });
+});
+EXTRA_CIB.forEach(function(v){ if(v.pron) v.aux="e"; });
+var CIB = V.concat(EXTRA_CIB.filter(function(e){ return !V.some(function(x){ return x.fr===e.fr; }); }));
+(function initCib(){
+  var dl=document.getElementById("cibList");
+  CIB.forEach(function(v){ var o=el("option"); o.value=v.fr; o.label=v.en; dl.appendChild(o); });
+  var ts=document.getElementById("cibTense");
+  TENSES.forEach(function(t){ var o=el("option"); o.value=t.id; o.textContent=t.lbl; ts.appendChild(o); });
+  function findVerb(q){
+    q=norm(q); if(!q) return null;
+    var exact=CIB.filter(function(v){return norm(v.fr)===q;})[0]; if(exact) return exact;
+    return CIB.filter(function(v){return norm(v.fr).indexOf(q)!==-1;})[0] || null;
+  }
+  function renderCib(){
+    var host=document.getElementById("cibHost"); host.innerHTML="";
+    var v=findVerb(document.getElementById("cibSearch").value);
+    if(!v){ host.appendChild(el("div","hist","No match in the U1–U2 pool — type an infinitive (accents optional in the search box).")); return; }
+    var t=ts.value;
+    var forms=cibForms(v,t);
+    var tDef=TENSES.filter(function(x){return x.id===t;})[0];
+    var card=el("div","vcard"); card.style.minHeight="0";
+    var head=el("div","prompt");
+    head.innerHTML="<div class='small'>Drill ciblé · "+tDef.long+" · reps only</div>"+
+      "<div class='big fr'>"+esc(v.fr)+"</div><div class='small' style='margin-top:3px'>"+esc(v.en)+"</div>";
+    card.appendChild(head);
+    var fgrid=el("div","conjfill"), inputs=[];
+    for(var i=0;i<6;i++){
+      var rrow=el("div","cfrow"); rrow.appendChild(el("span","pron",PRON[i]));
+      if(forms[i]==="—"){ rrow.appendChild(el("span","cfdash","—")); inputs.push(null); }
+      else{ var cin=el("input","txt cfin"); cin.type="text"; cin.autocapitalize="none"; cin.spellcheck=false;
+        rrow.appendChild(cin); inputs.push(cin); rrow.appendChild(el("span","cfverdict")); }
+      fgrid.appendChild(rrow);
+    }
+    card.appendChild(fgrid);
+    var vd=el("div","verdict"); vd.style.display="none"; vd.style.marginTop="12px"; card.appendChild(vd);
+    function check(){
+      var exact=0, answerable=0;
+      for(var k=0;k<6;k++){ var inp=inputs[k]; if(!inp) continue; answerable++;
+        var vv=inp.parentNode.querySelector(".cfverdict"), got=inp.value;
+        var alts=altSplit(forms[k]);
+        var full=alts.map(function(bf){ return pronForm(v,k,bf); });
+        var ok=alts.some(function(bf){return norm(got)===norm(bf);}) || full.some(function(ff){return norm(got)===norm(ff);});
+        var close=!ok && got.trim()!=="" && (alts.some(function(bf){return bare(got)===bare(bf);}) || full.some(function(ff){return bare(got)===bare(ff);}));
+        inp.classList.remove("ok","warn","no");
+        if(ok){ inp.classList.add("ok"); vv.className="cfverdict ok"; vv.textContent="✓"; exact++; }
+        else if(close){ inp.classList.add("warn"); vv.className="cfverdict warn"; vv.textContent="accents → "+alts[0]; }
+        else { inp.classList.add("no"); vv.className="cfverdict no"; vv.textContent="→ "+alts[0]; }
+      }
+      vd.style.display="block";
+      vd.className="verdict "+(exact===answerable?"ok":"no");
+      vd.textContent = exact===answerable ? "✓ All correct — reps only, nothing recorded. Encore !" : (exact+" / "+answerable+" exact — fix and re-check.");
+    }
+    function reveal(){ for(var k=0;k<6;k++){ var inp=inputs[k]; if(!inp) continue; inp.value=altSplit(forms[k])[0];
+      inp.classList.remove("no","warn"); inp.classList.add("ok"); var vv=inp.parentNode.querySelector(".cfverdict"); vv.className="cfverdict ok"; vv.textContent="✓"; }
+      vd.style.display="block"; vd.className="verdict warn"; vd.textContent="Answers shown — reps only, nothing recorded."; }
+    var act=el("div","vactions drill");
+    var rb=el("button","btn dunno","Reveal"); rb.onclick=reveal;
+    var cb=el("button","btn go","Check"); cb.onclick=check;
+    act.appendChild(rb); act.appendChild(cb); card.appendChild(act);
+    host.appendChild(card);
+    inputs.forEach(function(x,k){ if(x) x.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault();
+      var later=inputs.slice(k+1).filter(function(y){return y;})[0]; if(later) later.focus(); else check(); } }); });
+    var first=inputs.filter(function(y){return y;})[0]; if(first) setTimeout(function(){first.focus();},30);
+  }
+  document.getElementById("cibGo").onclick=renderCib;
+  document.getElementById("cibSearch").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); renderCib(); } });
+  ts.addEventListener("change",function(){ if(document.getElementById("cibHost").children.length) renderCib(); });
+})();
 
 /* =============== PRACTICE TEST =============== */
 var TEST=[
@@ -3116,45 +3341,51 @@ function scoreTest(){
 /* =============== DASHBOARD =============== */
 function refreshDash(){
   updateCountdown();
-  // verbs known per category -> ledger
+  var L=document.getElementById("ledger"); L.innerHTML="";
+  /* --- 1. VOCABULAIRE — primary block, per chapter --- */
+  L.appendChild(el("div","ledhead","<b>Vocabulaire</b> — the DLPT engine"));
+  var byCh={6:{k:0,t:0},7:{k:0,t:0},8:{k:0,t:0},9:{k:0,t:0}};
+  VOCAB.forEach(function(v){ var b=byCh[v.c]; if(b){ b.t++; if(state.vocab[v.f]==="known") b.k++; } });
+  [6,7,8,9].forEach(function(c){
+    var d=byCh[c], pct=d.t?Math.round(d.k/d.t*100):0, dim=(c>state.currentCh)||!d.t;
+    var vrow=el("div","ledrow"); if(dim) vrow.style.opacity=".45";
+    vrow.innerHTML="<div class='name'>"+(CH_NAMES[c]||("Ch "+c))+"<small>vocab known"+(dim?" · à venir":"")+"</small></div>"+
+      "<div class='bar'><i style='width:"+pct+"%;background:var(--accent)'></i></div>"+
+      "<div class='pct'>"+d.k+"/"+d.t+"</div>";
+    L.appendChild(vrow);
+  });
+  /* --- 2. GRAMMAIRE — per-drill coverage --- */
+  L.appendChild(el("div","ledhead","<b>Grammaire</b> — couverture des drills"));
+  var covN=0, covT=0;
+  DRILLS.slice().sort(function(a,b){return a.minCh-b.minCh;}).forEach(function(d){
+    var c=covOf(d); covN+=c.n; covT+=c.t;
+    var pct=c.t?Math.round(c.n/c.t*100):0, dim=d.minCh>state.currentCh;
+    var best=state.drills[d.id];
+    var row=el("div","ledrow"); if(dim) row.style.opacity=".45";
+    row.innerHTML="<div class='name'>"+d.title+"<small>"+d.ch+(best?" · best "+best.correct+"/"+best.total:"")+(dim?" · à venir":"")+"</small></div>"+
+      "<div class='bar'><i style='width:"+pct+"%;background:var(--bleu)'></i></div>"+
+      "<div class='pct'>"+c.n+"/"+c.t+"</div>";
+    L.appendChild(row);
+  });
+  /* --- 3. CONJUGAISON — mastery by group (présent) --- */
+  L.appendChild(el("div","ledhead","<b>Conjugaison</b> — mastered tables (présent)"));
   var byCat={}; Object.keys(CATS).forEach(function(k){byCat[k]={k:0,t:0};});
   V.forEach(function(v){ byCat[v.cat].t++; if(state.verbs[v.fr]==="known") byCat[v.cat].k++; });
-  var L=document.getElementById("ledger"); L.innerHTML="";
-  // verb groups
   Object.keys(CATS).forEach(function(k){
-    var d=byCat[k], pct=d.t?Math.round(d.k/d.t*100):0;
+    var d=byCat[k]; if(!d.t) return; var pct=Math.round(d.k/d.t*100);
     var row=el("div","ledrow");
     row.innerHTML="<div class='name'>"+CATS[k].label+"<small>verbs known</small></div>"+
       "<div class='bar'><i style='width:"+pct+"%;background:"+CATS[k].c+"'></i></div>"+
       "<div class='pct'>"+d.k+"/"+d.t+"</div>";
     L.appendChild(row);
   });
-  // grammar drills aggregate
-  var dc=0,dt=0; DRILLS.forEach(function(d){ var b=state.drills[d.id]; if(b){dc+=b.correct;dt+=b.total;} });
-  var dpct=dt?Math.round(dc/dt*100):0;
-  var grow=el("div","ledrow");
-  grow.innerHTML="<div class='name'>Grammar drills<small>best scores</small></div>"+
-    "<div class='bar'><i style='width:"+dpct+"%;background:var(--bleu)'></i></div>"+
-    "<div class='pct'>"+(dt?dc+"/"+dt:"—")+"</div>";
-  L.appendChild(grow);
-
-  // vocabulary known, per chapter (chapters beyond current level dimmed)
-  var byCh={6:{k:0,t:0},7:{k:0,t:0},8:{k:0,t:0},9:{k:0,t:0},10:{k:0,t:0}};
-  VOCAB.forEach(function(v){ var b=byCh[v.c]; if(b){ b.t++; if(state.vocab[v.f]==="known") b.k++; } });
-  [6,7,8,9,10].forEach(function(c){
-    var d=byCh[c], pct=d.t?Math.round(d.k/d.t*100):0, dim=(c>state.currentCh)||!d.t;
-    var vrow=el("div","ledrow"); if(dim) vrow.style.opacity=".45";
-    vrow.innerHTML="<div class='name'>"+(CH_NAMES[c]||("Ch "+c))+"<small>vocab known"+(dim?" · à venir":"")+"</small></div>"+
-      "<div class='bar'><i style='width:"+pct+"%;background:var(--bleu)'></i></div>"+
-      "<div class='pct'>"+d.k+"/"+d.t+"</div>";
-    L.appendChild(vrow);
-  });
 
   renderInsights();   /* v1.0.0-b7: dashboard "Weakest areas" retired — the weakest-chapter stat lives on Analyse */
   document.getElementById("dVerbs").textContent=knownCount();
   var dvk=0; VOCAB.forEach(function(v){ if(v.c<=state.currentCh && state.vocab[v.f]==="known") dvk++; });
   document.getElementById("dVocab").textContent=dvk;
-  document.getElementById("dVocabL").textContent="Vocab known · to Ch "+state.currentCh;
+  document.getElementById("dVocabL").innerHTML="<b>Vocab known</b> · to Ch "+state.currentCh;
+  document.getElementById("dGram").textContent = covT ? Math.round(covN/covT*100)+"%" : "—";
 }
 
 /* week of course (start ~ mid-June 2026, week 1 = 15 Jun 2026) */
