@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 3 · Dossier Français — v1.2.2.5</title>
+<title>Unité 3 · Dossier Français — v1.3.0</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v1.2.2.5</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v1.3.0</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -493,7 +493,7 @@
   <!-- ===================== TEST ===================== -->
   <section class="panel" id="p-test" role="tabpanel">
     <h2 class="sec">Quizzes &amp; Unit 3 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 11–14), accents strict. The <b>Unit 3 practice exam</b> is <em>à venir</em> — it ships when the Unit 3 study guide lands. Answers feed Analyse.</p>
+    <p class="lead">10 randomized questions per chapter bank (Ch 11–14), accents strict — plus the <b>Unit 3 practice exam</b>, modeled on your Test 3 study guide. Answers feed Analyse.</p>
 
     <div id="testIntro" class="card">
       <div class="test-head">
@@ -502,7 +502,7 @@
           <option value="12">Chapter 12 quiz</option>
           <option value="13">Chapter 13 quiz</option>
           <option value="14">Chapter 14 quiz</option>
-          <option value="exam" disabled>Unit 3 practice exam — à venir</option>
+          <option value="exam">Unit 3 practice exam</option>
         </select>
         <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
       </div>
@@ -564,8 +564,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v1.2.2.5</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v1.3.0</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.3.0 (11 Sep 2026): <strong>Chapter 14 vocabulary corrected + Unit 3 practice exam.</strong> <strong>Vocabulaire</strong>: the Ch 14 glossaire bank was travel/vacation vocabulary (auberge, montgolfière, tyrolienne, valise…) — almost a duplicate of Ch 13. Checked against the actual textbook PDF: the real Chapter 14 is <em>Memories &amp; Adventures</em> (Arsène Lupin crime fiction, Alsace-Lorraine history, immigration), and its own end-of-chapter glossaire is entirely different — crime/investigation and immigration/feelings vocabulary (cambrioleur, hors-la-loi, indice, procureur, sang-froid, pays d'accueil, prouesse…). All 86 Ch 14 cards replaced with the real glossaire; the <strong>Vocab en contexte — Ch. 14</strong> drill (14 sentences) and 14 of the 24 Ch 14 quiz-bank items rebuilt to match. Also dropped a fabricated <strong>se plaindre</strong> Conjugaison card tagged "(Ch 14 glossaire)" — it doesn't appear anywhere in the textbook. <strong>New: mini-glossaire exceptions.</strong> Chapter 14 has four mid-activity "Vocabulaire"/"Vocabulaire utile" lists tied to readings and listening clips, separate from the end-of-chapter glossaire — and the Test 3 study guide confirmed at least one of those words (<em>appartenir</em>) is directly examinable. 11 such words (appartenir, craindre, débarquer, ramener, se répandre, un tisserand, des viatiques…) are added as flagged exceptions, same pattern as the Ch 6 exterior set in Unit 2. This is now a standing rule for future chapter builds (see CLAUDE.md). <strong>Examen blanc</strong>: the Unit 3 practice exam ships, built from the Test 3 study guide — <strong>Compréhension</strong> (3 of 6 original passages spanning all four chapters' themes, MCQ plus self-graded short answers in English), <strong>Vocabulaire</strong> (12 of 101, the complete Test 3 word list, EN → FR, articles required, accents strict), <strong>Grammaire</strong> (12 of 20, four items per named structure: comparatifs réguliers, le pronom Y, le passé récent avec venir de, passé composé vs. imparfait, le futur simple). The à venir placeholder and disabled picker option are gone. Also fixed: the quiz picker's JS default was a leftover "6" from the Unit 2 fork (no Chapter 6 in Unit 3 — selecting a quiz without touching the dropdown first drew zero questions), and two stray "Test 2"/"Unit 2" strings in the exam engine copy. Also fixed <strong>Pratique orale</strong>: five of the six Ch 14 prompts were travel/vacation-themed (dream vacation, hotel booking call…) — the same wrong-chapter problem as the vocab bank. Replaced with memories/adventures prompts sourced from the textbook's own Ch 14 Intégration II conversation-starter lists (birthday memory, an object full of memories, an unexpected reunion, a mystery you solved, a moment of fear); the one correctly-scoped prompt (passé récent — "what you just did") stays. Also cleaned two Ch 13 prompts ("Crime plot", "Travel nightmare") that suggested Ch 14-only vocabulary (l'enquêteur, l'indice, la galère) as sample phrases before those words are taught. No changes to Ch 11–13 vocab content, Conjugaison tables, or saved progress outside the Ch 14 vocab swap (which orphans prior Ch 14 vocab progress, same as the Ch 13 swap in v1.1.0).<br></span>
     <span style="color:var(--mute)">v1.2.2.5 (26 Aug 2026): <strong>Drill ciblé — participles for regular -ir/-re verbs.</strong> In the Drill ciblé passé composé, generated <em>-ir</em> and <em>-re</em> verbs (finir, choisir, réfléchir, attendre, répondre, perdre…) showed « ai <strong>?</strong> » — <code>ppOf</code> only derived <em>-er</em> participles and returned "?" for the rest, since the mastery pool never has an un-flagged <em>-ir2</em>/<em>-re</em> verb. It now derives them (choisir → choisi, attendre → attendu). Reps only; no bank, drill, scoring, or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.2.2.4 (25 Aug 2026): <strong>School references removed · Ch 12 « sinistré » grading fix.</strong> An institutional tag is dropped from the browser-tab title, the header eyebrow, and the footer masthead; the Ch 13 Pratique orale card is retitled "First day of class" and its prompt reworded to « premier jour de cours ». <strong>Vocab:</strong> the Ch 12 card stored « le/la sinistré(e) » as one graded string — the engine's article parser doesn't read the slashed dual form, so it treated the whole thing as the noun and marked the natural answers <em>le sinistré</em> / <em>la sinistrée</em> wrong. The headword is now <em>le sinistré</em>, with <em>la sinistrée</em> and the literal glossaire form « le/la sinistré(e) » accepted as alternates and the feminine noted; the article is still required. No other bank, drill, scoring, or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.2.2.3 (25 Aug 2026): <strong>Stale tab intros — fork/drift copy fixes.</strong> The <strong>Conjugaison</strong> and <strong>Pratique orale</strong> leads still described Unit 2's scope ("Every Chapter 6 verb — modaux, glossaire -er, peindre…" / "the Chapter 6 tasks"), carried over when Unit 3's engine was forked from Unit 2; both now describe Unit 3. The <strong>Grammaire</strong> lead listed three drills dropped in v1.1.0 (voix passive, futur proche au passé, cause &amp; effet) and predated the Ch 11 <em>pronom Y</em> rebuild; rewritten to the drills that actually ship. The dashboard "I'm currently in" chapter picker labelled <strong>Chapter 14</strong> with Chapter 13's text ("Vacations &amp; destinations"); Ch 14 now reads "Grammar review", matching the masthead. Copy only.<br></span>
@@ -816,8 +817,7 @@ var V=[
   {fr:"venter",en:"to be windy",cat:"met",impRoot:"vent",conj:["—","—","vente","—","—","—"],pp:"venté",tn:["pres","pc","imp","fp","fs"],ex:"Il ventait fort sur la côte.",exEn:"It was very windy on the coast.",note:"il vente = the wind blows; don't confuse with la vente (the sale)."},
   /* ---- Ch 13–14 : -aindre / -eindre family ---- */
   {fr:"atteindre",en:"to reach",cat:"pei",conj:["atteins","atteins","atteint","atteignons","atteignez","atteignent"],pp:"atteint",tn:["pres","pc"],ex:"Nous avons atteint le sommet.",exEn:"We reached the summit.",note:"-eindre pattern: -ns -ns -nt, then -gnons in the plural. Participle atteint."},
-  {fr:"craindre",en:"to fear",cat:"pei",conj:["crains","crains","craint","craignons","craignez","craignent"],pp:"craint",tn:["pres","pc"],ex:"Ils craignent la tempête.",exEn:"They fear the storm.",note:"-aindre works exactly like -eindre: craignons, craignez."},
-  {fr:"se plaindre",en:"to complain",cat:"pei",pron:true,conj:["me plains","te plains","se plaint","nous plaignons","vous plaignez","se plaignent"],pp:"plaint",tn:["pres","imp","pr"],ex:"Il se plaint du temps.",exEn:"He complains about the weather.",note:"Pronominal -aindre (Ch 14 glossaire). PC takes être — that lives in the grammar drills."},
+  {fr:"craindre",en:"to fear",cat:"pei",conj:["crains","crains","craint","craignons","craignez","craignent"],pp:"craint",tn:["pres","pc"],ex:"Ils craignent la tempête.",exEn:"They fear the storm.",note:"-aindre works exactly like -eindre: craignons, craignez. Also a Ch 14 mini-glossaire word (Activité 4A)."},
   /* ---- Ch 13–14 : key pronominals ---- */
   {fr:"se souvenir",en:"to remember",cat:"prn",pron:true,conj:["me souviens","te souviens","se souvient","nous souvenons","vous souvenez","se souviennent"],pp:"souvenu",fsr:"souviendr",tn:["pres","imp","fs","pr"],ex:"Je me souviens de ce voyage.",exEn:"I remember that trip.",note:"se souvenir de — conjugates like venir. PC takes être (grammar drills)."},
   /* ---- Ch 14 : conditionnel de politesse ---- */
@@ -828,7 +828,7 @@ var VERB_CH={};
 V.forEach(function(v){ VERB_CH[v.fr]=11; });
 ["voir","envoyer","recevoir","tenir","courir","mourir","s'asseoir","valoir","falloir","pleuvoir","neiger","geler","grêler","bruiner","venter","être invité(e)"].forEach(function(f){ VERB_CH[f]=12; });
 ["atteindre","craindre","se souvenir"].forEach(function(f){ VERB_CH[f]=13; });
-["se plaindre","aimer","souhaiter"].forEach(function(f){ VERB_CH[f]=14; });
+["aimer","souhaiter"].forEach(function(f){ VERB_CH[f]=14; });
 /* flagships stay available from Ch 11 */
 var CH_NAMES={11:"Ch 11 · Clothing",12:"Ch 12 · Weather",13:"Ch 13 · Vacations",14:"Ch 14 · Grammar review",900:"AOL 120"};   /* Ch 15 is Unit 3 review — no new content. 900 = AOL 120, outside the chapter sequence, vocab-only */
 function chOf(v){ return VERB_CH[v.fr] || 11; }
@@ -1253,7 +1253,7 @@ var VTOPICS={
   verb:"Verbs (infinitives)", verbpr:"Verbs — reflexive",
   meteo:"Weather — rain, storms & wind", meteo2:"Weather — heat, cold & sky", mexp:"Weather idioms", madj:"Adjectives (weather)", mmots:"Other weather words",
   nmots:"Travel logistics & transport", nmots2:"Lodging, gear & trip words", tadj:"Adjectives (Ch 13)", expr:"Expressions (Ch 13)",
-  tour:"Travel — transport & itinerary", tourb:"Lodging, baggage & costs", tourc:"Places, heritage & travellers", touadj:"Adjectives — places & scenery", touadj2:"Adjectives — quality, stay & sustainability", texpr:"Expressions (Ch 14)",
+  cmots:"Crime, conflict & investigation", cmots2:"Journey, work & feelings", cadj:"Adjectives (Ch 14)", cexpr:"Expressions (Ch 14)", cmgloss:"Reading & listening extras (Ch 14)",
   aolper:"AOL — Personnel", aoleqp:"AOL — Equipment",
   aoltac:"AOL — Tactical verbs", aolgen:"AOL — General verbs",
   aolprep:"AOL — Connectors & setting", aolinc:"AOL — Incidents & ops", aolconc:"AOL — Mission & workplace"
@@ -1621,159 +1621,99 @@ var VOCAB_CH13=[
  {f:"sans encombre",e:"without a hitch",c:13,t:"expr",y:"sans (Latin sine → English sans) + encombre (from encombrer, to obstruct, Frankish *kumbra) — without any obstruction."}
 ];
 var VOCAB_CH14=[
- /* ===== Chapter 14 : Vacations & destinations — end-of-chapter glossaire ===== */
- /* --- Noms --- */
- {f:"les affaires",e:"the belongings",c:14,t:"tour",n:"f. pl. — also = business (les affaires)",y:"'The to-do things' (à + faire) — your stuff is your affairs; pack tes affaires."},
- {f:"l'auberge",e:"the inn",c:14,t:"tourb",n:"f. — vs l'hôtel",y:"Germanic heriberga, army shelter → English harbor and harbinger — the inn harbors travelers."},
- {f:"l'auberge de jeunesse",e:"the youth hostel",c:14,t:"tourb",n:"f.",y:"Inn of youth — jeunesse from jeune (Latin juvenis → English juvenile)."},
- {f:"le bagage cabine",e:"the carry-on bag",c:14,t:"tour",n:"vs la valise (suitcase, checked)",y:"Cabin baggage — bagage → English baggage; the one that boards with you."},
- {f:"le bénéficiaire",e:"the beneficiary",c:14,t:"tourb",n:"m./f.",y:"Latin beneficium → English beneficiary — straight legal cognate."},
- {f:"le billet",e:"the ticket (train, plane) / the banknote",c:14,t:"tour",x:1,n:"vs le ticket (metro, small stub)",y:"Medieval bullette, sealed note (→ English bulletin, bill) — a billet is a little official bill."},
- {f:"la cabane",e:"the cabin / the hut",c:14,t:"tourb",n:"vs la cabine (ship/plane cabin)",y:"Late Latin capanna → English cabin — the woodsy one; cabine is the transport one."},
- {f:"la campagne",e:"the countryside / the campaign",c:14,t:"tourc",n:"one word for both — context decides",y:"Latin campus, field → camp, campaign; armies campaigned in open country, hence both senses."},
- {f:"le chameau",e:"the camel",c:14,t:"tourc",y:"Latin camelus → English camel — the ch/c swap, like chambre/camera."},
- {f:"le chassé-croisé",e:"the vacation traffic crossover (holiday departures meeting returns)",c:14,t:"tour",x:1,y:"A dance figure — 'chased-crossed' partners swapping places; July leavers cross August returners on the autoroute."},
- {f:"la collation",e:"the snack (light meal)",c:14,t:"tourb",n:"vs le goûter (kids' afternoon snack)",y:"Latin collatio, a bringing-together → English collation — monks' light evening meal; airlines kept the word."},
- {f:"le congé",e:"the leave / the time off",c:14,t:"tour",n:"les congés payés — the sacred French vacation weeks",y:"Permission-to-go (see Ch 13) — the traveler's favorite noun."},
- {f:"le covoiturage",e:"the carpooling",c:14,t:"tour",y:"co + voiture + -age — co-car-ing; BlaBlaCar's whole business model in one word."},
- {f:"la détente",e:"the relaxation",c:14,t:"tourb",y:"Un-tensing (dé + tendre) → English détente — Cold War thaw and spa day, same word."},
- {f:"l'échange",e:"the exchange",c:14,t:"tourb",n:"m.",y:"ex + changer → English exchange — home exchanges, student exchanges."},
- {f:"l'émerveillement",e:"the wonder / the amazement",c:14,t:"tourc",n:"m.",y:"From merveille, marvel (Latin mirabilia → English marvel, miracle) — be-marveled-ness."},
- {f:"l'engouement",e:"the craze / the enthusiasm (for something)",c:14,t:"tourc",n:"m. — l'engouement pour le camping",y:"From old gouer, to stuff one's throat (gorge) — swallowing something whole; a craze you can't spit out."},
- {f:"l'enseigne",e:"the (shop) sign / the banner",c:14,t:"tourc",n:"f.",y:"Latin insignia → English ensign and insignia — the flag a business flies."},
- {f:"l'époque",e:"the era / the epoch",c:14,t:"tourc",n:"f. — à l'époque = back then",y:"Greek epokhē → English epoch — la Belle Époque."},
- {f:"l'escale",e:"the layover / the stopover",c:14,t:"tour",n:"f. — un vol sans escale = a nonstop flight",y:"From Italian scala, ladder — the port where the ship drops its ladder; English 'port of call.'"},
- {f:"l'étape",e:"the stage / the step (of a journey)",c:14,t:"tour",n:"f. — vs l'escale (transport stop)",y:"Old Dutch stapel, depot → English staple — the Tour de France runs in étapes."},
- {f:"l'exigence",e:"the requirement",c:14,t:"tourb",n:"f.",y:"Latin exigere → English exigency, exact — what is exacted of you (visas, vaccins)."},
- {f:"la faune",e:"the wildlife / the fauna",c:14,t:"tourc",y:"Faunus, Roman forest god → English fauna — the god's animals."},
- {f:"les frais",e:"the expenses / the fees",c:14,t:"tourb",n:"m. pl. — les frais d'inscription = enrollment fees",y:"From Latin fractum, broken — costs 'break' your purse; défrayer = to cover costs."},
- {f:"la gamme",e:"the range (of products, prices)",c:14,t:"tourb",n:"haut de gamme = high-end; bas de gamme = budget",y:"The musical scale (gamma, the Greek note-letter → English gamut) — a product line runs the gamut."},
- {f:"la gourde",e:"the reusable water bottle",c:14,t:"tourb",x:1,n:"also informal: a dimwit",y:"Latin cucurbita, gourd → English gourd — the dried squash was the first water bottle."},
- {f:"les lingettes",e:"the wipes",c:14,t:"tourb",n:"f. pl.",y:"Little linge (linen, Latin linum → English linen, line) — baby linens shrunk to wet wipes."},
- {f:"le logement insolite",e:"the unusual lodging (treehouse, yurt, bubble…)",c:14,t:"tourb",n:"insolite = out-of-the-ordinary",y:"Latin insolitus, un-accustomed — lodging outside the usual; the yurt economy."},
- {f:"la location",e:"the rental",c:14,t:"tour",x:1,n:"faux ami — not a location (un endroit, un lieu)",y:"Latin locare, to lease out → English locate drifted; French kept the landlord sense — voiture de location."},
- {f:"la montgolfière",e:"the hot-air balloon",c:14,t:"tour",y:"The Montgolfier brothers, 1783 — the balloon still wears its inventors' name."},
- {f:"le Moyen Âge",e:"the Middle Ages",c:14,t:"tourc",n:"m. — moyenâgeux = medieval-ish",y:"Middle Age, singular — moyen (Latin medianus → English median, mean)."},
- {f:"la paroisse",e:"the parish",c:14,t:"tourc",y:"Greek paroikia, dwelling-beside → English parish — the p-r-sh skeleton survives both."},
- {f:"le pèlerinage",e:"the pilgrimage",c:14,t:"tourc",x:1,y:"Latin peregrinus, foreigner → English pilgrim and peregrine falcon — the wandering bird and the wandering faithful."},
- {f:"le périple",e:"the (long) journey",c:14,t:"tour",n:"see Ch 13 — the odyssey word",y:"Greek sailing-around — the Grand Tour was a périple."},
- {f:"la plupart",e:"the majority / most",c:14,t:"tourc",n:"la plupart des gens + plural verb",y:"la plus part — 'the biggest part'; English 'for the most part' matches it."},
- {f:"le récit",e:"the tale / the account",c:14,t:"tourc",n:"vs l'histoire (story/history)",y:"From réciter (Latin recitare → English recite) — a tale is what's recited."},
- {f:"la revue",e:"the magazine (journal)",c:14,t:"tourc",n:"vs le magazine (glossy)",y:"The 're-viewed' — English review and revue (the stage show) both borrowed it."},
- {f:"le rivage",e:"the shore",c:14,t:"tourc",n:"vs la rive (riverbank)",y:"Latin ripa → English river and riviera — the Riviera is one long rivage."},
- {f:"le saut de puce",e:"the short hop (flight)",c:14,t:"tour",x:1,y:"A flea's jump — puce (flea) also named the computer chip and the color puce (flea-brown!)."},
- {f:"le traîneau",e:"the sleigh",c:14,t:"tour",y:"From traîner, to drag — the dragged vehicle; dogsleds traînent."},
- {f:"la trousse de premiers soins",e:"the first-aid kit",c:14,t:"tourb",y:"trousse from trousser, to bundle up (→ English trousseau, the bride's bundle) — a bundled kit."},
- {f:"la trousse de toilette",e:"the toiletry bag",c:14,t:"tourb",y:"The washing-bundle — toilette from toile, cloth; grooming began at the cloth-draped table."},
- {f:"la tyrolienne",e:"the zipline",c:14,t:"tour",y:"'The Tyrolean' — Alpine climbers' Tyrol traverse became the adventure-park ride."},
- {f:"le vagabond",e:"the wanderer / the vagrant",c:14,t:"tourc",n:"f. la vagabonde",y:"Latin vagari, to wander → English vagabond, vague, extravagant — wandering beyond."},
- {f:"la valise",e:"the suitcase",c:14,t:"tour",n:"vs le bagage cabine (carry-on); faire sa valise = to pack",y:"Italian valigia → English valise — pack the cognate."},
- {f:"le vœu",e:"the wish / the vow",c:14,t:"tourc",x:1,n:"pl. les vœux — meilleurs vœux = best wishes",y:"Latin votum → English vow and vote — a vote is a wish cast; œ accepts oe."},
- {f:"la voie",e:"the path / the track / the lane",c:14,t:"tour",n:"vs la voix (the voice) — same sound",y:"Latin via → English via, viaduct — by way of; homophone trap with voix."},
+ /* ===== Chapter 14 : Memories & Adventures — end-of-chapter glossaire ===== */
+ /* --- Noms : crime, conflict & investigation --- */
+ {f:"l'annexion",e:"the annexation",c:14,t:"cmots",n:"f.",y:"Latin annexio, a binding-on (ad + nectere, to bind → English annex, connect) — Alsace-Lorraine's forced binding to Germany, 1870."},
+ {f:"l'attentat",e:"the [terrorist] attack",c:14,t:"cmots",n:"m.",y:"Latin attentare, to make an attempt on (ad + tentare → English attempt) — an attentat is a violent 'attempt.'"},
+ {f:"les bijoux",e:"the jewels",c:14,t:"cmots",n:"m. pl. — sing. le bijou",y:"Breton bizou, a ring → French bijou, borrowed whole into English for any small, exquisite item."},
+ {f:"le cambriolage",e:"the burglary / the break-in",c:14,t:"cmots",x:1,y:"From cambrioler (dialectal cambre, room, + -ioler) — literally the 'room-job'; Arsène Lupin's specialty."},
+ {f:"le/la cambrioleur(-euse)",e:"the burglar",c:14,t:"cmots",x:1,n:"f. la cambrioleuse",y:"From cambrioler (above) — the one who does the room-job."},
+ {f:"le cessez-le-feu",e:"the ceasefire",c:14,t:"cmots",x:1,y:"A frozen command — cessez (stop) + le feu (Latin focus → English focus, fuel) — literally 'stop the fire,' just like English."},
+ {f:"le champ de bataille",e:"the battlefield",c:14,t:"cmots",y:"champ (Latin campus → English camp) + bataille (Latin battualia, fencing drills → English battle) — the exact English compound, mirrored."},
+ {f:"la claque",e:"the smack / the slap",c:14,t:"cmots",y:"Onomatopoeic — the sound of the hit itself; English clack and click share the same slapping root."},
+ {f:"le/la commissaire",e:"the (police) commissioner",c:14,t:"cmots",n:"m./f.",y:"Latin committere, to entrust → English commit, commission — the one entrusted with the case."},
+ {f:"le coup de génie",e:"the stroke of genius",c:14,t:"cmots",y:"coup (a blow) + génie (Latin genius, guardian spirit → English genius) — a strike from your own guardian spirit."},
+ {f:"le coup de poignard",e:"the stab in the back",c:14,t:"cmots",y:"coup (blow) + poignard, a dagger (Latin pugnus, fist → English pugnacious) — literal or figurative betrayal, one blow."},
+ {f:"l'enquêteur(-euse)",e:"the investigator",c:14,t:"cmots",n:"m./f. — from l'enquête, the investigation",y:"Latin inquirere → English inquire, inquest — the one who inquires."},
+ {f:"l'évadé(e)",e:"the fugitive / the escapee",c:14,t:"cmots",n:"m./f.",y:"Past participle of s'évader (Latin ex + vadere, to go → English evade) — literally 'one who has evaded.'"},
+ {f:"l'évasion",e:"the escape",c:14,t:"cmots",n:"f.",y:"Latin evasio → English evasion — same word, but French keeps the literal jailbreak sense too."},
+ {f:"le hors-la-loi",e:"the outlaw",c:14,t:"cmots",y:"hors (outside, Latin foris → English foreign) + la loi (Latin lex → English legal) — literally 'outside-the-law,' the same construction as English."},
+ {f:"l'indice",e:"the clue / the hint",c:14,t:"cmots",n:"m.",y:"Latin indicium, a disclosure (in + dicere, to say → English indicate, dictate) — what points, silently, to the truth."},
+ {f:"le/la joaillier(-ière)",e:"the jeweler",c:14,t:"cmots",x:1,n:"f. la joaillière — vs le bijoutier (costume jewelry)",y:"From joyau, a jewel (Latin gaudium, joy → English joy) — jewels as crystallized delight."},
+ {f:"le/la procureur(e)",e:"the prosecutor",c:14,t:"cmots",x:1,y:"Latin procurare, to take care of on someone's behalf → English procure, proxy — the one who acts for the state."},
+ {f:"le sang-froid",e:"the cool-headedness",c:14,t:"cmots",x:1,y:"'Cold blood' — sang (Latin sanguis → English sanguine) + froid (Latin frigidus → English frigid) — English borrowed this exact phrase for icy composure."},
+ {f:"le tapage",e:"the disturbance / the ruckus",c:14,t:"cmots",x:1,y:"From taper, to bang (imitative) → English tap — nonstop banging-around noise."},
+ {f:"le vol",e:"the theft / the flight",c:14,t:"cmots",n:"two senses (voler = to steal AND to fly) — context decides",y:"Latin volare, to fly → English volatile — a thief 'flies off' with the goods, hence one word for both senses."},
+ {f:"le/la voleur(se)",e:"the thief",c:14,t:"cmots",y:"From voler (above) — the one who 'flies away' with your things."},
+ /* --- Noms : journey, work & feelings --- */
+ {f:"le bien",e:"the good (thing) / the belongings",c:14,t:"cmots2",n:"m. — les biens = property",y:"Latin bene, well → English benefit, benign — 'the good,' moral or material."},
+ {f:"le bled",e:"the homeland / the middle of nowhere",c:14,t:"cmots2",n:"m., fam. — le bled natal = the hometown",y:"Algerian Arabic bled, land/country — a colonial-era loanword now standard informal French."},
+ {f:"la blessure",e:"the injury / the wound",c:14,t:"cmots2",y:"From blesser, to wound (Frankish *blettjan, to bruise) — a faux ami: nothing to do with 'blessing.'"},
+ {f:"le coffre",e:"the trunk (of a car)",c:14,t:"cmots2",y:"Latin cophinus, basket → English coffer, coffin — any storage box, now specifically the car's trunk."},
+ {f:"le congé",e:"the leave / the time off",c:14,t:"cmots2",n:"les congés payés = paid vacation",y:"Latin commeatus, permission to go → congé is formally granted leave."},
+ {f:"la galère",e:"a pain / a hassle (figurative)",c:14,t:"cmots2",n:"fam.",y:"Italian galera, a rowing-ship worked by convicts → English galley — modern hassles as a rower's ordeal."},
+ {f:"l'imprudence",e:"the carelessness / the recklessness",c:14,t:"cmots2",n:"f.",y:"in + prudence (Latin prudentia, foresight → English prudent) — the absence of foresight."},
+ {f:"l'intégralité",e:"the entirety / the whole",c:14,t:"cmots2",n:"f. — dans son intégralité = in its entirety",y:"Latin integer, whole/untouched → English integral, integrity — nothing removed."},
+ {f:"le paquebot",e:"the (ocean) liner",c:14,t:"cmots2",x:1,y:"English 'packet boat,' borrowed and respelled — the ship that once carried mail packets across the Atlantic."},
+ {f:"le pays d'accueil",e:"the host country",c:14,t:"cmots2",y:"pays (Latin pagus → English peasant, pagan) + accueil, welcome (from accueillir, Latin colligere → English collect) — literally 'welcome-country.'"},
+ {f:"le périple",e:"the (long) journey",c:14,t:"cmots2",n:"see Ch 13 — the odyssey word",y:"Greek periplous, a sailing-around → English periplus — Arsène Lupin's transatlantic périple."},
+ {f:"la prouesse",e:"the feat / the achievement",c:14,t:"cmots2",y:"From preux, valiant (Old French, Latin prodesse, to be of use) → English prowess — the exact same word."},
+ {f:"le souci",e:"the worry",c:14,t:"cmots2",n:"m. — se faire du souci = to worry",y:"Latin sollicitare, to agitate → English solicitude, solicit — the thing that agitates your mind."},
+ {f:"le trajet",e:"the route / the journey (A to B)",c:14,t:"cmots2",n:"vs le périple (long odyssey)",y:"Latin trajectus, a crossing-over → English trajectory."},
  /* --- Adjectifs (Ch 14) --- */
- {f:"alléchant",e:"mouthwatering / enticing",c:14,t:"touadj",n:"f. alléchante",y:"From lécher, to lick (→ English lecher — the licker!) — an offer you could lick."},
- {f:"animé",e:"lively / bustling",c:14,t:"touadj",n:"f. animée — un quartier animé",y:"Latin anima, soul → English animated — a district with soul in motion."},
- {f:"apaisant",e:"soothing",c:14,t:"touadj",n:"f. apaisante",y:"à + paix — peace-bringing; English appease is the same peace-making."},
- {f:"assuré",e:"guaranteed / insured",c:14,t:"touadj2",n:"f. assurée — pluie assurée !",y:"Latin securus → English assured, insurance — made sure."},
- {f:"autochtone",e:"indigenous",c:14,t:"touadj",n:"m./f.",y:"Greek auto + chthon, 'of the land itself' → English autochthonous — sprung from the soil."},
- {f:"carboneutre",e:"carbon-neutral",c:14,t:"touadj2",n:"m./f. — Quebec coinage",y:"carbone + neutre fused — the eco-travel badge word."},
- {f:"compris",e:"included (in the price)",c:14,t:"touadj2",n:"f. comprise — petit déjeuner compris; also = understood",y:"From comprendre — 'taken together with' (Latin comprehendere); included is comprehended in the bill."},
- {f:"cristallin",e:"crystal-clear (water)",c:14,t:"touadj",n:"f. cristalline",y:"Greek krystallos, ice → English crystalline — water clear as ice."},
- {f:"croissant",e:"increasing / growing",c:14,t:"touadj2",n:"f. croissante — un engouement croissant; yes, also the pastry",y:"From croître, to grow (Latin crescere → crescendo, crescent) — the pastry is a growing moon."},
- {f:"décontenancé",e:"disconcerted / thrown off",c:14,t:"touadj2",n:"f. décontenancée",y:"dé + contenance (composure, countenance) — knocked out of countenance; English 'discountenanced' exists!"},
- {f:"désert",e:"deserted / uninhabited",c:14,t:"touadj",n:"f. déserte — une île déserte",y:"Latin deserere, to abandon → English desert(ed) — the abandoned island."},
- {f:"durable",e:"sustainable",c:14,t:"touadj2",n:"m./f. — le tourisme durable",y:"From durer, to last (Latin durare → English durable, endure) — sustainability is lastingness."},
- {f:"entretenu",e:"maintained / well-kept",c:14,t:"touadj2",n:"f. entretenue — un jardin bien entretenu",y:"entre + tenir, held-between → English entertain drifted to hosting; French kept the upkeep."},
- {f:"féerique",e:"enchanting / magical (fairy-tale-like)",c:14,t:"touadj",x:1,n:"m./f.",y:"From fée, fairy (Latin fata, the Fates → English fairy, fate) — Fate's own scenery."},
- {f:"florissant",e:"flourishing / booming",c:14,t:"touadj2",n:"f. florissante",y:"Latin florere → English flourish — blooming business."},
- {f:"habitué à",e:"used to / accustomed to",c:14,t:"touadj2",n:"f. habituée à; un habitué = a regular",y:"Latin habitus → English habituated — habit-formed."},
- {f:"hôtelier",e:"hotel-related / hotel-keeping",c:14,t:"touadj2",n:"f. hôtelière — l'industrie hôtelière",y:"From hôtel (Latin hospitale → English hotel, hospital, hostel — one hospitable root, four buildings)."},
- {f:"incontournable",e:"must-see / essential (can't be gone around)",c:14,t:"touadj",x:1,n:"m./f.",y:"in + contourner (to go around, → English contour) — a sight you cannot detour past."},
- {f:"inégalé",e:"unmatched / unequaled",c:14,t:"touadj",n:"f. inégalée",y:"in + égal (Latin aequalis → English equal) — without equal."},
- {f:"initial",e:"initial / early",c:14,t:"touadj2",n:"f. initiale",y:"Latin initium, beginning → English initial — cognate freebie."},
- {f:"inoubliable",e:"unforgettable",c:14,t:"touadj",n:"m./f.",y:"in + oubliable — from oublier, to forget (Latin oblivisci → English oblivion); beyond oblivion's reach."},
- {f:"jetable",e:"disposable",c:14,t:"touadj2",n:"m./f. — vs la gourde, the anti-jetable",y:"From jeter, to throw (→ English jet, jettison) — jettisonable."},
- {f:"malfamé",e:"disreputable / seedy (neighborhood)",c:14,t:"touadj",n:"f. malfamée",y:"mal + fama (Latin fame/reputation → English famous, defame) — of bad fame; ill-famed exists in English."},
- {f:"millénaire",e:"thousand-year-old / millennial",c:14,t:"touadj",n:"m./f. — une ville millénaire",y:"Latin mille → English millennium — a thousand-year pedigree."},
- {f:"niché",e:"nestled",c:14,t:"touadj",n:"f. nichée — un village niché dans les montagnes",y:"From niche, the nest-alcove → English niche — tucked in its niche."},
- {f:"paradisiaque",e:"heavenly / like paradise",c:14,t:"touadj",n:"m./f. — une plage paradisiaque",y:"Persian pairidaeza, walled garden → Greek → paradise — every brochure's favorite adjective."},
- {f:"pittoresque",e:"picturesque / scenic",c:14,t:"touadj",n:"m./f.",y:"Italian pittoresco, painter-worthy → English picturesque — worth a picture."},
- {f:"pratique",e:"practical / convenient",c:14,t:"touadj2",n:"m./f.",y:"Greek praktikos → English practical — c'est super pratique."},
- {f:"propre",e:"clean / own",c:14,t:"touadj2",x:1,n:"BANGS-ish trap: ma propre chambre = my own room; ma chambre propre = my clean room",y:"Latin proprius → English proper, property — position flips the meaning."},
- {f:"rémunéré",e:"paid (work)",c:14,t:"touadj2",n:"f. rémunérée — un travail rémunéré",y:"Latin remunerare → English remunerated — money-worded."},
- {f:"renommé",e:"renowned",c:14,t:"touadj",n:"f. renommée — la renommée = renown",y:"re + nommé, re-named — named again and again; English renown is the same double-naming."},
- {f:"répandu",e:"widespread",c:14,t:"touadj2",n:"f. répandue",y:"From répandre (Ch 13) — spread out over the map."},
- {f:"reposé",e:"rested",c:14,t:"touadj2",n:"f. reposée — revenir reposé = to come back rested",y:"re + poser, set down again → English repose — vacation's deliverable."},
- {f:"sacré",e:"sacred / holy",c:14,t:"touadj",x:1,n:"f. sacrée — BEFORE the noun = damn/heck of a: un sacré voyage",y:"Latin sacer → English sacred — position decides piety or profanity."},
- {f:"savant",e:"scholarly / learned",c:14,t:"touadj",n:"f. savante; un savant = a scholar",y:"From savoir — the knowing one; English savant borrowed it."},
- {f:"sinueux",e:"winding (road)",c:14,t:"touadj",n:"f. sinueuse",y:"Latin sinus, curve → English sinuous, sinus — the road's curves and your skull's."},
- {f:"sûr",e:"safe / sure",c:14,t:"touadj2",n:"f. sûre — the circumflex splits it from sur (on)",y:"Latin securus → English sure, secure — the hat on û is load-bearing."},
- {f:"suspendu",e:"suspended / hanging",c:14,t:"touadj",n:"f. suspendue — un pont suspendu",y:"Latin suspendere → English suspended — rope bridges and suspense."},
- {f:"tenu par",e:"run by / held by",c:14,t:"touadj2",n:"f. tenue par — une auberge tenue par une famille",y:"From tenir — held/kept by; English 'family-kept inn' hides in it."},
- {f:"vitré",e:"glazed / glass-walled",c:14,t:"touadj",n:"f. vitrée — une baie vitrée = a picture window",y:"Latin vitrum, glass → English vitreous, vitrine — the glass family."},
+ {f:"accueillant",e:"friendly / welcoming",c:14,t:"cadj",n:"f. accueillante",y:"From accueillir, to welcome (Latin colligere → English collect) — a welcoming place gathers you in."},
+ {f:"acharné",e:"relentless / tireless",c:14,t:"cadj",n:"f. acharnée — un travailleur acharné",y:"From acharner, to set a dog on the flesh (chair, Latin caro → English carnal) — fighting on with predatory tenacity."},
+ {f:"blessé",e:"wounded",c:14,t:"cadj",n:"f. blessée",y:"From blesser (see cmots2) — wounded, literally or emotionally."},
+ {f:"bouleversé",e:"overwhelmed / devastated",c:14,t:"cadj",n:"f. bouleversée",y:"bouleverser = boule (ball) + verser (Latin versare → English versatile) — knocked over like a rolling ball."},
+ {f:"douloureux",e:"painful / aching",c:14,t:"cadj",n:"f. douloureuse (-euse)",y:"From douleur, pain (Latin dolor → English dolorous, condolence) — the exact cognate of English 'dolorous.'"},
+ {f:"ému",e:"moved (emotionally)",c:14,t:"cadj",n:"f. émue",y:"Past participle of émouvoir (Latin ex + movere, to move → English emotion) — literally 'moved,' the same image as English."},
+ {f:"étouffant",e:"stifling",c:14,t:"cadj",n:"f. étouffante",y:"From étouffer, to smother (Vulgar Latin *stuppare, to stop up with tow → English stuff, stop) — an atmosphere that stuffs up your breathing."},
+ {f:"incroyable",e:"unbelievable",c:14,t:"cadj",n:"m./f.",y:"in + croyable, believable (Latin credere → English credible, creed) — 'in-credible,' the exact English mirror."},
+ {f:"inoffensif",e:"harmless",c:14,t:"cadj",n:"f. inoffensive (-ive)",y:"in + offensif (Latin offendere → English offense) — not-offensive, i.e. harmless."},
+ {f:"obligé",e:"necessary / obliged (to)",c:14,t:"cadj",n:"f. obligée",y:"Latin obligare, to bind → English oblige, obligation — bound to happen."},
+ {f:"paisible",e:"peaceful",c:14,t:"cadj",n:"m./f.",y:"From paix, peace (Latin pax → English pacify, peace) — the exact semantic match."},
+ {f:"perplexe",e:"bewildered",c:14,t:"cadj",n:"m./f.",y:"Latin perplexus, thoroughly entangled (per + plectere, to weave → English complex, perplex) — tangled thoughts, same word as English."},
+ {f:"porté(e) disparu(e)",e:"missing (person)",c:14,t:"cadj",y:"porté (carried, listed) + disparu (Latin disparere → English disappear) — officially 'carried as disappeared,' the police term."},
+ {f:"pourri",e:"rotten / bad",c:14,t:"cadj",n:"f. pourrie",y:"Latin putrere → English putrid — pourri is the softened French descendant of the same rot."},
+ {f:"réputé",e:"renowned",c:14,t:"cadj",n:"f. réputée",y:"Latin reputare, to reckon repeatedly → English reputation — reckoned, again and again, as excellent."},
+ {f:"souffrant",e:"suffering / unwell",c:14,t:"cadj",n:"f. souffrante",y:"Present participle of souffrir (Latin sufferre → English suffer) — the exact English cognate."},
+ {f:"trompeur",e:"misleading",c:14,t:"cadj",n:"f. trompeuse (-euse)",y:"From tromper, to deceive (Old French trompe, a trumpet) — deceiving by tooting false horns."},
+ {f:"vraisemblable",e:"plausible / likely",c:14,t:"cadj",n:"m./f.",y:"vrai (true, Latin verus) + semblable (Latin similare → English similar) — 'true-seeming,' i.e. plausible."},
  /* --- Expressions (Ch 14) --- */
- {f:"à but lucratif",e:"for-profit",c:14,t:"texpr",n:"à but non lucratif = nonprofit",y:"Toward lucrative goal — Latin lucrum, gain → English lucrative, lucre."},
- {f:"à chaque tournant",e:"around every corner",c:14,t:"texpr",y:"At each turning — tournant from tourner; surprises at every turn."},
- {f:"à condition que",e:"provided that",c:14,t:"texpr",y:"On condition that — the contract phrase, cognate throughout."},
- {f:"à couper le souffle",e:"breathtaking",c:14,t:"texpr",x:1,y:"'To cut the breath' — souffle (breath, → the airy soufflé); French cuts what English takes."},
- {f:"à hauteur de",e:"up to (an amount) / at the level of",c:14,t:"texpr",y:"At the height of — remboursé à hauteur de 80 % = reimbursed up to 80%."},
- {f:"à la belle étoile",e:"under the stars (sleeping outdoors)",c:14,t:"texpr",x:1,y:"'At the beautiful star' — camping's loveliest idiom; dormir à la belle étoile."},
- {f:"à l'étranger",e:"abroad",c:14,t:"texpr",n:"vs étrange (strange)",y:"'At the foreign' — étranger from Latin extraneus → English strange, stranger — abroad is where strangers live."},
- {f:"à partir de",e:"starting from",c:14,t:"texpr",n:"à partir de 49 € — every travel ad's fine print",y:"From partir — 'from the departure point of'; prices departing from 49 €."},
- {f:"à toute épreuve",e:"unfailing / foolproof",c:14,t:"texpr",y:"'Proof against every test' — épreuve = test/trial (→ English proof); waterproof logic."},
- {f:"au cœur de",e:"in the heart of",c:14,t:"texpr",y:"At the heart of — un hôtel au cœur de la ville; English says it identically."},
- {f:"chez l'habitant",e:"in a local's home (homestay)",c:14,t:"texpr",y:"'At the inhabitant's' — chez (Latin casa, house) — staying at someone's casa."},
- {f:"dans le cadre de",e:"as part of / within the framework of",c:14,t:"texpr",n:"formal register",y:"cadre = frame (Latin quadrum, square) — inside the frame of a program."},
- {f:"en cours de validité",e:"currently valid (passport, visa)",c:14,t:"texpr",y:"'In course of validity' — the immigration-form phrase; validité → English validity."},
- {f:"en moyenne",e:"on average",c:14,t:"texpr",y:"moyenne = the mean — English 'on the mean' became 'on average.'"},
- {f:"en plein air",e:"outdoors / in the open air",c:14,t:"texpr",y:"'In full air' — English borrowed plein-air for outdoor painting."},
- {f:"en quête de",e:"in search of",c:14,t:"texpr",y:"quête → English quest — travelers on a quest; the Grail vocabulary survives in tourism."},
- {f:"en route",e:"on the way",c:14,t:"texpr",y:"English took it verbatim — en route; route from Latin rupta via, the 'broken-through' way."},
- {f:"être pris de court",e:"to be caught off guard",c:14,t:"texpr",x:1,y:"'Taken short' — tennis's short ball; English 'caught short' is the same scramble."},
- {f:"hors des sentiers battus",e:"off the beaten path",c:14,t:"texpr",x:1,y:"Outside the beaten trails — sentier (path) + battu (beaten); the exact English idiom, mirrored."},
- {f:"petit à petit",e:"little by little",c:14,t:"texpr",n:"proverb: petit à petit, l'oiseau fait son nid",y:"Small to small — the bird builds its nest bit by bit."},
- {f:"sans encombre",e:"without a hitch",c:14,t:"texpr",n:"arriver sans encombre",y:"Without encumbrance — encombre → English encumber; an unhitched journey."},
- {f:"voir d'un mauvais œil",e:"to frown upon / to view unfavorably",c:14,t:"texpr",x:1,y:"'To see with a bad eye' — the evil-eye idiom; English 'look askance' squints the same way."},
+ {f:"à jamais",e:"forever",c:14,t:"cexpr",y:"jamais (Latin jam magis, 'now more,' → 'ever again') — à jamais seals it as permanent, never to be undone."},
+ {f:"à l'époque",e:"back then",c:14,t:"cexpr",y:"époque (Greek epokhē → English epoch) — 'at the epoch [in question],' i.e. back in that time."},
+ {f:"de bon cœur",e:"wholeheartedly",c:14,t:"cexpr",y:"'From a good heart' — cœur (Latin cor → English cordial, courage) — the exact image of English 'wholehearted.'"},
+ {f:"de fond en comble",e:"from top to bottom",c:14,t:"cexpr",x:1,y:"fond (the bottom, Latin fundus → English foundation) + comble (the topmost point, Latin cumulus → English accumulate) — bottom to peak, i.e. thoroughly."},
+ {f:"habilement",e:"skillfully",c:14,t:"cexpr",y:"From habile, skillful (Latin habilis, easy to handle → English able, ability) — the -ment adverb of 'able.'"},
+ {f:"issu(e) de",e:"coming from / stemming from",c:14,t:"cexpr",y:"Past participle of issir, to go out (Latin exire → English exit, issue) — 'issued from,' the same word English kept for 'issue.'"},
  /* --- Verbes (Ch 14, infinitive cards) --- */
- {f:"abriter",e:"to shelter",c:14,t:"verb",y:"From abri, shelter (Latin apricari, to sun oneself — the sunny spot became the sheltered one); un abribus shelters bus riders."},
- {f:"accueillir",e:"to welcome",c:14,t:"verb",x:1,n:"tricky spelling: -ueil-",y:"To gather in (Latin colligere → collect) — l'accueil is every hotel's front desk sign."},
- {f:"apprivoiser",e:"to tame",c:14,t:"verb",y:"Latin privus, one's own → to make something your own; Le Petit Prince's fox begs: apprivoise-moi."},
- {f:"attirer",e:"to attract",c:14,t:"verb",y:"à + tirer, to pull toward → English attract is Latin's pull (trahere); une attraction attire."},
- {f:"se chicaner",e:"to quibble / to bicker",c:14,t:"verbpr",y:"→ English chicanery — legal quibbling; siblings se chicanent in the back seat."},
- {f:"déchanter",e:"to become disillusioned",c:14,t:"verb",x:1,y:"dé + chanter — to 'down-sing'; you sang the trip's praises, then the hotel made you déchanter."},
- {f:"décontenancer",e:"to disconcert",c:14,t:"verb",y:"To knock from countenance — see décontenancé."},
- {f:"se déplacer",e:"to get around / to travel",c:14,t:"verbpr",y:"To dis-place oneself — dé + place; moving your placement."},
- {f:"se détendre",e:"to unwind / to relax",c:14,t:"verbpr",y:"To un-tense — dé + tendre (Latin tendere → English tension, tent); loosening the tent ropes."},
- {f:"disposer de",e:"to have available",c:14,t:"verb",n:"l'hôtel dispose d'une piscine",y:"Latin disponere → English dispose — 'at your disposal' is the shared idiom."},
- {f:"donner naissance à",e:"to give birth to (an idea, a word)",c:14,t:"verb",y:"naissance from naître (Latin nasci → English natal, native, nation) — the Grand Tour donna naissance au tourisme."},
- {f:"s'échelonner",e:"to spread out over (time)",c:14,t:"verbpr",y:"From échelon, ladder rung (→ English echelon) — dates climbing rung by rung across the calendar."},
- {f:"égaler",e:"to equal / to match",c:14,t:"verb",y:"Latin aequalis → English equal — rien n'égale la Bretagne."},
- {f:"s'embarquer",e:"to board / to embark",c:14,t:"verbpr",y:"en + barque, into the boat (→ English bark, embark) — the boarding word for boats and adventures."},
- {f:"embrasser",e:"to kiss / to embrace",c:14,t:"verb",x:1,n:"faux ami drift: usually to KISS, not hug (prendre dans ses bras)",y:"en + bras, into the arms → English embrace — but French lips hijacked the arms."},
- {f:"entreprendre",e:"to undertake",c:14,t:"verb",y:"entre + prendre, to take between/on → English enterprise, entrepreneur — the undertaker of ventures."},
- {f:"envoûter",e:"to enchant / to captivate",c:14,t:"verb",x:1,y:"From vout, face/image — old magic worked on wax figures of your face; a spellbinding place envoûte."},
- {f:"s'estomper",e:"to fade (memories, colors)",c:14,t:"verbpr",y:"From estompe, the artist's blending stump — memories smudged soft like charcoal."},
- {f:"se faire emporter",e:"to get carried away",c:14,t:"verbpr",y:"em + porter — carried off; enthusiasm porting you away."},
- {f:"flâner",e:"to stroll (aimlessly, pleasurably)",c:14,t:"verb",x:1,y:"Norse flana → the flâneur, Paris's professional stroller — English borrowed the whole lifestyle."},
- {f:"se lasser de",e:"to get tired of",c:14,t:"verbpr",n:"vs se laisser (to let oneself)",y:"Latin lassus, weary → English lassitude and alas — weariness with a sigh."},
- {f:"louer",e:"to rent / to praise",c:14,t:"verb",x:1,n:"two verbs, one spelling — context decides",y:"Rent = Latin locare (location); praise = Latin laudare (→ English laud, applaud)."},
- {f:"se mettre au défi",e:"to challenge oneself",c:14,t:"verbpr",y:"défi from défier → English defy, defiance — throwing down your own gauntlet."},
- {f:"parcourir",e:"to travel across / to roam",c:14,t:"verb",n:"le parcours = the route/course",y:"par + courir, to run through → English precursor's cursor family (currere, to run)."},
- {f:"parfaire",e:"to perfect / to complete",c:14,t:"verb",y:"par + faire, to make thoroughly → English perfect (per + facere) — the Grand Tour parfait l'éducation."},
- {f:"se plaindre",e:"to complain",c:14,t:"verbpr",n:"see the -aindre conjugation card",y:"Latin plangere, to beat one's breast → English plaintive, complaint — grief made audible."},
- {f:"prévoir",e:"to plan / to predict",c:14,t:"verb",n:"prévoir un pull = plan on a sweater",y:"Fore-see (see Ch 12) — packing is forecasting."},
- {f:"se procurer",e:"to get / to obtain",c:14,t:"verbpr",y:"Latin procurare → English procure — to procure your visa."},
- {f:"proposer",e:"to offer / to suggest",c:14,t:"verb",n:"l'hôtel propose un petit déjeuner",y:"Latin proponere → English propose — hotels 'propose' their services."},
- {f:"protéger",e:"to protect",c:14,t:"verb",y:"Latin protegere → English protect — pro + tegere, to cover in front."},
- {f:"publier",e:"to publish",c:14,t:"verb",y:"Latin publicare → English publish — making public."},
- {f:"relever",e:"to pick up / to note down / to take up (a challenge)",c:14,t:"verb",n:"relever un défi = to rise to a challenge",y:"re + lever, to re-raise → English relevé in ballet — rising again."},
- {f:"se rendre à",e:"to go to (a place)",c:14,t:"verbpr",n:"formal register — vs aller",y:"To render oneself somewhere — English 'render' kept the giving, French kept the going."},
- {f:"se repérer",e:"to find one's way / to get one's bearings",c:14,t:"verbpr",n:"un repère = a landmark",y:"From repère, reference mark (Latin reperire, to find) — landmark yourself."},
- {f:"se renseigner",e:"to inquire / to get information",c:14,t:"verbpr",n:"un renseignement = a piece of information",y:"re + enseigner (to teach, Latin insignare → English ensign) — teaching yourself the facts."},
- {f:"se ressourcer",e:"to recharge / to reenergize",c:14,t:"verbpr",y:"Back to the source (re + source) — returning to your spring; spa-French for recharge."},
- {f:"rester au chaud",e:"to stay warm",c:14,t:"verb",y:"To stay at-warm — chaud from Latin calidus (→ calorie, cauldron); the cauldron stays hot."},
- {f:"se succéder",e:"to follow one another",c:14,t:"verbpr",y:"Latin succedere → English succeed, succession — les étapes se succèdent."},
- {f:"surcharger",e:"to overload",c:14,t:"verb",y:"sur + charger → English surcharge and supercharge — the overpacked valise."}
+ {f:"atteindre",e:"to reach / to arrive at",c:14,t:"verb",n:"-eindre family — see the Conjugaison card",y:"Latin attingere, to touch upon (ad + tangere → English attain, tangent) — reaching until you touch it."},
+ {f:"avertir",e:"to warn / to alert",c:14,t:"verb",y:"Latin advertere, to turn toward (ad + vertere → English advert, avert) — turning someone's attention to danger."},
+ {f:"compter sur",e:"to rely on / to count on",c:14,t:"verb",y:"Latin computare → English compute, count — English 'count on' is the identical idiom."},
+ {f:"croiser qqn",e:"to run into someone",c:14,t:"verb",y:"From croix, a cross (Latin crux → English cross, crucial) — your paths literally 'cross.'"},
+ {f:"faire don à",e:"to donate to",c:14,t:"verb",y:"don (Latin donum, a gift → English donate, donor) — 'to make a gift to.'"},
+ {f:"se faire passer pour",e:"to pretend to be / to pass oneself off as",c:14,t:"verbpr",y:"'To make oneself pass for' — English 'to pass yourself off as' is the identical construction."},
+ {f:"fouiller",e:"to search",c:14,t:"verb",y:"Latin fodicare, to poke/dig (fodere → English fossil, fosse) — digging through a cabin looking for jewels."},
+ {f:"menacer",e:"to threaten",c:14,t:"verb",y:"Latin minacia, threats (minari → English menace) — English borrowed the noun whole; French kept the verb."},
+ {f:"se mettre à",e:"to begin to (do something)",c:14,t:"verbpr",n:"+ infinitif",y:"mettre (Latin mittere, to send → English mission) + à — literally 'to put oneself to' a task."},
+ {f:"mettre en émoi",e:"to get riled up / to cause a stir",c:14,t:"verb",y:"émoi, from esmoveir (Latin ex + movere → English emotion) — 'to put into emotion,' i.e. into an uproar."},
+ {f:"profiter de",e:"to enjoy / to take advantage of",c:14,t:"verb",y:"Latin proficere, to make progress → English profit — drawing benefit from a moment or opportunity."},
+ {f:"raconter",e:"to tell (a story)",c:14,t:"verb",y:"re + conter, to count/recount (Latin computare → English recount) — literally 'to recount' a tale."},
+ {f:"réussir à",e:"to succeed in (doing something)",c:14,t:"verb",n:"+ infinitif",y:"Italian riuscire, to come back out well (ri + uscire → English exit) — succeeding is 'coming out' the far side."},
+ {f:"se souvenir",e:"to remember",c:14,t:"verbpr",y:"Latin subvenire, to come to mind (sub + venire → English souvenir, convene) — a souvenir is exactly what makes you se souvenir."},
+ {f:"témoigner",e:"to testify / to witness",c:14,t:"verb",y:"From témoin, a witness (Latin testimonium → English testimony) — the verb form of 'testify.'"},
+ /* --- Mini-glossaire : reading & listening extras (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"appartenir",e:"to belong (to)",c:14,t:"cmgloss",n:"conjugates like tenir",y:"Latin appertinere (ad + pertinere → English pertain, appertain) — English 'appertain' is the same word, barely disguised."},
+ {f:"les chantiers",e:"the construction sites",c:14,t:"cmgloss",n:"m. pl. — un chantier naval = a shipyard",y:"Latin canterius, a rafter/support beam → English cantilever — the site where the beams go up."},
+ {f:"craindre",e:"to fear / to be afraid of",c:14,t:"cmgloss",n:"-aindre family — see the Conjugaison card",y:"Vulgar Latin *cremere, blending tremere (to tremble → English tremor) and premere (to press) — fear as the trembling itself."},
+ {f:"dans le giron de",e:"within the fold of / under the wing of",c:14,t:"cmgloss",x:1,y:"giron, the lap (Frankish *gero, a fold of cloth) — sheltered 'in the lap' of a family or institution."},
+ {f:"débarquer",e:"to disembark / to land",c:14,t:"cmgloss",y:"dé + barque, a small boat (Latin barca → English bark, embark) — the reverse of embarking: getting off the boat."},
+ {f:"en manque de",e:"lacking / in need of",c:14,t:"cmgloss",y:"manque, from manquer, to lack (Italian mancare, Latin mancus, maimed → English maim) — literally 'in the missing of.'"},
+ {f:"profane",e:"secular / a layperson",c:14,t:"cmgloss",y:"Latin pro + fanum, outside the temple (→ English fane, profane) — outside sacred ground, i.e. non-religious."},
+ {f:"ramener",e:"to bring back",c:14,t:"cmgloss",y:"re + amener, to lead (Latin ad + minare, to drive animals → English amenable) — leading something back."},
+ {f:"se répandre",e:"to spread (news, rumor)",c:14,t:"cmgloss",y:"re + épandre (Latin expandere → English expand) — news 'expanding' outward through the ship."},
+ {f:"un tisserand",e:"a weaver / a textile worker",c:14,t:"cmgloss",x:1,n:"f. la tisserande",y:"From tisser, to weave (Latin texere → English text, textile) — the one who weaves the cloth (and the word 'text')."},
+ {f:"des viatiques",e:"provisions / resources for a journey",c:14,t:"cmgloss",x:1,n:"m. pl. — formal/literary register",y:"Latin viaticum, travel money/provisions (via, road → English via, voyage) — everything you need for the road."}
 ];
 var VOCAB_AOL=[
  /* ===== AOL 120 : Advanced Operational Language — outside the textbook sequence ===== */
@@ -2470,21 +2410,21 @@ var DRILLS=[
    {q:"On est marié pour le ___ et pour le pire. (bon)",a:"meilleur",m:{vg:"sup"},hint:"A set phrase — no article change needed here."},
    {q:"C'est ___ hôtel du village — évitez-le. (mauvais, one word)",a:"le pire",m:{vg:"sup"}}
  ]},
- {id:"voc14",note:"<b>Instructions :</b> Write the single glossaire word that completes the sentence, spelled and accented exactly as taught.<br><b>Word bank :</b> the Chapter 14 glossaire — travel, lodging, expressions. Accents count.",title:"Vocab en contexte — Ch. 14",ch:"Ch. 14",minCh:14,items:[
-   {q:"Notre vol pour Tokyo fait une ___ de trois heures à Istanbul.",a:"escale",m:{vg:"vocctx"}},
-   {q:"On dort dans une ___ de jeunesse pour économiser.",a:"auberge",m:{vg:"vocctx"}},
-   {q:"N'oublie pas ta ___ de toilette — brosse à dents, savon, tout ça.",a:"trousse",m:{vg:"vocctx"}},
-   {q:"Petit déjeuner ___ dans le prix de la chambre.",a:"compris",m:{vg:"vocctx"}},
-   {q:"Ce week-end de juillet, c'est le grand ___ - ___ : les départs croisent les retours sur l'autoroute.",a:"chassé-croisé",m:{vg:"vocctx"}},
-   {q:"La vue depuis le sommet est à couper le ___ .",a:"souffle",m:{vg:"vocctx"}},
-   {q:"Nous avons dormi à la belle ___ , sous un ciel plein d'étoiles.",a:"étoile",m:{vg:"vocctx"}},
-   {q:"Le Mont-Saint-Michel est un site ___ : impossible de passer à côté.",a:"incontournable",m:{vg:"vocctx"}},
-   {q:"Une voiture de ___ nous attend à l'aéroport — 35 euros par jour.",a:"location",m:{vg:"vocctx"}},
-   {q:"Prends une ___ réutilisable au lieu des bouteilles jetables.",a:"gourde",m:{vg:"vocctx"}},
-   {q:"Ils préfèrent voyager hors des sentiers ___ .",a:"battus",m:{vg:"vocctx"}},
-   {q:"Vérifie que ton passeport est en cours de ___ .",a:"validité",m:{vg:"vocctx"}},
-   {q:"On a fait le trajet sans ___ : aucun problème, aucune panne.",a:"encombre",m:{vg:"vocctx"}},
-   {q:"J'adore ___ dans les vieilles rues, sans but, juste pour le plaisir. (verbe)",a:"flâner",m:{vg:"vocctx"}}
+ {id:"voc14",note:"<b>Instructions :</b> Write the single glossaire word that completes the sentence, spelled and accented exactly as taught.<br><b>Word bank :</b> the Chapter 14 glossaire — memories, crime & investigation, immigration. Accents count.",title:"Vocab en contexte — Ch. 14",ch:"Ch. 14",minCh:14,items:[
+   {q:"Le ___ a forcé la porte de la bijouterie pour voler les bijoux.",a:"cambrioleur",m:{vg:"vocctx"}},
+   {q:"La police a trouvé un ___ important près de la fenêtre.",a:"indice",m:{vg:"vocctx"}},
+   {q:"Arsène Lupin est un ___ célèbre : il vole les riches avec élégance.",a:"hors-la-loi",m:{vg:"vocctx"}},
+   {q:"Même face au danger, l'inspecteur garde son ___.",a:"sang-froid",m:{vg:"vocctx"}},
+   {q:"Le ___ a décidé de poursuivre le baron en justice.",a:"procureur",m:{vg:"vocctx"}},
+   {q:"Après vingt ans en France, il aime bien son nouveau pays d'___.",a:"accueil",m:{vg:"vocctx"}},
+   {q:"Quelle ___ ! Il a traversé l'Espagne à vélo en trois jours.",a:"prouesse",m:{vg:"vocctx"}},
+   {q:"Le prisonnier s'est échappé ; c'est maintenant un ___ recherché.",a:"évadé",m:{vg:"vocctx"}},
+   {q:"Les enquêteurs ont fouillé la maison de fond en ___, sans rien trouver.",a:"comble",m:{vg:"vocctx"}},
+   {q:"Cette aventure restera gravée dans sa mémoire à ___.",a:"jamais",m:{vg:"vocctx"}},
+   {q:"Le bijoutier a examiné la pierre précieuse avec l'œil d'un vrai ___.",a:"joaillier",m:{vg:"vocctx"}},
+   {q:"Il faut absolument ___ de ce moment extraordinaire. (verbe)",a:"se souvenir",m:{vg:"vocctx"}},
+   {q:"Après cette nouvelle terrible, il était complètement ___.",a:"bouleversé",m:{vg:"vocctx"}},
+   {q:"Devant cette question inattendue, elle est restée ___, sans savoir quoi répondre.",a:"perplexe",m:{vg:"vocctx"}}
  ]}
 ];
 /* ---- number → written French (0 to 1 000 000) ---- */
@@ -2683,31 +2623,199 @@ var TEST=[
  {ch:"14",type:"fill",q:"Cet hôtel est ___ cher que l'auberge, mais mieux situé. (more)",a:["plus"],m:{cat:"gen"}},
  {ch:"14",type:"fill",q:"Il y a ___ de touristes en novembre qu'en juillet. (fewer)",a:["moins"],m:{cat:"gen"}},
  {ch:"14",type:"fill",q:"La cuisine de cette auberge est ___ que celle de l'hôtel. (bon)",a:["meilleure"],m:{cat:"gen"}},
- {ch:"14",type:"mc",q:"Un vol sans escale est un vol…",o:["direct", "avec deux arrêts", "annulé", "en retard"],a:"direct"},
- {ch:"14",type:"mc",q:"Dormir à la belle étoile, c'est dormir…",o:["dehors, sous le ciel", "dans un hôtel 5 étoiles", "dans le train", "chez l'habitant"],a:"dehors, sous le ciel"},
- {ch:"14",type:"mc",q:"Le chassé-croisé des vacances désigne…",o:["les départs qui croisent les retours sur les routes", "une danse folklorique", "un jeu de cartes", "une réservation double"],a:"les départs qui croisent les retours sur les routes"},
- {ch:"14",type:"mc",q:"Un logement insolite, c'est par exemple…",o:["une cabane dans les arbres", "un studio ordinaire", "une chambre d'hôtel standard", "un camping municipal"],a:"une cabane dans les arbres"},
- {ch:"14",type:"mc",q:"« Petit déjeuner compris » signifie…",o:["inclus dans le prix", "servi en petite quantité", "à payer en plus", "froid"],a:"inclus dans le prix"},
- {ch:"14",type:"fill",q:"On voyage léger : un seul bagage ___ chacun.",a:["cabine"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Cette vue est à couper le ___ !",a:["souffle"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Nous préférons voyager hors des ___ battus.",a:["sentiers"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Le covoiturage permet de partager les ___ d'essence.",a:["frais"],m:{cat:"gen"}},
- {ch:"14",type:"mc",q:"Une auberge de jeunesse propose surtout…",o:["des lits pas chers en dortoir", "des suites de luxe", "des spas", "des salles de conférence"],a:"des lits pas chers en dortoir"},
- {ch:"14",type:"fill",q:"Elle adore ___ dans les ruelles, sans plan ni destination. (verbe)",a:["flâner"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Le voyage s'est passé sans ___ — aucun problème du départ à l'arrivée.",a:["encombre"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Ce petit hôtel est ___ par une famille depuis trois générations. (tenir)",a:["tenu"],m:{cat:"gen"}},
- {ch:"14",type:"mc",q:"La plupart des Français partent en vacances…",o:["en été", "en mars", "jamais", "en semaine seulement"],a:"en été"}
+ {ch:"14",type:"mc",q:"Un hors-la-loi est une personne qui…",o:["vit en dehors de la loi", "travaille pour la police", "est très riche", "vend des bijoux"],a:"vit en dehors de la loi"},
+ {ch:"14",type:"mc",q:"Le sang-froid, c'est…",o:["rester calme sous la pression", "avoir peur facilement", "être malade", "être en colère"],a:"rester calme sous la pression"},
+ {ch:"14",type:"mc",q:"Un(e) évadé(e) est quelqu'un qui…",o:["s'est échappé(e) de prison", "a gagné à la loterie", "est arrivé(e) en retard", "a déménagé récemment"],a:"s'est échappé(e) de prison"},
+ {ch:"14",type:"mc",q:"« Être porté disparu » signifie…",o:["ne plus savoir où se trouve une personne", "porter un vêtement neuf", "être en retard à un rendez-vous", "être fatigué"],a:"ne plus savoir où se trouve une personne"},
+ {ch:"14",type:"mc",q:"Un pays d'accueil est le pays…",o:["où un immigré s'installe", "d'où on est originaire", "qu'on visite en vacances", "qu'on ne visitera jamais"],a:"où un immigré s'installe"},
+ {ch:"14",type:"mc",q:"« De fond en comble » veut dire…",o:["complètement, du début à la fin", "un peu, superficiellement", "jamais", "très rapidement"],a:"complètement, du début à la fin"},
+ {ch:"14",type:"fill",q:"On a arrêté le ___ juste après le cambriolage de la banque.",a:["voleur"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"Le détective a trouvé un ___ important sur les lieux du crime.",a:["indice"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"L'attentat a beaucoup ___ la population du pays.",a:["bouleversé"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"Ce bijoutier est un ___ réputé dans toute la ville.",a:["joaillier"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"Le témoin a accepté de ___ devant le tribunal. (verbe)",a:["témoigner"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"Après vingt ans dans ce pays, elle sent qu'elle y ___ vraiment. (appartenir)",a:["appartient"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"Les soldats ___ une attaque surprise pendant la nuit. (craindre, imparfait)",a:["craignaient"],m:{cat:"gen"}},
+ {ch:"14",type:"fill",q:"Cette aventure restera gravée dans sa mémoire à ___.",a:["jamais"],m:{cat:"gen"}}
 ];
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
 
 
-/* ===== UNIT 3 EXAM BANK — à venir : ships when the Unit 3 study guide lands ===== */
-var EXAM_READ=[];
-var EXAM_VOCAB=[];
-var EXAM_GRAM=[];
+/* ===== UNIT 3 EXAM BANK — built from the Test 3 study guide (Ch 11–14) ===== */
+var EXAM_READ=[
+ {title:"E-mail — confirmation de commande",
+  text:"Objet : Confirmation de commande. Bonjour, merci pour votre achat sur notre site ! Vous avez commandé : un pull en laine bleu marine (taille M), une écharpe à rayures, et des chaussettes en coton. Votre colis sera livré sous 5 jours ouvrés à l'adresse indiquée. Si un article ne vous convient pas, vous avez 30 jours pour le retourner gratuitement. Merci de votre confiance ! L'équipe Mode Express.",
+  qs:[
+   {type:"mc",q:"What did the customer order?",o:["A sweater, a scarf, and socks","A jacket, a hat, and gloves","Shoes and a belt","A raincoat only"],a:"A sweater, a scarf, and socks"},
+   {type:"mc",q:"How long is the delivery window?",o:["5 business days","2 business days","10 business days","24 hours"],a:"5 business days"},
+   {type:"sa",q:"What is the return policy?",model:"Free returns within 30 days if an item doesn't fit/suit them."}
+  ]},
+ {title:"Messages — un pique-nique annulé",
+  text:"« Tu es prêt pour le pique-nique ? » — « Je viens de regarder la météo, ce n'est pas bon signe. » — « Ah bon, pourquoi ? » — « Il y a des nuages partout et des rafales de vent annoncées cet après-midi. Ils disent aussi qu'il va pleuvoir des cordes vers 15 h. » — « Zut ! On reporte à demain alors ? » — « Oui, demain il fera beau et chaud, sans un nuage. » — « Parfait, à demain ! »",
+  qs:[
+   {type:"mc",q:"Why does the second person want to cancel?",o:["Bad weather is expected","He is sick","The park is closed","He has no time"],a:"Bad weather is expected"},
+   {type:"mc",q:"What is the weather forecast for tomorrow?",o:["Sunny and warm","Rainy all day","Snowy","Windy and cold"],a:"Sunny and warm"},
+   {type:"sa",q:"What specific weather is expected this afternoon?",model:"Clouds, wind gusts, and heavy/pouring rain around 3 p.m."}
+  ]},
+ {title:"Annonce — auberge de jeunesse",
+  text:"AUBERGE DE JEUNESSE LES VOYAGEURS — Nouveau logement insolite au cœur de la ville ! Chambres partagées ou privées, trousse de premiers soins et gourde offertes à l'arrivée. Location de vélos disponible pour explorer la région hors des sentiers battus. Petit déjeuner compris dans le prix. Réservez votre séjour dès maintenant — à partir de 25 € la nuit. Ouvert toute l'année, sauf en cas d'intempéries exceptionnelles empêchant l'accès.",
+  qs:[
+   {type:"mc",q:"What is offered free to guests on arrival?",o:["A first-aid kit and a water bottle","A suitcase and a raincoat","A map and a scarf","Nothing"],a:"A first-aid kit and a water bottle"},
+   {type:"mc",q:"What is included in the price?",o:["Breakfast","Bike rental","Dinner","Laundry"],a:"Breakfast"},
+   {type:"sa",q:"When might the hostel be closed?",model:"Only in case of exceptional bad weather that blocks access."}
+  ]},
+ {title:"Panneau — avis de la préfecture",
+  text:"AVIS DE LA PRÉFECTURE : une tempête approche de la côte ce soir. Attention aux fortes rafales de vent et au risque de verglas dans les zones montagneuses après minuit. Les habitants sont invités à rester chez eux et à éviter les déplacements non essentiels. Le tonnerre et les éclairs sont attendus à partir de 21 h. La situation devrait s'améliorer demain matin, avec des éclaircies dans l'après-midi.",
+  qs:[
+   {type:"mc",q:"What is expected after midnight in mountain areas?",o:["Black ice","Fog","A heat wave","Drought"],a:"Black ice"},
+   {type:"mc",q:"What are residents advised to do?",o:["Stay home and avoid unnecessary travel","Evacuate immediately","Go to the coast","Call the police"],a:"Stay home and avoid unnecessary travel"},
+   {type:"sa",q:"When should the weather improve?",model:"Tomorrow morning, with sunny spells in the afternoon."}
+  ]},
+ {title:"Message vocal — une aventure de jeunesse",
+  text:"Salut, c'est Camille ! Je viens de retrouver de vieilles photos de mon voyage en Espagne avec ma grand-mère. Je m'en souviens encore très bien : nous avons traversé le pays en voiture, et une fois, nous avons été bloquées à la frontière à cause d'une tempête. Ma grand-mère a gardé son sang-froid, et finalement tout s'est bien passé. C'était une vraie aventure, à jamais gravée dans ma mémoire. Rappelle-moi, j'ai plein d'histoires à te raconter !",
+  qs:[
+   {type:"mc",q:"What did Camille just find?",o:["Old photos from a trip with her grandmother","A lost passport","A letter from a friend","A map of Spain"],a:"Old photos from a trip with her grandmother"},
+   {type:"mc",q:"What happened at the border?",o:["They were stuck because of a storm","They lost their luggage","They were robbed","Their car broke down"],a:"They were stuck because of a storm"},
+   {type:"sa",q:"How does Camille describe her grandmother's reaction?",model:"Her grandmother stayed calm/kept her cool (sang-froid), and everything worked out."}
+  ]},
+ {title:"Article — une enquête criminelle",
+  text:"Un cambriolage a eu lieu la semaine dernière dans une bijouterie du centre-ville. Selon la police, le voleur a fouillé le magasin de fond en comble avant de s'enfuir avec plusieurs bijoux de valeur. Un enquêteur a trouvé un indice important près de la porte arrière : un morceau de tissu déchiré. Le procureur a confirmé que l'enquête se poursuit et qu'un suspect est déjà interrogé. La police demande à tout témoin de se manifester.",
+  qs:[
+   {type:"mc",q:"What happened at the jewelry store?",o:["A burglary","A fire","A car accident","A strike"],a:"A burglary"},
+   {type:"mc",q:"What clue did the investigator find?",o:["A torn piece of fabric","A phone","A shoe","A letter"],a:"A torn piece of fabric"},
+   {type:"sa",q:"What does the article say about the investigation?",model:"It's ongoing, and a suspect is already being questioned; witnesses are asked to come forward."}
+  ]}
+];
+/* Vocabulaire — the complete Test 3 word list, EN → FR. Articles required per the standing rule; accents strict. Draw: 12. */
+var EXAM_VOCAB=[
+ {ch:"12",q:"the heat",a:["la chaleur"]},
+ {ch:"12",q:"it's freezing! (informal)",a:["ça caille"]},
+ {ch:"11",q:"on sale (discounted)",a:["en solde"]},
+ {ch:"11",q:"the pants / the trousers",a:["le pantalon","un pantalon"]},
+ {ch:"13",q:"breathtaking",a:["à couper le souffle"]},
+ {ch:"13",q:"the cabin / the hut",a:["la cabane","une cabane"]},
+ {ch:"13",q:"the layover",a:["l'escale","une escale"]},
+ {ch:"14",q:"the host country",a:["le pays d'accueil","un pays d'accueil"]},
+ {ch:"14",q:"forever",a:["à jamais"]},
+ {ch:"13",q:"the countryside",a:["la campagne"]},
+ {ch:"12",q:"summery",a:["estival","estivale"]},
+ {ch:"12",q:"to rain heavily (idiom)",a:["il pleut des cordes","pleuvoir des cordes"]},
+ {ch:"14",q:"back then",a:["à l'époque"]},
+ {ch:"11",q:"the belt",a:["la ceinture","une ceinture"]},
+ {ch:"13",q:"to be caught off guard",a:["être pris de court"]},
+ {ch:"14",q:"the prosecutor",a:["le procureur","la procureure"]},
+ {ch:"13",q:"abroad",a:["à l'étranger"]},
+ {ch:"14",q:"a ceasefire",a:["le cessez-le-feu","un cessez-le-feu"]},
+ {ch:"14",q:"to search",a:["fouiller"]},
+ {ch:"11",q:"the sweater",a:["le pull","un pull"]},
+ {ch:"13",q:"under the stars",a:["à la belle étoile"]},
+ {ch:"11",q:"checked / checkered / plaid",a:["à carreaux"]},
+ {ch:"11",q:"the scarf (fashion)",a:["le foulard","un foulard"]},
+ {ch:"11",q:"around fifteen of",a:["une quinzaine de"]},
+ {ch:"11",q:"striped",a:["à rayures"]},
+ {ch:"11",q:"the socks",a:["les chaussettes","des chaussettes"]},
+ {ch:"14",q:"a pain / a hassle (figurative)",a:["la galère","une galère"]},
+ {ch:"14",q:"to tell (a story)",a:["raconter"]},
+ {ch:"12",q:"snowy",a:["neigeux","neigeuse"]},
+ {ch:"11",q:"the shoes",a:["les chaussures","des chaussures"]},
+ {ch:"11",q:"the gloves",a:["les gants","des gants"]},
+ {ch:"12",q:"gusts (of wind)",a:["les rafales","des rafales"]},
+ {ch:"14",q:"welcoming / friendly",a:["accueillant","accueillante"]},
+ {ch:"11",q:"straight hair",a:["les cheveux raides","des cheveux raides"]},
+ {ch:"12",q:"to hail",a:["grêler"]},
+ {ch:"14",q:"to recognize",a:["reconnaître"]},
+ {ch:"14",q:"tireless / relentless",a:["acharné","acharnée"]},
+ {ch:"12",q:"to fall sharply (temperature)",a:["chuter"]},
+ {ch:"12",q:"wintry",a:["hivernal","hivernale"]},
+ {ch:"11",q:"out of style / corny (informal)",a:["ringard","ringarde"]},
+ {ch:"14",q:"to belong (to)",a:["appartenir"]},
+ {ch:"14",q:"the trunk (car)",a:["le coffre"]},
+ {ch:"13",q:"off the beaten path",a:["hors des sentiers battus"]},
+ {ch:"13",q:"to get reimbursed",a:["se faire rembourser"]},
+ {ch:"11",q:"to match (items)",a:["assortir"]},
+ {ch:"13",q:"leave (work) / time off",a:["le congé"]},
+ {ch:"14",q:"an outlaw",a:["le hors-la-loi","un hors-la-loi"]},
+ {ch:"13",q:"to challenge oneself",a:["se mettre au défi"]},
+ {ch:"13",q:"a youth hostel",a:["l'auberge de jeunesse","une auberge de jeunesse"]},
+ {ch:"12",q:"coastal",a:["côtier","côtière"]},
+ {ch:"11",q:"a raincoat",a:["l'imperméable","un imperméable"]},
+ {ch:"13",q:"to inquire",a:["se renseigner"]},
+ {ch:"12",q:"showers (rain)",a:["les averses","des averses"]},
+ {ch:"14",q:"a stab in the back",a:["le coup de poignard","un coup de poignard"]},
+ {ch:"13",q:"must-see / essential",a:["incontournable"]},
+ {ch:"12",q:"droughts",a:["les sécheresses","des sécheresses"]},
+ {ch:"13",q:"a ticket (train or plane)",a:["le billet","un billet"]},
+ {ch:"13",q:"carpooling",a:["le covoiturage","du covoiturage"]},
+ {ch:"14",q:"a clue",a:["l'indice","un indice"]},
+ {ch:"12",q:"a storm",a:["la tempête","une tempête"]},
+ {ch:"14",q:"homeland / hometown",a:["le bled"]},
+ {ch:"14",q:"from top to bottom",a:["de fond en comble"]},
+ {ch:"12",q:"bad weather",a:["les intempéries","des intempéries"]},
+ {ch:"13",q:"unusual lodging",a:["le logement insolite","un logement insolite"]},
+ {ch:"11",q:"combat fatigues",a:["le treillis"]},
+ {ch:"11",q:"of average height",a:["de taille moyenne"]},
+ {ch:"13",q:"rental / renting",a:["la location"]},
+ {ch:"11",q:"a bomber jacket",a:["le blouson","un blouson"]},
+ {ch:"11",q:"a coupon",a:["un bon"]},
+ {ch:"14",q:"painful",a:["douloureux","douloureuse"]},
+ {ch:"11",q:"outfit / attire",a:["la tenue"]},
+ {ch:"13",q:"route",a:["le trajet","un trajet"]},
+ {ch:"11",q:"a beanie",a:["le bonnet","un bonnet"]},
+ {ch:"12",q:"mild / soft (weather)",a:["doux","douce"]},
+ {ch:"11",q:"a brand",a:["la marque","une marque"]},
+ {ch:"12",q:"thunder",a:["le tonnerre"]},
+ {ch:"11",q:"boots",a:["les bottes","des bottes"]},
+ {ch:"11",q:"a dozen",a:["une douzaine"]},
+ {ch:"11",q:"to highlight",a:["mettre en valeur"]},
+ {ch:"14",q:"misleading",a:["trompeur","trompeuse"]},
+ {ch:"11",q:"earrings",a:["les boucles d'oreilles","des boucles d'oreilles"]},
+ {ch:"11",q:"a scarf (warmth)",a:["l'écharpe","une écharpe"]},
+ {ch:"11",q:"suspenders",a:["les bretelles","des bretelles"]},
+ {ch:"13",q:"first aid kit",a:["la trousse de premiers soins","la trousse de premiers secours"]},
+ {ch:"14",q:"devastated / overwhelmed",a:["bouleversé","bouleversée"]},
+ {ch:"12",q:"a sunny spell",a:["l'éclaircie","une éclaircie"]},
+ {ch:"13",q:"a subscription / membership",a:["un abonnement"]},
+ {ch:"12",q:"black ice",a:["le verglas","du verglas"]},
+ {ch:"11",q:"a pattern",a:["le motif","un motif"]},
+ {ch:"11",q:"made of wool",a:["en laine"]},
+ {ch:"11",q:"hazel-colored",a:["noisette"]},
+ {ch:"11",q:"clothes",a:["les vêtements","des vêtements"]},
+ {ch:"12",q:"to shine",a:["briller"]},
+ {ch:"13",q:"on average",a:["en moyenne"]},
+ {ch:"12",q:"cloudy",a:["nuageux","nuageuse"]},
+ {ch:"11",q:"around twenty of",a:["une vingtaine de"]},
+ {ch:"12",q:"fog",a:["le brouillard","du brouillard"]},
+ {ch:"11",q:"made of silk",a:["en soie"]},
+ {ch:"12",q:"a thunderstorm",a:["l'orage","un orage"]},
+ {ch:"14",q:"a theft / a burglary",a:["le vol","un vol","le cambriolage","un cambriolage"]},
+ {ch:"14",q:"to start/begin to (do something)",a:["se mettre à"]}
+];
+/* Grammaire — four items per structure named on the study guide. Draw: 12. */
+var EXAM_GRAM=[
+ {ch:"11",q:"Ce pull est ___ cher que la veste. (more expensive than)",a:["plus"]},
+ {ch:"11",q:"Cette écharpe est ___ chaude que ce foulard. (less warm than)",a:["moins"]},
+ {ch:"11",q:"Ces bottes sont ___ confortables que ces chaussures. (as comfortable as)",a:["aussi"]},
+ {ch:"11",q:"Le pantalon à carreaux est ___ élégant que le pantalon uni. (more elegant than)",a:["plus"]},
+ {ch:"11",q:"Tu vas à la boutique ce soir ? — Oui, j'___ vais à 18 h. (le pronom y)",a:["y"]},
+ {ch:"11",q:"Il pense à son rendez-vous chez le tailleur ? — Oui, il ___ pense souvent. (le pronom y)",a:["y"]},
+ {ch:"11",q:"Vous répondez à cette question ? — Non, nous n'___ répondons pas. (le pronom y)",a:["y"]},
+ {ch:"11",q:"Elle habite en France depuis longtemps ? — Oui, elle ___ habite depuis dix ans. (le pronom y)",a:["y"]},
+ {ch:"14",q:"Je n'ai plus faim ; je ___ ___ manger. (venir de)",a:["viens de"]},
+ {ch:"14",q:"Ils ___ ___ arriver ; ils cherchent leur chambre d'hôtel. (venir de)",a:["viennent de"]},
+ {ch:"14",q:"Nous ___ ___ finir nos valises quand le taxi est arrivé. (venir de, imparfait — had just)",a:["venions de"]},
+ {ch:"14",q:"Elle ___ juste ___ partir ; tu peux encore la rattraper. (venir de)",a:["vient de"]},
+ {ch:"13",q:"Quand j'étais petit, nous ___ à la mer tous les étés. (aller, imparfait — habitude)",a:["allions"]},
+ {ch:"13",q:"Hier, nous ___ à la mer pour la première fois. (aller, passé composé — événement précis)",a:["sommes allés"]},
+ {ch:"13",q:"Il ___ la valise quand le téléphone a sonné. (faire, imparfait — action en cours)",a:["faisait"]},
+ {ch:"13",q:"Elle ___ son passeport juste avant de partir. (perdre, passé composé — action ponctuelle)",a:["a perdu"]},
+ {ch:"12",q:"Demain, il ___ beaucoup dans le nord. (pleuvoir, futur simple)",a:["pleuvra"]},
+ {ch:"12",q:"L'année prochaine, nous ___ dans un nouvel appartement. (habiter, futur simple régulier)",a:["habiterons"]},
+ {ch:"12",q:"Tu ___ ta valise avant de partir, n'est-ce pas ? (finir, futur simple régulier)",a:["finiras"]},
+ {ch:"12",q:"Il ___ beau ce week-end. (faire, futur simple irrégulier)",a:["fera"]}
+];
 /* ===== quiz / exam engine ===== */
-var quizPick="6", testItems=[];
+var quizPick="11", testItems=[];
 document.getElementById("quizPick").addEventListener("change",function(){ quizPick=this.value; renderTestHist(); });
 
 function histKind(){ return quizPick==="exam" ? "Unit 3 exam" : ("Ch "+quizPick+" quiz"); }
@@ -2715,7 +2823,7 @@ function renderTestHist(){
   var h=document.getElementById("testHist");
   var mine=state.tests.filter(function(t){ return (t.kind||"quiz")===histKind() || (!t.kind && quizPick!=="exam"); });
   if(!mine.length){ h.textContent = quizPick==="exam"
-    ? "Modeled on your Test 2 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
+    ? "Modeled on your Test 3 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
     : "10 randomized questions from the Chapter "+quizPick+" bank — a different draw every attempt."; return; }
   var last=mine[mine.length-1];
   var best=mine.reduce(function(m,t){return Math.max(m,Math.round(t.score/t.total*100));},0);
@@ -2781,7 +2889,7 @@ document.getElementById("startTest").onclick=function(){
     });
     /* Section 2 — Vocabulaire */
     host.appendChild(el("h2","sec","Vocabulaire"));
-    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 2 word list."));
+    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 3 word list."));
     pick(EXAM_VOCAB, CONFIG.EXAM.vocab).forEach(function(t){
       var q=mkFillQ({q:"Translate: <b>"+t.q+"</b>",a:t.a,m:t.m,ch:t.ch},qi,"Vocabulaire");
       host.appendChild(q); qs.push(q); qi++;
@@ -2977,15 +3085,15 @@ var OPI=[
  {t:"Ch 13 · Childhood memory",d:"Racontez votre meilleur souvenir d'enfance. Où étiez-vous ? Que s'est-il passé ? — Tell your best childhood memory. Where were you? What happened?",s:["Imparfait for the backdrop, PC for events", "quand j'étais petit(e)…"]},
  {t:"Ch 13 · First day of class",d:"Décrivez votre premier jour de cours. Comment vous sentiez-vous ? Qu'est-ce qui s'est passé ? — Describe your first day of class. How did you feel? What happened?",s:["j'étais nerveux/nerveuse", "le sergent nous a dit que nous allions…"]},
  {t:"Ch 13 · Changed plans",d:"Racontez un moment où vos plans ont changé au dernier moment. — Tell about a time your plans changed at the last minute.",s:["J'allais + infinitif, mais…", "the interrupted-plan frame."]},
- {t:"Ch 13 · Crime plot",d:"Racontez l'intrigue d'un film policier ou d'un roman que vous aimez. — Summarize the plot of a crime film or novel you like.",s:["Present tense for plot summaries works", "le voleur, l'enquêteur, l'indice."]},
+ {t:"Ch 13 · Crime plot",d:"Racontez l'intrigue d'un film policier ou d'un roman que vous aimez. — Summarize the plot of a crime film or novel you like.",s:["Present tense for plot summaries works", "d'abord, ensuite, à la fin."]},
  {t:"Ch 13 · Family journey",d:"Votre famille a-t-elle une histoire de voyage ou d'immigration ? Racontez. — Does your family have a travel or immigration story? Tell it.",s:["mes grands-parents sont venus de…", "à l'époque", "autrefois."]},
- {t:"Ch 13 · Travel nightmare",d:"Racontez une galère de voyage — retard, panne, bagage perdu. — Tell a travel nightmare — delay, breakdown, lost luggage.",s:["C'était la galère !", "d'abord, ensuite, finalement", "PC chain of events."]},
- {t:"Ch 14 · Dream vacation",d:"Décrivez vos vacances idéales : destination, logement, activités, budget. — Describe your ideal vacation: destination, lodging, activities, budget.",s:["Conditionnel: j'aimerais, je voudrais, on pourrait", "une plage paradisiaque."]},
- {t:"Ch 14 · Hotel booking call",d:"Vous téléphonez à un hôtel pour réserver. Demandez poliment prix, dates et services. — You phone a hotel to book. Politely ask about price, dates, services.",s:["Je voudrais réserver…", "Est-ce que le petit déjeuner est compris ?", "Pourriez-vous… ?"]},
- {t:"Ch 14 · Two destinations",d:"Comparez deux destinations que vous connaissez : climat, prix, ambiance. — Compare two destinations you know: climate, price, atmosphere.",s:["plus/moins/aussi … que", "meilleur que", "il y a plus de … que."]},
+ {t:"Ch 13 · Travel nightmare",d:"Racontez une mésaventure de voyage — retard, panne, bagage perdu. — Tell a travel nightmare — delay, breakdown, lost luggage.",s:["Quelle catastrophe !", "d'abord, ensuite, finalement", "PC chain of events."]},
+ {t:"Ch 14 · Memorable birthday",d:"Racontez une fête d'anniversaire mémorable. Qu'est-ce qui s'est passé ? — Tell about a memorable birthday party. What happened?",s:["PC for the sequence of events, imparfait for the mood/setting", "c'était une fête inoubliable."]},
+ {t:"Ch 14 · An object full of memories",d:"Avez-vous un objet ou une photo qui évoque beaucoup de souvenirs pour vous ? Décrivez-le. — Do you have an object or photo that brings back a lot of memories? Describe it.",s:["ça me rappelle…", "je m'en souviens comme si c'était hier."]},
+ {t:"Ch 14 · An unexpected reunion",d:"Avez-vous déjà retrouvé quelqu'un que vous n'aviez pas vu depuis longtemps ? Comment cela s'est-il passé ? — Have you ever run into someone you hadn't seen in a long time? How did it go?",s:["je l'ai tout de suite reconnu(e)", "ça m'a beaucoup ému(e)."]},
  {t:"Ch 14 · What you just did",d:"Qu'est-ce que vous venez de faire aujourd'hui, là, juste avant cette session ? — What did you just do today, right before this session?",s:["Je viens de + infinitif — chain three or four of them."]},
- {t:"Ch 14 · Advice for a friend",d:"Donnez des conseils de voyage à un ami qui part à l'étranger pour la première fois. — Give travel advice to a friend going abroad for the first time.",s:["Tu devrais…", "N'oublie pas de…", "Il faudrait vérifier ton passeport."]},
- {t:"Ch 14 · Green travel",d:"Le tourisme durable : comment voyager en respectant l'environnement ? — Sustainable tourism: how to travel while respecting the environment?",s:["le covoiturage, la gourde, éviter le jetable", "on pourrait / on devrait."]}
+ {t:"Ch 14 · A mystery you solved",d:"Racontez une fois où vous avez dû résoudre un petit mystère ou retrouver quelque chose de perdu. — Tell about a time you had to solve a small mystery or find something you'd lost.",s:["un indice, chercher, retrouver", "j'ai gardé mon sang-froid."]},
+ {t:"Ch 14 · A moment of fear",d:"Parlez d'un moment où vous avez eu peur pendant une aventure et comment vous avez géré la situation. — Talk about a time you were scared during an adventure and how you handled it.",s:["j'ai craint le pire", "garder son sang-froid."]}
 ];
 var opiIdx=0, opiTimer=null;
 function stopOpiTimer(){ if(opiTimer){ clearInterval(opiTimer); opiTimer=null; } }

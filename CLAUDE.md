@@ -63,6 +63,18 @@ Batch small changes — don't commit piecemeal unless asked to.
 - Split-verb rule: a verb appearing as an infinitive in one chapter's glossaire
   but conjugated in a later chapter goes into the vocab trainer at the glossaire
   chapter; conjugation tables stay where taught.
+- Mini-glossaire rule: chapters often have mid-activity "Vocabulaire"/
+  "Vocabulaire utile" word lists tied to a specific reading or listening clip,
+  separate from the end-of-chapter glossaire — and these words do show up on
+  exams (confirmed via the Test 3 study guide: "appartenir" is only taught in a
+  Ch 14 mid-activity matching exercise, never the end-of-chapter list). Fold
+  genuinely useful mini-glossaire words into the vocab trainer as a flagged
+  exception, same pattern as the Ch 6 exterior/restaurant sets in Unit 2 — own
+  topic tag, own comment header ("activity-sourced — flagged exception to
+  glossaire parity"), not silently merged into the main glossaire group. Skip
+  words that are proper nouns, ungradable function words, or already covered by
+  an existing card. Surface the shortlist for review before building, same as
+  any other vocab bank content.
 - Study-guide-dependent content stays marked "à venir" until the guide is
   actually uploaded.
 
