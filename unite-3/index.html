@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 3 · Dossier Français — v1.2.2.4</title>
+<title>Unité 3 · Dossier Français — v1.2.2.5</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v1.2.2.4</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v1.2.2.5</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -564,8 +564,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v1.2.2.4</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v1.2.2.5</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.2.2.5 (26 Aug 2026): <strong>Drill ciblé — participles for regular -ir/-re verbs.</strong> In the Drill ciblé passé composé, generated <em>-ir</em> and <em>-re</em> verbs (finir, choisir, réfléchir, attendre, répondre, perdre…) showed « ai <strong>?</strong> » — <code>ppOf</code> only derived <em>-er</em> participles and returned "?" for the rest, since the mastery pool never has an un-flagged <em>-ir2</em>/<em>-re</em> verb. It now derives them (choisir → choisi, attendre → attendu). Reps only; no bank, drill, scoring, or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.2.2.4 (25 Aug 2026): <strong>School references removed · Ch 12 « sinistré » grading fix.</strong> An institutional tag is dropped from the browser-tab title, the header eyebrow, and the footer masthead; the Ch 13 Pratique orale card is retitled "First day of class" and its prompt reworded to « premier jour de cours ». <strong>Vocab:</strong> the Ch 12 card stored « le/la sinistré(e) » as one graded string — the engine's article parser doesn't read the slashed dual form, so it treated the whole thing as the noun and marked the natural answers <em>le sinistré</em> / <em>la sinistrée</em> wrong. The headword is now <em>le sinistré</em>, with <em>la sinistrée</em> and the literal glossaire form « le/la sinistré(e) » accepted as alternates and the feminine noted; the article is still required. No other bank, drill, scoring, or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.2.2.3 (25 Aug 2026): <strong>Stale tab intros — fork/drift copy fixes.</strong> The <strong>Conjugaison</strong> and <strong>Pratique orale</strong> leads still described Unit 2's scope ("Every Chapter 6 verb — modaux, glossaire -er, peindre…" / "the Chapter 6 tasks"), carried over when Unit 3's engine was forked from Unit 2; both now describe Unit 3. The <strong>Grammaire</strong> lead listed three drills dropped in v1.1.0 (voix passive, futur proche au passé, cause &amp; effet) and predated the Ch 11 <em>pronom Y</em> rebuild; rewritten to the drills that actually ship. The dashboard "I'm currently in" chapter picker labelled <strong>Chapter 14</strong> with Chapter 13's text ("Vacations &amp; destinations"); Ch 14 now reads "Grammar review", matching the masthead. Copy only.<br></span>
     <span style="color:var(--mute)">v1.2.2.2 (25 Aug 2026): <strong>Trainer intros span the full width.</strong> The instruction paragraph and bullet list under the Conjugaison and Vocabulaire trainers were capped at a narrow prose measure, so they wrapped well short of the controls below them and pushed the training card down the page. They now span the content width like everything else, so the card sits higher — on-screen without scrolling on a typical desktop. CSS only.<br></span>
@@ -853,7 +854,11 @@ function pronForm(v,i,f){
 }
 /* passé composé (avec avoir) forms: aux + participle. pp explicit on irregulars; -er derives -é. */
 var AUX_AVOIR=["ai","as","a","avons","avez","ont"];
-function ppOf(v){ if(v.pp) return v.pp; if(v.type==="er"||/er$/.test(v.fr)) return v.fr.slice(0,-2)+"é"; return "?"; }
+function ppOf(v){ if(v.pp) return v.pp;
+  if(v.type==="er"||/er$/.test(v.fr)) return v.fr.slice(0,-2)+"é";
+  if(v.type==="ir2") return v.fr.slice(0,-1);        /* v1.2.2.5: choisir → choisi (Drill ciblé PC) */
+  if(v.type==="re")  return v.fr.slice(0,-2)+"u";    /* attendre → attendu */
+  return "?"; }
 function pcOf(v){
   var pp=ppOf(v), pres=conjOf(v);
   return AUX_AVOIR.map(function(aux,i){ return pres[i]==="—" ? "—" : aux+" "+pp; });
