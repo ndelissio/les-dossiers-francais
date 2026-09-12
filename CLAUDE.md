@@ -6,7 +6,7 @@ for French Basic Course students, built by Nicholas (student, Monterey). Used by
 him and classmates. Product is class-agnostic — not tied to one
 cohort's test date. Hosted on Cloudflare (Workers static assets; see
 `wrangler.jsonc`). Live site:
-https://dli-francais-dossiers.dliflc-uml-french.workers.dev/
+https://les-dossiers-francais.5cr2cb4wzp.workers.dev/
 
 Repo layout (adjust to match actual repo once cloned):
 - Working/in-progress files: wherever we're actively editing
@@ -31,6 +31,10 @@ Batch small changes — don't commit piecemeal unless asked to.
   3. `<strong>` tag in the footer masthead
 - Before building: verify the actual current version in the working file first.
   Building on a stale base silently reverts intervening changes.
+- The landing page (`index.html`) shows each unit's version as a separate
+  hardcoded `<span>` in that unit's folder card footer — it does NOT read from
+  the unit files. Whenever a unit's version bumps, update its landing-page
+  label in the same commit, or it silently drifts out of sync.
 
 ## Content & pedagogy rules
 - Source-text authority: labeling, chapter titles, grouping, and sequencing
