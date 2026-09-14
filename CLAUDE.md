@@ -59,6 +59,9 @@ Batch small changes — don't commit piecemeal unless asked to.
     slash-alternatives inside `f:`.
   - `a:[...]` = accepted alternate answers/synonyms.
   - `n:` = notes.
+  - No abbreviations in French or English vocab text: spell out full words
+    (e.g. "quelqu'un," not "qqn"; "quelque chose," not "qqch"). Applies to
+    `f:`, `e:`, `a:`, `n:`, and `y:` fields alike.
 - Vocab grouping size: keep each topic/subtag group to ~20–25 words max. Split
   oversized groups into coherent subtopics rather than letting one balloon.
 - Articles are always required in Vocabulaire spelling grading (no toggle).
