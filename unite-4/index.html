@@ -2106,17 +2106,19 @@ function refreshDash(){
       "<div class='pct'>"+d.k+"/"+d.t+"</div>";
     L.appendChild(vrow);
   });
-  /* --- 2. GRAMMAIRE — per-drill coverage --- */
-  L.appendChild(el("div","ledhead","<b>Grammaire</b> — couverture des drills"));
-  var covN=0, covT=0;
-  DRILLS.slice().sort(function(a,b){return a.minCh-b.minCh;}).forEach(function(d){
+  /* --- 2. GRAMMAIRE — per-chapter coverage (v: rolled up from per-drill list) --- */
+  L.appendChild(el("div","ledhead","<b>Grammaire</b> — couverture par chapitre"));
+  var covN=0, covT=0, gByCh={};
+  DRILLS.forEach(function(d){
     var c=covOf(d); covN+=c.n; covT+=c.t;
-    var pct=c.t?Math.round(c.n/c.t*100):0, dim=d.minCh>state.currentCh;
-    var best=state.drills[d.id];
+    var b=gByCh[d.minCh]=gByCh[d.minCh]||{k:0,t:0}; b.k+=c.n; b.t+=c.t;
+  });
+  Object.keys(gByCh).map(Number).sort(function(a,b){return a-b;}).forEach(function(c){
+    var d=gByCh[c], pct=d.t?Math.round(d.k/d.t*100):0, dim=c>state.currentCh;
     var row=el("div","ledrow"); if(dim) row.style.opacity=".45";
-    row.innerHTML="<div class='name'>"+d.title+"<small>"+d.ch+(best?" · best "+best.correct+"/"+best.total:"")+(dim?" · à venir":"")+"</small></div>"+
+    row.innerHTML="<div class='name'>"+(CH_NAMES[c]||("Ch "+c))+"<small>grammar coverage"+(dim?" · à venir":"")+"</small></div>"+
       "<div class='bar'><i style='width:"+pct+"%;background:var(--bleu)'></i></div>"+
-      "<div class='pct'>"+c.n+"/"+c.t+"</div>";
+      "<div class='pct'>"+d.k+"/"+d.t+"</div>";
     L.appendChild(row);
   });
   /* --- 3. CONJUGAISON — mastery by group --- */
