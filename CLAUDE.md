@@ -62,6 +62,20 @@ Batch small changes — don't commit piecemeal unless asked to.
   - No abbreviations in French or English vocab text: spell out full words
     (e.g. "quelqu'un," not "qqn"; "quelque chose," not "qqch"). Applies to
     `f:`, `e:`, `a:`, `n:`, and `y:` fields alike.
+  - Synonym collision rule: when two words in the same bank are synonyms or
+    near-synonyms (especially similar spellings) that would otherwise share the
+    same or a near-identical English gloss, never leave their `e:` cues
+    indistinguishable — a student who types the "wrong" but genuinely correct
+    synonym for an EN→FR cue must not get marked wrong. For each collision:
+    - If the words are truly interchangeable in context, merge into one card
+      (`f:` primary + `a:` alternate) instead of two competing cards.
+    - If they carry a real usage/register/context distinction per the source
+      text, keep them as separate cards but write `e:` cues that let the
+      student determine which French word is meant — via context, register, or
+      collocation — without naming the word itself. Never leave two cards with
+      bare, colliding glosses (e.g. both just "harmful").
+    - Flag every collision found while assembling a vocab bank for review
+      before building, same as any other ambiguous vocab call.
 - Vocab grouping size: keep each topic/subtag group to ~20–25 words max. Split
   oversized groups into coherent subtopics rather than letting one balloon.
 - Articles are always required in Vocabulaire spelling grading (no toggle).
