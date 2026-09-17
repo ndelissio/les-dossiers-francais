@@ -84,6 +84,12 @@ Batch small changes — don't commit piecemeal unless asked to.
   any other vocab bank content.
 - Study-guide-dependent content stays marked "à venir" until the guide is
   actually uploaded.
+- Chapter scope pattern: each printed textbook volume covers 5 chapters, and
+  the 5th is always a review/exam chapter with no new vocab or grammar of its
+  own (e.g. Ch 5, Ch 10, Ch 15, Ch 20). Exclude it by default from the
+  dossier's "Chapters X–Y" landing-page label and from vocab/grammar build
+  scope. Its review material can still be mined separately for a practice-exam
+  build (as done for Unit 3), but only when asked for.
 
 ## Build integrity / technical gotchas
 - Unit 3 files use CR-only line terminators (classic Mac). Convert with
