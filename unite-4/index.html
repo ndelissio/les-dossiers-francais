@@ -2095,10 +2095,10 @@ function refreshDash(){
   var L=document.getElementById("ledger"); L.innerHTML="";
   /* --- 1. VOCABULAIRE — primary block, per chapter --- */
   L.appendChild(el("div","ledhead","<b>Vocabulaire</b> — the DLPT engine"));
-  var byCh={11:{k:0,t:0},12:{k:0,t:0},13:{k:0,t:0},14:{k:0,t:0}};
+  var byCh={16:{k:0,t:0},17:{k:0,t:0},18:{k:0,t:0},19:{k:0,t:0}};
   var vkAll=0, vtAll=0;
   VOCAB.forEach(function(v){ var b=byCh[v.c]; if(b){ b.t++; vtAll++; if(state.vocab[v.f]==="known"){ b.k++; vkAll++; } } });
-  [11,12,13,14].forEach(function(c){
+  [16,17,18,19].forEach(function(c){
     var d=byCh[c], pct=d.t?Math.round(d.k/d.t*100):0, dim=(c>state.currentCh)||!d.t;
     var vrow=el("div","ledrow"); if(dim) vrow.style.opacity=".45";
     vrow.innerHTML="<div class='name'>"+(CH_NAMES[c]||("Ch "+c))+"<small>vocab known"+(dim?" · à venir":"")+"</small></div>"+
