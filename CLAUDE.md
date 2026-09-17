@@ -19,6 +19,35 @@ the queued changes and open decisions, then wait for an explicit go-ahead
 ("build", "go", "confirmed", "ship it") before running git commit/push.
 Batch small changes — don't commit piecemeal unless asked to.
 
+## STANDING RULE: Concurrent agents — git worktree per chapter/agent
+Unit files (e.g. `unite-4/index.html`) are single ~3,000-line files where all
+chapters share the same JS objects (`CH_NAMES`, vocab arrays, oral-practice
+list, version strings, changelog block). Two agents editing the same working
+folder at once can silently overwrite each other's unsaved file, independent
+of git. To prevent this:
+- Every actively-building chapter/agent gets its own git worktree (a sibling
+  folder checked out to its own branch), never the main folder directly:
+  `git worktree add ../dossiers-repo-unite4-chNN -b unite4-chNN`
+  (branch naming: `unite4-ch17`, `unite4-ch19`, etc.)
+- Point that agent's Claude Code session at its own worktree folder. Agents
+  never commit to `main` directly.
+- The main folder (`dossiers-repo`) stays free for quick unrelated patches at
+  any time — edit, commit, push there without disturbing any in-progress
+  chapter worktree.
+- Before a chapter branch merges into `main`: in that worktree, run
+  `git fetch origin && git merge origin/main` first, to pull in any patches
+  shipped to main meanwhile, and resolve conflicts there (not on main).
+  Then bring it back for the usual build-gate review before merging/pushing.
+- New chapter content should be appended as one contiguous block with its own
+  comment header (own `CH_NAMES` entry, own vocab array chunk) rather than
+  interleaved into existing entries, to minimize merge conflicts between
+  chapter branches touching the same shared objects.
+- Once a chapter branch is merged into main, remove its worktree:
+  `git worktree remove ../dossiers-repo-unite4-chNN`.
+- This is additive to the build-gate rule below, not a replacement — commits
+  within a worktree branch are fine to accumulate freely, but merging into
+  `main` and pushing still waits for explicit go-ahead.
+
 ## Versioning
 - Scheme: MAJOR.MINOR.PATCH, with an optional 4th segment for hotfixes
   (e.g., v1.0.0.1).
