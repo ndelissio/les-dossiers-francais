@@ -61,7 +61,12 @@ Batch small changes — don't commit piecemeal unless asked to.
   - `n:` = notes.
   - No abbreviations in French or English vocab text: spell out full words
     (e.g. "quelqu'un," not "qqn"; "quelque chose," not "qqch"). Applies to
-    `f:`, `e:`, `a:`, `n:`, and `y:` fields alike.
+    `f:`, `e:`, `a:`, `n:`, and `y:` fields alike. This holds even when the
+    source textbook itself abbreviates (the FBC glossaires routinely use
+    "qqn"/"qqch"/"qqc"/"qq" in verb entries, e.g. "initier qq à qqc") — expand
+    those to full words when the entry goes into a card. Don't carry the
+    source's abbreviation through verbatim, and don't reintroduce it when
+    discussing or shortlisting vocab either — write it out from the start.
   - Synonym collision rule: when two words in the same bank are synonyms or
     near-synonyms (especially similar spellings) that would otherwise share the
     same or a near-identical English gloss, never leave their `e:` cues
