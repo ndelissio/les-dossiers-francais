@@ -55,7 +55,10 @@ of git. To prevent this:
   `git worktree add ../dossiers-repo-unite4-chNN -b unite4-chNN`
   (branch naming: `unite4-ch17`, `unite4-ch19`, etc.)
 - Point that agent's Claude Code session at its own worktree folder. Agents
-  never commit to `main` directly.
+  never commit to `main` directly. Create the worktree BEFORE the session
+  starts and start the session in it — a session started in the main folder
+  can't be repointed and will edit main by default (Unit 4: Ch 17 and Ch 19
+  sessions began in main and were one step from writing there).
 - The main folder (`dossiers-repo`) stays free for quick unrelated patches at
   any time — edit, commit, push there without disturbing any in-progress
   chapter worktree.
@@ -72,12 +75,41 @@ of git. To prevent this:
 - This is additive to the build-gate rule below, not a replacement — commits
   within a worktree branch are fine to accumulate freely, but merging into
   `main` and pushing still waits for explicit go-ahead.
+- Ship procedure when several chapters are in flight (Unit 4 model):
+  - Ship one chapter at a time, in a fixed order. Each later chapter merges
+    the new `origin/main`, re-scans for duplicate vocab against everything
+    already shipped, re-verifies, and only then ships.
+  - Give branches provisional versions only. Assign the real version by merge
+    order — three branches that each planned "v0.2.0" collide on the same
+    three version strings and the changelog.
+  - Ship by fast-forward push from the worktree (`git push origin HEAD:main`,
+    never force), then `git merge --ff-only origin/main` in the main folder.
+  - Update the unit's landing-page label in the same commit as its version
+    bump. Flip the unit's landing card from "In build" to Active only in the
+    last chapter's commit.
+  - Shared lines that WILL conflict between chapter branches: `CH_NAMES`, the
+    `DRILLS`/`TEST`/`OPI` push blocks, chapter selectors and leads,
+    the `ACH` list and self-heal/`sweepMastery` blocks, `VERB_CH`,
+    `GRAM_SK`/`GRAM_LBL`, `CATS`. Resolve keep-both. Give each chapter its own
+    `CATS` colour, and name achievements by chapter number (`a_vNN`; Unit 4's
+    `a_v6`/`a_v7` next to `a_v18`/`a_v19` are inconsistent).
+- Windows worktree cleanup: `git worktree remove`/`prune` and `rm` fail with
+  "Permission denied" while the owning Claude session (or a preview server,
+  editor or Explorer window) still holds the folder. Archive the chapter
+  session first. Before deleting a leftover folder, compare it to the shipped
+  commit ignoring carriage returns (`tr -d '\r'`; working copies are CRLF, so
+  byte comparison reports false differences) and check for untracked files.
+  Stale `.git/worktrees/<name>` directories with no `gitdir` file can then be
+  removed by hand. Never `--force` around the lock.
 
 ## Versioning
 - Scheme: MAJOR.MINOR.PATCH, with an optional 4th segment for hotfixes
   (e.g., v1.0.0.1).
 - If content was missed in a prior release, use a PATCH bump, not a MINOR bump.
-- Every release needs a changelog entry.
+- Every release needs a changelog entry. Compute card counts in it from the
+  data (glossaire vs mini-glossaire, per chapter), not from a session summary —
+  Unit 4's v0.2.0 line claimed "199 glossaire + 70 mini" when the real split
+  was 129 + 70 = 199.
 - Version string appears in exactly three places in each unit file — all three
   MUST be updated together:
   1. `<title>` tag
@@ -118,6 +150,13 @@ of git. To prevent this:
     The Unit 4 engine handles this in `formVariants()`/`vocCands()`; any new
     unit fork or vocab build must carry that grader (not just the data), and
     the (-ère)/(-ive)/(-euse) shorthand must be checked against it.
+    Known pitfalls: the suffix rule builds a wrong feminine for -f → -ve
+    (`vif(-ve)` gave "ve"; `sauf(-ve)` gave "saufve"), for stems already
+    ending in s (`gras(-se)` gave "grase"; write `gras(se)` → "grasse"), and
+    for -x (`douloureux(-se)` gave "douloureuxse"; write `douloureux(-euse)`).
+    Test every shorthand card through the real grader, and for odd shapes use
+    a clean `f:` plus `a:[feminine]` instead (`f:"brûlé vif"`,
+    `a:["brûlée vive"]`).
   - `a:[...]` = accepted alternate answers/synonyms.
   - `n:` = notes.
   - No abbreviations in French or English vocab text: spell out full words
@@ -142,6 +181,15 @@ of git. To prevent this:
       bare, colliding glosses (e.g. both just "harmful").
     - Flag every collision found while assembling a vocab bank for review
       before building, same as any other ambiguous vocab call.
+- Cross-chapter duplicate scan: progress is keyed by `f:`, so the same French
+  word in two chapters is one shared state entry, not two cards. A later
+  chapter drops any card an already-shipped chapter has (an earlier chapter's
+  copy is not moved); never ship duplicate `f:` keys. Scan with a real script
+  over the loaded VOCAB, exact AND form-insensitive (ignore articles,
+  `se`/`s'` and the `(e)` shorthand) — exact matching missed `la pente` vs
+  `une pente`, and `ancré` (Ch 16) vs `ancré(e)` (Ch 18) shipped as a
+  duplicate until v0.4.1. After dropping, re-check the surviving cues against
+  neighbouring chapters' cards (synonym collision rule below).
 - Vocab grouping size: keep each topic/subtag group to ~20–25 words max. Split
   oversized groups into coherent subtopics rather than letting one balloon.
 - Articles are always required in Vocabulaire spelling grading (no toggle).
@@ -181,7 +229,19 @@ of git. To prevent this:
 - Script extraction from HTML: `sed -n '/<script>/,/<\/script>/p' | sed '1d;$d'`
   (don't rely on line numbers as the file grows).
 - Node.js validation = syntax check + headless DOM probe (`vm.createContext`
-  sandbox). Python used for assembly/patch scripts. Bash for glue.
+  sandbox). Assembly/patch scripts: use Node — Python is NOT installed on this
+  machine (the `python` command is a Microsoft Store stub). Bash for glue.
+- Passé-composé auxiliary: être verbs need `aux:"e"` on their entry (pronominal
+  verbs get être via `pron`). Missing flags shipped in Units 3 and 4 —
+  `aller`, `venir` (and Unit 3's `mourir`) conjugated with avoir ("ai allé")
+  until v0.1.2 / v1.3.4. When forking a unit or adding a verb to the flagship
+  or drill-ciblé pools, check every être verb carries the flag. Avoir verbs
+  that look like être verbs (`subvenir`, `prévenir`) are the trap in reverse.
+- Drill-ciblé pool: a chapter that adds verbs already in the Units 1–3 pool
+  (`revenir`, `prévoir`) must dedupe against `V`.
+- Working copies here are CRLF: compare against committed blobs with
+  `tr -d '\r'`, and check line-ending integrity (CR/LF counts) after editing
+  Unit 3.
 
 ## Communication style
 - Terse, directional. Execute once a direction is approved — don't re-confirm
