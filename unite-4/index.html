@@ -330,6 +330,7 @@
       <span style="font-weight:700">I'm currently in</span>
       <select class="filter" id="curCh">
         <option value="16">Chapter 16 — Family Through Generations</option>
+        <option value="19">Chapter 19 — Emergencies and Disasters</option>
       </select>
       <span class="hist" id="scopeNote"></span>
     </div>
@@ -351,7 +352,7 @@
   <!-- ===================== VERBS ===================== -->
   <section class="panel" id="p-verbs" role="tabpanel">
     <h2 class="sec">Conjugaison</h2>
-    <p class="lead">10 vedettes swept across every tense, plus Chapter 16's own irregular verbs (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire) in présent and passé composé. Type all six forms.</p>
+    <p class="lead">10 vedettes swept across every tense, plus Chapter 16's own irregular verbs (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire) and Chapter 19's (survenir, parvenir, intervenir, revenir, prévenir, prévoir) in présent and passé composé. Type all six forms.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -372,6 +373,7 @@
       <select class="filter" id="chapterFilterV">
         <option value="any">Any chapter</option>
         <option value="16">Ch 16</option>
+        <option value="19">Ch 19</option>
       </select>
       <select class="filter" id="catFilter"><option value="all">All groups</option></select>
     </div>
@@ -424,7 +426,7 @@
   <!-- ===================== VOCABULAIRE ===================== -->
   <section class="panel" id="p-vocab" role="tabpanel">
     <h2 class="sec">Vocabulary trainer</h2>
-    <p class="lead">The Chapter 16 glossaire — family structures, aging, daily life — plus mini-glossaire words folded in from reading &amp; listening activities.</p>
+    <p class="lead">The Chapter 16 glossaire — family structures, aging, daily life — and the Chapter 19 glossaire — natural disasters, accidents, rescue — plus mini-glossaire words folded in from reading &amp; listening activities.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -444,6 +446,7 @@
       <select class="filter" id="chapterFilterVoc">
         <option value="any">Any chapter</option>
         <option value="16">Ch 16</option>
+        <option value="19">Ch 19</option>
       </select>
       <select class="filter" id="vocTopic"><option value="all">All topics</option></select>
     </div>
@@ -482,7 +485,7 @@
   <!-- ===================== GRAMMAR ===================== -->
   <section class="panel" id="p-gram" role="tabpanel">
     <h2 class="sec">Grammar drills</h2>
-    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — plus vocab en contexte.</p>
+    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — and Chapter 19 structures — la nominalisation, l'inclusion, l'exception et la restriction, le mode infinitif — plus vocab en contexte.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -496,7 +499,7 @@
   <!-- ===================== TEST ===================== -->
   <section class="panel" id="p-test" role="tabpanel">
     <h2 class="sec">Quizzes &amp; Unit 4 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 16 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
+    <p class="lead">10 randomized questions per chapter bank (Ch 16 and Ch 19 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -509,6 +512,7 @@
       <div class="test-head">
         <select class="filter" id="quizPick">
           <option value="16">Chapter 16 quiz</option>
+          <option value="19">Chapter 19 quiz</option>
           <option value="exam" disabled>Unit 4 practice exam (à venir)</option>
         </select>
         <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
@@ -753,6 +757,7 @@ var CATS={
   flag:{label:"Vedettes · tous les temps",c:"#16243d",bg:"#e7eaf1"},
   irr16:{label:"Ch 16 · verbes irréguliers",c:"#2f7d5b",bg:"#e2efe7"}
 };
+CATS.irr19={label:"Ch 19 · verbes irréguliers",c:"#8a3b2a",bg:"#f3e4df"};
 var TENSES=[
   {id:"pres", lbl:"Présent",       long:"présent de l'indicatif"},
   {id:"pc",   lbl:"Passé composé", long:"passé composé"},
@@ -788,6 +793,18 @@ var VERB_CH={};
 V.forEach(function(v){ VERB_CH[v.fr]=16; });
 /* flagships stay available from Ch 16 on; irr16 verbs are Ch 16's own targeted set */
 var CH_NAMES={16:"Ch 16 · Family Through Generations"};   /* Ch 17-19 not yet built; Ch 20 is Unit 4 review — no new content */
+
+/* ===== Chapter 19 : Emergencies and Disasters — irregular verbs from the glossaire (présent + PC) ===== */
+CH_NAMES[19]="Ch 19 · Emergencies and Disasters";
+V.push(
+  {fr:"survenir",en:"to occur / to arise",cat:"irr19",conj:["surviens","surviens","survient","survenons","survenez","surviennent"],pp:"survenu",aux:"e",tn:["pres","pc"],ex:"Un incendie est survenu près du port hier soir.",exEn:"A fire broke out near the port last night.",note:"venir family — takes être in the passé composé, so the participle agrees (est survenue, sont survenus). In the wild it lives almost entirely in the il/elle and ils/elles forms."},
+  {fr:"parvenir",en:"to reach / to manage to",cat:"irr19",conj:["parviens","parviens","parvient","parvenons","parvenez","parviennent"],pp:"parvenu",aux:"e",tn:["pres","pc"],ex:"Les secouristes sont parvenus jusqu'aux villages coupés du monde.",exEn:"The rescuers reached the villages cut off from the world.",note:"venir family — takes être in the passé composé. Parvenir à + noun = to reach; parvenir à + infinitive = to manage to."},
+  {fr:"intervenir",en:"to intervene / to step in",cat:"irr19",conj:["interviens","interviens","intervient","intervenons","intervenez","interviennent"],pp:"intervenu",aux:"e",tn:["pres","pc"],ex:"Les pompiers sont intervenus en quelques minutes.",exEn:"The firefighters stepped in within minutes.",note:"venir family — takes être in the passé composé (sont intervenus)."},
+  {fr:"revenir",en:"to come back",cat:"irr19",conj:["reviens","reviens","revient","revenons","revenez","reviennent"],pp:"revenu",aux:"e",tn:["pres","pc"],ex:"Les habitants sont revenus chez eux après la tempête.",exEn:"The residents came back home after the storm.",note:"venir family — takes être in the passé composé (elle est revenue)."},
+  {fr:"prévenir",en:"to warn / to notify",cat:"irr19",conj:["préviens","préviens","prévient","prévenons","prévenez","préviennent"],pp:"prévenu",tn:["pres","pc"],ex:"Les autorités ont prévenu la population de l'arrivée du cyclone.",exEn:"The authorities warned the population that the cyclone was coming.",note:"Conjugates like venir, but takes avoir — not être — in the passé composé (a prévenu). The classic trap in this family: it means to warn, not to come."},
+  {fr:"prévoir",en:"to foresee / to plan",cat:"irr19",conj:["prévois","prévois","prévoit","prévoyons","prévoyez","prévoient"],pp:"prévu",tn:["pres","pc"],ex:"La météo a prévu de fortes pluies pour demain.",exEn:"The forecast is calling for heavy rain tomorrow.",note:"voir family — nous/vous take -y- (prévoyons, prévoyez); the passé composé is a prévu."}
+);
+["survenir","parvenir","intervenir","revenir","prévenir","prévoir"].forEach(function(fr){ VERB_CH[fr]=19; });
 function chOf(v){ return VERB_CH[v.fr] || 11; }
 function isExtra(v){ return false; }
 
@@ -1323,7 +1340,7 @@ var VOCAB=[
  {f:"enlever",e:"to remove, to take off",c:16,t:"fverb1"},
  {f:"s'entendre",e:"to get along (with someone)",c:16,t:"fverb1"},
  /* --- Verbes : social & emotional actions --- */
- {f:"entraîner",e:"to cause, to bring about; also: to train (an athlete)",c:16,t:"fverb2"},
+ {f:"entraîner",e:"to cause, to bring about; also: to train (an athlete)",a:["provoquer"],c:16,t:"fverb2"},
  {f:"s'estomper",e:"to fade away, to blur",c:16,t:"fverb2",x:1},
  {f:"être à la hauteur",e:"to live up to (expectations), to be up to the task",c:16,t:"fverb2"},
  {f:"être au chômage",e:"to be unemployed",c:16,t:"fverb2"},
@@ -1416,6 +1433,199 @@ var VOCAB=[
  {f:"par rapport à",e:"compared to, in relation to",c:16,t:"fmgloss2"}
 ];
 
+/* ===================================================================================
+   Chapter 19 : Emergencies and Disasters — end-of-chapter glossaire (+ flagged mini-glossaire sets)
+   Own topic tags (c19*), own block — appended so parallel chapter branches merge cleanly.
+   =================================================================================== */
+(function(){
+  var T19={
+    c19nat:"Natural disasters (Ch 19)", c19acc:"Accidents & rescue — nouns (Ch 19)",
+    c19adj1:"Adjectives — damage & destruction (Ch 19)", c19adj2:"Adjectives — people, safety & conditions (Ch 19)",
+    c19v1:"Verbs — disasters striking & damage (Ch 19)", c19v2:"Verbs — collisions, blocking & rescue (Ch 19)", c19v3:"Verbs — reporting, responding & managing (Ch 19)",
+    c19exp:"Other words & expressions (Ch 19)",
+    c19mg1:"Reading & listening extras — disaster reports (Ch 19)", c19mg2:"Reading & listening extras — accident reports (Ch 19)"
+  };
+  for(var k in T19) VTOPICS[k]=T19[k];
+  var W=[
+ /* --- Noms : catastrophes naturelles --- */
+ {f:"la boule de feu",e:"the fireball",t:"c19nat"},
+ {f:"la canicule",e:"the heatwave",t:"c19nat"},
+ {f:"le déboisement",e:"the deforestation",t:"c19nat",x:1},
+ {f:"l'éboulement",e:"the rockfall, the rockslide (earth or rocks breaking loose and tumbling down)",t:"c19nat",n:"m. — the textbook glosses both this and le glissement de terrain as 'landslide.' Here: éboulement = material breaking off and falling, fast (rocks from a cliff or slope); glissement de terrain = a mass of ground sliding along a slope. News reports often use either for the same event.",x:1},
+ {f:"l'éruption volcanique",e:"the volcanic eruption",t:"c19nat",n:"f."},
+ {f:"la fumée",e:"the smoke",t:"c19nat"},
+ {f:"le glissement de terrain",e:"the landslide, the mudslide (the ground itself sliding downhill along a slope)",t:"c19nat",n:"vs l'éboulement — see that card"},
+ {f:"l'incendie",e:"the blaze, the large uncontrolled fire",t:"c19nat",n:"m."},
+ {f:"l'inondation",e:"the flood",t:"c19nat",n:"f."},
+ {f:"le séisme",e:"the earthquake (the technical or news-report term — think 'seismic')",t:"c19nat",n:"same phenomenon as le tremblement de terre — séisme is the scientific/news register (séisme de magnitude 5,6)",x:1},
+ {f:"la tempête hivernale",e:"the winter storm",t:"c19nat"},
+ {f:"la tornade",e:"the tornado",t:"c19nat"},
+ {f:"le tremblement de terre",e:"the earthquake (the everyday phrase — literally 'the shaking of the earth')",t:"c19nat",n:"everyday register; le séisme is the technical/news term"},
+ /* --- Noms : accidents et secours --- */
+ {f:"l'amas",e:"the pile, the heap, the cluster",t:"c19acc",n:"m."},
+ {f:"le badaud",e:"the onlooker, the bystander (a passerby who stops to watch)",t:"c19acc",x:1},
+ {f:"le bilan",e:"the toll, the casualty count; also: the assessment",t:"c19acc"},
+ {f:"la coupure de courant",e:"the power outage",t:"c19acc"},
+ {f:"les décombres",e:"the rubble, the debris (fallen pieces left after a collapse)",t:"c19acc",n:"m. pl."},
+ {f:"le déraillement",e:"the derailment",t:"c19acc"},
+ {f:"l'effondrement",e:"the collapse, the cave-in (a structure or the ground giving way)",t:"c19acc",n:"m."},
+ {f:"l'état d'urgence",e:"the state of emergency",t:"c19acc",n:"m."},
+ {f:"la marée noire",e:"the oil spill",t:"c19acc",n:"literally 'the black tide'"},
+ {f:"le panache de fumée",e:"the smoke plume",a:["le panache"],t:"c19acc",n:"the glossaire writes le panache (de fumée) — either form is accepted"},
+ {f:"le pétrolier",e:"the oil tanker (the ship)",t:"c19acc",n:"also an adjective: pétrolier(-ière) = oil-related"},
+ {f:"le pont aérien",e:"the airlift",t:"c19acc"},
+ {f:"la recherche",e:"the search (for someone or something)",t:"c19acc",n:"les recherches = the search operation; also 'research'"},
+ {f:"les retrouvailles",e:"the reunion (of people who have been apart)",t:"c19acc",n:"f. pl.",x:1},
+ {f:"le riverain",e:"the resident living right beside a road, river or affected site",a:["la riveraine"],t:"c19acc",n:"la riveraine (f.)"},
+ {f:"les ruines",e:"the ruins (what remains of destroyed buildings)",t:"c19acc",n:"f. pl."},
+ {f:"le sauvetage",e:"the rescue (the act of saving people)",t:"c19acc"},
+ {f:"le sauveteur",e:"the rescuer (someone who saves people from danger)",a:["la sauveteuse"],t:"c19acc",n:"la sauveteuse (f.)"},
+ {f:"le secouriste",e:"the first-aider, the emergency responder (trained in first aid)",a:["la secouriste"],t:"c19acc",n:"same form for both genders: le/la secouriste",x:1},
+ {f:"le soulagement",e:"the relief (the feeling of being relieved)",t:"c19acc"},
+ {f:"le survivant",e:"the survivor",a:["la survivante"],t:"c19acc",n:"la survivante (f.)"},
+ {f:"le témoin",e:"the witness",t:"c19acc"},
+ /* --- Adjectifs : damage & destruction --- */
+ {f:"arraché(e)",e:"ripped off, torn away",t:"c19adj1"},
+ {f:"balayé(e)",e:"swept away (by wind, water or a wave)",t:"c19adj1"},
+ {f:"déraciné(e)",e:"uprooted",t:"c19adj1"},
+ {f:"écroulé(e)",e:"collapsed, crumbled down (fallen and broken apart, like a wall or a building)",t:"c19adj1",n:"vs effondré(e) — écroulé = toppled and crumbled; effondré = caved in, gave way"},
+ {f:"éventré(e)",e:"burst open, ripped open",t:"c19adj1",x:1},
+ {f:"entrechoqué(e)",e:"crashed together, colliding with one another",t:"c19adj1",n:"usually seen in the plural: des voitures entrechoquées",x:1},
+ {f:"chamboulé(e)",e:"turned upside down, thrown into chaos, disrupted",t:"c19adj1",x:1},
+ {f:"débordé(e)",e:"overwhelmed, swamped (with more than one can handle)",t:"c19adj1"},
+ {f:"encombré(e)",e:"encumbered, cluttered, congested (too full of things or traffic)",t:"c19adj1"},
+ {f:"impraticable",e:"impassable (a road or route that cannot be used)",t:"c19adj1",n:"les routes impraticables = the impassable roads"},
+ {f:"enfermé(e)",e:"locked in, shut in",t:"c19adj1"},
+ {f:"pris(e) au piège",e:"trapped, caught in a trap",t:"c19adj1"},
+ {f:"brûlé(e) vif(-ve)",e:"burned alive",t:"c19adj1"},
+ {f:"inflammable",e:"flammable",t:"c19adj1"},
+ {f:"sanglant(e)",e:"bloody, bloodstained",t:"c19adj1"},
+ {f:"périlleux(-euse)",e:"perilous, very dangerous",t:"c19adj1",x:1},
+ /* --- Adjectifs : people, safety & conditions --- */
+ {f:"disparu(e)",e:"vanished, gone (simply no longer there)",t:"c19adj2",n:"vs porté(e) disparu(e) — the official 'reported missing' status"},
+ {f:"porté(e) disparu(e)",e:"officially reported missing, unaccounted for",t:"c19adj2",n:"the fixed expression used in casualty reports; plain disparu(e) = vanished, gone"},
+ {f:"vivant(e)",e:"alive, living",t:"c19adj2"},
+ {f:"indemne",e:"unharmed, uninjured (without a scratch)",t:"c19adj2",n:"vs sain(e) et sauf(-ve) — indemne is about not being hurt; sain et sauf is about having come through the danger safely",x:1},
+ {f:"sain(e) et sauf(-ve)",e:"safe and sound (having come through the danger alive and well)",t:"c19adj2"},
+ {f:"insoutenable",e:"unbearable, intolerable",t:"c19adj2"},
+ {f:"rassurant(e)",e:"reassuring",t:"c19adj2"},
+ {f:"révolté(e)",e:"outraged, revolted",t:"c19adj2"},
+ {f:"épais(se)",e:"thick, dense",t:"c19adj2"},
+ {f:"exigu(ë)",e:"cramped, very small (too little space)",t:"c19adj2",n:"feminine: exiguë (with a diaeresis)",x:1},
+ {f:"hivernal(e)",e:"wintry, of the winter (adjective)",t:"c19adj2"},
+ {f:"cancérigène",e:"cancer-causing, carcinogenic",t:"c19adj2",x:1},
+ {f:"pétrolier(-ière)",e:"oil-related, of the oil industry (adjective)",t:"c19adj2",n:"also a noun: le pétrolier = the oil tanker"},
+ {f:"potable",e:"drinkable (safe to drink)",t:"c19adj2"},
+ {f:"provisoire",e:"temporary, provisional",t:"c19adj2"},
+ {f:"enregistré(e)",e:"recorded, registered",t:"c19adj2"},
+ /* --- Verbes : disasters striking & damage --- */
+ {f:"s'alourdir",e:"to become heavier, to rise (of a toll or total)",t:"c19v1",n:"le bilan s'alourdit = the toll is rising"},
+ {f:"avoisiner",e:"to be around, to hover near (a number or level)",t:"c19v1",x:1},
+ {f:"se déclarer",e:"to break out (of a fire or an epidemic)",t:"c19v1"},
+ {f:"se diffuser",e:"to spread, to circulate (news, images, a signal — to be broadcast)",t:"c19v1",n:"vs s'étendre (a fire or territory spreading out over an area). The source glossaire's gloss for this verb is shifted by one row; corrected here."},
+ {f:"dévaster",e:"to devastate, to ravage",t:"c19v1"},
+ {f:"écraser",e:"to crush; also: to run over",t:"c19v1"},
+ {f:"ensevelir",e:"to bury (under earth, snow or rubble)",t:"c19v1"},
+ {f:"s'encastrer",e:"to embed itself, to wedge itself in (after a crash)",t:"c19v1"},
+ {f:"s'engouffrer",e:"to rush into, to surge into (a narrow opening)",t:"c19v1",x:1},
+ {f:"s'étendre",e:"to spread out, to stretch over an area (a fire, a territory)",t:"c19v1",n:"vs se diffuser (news or images spreading, being broadcast)"},
+ {f:"faire naufrage",e:"to be shipwrecked, to wreck at sea",t:"c19v1"},
+ {f:"couler",e:"to sink (of a ship going down); also: to flow",t:"c19v1"},
+ {f:"incendier",e:"to set fire to, to set ablaze",t:"c19v1"},
+ {f:"joncher",e:"to litter, to be strewn with (to cover the ground with)",t:"c19v1",x:1},
+ {f:"se renverser",e:"to tip over, to overturn",t:"c19v1"},
+ {f:"submerger",e:"to submerge, to flood over, to engulf",t:"c19v1"},
+ {f:"se noyer",e:"to drown",t:"c19v1"},
+ /* --- Verbes : collisions, blocking & rescue --- */
+ {f:"boucler",e:"to cordon off, to seal off (an area)",t:"c19v2"},
+ {f:"colmater",e:"to plug, to seal up (a hole or a leak)",t:"c19v2"},
+ {f:"écarter",e:"to rule out, to dismiss; also: to move aside",t:"c19v2",n:"écarter un risque = to rule out a risk. The source glossaire's gloss for this verb is shifted by one row; corrected here."},
+ {f:"empêcher",e:"to prevent, to stop (someone from doing something)",t:"c19v2"},
+ {f:"extirper",e:"to pull out with difficulty, to drag out",t:"c19v2",x:1},
+ {f:"franchir",e:"to cross, to get past (a threshold, a line or a barrier)",t:"c19v2"},
+ {f:"frôler",e:"to brush past, to graze, to narrowly miss",t:"c19v2"},
+ {f:"heurter",e:"to strike, to bump into (to hit something)",t:"c19v2",n:"vs percuter (a hard, high-speed crash into something)"},
+ {f:"se heurter à",e:"to run up against, to come up against (an obstacle or a difficulty)",t:"c19v2"},
+ {f:"hurler",e:"to scream, to yell, to howl (at the top of one's lungs)",t:"c19v2",n:"vs crier — hurler is louder and more extreme"},
+ {f:"crier",e:"to shout, to cry out (to raise one's voice)",t:"c19v2",n:"vs hurler (to scream, to howl)"},
+ {f:"localiser",e:"to locate, to pinpoint",t:"c19v2"},
+ {f:"maîtriser un feu",e:"to bring a fire under control, to contain a fire",t:"c19v2"},
+ {f:"obstruer",e:"to obstruct, to block (a passage)",t:"c19v2"},
+ {f:"périr",e:"to perish, to die (in an accident, a disaster or a war)",t:"c19v2"},
+ {f:"soigner",e:"to care for, to treat (a patient or a wound)",t:"c19v2"},
+ {f:"succomber",e:"to succumb, to die of one's injuries",t:"c19v2"},
+ /* --- Verbes : reporting, responding & managing --- */
+ {f:"aborder un problème",e:"to take on a problem, to tackle an issue",t:"c19v3"},
+ {f:"affronter",e:"to face, to confront (a danger or an opponent)",t:"c19v3"},
+ {f:"allouer des fonds",e:"to allocate funds, to earmark money",t:"c19v3"},
+ {f:"s'efforcer",e:"to try hard, to strive (to do something)",t:"c19v3",n:"s'efforcer de + infinitif",x:1},
+ {f:"constater",e:"to note, to observe (to establish as a fact)",t:"c19v3"},
+ {f:"faire état de",e:"to report, to cite, to mention officially",t:"c19v3"},
+ {f:"faire la lumière sur",e:"to bring to light, to clear up, to shed light on",t:"c19v3"},
+ {f:"intervenir",e:"to intervene, to step in",t:"c19v3"},
+ {f:"jouir de",e:"to enjoy, to benefit from (a right or an advantage)",t:"c19v3"},
+ {f:"mettre en garde",e:"to caution, to warn against a danger (to urge someone to be careful)",t:"c19v3",n:"vs prévenir (to notify someone that something is happening or coming)"},
+ {f:"se mobiliser",e:"to rally, to mobilize (to join forces for a cause)",t:"c19v3"},
+ {f:"parvenir",e:"to reach, to manage to",t:"c19v3"},
+ {f:"prévenir",e:"to warn, to notify in advance (to alert someone that something is coming or happening)",t:"c19v3",n:"vs mettre en garde (to caution against a danger)"},
+ {f:"prévoir",e:"to foresee, to plan, to forecast",t:"c19v3"},
+ {f:"provoquer",e:"to trigger, to set off (a disaster or a reaction); also: to provoke",t:"c19v3"},
+ {f:"revenir",e:"to come back, to return",t:"c19v3"},
+ {f:"revoir à la hausse",e:"to revise upwards (a figure or an estimate)",t:"c19v3"},
+ {f:"survenir",e:"to occur, to arise (suddenly, unexpectedly)",t:"c19v3"},
+ /* --- Autres mots --- */
+ {f:"au large de",e:"off the coast of, out at sea from",t:"c19exp"},
+ {f:"la chaîne alimentaire",e:"the food chain",t:"c19exp"},
+ {f:"en pleine mer",e:"in the open sea, out at sea",t:"c19exp"},
+ {f:"l'équipage",e:"the crew",t:"c19exp",n:"m."},
+ {f:"le freinage",e:"the braking",t:"c19exp"},
+ {f:"la pente",e:"the slope, the incline (the gradient of the ground)",t:"c19exp"},
+ {f:"le navire",e:"the ship, the vessel",t:"c19exp"},
+ {f:"sur le coup",e:"on the spot, instantly (at the moment of impact)",t:"c19exp"},
+ {f:"la toiture",e:"the roof (the whole roofing of a building)",t:"c19exp"},
+ {f:"la tôle",e:"the sheet metal, the corrugated iron",t:"c19exp"},
+ {f:"le trou",e:"the hole",t:"c19exp"},
+ {f:"le vide",e:"the emptiness, the void",t:"c19exp"},
+ {f:"la zone d'ombre",e:"the gray area, the unclear point",t:"c19exp"},
+ /* --- Mini-glossaire : reading & listening extras — disaster reports (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"tirer des enseignements de",e:"to learn lessons from, to draw lessons from",t:"c19mg1"},
+ {f:"la secousse",e:"the tremor, the shock (a single shake of the ground)",t:"c19mg1"},
+ {f:"sismique",e:"seismic",t:"c19mg1"},
+ {f:"vulnérable",e:"vulnerable",t:"c19mg1"},
+ {f:"la digue",e:"the levee, the dike",t:"c19mg1"},
+ {f:"effondré(e)",e:"caved in, sunk down (a structure or ground that gave way); also: devastated (of a person)",t:"c19mg1",n:"vs écroulé(e) — écroulé = toppled and crumbled; effondré = caved in, gave way"},
+ {f:"le flanc",e:"the side of a hill or mountain, the hillside",t:"c19mg1",n:"vs la pente (the incline itself)"},
+ {f:"le pan",e:"the section, the chunk (of a wall, a hillside or a roof)",t:"c19mg1"},
+ {f:"mettre à terre",e:"to bring down, to knock to the ground (trees, by wind)",t:"c19mg1"},
+ {f:"en vigueur",e:"in force, in effect (a rule or warning currently applying)",t:"c19mg1"},
+ {f:"sans précédent",e:"unprecedented, without precedent",t:"c19mg1"},
+ /* --- Mini-glossaire : reading & listening extras — accident reports (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"à pleine allure",e:"at full speed",t:"c19mg2"},
+ {f:"un avertisseur",e:"an alarm, a warning device",t:"c19mg2",x:1},
+ {f:"les champs",e:"the fields",t:"c19mg2",n:"m. pl."},
+ {f:"dérailler",e:"to derail, to go off the rails",t:"c19mg2"},
+ {f:"desservir",e:"to serve (a route or a place — to provide access to it)",t:"c19mg2",x:1},
+ {f:"domicilié(e)",e:"residing, officially living (at an address)",t:"c19mg2",x:1},
+ {f:"emprunter",e:"to take, to use (a route); also: to borrow",t:"c19mg2"},
+ {f:"une impasse",e:"a dead end",t:"c19mg2"},
+ {f:"légèrement",e:"lightly, slightly",t:"c19mg2"},
+ {f:"la motrice",e:"the locomotive, the power car (of a train)",t:"c19mg2"},
+ {f:"un occupant",e:"an occupant",a:["une occupante"],t:"c19mg2",n:"une occupante (f.)"},
+ {f:"un passage à niveau",e:"a railway crossing, a level crossing",t:"c19mg2"},
+ {f:"percuter",e:"to crash into at speed, to smash into (a vehicle hitting something)",t:"c19mg2",n:"vs heurter (to strike or bump into)"},
+ {f:"poursuivre",e:"to continue, to go on; also: to pursue",t:"c19mg2"},
+ {f:"projeté(e)",e:"propelled, thrown, ejected",t:"c19mg2"},
+ {f:"signifier",e:"to indicate, to mean",t:"c19mg2"},
+ {f:"une explosion",e:"an explosion",t:"c19mg2"},
+ {f:"affluer",e:"to flock, to converge (toward a place)",t:"c19mg2"},
+ {f:"le carburant",e:"the fuel",t:"c19mg2"},
+ {f:"se déporter",e:"to veer off (to leave one's lane or course)",t:"c19mg2"},
+ {f:"se déverser",e:"to spill, to pour out",t:"c19mg2"},
+ {f:"mal entretenu(e)",e:"poorly maintained",t:"c19mg2"}
+  ];
+  W.forEach(function(w){ w.c=19; VOCAB.push(w); });
+})();
+
 var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocMissOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
@@ -1426,6 +1636,11 @@ Object.keys(state.verbStats).forEach(function(fr){ var st=deriveStatus(fr,state.
 if(state.ach.a_v6 && !(VOCAB.some(function(v){return v.c===16;}) &&
     VOCAB.every(function(v){return v.c!==16 || state.vocab[v.f]==="known";}))){
   delete state.ach.a_v6; saveState();
+}
+/* self-heal: same guard for "Chapitre 19 maîtrisé" (a_v19) */
+if(state.ach.a_v19 && !(VOCAB.some(function(v){return v.c===19;}) &&
+    VOCAB.every(function(v){return v.c!==19 || state.vocab[v.f]==="known";}))){
+  delete state.ach.a_v19; saveState();
 }
 function rebuildVocTopics(){
   var present={};
@@ -1787,6 +2002,85 @@ var DRILLS=[
  ]}
 
 ];
+
+/* ================= CHAPITRE 19 : Emergencies and Disasters ================= */
+DRILLS.push(
+ {id:"nomin1",note:"<b>Instructions :</b> Turn the verb or adjective in each sentence into the noun a news headline would use, and complete the headline. Decide the suffix — or whether the noun is irregular — before you type. No article needed.<br><b>The rule :</b> a verb or adjective becomes a noun by taking a suffix, and the suffix fixes the noun's gender.<ul><li>verbs : -tion/-ation, -ment, -age, -ure, -ance/-ence… · some are irregular (partir → le départ) · some have two nouns with different meanings</li><li>adjectives : -té, -tude, -esse, -eur, -ance…</li></ul>",title:"La nominalisation",ch:"Ch. 19",minCh:19,items:[
+   {q:"Les autorités ont évacué le quartier. → « ___ du quartier par les autorités »",a:["évacuation","l'évacuation"],m:{vg:"nomin"}},
+   {q:"Un pont s'est effondré dans la nuit. → « ___ d'un pont dans la nuit »",a:["effondrement","l'effondrement"],m:{vg:"nomin"}},
+   {q:"Le fleuve a débordé après les pluies. → « ___ du fleuve après les pluies »",a:["débordement","le débordement"],m:{vg:"nomin"}},
+   {q:"Les températures ont augmenté de trois degrés. → « ___ des températures de trois degrés »",a:["augmentation","l'augmentation"],m:{vg:"nomin"}},
+   {q:"Les pompiers sont intervenus rapidement. → « ___ rapide des pompiers »",a:["intervention","l'intervention"],m:{vg:"nomin"}},
+   {q:"Le volcan a détruit deux villages. → « ___ de deux villages par le volcan »",a:["destruction","la destruction"],m:{vg:"nomin"}},
+   {q:"L'équipe de secours est partie à l'aube. → « ___ de l'équipe de secours à l'aube »",a:["départ","le départ"],m:{vg:"nomin"},hint:"An irregular noun — not built from the infinitive."},
+   {q:"Le vieux capitaine est mort en mer. → « ___ du vieux capitaine en mer »",a:["mort","la mort"],m:{vg:"nomin"},hint:"An irregular noun."},
+   {q:"Les habitants ont reconstruit le village. → « ___ du village par les habitants »",a:["reconstruction","la reconstruction"],m:{vg:"nomin"}},
+   {q:"La police a arrêté le suspect. → « ___ du suspect »",a:["arrestation","l'arrestation"],m:{vg:"nomin"},hint:"arrêter a person → an arrest."},
+   {q:"Le train s'est arrêté en pleine campagne. → « ___ du train en pleine campagne »",a:["arrêt","l'arrêt"],m:{vg:"nomin"},hint:"arrêter = to stop → a stop."},
+   {q:"Le barrage a rompu près du village. → « ___ du barrage près du village »",a:["rupture","la rupture"],m:{vg:"nomin"}},
+   {q:"La situation est grave. → « ___ de la situation »",a:["gravité","la gravité"],m:{vg:"nomin"}},
+   {q:"Il est seul depuis dix ans ; il souffre de sa ___.",a:["solitude"],m:{vg:"nomin"}},
+   {q:"Les habitants sont tristes après la tempête. → « La ___ des habitants après la tempête »",a:["tristesse"],m:{vg:"nomin"}},
+   {q:"La vague est haute de dix mètres. → « La ___ de la vague : dix mètres »",a:["hauteur"],m:{vg:"nomin"}},
+   {q:"Les médecins sont inquiets pour les blessés. → « L'___ des médecins pour les blessés »",a:["inquiétude"],m:{vg:"nomin"}},
+   {q:"L'eau est pure dans cette région. → « La ___ de l'eau dans cette région »",a:["pureté"],m:{vg:"nomin"}}
+ ]},
+ {id:"inclexc1",note:"<b>Instructions :</b> Work out what the sentence is doing — including someone, leaving someone out, or allowing only one thing — then write the expression that fits, with any agreement it needs.<br><b>The rule :</b><ul><li>inclusion : <i>y compris</i> + noun (never changes) · noun + <i>compris</i> / <i>inclus</i> (agrees with the noun before it)</li><li>exception : <i>sauf</i>, <i>excepté</i>, <i>à part</i>, <i>à l'exception de</i> + noun · <i>sauf si</i> + clause · <i>sans</i> + infinitive</li><li>restriction : <i>ne … que</i> = only — que sits right before the thing that is limited</li></ul>",title:"L'inclusion, l'exception et la restriction",ch:"Ch. 19",minCh:19,items:[
+   {q:"La location coûte 80 euros par jour, assurance ___.",a:["comprise","incluse"],m:{vg:"inclexc"},hint:"The word follows the noun and agrees with it."},
+   {q:"Tous les habitants, ___ les enfants, ont dû quitter la zone.",a:["y compris"],m:{vg:"inclexc"},hint:"Before the noun — the form never changes."},
+   {q:"Le séjour coûte 400 euros, repas ___.",a:["compris","inclus"],m:{vg:"inclexc"}},
+   {q:"Les frais de livraison, ___ les taxes, s'élèvent à 30 euros.",a:["y compris"],m:{vg:"inclexc"}},
+   {q:"Les dégâts s'élèvent à deux millions d'euros, routes ___.",a:["comprises","incluses"],m:{vg:"inclexc"},hint:"routes is feminine plural."},
+   {q:"Toute l'équipe, Sophie ___, a été félicitée par le maire.",a:["comprise","incluse"],m:{vg:"inclexc"}},
+   {q:"Tout le village a été évacué, ___ le vieux gardien du phare.",a:["sauf","excepté","à part","à l'exception de","hormis"],m:{vg:"inclexc"}},
+   {q:"La route sera rouverte lundi, ___ la neige continue de tomber.",a:["sauf si"],m:{vg:"inclexc"},hint:"A whole clause follows — the exception is a possible event."},
+   {q:"Le concert aura lieu dehors, ___ pleut.",a:["sauf s'il"],m:{vg:"inclexc"},hint:"sauf si + il elides."},
+   {q:"Il a traversé toute la zone sinistrée ___ se retourner une seule fois.",a:["sans"],m:{vg:"inclexc"}},
+   {q:"Il est reparti ___ avoir vu les dégâts.",a:["sans"],m:{vg:"inclexc"},hint:"Followed by a past infinitive."},
+   {q:"Il ne mange ___ du pain depuis trois jours. (only bread)",a:["que"],m:{vg:"inclexc"}},
+   {q:"Il ne mange ___ de pain depuis trois jours. (no bread at all)",a:["pas"],m:{vg:"inclexc"}},
+   {q:"Les secouristes n'ont retrouvé ___ deux survivants. (only two)",a:["que"],m:{vg:"inclexc"}},
+   {q:"Elle n'a pris ___ sac à dos avant de fuir. (only one backpack)",a:["qu'un"],m:{vg:"inclexc"},hint:"Compound tense — que goes after the participle, right before the thing limited."},
+   {q:"Il n'y avait ___ trois personnes à la réunion. (only three)",a:["que"],m:{vg:"inclexc"}}
+ ]},
+ {id:"infin1",note:"<b>Instructions :</b> For each blank, decide what belongs there — a preposition, <i>ne</i>, or the verb in the form the sentence needs (a verb shown in parentheses is not in the right form yet).<br><b>The rule :</b> the infinitive never changes and names no subject or time.<ul><li>after a conjugated verb, a second verb stays in the infinitive</li><li>after a preposition (à, de, pour, sans, par…), a verb is always an infinitive</li><li>to negate an infinitive, put <i>ne pas</i> (or <i>ne jamais</i>…) right before it</li></ul>",title:"Le mode infinitif",ch:"Ch. 19",minCh:19,items:[
+   {q:"Les habitants ont réussi ___ quitter la zone avant l'inondation.",a:["à"],m:{vg:"infin"}},
+   {q:"Le maire a promis ___ reconstruire le pont.",a:["de"],m:{vg:"infin"}},
+   {q:"Elle est repartie ___ dire au revoir.",a:["sans"],m:{vg:"infin"}},
+   {q:"Nous nous entraînons ___ mieux réagir en cas de séisme.",a:["pour","afin de"],m:{vg:"infin"}},
+   {q:"Ils ont commencé ___ ranger les décombres dès l'aube.",a:["à","par"],m:{vg:"infin"}},
+   {q:"Il a hésité longtemps ___ appeler les secours.",a:["à"],m:{vg:"infin"}},
+   {q:"C'est l'heure ___ ranger les affaires et de partir.",a:["de"],m:{vg:"infin"}},
+   {q:"Le voisin est venu ___ nous prévenir du danger.",a:["pour"],m:{vg:"infin"}},
+   {q:"Tu devrais penser ___ prendre une lampe de poche.",a:["à"],m:{vg:"infin"}},
+   {q:"Les secouristes ont fini ___ retrouver le disparu après deux jours de recherches.",a:["par"],m:{vg:"infin"}},
+   {q:"Le maire a décidé de ___ pas évacuer la ville.",a:["ne"],m:{vg:"infin"}},
+   {q:"Je vous conseille de ___ jamais toucher aux fils électriques.",a:["ne"],m:{vg:"infin"}},
+   {q:"Les sinistrés doivent ___ (attendent) les secours.",a:["attendre"],m:{vg:"infin"}},
+   {q:"Nous voulons ___ (aidons) les familles touchées.",a:["aider"],m:{vg:"infin"}},
+   {q:"Le pilote a laissé les passagers ___ (descendaient) en premier.",a:["descendre"],m:{vg:"infin"}},
+   {q:"Vous pouvez ___ (partez) dès que la zone sera sécurisée.",a:["partir"],m:{vg:"infin"}},
+   {q:"Après l'alerte, chacun a dû ___ (prenait) le chemin le plus court.",a:["prendre"],m:{vg:"infin"}}
+ ]},
+ {id:"voc19",note:"<b>Instructions :</b> Write the single glossaire word (in the form the sentence needs) that completes each sentence, spelled and accented exactly as taught.<br><b>Word bank :</b> the Chapter 19 glossaire — natural disasters, accidents, and rescue. Accents count.",title:"Vocab en contexte — Ch. 19",ch:"Ch. 19",minCh:19,items:[
+   {q:"Le ___ du séisme s'est alourdi : on compte désormais 300 morts.",a:["bilan"],m:{vg:"vocctx"}},
+   {q:"Les ___ ont cherché des survivants toute la nuit sous les décombres.",a:["secouristes","sauveteurs"],m:{vg:"vocctx"}},
+   {q:"Le pétrolier a fait naufrage : une ___ noire menace maintenant la côte.",a:["marée"],m:{vg:"vocctx"}},
+   {q:"Deux jours après la tempête de neige, de nombreuses routes restent ___.",a:["impraticables"],m:{vg:"vocctx"}},
+   {q:"Un épais ___ de fumée montait au-dessus de la plateforme pétrolière.",a:["panache"],m:{vg:"vocctx"}},
+   {q:"Le gouvernement a déclaré l'état d'___ dans les régions touchées.",a:["urgence"],m:{vg:"vocctx"}},
+   {q:"Après huit jours de recherches, la famille a enfin vécu des ___ émouvantes.",a:["retrouvailles"],m:{vg:"vocctx"}},
+   {q:"Les pompiers ont réussi à ___ l'incendie avant qu'il n'atteigne les maisons.",a:["maîtriser"],m:{vg:"vocctx"},hint:"to bring under control, to contain."},
+   {q:"Au moins quatre ouvriers ont ___ dans l'incendie de la plateforme.",a:["péri","succombé"],m:{vg:"vocctx"}},
+   {q:"Malgré la violence du choc, le conducteur est resté ___ : aucune blessure.",a:["indemne","sain et sauf"],m:{vg:"vocctx"}},
+   {q:"Le train a ___ à cause d'un obstacle sur la voie.",a:["déraillé"],m:{vg:"vocctx"}},
+   {q:"Le cargo a heurté un rocher et a ___ en moins d'une heure.",a:["coulé"],m:{vg:"vocctx"}},
+   {q:"Une avalanche a ___ le chalet sous plusieurs mètres de neige.",a:["enseveli"],m:{vg:"vocctx"},hint:"to bury."},
+   {q:"Les gendarmes ont ___ la zone pour tenir les badauds à distance.",a:["bouclé"],m:{vg:"vocctx"},hint:"to cordon off."},
+   {q:"Le baigneur imprudent s'est ___ malgré les efforts du sauveteur.",a:["noyé"],m:{vg:"vocctx"}},
+   {q:"Les autorités ont ___ les habitants qu'une deuxième vague de tempêtes arrivait.",a:["prévenu"],m:{vg:"vocctx"},hint:"to notify in advance."}
+ ]}
+);
 /* ---- number → written French (0 to 1 000 000) ---- */
 function normLoose(x){ return norm(x).replace(/-/g," ").replace(/\s+/g," ").trim(); }
 function randInt(lo,hi){ return lo+Math.floor(Math.random()*(hi-lo+1)); }
@@ -1923,6 +2217,34 @@ var TEST=[
  {ch:"16",type:"fill",q:"Il a hérité d'un bel ___ à la mort de ses grands-parents.",a:["héritage"],m:{cat:"gen"}},
  {ch:"16",type:"mc",q:"Il est fier de son fils ; on peut dire qu'il en est…",o:["fier", "jaloux", "honteux", "sûr"],a:"fier"}
 ];
+
+/* ===== Chapter 19 (bank of 24, 10 drawn per quiz) ===== */
+TEST.push(
+ {ch:"19",type:"fill",q:"Le gouvernement a réagi trop lentement. → « ___ tardive du gouvernement »",a:["réaction","la réaction"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"L'équipe est solidaire. → « La ___ de l'équipe face à la crise »",a:["solidarité"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Tous les vols, ___ celui de Rome, ont été annulés à cause de la neige.",a:["y compris"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Le forfait coûte 120 euros, boissons ___.",a:["comprises","incluses"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Nous partirons demain, ___ la tempête s'aggrave.",a:["sauf si"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Personne n'a été blessé, ___ le conducteur.",a:["sauf","excepté","à part","à l'exception de","hormis"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Il ne reste ___ abri dans le village. (only one)",a:["qu'un"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Elle a quitté la salle ___ dire un mot.",a:["sans"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Les habitants ont refusé ___ quitter leur maison.",a:["de"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Il a passé la nuit à ___ (attendait) les secours.",a:["attendre"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Il vaut mieux ___ pas conduire pendant l'alerte.",a:["ne"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Les enfants ont appris ___ nager avant l'été.",a:["à"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Après l'effondrement de l'immeuble, les secouristes ont fouillé les ___.",a:["décombres"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"La ___ a fait plus de morts que prévu : le thermomètre a dépassé 40 degrés.",a:["canicule"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Le ___ provisoire du cyclone fait état de 18 morts.",a:["bilan"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Pour éviter une collision, le camion s'est ___ sur le bas-côté.",a:["déporté"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Le train a ___ une voiture au passage à niveau.",a:["percuté"],m:{cat:"gen"}},
+ {ch:"19",type:"fill",q:"Il y a eu une ___ de courant dans tout le quartier après l'orage.",a:["coupure"],m:{cat:"gen"}},
+ {ch:"19",type:"mc",q:"Dans un bilan officiel, une personne dont on est sans nouvelles après la catastrophe est dite…",o:["portée disparue", "indemne", "sauve", "rassurante"],a:"portée disparue"},
+ {ch:"19",type:"mc",q:"Quelle phrase est correcte ?",o:["Le loyer, charges comprises, est de 700 euros.", "Le loyer, charges compris, est de 700 euros.", "Le loyer, y comprises les charges, est de 700 euros.", "Le loyer, charges inclus, est de 700 euros."],a:"Le loyer, charges comprises, est de 700 euros."},
+ {ch:"19",type:"mc",q:"Quelle phrase veut dire qu'elle n'a rien mangé d'autre que du riz ?",o:["Elle n'a mangé que du riz.", "Elle n'a pas mangé de riz.", "Elle n'a jamais mangé de riz.", "Elle n'a plus mangé de riz."],a:"Elle n'a mangé que du riz."},
+ {ch:"19",type:"mc",q:"Un « séisme » désigne…",o:["un tremblement de terre", "une avalanche", "une inondation", "une tornade"],a:"un tremblement de terre"},
+ {ch:"19",type:"mc",q:"Une personne qui habite tout près du lieu du sinistre est un(e)…",o:["riverain(e)", "badaud(e)", "secouriste", "survivant(e)"],a:"riverain(e)"},
+ {ch:"19",type:"mc",q:"Une « marée noire » est…",o:["une pollution par du pétrole en mer", "une marée très haute", "une tempête de nuit", "un incendie de forêt"],a:"une pollution par du pétrole en mer"}
+);
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
 
@@ -2197,6 +2519,14 @@ var OPI=[
  {t:"Ch 16 · Aging and retirement homes",d:"Quel est votre avis sur les maisons de retraite ? Quelle option préférez-vous pour vos propres parents ? — What is your opinion on retirement homes? What option would you prefer for your own parents?",s:["quel vs lequel","l'accompagnement, la maison de retraite."]},
  {t:"Ch 16 · Your family's story",d:"Racontez comment votre propre famille a évolué au fil du temps — mariages, divorces, déménagements. — Tell how your own family has evolved over time — marriages, divorces, moves.",s:["tout, toute, tous, toutes","se pacser, divorcer de."]}
 ];
+OPI.push(
+ {t:"Ch 19 · Report a natural disaster",d:"Présentez un court bulletin d'information sur une catastrophe naturelle : type de catastrophe, région touchée, bilan humain, dégâts. — Give a short news report on a natural disaster: type, affected region, human toll, damage.",s:["le bilan s'est alourdi, les secouristes, les décombres","la nominalisation : l'effondrement, l'évacuation, le sauvetage"]},
+ {t:"Ch 19 · Advice before an emergency",d:"Que conseilleriez-vous à des visiteurs pour se préparer à un séisme ou à un incendie ? Donnez huit conseils. — What would you advise visitors to do to prepare for an earthquake or a fire? Give eight tips.",s:["vous devriez, il faut, évitez de, ne pas + infinitif","sans + infinitif : sortir sans prendre l'ascenseur"]},
+ {t:"Ch 19 · Witness of an accident",d:"Racontez un accident dont vous avez été témoin (ou dont vous avez entendu parler) : ce qui s'est passé, les causes, les conséquences. — Tell about an accident you witnessed (or heard about): what happened, the causes, the consequences.",s:["heurter, percuter, se renverser, dérailler","ne … que, seulement · sauf si, à part"]},
+ {t:"Ch 19 · Government vs. relief organizations",d:"Après une catastrophe, qui réagit le mieux : le gouvernement ou les associations comme la Croix-Rouge ? Défendez votre avis. — After a disaster, who responds better: the government or organizations like the Red Cross? Defend your view.",s:["se mobiliser, intervenir, allouer des fonds","y compris, à l'exception de"]},
+ {t:"Ch 19 · Extreme weather you've lived through",d:"Avez-vous déjà vécu un phénomène météo extrême, ou en avez-vous vu un à la télévision ? Racontez ce qui s'est passé. — Have you lived through extreme weather, or seen it on TV? Tell what happened.",s:["la canicule, la tempête hivernale, les routes impraticables","prévenir, prévoir, survenir, revenir — présent et passé composé"]},
+ {t:"Ch 19 · A disaster in the news",d:"Résumez un article récent sur un incendie, une inondation, un déraillement ou un naufrage, puis posez deux questions à votre partenaire. — Summarize a recent article about a fire, flood, derailment or shipwreck, then ask your partner two questions.",s:["où, quand, qui, quoi, pourquoi, conséquences","faire état de, faire la lumière sur, sain(e) et sauf(-ve), porté(e) disparu(e)"]}
+);
 var opiIdx=0, opiTimer=null;
 function stopOpiTimer(){ if(opiTimer){ clearInterval(opiTimer); opiTimer=null; } }
 function renderOpi(){
@@ -2237,12 +2567,15 @@ var sesStreak=0, sesFill=0, sesAccMiss=0, sesRight=0;   /* per page-load session
 function withSrc(m,src,sk,ch){ var o={}; if(m){ for(var k in m) o[k]=m[k]; } o.src=src; if(sk) o.sk=sk; if(ch) o.ch=ch; return o; }
 var GRAM_SK={dont1:"dont",poss1:"poss",quellq1:"quellq",toutadj1:"toutadj",voc16:"vocctx"};
 var GRAM_LBL={dont:"Dont (+ qui, que, où)",poss:"Pronoms possessifs",quellq:"Quel / Lequel",toutadj:"Tout, toute, tous, toutes",vocctx:"Vocab en contexte"};
+GRAM_SK.nomin1="nomin"; GRAM_SK.inclexc1="inclexc"; GRAM_SK.infin1="infin"; GRAM_SK.voc19="vocctx19";
+GRAM_LBL.nomin="Nominalisation"; GRAM_LBL.inclexc="Inclusion / exception / restriction"; GRAM_LBL.infin="Mode infinitif"; GRAM_LBL.vocctx19="Vocab en contexte (Ch 19)";
 
 var ACH=[
   {id:"a_s10", icon:"🔥", name:"En feu",              desc:"10 correct answers in a row (any graded mode)."},
   {id:"a_s25", icon:"⚡", name:"Série de 25",         desc:"25 correct answers in a row."},
   {id:"a_s50", icon:"🏆", name:"Machine",             desc:"50 correct answers in a row."},
   {id:"a_v6",  icon:"📗", name:"Chapitre 16 maîtrisé", desc:"Every Chapter 16 vocab card is green."},
+  {id:"a_v19", icon:"📙", name:"Chapitre 19 maîtrisé", desc:"Every Chapter 19 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every verb in the Conjugaison tab is green."},
   {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
   {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
@@ -2281,6 +2614,9 @@ function sweepMastery(statusMap){
       var has16=VOCAB.some(function(v){ return v.c===16; });
       var all=has16 && VOCAB.every(function(v){ return v.c!==16 || state.vocab[v.f]==="known"; });
       if(all) award("a_v6");
+      var has19=VOCAB.some(function(v){ return v.c===19; });
+      var all19=has19 && VOCAB.every(function(v){ return v.c!==19 || state.vocab[v.f]==="known"; });
+      if(all19) award("a_v19");
     } else if(statusMap===state.verbs){
       var allv=V.length && V.every(function(v){ return state.verbs[v.fr]==="known"; });
       if(allv) award("a_conj");
@@ -2323,6 +2659,7 @@ function renderInsightsSoon(){ if(_insT) clearTimeout(_insT); _insT=setTimeout(r
 function pctOf(o){ return o.a ? Math.round(o.m/o.a*100) : 0; }
 var PRON_LBL={je:"je",tu:"tu",il:"il / elle / on",nous:"nous",vous:"vous",ils:"ils / elles"};
 var VG_LBL={flag:"vedettes (tous temps)",irr16:"irréguliers (Ch 16)",pc:"passé composé",er:"-er present"};
+VG_LBL.irr19="irréguliers (Ch 19)"; VG_LBL.nomin="nominalisation"; VG_LBL.inclexc="inclusion / exception / restriction"; VG_LBL.infin="mode infinitif";
 function renderInsights(){
   var host=document.getElementById("insWeak"); if(!host) return;
   var b=state.ana.b, msgs=[];
@@ -2574,7 +2911,7 @@ var EXTRA_CIB=[
   EXTRA_CIB.forEach(function(v){ if(v.fr===n) v.aux="e"; });
 });
 EXTRA_CIB.forEach(function(v){ if(v.pron) v.aux="e"; });
-var CIB = V.concat(EXTRA_CIB);
+var CIB = V.concat(EXTRA_CIB.filter(function(x){ return !V.some(function(v){ return v.fr===x.fr; }); }));
 (function initCib(){
   var dl=document.getElementById("cibList");
   CIB.forEach(function(v){ var o=el("option"); o.value=v.fr; o.label=v.en; dl.appendChild(o); });
