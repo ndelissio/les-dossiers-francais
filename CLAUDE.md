@@ -86,6 +86,13 @@ of git. To prevent this:
 - Vocab bank field discipline (applies to ALL vocab builds going forward):
   - `f:` = clean primary answer ONLY. Never embed synonyms, parentheticals, or
     slash-alternatives inside `f:`.
+  - Gender-variable adjectives/nouns: `f:` may show the feminine as a suffix
+    shorthand — `anticipé(e)`, `fier(-ère)`, `mis(e) en marge`. That parenthetical
+    is display only: in Vocabulaire spelling, the masculine OR the feminine must
+    be accepted, and the student must never have to type the parentheses.
+    The Unit 4 engine handles this in `formVariants()`/`vocCands()`; any new
+    unit fork or vocab build must carry that grader (not just the data), and
+    the (-ère)/(-ive)/(-euse) shorthand must be checked against it.
   - `a:[...]` = accepted alternate answers/synonyms.
   - `n:` = notes.
   - No abbreviations in French or English vocab text: spell out full words
