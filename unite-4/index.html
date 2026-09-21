@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.1.0</title>
+<title>Unité 4 · Dossier Français — v0.1.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.1.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.1.1</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -579,8 +579,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.1.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapter 16 (Family Through Generations) so far, of Chapters 16–19. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.1.1</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapter 16 (Family Through Generations) so far, of Chapters 16–19. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.1.1 (20 Sep 2026): <strong>Hotfix — Vocabulaire spelling accepts either gender form.</strong> Cards written with a parenthetical feminine (<em>anticipé(e)</em>, <em>mis(e) en marge</em>, <em>fier(-ère)</em>) no longer require typing the parentheses: the masculine or the feminine now grades correct, and the literal card form still works. Verb cards with an optional complement (<em>se lasser (de)</em>, <em>se lancer (dans)</em>) likewise accept the answer with or without it. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v0.1.0 (16 Sep 2026): <strong>Unité 4 launch — Chapter 16 vocabulaire, grammaire &amp; conjugaison.</strong> Forked from the Unit 3 v1.3.0.1 engine; Unit 4 progress saves under its own key. <strong>Vocabulaire</strong>: 192 cards from the Chapter 16 end-of-chapter glossaire (Family Through Generations), across 8 topic groups sized to the ~20–25-word standing rule, plus 34 mini-glossaire words folded in from two reading/listening activities as flagged exceptions (own topic tags, own comment header), same pattern as the Unit 2 Ch 6 set. Synonym collisions resolved per the new standing rule (artisanal(e) merged from a duplicated glossaire entry; n’importe quoi ! vs peu importe ! given distinguishing EN cues). <strong>Grammaire</strong>: 4 new drills — le pronom relatif dont (+ reinforcement of qui/que/où), les pronoms possessifs (+ reinforcement of possessive adjectives), quel &amp; lequel, and les adjectifs indéfinis tout/toute/tous/toutes — plus a Vocab en contexte drill, all with fresh example sentences (not reused from the textbook or workbook). <strong>Conjugaison</strong>: the ten flagship verbs continue sweeping every tense; a new targeted set of seven Chapter 16 irregulars (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire) drills in présent + PC. <strong>Examen blanc</strong>: a 24-item Chapter 16 quiz bank (10 drawn per attempt) covering all four grammar points plus vocabulaire; the Unit 4 practice exam stays <em>à venir</em> pending the study guide. <strong>Pratique orale</strong>: 6 new Chapter 16 prompts. Chapters 17–19 and etymology mémos are not yet built — this is a partial, in-progress release.<br></span>
     </details><br>
     Progress is stored in this browser only — open the same downloaded file in the same browser to keep it. Clearing site data or using private mode resets it.
@@ -701,6 +702,40 @@ function splitArticle(fr){
   var m2=fr.match(/^(l['’])\s*(.+)$/i);
   if(m2) return {hasArt:true, art:"l'", bare:m2[2], gender:""};
   return {hasArt:false, art:"", bare:fr, gender:""};
+}
+/* Parenthetical conventions in `f:` — display shorthand only, never typed literally:
+   gender  anticipé(e), fier(-ère), mis(e) en marge, le/la voleur(se) → masculine OR feminine both count
+   complement  se lasser (de) → with or without the "de"
+   Returns the accepted strings; the literal entry stays accepted, and comes first. */
+function femForm(word,hy,suf){
+  if(hy){
+    /* (-ère)/(-ive)/(-euse): the suffix replaces the ending, from the last letter matching its first */
+    for(var i=word.length-1;i>=0;i--){ if(bare(word.charAt(i))===bare(suf.charAt(0))) return word.slice(0,i)+suf; }
+    return word+suf;
+  }
+  if(suf==="se" && /r$/.test(word)) return word.slice(0,-1)+suf;   /* voleur(se) → voleuse */
+  return word+suf;
+}
+function formVariants(f){
+  var out=[f], mc=f.match(/^(.*\S)\s+\(([^)]+)\)$/);
+  if(mc){ out.push(mc[1], mc[1]+" "+mc[2]); }
+  var re=/([a-z\u00c0-\u00ff]+)\((-?)([a-z\u00c0-\u00ff]+)\)/gi, gender=f.search(re)>=0, masc, fem;
+  if(gender){
+    masc=f.replace(re,function(m,w){ return w; });
+    fem=f.replace(re,function(m,w,hy,suf){ return femForm(w,hy,suf); });
+    out.push(masc, fem);
+  }
+  var lm=f.match(/^le\/la\s+(.+)$/i);
+  if(lm){
+    if(gender){ out.push("le "+masc.replace(/^le\/la\s+/i,""), "la "+fem.replace(/^le\/la\s+/i,"")); }
+    else { out.push("le "+lm[1], "la "+lm[1]); }
+  }
+  return out;
+}
+function vocCands(v){
+  var head=formVariants(v.f), out=head.slice();
+  (v.a||[]).forEach(function(a){ out=out.concat(formVariants(a)); });
+  return {list:out, primary:head.length};
 }
 /* English cue word for the required-mode prompt (skip if the gloss already has one) */
 function enCue(art){ art=normArt(art); return (art==="un"||art==="une") ? "a" : "the"; }
@@ -1556,7 +1591,7 @@ function renderVoc(){
     function checkSpell(){
       var got=inp.value; if(!got.trim())return;
       if(vocTrain){
-        var tua=splitArticle(got), tc=[v.f].concat(v.a||[]), thit=false, tclose=false;
+        var tua=splitArticle(got), tc=vocCands(v).list, thit=false, tclose=false;
         tc.forEach(function(t){ var ta=splitArticle(t);
           if(norm(tua.bare)===norm(ta.bare)) thit=true;
           else if(bare(tua.bare)===bare(ta.bare)) tclose=true; });
@@ -1567,13 +1602,13 @@ function renderVoc(){
         inp.select(); return;
       }
       var ua=splitArticle(got);
-      var cands=[v.f].concat(v.a||[]);          // primary + accepted alternates
+      var vc=vocCands(v), cands=vc.list;        // primary (+ masc/fem forms) + accepted alternates
       var nounExact=false, nounBareEq=false, fullExact=false, artOk=!sa.hasArt, viaAlt=false;
       cands.forEach(function(t,ci){
         var ta=splitArticle(t);
-        if(norm(ua.bare)===norm(ta.bare)){ nounExact=true; if(ci>0) viaAlt=true; if(!ta.hasArt || (ua.hasArt && normArt(ua.art)===normArt(ta.art))) artOk=true; }
+        if(norm(ua.bare)===norm(ta.bare)){ nounExact=true; if(ci>=vc.primary) viaAlt=true; if(!ta.hasArt || (ua.hasArt && normArt(ua.art)===normArt(ta.art))) artOk=true; }
         if(bare(ua.bare)===bare(ta.bare)) nounBareEq=true;
-        if(norm(got)===norm(t)){ fullExact=true; if(ci>0) viaAlt=true; }
+        if(norm(got)===norm(t)){ fullExact=true; if(ci>=vc.primary) viaAlt=true; }
       });
       var gtag = sa.gender?(" ("+sa.gender+")"):"";
       var correct, cls, msg;
