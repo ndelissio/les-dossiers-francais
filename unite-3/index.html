@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 3 · Dossier Français — v1.3.1</title>
+<title>Unité 3 · Dossier Français — v1.3.2</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v1.3.1</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v1.3.2</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -564,8 +564,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v1.3.1</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v1.3.2</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.3.2 (20 Sep 2026): <strong>Hotfix — Vocabulaire spelling accepts either gender form.</strong> Cards written with a parenthetical feminine (<em>l’évadé(e)</em>, <em>issu(e) de</em>, <em>le/la joaillier(-ière)</em>, <em>le/la voleur(se)</em>) no longer require typing the parentheses: the masculine or the feminine now grades correct (le/la cards also accept <em>le</em> + masculine or <em>la</em> + feminine), and the literal card form still works. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v1.3.1 (16 Sep 2026): <strong>Dashboard grammar ledger rolled up by chapter.</strong> The Tableau de bord's Grammaire block listed every drill individually (18 rows); it now shows one aggregated coverage row per chapter — Ch 11–14 — matching the Vocabulaire block's layout right above it. Per-drill titles and best-round scores are unchanged and still visible inside the Grammaire tab itself; this only shortens the dashboard summary. No scoring or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.3.0.1 (13 Sep 2026): <strong>Hotfix — abbreviation in Ch 14 vocab.</strong> The <strong>croiser</strong> card's French answer stored "croiser qqn" — an abbreviation, against the standing rule that vocab text always spells out full words. Corrected to <strong>croiser quelqu'un</strong>; no other bank, drill, scoring, or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.3.0 (11 Sep 2026): <strong>Chapter 14 vocabulary corrected + Unit 3 practice exam.</strong> <strong>Vocabulaire</strong>: the Ch 14 glossaire bank was travel/vacation vocabulary (auberge, montgolfière, tyrolienne, valise…) — almost a duplicate of Ch 13. Checked against the actual textbook PDF: the real Chapter 14 is <em>Memories &amp; Adventures</em> (Arsène Lupin crime fiction, Alsace-Lorraine history, immigration), and its own end-of-chapter glossaire is entirely different — crime/investigation and immigration/feelings vocabulary (cambrioleur, hors-la-loi, indice, procureur, sang-froid, pays d'accueil, prouesse…). All 86 Ch 14 cards replaced with the real glossaire; the <strong>Vocab en contexte — Ch. 14</strong> drill (14 sentences) and 14 of the 24 Ch 14 quiz-bank items rebuilt to match. Also dropped a fabricated <strong>se plaindre</strong> Conjugaison card tagged "(Ch 14 glossaire)" — it doesn't appear anywhere in the textbook. <strong>New: mini-glossaire exceptions.</strong> Chapter 14 has four mid-activity "Vocabulaire"/"Vocabulaire utile" lists tied to readings and listening clips, separate from the end-of-chapter glossaire — and the Test 3 study guide confirmed at least one of those words (<em>appartenir</em>) is directly examinable. 11 such words (appartenir, craindre, débarquer, ramener, se répandre, un tisserand, des viatiques…) are added as flagged exceptions, same pattern as the Ch 6 exterior set in Unit 2. This is now a standing rule for future chapter builds (see CLAUDE.md). <strong>Examen blanc</strong>: the Unit 3 practice exam ships, built from the Test 3 study guide — <strong>Compréhension</strong> (3 of 6 original passages spanning all four chapters' themes, MCQ plus self-graded short answers in English), <strong>Vocabulaire</strong> (12 of 101, the complete Test 3 word list, EN → FR, articles required, accents strict), <strong>Grammaire</strong> (12 of 20, four items per named structure: comparatifs réguliers, le pronom Y, le passé récent avec venir de, passé composé vs. imparfait, le futur simple). The à venir placeholder and disabled picker option are gone. Also fixed: the quiz picker's JS default was a leftover "6" from the Unit 2 fork (no Chapter 6 in Unit 3 — selecting a quiz without touching the dropdown first drew zero questions), and two stray "Test 2"/"Unit 2" strings in the exam engine copy. Also fixed <strong>Pratique orale</strong>: five of the six Ch 14 prompts were travel/vacation-themed (dream vacation, hotel booking call…) — the same wrong-chapter problem as the vocab bank. Replaced with memories/adventures prompts sourced from the textbook's own Ch 14 Intégration II conversation-starter lists (birthday memory, an object full of memories, an unexpected reunion, a mystery you solved, a moment of fear); the one correctly-scoped prompt (passé récent — "what you just did") stays. Also cleaned two Ch 13 prompts ("Crime plot", "Travel nightmare") that suggested Ch 14-only vocabulary (l'enquêteur, l'indice, la galère) as sample phrases before those words are taught. No changes to Ch 11–13 vocab content, Conjugaison tables, or saved progress outside the Ch 14 vocab swap (which orphans prior Ch 14 vocab progress, same as the Ch 13 swap in v1.1.0).<br></span>
@@ -705,6 +706,40 @@ function splitArticle(fr){
   var m2=fr.match(/^(l['’])\s*(.+)$/i);
   if(m2) return {hasArt:true, art:"l'", bare:m2[2], gender:""};
   return {hasArt:false, art:"", bare:fr, gender:""};
+}
+/* Parenthetical conventions in `f:` — display shorthand only, never typed literally:
+   gender  anticipé(e), fier(-ère), mis(e) en marge, le/la voleur(se) → masculine OR feminine both count
+   complement  se lasser (de) → with or without the "de"
+   Returns the accepted strings; the literal entry stays accepted, and comes first. */
+function femForm(word,hy,suf){
+  if(hy){
+    /* (-ère)/(-ive)/(-euse): the suffix replaces the ending, from the last letter matching its first */
+    for(var i=word.length-1;i>=0;i--){ if(bare(word.charAt(i))===bare(suf.charAt(0))) return word.slice(0,i)+suf; }
+    return word+suf;
+  }
+  if(suf==="se" && /r$/.test(word)) return word.slice(0,-1)+suf;   /* voleur(se) → voleuse */
+  return word+suf;
+}
+function formVariants(f){
+  var out=[f], mc=f.match(/^(.*\S)\s+\(([^)]+)\)$/);
+  if(mc){ out.push(mc[1], mc[1]+" "+mc[2]); }
+  var re=/([a-z\u00c0-\u00ff]+)\((-?)([a-z\u00c0-\u00ff]+)\)/gi, gender=f.search(re)>=0, masc, fem;
+  if(gender){
+    masc=f.replace(re,function(m,w){ return w; });
+    fem=f.replace(re,function(m,w,hy,suf){ return femForm(w,hy,suf); });
+    out.push(masc, fem);
+  }
+  var lm=f.match(/^le\/la\s+(.+)$/i);
+  if(lm){
+    if(gender){ out.push("le "+masc.replace(/^le\/la\s+/i,""), "la "+fem.replace(/^le\/la\s+/i,"")); }
+    else { out.push("le "+lm[1], "la "+lm[1]); }
+  }
+  return out;
+}
+function vocCands(v){
+  var head=formVariants(v.f), out=head.slice();
+  (v.a||[]).forEach(function(a){ out=out.concat(formVariants(a)); });
+  return {list:out, primary:head.length};
 }
 /* English cue word for the required-mode prompt (skip if the gloss already has one) */
 function enCue(art){ art=normArt(art); return (art==="un"||art==="une") ? "a" : "the"; }
@@ -2000,7 +2035,7 @@ function renderVoc(){
     function checkSpell(){
       var got=inp.value; if(!got.trim())return;
       if(vocTrain){
-        var tua=splitArticle(got), tc=[v.f].concat(v.a||[]), thit=false, tclose=false;
+        var tua=splitArticle(got), tc=vocCands(v).list, thit=false, tclose=false;
         tc.forEach(function(t){ var ta=splitArticle(t);
           if(norm(tua.bare)===norm(ta.bare)) thit=true;
           else if(bare(tua.bare)===bare(ta.bare)) tclose=true; });
@@ -2011,13 +2046,13 @@ function renderVoc(){
         inp.select(); return;
       }
       var ua=splitArticle(got);
-      var cands=[v.f].concat(v.a||[]);          // primary + accepted alternates
+      var vc=vocCands(v), cands=vc.list;        // primary (+ masc/fem forms) + accepted alternates
       var nounExact=false, nounBareEq=false, fullExact=false, artOk=!sa.hasArt, viaAlt=false;
       cands.forEach(function(t,ci){
         var ta=splitArticle(t);
-        if(norm(ua.bare)===norm(ta.bare)){ nounExact=true; if(ci>0) viaAlt=true; if(!ta.hasArt || (ua.hasArt && normArt(ua.art)===normArt(ta.art))) artOk=true; }
+        if(norm(ua.bare)===norm(ta.bare)){ nounExact=true; if(ci>=vc.primary) viaAlt=true; if(!ta.hasArt || (ua.hasArt && normArt(ua.art)===normArt(ta.art))) artOk=true; }
         if(bare(ua.bare)===bare(ta.bare)) nounBareEq=true;
-        if(norm(got)===norm(t)){ fullExact=true; if(ci>0) viaAlt=true; }
+        if(norm(got)===norm(t)){ fullExact=true; if(ci>=vc.primary) viaAlt=true; }
       });
       var gtag = sa.gender?(" ("+sa.gender+")"):"";
       var correct, cls, msg;
