@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.2.0</title>
+<title>Unité 4 · Dossier Français — v0.4.0</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.2.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.4.0</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -330,6 +330,7 @@
       <span style="font-weight:700">I'm currently in</span>
       <select class="filter" id="curCh">
         <option value="16">Chapter 16 — Family Through Generations</option>
+        <option value="17">Chapter 17 — Urban Dynamics</option>
         <option value="18">Chapter 18 — Health, Sports, and Medicine</option>
         <option value="19">Chapter 19 — Emergencies and Disasters</option>
       </select>
@@ -353,7 +354,7 @@
   <!-- ===================== VERBS ===================== -->
   <section class="panel" id="p-verbs" role="tabpanel">
     <h2 class="sec">Conjugaison</h2>
-    <p class="lead">10 vedettes swept across every tense, plus Chapter 16's own irregular verbs (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire) and Chapter 19's (survenir, parvenir, intervenir, revenir, prévenir, prévoir) in présent and passé composé. Type all six forms.</p>
+    <p class="lead">10 vedettes swept across every tense, plus Chapter 16's own irregular verbs (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire), plus Chapter 17's (valoir, recourir à, soutenir, éteindre, provenir de, comparaître), and Chapter 19's (survenir, parvenir, intervenir, revenir, prévenir, prévoir), in présent and passé composé. Type all six forms.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -374,6 +375,7 @@
       <select class="filter" id="chapterFilterV">
         <option value="any">Any chapter</option>
         <option value="16">Ch 16</option>
+        <option value="17">Ch 17</option>
         <option value="19">Ch 19</option>
       </select>
       <select class="filter" id="catFilter"><option value="all">All groups</option></select>
@@ -427,7 +429,7 @@
   <!-- ===================== VOCABULAIRE ===================== -->
   <section class="panel" id="p-vocab" role="tabpanel">
     <h2 class="sec">Vocabulary trainer</h2>
-    <p class="lead">The Chapter 16 glossaire — family structures, aging, daily life — and the Chapter 18 glossaire — health, sports, nutrition, and medicine — and the Chapter 19 glossaire — natural disasters, accidents, rescue — plus mini-glossaire words folded in from reading &amp; listening activities.</p>
+    <p class="lead">The Chapter 16 glossaire (family structures, aging, daily life), the Chapter 17 glossaire (urban life, healthcare, transport &amp; energy, street art), the Chapter 18 glossaire (health, sports, nutrition, and medicine) and the Chapter 19 glossaire (natural disasters, accidents, rescue), plus mini-glossaire words folded in from reading &amp; listening activities.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -447,6 +449,7 @@
       <select class="filter" id="chapterFilterVoc">
         <option value="any">Any chapter</option>
         <option value="16">Ch 16</option>
+        <option value="17">Ch 17</option>
         <option value="18">Ch 18</option>
         <option value="19">Ch 19</option>
       </select>
@@ -487,7 +490,7 @@
   <!-- ===================== GRAMMAR ===================== -->
   <section class="panel" id="p-gram" role="tabpanel">
     <h2 class="sec">Grammar drills</h2>
-    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — and Chapter 18 structures — l'hypothèse sur le futur (si + présent...), les pronoms démonstratifs, les pronoms relatifs composés (ce qui, ce que, ce dont) — and Chapter 19 structures — la nominalisation, l'inclusion, l'exception et la restriction, le mode infinitif — plus vocab en contexte for each chapter.</p>
+    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — Chapter 17 structures — la négation (ne … personne, rien, aucun), la mise en relief (c'est … qui/que/dont/où), le gérondif — Chapter 18 structures — l'hypothèse sur le futur (si + présent...), les pronoms démonstratifs, les pronoms relatifs composés (ce qui, ce que, ce dont) — and Chapter 19 structures — la nominalisation, l'inclusion, l'exception et la restriction, le mode infinitif — plus vocab en contexte for each chapter.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -501,7 +504,7 @@
   <!-- ===================== TEST ===================== -->
   <section class="panel" id="p-test" role="tabpanel">
     <h2 class="sec">Quizzes &amp; Unit 4 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 16, Ch 18 and Ch 19 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
+    <p class="lead">10 randomized questions per chapter bank (Ch 16, Ch 17, Ch 18 and Ch 19 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -514,6 +517,7 @@
       <div class="test-head">
         <select class="filter" id="quizPick">
           <option value="16">Chapter 16 quiz</option>
+          <option value="17">Chapter 17 quiz</option>
           <option value="18">Chapter 18 quiz</option>
           <option value="19">Chapter 19 quiz</option>
           <option value="exam" disabled>Unit 4 practice exam (à venir)</option>
@@ -586,8 +590,10 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.2.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations) and 18 (Health, Sports, and Medicine) so far, of Chapters 16–19. Chapters are being built out of order across sessions. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.4.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.4.0 (20 Sep 2026): <strong>Chapter 19 — Emergencies and Disasters. Unit 4 now covers Chapters 16–19.</strong> <strong>Vocabulaire</strong>: 124 cards from the Chapter 19 end-of-chapter glossaire (Noms, Adjectifs, Verbes, Autres mots) across 8 topic groups sized to the ~20–25-word standing rule (natural disasters; accidents &amp; rescue nouns; adjectives split into damage &amp; destruction and people, safety &amp; conditions; verbs split into three groups; other words), plus 31 mini-glossaire words folded in from the reading and listening activities (disaster-report readings; the train-crash and tanker-explosion clips) as flagged exceptions with their own topic tags and comment headers — 155 Chapter 19 cards in all. Eleven words already carried by earlier chapters were not duplicated (progress is keyed by the French word): demeurer (Chapter 16); heurter, soigner, mettre en garde and la chaîne alimentaire (Chapter 18); déraciné(e), se heurter à, le freinage, dérailler and percuter (Chapter 17); la pente (Chapter 17, as une pente). Source-glossaire errors corrected: the glosses of se diffuser and écarter were shifted by one row (now se diffuser = to spread, écarter = to rule out), the duplicated éboulement entry was merged, the noun-phrase entry les routes impraticables was reduced to the adjective impraticable, and the typo idemne is indemne. Synonym collisions resolved per the standing rule with distinguishing EN cues rather than merges: le glissement de terrain vs l’éboulement, le séisme vs le tremblement de terre, disparu(e) vs porté(e) disparu(e), écroulé(e) vs effondré(e), indemne vs sain et sauf, crier vs hurler, prévenir vs mettre en garde (Chapter 18), se diffuser vs s’étendre, les décombres vs les ruines, le sauveteur vs le secouriste, le riverain vs domicilié(e), le flanc vs une pente (Chapter 17), se déverser vs déverser (Chapter 17); provoquer is now also accepted on Chapter 16’s entraîner card. <strong>Grammaire</strong>: 4 new drills — la nominalisation (18-item bank), l’inclusion, l’exception et la restriction (16), le mode infinitif (17) — plus a 16-item Vocab en contexte drill, all with fresh example sentences. <strong>Conjugaison</strong>: a new targeted set of six Chapter 19 irregulars (survenir, parvenir, intervenir, revenir, prévenir, prévoir) drills in présent + PC; the first four take être in the passé composé, prévenir and prévoir take avoir. <strong>Examen blanc</strong>: a 24-item Chapter 19 quiz bank (10 drawn per attempt). <strong>Pratique orale</strong>: 6 new Chapter 19 prompts. <strong>Tableau de bord</strong>: Chapter 19 added to the chapter picker, ledger and achievements (Chapitre 19 maîtrisé); the Drill ciblé pool no longer lists revenir and prévoir twice. Merged with Chapter 17 (v0.3.0), Chapter 18 (v0.2.0) and the v0.1.2 hotfix. The Unit 4 practice exam stays <em>à venir</em> pending the study guide; etymology mémos are not yet built.<br></span>
+    <span style="color:var(--mute)">v0.3.0 (20 Sep 2026): <strong>Chapter 17 — Urban Dynamics.</strong> <strong>Vocabulaire</strong>: 134 cards from the Chapter 17 end-of-chapter glossaire (Noms, Adjectifs, Autres mots, Verbes) across 7 topic groups sized to the ~20–25-word standing rule, plus 84 mini-glossaire words folded in from activity vocab lists tied to comprehension or matching exercises (sustainable city, transport start-ups &amp; clean energy, medical deserts, the Lac-Mégantic rail-disaster reading, the Airbnb dispute reading) as flagged exceptions with their own topic tags and comment headers. Eleven words already carried by Chapter 16 or Chapter 18 cards were not duplicated (progress is keyed by the French word): enlever, finir par, faire partie de and former (Chapter 16); la sage-femme, décaler, virer, ainsi, améliorer, soigner and éventuel(le) (Chapter 18). Synonym collisions resolved per the standing rule with distinguishing EN cues: abîmé(e) vs endommagé(e), en effet vs en fait, faire appel à vs recourir à, s’entraîner vs former, injuste vs déloyal(e), les déchets vs les ordures ménagères, prévu(e) vs Chapter 16’s anticipé(e), diminuer vs réduire, privilégier vs favoriser, mettre sur pied vs mettre en place (Chapter 18). <strong>Grammaire</strong>: 3 new drills — la négation (ne … personne, rien, aucun), la mise en relief (c’est / ce sont … qui, que, dont, où), le gérondif — plus a Vocab en contexte drill, all with fresh example sentences. <strong>Conjugaison</strong>: a new targeted set of six Chapter 17 irregulars (valoir, recourir à, soutenir, éteindre, provenir de, comparaître) drills in présent + PC. <strong>Examen blanc</strong>: a 27-item Chapter 17 quiz bank (10 drawn per attempt). <strong>Pratique orale</strong>: 6 new Chapter 17 prompts. <strong>Tableau de bord</strong>: Chapter 17 added to the chapter picker, ledger and achievements (Chapitre 17 maîtrisé). Merged with Chapter 18 (v0.2.0) and the v0.1.2 hotfix. Chapter 19 and etymology mémos are not yet built.<br></span>
     <span style="color:var(--mute)">v0.2.0 (16 Sep 2026): <strong>Chapter 18 vocabulaire, grammaire &amp; examen blanc.</strong> Built out of order, ahead of Chapter 17. <strong>Vocabulaire</strong>: 199 cards from the Chapter 18 end-of-chapter glossaire (Health, Sports, and Medicine; finir par is not repeated here since it already lives in Chapter 16), across 8 topic groups sized to the ~20–25-word standing rule (including a dedicated Corps/body-parts group), plus 70 mini-glossaire words folded in from reading/listening activities across the chapter's four sections (nutrition, stress, sport, technology) and the Tour de France culture reading, as flagged exceptions (own topic tags, own comment headers). A synonym collision (néfaste vs nuisible, both glossed "harmful") was resolved with distinguishing EN cues rather than a merge, since the source text treats them as distinct entries. A handful of workbook exercise words with no locatable source translation (an "intrus" exercise likely tied to an audio passage) were left out rather than guessed. <strong>Grammaire</strong>: 4 new drills — l'hypothèse sur le futur (si + présent + futur/impératif/présent), les pronoms démonstratifs (celui/celle/ceux/celles), and les pronoms relatifs composés (ce qui/ce que/ce dont) — plus a Vocab en contexte drill, all with fresh example sentences. <strong>Examen blanc</strong>: a 24-item Chapter 18 quiz bank (10 drawn per attempt) covering all three grammar points plus vocabulaire. <strong>Pratique orale</strong>: 6 new Chapter 18 prompts. Chapters 17 and 19 and etymology mémos are not yet built — this is a partial, in-progress release.<br></span>
     <span style="color:var(--mute)">v0.1.2 (20 Sep 2026): <strong>Hotfix — aller/venir passé composé, and le/la article grading.</strong> <strong>Conjugaison</strong>: the flagship <em>aller</em> and <em>venir</em> passé-composé rows showed <em>ai allé</em> / <em>ai venu</em>; they now use être with the agreement forms (<em>suis allé/allée</em>, <em>es venu/venue</em>…), like the other être verbs. <strong>Vocabulaire</strong>: on the le/la card (<em>le/la pensionnaire</em>) only <em>le</em> or <em>la</em> + the noun grades correct — a bare noun or a mismatched article is a miss. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v0.1.1 (20 Sep 2026): <strong>Hotfix — Vocabulaire spelling accepts either gender form.</strong> Cards written with a parenthetical feminine (<em>anticipé(e)</em>, <em>mis(e) en marge</em>, <em>fier(-ère)</em>) no longer require typing the parentheses: the masculine or the feminine now grades correct, and the literal card form still works. Verb cards with an optional complement (<em>se lasser (de)</em>, <em>se lancer (dans)</em>) likewise accept the answer with or without it. Card data and saved progress untouched.<br></span>
@@ -799,7 +805,8 @@ var CATS={
   flag:{label:"Vedettes · tous les temps",c:"#16243d",bg:"#e7eaf1"},
   irr16:{label:"Ch 16 · verbes irréguliers",c:"#2f7d5b",bg:"#e2efe7"}
 };
-CATS.irr19={label:"Ch 19 · verbes irréguliers",c:"#8a3b2a",bg:"#f3e4df"};
+CATS.irr17={label:"Ch 17 · verbes irréguliers",c:"#a4553a",bg:"#f4e6df"};
+CATS.irr19={label:"Ch 19 · verbes irréguliers",c:"#3b5b8a",bg:"#e2e8f3"};
 var TENSES=[
   {id:"pres", lbl:"Présent",       long:"présent de l'indicatif"},
   {id:"pc",   lbl:"Passé composé", long:"passé composé"},
@@ -831,10 +838,19 @@ var V=[
   {fr:"subvenir",en:"to provide (for), to support (financially)",cat:"irr16",conj:["subviens","subviens","subvient","subvenons","subvenez","subviennent"],pp:"subvenu",tn:["pres","pc"],ex:"Elle doit subvenir seule aux besoins de ses enfants.",exEn:"She has to provide for her children's needs on her own.",note:"Conjugates like venir, but takes avoir (not être) in the passé composé — a common trap."},
   {fr:"séduire",en:"to attract / to charm",cat:"irr16",conj:["séduis","séduis","séduit","séduisons","séduisez","séduisent"],pp:"séduit",tn:["pres","pc"],ex:"Cette nouvelle façon de vivre en famille séduit de plus en plus de jeunes.",exEn:"This new way of living as a family is attracting more and more young people.",note:"-uire family (like conduire, construire) — pp -uit, not -u."}
 ];
+/* ===== Chapter 17 : irregular verbs from the glossaire + folded-in readings (présent + PC) ===== */
+V.push.apply(V,[
+  {fr:"valoir",en:"to be worth",cat:"irr17",conj:["vaux","vaux","vaut","valons","valez","valent"],pp:"valu",tn:["pres","pc"],ex:"Cette fresque vaut vraiment le détour.",exEn:"This mural is really worth the detour.",note:"Stem val- / vau-: x in je/tu (vaux), t in il (vaut). Also il vaut mieux + infinitif (it's better to)."},
+  {fr:"recourir à",en:"to resort to, to have recourse to",cat:"irr17",conj:["recours","recours","recourt","recourons","recourez","recourent"],pp:"recouru",tn:["pres","pc"],ex:"Les habitants recourent à la télémédecine faute de généraliste.",exEn:"The residents turn to telemedicine for lack of a general practitioner.",note:"courir family — single r in the présent (recourt), unlike the futur (recourrai)."},
+  {fr:"soutenir",en:"to support",cat:"irr17",conj:["soutiens","soutiens","soutient","soutenons","soutenez","soutiennent"],pp:"soutenu",tn:["pres","pc"],ex:"La mairie soutient les jeunes entrepreneurs de la ville.",exEn:"The town hall supports the city's young entrepreneurs.",note:"tenir family (like obtenir, maintenir) — ie in the singular and ils-form, e in nous/vous."},
+  {fr:"éteindre",en:"to turn off, to put out",cat:"irr17",conj:["éteins","éteins","éteint","éteignons","éteignez","éteignent"],pp:"éteint",tn:["pres","pc"],ex:"Les pompiers ont éteint l'incendie en moins d'une heure.",exEn:"The firefighters put out the fire in under an hour.",note:"-eindre family (like peindre, atteindre) — -gn- from nous on; pp éteint sounds like the singular présent."},
+  {fr:"provenir de",en:"to come from, to originate from",cat:"irr17",aux:"e",conj:["proviens","proviens","provient","provenons","provenez","proviennent"],pp:"provenu",tn:["pres","pc"],ex:"Ce pétrole provient de champs situés à des milliers de kilomètres.",exEn:"This oil comes from fields thousands of kilometers away.",note:"Conjugates like venir — and, unlike subvenir, takes être in the passé composé: il est provenu."},
+  {fr:"comparaître",en:"to appear in court",cat:"irr17",conj:["comparais","comparais","comparaît","comparaissons","comparaissez","comparaissent"],pp:"comparu",tn:["pres","pc"],ex:"Les hôteliers ont comparu devant le tribunal de commerce.",exEn:"The hoteliers appeared before the commercial court.",note:"connaître family — circumflex only in the il/elle form; pp comparu has none."}
+]);
 var VERB_CH={};
-V.forEach(function(v){ VERB_CH[v.fr]=16; });
+V.forEach(function(v){ VERB_CH[v.fr]=(v.cat==="irr17"?17:16); });
 /* flagships stay available from Ch 16 on; irr16 verbs are Ch 16's own targeted set */
-var CH_NAMES={16:"Ch 16 · Family Through Generations", 18:"Ch 18 · Health, Sports, and Medicine"};   /* Ch 17, 19 not yet built (chapters now built out of order); Ch 20 is Unit 4 review — no new content */
+var CH_NAMES={16:"Ch 16 · Family Through Generations", 17:"Ch 17 · Urban Dynamics", 18:"Ch 18 · Health, Sports, and Medicine"};   /* Ch 19 not yet built here (chapters built out of order); Ch 20 is Unit 4 review — no new content */
 
 /* ===== Chapter 19 : Emergencies and Disasters — irregular verbs from the glossaire (présent + PC) ===== */
 CH_NAMES[19]="Ch 19 · Emergencies and Disasters";
@@ -1694,6 +1710,252 @@ var VOCAB=[
  {f:"fuir",e:"to flee",c:18,t:"c18m5"},
  {f:"un dossier médical",e:"a medical record, a medical file",c:18,t:"c18m5"}
 ];
+/* Chapter 17 topic labels (own contiguous block) */
+VTOPICS.u17noms1="Healthcare & medical care (Ch 17)";
+VTOPICS.u17noms2="City, transport & energy (Ch 17)";
+VTOPICS.u17noms3="Arts, culture & abstract nouns (Ch 17)";
+VTOPICS.u17adj="Adjectives (Ch 17)";
+VTOPICS.u17expr="Expressions & other words (Ch 17)";
+VTOPICS.u17verb1="Verbs — changing, moving & handling things (Ch 17)";
+VTOPICS.u17verb2="Verbs — deciding, dealing with & supporting (Ch 17)";
+VTOPICS.u17mgloss1="Reading & listening extras — sustainable city & urban life (Ch 17)";
+VTOPICS.u17mgloss2="Reading & listening extras — transport start-ups & clean energy (Ch 17)";
+VTOPICS.u17mgloss3="Reading & listening extras — healthcare access & medical deserts (Ch 17)";
+VTOPICS.u17mgloss4="Reading extras — rail disaster, Lac-Mégantic (Ch 17)";
+VTOPICS.u17mgloss5="Reading extras — Airbnb hospitality dispute (Ch 17)";
+VOCAB.push.apply(VOCAB,[
+ /* ===== Chapter 17 : Urban Dynamics — end-of-chapter glossaire ===== */
+ /* --- Noms : healthcare & medical care --- */
+ {f:"l'aide-soignant(e)",e:"the nursing assistant",c:17,t:"u17noms1",n:"m./f.",x:1},
+ {f:"l'attente",e:"the waiting, the expectation",c:17,t:"u17noms1",n:"f."},
+ {f:"le cabinet de télémédecine",e:"the telemedicine office",c:17,t:"u17noms1"},
+ {f:"le centre hospitalier",e:"the medical center, the hospital center",c:17,t:"u17noms1"},
+ {f:"le délai d'attente",e:"the wait time",c:17,t:"u17noms1"},
+ {f:"la désertification médicale",e:"the doctor shortage (in a region)",c:17,t:"u17noms1",x:1},
+ {f:"un généraliste",e:"a general practitioner (a doctor who is not a specialist)",c:17,t:"u17noms1",a:["une généraliste"],n:"m./f."},
+ {f:"le médecin de garde",e:"the doctor on duty",c:17,t:"u17noms1",n:"m./f."},
+ {f:"le médecin traitant",e:"the primary care provider",c:17,t:"u17noms1",n:"m./f."},
+ {f:"le parcours de soins",e:"the healthcare pathway",c:17,t:"u17noms1"},
+ {f:"la prise en charge",e:"the handling, the management (of a patient's care)",c:17,t:"u17noms1"},
+ {f:"la quarantaine",e:"a group of about forty; also: the quarantine (medical isolation)",c:17,t:"u17noms1",n:"same word, two unrelated senses"},
+ {f:"le stomatologue",e:"the dentist, the periodontist (mouth specialist)",c:17,t:"u17noms1",a:["la stomatologue"],n:"m./f.",x:1},
+ {f:"le suivi médical",e:"the medical follow-up",c:17,t:"u17noms1"},
+ /* --- Noms : city, transport & energy --- */
+ {f:"le citadin",e:"the city dweller",c:17,t:"u17noms2",a:["la citadine"],n:"m./f."},
+ {f:"le constat amiable",e:"the accident report (a statement drawn up jointly by the drivers)",c:17,t:"u17noms2"},
+ {f:"la corde à linge",e:"the clothesline",c:17,t:"u17noms2"},
+ {f:"les déchets",e:"the waste, the garbage",c:17,t:"u17noms2",n:"m. pl."},
+ {f:"le déplacement",e:"the trip, the movement",c:17,t:"u17noms2"},
+ {f:"le désagrément",e:"the inconvenience",c:17,t:"u17noms2",x:1},
+ {f:"le dispositif",e:"the device, the apparatus, the system",c:17,t:"u17noms2"},
+ {f:"les données",e:"the data",c:17,t:"u17noms2",n:"f. pl."},
+ {f:"l'échafaudage",e:"the scaffolding",c:17,t:"u17noms2",n:"m.",x:1},
+ {f:"l'embouteillage",e:"the traffic jam",c:17,t:"u17noms2",n:"m.",x:1},
+ {f:"les énergies fossiles",e:"the fossil fuels",c:17,t:"u17noms2",n:"f. pl."},
+ {f:"le kilomètre carré",e:"the square kilometer",c:17,t:"u17noms2"},
+ {f:"le lancement",e:"the launch",c:17,t:"u17noms2"},
+ {f:"la mise en place",e:"the implementation, the setting up",c:17,t:"u17noms2"},
+ {f:"les panneaux photovoltaïques",e:"the solar panels",c:17,t:"u17noms2",n:"m. pl.",x:1},
+ {f:"la piste cyclable",e:"the bike path, the cycle lane",c:17,t:"u17noms2"},
+ {f:"la demeure",e:"the residence, the dwelling (formal register)",c:17,t:"u17noms2",n:"vs le foyer familial (the family home)"},
+ /* --- Noms : arts, culture & abstract nouns --- */
+ {f:"l'acrobatie",e:"the acrobatics",c:17,t:"u17noms3",n:"f."},
+ {f:"la bombe de peinture",e:"the can of spray paint",c:17,t:"u17noms3",a:["la bombe"]},
+ {f:"le cirque",e:"the circus",c:17,t:"u17noms3"},
+ {f:"la déambulation",e:"the wandering, the stroll",c:17,t:"u17noms3"},
+ {f:"l'empreinte",e:"the mark, the imprint",c:17,t:"u17noms3",n:"f."},
+ {f:"l'événement",e:"the event",c:17,t:"u17noms3",n:"m.",x:1},
+ {f:"la fresque",e:"the mural painting",c:17,t:"u17noms3"},
+ {f:"le gage",e:"the guarantee, the deposit",c:17,t:"u17noms3"},
+ {f:"le graffeur",e:"the graffiti artist",c:17,t:"u17noms3",a:["la graffeuse"],n:"m./f."},
+ {f:"le jonglage",e:"the juggling",c:17,t:"u17noms3",x:1},
+ {f:"la marionnette",e:"the puppet",c:17,t:"u17noms3"},
+ {f:"l'obscurité",e:"the darkness",c:17,t:"u17noms3",n:"f."},
+ {f:"l'oeuvre d'art",e:"the work of art",c:17,t:"u17noms3",a:["l'œuvre d'art"],n:"f."},
+ {f:"le pari",e:"the bet, the wager, the gamble",c:17,t:"u17noms3"},
+ {f:"la rapidité",e:"the speed",c:17,t:"u17noms3"},
+ {f:"le renom",e:"the reputation, the fame",c:17,t:"u17noms3"},
+ {f:"les richesses",e:"the wealth",c:17,t:"u17noms3",n:"f. pl."},
+ {f:"le sans-grade",e:"the nobody (a person of no particular rank or status)",c:17,t:"u17noms3",a:["la sans-grade"],n:"m./f."},
+ {f:"le seuil",e:"the threshold",c:17,t:"u17noms3"},
+ {f:"le trompe-l'oeil",e:"the trompe-l'oeil (a painting that creates a 3-D illusion)",c:17,t:"u17noms3",a:["le trompe-l'œil"]},
+ /* --- Adjectifs --- */
+ {f:"abîmé(e)",e:"damaged, worn out, spoiled (by use or age)",c:17,t:"u17adj",n:"vs endommagé(e) — abîmé is general wear or spoilage"},
+ {f:"accessible",e:"accessible",c:17,t:"u17adj"},
+ {f:"accompagné(e)",e:"accompanied, supported (guided along)",c:17,t:"u17adj"},
+ {f:"bondé(e)",e:"packed (with people)",c:17,t:"u17adj"},
+ {f:"conscient(e) de",e:"aware of",c:17,t:"u17adj"},
+ {f:"désagréable",e:"unpleasant",c:17,t:"u17adj"},
+ {f:"déraciné(e)",e:"rootless, uprooted",c:17,t:"u17adj"},
+ {f:"désespéré(e)",e:"hopeless, desperate",c:17,t:"u17adj"},
+ {f:"douloureux(-euse)",e:"painful",c:17,t:"u17adj"},
+ {f:"durable",e:"sustainable",c:17,t:"u17adj"},
+ {f:"économe",e:"thrifty",c:17,t:"u17adj"},
+ {f:"efficace",e:"effective, efficient",c:17,t:"u17adj"},
+ {f:"endommagé(e)",e:"damaged (structurally, by an accident or an event)",c:17,t:"u17adj",n:"vs abîmé(e) — endommagé implies harm from an event"},
+ {f:"engagé(e)",e:"committed, involved",c:17,t:"u17adj"},
+ {f:"éphémère",e:"short-lived",c:17,t:"u17adj"},
+ {f:"libéral(e)",e:"self-employed, freelance (for professions)",c:17,t:"u17adj"},
+ {f:"prêt(e) à",e:"ready to",c:17,t:"u17adj"},
+ {f:"prévu(e)",e:"scheduled, foreseen (as expected)",c:17,t:"u17adj",n:"vs anticipé(e) (planned ahead of time, anticipated)"},
+ {f:"profond(e)",e:"deep",c:17,t:"u17adj"},
+ {f:"renouvelable",e:"renewable",c:17,t:"u17adj"},
+ {f:"souterrain(e)",e:"underground",c:17,t:"u17adj"},
+ {f:"surréaliste",e:"surrealist, surrealistic",c:17,t:"u17adj"},
+ /* --- Autres mots / Expressions --- */
+ {f:"à condition que",e:"provided that",c:17,t:"u17expr"},
+ {f:"à la fois",e:"at the same time, both",c:17,t:"u17expr"},
+ {f:"à plus long terme",e:"in the longer term, in the longer run",c:17,t:"u17expr"},
+ {f:"à portée de main",e:"within reach",c:17,t:"u17expr"},
+ {f:"à prix d'or",e:"at a very high price, at top dollar",c:17,t:"u17expr"},
+ {f:"alors que",e:"while, whereas",c:17,t:"u17expr"},
+ {f:"au même titre que",e:"in the same way as",c:17,t:"u17expr"},
+ {f:"au mieux",e:"optimally, at best",c:17,t:"u17expr"},
+ {f:"au niveau de",e:"in terms of, on a par with",c:17,t:"u17expr"},
+ {f:"avoir beau",e:"to do something in vain; no matter how much one does, even if",c:17,t:"u17expr",n:"always followed by an infinitive"},
+ {f:"bénévolement",e:"voluntarily, for free",c:17,t:"u17expr"},
+ {f:"davantage",e:"more, further",c:17,t:"u17expr"},
+ {f:"du fait que",e:"as a result of the fact that, because",c:17,t:"u17expr"},
+ {f:"en effet",e:"indeed, that's right (confirming what was just said)",c:17,t:"u17expr",n:"vs en fait (correcting or contrasting)"},
+ {f:"en fait",e:"actually, in reality (correcting or contrasting)",c:17,t:"u17expr",n:"vs en effet (confirming)"},
+ {f:"en plein milieu de",e:"right in the middle of",c:17,t:"u17expr"},
+ {f:"en présentiel",e:"face-to-face, in person",c:17,t:"u17expr",x:1},
+ {f:"en réseau",e:"in a network, networked",c:17,t:"u17expr"},
+ {f:"en tout cas",e:"in any case",c:17,t:"u17expr"},
+ {f:"face à",e:"faced with, in front of",c:17,t:"u17expr"},
+ {f:"n'y être pour rien",e:"to have nothing to do with it, to not be to blame",c:17,t:"u17expr"},
+ {f:"rien que ça !",e:"no less!, is that all?! (ironic)",c:17,t:"u17expr"},
+ {f:"tout à fait",e:"exactly, absolutely",c:17,t:"u17expr"},
+ /* --- Verbes : changing, moving & handling things --- */
+ {f:"s'adresser à",e:"to talk to, to check with",c:17,t:"u17verb1"},
+ {f:"s'approvisionner",e:"to stock up on",c:17,t:"u17verb1",x:1},
+ {f:"assombrir",e:"to darken",c:17,t:"u17verb1"},
+ {f:"baptiser",e:"to name, to baptize",c:17,t:"u17verb1"},
+ {f:"se déplacer",e:"to travel, to get around, to move around",c:17,t:"u17verb1"},
+ {f:"désengorger",e:"to decongest, to clear (a traffic-clogged area)",c:17,t:"u17verb1",x:1},
+ {f:"désigner",e:"to mean, to designate, to refer to",c:17,t:"u17verb1"},
+ {f:"divertir",e:"to entertain",c:17,t:"u17verb1"},
+ {f:"élargir",e:"to widen, to broaden",c:17,t:"u17verb1"},
+ {f:"encombrer",e:"to clutter, to burden",c:17,t:"u17verb1"},
+ {f:"s'entraîner",e:"to train oneself, to work out",c:17,t:"u17verb1",x:1,n:"vs former (to train someone else)"},
+ {f:"essuyer",e:"to wipe, to dry",c:17,t:"u17verb1",x:1},
+ {f:"percuter",e:"to crash into",c:17,t:"u17verb1"},
+ {f:"réintégrer",e:"to reinstate, to restore",c:17,t:"u17verb1"},
+ {f:"rembourser",e:"to reimburse",c:17,t:"u17verb1"},
+ {f:"tourner en boucle",e:"to repeat continuously, to loop",c:17,t:"u17verb1"},
+ {f:"valoir",e:"to be worth",c:17,t:"u17verb1"},
+ {f:"viser à",e:"to aim at, to have as an objective",c:17,t:"u17verb1"},
+ /* --- Verbes : deciding, dealing with & supporting --- */
+ {f:"être privilégié(e)",e:"to be favored, to be in a privileged position",c:17,t:"u17verb2"},
+ {f:"faire appel à",e:"to call on (a person or service for help)",c:17,t:"u17verb2",n:"vs recourir à (to resort to a measure or method)"},
+ {f:"faire face à",e:"to deal with, to address",c:17,t:"u17verb2"},
+ {f:"faire mal",e:"to hurt",c:17,t:"u17verb2"},
+ {f:"faire parler de",e:"to be talked about, to get people talking about",c:17,t:"u17verb2",n:"faire parler de soi / de lui / d'elle"},
+ {f:"franchir la barre de",e:"to cross the mark of, to surpass the threshold of",c:17,t:"u17verb2",n:"figures: franchir la barre des 1 000"},
+ {f:"laisser reposer",e:"to let something rest",c:17,t:"u17verb2"},
+ {f:"mettre longtemps à",e:"to take a long time to",c:17,t:"u17verb2"},
+ {f:"mettre sur pied",e:"to build up, to get (a project or organization) off the ground",c:17,t:"u17verb2",n:"vs mettre en place (to establish, to set up)"},
+ {f:"obliger",e:"to require, to oblige",c:17,t:"u17verb2"},
+ {f:"orienter quelqu'un vers",e:"to direct someone to",c:17,t:"u17verb2"},
+ {f:"prendre en compte",e:"to take into account",c:17,t:"u17verb2"},
+ {f:"prendre quelque chose en main",e:"to take charge of something",c:17,t:"u17verb2"},
+ {f:"primer sur",e:"to take precedence over",c:17,t:"u17verb2"},
+ {f:"privilégier",e:"to opt for, to give priority to (to choose over others)",c:17,t:"u17verb2",n:"vs favoriser (to promote, to help along)"},
+ {f:"recourir à",e:"to resort to, to have recourse to (a measure or method)",c:17,t:"u17verb2",n:"vs faire appel à (to call on a person or service)"},
+ {f:"régler un problème",e:"to solve a problem",c:17,t:"u17verb2"},
+ {f:"signaler",e:"to report, to inform",c:17,t:"u17verb2"},
+ {f:"se soigner",e:"to treat oneself, to get treatment (for an illness)",c:17,t:"u17verb2"},
+ {f:"soutenir",e:"to support, to back (a person, a cause or a structure)",c:17,t:"u17verb2"},
+ /* --- Mini-glossaire : sustainable city & everyday urban life (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"un bac",e:"a bin, a container",c:17,t:"u17mgloss1"},
+ {f:"un bocal",e:"a jar",c:17,t:"u17mgloss1",n:"plural: des bocaux"},
+ {f:"les bons gestes",e:"the right moves (the good habits)",c:17,t:"u17mgloss1",n:"m. pl."},
+ {f:"diminuer",e:"to decrease, to lessen (in amount or volume)",c:17,t:"u17mgloss1",n:"vs réduire (to cut something down on purpose)"},
+ {f:"l'emballage",e:"the packaging",c:17,t:"u17mgloss1",n:"m."},
+ {f:"en vrac",e:"in bulk, unsorted",c:17,t:"u17mgloss1"},
+ {f:"mettre à la disposition de",e:"to make available to",c:17,t:"u17mgloss1"},
+ {f:"les ordures ménagères",e:"the household waste (trash from the home)",c:17,t:"u17mgloss1",n:"f. pl. — vs les déchets (waste in general)"},
+ {f:"rendre",e:"to make (+ adjective)",c:17,t:"u17mgloss1"},
+ {f:"trier",e:"to sort out, to sort through",c:17,t:"u17mgloss1"},
+ {f:"une buanderie",e:"a laundry room",c:17,t:"u17mgloss1"},
+ {f:"le captage d'eau",e:"the rainwater harvesting",c:17,t:"u17mgloss1",x:1},
+ {f:"une commande",e:"a remote control",c:17,t:"u17mgloss1"},
+ {f:"se rencontrer",e:"to meet each other",c:17,t:"u17mgloss1"},
+ {f:"une approche",e:"an approach",c:17,t:"u17mgloss1"},
+ {f:"injuste",e:"unfair, unjust (of a situation or treatment)",c:17,t:"u17mgloss1",n:"vs déloyal(e) (unfair in business competition)"},
+ {f:"principalement",e:"mainly, primarily",c:17,t:"u17mgloss1"},
+ {f:"le piéton",e:"the pedestrian",c:17,t:"u17mgloss1",a:["la piétonne"],n:"m./f."},
+ {f:"le sentier",e:"the footpath, the trail (for walking or hiking)",c:17,t:"u17mgloss1"},
+ {f:"respirer",e:"to breathe",c:17,t:"u17mgloss1"},
+ {f:"un avaleur de sabre",e:"a sword swallower",c:17,t:"u17mgloss1",n:"from the street-art matching exercise"},
+ /* --- Mini-glossaire : transport start-ups & clean energy (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"à sa guise",e:"as one wishes, as one pleases",c:17,t:"u17mgloss2"},
+ {f:"à plat",e:"flat, discharged (a battery)",c:17,t:"u17mgloss2"},
+ {f:"une borne",e:"an electrical charging point",c:17,t:"u17mgloss2"},
+ {f:"faiblir",e:"to weaken, to flag, to lose strength",c:17,t:"u17mgloss2"},
+ {f:"une flotte",e:"a fleet",c:17,t:"u17mgloss2"},
+ {f:"nettement",e:"significantly, clearly",c:17,t:"u17mgloss2"},
+ {f:"une pente",e:"a slope, a hill",c:17,t:"u17mgloss2"},
+ {f:"place à",e:"make way for, it's now time for",c:17,t:"u17mgloss2"},
+ {f:"se recharger",e:"to recharge itself",c:17,t:"u17mgloss2"},
+ {f:"siglé(e)",e:"bearing a logo",c:17,t:"u17mgloss2"},
+ {f:"actionner",e:"to activate, to operate (a mechanism), to turn on",c:17,t:"u17mgloss2"},
+ {f:"au sein de",e:"within, inside",c:17,t:"u17mgloss2"},
+ {f:"le dimensionnement",e:"the sizing, the size calculation",c:17,t:"u17mgloss2",x:1},
+ {f:"éclairer",e:"to shed light on, to light up",c:17,t:"u17mgloss2"},
+ {f:"l'énergie renouvelable",e:"the renewable energy",c:17,t:"u17mgloss2",n:"f."},
+ {f:"l'ensoleillement",e:"the sunshine, the amount of sunlight",c:17,t:"u17mgloss2",n:"m.",x:1},
+ {f:"gravitaire",e:"gravitational, gravity-driven",c:17,t:"u17mgloss2"},
+ {f:"un relief",e:"a hilly area, the relief (of the land)",c:17,t:"u17mgloss2"},
+ {f:"un village de bout de ligne",e:"an isolated village at the end of the line",c:17,t:"u17mgloss2"},
+ /* --- Mini-glossaire : healthcare access & medical deserts (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"la patientèle",e:"the patient base, the whole set of a doctor's patients",c:17,t:"u17mgloss3"},
+ {f:"être à cran",e:"to be on edge, to be irritated",c:17,t:"u17mgloss3"},
+ {f:"la cadence",e:"the pace, the rhythm of work",c:17,t:"u17mgloss3"},
+ {f:"un aveu",e:"a confession, an admission",c:17,t:"u17mgloss3"},
+ {f:"en détresse",e:"in distress",c:17,t:"u17mgloss3"},
+ {f:"faire barrage à",e:"to block, to stop",c:17,t:"u17mgloss3"},
+ {f:"inexorablement",e:"inexorably, relentlessly",c:17,t:"u17mgloss3",x:1},
+ {f:"ingérable",e:"unmanageable, not manageable",c:17,t:"u17mgloss3",x:1},
+ {f:"officieux(-euse)",e:"informal, unofficial",c:17,t:"u17mgloss3",x:1},
+ {f:"le cabinet de médecin",e:"the doctor's office",c:17,t:"u17mgloss3"},
+ /* --- Mini-glossaire : rail disaster reading, Lac-Mégantic (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"un chemin de fer",e:"a railway",c:17,t:"u17mgloss4"},
+ {f:"les champs pétroliers",e:"the oil fields",c:17,t:"u17mgloss4",n:"m. pl."},
+ {f:"le chargement",e:"the load, the cargo",c:17,t:"u17mgloss4"},
+ {f:"dérailler",e:"to derail",c:17,t:"u17mgloss4"},
+ {f:"déverser",e:"to pour out, to spill",c:17,t:"u17mgloss4"},
+ {f:"se diriger vers",e:"to head to, to head toward",c:17,t:"u17mgloss4"},
+ {f:"en aval",e:"downstream",c:17,t:"u17mgloss4"},
+ {f:"en amont",e:"upstream",c:17,t:"u17mgloss4"},
+ {f:"s'échapper",e:"to escape",c:17,t:"u17mgloss4"},
+ {f:"éteindre",e:"to turn off, to put out",c:17,t:"u17mgloss4",x:1},
+ {f:"ferroviaire",e:"rail-related, railway (adjective)",c:17,t:"u17mgloss4",x:1},
+ {f:"le frein à main",e:"the handbrake, the emergency brake",c:17,t:"u17mgloss4"},
+ {f:"le freinage",e:"the braking (system)",c:17,t:"u17mgloss4"},
+ {f:"laisser le moteur en marche",e:"to leave the engine running",c:17,t:"u17mgloss4"},
+ {f:"se mettre en marche",e:"to start up, to start moving (a machine or vehicle)",c:17,t:"u17mgloss4"},
+ {f:"suffire à",e:"to be enough for, to be enough to",c:17,t:"u17mgloss4"},
+ {f:"les voies navigables",e:"the navigable waterways",c:17,t:"u17mgloss4",n:"f. pl."},
+ {f:"provenir de",e:"to come from, to originate from",c:17,t:"u17mgloss4"},
+ {f:"stationner",e:"to park, to be parked",c:17,t:"u17mgloss4"},
+ {f:"un wagon-citerne",e:"a tank car",c:17,t:"u17mgloss4",x:1},
+ /* --- Mini-glossaire : Airbnb hospitality dispute reading (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
+ {f:"assigner en justice",e:"to sue, to summon to court",c:17,t:"u17mgloss5"},
+ {f:"comparaître",e:"to appear before a court",c:17,t:"u17mgloss5",x:1},
+ {f:"les charges",e:"the expenses, the running costs",c:17,t:"u17mgloss5",n:"f. pl."},
+ {f:"le chiffre d'affaires",e:"the sales figure, the revenue",c:17,t:"u17mgloss5"},
+ {f:"déloyal(e)",e:"disloyal, unfair (in business competition)",c:17,t:"u17mgloss5",n:"vs injuste (unfair in a general sense)"},
+ {f:"être dépassé(e) par",e:"to be overwhelmed by",c:17,t:"u17mgloss5"},
+ {f:"la formation",e:"the training",c:17,t:"u17mgloss5"},
+ {f:"gérer",e:"to manage",c:17,t:"u17mgloss5"},
+ {f:"se heurter à",e:"to run into an obstacle, to come up against",c:17,t:"u17mgloss5"},
+ {f:"la pérennité",e:"the continuity, the long-term survival",c:17,t:"u17mgloss5",x:1},
+ {f:"rentable",e:"profitable",c:17,t:"u17mgloss5"},
+ {f:"à quoi bon",e:"what's the point",c:17,t:"u17mgloss5"},
+ {f:"prendre de l'ampleur",e:"to gain momentum, to be on the rise (to grow in scale)",c:17,t:"u17mgloss5"},
+ {f:"se vouloir",e:"to want to be, to want to appear",c:17,t:"u17mgloss5"}
+]);
 
 /* ===================================================================================
    Chapter 19 : Emergencies and Disasters — end-of-chapter glossaire (+ flagged mini-glossaire sets)
@@ -1888,6 +2150,10 @@ Object.keys(state.verbStats).forEach(function(fr){ var st=deriveStatus(fr,state.
 if(state.ach.a_v6 && !(VOCAB.some(function(v){return v.c===16;}) &&
     VOCAB.every(function(v){return v.c!==16 || state.vocab[v.f]==="known";}))){
   delete state.ach.a_v6; saveState();
+}
+if(state.ach.a_v7 && !(VOCAB.some(function(v){return v.c===17;}) &&
+    VOCAB.every(function(v){return v.c!==17 || state.vocab[v.f]==="known";}))){
+  delete state.ach.a_v7; saveState();
 }
 if(state.ach.a_v18 && !(VOCAB.some(function(v){return v.c===18;}) &&
     VOCAB.every(function(v){return v.c!==18 || state.vocab[v.f]==="known";}))){
@@ -2308,6 +2574,73 @@ var DRILLS=[
  ]}
 
 ];
+/* ================= CHAPITRE 17 (own contiguous block) ================= */
+DRILLS.push.apply(DRILLS,[
+ {id:"neg1",note:"<b>Instructions :</b> For each blank, decide whether the sentence needs a person word (personne), a thing word (rien) or a noun-agreeing word (aucun/aucune) — and check where the blank sits relative to the verb.<br><b>The rule :</b> ne … personne (nobody), ne … rien (nothing) and ne … aucun(e) (not a single) negate quelqu'un, quelque chose and un/une + noun. With ne … pas the verb sits between the two parts; with the passé composé or an infinitive, rien goes before the participle/infinitive while personne and aucun(e) + noun go after it. As subjects they come first: Personne ne…, Rien ne…, Aucun(e) … ne…. A noun after aucun can be replaced by en.",title:"La négation — ne … personne, ne … rien, ne … aucun",ch:"Ch. 17",minCh:17,items:[
+   {q:"Le cabinet était vide : je n'ai vu ___ dans la salle d'attente.",a:"personne",m:{vg:"neg"}},
+   {q:"Le patient a-t-il avalé quelque chose ce matin ? — Non, il n'a ___ avalé.",a:"rien",m:{vg:"neg"}},
+   {q:"Nous venons d'emménager : nous ne connaissons ___ parmi nos nouveaux voisins.",a:"personne",m:{vg:"neg"}},
+   {q:"Qui a téléphoné au cabinet ce matin ? — ___ n'a téléphoné.",a:"Personne",m:{vg:"neg"}},
+   {q:"Qu'est-ce qui a changé dans ce quartier depuis dix ans ? — ___ n'a changé.",a:"Rien",m:{vg:"neg"}},
+   {q:"Il n'y a ___ pharmacie de garde dans tout le village.",a:"aucune",m:{vg:"neg"}},
+   {q:"Trois médecins m'ont été recommandés, mais je n'ai contacté ___ d'entre eux.",a:"aucun",m:{vg:"neg"}},
+   {q:"As-tu des amis à Dakar ? — Non, je n'___ ai aucun.",a:"en",m:{vg:"neg"},hint:"A pronoun replaces the noun after aucun."},
+   {q:"Tu vas manger quelque chose ce soir ? — Non, je ne vais ___ manger.",a:"rien",m:{vg:"neg"}},
+   {q:"Elle ne va inviter ___ à l'inauguration ; c'est une cérémonie strictement privée.",a:"personne",m:{vg:"neg"}},
+   {q:"___ musée ne se trouve à moins de trente kilomètres d'ici.",a:"Aucun",m:{vg:"neg"}},
+   {q:"Quelqu'un t'a prévenu que la réunion était annulée ? — Non, ___ ne m'a prévenu.",a:"personne",m:{vg:"neg"}},
+   {q:"Dans cette rue, ___ ne fonctionne : ni l'éclairage, ni les feux, ni les horloges.",a:"rien",m:{vg:"neg"}},
+   {q:"Les hôteliers n'ont trouvé ___ solution à ce problème de concurrence.",a:"aucune",m:{vg:"neg"}}
+ ]},
+ {id:"cleft1",note:"<b>Instructions :</b> Work out the role of the emphasized element in the rest of the sentence — subject, direct object, de-construction or place — then fill in the missing word.<br><b>The rule :</b> c'est / ce sont + emphasized element + qui / que / dont / où + the rest of the sentence. Use ce sont before a plural noun or eux/elles; a personal-pronoun subject becomes a disjunctive pronoun (moi, toi, lui, elle, nous, vous, eux, elles).<ul><li>qui = the emphasized element is the subject</li><li>que = it is the direct object</li><li>dont = it is introduced by de</li><li>où = it is a place</li></ul>",title:"La mise en relief — c'est / ce sont … qui, que, dont, où",ch:"Ch. 17",minCh:17,items:[
+   {q:"C'est ma sœur ___ a organisé toute la fête.",a:"qui",m:{vg:"cleft"}},
+   {q:"C'est ce cabinet ___ je préfère pour mes consultations.",a:"que",m:{vg:"cleft"}},
+   {q:"Ce sont ces dispositifs ___ nous avons vraiment besoin.",a:"dont",m:{vg:"cleft"}},
+   {q:"C'est le gymnase ___ les athlètes s'entraînent chaque matin.",a:"où",m:{vg:"cleft"}},
+   {q:"___ les infirmiers qui ont soutenu les patients pendant la crise.",a:"Ce sont",m:{vg:"cleft"}},
+   {q:"___ mon frère qui gère le café du coin.",a:"C'est",m:{vg:"cleft"}},
+   {q:"C'est ___ qui a inventé ce scooter électrique ; moi, je l'ai seulement financé. (il)",a:"lui",m:{vg:"cleft"}},
+   {q:"Ce sont ___ qui ont repeint la fresque, pas nous. (ils)",a:"eux",m:{vg:"cleft"}},
+   {q:"C'est ___ que la secrétaire a appelé en premier. (je)",a:"moi",m:{vg:"cleft"}},
+   {q:"Ce sont ces panneaux solaires ___ l'entreprise a installés au village.",a:"que",m:{vg:"cleft"}},
+   {q:"C'est la forme d'art ___ les jeunes citadins parlent le plus.",a:"dont",m:{vg:"cleft"}},
+   {q:"Ce sont les places publiques ___ les artistes de rue se produisent le week-end.",a:"où",m:{vg:"cleft"}},
+   {q:"C'est le lancement du projet ___ a surpris tout le monde.",a:"qui",m:{vg:"cleft"}},
+   {q:"C'est votre soutien ___ ils ont besoin, pas vos excuses.",a:"dont",m:{vg:"cleft"}}
+ ]},
+ {id:"gerond1",note:"<b>Instructions :</b> Build the full gérondif — en plus the participle — from the verb in parentheses; work out each participle from the nous form before you type. Where the sentence sets two clashing actions side by side, decide whether en alone is enough.<br><b>The rule :</b> le gérondif = en + present participle (nous form minus -ons + -ant); it never changes, and its subject is always the subject of the main verb. It gives manner, time/simultaneity, cause, condition — and, reinforced by tout (tout en), contrast.<ul><li>irregular: être → étant · avoir → ayant · savoir → sachant</li></ul>",title:"Le gérondif",ch:"Ch. 17",minCh:17,items:[
+   {q:"Elle a appris le français ___ des films tous les soirs. (regarder)",a:"en regardant",m:{vg:"gerond"}},
+   {q:"Il s'est blessé ___ au football avec ses amis. (jouer)",a:"en jouant",m:{vg:"gerond"}},
+   {q:"Nous avons économisé de l'énergie ___ les lumières le soir. (éteindre)",a:"en éteignant",m:{vg:"gerond"}},
+   {q:"Ils ont perdu du temps ___ la mauvaise route. (prendre)",a:"en prenant",m:{vg:"gerond"}},
+   {q:"Elle gagne sa vie ___ des bijoux à la main. (faire)",a:"en faisant",m:{vg:"gerond"}},
+   {q:"Elle s'est endormie ___ sur le canapé. (se coucher)",a:"en se couchant",m:{vg:"gerond"}},
+   {q:"Ils ont réussi ___ tous les obstacles. (franchir)",a:"en franchissant",m:{vg:"gerond"}},
+   {q:"Vous économiserez de l'argent ___ le vélo plutôt que la voiture. (choisir)",a:"en choisissant",m:{vg:"gerond"}},
+   {q:"Elle s'est fait mal à la main ___ la porte. (fermer)",a:"en fermant",m:{vg:"gerond"}},
+   {q:"Il écoute la radio ___ le petit-déjeuner. (préparer)",a:"en préparant",m:{vg:"gerond"}},
+   {q:"Nous avons croisé des artistes de rue ___ dans le parc. (se promener)",a:"en nous promenant",m:{vg:"gerond"},hint:"The reflexive pronoun still follows the subject."},
+   {q:"___ très occupé, il a pris le temps de nous aider. (être)",a:"Tout en étant",m:{vg:"gerond"},hint:"Two things that clash: busy, yet helping."},
+   {q:"Elle se plaint du bruit ___ habitant elle-même en plein centre-ville.",a:"tout en",m:{vg:"gerond"},hint:"Her complaint clashes with her choice of neighborhood."},
+   {q:"Il a évité les embouteillages ___ très tôt le matin. (partir)",a:"en partant",m:{vg:"gerond"}}
+ ]},
+ {id:"voc17",note:"<b>Instructions :</b> Write the single glossaire word that completes the sentence, spelled and accented exactly as taught.<br><b>Word bank :</b> the Chapter 17 glossaire — healthcare, transport and energy, business, and street art. Accents count.",title:"Vocab en contexte — Ch. 17",ch:"Ch. 17",minCh:17,items:[
+   {q:"Il y a trop de voitures en ville : chaque matin, je reste bloqué dans les ___.",a:"embouteillages",m:{vg:"vocctx"}},
+   {q:"Dans les zones rurales, la ___ médicale oblige les patients à faire des kilomètres pour voir un médecin.",a:"désertification",m:{vg:"vocctx"}},
+   {q:"Mon ___ traitant m'a orienté vers un cardiologue.",a:"médecin",m:{vg:"vocctx"}},
+   {q:"Elle attend depuis deux mois : le ___ d'attente pour voir un spécialiste est beaucoup trop long.",a:"délai",m:{vg:"vocctx"}},
+   {q:"Pour économiser l'énergie, la commune a installé des ___ photovoltaïques sur le toit de l'école.",a:"panneaux",m:{vg:"vocctx"}},
+   {q:"Le charbon et le pétrole sont des ___ fossiles qui polluent l'atmosphère.",a:"énergies",m:{vg:"vocctx"}},
+   {q:"Cette artiste a peint une immense ___ sur le mur de la gare.",a:"fresque",m:{vg:"vocctx"}},
+   {q:"L'entreprise prépare le ___ de son nouveau scooter électrique pour le mois prochain.",a:"lancement",m:{vg:"vocctx"}},
+   {q:"La mairie veut ___ le centre-ville en interdisant les voitures.",a:"désengorger",m:{vg:"vocctx"},hint:"to decongest."},
+   {q:"Grâce à une meilleure ___ en charge des patients, l'attente a diminué.",a:"prise",m:{vg:"vocctx"}},
+   {q:"Ces artistes ont peint le mur ___ : ils n'ont demandé aucun paiement.",a:"bénévolement",m:{vg:"vocctx"},hint:"voluntarily, without pay."},
+   {q:"Ouvrir une start-up dans ce domaine, c'est un vrai ___ : personne ne sait si cela marchera.",a:"pari",m:{vg:"vocctx"},hint:"a bet, a gamble."},
+   {q:"Le train de banlieue était ___ : impossible de trouver une place, même debout.",a:"bondé",m:{vg:"vocctx"},hint:"packed with people."},
+   {q:"L'ancienne ___ de cette famille est aujourd'hui classée monument historique.",a:"demeure",m:{vg:"vocctx"},hint:"a formal word for a home."}
+ ]}
+]);
 
 /* ================= CHAPITRE 19 : Emergencies and Disasters ================= */
 DRILLS.push(
@@ -2549,6 +2882,36 @@ var TEST=[
  {ch:"18",type:"fill",q:"S'il fait beau ce week-end, nous ___ (aller) à la plage.",a:["irons"],m:{cat:"gen"}},
  {ch:"18",type:"mc",q:"« S'impliquer » signifie…",o:["s'engager activement dans quelque chose", "s'éloigner de quelque chose", "se reposer", "abandonner un projet"],a:"s'engager activement dans quelque chose"}
 ];
+/* ===== Chapter 17 (bank of 27, 10 drawn per quiz) — own contiguous block ===== */
+TEST.push.apply(TEST,[
+ {ch:"17",type:"fill",q:"Le médecin m'a dit qu'il n'y a ___ patient en attente ce matin.",a:["aucun"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Elle est nouvelle en ville : elle n'y connaît ___ parmi les habitants.",a:["personne"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Tu as entendu quelque chose ? — Non, je n'ai ___ entendu.",a:["rien"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Qui t'a aidé à installer les panneaux ? — ___ ne m'a aidé.",a:["Personne"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Ce sont les start-ups ___ ont créé ces nouveaux services de transport.",a:["qui"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Ce sont ces pentes ___ le conducteur avait peur.",a:["dont"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"C'est le quartier ___ les jeunes artistes exposent leurs fresques.",a:["où"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"C'est cette borne de recharge ___ la mairie a installée devant la gare.",a:["que"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Il a réduit sa facture d'électricité ___ des panneaux solaires. (installer)",a:["en installant"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Elle s'est fait mal ___ du vélo. (tomber)",a:["en tombant"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"___ un rendez-vous par téléphone, vous éviterez l'attente. (prendre)",a:["En prenant"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Elle a réussi son examen ___ toute la nuit. (réviser)",a:["en révisant"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Tout ___ vivant en ville, il rêve d'une maison à la campagne.",a:["en"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Dans les zones rurales, la ___ médicale s'aggrave chaque année.",a:["désertification"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Les hôteliers ont ___ Airbnb en justice pour concurrence déloyale.",a:["assigné"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Leur modèle est beaucoup moins ___ que celui des loueurs sur Airbnb : les charges y sont bien plus élevées.",a:["rentable"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Le train a ___ près du centre-ville et plusieurs wagons ont explosé.",a:["déraillé"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Cet artiste lance et rattrape des balles : il pratique le ___.",a:["jonglage"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Il y a trop de voitures dans le centre-ville : les ___ durent des heures.",a:["embouteillages"],m:{cat:"gen"}},
+ {ch:"17",type:"fill",q:"Le suivi ___ des patients est assuré par le médecin traitant.",a:["médical"],m:{cat:"gen"}},
+ {ch:"17",type:"mc",q:"« La désertification médicale » désigne…",o:["le manque de médecins dans une région","la fermeture des pharmacies","l'excès de spécialistes en ville","la hausse du prix des consultations"],a:"le manque de médecins dans une région"},
+ {ch:"17",type:"mc",q:"Un « constat amiable » sert à…",o:["décrire un accident avec l'autre conducteur","payer une amende","prendre un rendez-vous chez le médecin","réserver un scooter électrique"],a:"décrire un accident avec l'autre conducteur"},
+ {ch:"17",type:"mc",q:"Un « trompe-l'oeil » est…",o:["une peinture qui crée une illusion en trois dimensions","un numéro de cirque avec des épées","un scooter électrique partagé","un poème en forme de dessin"],a:"une peinture qui crée une illusion en trois dimensions"},
+ {ch:"17",type:"mc",q:"Une personne « déracinée » est…",o:["arrachée à son lieu d'origine","très riche","sans emploi","très timide"],a:"arrachée à son lieu d'origine"},
+ {ch:"17",type:"mc",q:"Quelle phrase est correcte au passé composé ?",o:["Je n'ai rencontré personne.","Je n'ai personne rencontré.","Je ne rencontré personne.","Je n'ai pas personne rencontré."],a:"Je n'ai rencontré personne."},
+ {ch:"17",type:"mc",q:"Quelle phrase utilise correctement le gérondif ?",o:["Il a appris le français en regardant des films.","Il a appris le français en regardé des films.","Il a appris le français en il regardant des films.","Il a appris le français à regardant des films."],a:"Il a appris le français en regardant des films."},
+ {ch:"17",type:"mc",q:"Pour mettre en relief le sujet de « Les profs corrigent les examens », on dit…",o:["Ce sont les profs qui corrigent les examens.","Ce sont les profs que corrigent les examens.","Ce sont les profs dont corrigent les examens.","C'est les profs où corrigent les examens."],a:"Ce sont les profs qui corrigent les examens."}
+]);
 
 /* ===== Chapter 19 (bank of 24, 10 drawn per quiz) ===== */
 TEST.push(
@@ -2857,6 +3220,14 @@ var OPI=[
  {t:"Ch 18 · A health scare or injury",d:"Racontez une fois où vous ou un proche avez été malade ou blessé(e). Qu'est-ce qui vous a aidé à vous rétablir ? — Tell about a time you or someone close to you was sick or injured. What helped you recover?",s:["se rétablir, subir, guérir","ce dont j'avais besoin, c'était…"]},
  {t:"Ch 18 · Health advice for a friend",d:"Un(e) ami(e) mange mal, ne dort pas assez et ne fait jamais de sport. Que lui conseillez-vous ? — A friend eats poorly, doesn't sleep enough, and never exercises. What do you advise them?",s:["si + présent + impératif","manger sain, se coucher tôt, faire du sport."]}
 ];
+OPI.push.apply(OPI,[
+ {t:"Ch 17 · The city of tomorrow",d:"Comment imaginez-vous la ville de demain ? Décrivez deux ou trois caractéristiques écologiques. — How do you picture the city of tomorrow? Describe two or three eco-friendly features.",s:["durable, diminuer, trier","le gérondif : en utilisant, en réduisant…"]},
+ {t:"Ch 17 · Medical deserts",d:"Y a-t-il assez de médecins près de chez vous ? Comment font les gens qui n'ont pas de médecin traitant ? — Are there enough doctors near you? What do people do who have no primary care provider?",s:["le délai d'attente, la désertification médicale","ne … personne, ne … aucun"]},
+ {t:"Ch 17 · Getting around the city",d:"Quel moyen de transport préférez-vous en ville — vélo, scooter électrique, transports en commun, voiture ? Pourquoi ? — Which way of getting around a city do you prefer — bike, electric scooter, public transit, car? Why?",s:["l'embouteillage, la piste cyclable","c'est … que — mettre votre choix en relief"]},
+ {t:"Ch 17 · A start-up idea",d:"Présentez une idée de start-up qui améliorerait la vie en ville. — Pitch a start-up idea that would improve city life.",s:["le lancement, la mise en place, rentable","c'est … qui — qui fait quoi dans votre projet"]},
+ {t:"Ch 17 · Street art and culture",d:"Quel rôle l'art de rue joue-t-il dans une ville ? Y a-t-il des fresques ou des spectacles dans la vôtre ? — What role does street art play in a city? Are there murals or shows in yours?",s:["la fresque, le graffeur, la déambulation","c'est … où — où se passent les spectacles"]},
+ {t:"Ch 17 · What bothers you about cities",d:"Qu'est-ce qui vous dérange le plus dans une grande ville — le bruit, les embouteillages, la pollution ? Que ne fait-on pas assez ? — What bothers you most about a big city — noise, traffic jams, pollution? What isn't being done enough?",s:["le désagrément, encombrer","rien ne…, personne ne…, en + participe présent"]}
+]);
 OPI.push(
  {t:"Ch 19 · Report a natural disaster",d:"Présentez un court bulletin d'information sur une catastrophe naturelle : type de catastrophe, région touchée, bilan humain, dégâts. — Give a short news report on a natural disaster: type, affected region, human toll, damage.",s:["le bilan s'est alourdi, les secouristes, les décombres","la nominalisation : l'effondrement, l'évacuation, le sauvetage"]},
  {t:"Ch 19 · Advice before an emergency",d:"Que conseilleriez-vous à des visiteurs pour se préparer à un séisme ou à un incendie ? Donnez huit conseils. — What would you advise visitors to do to prepare for an earthquake or a fire? Give eight tips.",s:["vous devriez, il faut, évitez de, ne pas + infinitif","sans + infinitif : sortir sans prendre l'ascenseur"]},
@@ -2905,6 +3276,8 @@ var sesStreak=0, sesFill=0, sesAccMiss=0, sesRight=0;   /* per page-load session
 function withSrc(m,src,sk,ch){ var o={}; if(m){ for(var k in m) o[k]=m[k]; } o.src=src; if(sk) o.sk=sk; if(ch) o.ch=ch; return o; }
 var GRAM_SK={dont1:"dont",poss1:"poss",quellq1:"quellq",toutadj1:"toutadj",voc16:"vocctx",hypofut1:"hypofut",demonpro1:"demonpro",cequi1:"cequi",voc18:"vocctx"};
 var GRAM_LBL={dont:"Dont (+ qui, que, où)",poss:"Pronoms possessifs",quellq:"Quel / Lequel",toutadj:"Tout, toute, tous, toutes",vocctx:"Vocab en contexte",hypofut:"Hypothèse sur le futur",demonpro:"Pronoms démonstratifs",cequi:"Ce qui / ce que / ce dont"};
+GRAM_SK.neg1="neg"; GRAM_SK.cleft1="cleft"; GRAM_SK.gerond1="gerond"; GRAM_SK.voc17="vocctx";
+GRAM_LBL.neg="La négation (personne, rien, aucun)"; GRAM_LBL.cleft="Mise en relief (c'est … qui/que/dont/où)"; GRAM_LBL.gerond="Le gérondif";
 GRAM_SK.nomin1="nomin"; GRAM_SK.inclexc1="inclexc"; GRAM_SK.infin1="infin"; GRAM_SK.voc19="vocctx19";
 GRAM_LBL.nomin="Nominalisation"; GRAM_LBL.inclexc="Inclusion / exception / restriction"; GRAM_LBL.infin="Mode infinitif"; GRAM_LBL.vocctx19="Vocab en contexte (Ch 19)";
 
@@ -2913,6 +3286,7 @@ var ACH=[
   {id:"a_s25", icon:"⚡", name:"Série de 25",         desc:"25 correct answers in a row."},
   {id:"a_s50", icon:"🏆", name:"Machine",             desc:"50 correct answers in a row."},
   {id:"a_v6",  icon:"📗", name:"Chapitre 16 maîtrisé", desc:"Every Chapter 16 vocab card is green."},
+  {id:"a_v7",  icon:"📘", name:"Chapitre 17 maîtrisé", desc:"Every Chapter 17 vocab card is green."},
   {id:"a_v18", icon:"📗", name:"Chapitre 18 maîtrisé", desc:"Every Chapter 18 vocab card is green."},
   {id:"a_v19", icon:"📙", name:"Chapitre 19 maîtrisé", desc:"Every Chapter 19 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every verb in the Conjugaison tab is green."},
@@ -2953,6 +3327,8 @@ function sweepMastery(statusMap){
       var has16=VOCAB.some(function(v){ return v.c===16; });
       var all=has16 && VOCAB.every(function(v){ return v.c!==16 || state.vocab[v.f]==="known"; });
       if(all) award("a_v6");
+      var has17=VOCAB.some(function(v){ return v.c===17; });
+      if(has17 && VOCAB.every(function(v){ return v.c!==17 || state.vocab[v.f]==="known"; })) award("a_v7");
       var has18=VOCAB.some(function(v){ return v.c===18; });
       var all18=has18 && VOCAB.every(function(v){ return v.c!==18 || state.vocab[v.f]==="known"; });
       if(all18) award("a_v18");
@@ -3001,6 +3377,7 @@ function renderInsightsSoon(){ if(_insT) clearTimeout(_insT); _insT=setTimeout(r
 function pctOf(o){ return o.a ? Math.round(o.m/o.a*100) : 0; }
 var PRON_LBL={je:"je",tu:"tu",il:"il / elle / on",nous:"nous",vous:"vous",ils:"ils / elles"};
 var VG_LBL={flag:"vedettes (tous temps)",irr16:"irréguliers (Ch 16)",pc:"passé composé",er:"-er present"};
+VG_LBL.irr17="irréguliers (Ch 17)"; VG_LBL.neg="négation"; VG_LBL.cleft="mise en relief"; VG_LBL.gerond="gérondif";
 VG_LBL.irr19="irréguliers (Ch 19)"; VG_LBL.nomin="nominalisation"; VG_LBL.inclexc="inclusion / exception / restriction"; VG_LBL.infin="mode infinitif";
 function renderInsights(){
   var host=document.getElementById("insWeak"); if(!host) return;
