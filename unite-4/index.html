@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.2.0</title>
+<title>Unité 4 · Dossier Français — v0.3.0</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.2.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.3.0</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -331,6 +331,7 @@
       <select class="filter" id="curCh">
         <option value="16">Chapter 16 — Family Through Generations</option>
         <option value="17">Chapter 17 — Urban Dynamics</option>
+        <option value="18">Chapter 18 — Health, Sports, and Medicine</option>
       </select>
       <span class="hist" id="scopeNote"></span>
     </div>
@@ -426,7 +427,7 @@
   <!-- ===================== VOCABULAIRE ===================== -->
   <section class="panel" id="p-vocab" role="tabpanel">
     <h2 class="sec">Vocabulary trainer</h2>
-    <p class="lead">The Chapter 16 glossaire (family structures, aging, daily life) and the Chapter 17 glossaire (urban life, healthcare, transport &amp; energy, street art), plus mini-glossaire words folded in from reading &amp; listening activities.</p>
+    <p class="lead">The Chapter 16 glossaire (family structures, aging, daily life), the Chapter 17 glossaire (urban life, healthcare, transport &amp; energy, street art) and the Chapter 18 glossaire (health, sports, nutrition, and medicine), plus mini-glossaire words folded in from reading &amp; listening activities.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -447,6 +448,7 @@
         <option value="any">Any chapter</option>
         <option value="16">Ch 16</option>
         <option value="17">Ch 17</option>
+        <option value="18">Ch 18</option>
       </select>
       <select class="filter" id="vocTopic"><option value="all">All topics</option></select>
     </div>
@@ -485,7 +487,7 @@
   <!-- ===================== GRAMMAR ===================== -->
   <section class="panel" id="p-gram" role="tabpanel">
     <h2 class="sec">Grammar drills</h2>
-    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — and Chapter 17 structures — la négation (ne … personne, rien, aucun), la mise en relief (c'est … qui/que/dont/où), le gérondif — plus vocab en contexte.</p>
+    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — Chapter 17 structures — la négation (ne … personne, rien, aucun), la mise en relief (c'est … qui/que/dont/où), le gérondif — and Chapter 18 structures — l'hypothèse sur le futur (si + présent...), les pronoms démonstratifs, les pronoms relatifs composés (ce qui, ce que, ce dont) — plus vocab en contexte for each chapter.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -499,7 +501,7 @@
   <!-- ===================== TEST ===================== -->
   <section class="panel" id="p-test" role="tabpanel">
     <h2 class="sec">Quizzes &amp; Unit 4 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 16–17 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
+    <p class="lead">10 randomized questions per chapter bank (Ch 16, Ch 17, Ch 18 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -513,6 +515,7 @@
         <select class="filter" id="quizPick">
           <option value="16">Chapter 16 quiz</option>
           <option value="17">Chapter 17 quiz</option>
+          <option value="18">Chapter 18 quiz</option>
           <option value="exam" disabled>Unit 4 practice exam (à venir)</option>
         </select>
         <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
@@ -583,9 +586,11 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.2.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations) and 17 (Urban Dynamics) so far, of Chapters 16–19. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.3.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics) and 18 (Health, Sports, and Medicine) so far, of Chapters 16–19. Chapters are being built out of order across sessions. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
-    <span style="color:var(--mute)">v0.2.0 (20 Sep 2026): <strong>Chapter 17 — Urban Dynamics.</strong> <strong>Vocabulaire</strong>: 140 cards from the Chapter 17 end-of-chapter glossaire (Noms, Adjectifs, Autres mots, Verbes) across 7 topic groups sized to the ~20–25-word standing rule (enlever and finir par were already Chapter 16 cards, so not duplicated), plus 85 mini-glossaire words (faire partie de and former likewise already covered) folded in from activity vocab lists tied to comprehension or matching exercises (sustainable city, transport start-ups &amp; clean energy, medical deserts, the Lac-Mégantic rail-disaster reading, the Airbnb dispute reading) as flagged exceptions with their own topic tags and comment headers. Synonym collisions resolved per the standing rule with distinguishing EN cues: abîmé(e) vs endommagé(e), en effet vs en fait, faire appel à vs recourir à, s’entraîner vs former, injuste vs déloyal(e), les déchets vs les ordures ménagères, prévu(e) vs Chapter 16’s anticipé(e). <strong>Grammaire</strong>: 3 new drills — la négation (ne … personne, rien, aucun), la mise en relief (c’est / ce sont … qui, que, dont, où), le gérondif — plus a Vocab en contexte drill, all with fresh example sentences. <strong>Conjugaison</strong>: a new targeted set of six Chapter 17 irregulars (valoir, recourir à, soutenir, éteindre, provenir de, comparaître) drills in présent + PC. <strong>Examen blanc</strong>: a 27-item Chapter 17 quiz bank (10 drawn per attempt). <strong>Pratique orale</strong>: 6 new Chapter 17 prompts. <strong>Tableau de bord</strong>: Chapter 17 added to the chapter picker, ledger and achievements (Chapitre 17 maîtrisé). Chapters 18–19 and etymology mémos are not yet built.<br></span>
+    <span style="color:var(--mute)">v0.3.0 (20 Sep 2026): <strong>Chapter 17 — Urban Dynamics.</strong> <strong>Vocabulaire</strong>: 134 cards from the Chapter 17 end-of-chapter glossaire (Noms, Adjectifs, Autres mots, Verbes) across 7 topic groups sized to the ~20–25-word standing rule, plus 84 mini-glossaire words folded in from activity vocab lists tied to comprehension or matching exercises (sustainable city, transport start-ups &amp; clean energy, medical deserts, the Lac-Mégantic rail-disaster reading, the Airbnb dispute reading) as flagged exceptions with their own topic tags and comment headers. Eleven words already carried by Chapter 16 or Chapter 18 cards were not duplicated (progress is keyed by the French word): enlever, finir par, faire partie de and former (Chapter 16); la sage-femme, décaler, virer, ainsi, améliorer, soigner and éventuel(le) (Chapter 18). Synonym collisions resolved per the standing rule with distinguishing EN cues: abîmé(e) vs endommagé(e), en effet vs en fait, faire appel à vs recourir à, s’entraîner vs former, injuste vs déloyal(e), les déchets vs les ordures ménagères, prévu(e) vs Chapter 16’s anticipé(e), diminuer vs réduire, privilégier vs favoriser, mettre sur pied vs mettre en place (Chapter 18). <strong>Grammaire</strong>: 3 new drills — la négation (ne … personne, rien, aucun), la mise en relief (c’est / ce sont … qui, que, dont, où), le gérondif — plus a Vocab en contexte drill, all with fresh example sentences. <strong>Conjugaison</strong>: a new targeted set of six Chapter 17 irregulars (valoir, recourir à, soutenir, éteindre, provenir de, comparaître) drills in présent + PC. <strong>Examen blanc</strong>: a 27-item Chapter 17 quiz bank (10 drawn per attempt). <strong>Pratique orale</strong>: 6 new Chapter 17 prompts. <strong>Tableau de bord</strong>: Chapter 17 added to the chapter picker, ledger and achievements (Chapitre 17 maîtrisé). Merged with Chapter 18 (v0.2.0) and the v0.1.2 hotfix. Chapter 19 and etymology mémos are not yet built.<br></span>
+    <span style="color:var(--mute)">v0.2.0 (16 Sep 2026): <strong>Chapter 18 vocabulaire, grammaire &amp; examen blanc.</strong> Built out of order, ahead of Chapter 17. <strong>Vocabulaire</strong>: 199 cards from the Chapter 18 end-of-chapter glossaire (Health, Sports, and Medicine; finir par is not repeated here since it already lives in Chapter 16), across 8 topic groups sized to the ~20–25-word standing rule (including a dedicated Corps/body-parts group), plus 70 mini-glossaire words folded in from reading/listening activities across the chapter's four sections (nutrition, stress, sport, technology) and the Tour de France culture reading, as flagged exceptions (own topic tags, own comment headers). A synonym collision (néfaste vs nuisible, both glossed "harmful") was resolved with distinguishing EN cues rather than a merge, since the source text treats them as distinct entries. A handful of workbook exercise words with no locatable source translation (an "intrus" exercise likely tied to an audio passage) were left out rather than guessed. <strong>Grammaire</strong>: 4 new drills — l'hypothèse sur le futur (si + présent + futur/impératif/présent), les pronoms démonstratifs (celui/celle/ceux/celles), and les pronoms relatifs composés (ce qui/ce que/ce dont) — plus a Vocab en contexte drill, all with fresh example sentences. <strong>Examen blanc</strong>: a 24-item Chapter 18 quiz bank (10 drawn per attempt) covering all three grammar points plus vocabulaire. <strong>Pratique orale</strong>: 6 new Chapter 18 prompts. Chapters 17 and 19 and etymology mémos are not yet built — this is a partial, in-progress release.<br></span>
+    <span style="color:var(--mute)">v0.1.2 (20 Sep 2026): <strong>Hotfix — aller/venir passé composé, and le/la article grading.</strong> <strong>Conjugaison</strong>: the flagship <em>aller</em> and <em>venir</em> passé-composé rows showed <em>ai allé</em> / <em>ai venu</em>; they now use être with the agreement forms (<em>suis allé/allée</em>, <em>es venu/venue</em>…), like the other être verbs. <strong>Vocabulaire</strong>: on the le/la card (<em>le/la pensionnaire</em>) only <em>le</em> or <em>la</em> + the noun grades correct — a bare noun or a mismatched article is a miss. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v0.1.1 (20 Sep 2026): <strong>Hotfix — Vocabulaire spelling accepts either gender form.</strong> Cards written with a parenthetical feminine (<em>anticipé(e)</em>, <em>mis(e) en marge</em>, <em>fier(-ère)</em>) no longer require typing the parentheses: the masculine or the feminine now grades correct, and the literal card form still works. Verb cards with an optional complement (<em>se lasser (de)</em>, <em>se lancer (dans)</em>) likewise accept the answer with or without it. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v0.1.0 (16 Sep 2026): <strong>Unité 4 launch — Chapter 16 vocabulaire, grammaire &amp; conjugaison.</strong> Forked from the Unit 3 v1.3.0.1 engine; Unit 4 progress saves under its own key. <strong>Vocabulaire</strong>: 192 cards from the Chapter 16 end-of-chapter glossaire (Family Through Generations), across 8 topic groups sized to the ~20–25-word standing rule, plus 34 mini-glossaire words folded in from two reading/listening activities as flagged exceptions (own topic tags, own comment header), same pattern as the Unit 2 Ch 6 set. Synonym collisions resolved per the new standing rule (artisanal(e) merged from a duplicated glossaire entry; n’importe quoi ! vs peu importe ! given distinguishing EN cues). <strong>Grammaire</strong>: 4 new drills — le pronom relatif dont (+ reinforcement of qui/que/où), les pronoms possessifs (+ reinforcement of possessive adjectives), quel &amp; lequel, and les adjectifs indéfinis tout/toute/tous/toutes — plus a Vocab en contexte drill, all with fresh example sentences (not reused from the textbook or workbook). <strong>Conjugaison</strong>: the ten flagship verbs continue sweeping every tense; a new targeted set of seven Chapter 16 irregulars (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire) drills in présent + PC. <strong>Examen blanc</strong>: a 24-item Chapter 16 quiz bank (10 drawn per attempt) covering all four grammar points plus vocabulaire; the Unit 4 practice exam stays <em>à venir</em> pending the study guide. <strong>Pratique orale</strong>: 6 new Chapter 16 prompts. Chapters 17–19 and etymology mémos are not yet built — this is a partial, in-progress release.<br></span>
     </details><br>
@@ -702,6 +707,8 @@ function normArt(a){ return (a||"").toLowerCase().replace(/[’´]/g,"'"); }
 function artGender(a){ a=normArt(a); if(a==="la"||a==="une")return "f."; if(a==="le"||a==="un")return "m."; if(a==="les")return "pl."; return ""; }
 /* split a leading definite/indefinite article off a French entry */
 function splitArticle(fr){
+  var ml=fr.match(/^(le\/la)\s+(.+)$/i);   /* le/la cards still require an article (matched via vocCands) */
+  if(ml) return {hasArt:true, art:"le/la", bare:ml[2], gender:""};
   var m=fr.match(/^(les|le|la|une|un)\s+(.+)$/i);
   if(m) return {hasArt:true, art:normArt(m[1]), bare:m[2], gender:artGender(m[1])};
   var m2=fr.match(/^(l['’])\s*(.+)$/i);
@@ -732,8 +739,8 @@ function formVariants(f){
   }
   var lm=f.match(/^le\/la\s+(.+)$/i);
   if(lm){
-    if(gender){ out.push("le "+masc.replace(/^le\/la\s+/i,""), "la "+fem.replace(/^le\/la\s+/i,"")); }
-    else { out.push("le "+lm[1], "la "+lm[1]); }
+    /* le/la cards: only correctly-articled forms count — le + masculine, la + feminine; no bare noun, no mixed article */
+    return gender ? ["le "+masc.replace(/^le\/la\s+/i,""), "la "+fem.replace(/^le\/la\s+/i,"")] : ["le "+lm[1], "la "+lm[1]];
   }
   return out;
 }
@@ -808,13 +815,13 @@ var V=[
   /* ---- vedettes : full-tense sweep (per build decision) ---- */
   {fr:"être",en:"to be",cat:"flag",conj:["suis","es","est","sommes","êtes","sont"],pp:"été",fsr:"ser",impRoot:"ét",ex:"Le manteau est en solde.",exEn:"The coat is on sale.",note:"Futur ser- · imparfait ét-."},
   {fr:"avoir",en:"to have",cat:"flag",conj:["ai","as","a","avons","avez","ont"],pp:"eu",fsr:"aur",ex:"Il y aura des averses demain.",exEn:"There will be showers tomorrow.",note:"il y a → futur il y aura · imparfait il y avait — the weather forecasts live on these."},
-  {fr:"aller",en:"to go",cat:"flag",conj:["vais","vas","va","allons","allez","vont"],pp:"allé",fsr:"ir",ex:"J'allais acheter du lait quand tu as appelé.",exEn:"I was going to buy milk when you called.",note:"Imparfait of aller + infinitif = the near future in the past: j'allais partir."},
+  {fr:"aller",en:"to go",cat:"flag",conj:["vais","vas","va","allons","allez","vont"],pp:"allé",aux:"e",fsr:"ir",ex:"J'allais acheter du lait quand tu as appelé.",exEn:"I was going to buy milk when you called.",note:"Imparfait of aller + infinitif = the near future in the past: j'allais partir."},
   {fr:"faire",en:"to do / to make",cat:"flag",conj:["fais","fais","fait","faisons","faites","font"],pp:"fait",fsr:"fer",ex:"Quel temps fera-t-il demain ?",exEn:"What will the weather be tomorrow?",note:"il fait beau/froid/lourd — the weather workhorse in every tense."},
   {fr:"pouvoir",en:"can / to be able to",cat:"flag",conj:["peux","peux","peut","pouvons","pouvez","peuvent"],pp:"pu",fsr:"pourr",ex:"Pourriez-vous m'aider avec la taille ?",exEn:"Could you help me with the size?",note:"Conditionnel pourrais = polite request. Double r in the stem: pourr-."},
   {fr:"devoir",en:"must / to have to",cat:"flag",conj:["dois","dois","doit","devons","devez","doivent"],pp:"dû",fsr:"devr",ex:"Tu devrais dormir plus.",exEn:"You should sleep more.",note:"Conditionnel devrais = should (advice). Participle dû keeps its circumflex."},
   {fr:"vouloir",en:"to want",cat:"flag",conj:["veux","veux","veut","voulons","voulez","veulent"],pp:"voulu",fsr:"voudr",ex:"Je voudrais réserver une chambre.",exEn:"I would like to book a room.",note:"Je voudrais = the polite want — the OPI's most useful conditionnel."},
   {fr:"savoir",en:"to know (facts, how to)",cat:"flag",conj:["sais","sais","sait","savons","savez","savent"],pp:"su",fsr:"saur",ex:"Sachez que la boutique ferme à 19 h.",exEn:"Know that the shop closes at 7 pm.",note:"Futur saur-. Sachez que… is its imperative."},
-  {fr:"venir",en:"to come",cat:"flag",conj:["viens","viens","vient","venons","venez","viennent"],pp:"venu",fsr:"viendr",ex:"Elle vient tout juste de partir.",exEn:"She left just now.",note:"venir de + infinitif = passé récent; venais de = had just. Futur viendr-."},
+  {fr:"venir",en:"to come",cat:"flag",conj:["viens","viens","vient","venons","venez","viennent"],pp:"venu",aux:"e",fsr:"viendr",ex:"Elle vient tout juste de partir.",exEn:"She left just now.",note:"venir de + infinitif = passé récent; venais de = had just. Futur viendr-."},
   {fr:"plaire",en:"to be pleasing to (≈ to like, flipped)",cat:"flag",conj:["plais","plais","plaît","plaisons","plaisez","plaisent"],pp:"plu",ex:"Ces gants lui ont plu.",exEn:"He liked these gloves.",note:"The liked thing is the subject, the liker is a COI: Ça me plaît · Ça m'a plu · Ça me plaisait · Ça va me plaire · Ça me plaira. Mostly 3rd person in the wild; the full table is here for the sweep."},
   /* ---- Ch 16 : irregular verbs from the glossaire (présent + PC) ---- */
   {fr:"croître",en:"to grow / to increase",cat:"irr16",conj:["croîs","croîs","croît","croissons","croissez","croissent"],pp:"crû",tn:["pres","pc"],ex:"Le nombre de familles recomposées croît chaque année.",exEn:"The number of blended families is growing every year.",note:"Keeps its circumflex throughout présent (croît) — pp crû (masc. sing.) has one too, to stay distinct from croire's cru."},
@@ -837,7 +844,7 @@ V.push.apply(V,[
 var VERB_CH={};
 V.forEach(function(v){ VERB_CH[v.fr]=(v.cat==="irr17"?17:16); });
 /* flagships stay available from Ch 16 on; irr16 verbs are Ch 16's own targeted set */
-var CH_NAMES={16:"Ch 16 · Family Through Generations", 17:"Ch 17 · Urban Dynamics"};   /* Ch 18-19 not yet built here; Ch 20 is Unit 4 review — no new content */
+var CH_NAMES={16:"Ch 16 · Family Through Generations", 17:"Ch 17 · Urban Dynamics", 18:"Ch 18 · Health, Sports, and Medicine"};   /* Ch 19 not yet built here (chapters built out of order); Ch 20 is Unit 4 review — no new content */
 function chOf(v){ return VERB_CH[v.fr] || 11; }
 function isExtra(v){ return false; }
 
@@ -1258,7 +1265,13 @@ var VTOPICS={
   fnoms1:"Family structures & living arrangements", fnoms2:"Work, everyday life & practical nouns",
   fadj:"Adjectives (Ch 16)", fexpr:"Expressions & other words (Ch 16)",
   fverb1:"Verbs — settling in & daily life", fverb2:"Verbs — social & emotional actions", fverb3:"Verbs — connection & effort",
-  fexprde:"Feelings & verbs with de", fmgloss1:"Reading & listening extras — family topics (Ch 16)", fmgloss2:"Reading & listening extras — interview & audio clips (Ch 16)"
+  fexprde:"Feelings & verbs with de", fmgloss1:"Reading & listening extras — family topics (Ch 16)", fmgloss2:"Reading & listening extras — interview & audio clips (Ch 16)",
+  c18n1:"Nouns — technology & nutrition (Ch 18)", c18n2:"Nouns — sports (Ch 18)", c18corps:"Nouns — the body (Ch 18)",
+  c18sante:"Nouns — health & medical vocabulary (Ch 18)", c18risq:"Nouns — health risks & effects (Ch 18)",
+  c18adj:"Adjectives (Ch 18)", c18v1:"Verbs — actions & effects I (Ch 18)", c18v2:"Verbs — actions & effects II (Ch 18)",
+  c18m1:"Reading & listening extras — nutrition & sleep science (Ch 18)", c18m2:"Reading & listening extras — stress: food & mood (Ch 18)",
+  c18m3:"Reading & listening extras — stress: psychology & the body (Ch 18)", c18m4:"Reading & listening extras — sport & technology (Ch 18)",
+  c18m5:"Reading & listening extras — Tour de France & medical (Ch 18)"
 };
 var VOCAB=[
  /* ===== Chapter 16 : Family Through Generations — end-of-chapter glossaire ===== */
@@ -1463,7 +1476,221 @@ var VOCAB=[
  {f:"déstabilisant",e:"unsettling, destabilizing",c:16,t:"fmgloss2"},
  {f:"s'extasier",e:"to rave (about something), to gush",c:16,t:"fmgloss2",x:1},
  {f:"montrer",e:"to show, to prove",c:16,t:"fmgloss2"},
- {f:"par rapport à",e:"compared to, in relation to",c:16,t:"fmgloss2"}
+ {f:"par rapport à",e:"compared to, in relation to",c:16,t:"fmgloss2"},
+
+ /* ===== Chapter 18 : Health, Sports, and Medicine — end-of-chapter glossaire ===== */
+ /* --- Noms : technology & nutrition --- */
+ {f:"les applications de santé mobiles",e:"the mobile health applications",c:18,t:"c18n1",n:"f. pl."},
+ {f:"les capteurs de fitness",e:"the fitness trackers",c:18,t:"c18n1",n:"m. pl."},
+ {f:"le cyberharcèlement",e:"the cyber harassment",c:18,t:"c18n1"},
+ {f:"les dossiers médicaux",e:"the medical records",c:18,t:"c18n1",n:"m. pl."},
+ {f:"l'intelligence artificielle",e:"the artificial intelligence",c:18,t:"c18n1",n:"f."},
+ {f:"les technologies d'imagerie médicale",e:"the medical imaging technology",c:18,t:"c18n1",n:"f. pl."},
+ {f:"les thérapies de réalité virtuelle",e:"the virtual reality therapies",c:18,t:"c18n1",n:"f. pl."},
+ {f:"l'alimentation",e:"the food, the diet, the food supply",c:18,t:"c18n1",n:"f."},
+ {f:"la chaîne alimentaire",e:"the food chain",c:18,t:"c18n1"},
+ {f:"les entreprises agroalimentaires",e:"the food-processing companies",c:18,t:"c18n1",n:"f. pl."},
+ {f:"le glucide",e:"the carbohydrate",c:18,t:"c18n1"},
+ {f:"la malbouffe",e:"the junk food",c:18,t:"c18n1"},
+ {f:"la malnutrition",e:"the malnutrition",c:18,t:"c18n1"},
+ {f:"le régime",e:"the diet",c:18,t:"c18n1"},
+ {f:"la sous-nutrition",e:"the nutritional deficiencies, the undernutrition",c:18,t:"c18n1"},
+ {f:"les surgelés",e:"the frozen food",c:18,t:"c18n1",n:"m. pl."},
+ /* --- Noms : sports --- */
+ {f:"la bécane",e:"the bike",c:18,t:"c18n2",n:"fam."},
+ {f:"le championnat",e:"the championship",c:18,t:"c18n2"},
+ {f:"la coupe du monde",e:"the world cup",c:18,t:"c18n2"},
+ {f:"le/la coureur(-euse)",e:"the racing cyclist, the runner",c:18,t:"c18n2",n:"m./f."},
+ {f:"l'esprit d'équipe",e:"the team spirit",c:18,t:"c18n2",n:"m."},
+ {f:"le/la footballeur(-euse)",e:"the soccer player",c:18,t:"c18n2",n:"m./f."},
+ {f:"le/la grimpeur(-euse)",e:"the climber (cycling)",c:18,t:"c18n2",n:"m./f."},
+ {f:"le maillot",e:"the jersey",c:18,t:"c18n2"},
+ {f:"le tournoi",e:"the tournament",c:18,t:"c18n2"},
+ /* --- Noms : the body --- */
+ {f:"la bouche",e:"the mouth",c:18,t:"c18corps"},
+ {f:"le bras",e:"the arm",c:18,t:"c18corps"},
+ {f:"le cerveau",e:"the brain",c:18,t:"c18corps"},
+ {f:"les cheveux",e:"the hair",c:18,t:"c18corps",n:"m. pl."},
+ {f:"la cheville",e:"the ankle",c:18,t:"c18corps"},
+ {f:"le cou",e:"the neck",c:18,t:"c18corps"},
+ {f:"le doigt",e:"the finger",c:18,t:"c18corps"},
+ {f:"le genou",e:"the knee",c:18,t:"c18corps"},
+ {f:"la main",e:"the hand",c:18,t:"c18corps"},
+ {f:"le nez",e:"the nose",c:18,t:"c18corps"},
+ {f:"le nombril",e:"the navel, the bellybutton",c:18,t:"c18corps"},
+ {f:"l'oreille",e:"the ear",c:18,t:"c18corps",n:"f."},
+ {f:"le pied",e:"the foot",c:18,t:"c18corps"},
+ {f:"le ventre",e:"the stomach, the belly",c:18,t:"c18corps"},
+ {f:"les yeux",e:"the eyes",c:18,t:"c18corps",n:"m. pl."},
+ /* --- Noms : health & medical vocabulary --- */
+ {f:"l'angoisse",e:"the angst",c:18,t:"c18sante",n:"f."},
+ {f:"l'anxiété",e:"the anxiety",c:18,t:"c18sante",n:"f."},
+ {f:"le bien-être",e:"the well-being",c:18,t:"c18sante"},
+ {f:"le coup de mou",e:"the slump, the feeling of being down",c:18,t:"c18sante"},
+ {f:"l'épuisement",e:"the exhaustion",c:18,t:"c18sante",n:"m."},
+ {f:"le surmenage",e:"the overwork, the burnout",c:18,t:"c18sante"},
+ {f:"les troubles de l'humeur",e:"the mood disorders",c:18,t:"c18sante",n:"m. pl."},
+ {f:"la cécité",e:"the blindness",c:18,t:"c18sante"},
+ {f:"l'estime de soi",e:"the self-esteem",c:18,t:"c18sante",n:"f."},
+ {f:"l'hygiène de vie",e:"the lifestyle",c:18,t:"c18sante",n:"f."},
+ {f:"le/la médecin",e:"the doctor",c:18,t:"c18sante",n:"m./f."},
+ {f:"le médicament",e:"the medicine",c:18,t:"c18sante"},
+ {f:"la sage-femme",e:"the midwife",c:18,t:"c18sante"},
+ {f:"les soins",e:"the care",c:18,t:"c18sante",n:"m. pl."},
+ {f:"les urgences",e:"the emergency room",c:18,t:"c18sante",n:"f. pl."},
+ /* --- Noms : health risks & effects --- */
+ {f:"la baisse de l'immunité",e:"the decrease in immunity",c:18,t:"c18risq"},
+ {f:"la blessure",e:"the injury, the wound",c:18,t:"c18risq"},
+ {f:"la détérioration du sommeil",e:"the sleep deterioration",c:18,t:"c18risq"},
+ {f:"le diabète",e:"the diabetes",c:18,t:"c18risq"},
+ {f:"la fièvre",e:"the fever",c:18,t:"c18risq"},
+ {f:"l'obésité",e:"the obesity",c:18,t:"c18risq",n:"f."},
+ {f:"l'opération chirurgicale",e:"the surgery",c:18,t:"c18risq",n:"f."},
+ {f:"le surpoids",e:"the extra weight",c:18,t:"c18risq"},
+ {f:"le tracas",e:"the worry",c:18,t:"c18risq"},
+ {f:"les troubles mentaux",e:"the mental disorders",c:18,t:"c18risq",n:"m. pl."},
+ {f:"la tumeur",e:"the tumor",c:18,t:"c18risq"},
+ /* --- Adjectifs --- */
+ {f:"accru(e)",e:"increased, heightened (an increase already reached)",c:18,t:"c18adj",n:"vs croissant(e) (Ch 16) — croissant(e) describes an ongoing increase, accru(e) an increase already completed"},
+ {f:"affaibli(e)",e:"weakened",c:18,t:"c18adj"},
+ {f:"aigu(ë)",e:"sharp, acute, serious",c:18,t:"c18adj"},
+ {f:"ancré(e)",e:"anchored, rooted (figurative)",c:18,t:"c18adj"},
+ {f:"auto-entretenu(e)",e:"self-sustained, self-perpetuating",c:18,t:"c18adj",x:1},
+ {f:"bourré(e) de",e:"loaded with, full of",c:18,t:"c18adj",n:"fam."},
+ {f:"concurrent(e)",e:"rival, competing; also used as a noun — a competitor, a contender",c:18,t:"c18adj"},
+ {f:"conçu(e)",e:"designed, conceived",c:18,t:"c18adj"},
+ {f:"copieux(-euse)",e:"copious, large, hearty",c:18,t:"c18adj"},
+ {f:"doué(e)",e:"gifted",c:18,t:"c18adj"},
+ {f:"exhaustif(-ive)",e:"exhaustive, thorough",c:18,t:"c18adj"},
+ {f:"gras(se)",e:"fat, fattening",c:18,t:"c18adj"},
+ {f:"handicapant(e)",e:"debilitating, disabling",c:18,t:"c18adj"},
+ {f:"imprévu(e)",e:"unexpected",c:18,t:"c18adj"},
+ {f:"inutile de",e:"needless to, no need to",c:18,t:"c18adj"},
+ {f:"malsain(e)",e:"unhealthy",c:18,t:"c18adj"},
+ {f:"mécanisé(e)",e:"mechanized",c:18,t:"c18adj"},
+ {f:"néfaste",e:"harmful in its consequences, damaging to an outcome (e.g. a harmful effect on health)",c:18,t:"c18adj",n:"vs nuisible — néfaste describes a harmful/damaging result or effect, a more abstract sense"},
+ {f:"nuisible",e:"harmful, noxious in a concrete or physical sense (e.g. a harmful substance or pest)",c:18,t:"c18adj",n:"vs néfaste — nuisible is concretely noxious, closer to 'pest' or 'nuisance'"},
+ {f:"précoce",e:"early, precocious",c:18,t:"c18adj"},
+ {f:"répandu(e)",e:"spread, widespread",c:18,t:"c18adj"},
+ {f:"sédentaire",e:"sedentary",c:18,t:"c18adj"},
+ {f:"suffisant(e)",e:"sufficient, enough",c:18,t:"c18adj"},
+ /* --- Verbes : actions & effects I --- */
+ {f:"aller de pair avec",e:"to go hand in hand with",c:18,t:"c18v1"},
+ {f:"apaiser",e:"to soothe, to relieve",c:18,t:"c18v1"},
+ {f:"avoir l'air",e:"to seem, to look (a certain way)",c:18,t:"c18v1",n:"+ adjective"},
+ {f:"avoir du mal à",e:"to have difficulty (doing something)",c:18,t:"c18v1",n:"+ infinitive"},
+ {f:"baisser",e:"to lower, to bring down (a level, an amount)",c:18,t:"c18v1"},
+ {f:"se battre",e:"to fight",c:18,t:"c18v1"},
+ {f:"combattre",e:"to fight, to combat",c:18,t:"c18v1"},
+ {f:"se composer de",e:"to be made up of, to consist of",c:18,t:"c18v1"},
+ {f:"décaler",e:"to shift, to offset",c:18,t:"c18v1"},
+ {f:"s'élancer",e:"to rush, to dash forward",c:18,t:"c18v1"},
+ {f:"s'emballer",e:"to race, to get carried away",c:18,t:"c18v1"},
+ {f:"encadrer quelqu'un",e:"to supervise, to lead someone",c:18,t:"c18v1"},
+ {f:"endosser",e:"to wear, to put on; to take on (a responsibility)",c:18,t:"c18v1"},
+ {f:"engendrer",e:"to cause, to bring about",c:18,t:"c18v1"},
+ {f:"enquêter",e:"to investigate",c:18,t:"c18v1"},
+ {f:"être en forme",e:"to be in shape",c:18,t:"c18v1"},
+ {f:"favoriser",e:"to promote, to favor",c:18,t:"c18v1"},
+ {f:"se ficher de quelque chose",e:"to not care about something",c:18,t:"c18v1",n:"fam."},
+ {f:"guérir",e:"to heal, to cure",c:18,t:"c18v1"},
+ /* --- Verbes : actions & effects II --- */
+ {f:"heurter",e:"to hit, to collide with",c:18,t:"c18v2"},
+ {f:"s'impliquer",e:"to get involved",c:18,t:"c18v2"},
+ {f:"jeûner",e:"to fast",c:18,t:"c18v2"},
+ {f:"se libérer de",e:"to break free from",c:18,t:"c18v2"},
+ {f:"lutter contre",e:"to fight against",c:18,t:"c18v2"},
+ {f:"manger sain",e:"to eat healthy",c:18,t:"c18v2"},
+ {f:"manger sur le pouce",e:"to eat on the go",c:18,t:"c18v2"},
+ {f:"mettre au point",e:"to develop, to perfect",c:18,t:"c18v2"},
+ {f:"mettre en garde",e:"to warn, to put on guard",c:18,t:"c18v2"},
+ {f:"mettre en place",e:"to establish, to set up",c:18,t:"c18v2"},
+ {f:"mordre à l'hameçon",e:"to bite, to take the bait",c:18,t:"c18v2"},
+ {f:"perdre connaissance",e:"to faint, to lose consciousness",c:18,t:"c18v2"},
+ {f:"se porter",e:"to feel, to be doing (well/badly), in terms of health",c:18,t:"c18v2"},
+ {f:"prôner",e:"to advocate for",c:18,t:"c18v2"},
+ {f:"reprendre conscience",e:"to regain consciousness",c:18,t:"c18v2"},
+ {f:"se rétablir",e:"to recover, to get better",c:18,t:"c18v2"},
+ {f:"se sentir",e:"to feel",c:18,t:"c18v2"},
+ {f:"subir",e:"to undergo, to suffer",c:18,t:"c18v2"},
+ {f:"tuer",e:"to kill",c:18,t:"c18v2"},
+ {f:"virer",e:"to turn",c:18,t:"c18v2"},
+ {f:"voler au secours de",e:"to come to the rescue of, to come to the aid of",c:18,t:"c18v2"},
+ /* --- Mini-glossaire : nutrition & sleep science (activity-sourced — flagged exception to glossaire parity, like the Ch 16 family-topics set) --- */
+ {f:"une bouchée",e:"a bite",c:18,t:"c18m1"},
+ {f:"être un cordon bleu",e:"to be a master chef",c:18,t:"c18m1"},
+ {f:"un gourmet",e:"someone who likes fine food, a gourmet",c:18,t:"c18m1"},
+ {f:"l'huile de colza",e:"canola oil",c:18,t:"c18m1",n:"f."},
+ {f:"l'huile de tournesol",e:"sunflower oil",c:18,t:"c18m1",n:"f."},
+ {f:"l'endormissement",e:"the falling-asleep process, the sedation",c:18,t:"c18m1",n:"m."},
+ {f:"l'éveil",e:"awakening, alertness",c:18,t:"c18m1",n:"m."},
+ {f:"lent(e)",e:"slow",c:18,t:"c18m1"},
+ {f:"lors de",e:"during, at the time of",c:18,t:"c18m1"},
+ {f:"réduire",e:"to reduce, to cut down (a risk, an effect, a problem)",c:18,t:"c18m1"},
+ {f:"réparateur(-trice)",e:"restorative",c:18,t:"c18m1"},
+ {f:"retarder",e:"to delay",c:18,t:"c18m1"},
+ {f:"secréter",e:"to secrete, to produce",c:18,t:"c18m1",x:1},
+ {f:"le cycle veille-sommeil",e:"the wake-sleep cycle",c:18,t:"c18m1"},
+ /* --- Mini-glossaire : stress — food & mood (activity-sourced — flagged exception to glossaire parity) --- */
+ {f:"les abats",e:"giblets, organ meats",c:18,t:"c18m2",n:"m. pl."},
+ {f:"ainsi",e:"thus, in this way",c:18,t:"c18m2"},
+ {f:"un aliment",e:"a food, a food item",c:18,t:"c18m2"},
+ {f:"un(e) allié(e)",e:"an ally",c:18,t:"c18m2"},
+ {f:"apaisant(e)",e:"calming, soothing",c:18,t:"c18m2",n:"from apaiser (to soothe)"},
+ {f:"le chou",e:"the cabbage",c:18,t:"c18m2"},
+ {f:"contenir",e:"to contain, to hold",c:18,t:"c18m2"},
+ {f:"les denrées",e:"food, commodities",c:18,t:"c18m2",n:"f. pl."},
+ {f:"doper",e:"to stimulate, to boost",c:18,t:"c18m2"},
+ {f:"le fer",e:"iron",c:18,t:"c18m2"},
+ {f:"l'humeur",e:"the mood",c:18,t:"c18m2",n:"f."},
+ {f:"la lassitude",e:"weariness",c:18,t:"c18m2"},
+ {f:"les légumineuses",e:"legumes",c:18,t:"c18m2",n:"f. pl."},
+ {f:"améliorer",e:"to improve",c:18,t:"c18m2"},
+ {f:"contrairement à",e:"unlike, as opposed to",c:18,t:"c18m2"},
+ {f:"une nuit compliquée",e:"a rough night",c:18,t:"c18m2"},
+ {f:"un remède",e:"a remedy",c:18,t:"c18m2",n:"source workbook mistypes the gender as \"une remède\" — remède is masculine"},
+ {f:"le sommeil",e:"sleep",c:18,t:"c18m2"},
+ {f:"soigner",e:"to care for, to treat",c:18,t:"c18m2"},
+ /* --- Mini-glossaire : stress — psychology & the body (activity-sourced — flagged exception to glossaire parity) --- */
+ {f:"être amené(e) à",e:"to be led to (do something), to end up having to",c:18,t:"c18m3"},
+ {f:"l'amygdale",e:"the amygdala",c:18,t:"c18m3",n:"f."},
+ {f:"bafouiller",e:"to stammer, to falter (in speech)",c:18,t:"c18m3"},
+ {f:"le comportement",e:"the behavior",c:18,t:"c18m3"},
+ {f:"avoir la gorge serrée",e:"to have a lump in one's throat",c:18,t:"c18m3"},
+ {f:"jouer des tours à quelqu'un",e:"to play tricks on someone",c:18,t:"c18m3"},
+ {f:"un noyau",e:"a core, a nucleus",c:18,t:"c18m3"},
+ {f:"transpirer",e:"to sweat",c:18,t:"c18m3"},
+ {f:"le tremblement",e:"the shaking, the trembling",c:18,t:"c18m3"},
+ {f:"voire",e:"even, or even",c:18,t:"c18m3"},
+ /* --- Mini-glossaire : sport & technology (activity-sourced — flagged exception to glossaire parity) --- */
+ {f:"le patrimoine",e:"the heritage, the legacy",c:18,t:"c18m4"},
+ {f:"le paysage",e:"the landscape, the scenery",c:18,t:"c18m4"},
+ {f:"un(e) sportif(-ive) de salon",e:"an armchair athlete",c:18,t:"c18m4"},
+ {f:"la marée",e:"the tide",c:18,t:"c18m4"},
+ {f:"le crawl",e:"the front crawl",c:18,t:"c18m4"},
+ {f:"le dos crawlé",e:"the backstroke",c:18,t:"c18m4"},
+ {f:"les étirements",e:"the stretching exercises",c:18,t:"c18m4",n:"m. pl."},
+ {f:"éventuel(le)",e:"possible",c:18,t:"c18m4"},
+ {f:"la silhouette",e:"the silhouette, the outline of a person's body",c:18,t:"c18m4"},
+ {f:"le gainage",e:"the core-strength training",c:18,t:"c18m4"},
+ {f:"s'inscrire dans le cadre de",e:"to fit within the framework of",c:18,t:"c18m4"},
+ {f:"le trajet",e:"the route, the journey",c:18,t:"c18m4"},
+ {f:"les dispositifs de suivi de la santé",e:"the health monitoring devices",c:18,t:"c18m4",n:"m. pl."},
+ {f:"aveugle",e:"blind",c:18,t:"c18m4"},
+ {f:"malvoyant(e)",e:"visually impaired",c:18,t:"c18m4"},
+ {f:"l'automutilation",e:"self-harm",c:18,t:"c18m4",n:"f."},
+ {f:"à peine",e:"barely",c:18,t:"c18m4"},
+ {f:"un bâtonnet",e:"a small stick, a swab",c:18,t:"c18m4"},
+ {f:"communément",e:"commonly",c:18,t:"c18m4"},
+ {f:"effectuer",e:"to perform, to carry out",c:18,t:"c18m4"},
+ {f:"véritable",e:"real, true, genuine",c:18,t:"c18m4"},
+ {f:"uniquement",e:"only, just, solely",c:18,t:"c18m4"},
+ /* --- Mini-glossaire : Tour de France & medical (activity-sourced — flagged exception to glossaire parity) --- */
+ {f:"à pois",e:"polka-dot, with polka dots",c:18,t:"c18m5"},
+ {f:"au large",e:"far away, offshore",c:18,t:"c18m5"},
+ {f:"une étape",e:"a stage (of a race)",c:18,t:"c18m5"},
+ {f:"fuir",e:"to flee",c:18,t:"c18m5"},
+ {f:"un dossier médical",e:"a medical record, a medical file",c:18,t:"c18m5"}
 ];
 /* Chapter 17 topic labels (own contiguous block) */
 VTOPICS.u17noms1="Healthcare & medical care (Ch 17)";
@@ -1493,7 +1720,6 @@ VOCAB.push.apply(VOCAB,[
  {f:"le parcours de soins",e:"the healthcare pathway",c:17,t:"u17noms1"},
  {f:"la prise en charge",e:"the handling, the management (of a patient's care)",c:17,t:"u17noms1"},
  {f:"la quarantaine",e:"a group of about forty; also: the quarantine (medical isolation)",c:17,t:"u17noms1",n:"same word, two unrelated senses"},
- {f:"la sage-femme",e:"the midwife",c:17,t:"u17noms1",x:1},
  {f:"le stomatologue",e:"the dentist, the periodontist (mouth specialist)",c:17,t:"u17noms1",a:["la stomatologue"],n:"m./f.",x:1},
  {f:"le suivi médical",e:"the medical follow-up",c:17,t:"u17noms1"},
  /* --- Noms : city, transport & energy --- */
@@ -1551,7 +1777,6 @@ VOCAB.push.apply(VOCAB,[
  {f:"endommagé(e)",e:"damaged (structurally, by an accident or an event)",c:17,t:"u17adj",n:"vs abîmé(e) — endommagé implies harm from an event"},
  {f:"engagé(e)",e:"committed, involved",c:17,t:"u17adj"},
  {f:"éphémère",e:"short-lived",c:17,t:"u17adj"},
- {f:"éventuel(le)",e:"potential, possible",c:17,t:"u17adj",n:"faux ami — not 'eventual'"},
  {f:"libéral(e)",e:"self-employed, freelance (for professions)",c:17,t:"u17adj"},
  {f:"prêt(e) à",e:"ready to",c:17,t:"u17adj"},
  {f:"prévu(e)",e:"scheduled, foreseen (as expected)",c:17,t:"u17adj",n:"vs anticipé(e) (planned ahead of time, anticipated)"},
@@ -1585,16 +1810,14 @@ VOCAB.push.apply(VOCAB,[
  {f:"tout à fait",e:"exactly, absolutely",c:17,t:"u17expr"},
  /* --- Verbes : changing, moving & handling things --- */
  {f:"s'adresser à",e:"to talk to, to check with",c:17,t:"u17verb1"},
- {f:"améliorer",e:"to improve",c:17,t:"u17verb1"},
  {f:"s'approvisionner",e:"to stock up on",c:17,t:"u17verb1",x:1},
  {f:"assombrir",e:"to darken",c:17,t:"u17verb1"},
  {f:"baptiser",e:"to name, to baptize",c:17,t:"u17verb1"},
- {f:"décaler",e:"to shift, to move (a time or date)",c:17,t:"u17verb1"},
- {f:"se déplacer",e:"to move, to get around",c:17,t:"u17verb1"},
- {f:"désengorger",e:"to decongest, to relieve (congestion)",c:17,t:"u17verb1",x:1},
+ {f:"se déplacer",e:"to travel, to get around, to move around",c:17,t:"u17verb1"},
+ {f:"désengorger",e:"to decongest, to clear (a traffic-clogged area)",c:17,t:"u17verb1",x:1},
  {f:"désigner",e:"to mean, to designate, to refer to",c:17,t:"u17verb1"},
  {f:"divertir",e:"to entertain",c:17,t:"u17verb1"},
- {f:"élargir",e:"to widen, to increase",c:17,t:"u17verb1"},
+ {f:"élargir",e:"to widen, to broaden",c:17,t:"u17verb1"},
  {f:"encombrer",e:"to clutter, to burden",c:17,t:"u17verb1"},
  {f:"s'entraîner",e:"to train oneself, to work out",c:17,t:"u17verb1",x:1,n:"vs former (to train someone else)"},
  {f:"essuyer",e:"to wipe, to dry",c:17,t:"u17verb1",x:1},
@@ -1603,7 +1826,6 @@ VOCAB.push.apply(VOCAB,[
  {f:"rembourser",e:"to reimburse",c:17,t:"u17verb1"},
  {f:"tourner en boucle",e:"to repeat continuously, to loop",c:17,t:"u17verb1"},
  {f:"valoir",e:"to be worth",c:17,t:"u17verb1"},
- {f:"virer",e:"to turn; also (informal): to fire",c:17,t:"u17verb1"},
  {f:"viser à",e:"to aim at, to have as an objective",c:17,t:"u17verb1"},
  /* --- Verbes : deciding, dealing with & supporting --- */
  {f:"être privilégié(e)",e:"to be favored, to be in a privileged position",c:17,t:"u17verb2"},
@@ -1614,25 +1836,23 @@ VOCAB.push.apply(VOCAB,[
  {f:"franchir la barre de",e:"to cross the mark of, to surpass the threshold of",c:17,t:"u17verb2",n:"figures: franchir la barre des 1 000"},
  {f:"laisser reposer",e:"to let something rest",c:17,t:"u17verb2"},
  {f:"mettre longtemps à",e:"to take a long time to",c:17,t:"u17verb2"},
- {f:"mettre sur pied",e:"to build, to set up",c:17,t:"u17verb2"},
+ {f:"mettre sur pied",e:"to build up, to get (a project or organization) off the ground",c:17,t:"u17verb2",n:"vs mettre en place (to establish, to set up)"},
  {f:"obliger",e:"to require, to oblige",c:17,t:"u17verb2"},
  {f:"orienter quelqu'un vers",e:"to direct someone to",c:17,t:"u17verb2"},
  {f:"prendre en compte",e:"to take into account",c:17,t:"u17verb2"},
  {f:"prendre quelque chose en main",e:"to take charge of something",c:17,t:"u17verb2"},
  {f:"primer sur",e:"to take precedence over",c:17,t:"u17verb2"},
- {f:"privilégier",e:"to favor, to opt for (to choose over others)",c:17,t:"u17verb2"},
+ {f:"privilégier",e:"to opt for, to give priority to (to choose over others)",c:17,t:"u17verb2",n:"vs favoriser (to promote, to help along)"},
  {f:"recourir à",e:"to resort to, to have recourse to (a measure or method)",c:17,t:"u17verb2",n:"vs faire appel à (to call on a person or service)"},
  {f:"régler un problème",e:"to solve a problem",c:17,t:"u17verb2"},
  {f:"signaler",e:"to report, to inform",c:17,t:"u17verb2"},
- {f:"soigner",e:"to treat (a patient)",c:17,t:"u17verb2"},
- {f:"se soigner",e:"to take care of oneself, to get treatment",c:17,t:"u17verb2"},
- {f:"soutenir",e:"to support",c:17,t:"u17verb2"},
+ {f:"se soigner",e:"to treat oneself, to get treatment (for an illness)",c:17,t:"u17verb2"},
+ {f:"soutenir",e:"to support, to back (a person, a cause or a structure)",c:17,t:"u17verb2"},
  /* --- Mini-glossaire : sustainable city & everyday urban life (activity-sourced — flagged exception to glossaire parity, like the Ch 6 exterior set) --- */
- {f:"ainsi",e:"thus, in this way",c:17,t:"u17mgloss1"},
  {f:"un bac",e:"a bin, a container",c:17,t:"u17mgloss1"},
  {f:"un bocal",e:"a jar",c:17,t:"u17mgloss1",n:"plural: des bocaux"},
  {f:"les bons gestes",e:"the right moves (the good habits)",c:17,t:"u17mgloss1",n:"m. pl."},
- {f:"diminuer",e:"to reduce",c:17,t:"u17mgloss1"},
+ {f:"diminuer",e:"to decrease, to lessen (in amount or volume)",c:17,t:"u17mgloss1",n:"vs réduire (to cut something down on purpose)"},
  {f:"l'emballage",e:"the packaging",c:17,t:"u17mgloss1",n:"m."},
  {f:"en vrac",e:"in bulk, unsorted",c:17,t:"u17mgloss1"},
  {f:"mettre à la disposition de",e:"to make available to",c:17,t:"u17mgloss1"},
@@ -1654,7 +1874,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"à sa guise",e:"as one wishes, as one pleases",c:17,t:"u17mgloss2"},
  {f:"à plat",e:"flat, discharged (a battery)",c:17,t:"u17mgloss2"},
  {f:"une borne",e:"an electrical charging point",c:17,t:"u17mgloss2"},
- {f:"faiblir",e:"to weaken, to falter",c:17,t:"u17mgloss2"},
+ {f:"faiblir",e:"to weaken, to flag, to lose strength",c:17,t:"u17mgloss2"},
  {f:"une flotte",e:"a fleet",c:17,t:"u17mgloss2"},
  {f:"nettement",e:"significantly, clearly",c:17,t:"u17mgloss2"},
  {f:"une pente",e:"a slope, a hill",c:17,t:"u17mgloss2"},
@@ -1715,7 +1935,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"la pérennité",e:"the continuity, the long-term survival",c:17,t:"u17mgloss5",x:1},
  {f:"rentable",e:"profitable",c:17,t:"u17mgloss5"},
  {f:"à quoi bon",e:"what's the point",c:17,t:"u17mgloss5"},
- {f:"prendre de l'ampleur",e:"to be on the rise, to increase, to spread",c:17,t:"u17mgloss5"},
+ {f:"prendre de l'ampleur",e:"to gain momentum, to be on the rise (to grow in scale)",c:17,t:"u17mgloss5"},
  {f:"se vouloir",e:"to want to be, to want to appear",c:17,t:"u17mgloss5"}
 ]);
 
@@ -1733,6 +1953,10 @@ if(state.ach.a_v6 && !(VOCAB.some(function(v){return v.c===16;}) &&
 if(state.ach.a_v7 && !(VOCAB.some(function(v){return v.c===17;}) &&
     VOCAB.every(function(v){return v.c!==17 || state.vocab[v.f]==="known";}))){
   delete state.ach.a_v7; saveState();
+}
+if(state.ach.a_v18 && !(VOCAB.some(function(v){return v.c===18;}) &&
+    VOCAB.every(function(v){return v.c!==18 || state.vocab[v.f]==="known";}))){
+  delete state.ach.a_v18; saveState();
 }
 function rebuildVocTopics(){
   var present={};
@@ -2091,6 +2315,56 @@ var DRILLS=[
    {q:"Ses grands-parents lui ont laissé un bel ___ à sa naissance.",a:"héritage",m:{vg:"vocctx"}},
    {q:"Il faut ___ preuve de patience avec les personnes âgées.",a:"faire",m:{vg:"vocctx"}},
    {q:"Le médecin a conseillé à la famille de ___ le deuil doucement.",a:"faire",m:{vg:"vocctx"},hint:"faire le deuil de quelque chose."}
+ ]},
+
+ /* ================= CHAPITRE 18 ================= */
+ {id:"hypofut1",note:"<b>Instructions :</b> Decide which clause is the <i>si</i>-condition and which is the result, then conjugate the verb given in parentheses in the tense that clause needs — the condition stays in the présent, the result takes futur, impératif, or présent depending on what's being expressed.<br><b>The rule :</b> Type I hypotheses pair <b>si + présent</b> with a result clause in the <b>futur</b> (a real future possibility), the <b>impératif</b> (advice, a command), or the <b>présent</b> (a habitual or general truth). Never put a future or conditional verb directly after si.",title:"L'hypothèse sur le futur (si + présent...)",ch:"Ch. 18",minCh:18,items:[
+   {q:"Si tu ___ (se sentir) stressé, fais du sport.",a:"te sens",m:{vg:"hypofut"},hint:"Condition clause — présent, after si."},
+   {q:"S'il ___ (faire) beau ce week-end, nous irons faire de la randonnée.",a:"fait",m:{vg:"hypofut"},hint:"Condition clause — présent, after si."},
+   {q:"Si vous mangez mieux et si vous faites du sport, vous ___ (être) plus en forme.",a:"serez",m:{vg:"hypofut"},hint:"Result clause, real future possibility — futur simple."},
+   {q:"Si elle continue à jeûner sans manger sain, elle ___ (subir) des conséquences sur sa santé.",a:"subira",m:{vg:"hypofut"},hint:"Result clause, real future possibility — futur simple."},
+   {q:"Si vous vous sentez fatigué, ___ (faire) une sieste.",a:"faites",m:{vg:"hypofut"},hint:"Result clause, advice/command — impératif."},
+   {q:"Si tu as trop de mal à dormir, ___ (parler) à ton médecin.",a:"parle",m:{vg:"hypofut"},hint:"Result clause, advice/command — impératif (tu form)."},
+   {q:"En général, si on ___ (manquer) de fer, on se sent épuisé.",a:"manque",m:{vg:"hypofut"},hint:"Condition clause — présent, after si."},
+   {q:"D'habitude, si je fais du sport le matin, je ___ (se sentir) mieux toute la journée.",a:"me sens",m:{vg:"hypofut"},hint:"Result clause, habitual truth — présent, not futur."},
+   {q:"Si les jeunes passent plus de trois heures par jour sur les réseaux sociaux, ils ___ (avoir) plus de risques de dépression.",a:"auront",m:{vg:"hypofut"},hint:"Result clause, real future possibility — futur simple."},
+   {q:"Si nous n'aménageons pas nos horaires, nous ne ___ (trouver) jamais le temps de faire du sport.",a:"trouverons",m:{vg:"hypofut"},hint:"Result clause, real future possibility — futur simple."}
+ ]},
+ {id:"demonpro1",note:"<b>Instructions :</b> The parenthetical tells you the noun a demonstrative pronoun is replacing — match its gender and number, then add -ci or -là only if the sentence needs to mark proximity or distance.<br><b>The rule :</b> celui/celle/ceux/celles (the one(s)) agree with the noun they replace, never with anything else in the sentence. They're usually followed by de, a relative clause (qui/que/dont), or -ci/-là.<ul><li>masc. sing. celui · fem. sing. celle · masc. pl. ceux · fem. pl. celles</li></ul>",title:"Les pronoms démonstratifs (celui, celle, ceux, celles)",ch:"Ch. 18",minCh:18,items:[
+   {q:"Ce médicament-ci coûte cher ; je préfère ___. (ce médicament-là)",a:"celui-là",m:{vg:"demonpro"}},
+   {q:"Ces applications de santé sont utiles, mais ___ que j'ai téléchargée est la meilleure. (l'application)",a:"celle",m:{vg:"demonpro"}},
+   {q:"Deux régimes sont possibles. ___ recommandez-vous ? (no noun — 'régimes' is masculine)",a:"lequel",m:{vg:"demonpro"},hint:"No antecedent given directly — this asks which one, so it needs the interrogative pronoun, not celui."},
+   {q:"Mes symptômes sont pires que ___ de mon frère. (les symptômes)",a:"ceux",m:{vg:"demonpro"}},
+   {q:"Cette thérapie-là n'a pas marché ; on va essayer ___. (cette thérapie-ci)",a:"celle-ci",m:{vg:"demonpro"}},
+   {q:"Ses habitudes alimentaires sont bien meilleures que ___ de la plupart des gens. (les habitudes)",a:"celles",m:{vg:"demonpro"}},
+   {q:"Il y a deux hôpitaux en ville ; ___ est plus proche de chez moi. (celui-ci, désignant l'hôpital le plus proche)",a:"celui-ci",m:{vg:"demonpro"}},
+   {q:"Ce sport-ci muscle le dos, mais ___ muscle plutôt les jambes. (ce sport-là)",a:"celui-là",m:{vg:"demonpro"}},
+   {q:"___ m'inquiète le plus, c'est le manque de sommeil chez les jeunes. (invariable — 'what')",a:"ce qui",m:{vg:"demonpro"},hint:"An invariable demonstrative pronoun introducing a whole idea, not a specific noun — different family from celui/celle/ceux/celles."},
+   {q:"Sa maladie ressemble beaucoup à ___ de sa mère. (la maladie)",a:"celle",m:{vg:"demonpro"}}
+ ]},
+ {id:"cequi1",note:"<b>Instructions :</b> There's no specific noun for the relative pronoun to point back to — figure out its grammatical role in its own clause (subject, direct object, or object of de) to choose between ce qui, ce que, and ce dont.<br><b>The rule :</b> ce qui is the subject of its clause, ce que is the direct object, and ce dont is used with verbs/expressions that take de (avoir besoin de, avoir peur de, parler de…).<ul><li>ce qui + verb (no other subject)</li><li>ce que + subject + verb</li><li>ce dont + subject + verb + de-construction</li></ul>",title:"Les pronoms relatifs composés (ce qui, ce que, ce dont)",ch:"Ch. 18",minCh:18,items:[
+   {q:"Je ne comprends pas ___ le stresse autant avant un examen.",a:"ce qui",m:{vg:"cequi"},hint:"Subject of stresse — nothing else in the clause is the subject."},
+   {q:"___ tu manges influence directement ton niveau d'énergie.",a:"Ce que",m:{vg:"cequi"},hint:"Direct object of manges — tu is the subject."},
+   {q:"Elle ne sait pas ___ elle a besoin pour se rétablir complètement.",a:"ce dont",m:{vg:"cequi"},hint:"avoir besoin de quelque chose."},
+   {q:"___ compte le plus pour un sportif, c'est la régularité de l'entraînement.",a:"Ce qui",m:{vg:"cequi"},hint:"Subject of compte."},
+   {q:"Je ne me souviens plus ___ le médecin m'a dit exactement.",a:"ce que",m:{vg:"cequi"},hint:"Direct object of a dit — le médecin is the subject."},
+   {q:"___ les experts recommandent, c'est de manger plus de fruits et de légumes.",a:"Ce que",m:{vg:"cequi"},hint:"Direct object of recommandent."},
+   {q:"Il a peur de vieillir ; ___ il a peur est très commun chez les gens de son âge.",a:"ce dont",m:{vg:"cequi"},hint:"avoir peur de quelque chose."},
+   {q:"Dis-moi ___ te tracasse en ce moment.",a:"ce qui",m:{vg:"cequi"},hint:"Subject of te tracasse."},
+   {q:"___ elle rêve, c'est de courir un marathon un jour.",a:"Ce dont",m:{vg:"cequi"},hint:"rêver de quelque chose."},
+   {q:"Je fais ___ le coach me demande de faire chaque semaine.",a:"ce que",m:{vg:"cequi"},hint:"Direct object of demande de faire."}
+ ]},
+ {id:"voc18",note:"<b>Instructions :</b> Write the single glossaire word that completes the sentence, spelled and accented exactly as taught.<br><b>Word bank :</b> the Chapter 18 glossaire — health, sports, nutrition, and medicine. Accents count.",title:"Vocab en contexte — Ch. 18",ch:"Ch. 18",minCh:18,items:[
+   {q:"Après six mois sans faire de sport, elle a eu un vrai ___.",a:"coup de mou",m:{vg:"vocctx"}},
+   {q:"Elle travaille beaucoup trop en ce moment ; elle risque le ___.",a:"surmenage",m:{vg:"vocctx"}},
+   {q:"Manger de la ___ tous les jours augmente le risque d'obésité.",a:"malbouffe",m:{vg:"vocctx"}},
+   {q:"Un mode de vie ___ favorise le diabète et les maladies cardiovasculaires.",a:"sédentaire",m:{vg:"vocctx"}},
+   {q:"Cette nouvelle réglementation a des effets ___ sur les petits producteurs.",a:"néfastes",m:{vg:"vocctx"},hint:"Harmful in a consequence/outcome sense, not the concrete/pest sense."},
+   {q:"Les moustiques sont considérés comme des insectes ___ dans cette région.",a:"nuisibles",m:{vg:"vocctx"},hint:"Harmful in a concrete/pest sense, not the outcome sense."},
+   {q:"Après son accident, elle a mis plusieurs semaines à se ___.",a:"rétablir",m:{vg:"vocctx"}},
+   {q:"Le coureur a perdu connaissance après la course à cause de la chaleur ; heureusement, il a vite ___.",a:"repris connaissance",m:{vg:"vocctx"}},
+   {q:"Ce jeune athlète est très ___ pour la natation.",a:"doué",m:{vg:"vocctx"}},
+   {q:"Le dimanche, ils prennent toujours un brunch bien ___ en famille.",a:"copieux",m:{vg:"vocctx"}}
  ]}
 
 ];
@@ -2295,7 +2569,33 @@ var TEST=[
  {ch:"16",type:"fill",q:"J'ai apporté mon dossier ; avez-vous apporté ___ ? (votre dossier)",a:["le vôtre"],m:{cat:"gen"}},
  {ch:"16",type:"mc",q:"Prendre soin d'une personne âgée au quotidien, c'est lui offrir…",o:["de l'accompagnement", "du chômage", "un héritage", "une pension alimentaire"],a:"de l'accompagnement"},
  {ch:"16",type:"fill",q:"Il a hérité d'un bel ___ à la mort de ses grands-parents.",a:["héritage"],m:{cat:"gen"}},
- {ch:"16",type:"mc",q:"Il est fier de son fils ; on peut dire qu'il en est…",o:["fier", "jaloux", "honteux", "sûr"],a:"fier"}
+ {ch:"16",type:"mc",q:"Il est fier de son fils ; on peut dire qu'il en est…",o:["fier", "jaloux", "honteux", "sûr"],a:"fier"},
+
+ /* ===== Chapter 18 (bank of 24, 10 drawn per quiz) ===== */
+ {ch:"18",type:"fill",q:"Si tu ___ (se sentir) stressé, fais du sport.",a:["te sens"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Si vous mangez mieux, vous ___ (être) plus en forme.",a:["serez"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"D'habitude, si je fais du sport le matin, je ___ (se sentir) mieux toute la journée.",a:["me sens"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Ce médicament-ci coûte cher ; je préfère ___. (ce médicament-là)",a:["celui-là"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Mes symptômes sont pires que ___ de mon frère. (les symptômes)",a:["ceux"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Sa maladie ressemble beaucoup à ___ de sa mère. (la maladie)",a:["celle"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Je ne comprends pas ___ le stresse autant avant un examen.",a:["ce qui"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"___ tu manges influence directement ton niveau d'énergie.",a:["Ce que"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Elle ne sait pas ___ elle a besoin pour se rétablir complètement.",a:["ce dont"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"Une personne qui aime parler de sport mais qui ne le pratique jamais lui-même est…",o:["un sportif de salon", "un cordon bleu", "un concurrent", "un grimpeur"],a:"un sportif de salon"},
+ {ch:"18",type:"mc",q:"« La malbouffe » désigne…",o:["la nourriture peu saine, transformée", "un régime très strict", "un repas gastronomique", "un aliment biologique"],a:"la nourriture peu saine, transformée"},
+ {ch:"18",type:"fill",q:"Elle travaille beaucoup trop en ce moment ; elle risque le ___.",a:["surmenage"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"« Se rétablir » signifie…",o:["récupérer, aller mieux après une maladie", "tomber malade", "perdre connaissance", "avoir une crise cardiaque"],a:"récupérer, aller mieux après une maladie"},
+ {ch:"18",type:"fill",q:"Après son accident, elle a mis plusieurs semaines à se ___.",a:["rétablir"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"Un mode de vie qui n'implique que très peu de mouvement est dit…",o:["sédentaire", "sportif", "mécanisé", "précoce"],a:"sédentaire"},
+ {ch:"18",type:"fill",q:"Un effet ___ sur la santé est un effet nuisible dans son résultat, pas au sens concret d'un parasite.",a:["néfaste"],m:{cat:"gen"}},
+ {ch:"18",type:"fill",q:"Les moustiques sont considérés comme des insectes ___ dans cette région.",a:["nuisibles"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"« Perdre connaissance » veut dire…",o:["s'évanouir", "s'endormir", "se réveiller", "se souvenir"],a:"s'évanouir"},
+ {ch:"18",type:"fill",q:"Ce jeune athlète est très ___ pour la natation.",a:["doué"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"« L'estime de soi » désigne…",o:["le respect et la confiance qu'on a en soi-même", "la fatigue physique", "la peur des autres", "un trouble du sommeil"],a:"le respect et la confiance qu'on a en soi-même"},
+ {ch:"18",type:"fill",q:"Le dimanche, ils prennent toujours un brunch bien ___ en famille.",a:["copieux"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"Un médecin qui aide spécifiquement à la naissance des bébés s'appelle…",o:["une sage-femme", "un médecin traitant", "un chirurgien", "un pharmacien"],a:"une sage-femme"},
+ {ch:"18",type:"fill",q:"S'il fait beau ce week-end, nous ___ (aller) à la plage.",a:["irons"],m:{cat:"gen"}},
+ {ch:"18",type:"mc",q:"« S'impliquer » signifie…",o:["s'engager activement dans quelque chose", "s'éloigner de quelque chose", "se reposer", "abandonner un projet"],a:"s'engager activement dans quelque chose"}
 ];
 /* ===== Chapter 17 (bank of 27, 10 drawn per quiz) — own contiguous block ===== */
 TEST.push.apply(TEST,[
@@ -2599,7 +2899,13 @@ var OPI=[
  {t:"Ch 16 · Adult children at home",d:"Que pensez-vous du fait que des adultes reviennent vivre chez leurs parents ? Avantages et défis. — What do you think of adults moving back in with their parents? Benefits and challenges.",s:["la cohabitation, l'équilibre","possessive pronouns: le mien vs le leur."]},
  {t:"Ch 16 · A family you admire",d:"Décrivez une famille — la vôtre ou une autre — dont la structure vous semble intéressante. — Describe a family — yours or another — whose structure you find interesting.",s:["dont — noun + de constructions","recomposé(e), le noyau familial."]},
  {t:"Ch 16 · Aging and retirement homes",d:"Quel est votre avis sur les maisons de retraite ? Quelle option préférez-vous pour vos propres parents ? — What is your opinion on retirement homes? What option would you prefer for your own parents?",s:["quel vs lequel","l'accompagnement, la maison de retraite."]},
- {t:"Ch 16 · Your family's story",d:"Racontez comment votre propre famille a évolué au fil du temps — mariages, divorces, déménagements. — Tell how your own family has evolved over time — marriages, divorces, moves.",s:["tout, toute, tous, toutes","se pacser, divorcer de."]}
+ {t:"Ch 16 · Your family's story",d:"Racontez comment votre propre famille a évolué au fil du temps — mariages, divorces, déménagements. — Tell how your own family has evolved over time — marriages, divorces, moves.",s:["tout, toute, tous, toutes","se pacser, divorcer de."]},
+ {t:"Ch 18 · Your relationship with food",d:"Décrivez votre relation avec la nourriture — êtes-vous plutôt cordon bleu, gourmet, ou pressé(e) ? — Describe your relationship with food — are you more of a master chef, a gourmet, or someone always in a hurry?",s:["manger sur le pouce, la malbouffe, un régime équilibré","si + présent + futur/impératif."]},
+ {t:"Ch 18 · Managing stress",d:"Comment gérez-vous le stress au quotidien ? Donnez des conseils à un(e) ami(e) stressé(e). — How do you manage stress day to day? Give advice to a stressed friend.",s:["si + présent + impératif, pour donner des conseils","le sommeil, s'impliquer, se rétablir."]},
+ {t:"Ch 18 · Sport and daily life",d:"Comment intégrez-vous le sport dans votre emploi du temps chargé ? Quels obstacles rencontrez-vous ? — How do you fit sport into a busy schedule? What obstacles do you face?",s:["être en forme, sédentaire, aménager ses horaires","celui/celle/ceux/celles pour comparer."]},
+ {t:"Ch 18 · Technology and health",d:"Selon vous, la technologie a-t-elle un effet plutôt néfaste ou plutôt bénéfique sur la santé ? — In your view, does technology have a more harmful or more beneficial effect on health?",s:["néfaste vs nuisible","ce qui, ce que, ce dont."]},
+ {t:"Ch 18 · A health scare or injury",d:"Racontez une fois où vous ou un proche avez été malade ou blessé(e). Qu'est-ce qui vous a aidé à vous rétablir ? — Tell about a time you or someone close to you was sick or injured. What helped you recover?",s:["se rétablir, subir, guérir","ce dont j'avais besoin, c'était…"]},
+ {t:"Ch 18 · Health advice for a friend",d:"Un(e) ami(e) mange mal, ne dort pas assez et ne fait jamais de sport. Que lui conseillez-vous ? — A friend eats poorly, doesn't sleep enough, and never exercises. What do you advise them?",s:["si + présent + impératif","manger sain, se coucher tôt, faire du sport."]}
 ];
 OPI.push.apply(OPI,[
  {t:"Ch 17 · The city of tomorrow",d:"Comment imaginez-vous la ville de demain ? Décrivez deux ou trois caractéristiques écologiques. — How do you picture the city of tomorrow? Describe two or three eco-friendly features.",s:["durable, diminuer, trier","le gérondif : en utilisant, en réduisant…"]},
@@ -2647,8 +2953,8 @@ document.getElementById("opiPrev").onclick=function(){ opiIdx=(opiIdx-1+OPI.leng
 var sesStreak=0, sesFill=0, sesAccMiss=0, sesRight=0;   /* per page-load session */
 
 function withSrc(m,src,sk,ch){ var o={}; if(m){ for(var k in m) o[k]=m[k]; } o.src=src; if(sk) o.sk=sk; if(ch) o.ch=ch; return o; }
-var GRAM_SK={dont1:"dont",poss1:"poss",quellq1:"quellq",toutadj1:"toutadj",voc16:"vocctx"};
-var GRAM_LBL={dont:"Dont (+ qui, que, où)",poss:"Pronoms possessifs",quellq:"Quel / Lequel",toutadj:"Tout, toute, tous, toutes",vocctx:"Vocab en contexte"};
+var GRAM_SK={dont1:"dont",poss1:"poss",quellq1:"quellq",toutadj1:"toutadj",voc16:"vocctx",hypofut1:"hypofut",demonpro1:"demonpro",cequi1:"cequi",voc18:"vocctx"};
+var GRAM_LBL={dont:"Dont (+ qui, que, où)",poss:"Pronoms possessifs",quellq:"Quel / Lequel",toutadj:"Tout, toute, tous, toutes",vocctx:"Vocab en contexte",hypofut:"Hypothèse sur le futur",demonpro:"Pronoms démonstratifs",cequi:"Ce qui / ce que / ce dont"};
 GRAM_SK.neg1="neg"; GRAM_SK.cleft1="cleft"; GRAM_SK.gerond1="gerond"; GRAM_SK.voc17="vocctx";
 GRAM_LBL.neg="La négation (personne, rien, aucun)"; GRAM_LBL.cleft="Mise en relief (c'est … qui/que/dont/où)"; GRAM_LBL.gerond="Le gérondif";
 
@@ -2658,6 +2964,7 @@ var ACH=[
   {id:"a_s50", icon:"🏆", name:"Machine",             desc:"50 correct answers in a row."},
   {id:"a_v6",  icon:"📗", name:"Chapitre 16 maîtrisé", desc:"Every Chapter 16 vocab card is green."},
   {id:"a_v7",  icon:"📘", name:"Chapitre 17 maîtrisé", desc:"Every Chapter 17 vocab card is green."},
+  {id:"a_v18", icon:"📗", name:"Chapitre 18 maîtrisé", desc:"Every Chapter 18 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every verb in the Conjugaison tab is green."},
   {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
   {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
@@ -2698,6 +3005,9 @@ function sweepMastery(statusMap){
       if(all) award("a_v6");
       var has17=VOCAB.some(function(v){ return v.c===17; });
       if(has17 && VOCAB.every(function(v){ return v.c!==17 || state.vocab[v.f]==="known"; })) award("a_v7");
+      var has18=VOCAB.some(function(v){ return v.c===18; });
+      var all18=has18 && VOCAB.every(function(v){ return v.c!==18 || state.vocab[v.f]==="known"; });
+      if(all18) award("a_v18");
     } else if(statusMap===state.verbs){
       var allv=V.length && V.every(function(v){ return state.verbs[v.fr]==="known"; });
       if(allv) award("a_conj");

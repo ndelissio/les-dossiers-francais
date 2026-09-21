@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 3 · Dossier Français — v1.3.2</title>
+<title>Unité 3 · Dossier Français — v1.3.4</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v1.3.2</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v1.3.4</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -564,8 +564,10 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v1.3.2</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v1.3.4</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.3.4 (20 Sep 2026): <strong>Hotfix — aller/venir passé composé.</strong> <strong>Conjugaison</strong>: the vedettes <em>aller</em> and <em>venir</em> showed <em>ai allé</em> / <em>ai venu</em> in the passé-composé rows; they now use être with the agreement forms (<em>suis allé/allée</em>, <em>es venu/venue</em>…), like the other être verbs. The same fix applies to <em>mourir</em> (<em>suis mort/morte</em>…), which is only reachable through Drill ciblé — its trainer card drills futur simple only. Card data and saved progress untouched.<br></span>
+    <span style="color:var(--mute)">v1.3.3 (20 Sep 2026): <strong>Hotfix — le/la cards require the correct article.</strong> On the le/la cards (<em>le/la voleur(se)</em>, <em>le/la joaillier(-ière)</em>, <em>le/la procureur(e)</em>, <em>le/la cambrioleur(-euse)</em>, <em>le/la commissaire</em>) only <em>le</em> + masculine or <em>la</em> + feminine grades correct. A bare noun or a mismatched article (<em>le voleuse</em>) is a miss, counted as an article-gender miss in Analyse. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v1.3.2 (20 Sep 2026): <strong>Hotfix — Vocabulaire spelling accepts either gender form.</strong> Cards written with a parenthetical feminine (<em>l’évadé(e)</em>, <em>issu(e) de</em>, <em>le/la joaillier(-ière)</em>, <em>le/la voleur(se)</em>) no longer require typing the parentheses: the masculine or the feminine now grades correct (le/la cards also accept <em>le</em> + masculine or <em>la</em> + feminine), and the literal card form still works. Card data and saved progress untouched.<br></span>
     <span style="color:var(--mute)">v1.3.1 (16 Sep 2026): <strong>Dashboard grammar ledger rolled up by chapter.</strong> The Tableau de bord's Grammaire block listed every drill individually (18 rows); it now shows one aggregated coverage row per chapter — Ch 11–14 — matching the Vocabulaire block's layout right above it. Per-drill titles and best-round scores are unchanged and still visible inside the Grammaire tab itself; this only shortens the dashboard summary. No scoring or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.3.0.1 (13 Sep 2026): <strong>Hotfix — abbreviation in Ch 14 vocab.</strong> The <strong>croiser</strong> card's French answer stored "croiser qqn" — an abbreviation, against the standing rule that vocab text always spells out full words. Corrected to <strong>croiser quelqu'un</strong>; no other bank, drill, scoring, or saved-progress changes.<br></span>
@@ -701,6 +703,8 @@ function normArt(a){ return (a||"").toLowerCase().replace(/[’´]/g,"'"); }
 function artGender(a){ a=normArt(a); if(a==="la"||a==="une")return "f."; if(a==="le"||a==="un")return "m."; if(a==="les")return "pl."; return ""; }
 /* split a leading definite/indefinite article off a French entry */
 function splitArticle(fr){
+  var ml=fr.match(/^(le\/la)\s+(.+)$/i);   /* le/la cards still require an article (matched via vocCands) */
+  if(ml) return {hasArt:true, art:"le/la", bare:ml[2], gender:""};
   var m=fr.match(/^(les|le|la|une|un)\s+(.+)$/i);
   if(m) return {hasArt:true, art:normArt(m[1]), bare:m[2], gender:artGender(m[1])};
   var m2=fr.match(/^(l['’])\s*(.+)$/i);
@@ -731,8 +735,8 @@ function formVariants(f){
   }
   var lm=f.match(/^le\/la\s+(.+)$/i);
   if(lm){
-    if(gender){ out.push("le "+masc.replace(/^le\/la\s+/i,""), "la "+fem.replace(/^le\/la\s+/i,"")); }
-    else { out.push("le "+lm[1], "la "+lm[1]); }
+    /* le/la cards: only correctly-articled forms count — le + masculine, la + feminine; no bare noun, no mixed article */
+    return gender ? ["le "+masc.replace(/^le\/la\s+/i,""), "la "+fem.replace(/^le\/la\s+/i,"")] : ["le "+lm[1], "la "+lm[1]];
   }
   return out;
 }
@@ -812,13 +816,13 @@ var V=[
   /* ---- vedettes : full-tense sweep (per build decision) ---- */
   {fr:"être",en:"to be",cat:"flag",conj:["suis","es","est","sommes","êtes","sont"],pp:"été",fsr:"ser",impRoot:"ét",ex:"Le manteau est en solde.",exEn:"The coat is on sale.",note:"Auxiliary of the voix passive in every tense — see the passive model card. Futur ser- · imparfait ét-."},
   {fr:"avoir",en:"to have",cat:"flag",conj:["ai","as","a","avons","avez","ont"],pp:"eu",fsr:"aur",ex:"Il y aura des averses demain.",exEn:"There will be showers tomorrow.",note:"il y a → futur il y aura · imparfait il y avait — the weather forecasts live on these."},
-  {fr:"aller",en:"to go",cat:"flag",conj:["vais","vas","va","allons","allez","vont"],pp:"allé",fsr:"ir",ex:"J'allais acheter du lait quand tu as appelé.",exEn:"I was going to buy milk when you called.",note:"Imparfait of aller + infinitif = the near future in the past (Ch 13): j'allais partir."},
+  {fr:"aller",en:"to go",cat:"flag",conj:["vais","vas","va","allons","allez","vont"],pp:"allé",aux:"e",fsr:"ir",ex:"J'allais acheter du lait quand tu as appelé.",exEn:"I was going to buy milk when you called.",note:"Imparfait of aller + infinitif = the near future in the past (Ch 13): j'allais partir."},
   {fr:"faire",en:"to do / to make",cat:"flag",conj:["fais","fais","fait","faisons","faites","font"],pp:"fait",fsr:"fer",ex:"Quel temps fera-t-il demain ?",exEn:"What will the weather be tomorrow?",note:"il fait beau/froid/lourd — the weather workhorse in every tense."},
   {fr:"pouvoir",en:"can / to be able to",cat:"flag",conj:["peux","peux","peut","pouvons","pouvez","peuvent"],pp:"pu",fsr:"pourr",ex:"Pourriez-vous m'aider avec la taille ?",exEn:"Could you help me with the size?",note:"Conditionnel pourrais = polite request (Ch 14). Double r in the stem: pourr-."},
   {fr:"devoir",en:"must / to have to",cat:"flag",conj:["dois","dois","doit","devons","devez","doivent"],pp:"dû",fsr:"devr",ex:"Tu devrais dormir plus.",exEn:"You should sleep more.",note:"Conditionnel devrais = should (advice). Participle dû keeps its circumflex."},
   {fr:"vouloir",en:"to want",cat:"flag",conj:["veux","veux","veut","voulons","voulez","veulent"],pp:"voulu",fsr:"voudr",ex:"Je voudrais réserver une chambre.",exEn:"I would like to book a room.",note:"Je voudrais = the polite want — the OPI's most useful conditionnel."},
   {fr:"savoir",en:"to know (facts, how to)",cat:"flag",conj:["sais","sais","sait","savons","savez","savent"],pp:"su",fsr:"saur",ex:"Sachez que la boutique ferme à 19 h.",exEn:"Know that the shop closes at 7 pm.",note:"Futur saur-. Sachez que… (Ch 11 audio) is its imperative."},
-  {fr:"venir",en:"to come",cat:"flag",conj:["viens","viens","vient","venons","venez","viennent"],pp:"venu",fsr:"viendr",ex:"Elle vient tout juste de partir.",exEn:"She left just now.",note:"venir de + infinitif = passé récent (Ch 14); venais de = had just. Futur viendr-."},
+  {fr:"venir",en:"to come",cat:"flag",conj:["viens","viens","vient","venons","venez","viennent"],pp:"venu",aux:"e",fsr:"viendr",ex:"Elle vient tout juste de partir.",exEn:"She left just now.",note:"venir de + infinitif = passé récent (Ch 14); venais de = had just. Futur viendr-."},
   {fr:"plaire",en:"to be pleasing to (≈ to like, flipped)",cat:"flag",conj:["plais","plais","plaît","plaisons","plaisez","plaisent"],pp:"plu",ex:"Ces gants lui ont plu.",exEn:"He liked these gloves.",note:"Ch 11 flagship — the liked thing is the subject, the liker is a COI: Ça me plaît · Ça m'a plu · Ça me plaisait · Ça va me plaire · Ça me plaira. Mostly 3rd person in the wild; the full table is here for the sweep."},
   /* ---- voix passive model (être across tenses + participe accordé) ---- */
   {fr:"être invité(e)",en:"to be invited — passive model",cat:"pas",pron:true,
@@ -841,7 +845,7 @@ var V=[
   {fr:"recevoir",en:"to receive",cat:"fut",conj:["reçois","reçois","reçoit","recevons","recevez","reçoivent"],pp:"reçu",fsr:"recevr",tn:["fs"],ex:"Vous recevrez une confirmation.",exEn:"You will receive a confirmation.",note:"Futur recevr-."},
   {fr:"tenir",en:"to hold",cat:"fut",conj:["tiens","tiens","tient","tenons","tenez","tiennent"],pp:"tenu",fsr:"tiendr",tn:["fs"],ex:"Il tiendra sa promesse.",exEn:"He will keep his promise.",note:"Futur tiendr- — mirrors venir → viendr-."},
   {fr:"courir",en:"to run",cat:"fut",conj:["cours","cours","court","courons","courez","courent"],pp:"couru",fsr:"courr",tn:["fs"],ex:"Nous courrons plus vite demain.",exEn:"We will run faster tomorrow.",note:"Futur courr- — the double r is the only thing separating courrons from courons."},
-  {fr:"mourir",en:"to die",cat:"fut",conj:["meurs","meurs","meurt","mourons","mourez","meurent"],pp:"mort",fsr:"mourr",tn:["fs"],ex:"Ces plantes mourront sans eau.",exEn:"These plants will die without water.",note:"Futur mourr- (double r)."},
+  {fr:"mourir",en:"to die",cat:"fut",conj:["meurs","meurs","meurt","mourons","mourez","meurent"],pp:"mort",aux:"e",fsr:"mourr",tn:["fs"],ex:"Ces plantes mourront sans eau.",exEn:"These plants will die without water.",note:"Futur mourr- (double r)."},
   {fr:"s'asseoir",en:"to sit down",cat:"fut",pron:true,conj:["m'assieds/m'assois","t'assieds/t'assois","s'assied/s'assoit","nous asseyons/nous assoyons","vous asseyez/vous assoyez","s'asseyent/s'assoient"],pp:"assis",fsr:"assiér/assoir",tn:["fs"],ex:"Je m'assiérai près de la fenêtre.",exEn:"I will sit by the window.",note:"Two valid stems everywhere: m'assiérai / m'assoirai — both grade correct."},
   {fr:"valoir",en:"to be worth",cat:"fut",conj:["vaux","vaux","vaut","valons","valez","valent"],pp:"valu",fsr:"vaudr",tn:["fs"],ex:"Ça vaudra le coup.",exEn:"It will be worth it.",note:"Futur vaudr- — il vaudra mieux = it will be better to."},
   {fr:"falloir",en:"to be necessary (il faut)",cat:"fut",impRoot:"fall",conj:["—","—","faut","—","—","—"],pp:"fallu",fsr:"faudr",tn:["fs"],ex:"Il faudra un parapluie.",exEn:"An umbrella will be needed.",note:"Impersonal — only il faudra exists in the futur."},
