@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 2 · Dossier Français — v1.2.5</title>
+<title>Unité 2 · Dossier Français — v1.2.6</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v1.2.5</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v1.2.6</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -358,7 +358,7 @@
     <ul class="lead-list">
       <li>Accents count; each card grades once.</li>
       <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
-      <li><b>Hide known</b>, <b>Drill misses</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
+      <li><b>Hide known</b>, <b>New only</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
       <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
       <li><b>Passé composé</b> and <b>Imparfait</b> = reps only; présent is the mastery table.</li>
       <li><b>Training</b> = feedback only, nothing recorded.</li>
@@ -389,7 +389,7 @@
     <div class="frow"><span class="flabel">Filtres</span>
       <button class="ghost" id="hideKnownBtnV">Hide known</button>
       <button class="ghost" id="rustyBtnV">Rusty</button>
-      <button class="ghost" id="missBtn">Drill misses</button>
+      <button class="ghost" id="newOnlyBtnV">New only</button>
     </div>
 
     <div class="vprogress"><span id="vCount">—</span><span id="vKnown">—</span></div>
@@ -457,7 +457,7 @@
       <button class="ghost" id="vocTricky">Tricky spellings</button>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
-      <button class="ghost" id="vocMiss">Drill misses</button>
+      <button class="ghost" id="newOnlyBtnVoc">New only</button>
     </div>
       <div class="seg" id="vocDirSeg">
         <button data-dir="en" aria-pressed="true">EN → FR</button>
@@ -559,8 +559,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v1.2.5</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v1.2.6</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.2.6 (28 Sep 2026): <strong>"Drill misses" replaced with "New only."</strong> The old filter showed cards marked "still learning," which mostly duplicated Hide known. The button now shows only cards you've never attempted — not known, not still learning, never answered. Renamed internally (missMode/vocMissOnly → newOnlyMode/vocNewOnly); the now-meaningless worst-accuracy sort is removed. No vocab or verb data changed.<br></span>
     <span style="color:var(--mute)">v1.2.5 (16 Sep 2026): <strong>Dashboard grammar ledger rolled up by chapter.</strong> The Tableau de bord's Grammaire block listed every drill individually (28 rows — the longest list of any unit); it now shows one aggregated coverage row per chapter — Ch 6–9 — matching the Vocabulaire block's layout right above it. Per-drill titles and best-round scores are unchanged and still visible inside the Grammaire tab itself; this only shortens the dashboard summary. No scoring or saved-progress changes.<br></span>
     <span style="color:var(--mute)">v1.2.4 (26 Aug 2026): <strong>Unit 3 parity — coverage scoring, Drill ciblé, dashboard.</strong> Bringing Unit 2 up to Unit 3's standard. <strong>Grammar drills now track coverage</strong>: each drill counts which distinct bank items you've answered right at least once (<em>couverture n/24</em> on the drill header and per-drill on the dashboard), with best-round scores kept as the secondary figure — matching Unit 3. <strong>New: Drill ciblé</strong> in the Conjugaison tab — search any verb from the cumulative Unit 1–2 pool (124 verbs: regulars, spelling-change, pronominals, irregulars, plus the Ch 7–9 glossaire verbs) and drill présent, passé composé or imparfait, reps only, nothing recorded. Pronominal and être-auxiliary passé composé (<em>je me suis levé(e)</em>, <em>je suis parti(e)</em>) and pronominal imparfait are composed correctly; participles for regular -ir/-re verbs now derive (<em>choisi</em>, <em>attendu</em>). <strong>Dashboard restructured</strong> to Unit 3's layout — Vocabulaire leads (per-chapter bars), then per-drill Grammaire coverage, then Conjugaison mastery; the top stat row now leads with vocab known and a global grammar-coverage figure. <strong>Vocab topic groups chunked</strong>: five oversized Vocabulaire groups split so every group sits at ~10–23 cards (was up to 32) — Ch 7 <em>At the market</em> → fruit / vegetables; Ch 8 <em>The human body</em> → head &amp; face / torso &amp; organs / limbs; Ch 8 <em>At the hospital</em> → symptoms &amp; injuries / care, staff &amp; equipment; Ch 8 verbs → health &amp; body / assess &amp; carry out; Ch 9 <em>Events &amp; invitations</em> → invitations, gifts &amp; objects / outings, receptions &amp; guests. Card content, answers and scoring unchanged — topic tags only; saved progress is keyed on the word and carries over. Stale tab intros fixed — the Conjugaison and Pratique orale leads still described "Chapter 6" only. The "I'm currently in" chapter picker was audited against the masthead — clean. No item, answer, or existing-scoring changes.</span>
     <span style="color:var(--mute)">v1.2.3.3 (25 Aug 2026): <strong>School references removed.</strong> An institutional tag is dropped from the browser-tab title, the header eyebrow, and the footer masthead. No content, drills, scoring, or saved progress change. v1.2.3.2 (25 Aug 2026): <strong>Trainer intros span the full width.</strong> The instruction paragraph and bullet list under the Conjugaison and Vocabulaire trainers were capped at a narrow prose measure, so they wrapped well short of the controls below them and pushed the training card down the page. They now span the content width like everything else, so the card sits higher — on-screen without scrolling on a typical desktop. CSS only. v1.2.3.1 (25 Aug 2026): <strong>Back-link restyled.</strong> The <strong>‹ Tous les dossiers</strong> header link is now a bordered pill button (hairline border, card fill, red on hover) instead of bare text, so it reads clearly as a button. CSS only. v1.2.3 (25 Aug 2026): <strong>Achievement bug fix — "Accent aigu".</strong> The ✍️ trophy awarded after 20 graded answers with zero accent-only misses — but a run of <em>all-wrong</em> answers also has zero accent-only misses, so bombing 20 spelling checks in a row earned it. It now also requires a solid majority (70%) of the session's answers to be correct. Matches the fix shipped to Unit 3 v1.2.2. No other changes. v1.2.2 (25 Aug 2026): <strong>Landing-page link + tab title.</strong> The header gains a <strong>‹ Tous les dossiers</strong> link back to the dossier index, and the browser tab now reads <strong>Unité 2 · Dossier Français</strong> (unit first) instead of leading with the version string. No content, drill, or scoring changes. v1.2.1 (24 Aug 2026): <strong>class-agnostic test date + phases</strong>. The DLPT/OPI countdown chip in the header is now clickable — set your own test date, saved to this browser and shared automatically across all three unit dossiers (one date, not per-unit). The dashboard's four study-plan phases (Foundation/Volume/Conditioning/Taper) now key off weeks remaining until your test instead of a hardcoded course-start date; their labels changed from fixed calendar months to relative week-ranges so they hold up for any cohort. The old hardcoded DLPT date, course-start date, and the "Course week (of 35)" dashboard stat are removed. Masthead now reads <strong>Le Dossier Français</strong>. v1.2.0 (3 Aug 2026): <strong>Mémos étymologiques — every vocab card.</strong> All 458 cards now carry a one-line etymology + mnemonic (the <em>y</em> field): real cognate lineage where it exists (poitrine → pectoral, guérir → the g/w swap of guerre/war), keyword-method sound-alikes where it doesn’t, faux amis flagged (blessure, raisin, assister). Shown <strong>only in Training mode</strong> — recall training displays it in the answer block, spelling training under the Modèle line — styled as an italic accent-barred note. Graded modes are untouched: no mémo on reveal, nothing changes in recording, mastery, or Analyse. v1.1.0 (23 Jul 2026): <strong>Unit 2 practice exam — built from the Test 2 study guide.</strong> The Examen blanc picker gains the <strong>Unit 2 practice exam</strong>: <strong>Compréhension</strong> — 3 of 6 passages matching the guide’s passage types (housewarming e-mail, restaurant texts, doctor’s instructions, rental ad, supermarket sign, voice message), MCQ plus self-graded short answers in English; <strong>Vocabulaire</strong> — 12 of 93, the complete Test 2 word list, EN → FR, articles required per the standing rule, accents strict, œ-words accept oe spellings; <strong>Grammaire</strong> — 12 of 32, four items per study-guide structure (PC avec avoir / avec être / pronominaux, imparfait, pronoms COD · COI · en, savoir vs connaître, présent, devoir · pouvoir · vouloir au présent). Fresh random draw every attempt; fill-ins feed Analyse with chapter and pronoun tags (the engine now passes ch/m through the exam Vocabulaire section). The à venir placeholders are gone; tab and history copy updated. v1.0.1 (17 Jul 2026): <strong>all Unit 2 chapters.</strong> Chapters 7 (Food), 8 (Health), and 9 (Social events) land in one release; Chapter 10 is review-only and carries no new content, so it is dropped from every picker. <strong>Vocabulaire</strong>: ~315 new glossaire cards — Ch 7 market/fish shop/supermarket/dairy/condiments/butcher/bakery/utensils/cooking verbs/quantities/adjectives plus a taught restaurant set (flagged exception, like the Ch 6 exterior set); Ch 8 body/hospital/illnesses/nutrition/verbs; Ch 9 events &amp; invitations/verbs/pronominals/verbs with à/adjectives. EN nouns carry their article per the standing rule. <strong>Conjugaison</strong>: new <strong>Imparfait</strong> segment next to Présent | Passé composé — reps only, like PC (root = nous-form minus -ons, être → ét-, ç/ge boot handled, il fallait only); mastery accountability lives in the new Imparfait drill. <strong>savoir</strong> and <strong>connaître</strong> join the mastery tables (Ch 8 taught paradigms); all other Ch 7–9 glossaire verbs are vocab infinitive cards per the split-verb rule. <strong>Grammaire</strong>: 19 new drills, each opened by a rule explainer — Ch 7: PC avec être, être ou avoir (verbes spéciaux), verbes pronominaux au PC, partitifs &amp; quantités (one merged drill), pronom en (with COD contrast items), adverbes en -ment, vocab en contexte; Ch 8: imparfait, durée, cause &amp; conséquence, savoir vs connaître, avoir mal à, vocab en contexte; Ch 9: relatifs qui/que/où, COI, COD ou COI, révision quatre temps, questions, vocab en contexte. Drill count: 28. <strong>Examen blanc</strong>: 24-item quiz banks for Ch 7, 8, and 9 (10 drawn per attempt); the Unit 2 exam stays <em>à venir</em> pending the study guide. <strong>Pratique orale</strong>: 18 new prompts, six per chapter. Analyse picks up the new structure tags and chapter tagging automatically. v1.0.0 (17 Jul 2026): <strong>live release.</strong> The beta series (b1–b7) closes. Beta badge and labels dropped. <strong>Rule explainers on every Grammaire drill</strong> — a boxed quick-reference note now opens each of the nine drills, tailored to the structure being drilled (avoir + participle paradigm, PC negation/question frames, COD pronoun placement, modal conjugations + il faut, feminine endings incl. doubling and irregulars, BANGS with vowel forms and des → de, participle patterns, word-bank instruction, compound vs. simple prepositions with du/des). <strong>Article toggle removed</strong> — articles are always part of the answer in Vocabulaire Spelling: wrong or missing <em>le/la</em> is a miss (words without an article grade bare, and the hint only mentions the article when the word carries one). Article-gender misses keep feeding the Vocabulaire donut. The Unit 2 exam and study-guide-dependent content stay <em>à venir</em> until the Unit 2 study guide lands, then ship in an update. v1.0.0-b7 (15 Jul 2026): <strong>reset stats + weakest chapter; dashboard Weakest areas retired.</strong> A red <strong>Reset stats</strong> pill now sits right of the "Misses by source" header on Analyse: one tap (no confirm) wipes the four donuts, the Error types rate bars, the pronoun ledger, the quiz-tag tallies, and every struggle flag (card-level and slot-level consecutive-miss counters). Trophies, greens, streaks, lifetime ✓/✗ counts, best drill scores, and test history are untouched. The "Counting fresh from v1.0.0-b5" line is replaced by a live <strong>"Depuis : [date]"</strong> stamp that moves on each reset. New <strong>Weakest chapter</strong> stat at the top of Analyse — the recording layer is now chapter-tagged across all four sources (vocab cards carry their chapter, drills their minCh, quiz items their bank chapter, conjugation defaults to the unit chapter until verbs carry one), and the chapter with the highest miss rate is called out once it has 5+ graded answers; single-chapter content reads Ch 6 until Ch 7 lands, and it resets with the rest. The dashboard "Weakest areas" ledger row is retired in its favor. v1.0.0-b6 (13 Jul 2026): <strong>slot-level struggle tracking + empty-entry guards.</strong> Each of the six Conjugaison slots now keeps its own consecutive-miss counter on graded présent checks (PC and Training excluded): a form missed <strong>3+ times in a row</strong> joins the struggle list as e.g. <em>peindre · vous → peignez</em>, and clears the moment that slot is right once; Je connais déjà clears a verb’s slot streaks too. Card-level flagging is unchanged and can coexist with slot rows. <strong>Empty entries no longer skew Analyse</strong>: a fully empty Conjugaison Check now does nothing (matching the Vocabulaire trainer), empty slots on a partial check never tally into the analytics or the slot streaks (the card still grades normally, so mastery behavior is untouched), and pressing Enter on an empty drill box no longer grades a blank as a spelling miss — Check all already skipped empties. Deliberately unchanged: blanks on a submitted quiz still count as misses; a blank under test conditions is a real error. v1.0.0-b5 (13 Jul 2026): <strong>misses-by-source donut grid.</strong> The single donut is replaced by four: <strong>Vocabulaire</strong> (accents / gender via Articles: required / spelling), <strong>Conjugaison</strong> (misses by pronoun, six slices, présent grading only — the PC toggle stays reps-only), <strong>Grammaire</strong> (by structure: passé composé, participes, COD, modaux + il faut, adjectifs, BANGS, vocab en contexte, prépositions — drill items now carry a structure tag), and <strong>Examen</strong> (error type). Recording is now source-tagged in the analytics layer; pre-b5 data has no source dimension, so it stays in the overall Error types bars and the donuts count fresh from this build. Overall bars, pronoun ledger, struggle list, and trophies unchanged. v1.0.0-b4 (13 Jul 2026): <strong>passé composé — reps toggle + participles drill.</strong> The Conjugaison tab gains a <strong>Présent | Passé composé</strong> segment. PC cards grade the full six-form table (j’ai peint, tu as peint…) with instant accent-strict feedback, but are <strong>reps only</strong> — no greens, no streaks, no Analyse, nothing recorded, inputs never lock, Reveal shows answers freely, and the card chip reads "PC reps · not recorded." Présent remains the only mastery table, per the decision that PC-with-avoir is one variable fact per verb (the participle) plus avoir, and per-tense greens would double the grind for redundant knowledge. The Training toggle stacks with either tense. Where PC accountability lives: a new <strong>Participes passés</strong> Grammaire drill — infinitive → participle, bank of 24 covering the textbook’s pattern list (-é / -i / -u regulars plus mis, pris, compris, appris, fait, satisfait, construit, détruit, eu, été, voulu, pu, dû, vu, lu, reçu, suivi) with a saved best score, feeding Analyse under passé composé. Drill count: 9. v1.0.0-b3 (13 Jul 2026): <strong>copy tightened app-wide.</strong> "Miss buckets" is now <strong>Error types</strong> with bare labels (Accents · Gender &amp; agreement · Spelling) in both the ledger and the donut legend; parenthetical explainers dropped wherever the word carries the meaning. The Conjugaison, Vocabulaire, Grammaire, Examen, Pratique orale, and Analyse leads are cut to roughly half — one-line intros, terse bullets, no restated mechanics. Struggle list lead ends at "missed 3+ times in a row." No functional changes; saved progress untouched. v1.0.0-b2 (13 Jul 2026): <strong>masthead, French tabs, Analyse everywhere, donut.</strong> <strong>Unité 2</strong> now sits bold at the front of the masthead so the working file is unmistakable. Tabs are French and reordered — Tableau de bord · Conjugaison · Vocabulaire · Grammaire · Examen blanc · <strong>Pratique orale</strong> · <strong>Analyse</strong> (last; formerly Insights). <strong>Analyse now ingests every graded answer</strong>: each Conjugaison fill-in slot records into the buckets tagged by pronoun and verb group (the six-slot cards are the richest pronoun data in the app), and each graded Vocabulaire spelling answer records accent-close and — in Articles: required mode — article-gender misses. The Training toggle remains fully excluded; trainer slots feed buckets only and never double-count the per-card streak/lifetime counters. Tab copy updated to match. <strong>New miss-composition donut</strong> at the top of Analyse (vanilla SVG, offline): the share of all recorded misses by bucket — accents / gender &amp; agreement / spelling-other — with counts and percentages, alongside the existing per-bucket rate bars which answer the different question (how often you miss each type). Accent-clean achievement description updated to "20+ graded answers." v1.0.0-b1 (13 Jul 2026): <strong>Unit 2 beta — Chapter 6 + Insights + achievements.</strong> Forked from the frozen Unit 1 engine (v3.1.0.1); Unit 2 progress saves under its own key, so the Unit 1 file is untouched. <strong>Chapter 6 content</strong>: 138 glossaire vocab cards (housing types, rooms, kitchen, furniture, bathroom, colors, materials, shapes, adjectives, verbs, prepositions of place) plus a 7-word taught exterior set (portail, toit, porte d’entrée, fenêtre, garage, jardin, trottoir — activity-sourced, flagged exception to glossaire parity); 22 conjugation verbs (devoir/pouvoir/vouloir + il faut, the glossaire -er verbs incl. spelling-change nettoyer/percer/agencer/aménager/arranger/emménager, peindre, and être/avoir as révision); 8 grammar drills mined from the Chapter 6 activités (passé composé forms / negation &amp; questions, COD pronouns, devoir·pouvoir·vouloir + il faut, feminine adjective forms, BANGS placement, Vocab in context, prepositions of place with the glossaire word bank); a 24-item Chapter 6 quiz bank; 10 OPI prompt cards. The Unit 2 practice exam ships in a later beta. <strong>New: Insights tab</strong> — miss diagnostics built from graded drill and quiz answers only (trainers are a safe space and feed just the struggle list). Buckets: accents (right word, wrong accents), gender/agreement, spelling/recall; conjugation misses break down by subject pronoun; minimum sample sizes before any pattern is called out (10 per bucket, 5 per pronoun). First grade per item counts; re-checks don’t stack. <strong>Struggle list</strong>: any trainer word missed 3+ times in a row is flagged until you break the streak. <strong>New: 12 achievements</strong> with toast pop-ups and a trophy case (streaks of 10/25/50, Chapter 6 vocab mastered, all conjugations mastered, perfect quiz, three perfect quizzes, perfect drill round, 20+ accent-clean session, comeback on a struggle word, 100 and 500 lifetime graded answers). Achievement set is beta — it gets refined on vibes.</span>
@@ -632,8 +633,6 @@ function deriveStatus(key, s){
   var known = ((s.s||0)>=3) || (s.w===0 && s.c>=1);     // 3 in a row, or clean single correct
   return known ? "known" : "learn";
 }
-/* lifetime accuracy, for ordering the Drill-misses queue — lowest first */
-function missRank(s){ if(!s || (s.c+s.w)===0) return 1; return s.c/(s.c+s.w); }
 function recordAnswer(statsMap, statusMap, key, correct){
   var s = statsMap[key] || (statsMap[key] = {c:0, w:0, s:0});
   if(correct){ s.c++; s.s=(s.s||0)+1; if((s.m||0)>=3) s.cb=1; s.m=0; }
@@ -839,7 +838,7 @@ function formAt(v,i){
 }
 
 /* =============== VERB TRAINER UI =============== */
-var dir="en", catSel="all", missMode=false, hideKnownV=false, rustyV=false, scopeLevel=true, chapterSelV="any", order=[], idx=0, revealed=false, verbMode="fill", verbTrain=false, verbTense="pres";
+var dir="en", catSel="all", newOnlyMode=false, hideKnownV=false, rustyV=false, scopeLevel=true, chapterSelV="any", order=[], idx=0, revealed=false, verbMode="fill", verbTrain=false, verbTense="pres";
 var catFilter=document.getElementById("catFilter");
 Object.keys(CATS).forEach(function(k){ var o=el("option"); o.value=k; o.textContent=CATS[k].label; catFilter.appendChild(o); });
 
@@ -848,13 +847,12 @@ function pool(){
   if(chapterSelV!=="any"){ arr=arr.filter(function(i){return chOf(V[i])===+chapterSelV;}); }
   else if(scopeLevel){ arr=arr.filter(function(i){return chOf(V[i])<=state.currentCh;}); }
   if(catSel!=="all") arr=arr.filter(function(i){return V[i].cat===catSel;});
-  if(missMode) arr=arr.filter(function(i){return state.verbs[V[i].fr]==="learn";});
+  if(newOnlyMode) arr=arr.filter(function(i){return state.verbs[V[i].fr]===undefined;});
   if(hideKnownV) arr=arr.filter(function(i){return state.verbs[V[i].fr]!=="known";});
   if(rustyV) arr=arr.filter(function(i){return isRusty(state.verbs, state.verbStats, V[i].fr);});
-  if(missMode) arr.sort(function(a,b){return missRank(state.verbStats[V[a].fr])-missRank(state.verbStats[V[b].fr]);});
   return arr;
 }
-function buildOrder(){ order=pool(); shuffleArr(order); if(missMode) order.sort(function(a,b){return missRank(state.verbStats[V[a].fr])-missRank(state.verbStats[V[b].fr]);}); idx=0; revealed=false; }
+function buildOrder(){ order=pool(); shuffleArr(order); idx=0; revealed=false; }
 function knownCount(){ return Object.keys(state.verbs).filter(function(k){return state.verbs[k]==="known";}).length; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
@@ -920,7 +918,7 @@ function renderVerb(){
   document.getElementById("vKnown").textContent = knownCount()+" / "+V.length+" known overall";
   if(order.length===0){
     card.innerHTML="<div style='margin:auto;text-align:center;color:var(--mute);padding:30px 0'>Nothing here. "+
-      (missMode?"No verbs marked “still learning” — turn off Drill misses.":"Try a different group.")+"</div>";
+      (newOnlyMode?"No unseen verbs left in this scope — turn off New only.":"Try a different group.")+"</div>";
     document.getElementById("vPos").textContent=""; return;
   }
   if(idx>=order.length) idx=0;
@@ -1060,17 +1058,17 @@ function renderVerb(){
 
 }
 function pruneOrder(){ /* drop items that no longer match live filters; keep position */
-  if(!hideKnownV && !missMode) return;
+  if(!hideKnownV && !newOnlyMode) return;
   var old=order, oldIdx=idx, kept=[], newIdx=0;
   for(var k=0;k<old.length;k++){
     var i=old[k], st=state.verbs[V[i].fr];
     if(hideKnownV && st==="known") continue;
-    if(missMode && st!=="learn") continue;
+    if(newOnlyMode && st!==undefined) continue;
     kept.push(i); if(k<=oldIdx) newIdx=kept.length;
   }
   order=kept; idx=order.length?newIdx%order.length:0;
 }
-function next(){ pruneOrder(); if(!(hideKnownV||missMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
+function next(){ pruneOrder(); if(!(hideKnownV||newOnlyMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
 function prev(){ idx=(idx-1+order.length)%Math.max(order.length,1); revealed=false; renderVerb(); }
 
 document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"#fff":"";revealed=false;renderVerb();});
@@ -1088,7 +1086,7 @@ document.getElementById("scopeSegV").addEventListener("click",function(e){
   b.setAttribute("aria-pressed","true"); scopeLevel=b.dataset.scope==="level";
   buildOrder(); renderVerb(); refreshVerbTableIfOpen();
 });
-catFilter.onchange=function(){ catSel=this.value; missMode=false; document.getElementById("missBtn").style.background=""; buildOrder(); renderVerb(); refreshVerbTableIfOpen(); };
+catFilter.onchange=function(){ catSel=this.value; newOnlyMode=false; document.getElementById("newOnlyBtnV").style.background=""; document.getElementById("newOnlyBtnV").style.color=""; buildOrder(); renderVerb(); refreshVerbTableIfOpen(); };
 document.getElementById("chapterFilterV").addEventListener("change",function(){
   chapterSelV=this.value;
   document.getElementById("scopeSegV").style.opacity=chapterSelV==="any"?"1":".4";
@@ -1102,8 +1100,8 @@ document.getElementById("rustyBtnV").onclick=function(){
   rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"#fff":"";
   buildOrder(); renderVerb();
 };
-document.getElementById("missBtn").onclick=function(){
-  missMode=!missMode; this.style.background=missMode?"var(--learn)":""; this.style.color=missMode?"#fff":"";
+document.getElementById("newOnlyBtnV").onclick=function(){
+  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"#fff":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("shufBtn").onclick=function(){
@@ -1655,7 +1653,7 @@ var VOCAB=[
   });
 })();
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocMissOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* self-heal: re-derive status from counters so any word (incl. bonjour) that has
@@ -1687,13 +1685,12 @@ function vocPool(){
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
   if(vocTrickyOnly) arr=arr.filter(function(i){return VOCAB[i].x;});
-  if(vocMissOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]==="learn";});
+  if(vocNewOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]===undefined;});
   if(vocHideKnown) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]!=="known";});
   if(vocRusty) arr=arr.filter(function(i){return isRusty(state.vocab, state.vocabStats, VOCAB[i].f);});
-  if(vocMissOnly) arr.sort(function(a,b){return missRank(state.vocabStats[VOCAB[a].f])-missRank(state.vocabStats[VOCAB[b].f]);});
   return arr;
 }
-function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); if(vocMissOnly) vocOrder.sort(function(a,b){return missRank(state.vocabStats[VOCAB[a].f])-missRank(state.vocabStats[VOCAB[b].f]);}); vocIdx=0; vocShown=false; }
+function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); vocIdx=0; vocShown=false; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
    ignores topic/tricky/hide-known so the table is a complete chapter reference */
@@ -1901,17 +1898,17 @@ function renderVoc(){
   if(mark){ var m=el("div","note"); m.style.marginTop="10px"; m.style.background=mark==="known"?"var(--known-soft)":"var(--learn-soft)"; m.style.color=mark==="known"?"var(--known)":"var(--learn)"; m.textContent=mark==="known"?"Marked: known":"Marked: still learning"; card.appendChild(m); }
 }
 function vocPrune(){
-  if(!vocHideKnown && !vocMissOnly) return;
+  if(!vocHideKnown && !vocNewOnly) return;
   var old=vocOrder, oldIdx=vocIdx, kept=[], newIdx=0;
   for(var k=0;k<old.length;k++){
     var i=old[k], st=state.vocab[VOCAB[i].f];
     if(vocHideKnown && st==="known") continue;
-    if(vocMissOnly && st!=="learn") continue;
+    if(vocNewOnly && st!==undefined) continue;
     kept.push(i); if(k<=oldIdx) newIdx=kept.length;
   }
   vocOrder=kept; vocIdx=vocOrder.length?newIdx%vocOrder.length:0;
 }
-function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocMissOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
+function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocNewOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
 function vocPrev(){ if(!vocOrder.length)return; vocIdx=(vocIdx-1+vocOrder.length)%vocOrder.length; vocShown=false; renderVoc(); }
 
 document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="spell"?".4":"1";vocShown=false;renderVoc();});
@@ -1934,7 +1931,7 @@ document.getElementById("rustyBtnVoc").onclick=function(){
   vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"#fff":"";
   vocBuild(); renderVoc();
 };
-document.getElementById("vocMiss").addEventListener("click",function(){vocMissOnly=!vocMissOnly;this.style.background=vocMissOnly?"var(--ink)":"";this.style.color=vocMissOnly?"#fff":"";vocBuild();renderVoc();});
+document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"#fff":"";vocBuild();renderVoc();});
 document.getElementById("resetVocab").onclick=function(){
   if(confirm("Clear all vocabulary marks?")){ state.vocab={}; state.vocabStats={}; saveState(); vocBuild(); renderVoc(); refreshDash(); refreshVocTableIfOpen(); }
 };

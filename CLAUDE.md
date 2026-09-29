@@ -220,8 +220,15 @@ of git. To prevent this:
   build (as done for Unit 3), but only when asked for.
 
 ## Build integrity / technical gotchas
-- Unit 3 files use CR-only line terminators (classic Mac). Convert with
-  `tr '\r' '\n'` before any line-based processing.
+- All unit files (unite-1 through unite-4) use CRLF line terminators. This
+  note used to warn that Unit 3 was CR-only (classic Mac) and needed
+  `tr '\r' '\n'` before line-based processing — that was fixed at some point
+  during the Unit 1–3 remaster and the note went stale. Verify with
+  `file <path>` or by counting `\r`/`\n` bytes before trusting either this
+  note or a past session's claim about a file's line endings; don't
+  transform a file's line endings unless you've confirmed it actually needs
+  it — running `tr '\r' '\n'` on an already-CRLF file corrupts it (doubles
+  every line by turning each `\r\n` into `\n\n`).
 - Drill item banks: access via `d.bankItems || d.items` — some drills store the
   full bank under `bankItems` pre-shuffle.
 - DOM stub / headless validation requires `setInterval`/`clearInterval` stubs in

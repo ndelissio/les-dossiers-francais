@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.4.2</title>
+<title>Unité 4 · Dossier Français — v0.4.3</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.4.2</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.4.3</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -360,7 +360,7 @@
       <ul class="lead-list">
         <li>Accents count; each card grades once.</li>
         <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
-        <li><b>Hide known</b>, <b>Drill misses</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
+        <li><b>Hide known</b>, <b>New only</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
         <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
         <li><b>Passé composé</b> and <b>Imparfait</b> = reps only; présent is the mastery table.</li>
         <li><b>Training</b> = feedback only, nothing recorded.</li>
@@ -395,7 +395,7 @@
     <div class="frow"><span class="flabel">Filtres</span>
       <button class="ghost" id="hideKnownBtnV">Hide known</button>
       <button class="ghost" id="rustyBtnV">Rusty</button>
-      <button class="ghost" id="missBtn">Drill misses</button>
+      <button class="ghost" id="newOnlyBtnV">New only</button>
     </div>
 
     <div class="vprogress"><span id="vCount">—</span><span id="vKnown">—</span></div>
@@ -466,7 +466,7 @@
       <button class="ghost" id="vocTricky">Tricky spellings</button>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
-      <button class="ghost" id="vocMiss">Drill misses</button>
+      <button class="ghost" id="newOnlyBtnVoc">New only</button>
     </div>
       <div class="seg" id="vocDirSeg">
         <button data-dir="en" aria-pressed="true">EN → FR</button>
@@ -590,8 +590,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.4.2</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.4.3</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.4.3 (28 Sep 2026): <strong>"Drill misses" replaced with "New only."</strong> The old filter showed cards marked "still learning," which mostly duplicated Hide known. The button now shows only cards you've never attempted — not known, not still learning, never answered. Renamed internally (missMode/vocMissOnly → newOnlyMode/vocNewOnly); the now-meaningless worst-accuracy sort is removed. No vocab or verb data changed.<br></span>
     <span style="color:var(--mute)">v0.4.2 (21 Sep 2026): <strong>Etymology mémos.</strong> Added a one-sentence etymology "Mémo" to 758 of Unit 4's 763 vocabulaire cards (192 Chapter 16, 217 Chapter 17, 195 Chapter 18, 154 Chapter 19), closing the gap the v0.4.0 changelog flagged. Five cards were left without one rather than risk a fabricated derivation, because standard references mark their origin as genuinely obscure or disputed: trier (Ch 17), chamboulé(e) (Ch 19), la bécane, le tracas and bafouiller (Ch 18). No other field was changed on any card.<br></span>
     <span style="color:var(--mute)">v0.4.1 (20 Sep 2026): <strong>Vocabulaire cleanup.</strong> Chapter 18 ancré(e) removed as a duplicate of Chapter 16’s ancré (which now also accepts ancrée); Chapter 18 is now 198 cards (128 glossaire + 70 mini-glossaire) and the Unit 4 total is 763. English cues sharpened for virer, éventuel(le), mettre en garde, heurter, percuter, se heurter à, faire barrage à, signaler and éclairer, to separate them from near-synonyms in Chapters 18–19. Corrected the v0.2.0 card-count wording (129 glossaire + 70 mini-glossaire = 199 Chapter 18 cards). Saved progress is untouched except the removed card.<br></span>
     <span style="color:var(--mute)">v0.4.0 (20 Sep 2026): <strong>Chapter 19 — Emergencies and Disasters. Unit 4 now covers Chapters 16–19.</strong> <strong>Vocabulaire</strong>: 124 cards from the Chapter 19 end-of-chapter glossaire (Noms, Adjectifs, Verbes, Autres mots) across 8 topic groups sized to the ~20–25-word standing rule (natural disasters; accidents &amp; rescue nouns; adjectives split into damage &amp; destruction and people, safety &amp; conditions; verbs split into three groups; other words), plus 31 mini-glossaire words folded in from the reading and listening activities (disaster-report readings; the train-crash and tanker-explosion clips) as flagged exceptions with their own topic tags and comment headers — 155 Chapter 19 cards in all. Eleven words already carried by earlier chapters were not duplicated (progress is keyed by the French word): demeurer (Chapter 16); heurter, soigner, mettre en garde and la chaîne alimentaire (Chapter 18); déraciné(e), se heurter à, le freinage, dérailler and percuter (Chapter 17); la pente (Chapter 17, as une pente). Source-glossaire errors corrected: the glosses of se diffuser and écarter were shifted by one row (now se diffuser = to spread, écarter = to rule out), the duplicated éboulement entry was merged, the noun-phrase entry les routes impraticables was reduced to the adjective impraticable, and the typo idemne is indemne. Synonym collisions resolved per the standing rule with distinguishing EN cues rather than merges: le glissement de terrain vs l’éboulement, le séisme vs le tremblement de terre, disparu(e) vs porté(e) disparu(e), écroulé(e) vs effondré(e), indemne vs sain et sauf, crier vs hurler, prévenir vs mettre en garde (Chapter 18), se diffuser vs s’étendre, les décombres vs les ruines, le sauveteur vs le secouriste, le riverain vs domicilié(e), le flanc vs une pente (Chapter 17), se déverser vs déverser (Chapter 17); provoquer is now also accepted on Chapter 16’s entraîner card. <strong>Grammaire</strong>: 4 new drills — la nominalisation (18-item bank), l’inclusion, l’exception et la restriction (16), le mode infinitif (17) — plus a 16-item Vocab en contexte drill, all with fresh example sentences. <strong>Conjugaison</strong>: a new targeted set of six Chapter 19 irregulars (survenir, parvenir, intervenir, revenir, prévenir, prévoir) drills in présent + PC; the first four take être in the passé composé, prévenir and prévoir take avoir. <strong>Examen blanc</strong>: a 24-item Chapter 19 quiz bank (10 drawn per attempt). <strong>Pratique orale</strong>: 6 new Chapter 19 prompts. <strong>Tableau de bord</strong>: Chapter 19 added to the chapter picker, ledger and achievements (Chapitre 19 maîtrisé); the Drill ciblé pool no longer lists revenir and prévoir twice. Merged with Chapter 17 (v0.3.0), Chapter 18 (v0.2.0) and the v0.1.2 hotfix. The Unit 4 practice exam stays <em>à venir</em> pending the study guide; etymology mémos are not yet built.<br></span>
@@ -668,8 +669,6 @@ function deriveStatus(key, s){
   var known = ((s.s||0)>=3) || (s.w===0 && s.c>=1);     // 3 in a row, or clean single correct
   return known ? "known" : "learn";
 }
-/* lifetime accuracy, for ordering the Drill-misses queue — lowest first */
-function missRank(s){ if(!s || (s.c+s.w)===0) return 1; return s.c/(s.c+s.w); }
 function recordAnswer(statsMap, statusMap, key, correct){
   var s = statsMap[key] || (statsMap[key] = {c:0, w:0, s:0});
   if(correct){ s.c++; s.s=(s.s||0)+1; if((s.m||0)>=3) s.cb=1; s.m=0; }
@@ -988,7 +987,7 @@ function formAt(v,i){
 }
 
 /* =============== VERB TRAINER UI =============== */
-var dir="en", catSel="all", missMode=false, hideKnownV=false, rustyV=false, scopeLevel=true, chapterSelV="any", order=[], idx=0, revealed=false, verbMode="fill", verbTrain=false, verbTense="pres";
+var dir="en", catSel="all", newOnlyMode=false, hideKnownV=false, rustyV=false, scopeLevel=true, chapterSelV="any", order=[], idx=0, revealed=false, verbMode="fill", verbTrain=false, verbTense="pres";
 var catFilter=document.getElementById("catFilter");
 Object.keys(CATS).forEach(function(k){ var o=el("option"); o.value=k; o.textContent=CATS[k].label; catFilter.appendChild(o); });
 
@@ -998,13 +997,12 @@ function pool(){
   else if(scopeLevel){ arr=arr.filter(function(i){return chOf(V[i])<=state.currentCh;}); }
   if(catSel!=="all") arr=arr.filter(function(i){return V[i].cat===catSel;});
   arr=arr.filter(function(i){ return tnOf(V[i]).indexOf(verbTense)!==-1; });
-  if(missMode) arr=arr.filter(function(i){return state.verbs[V[i].fr]==="learn";});
+  if(newOnlyMode) arr=arr.filter(function(i){return state.verbs[V[i].fr]===undefined;});
   if(hideKnownV) arr=arr.filter(function(i){return state.verbs[V[i].fr]!=="known";});
   if(rustyV) arr=arr.filter(function(i){return isRusty(state.verbs, state.verbStats, V[i].fr);});
-  if(missMode) arr.sort(function(a,b){return missRank(state.verbStats[V[a].fr])-missRank(state.verbStats[V[b].fr]);});
   return arr;
 }
-function buildOrder(){ order=pool(); shuffleArr(order); if(missMode) order.sort(function(a,b){return missRank(state.verbStats[V[a].fr])-missRank(state.verbStats[V[b].fr]);}); idx=0; revealed=false; }
+function buildOrder(){ order=pool(); shuffleArr(order); idx=0; revealed=false; }
 function knownCount(){ return Object.keys(state.verbs).filter(function(k){return state.verbs[k]==="known";}).length; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
@@ -1070,7 +1068,7 @@ function renderVerb(){
   document.getElementById("vKnown").textContent = knownCount()+" / "+V.length+" known overall";
   if(order.length===0){
     card.innerHTML="<div style='margin:auto;text-align:center;color:var(--mute);padding:30px 0'>Nothing here. "+
-      (missMode?"No verbs marked “still learning” — turn off Drill misses.":"Try a different group.")+"</div>";
+      (newOnlyMode?"No unseen verbs left in this scope — turn off New only.":"Try a different group.")+"</div>";
     document.getElementById("vPos").textContent=""; return;
   }
   if(idx>=order.length) idx=0;
@@ -1211,17 +1209,17 @@ function renderVerb(){
 
 }
 function pruneOrder(){ /* drop items that no longer match live filters; keep position */
-  if(!hideKnownV && !missMode) return;
+  if(!hideKnownV && !newOnlyMode) return;
   var old=order, oldIdx=idx, kept=[], newIdx=0;
   for(var k=0;k<old.length;k++){
     var i=old[k], st=state.verbs[V[i].fr];
     if(hideKnownV && st==="known") continue;
-    if(missMode && st!=="learn") continue;
+    if(newOnlyMode && st!==undefined) continue;
     kept.push(i); if(k<=oldIdx) newIdx=kept.length;
   }
   order=kept; idx=order.length?newIdx%order.length:0;
 }
-function next(){ pruneOrder(); if(!(hideKnownV||missMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
+function next(){ pruneOrder(); if(!(hideKnownV||newOnlyMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
 function prev(){ idx=(idx-1+order.length)%Math.max(order.length,1); revealed=false; renderVerb(); }
 
 document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"#fff":"";revealed=false;renderVerb();});
@@ -1239,7 +1237,7 @@ document.getElementById("scopeSegV").addEventListener("click",function(e){
   b.setAttribute("aria-pressed","true"); scopeLevel=b.dataset.scope==="level";
   buildOrder(); renderVerb(); refreshVerbTableIfOpen();
 });
-catFilter.onchange=function(){ catSel=this.value; missMode=false; document.getElementById("missBtn").style.background=""; buildOrder(); renderVerb(); refreshVerbTableIfOpen(); };
+catFilter.onchange=function(){ catSel=this.value; newOnlyMode=false; document.getElementById("newOnlyBtnV").style.background=""; document.getElementById("newOnlyBtnV").style.color=""; buildOrder(); renderVerb(); refreshVerbTableIfOpen(); };
 document.getElementById("chapterFilterV").addEventListener("change",function(){
   chapterSelV=this.value;
   document.getElementById("scopeSegV").style.opacity=chapterSelV==="any"?"1":".4";
@@ -1253,8 +1251,8 @@ document.getElementById("rustyBtnV").onclick=function(){
   rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"#fff":"";
   buildOrder(); renderVerb();
 };
-document.getElementById("missBtn").onclick=function(){
-  missMode=!missMode; this.style.background=missMode?"var(--learn)":""; this.style.color=missMode?"#fff":"";
+document.getElementById("newOnlyBtnV").onclick=function(){
+  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"#fff":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("shufBtn").onclick=function(){
@@ -2141,7 +2139,7 @@ VOCAB.push.apply(VOCAB,[
   W.forEach(function(w){ w.c=19; VOCAB.push(w); });
 })();
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocMissOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 Object.keys(state.vocabStats).forEach(function(f){ var st=deriveStatus(f,state.vocabStats[f]); if(st) state.vocab[f]=st; });
@@ -2187,13 +2185,12 @@ function vocPool(){
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
   if(vocTrickyOnly) arr=arr.filter(function(i){return VOCAB[i].x;});
-  if(vocMissOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]==="learn";});
+  if(vocNewOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]===undefined;});
   if(vocHideKnown) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]!=="known";});
   if(vocRusty) arr=arr.filter(function(i){return isRusty(state.vocab, state.vocabStats, VOCAB[i].f);});
-  if(vocMissOnly) arr.sort(function(a,b){return missRank(state.vocabStats[VOCAB[a].f])-missRank(state.vocabStats[VOCAB[b].f]);});
   return arr;
 }
-function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); if(vocMissOnly) vocOrder.sort(function(a,b){return missRank(state.vocabStats[VOCAB[a].f])-missRank(state.vocabStats[VOCAB[b].f]);}); vocIdx=0; vocShown=false; }
+function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); vocIdx=0; vocShown=false; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
    ignores topic/tricky/hide-known so the table is a complete chapter reference */
@@ -2399,17 +2396,17 @@ function renderVoc(){
   if(mark){ var m=el("div","note"); m.style.marginTop="10px"; m.style.background=mark==="known"?"var(--known-soft)":"var(--learn-soft)"; m.style.color=mark==="known"?"var(--known)":"var(--learn)"; m.textContent=mark==="known"?"Marked: known":"Marked: still learning"; card.appendChild(m); }
 }
 function vocPrune(){
-  if(!vocHideKnown && !vocMissOnly) return;
+  if(!vocHideKnown && !vocNewOnly) return;
   var old=vocOrder, oldIdx=vocIdx, kept=[], newIdx=0;
   for(var k=0;k<old.length;k++){
     var i=old[k], st=state.vocab[VOCAB[i].f];
     if(vocHideKnown && st==="known") continue;
-    if(vocMissOnly && st!=="learn") continue;
+    if(vocNewOnly && st!==undefined) continue;
     kept.push(i); if(k<=oldIdx) newIdx=kept.length;
   }
   vocOrder=kept; vocIdx=vocOrder.length?newIdx%vocOrder.length:0;
 }
-function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocMissOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
+function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocNewOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
 function vocPrev(){ if(!vocOrder.length)return; vocIdx=(vocIdx-1+vocOrder.length)%vocOrder.length; vocShown=false; renderVoc(); }
 
 document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="spell"?".4":"1";vocShown=false;renderVoc();});
@@ -2432,7 +2429,7 @@ document.getElementById("rustyBtnVoc").onclick=function(){
   vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"#fff":"";
   vocBuild(); renderVoc();
 };
-document.getElementById("vocMiss").addEventListener("click",function(){vocMissOnly=!vocMissOnly;this.style.background=vocMissOnly?"var(--ink)":"";this.style.color=vocMissOnly?"#fff":"";vocBuild();renderVoc();});
+document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"#fff":"";vocBuild();renderVoc();});
 document.getElementById("resetVocab").onclick=function(){
   if(confirm("Clear all vocabulary marks?")){ state.vocab={}; state.vocabStats={}; saveState(); vocBuild(); renderVoc(); refreshDash(); refreshVocTableIfOpen(); }
 };
