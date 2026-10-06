@@ -269,9 +269,9 @@ of git. To prevent this:
   the trainer shows it as a small tag beside the cue. Set it on every new card.
 - Memo card (Unit 4, piloted on Chapter 19): a card with a `d:` field gets a
   separate Mémo card under the trainer, shown only after you answer, reveal or
-  mark known. Fields: `d` meaning · `vs` not to confuse with · `mn` mnemonic ·
+  mark known. Fields: `d` meaning · `vs` not to confuse with ·
   `fm` forms (participe passé + auxiliary; feminine) · `sy` synonyms/opposites ·
-  `y` etymology; behind "More": `ex` example · `cs` construction · `fam` word
+  `y` etymology · `mn` mnemonic (shown last, after the etymology it builds on); behind "More": `ex` example · `cs` construction · `fam` word
   family; header tags `p` part of speech, `fa` faux ami (explanation text),
   `rg` register. The in-card `n:` keeps only the gender token ("m.", "f. pl.").
   Cards without `d:` keep the old in-card Mémo.
