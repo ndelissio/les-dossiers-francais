@@ -233,6 +233,45 @@ of git. To prevent this:
   dossier's "Chapters X–Y" landing-page label and from vocab/grammar build
   scope. Its review material can still be mined separately for a practice-exam
   build (as done for Unit 3), but only when asked for.
+- English cues — better than the textbook: for every vocab build, check each
+  source gloss against what a native speaker would actually say, and use the
+  better English when one exists (v3.4.0–v0.5.0 examples: "a dozen of" → "a
+  dozen", "the angst" → "the anguish, the dread"). Log every change in the
+  build report as "textbook said X, now Y". Nouns still carry the/a/an.
+- English cues — close synonyms: when two cards in the SAME unit are synonyms
+  or near-synonyms, each cue must let the student tell which French word is
+  meant BEFORE answering (register, usage, collocation, form), not only when
+  the bare glosses are identical. Judge the real difference with care — truly
+  perfect synonyms are rare, and the point is to train and know both
+  (renommé / réputé), so keep both cards. Perfect synonyms that differ only in
+  form are separated by a form hint ("one-word verb" vs "the phrase with au
+  four"). Put the contrast on the reveal as a "vs X (difference)" note on both
+  cards. Cross-unit collisions don't matter — each unit has its own progress.
+- Plurals: if the book gives a plural noun that is NOT typically plural in
+  French, convert to the singular so gender can be trained (les dents → la
+  dent). Keep it plural only if it is typically plural (les ciseaux, les
+  lunettes, les urgences, les cheveux, les frais, les décombres), and then the
+  reveal note must carry the gender ("m. pl." / "f. pl."). Hair colours stay
+  plural; eye colours are singular noun phrases (un œil bleu).
+- Gender in the cue: never put "(m.)" / "(f.)" in the English cue to give away
+  a noun's article — gender shows on the reveal note. The ONLY cue gender
+  labels are on separate masculine/feminine cards (nationalities, enchanté /
+  enchantée, noun pairs whose feminine is a different word). Every other
+  gender-variable adjective or person noun is ONE card using the shorthand
+  (marié(e), paresseux(-euse), le coureur(-euse), l'avocat(e)); either gender
+  is accepted. `le médecin` + `a:["la médecin"]` for same-form job nouns.
+  No `le/la X` slashes in `f:`.
+- No "quelqu'un" / "quelque chose" in French cards. Write the bare verb with an
+  optional preposition in parentheses — jouer des tours (à), orienter (vers) —
+  which the grader accepts with or without it, and put "(someone)" /
+  "(something)" in the English cue.
+- Part of speech: every card has `p:` (n, adj, v, adv, prep, conj, expr, num);
+  the trainer shows it as a small tag beside the cue. Set it on every new card.
+- Progress keys: progress is keyed by `f:`. Any change to an `f:` string must
+  add an `[old, new]` pair (`null` for a removed card) to that unit's
+  `VOCAB_ALIASES`; the loader moves saved progress across and keeps merged
+  cards cautious (known only if both source cards were known). Test with a
+  seeded localStorage before shipping.
 
 ## Build integrity / technical gotchas
 - All unit files (unite-1 through unite-4) use CRLF line terminators. This
