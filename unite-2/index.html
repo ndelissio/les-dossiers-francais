@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 2 · Dossier Français — v1.3.0</title>
+<title>Unité 2 · Dossier Français — v1.3.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -297,7 +297,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v1.3.0</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v1.3.1</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -455,7 +455,6 @@
       <button class="ghost" id="vocTrainBtn">Training</button>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
-      <button class="ghost" id="vocTricky">Tricky spellings</button>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
       <button class="ghost" id="newOnlyBtnVoc">New only</button>
@@ -560,8 +559,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v1.3.0</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v1.3.1</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.3.1 (6 Oct 2026): <strong>Vocabulaire — the "tricky spelling" tag is gone.</strong> It was a subjective flag with no clear rule behind it, so the "Tricky spellings" filter, the "tricky spelling" label on the card header and the reminder on the answer are removed, along with the flag on 39 cards. Nothing else about the cards changed, and saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v1.3.0 (6 Oct 2026): <strong>Vocabulaire pass — part-of-speech tags, singular nouns, clearer English cues.</strong> Every English cue now carries a small part-of-speech tag (noun, adjective, verb, adverb, preposition, conjunction, expression, number), so a short or weak translation is never ambiguous. <strong>Plural → singular</strong> so gender can be trained (16 cards): le coussin, le légume, le petit pois, la crevette, l'huître, la moule, la noix, le cornichon, l'épice, la dent, le doigt, l'os, le poumon, l'œil (l'oeil is accepted), la démangeaison, le goût. Nine words that are typically plural stay plural, each with its gender on the reveal: les épinards, les fruits de mer, les céréales, les pâtes, les premiers soins, les soins médicaux, les urgences, les voies respiratoires, les félicitations. <strong>Close synonyms:</strong> 49 cards now carry a distinguishing English cue and a "vs" note — le canapé / le divan / le sofa, l'armoire / le placard, agencer / aménager / arranger / disposer, cuire / faire cuire / cuisiner, battre / fouetter, mélanger / remuer, enfourner / mettre au four, faire bouillir / porter à ébullition, la blessure / la plaie, le brancard / la civière, soigner / guérir / récupérer, se porter / se sentir, le convive / l'invité / l'hôte, se rencontrer / se retrouver, au-dessus de / en dessous de / sous, peu de / un peu de, une carafe / un pichet, la cuisinière / la plaque de cuisson, le menu / la formule, chaleureux / douillet / accueillant, la morsure / la piqûre. English glosses improved on 77 cards in all (for example "a dozen of" → "a dozen"). The masculine/feminine grader from Units 3–4 now ships here. Unit 2 stays at 458 cards. <strong>Gender on the reveal:</strong> 5 l’… nouns that showed no gender anywhere now show m. or f. on the answer note. Saved progress is carried over: a renamed card keeps its status, and where two cards merged the new card counts as known only if both were known.<br></span>
     <span style="color:var(--mute)">v1.2.6 (28 Sep 2026): <strong>"Drill misses" replaced with "New only."</strong> The old filter showed cards marked "still learning," which mostly duplicated Hide known. The button now shows only cards you've never attempted — not known, not still learning, never answered. Renamed internally (missMode/vocMissOnly → newOnlyMode/vocNewOnly); the now-meaningless worst-accuracy sort is removed. No vocab or verb data changed.<br></span>
     <span style="color:var(--mute)">v1.2.5 (16 Sep 2026): <strong>Dashboard grammar ledger rolled up by chapter.</strong> The Tableau de bord's Grammaire block listed every drill individually (28 rows — the longest list of any unit); it now shows one aggregated coverage row per chapter — Ch 6–9 — matching the Vocabulaire block's layout right above it. Per-drill titles and best-round scores are unchanged and still visible inside the Grammaire tab itself; this only shortens the dashboard summary. No scoring or saved-progress changes.<br></span>
@@ -1176,7 +1176,7 @@ document.getElementById("verbTable").addEventListener("click",function(e){
 });
 
 /* =============== VOCABULARY BANK + TRAINER =============== */
-/* entry: {f:french, e:english, c:chapter(6-9), t:topic, x:1 if tricky-to-spell, y:etymology mnemonic (Training only)} */
+/* entry: {f:french, e:english, c:chapter(6-9), t:topic, y:etymology mnemonic (Training only)} */
 var VTOPICS={
   log:"Types of housing", room:"The rooms", kit:"The kitchen", meuble:"Furniture", sdb:"The bathroom",
   color:"Colors", mat:"Materials", forme:"Shapes", adj:"Adjectives", verb:"Verbs (infinitives)", verbg:"Verbs — assess & carry out",
@@ -1192,7 +1192,7 @@ var VOCAB=[
  {f:"l'appartement",e:"the apartment",c:6,t:"log",n:"m.",y:"Italian appartamento — a part set apart (à part) → English apartment.",p:"n"},
  {f:"la caravane",e:"the trailer / caravan",c:6,t:"log",y:"Persian kārvān → English caravan; the towable home kept the traveling sense.",p:"n"},
  {f:"le chalet",e:"the chalet",c:6,t:"log",y:"Alpine French original — English borrowed chalet whole.",p:"n"},
- {f:"le château",e:"the castle",c:6,t:"log",x:1,y:"Latin castellum → castle; the circumflex hides a lost s: chasteau ≈ castle.",p:"n"},
+ {f:"le château",e:"the castle",c:6,t:"log",y:"Latin castellum → castle; the circumflex hides a lost s: chasteau ≈ castle.",p:"n"},
  {f:"la ferme",e:"the farmhouse",c:6,t:"log",y:"Latin firmare (hold on a firm lease) → English farm — land held firmly.",p:"n"},
  {f:"la maison",e:"the house",c:6,t:"log",y:"Latin mansio (staying-place) → English mansion; every maison is a humble mansion.",p:"n"},
  {f:"la maison de campagne",e:"the country house",c:6,t:"log",y:"campagne = open country (Latin campus → camp, campaign).",p:"n"},
@@ -1202,28 +1202,28 @@ var VOCAB=[
  {f:"la cave",e:"the cellar",c:6,t:"room",y:"Latin cavus (hollow) → English cave; the cellar is the house's cave.",p:"n"},
  {f:"la chambre",e:"the bedroom",c:6,t:"room",y:"Latin camera → English chamber (and camera — a little room for light).",p:"n"},
  {f:"le couloir",e:"the hallway",c:6,t:"room",y:"From couler (to flow); the hallway is where people flow through.",p:"n"},
- {f:"l'entrée",e:"the entrance",c:6,t:"room",x:1,n:"f.",y:"Literally 'the entering' (entrer); English entrée = the dish that enters the meal.",p:"n"},
+ {f:"l'entrée",e:"the entrance",c:6,t:"room",n:"f.",y:"Literally 'the entering' (entrer); English entrée = the dish that enters the meal.",p:"n"},
  {f:"le grenier",e:"the attic",c:6,t:"room",y:"Latin granarium → English granary; attics once stored grain.",p:"n"},
  {f:"le salon",e:"the living room",c:6,t:"room",y:"Big salle + -on; English salon and saloon are both this word.",p:"n"},
  {f:"la salle à manger",e:"the dining room",c:6,t:"room",y:"salle (hall) + à manger (for eating) — the eating-hall.",p:"n"},
  {f:"la salle de bains",e:"the bathroom",a:["la salle de bain"],c:6,t:"room",n:"Glossaire lists both spellings: salle de bain(s).",y:"Room of baths — note the plural -s on bains; bain ≈ bath sanded smooth.",p:"n"},
  /* --- La cuisine --- */
  {f:"le meuble de rangement",e:"the storage cabinet",c:6,t:"kit",y:"meuble = 'movable' (Latin mobilis → mobile); rangement from ranger → arrange.",p:"n"},
- {f:"la cuisinière",e:"the stove, the range (cooktop and oven in one)",c:6,t:"kit",x:1,n:"vs la plaque de cuisson (the burners only)",y:"cuisine + -ière — the kitchen-machine (also the word for a female cook).",p:"n"},
- {f:"l'évier",e:"the kitchen sink",c:6,t:"kit",x:1,n:"m. — Kitchen sink. The bathroom sink is le lavabo.",y:"Latin aquarium (water-place) worn down; é-vier ≈ aquarium for dishes.",p:"n"},
+ {f:"la cuisinière",e:"the stove, the range (cooktop and oven in one)",c:6,t:"kit",n:"vs la plaque de cuisson (the burners only)",y:"cuisine + -ière — the kitchen-machine (also the word for a female cook).",p:"n"},
+ {f:"l'évier",e:"the kitchen sink",c:6,t:"kit",n:"m. — Kitchen sink. The bathroom sink is le lavabo.",y:"Latin aquarium (water-place) worn down; é-vier ≈ aquarium for dishes.",p:"n"},
  {f:"le four",e:"the oven",c:6,t:"kit",y:"Latin furnus → English furnace; the oven is a small furnace.",p:"n"},
  {f:"le lave-vaisselle",e:"the dishwasher",a:["le lave vaisselle"],c:6,t:"kit",y:"Literally 'washes-dishes'; vaisselle is kin to English vessel.",p:"n"},
  {f:"la machine à café",e:"the coffee maker",c:6,t:"kit",y:"Machine for coffee — à marks purpose.",p:"n"},
- {f:"le micro-ondes",e:"the microwave",a:["le micro ondes"],c:6,t:"kit",x:1,y:"Literally 'micro-waves'; onde = wave (Latin unda → undulate).",p:"n"},
+ {f:"le micro-ondes",e:"the microwave",a:["le micro ondes"],c:6,t:"kit",y:"Literally 'micro-waves'; onde = wave (Latin unda → undulate).",p:"n"},
  {f:"la plaque de cuisson",e:"the cooktop, the hob (the burners only)",c:6,t:"kit",n:"vs la cuisinière (stove and oven in one)",y:"plaque → English plaque/plate + cuisson (from cuire, to cook).",p:"n"},
  {f:"le plan de travail",e:"the countertop",c:6,t:"kit",y:"Literally 'work plane' — plan → English plane; travail → travail (toil).",p:"n"},
- {f:"le réfrigérateur",e:"the fridge / refrigerator",c:6,t:"kit",x:1,y:"Straight cognate; Latin frigus (cold) → frigid.",p:"n"},
+ {f:"le réfrigérateur",e:"the fridge / refrigerator",c:6,t:"kit",y:"Straight cognate; Latin frigus (cold) → frigid.",p:"n"},
  {f:"le robinet",e:"the faucet / tap",c:6,t:"kit",y:"From Robin, a medieval sheep name — spouts were shaped like ram heads.",p:"n"},
  /* --- Les meubles --- */
  {f:"l'armoire",e:"the wardrobe, the armoire (free-standing)",c:6,t:"meuble",n:"f. — Free-standing. Built into the wall = le placard.",y:"Latin armarium (arms cabinet) → English armory; an armory for clothes.",p:"n"},
  {f:"le buffet",e:"the hutch / sideboard",c:6,t:"meuble",y:"English took buffet straight from French — sideboard → serve-yourself table.",p:"n"},
  {f:"le bureau (meuble)",e:"the desk",a:["le bureau"],c:6,t:"meuble",n:"Same word as the office — the room card lives under Rooms.",y:"The original bureau: the desk under its bure wool cloth.",p:"n"},
- {f:"le canapé",e:"the couch (the usual everyday word)",c:6,t:"meuble",x:1,n:"One of three glossaire couches: canapé (usual) · divan · sofa.",y:"Greek konopeion (mosquito-net couch) → English canopy; the appetizer is a little 'couch' for toppings.",p:"n"},
+ {f:"le canapé",e:"the couch (the usual everyday word)",c:6,t:"meuble",n:"One of three glossaire couches: canapé (usual) · divan · sofa.",y:"Greek konopeion (mosquito-net couch) → English canopy; the appetizer is a little 'couch' for toppings.",p:"n"},
  {f:"la chaise",e:"the chair",c:6,t:"meuble",y:"Same word as chair: Latin cathedra → chaiere → chair/chaise (chaise longue).",p:"n"},
  {f:"la commode",e:"the dresser (chest of drawers)",c:6,t:"meuble",y:"Literally 'convenient' (Latin commodus → commodious) — the convenient chest.",p:"n"},
  {f:"le coussin",e:"the cushion",c:6,t:"meuble",y:"→ English cushions; Latin coxa (hip) — where the cushion goes.",p:"n"},
@@ -1262,14 +1262,14 @@ var VOCAB=[
  {f:"en acier",e:"(made) of steel",c:6,t:"mat",y:"Latin acies (sharp edge) — steel is the edge-metal; think an ace blade.",p:"adj"},
  {f:"en bois",e:"(made) of wood, wooden",c:6,t:"mat",y:"Kin of English bosky (wooded) and bosquet; wood country.",p:"adj"},
  {f:"en cuir",e:"(made) of leather",c:6,t:"mat",y:"Latin corium (hide) → English excoriate — to skin; leather is corium.",p:"adj"},
- {f:"en faïence",e:"(made) of earthenware",c:6,t:"mat",x:1,y:"Named for Faenza, the Italian pottery town — like 'china' for porcelain.",p:"adj"},
+ {f:"en faïence",e:"(made) of earthenware",c:6,t:"mat",y:"Named for Faenza, the Italian pottery town — like 'china' for porcelain.",p:"adj"},
  {f:"en laine",e:"(made) of wool",c:6,t:"mat",y:"Latin lana → English lanolin (wool-grease); laine = lana.",p:"adj"},
  {f:"en pierre",e:"(made) of stone",c:6,t:"mat",y:"Latin petra → English petrify and Peter, 'the rock.'",p:"adj"},
  {f:"en porcelaine",e:"(made) of china / porcelain",c:6,t:"mat",y:"Italian porcellana (cowrie shell) → English porcelain; identical.",p:"adj"},
  {f:"en tissu",e:"(made) of fabric",c:6,t:"mat",y:"From tisser (to weave, Latin texere → textile); English tissue = woven stuff.",p:"adj"},
  {f:"en verre",e:"(made) of glass",c:6,t:"mat",y:"Latin vitrum → English vitreous (glassy); verre = vitr- squished.",p:"adj"},
  /* --- Les formes --- */
- {f:"asymétrique",e:"asymmetric",c:6,t:"forme",x:1,y:"Straight cognate: asymmetric.",p:"adj"},
+ {f:"asymétrique",e:"asymmetric",c:6,t:"forme",y:"Straight cognate: asymmetric.",p:"adj"},
  {f:"bas",e:"low",c:6,t:"forme",n:"f. basse",y:"Latin bassus → English base and bass — the low voice.",p:"adj"},
  {f:"carré",e:"square",c:6,t:"forme",n:"f. carrée",y:"Latin quadratus → quadrant/square; a quarry cuts carré stones.",p:"adj"},
  {f:"en losange",e:"diamond-shaped",c:6,t:"forme",y:"English lozenge — the cough drop is named for the diamond shape.",p:"adj"},
@@ -1311,7 +1311,7 @@ var VOCAB=[
  {f:"décorer",e:"to decorate",c:6,t:"verb",y:"Straight cognate: decorate.",p:"v"},
  {f:"disposer",e:"to set out, to place (objects in a chosen position)",c:6,t:"verb",n:"vs arranger (to tidy up, put in order)",y:"Cognate dispose — to place things apart (Latin ponere).",p:"v"},
  {f:"emballer",e:"to pack",c:6,t:"verb",y:"en + balle (→ English bale); to pack = to bale up.",p:"v"},
- {f:"emménager",e:"to move in",c:6,t:"verb",x:1,y:"en + ménage — bring the household IN (déménager takes it out).",p:"v"},
+ {f:"emménager",e:"to move in",c:6,t:"verb",y:"en + ménage — bring the household IN (déménager takes it out).",p:"v"},
  {f:"encombrer",e:"to clutter",c:6,t:"verb",y:"en + combre (barrier) → English encumber; clutter encumbers.",p:"v"},
  {f:"louer",e:"to rent",c:6,t:"verb",y:"Latin locare (to place out) → English locate, allocate; to lease a location.",p:"v"},
  {f:"monter",e:"to assemble; to go up",c:6,t:"verb",y:"From mont (Latin mons → mount); assembling is mounting the parts.",p:"v"},
@@ -1320,28 +1320,28 @@ var VOCAB=[
  {f:"percer",e:"to drill, to pierce",c:6,t:"verb",y:"→ English pierce; percer ≈ pierce.",p:"v"},
  {f:"rénover",e:"to renovate",c:6,t:"verb",y:"Straight cognate: renovate.",p:"v"},
  /* --- Prépositions --- */
- {f:"à côté de",e:"next to",c:6,t:"prep",x:1,y:"côté = side (Latin costa, rib → English coast); circumflex hides the s: coste.",p:"prep"},
+ {f:"à côté de",e:"next to",c:6,t:"prep",y:"côté = side (Latin costa, rib → English coast); circumflex hides the s: coste.",p:"prep"},
  {f:"à droite de",e:"to the right of",c:6,t:"prep",y:"droite = the 'direct' hand (Latin directus → direct).",p:"v"},
  {f:"à gauche de",e:"to the left of",c:6,t:"prep",y:"English gauche = awkward — literally left-handed.",p:"v"},
  {f:"au coin de",e:"in the corner of",c:6,t:"prep",y:"coin = wedge (Latin cuneus); coins were struck with a wedge die — hence English coin.",p:"prep"},
- {f:"au-dessus de",e:"above, over (higher than)",a:["au dessus de"],c:6,t:"prep",x:1,n:"vs sous and en dessous de",y:"sus = up (Latin sursum); pair it: dessUs Up, dessOus dOwn.",p:"prep"},
+ {f:"au-dessus de",e:"above, over (higher than)",a:["au dessus de"],c:6,t:"prep",n:"vs sous and en dessous de",y:"sus = up (Latin sursum); pair it: dessUs Up, dessOus dOwn.",p:"prep"},
  {f:"au fond de",e:"at the end / back of",c:6,t:"prep",y:"fond = bottom (Latin fundus → foundation, profound); at the depths of.",p:"prep"},
  {f:"contre",e:"against",c:6,t:"prep",y:"Latin contra → English contrary, counter.",p:"prep"},
- {f:"de chaque côté de",e:"on each side of",c:6,t:"prep",x:1,y:"On each side — côté/coast again, one per flank.",p:"prep"},
- {f:"derrière",e:"behind",c:6,t:"prep",x:1,y:"Latin de retro, 'from behind' → English retro and derrière itself.",p:"prep"},
+ {f:"de chaque côté de",e:"on each side of",c:6,t:"prep",y:"On each side — côté/coast again, one per flank.",p:"prep"},
+ {f:"derrière",e:"behind",c:6,t:"prep",y:"Latin de retro, 'from behind' → English retro and derrière itself.",p:"prep"},
  {f:"devant",e:"in front of",c:6,t:"prep",y:"de + avant (Latin ab ante → advance); out in front.",p:"prep"},
  {f:"en dessous de",e:"underneath, below (lower than)",c:6,t:"prep",n:"vs sous (directly beneath) and au-dessus de (above)",y:"sous = under (Latin subtus → sub-); sous-marin = submarine.",p:"prep"},
  {f:"en face de",e:"across from",c:6,t:"prep",y:"Face to face — facing across.",p:"prep"},
  {f:"entre",e:"between",c:6,t:"prep",y:"Latin inter → English inter-, enter; international = entre nations.",p:"prep"},
  {f:"hors charges",e:"not including utilities (rental ads)",a:["hors les charges"],c:6,t:"prep",y:"hors = outside (Latin foris → foreign; hors d'œuvre = outside the meal); utilities outside the rent.",p:"expr"},
- {f:"près de",e:"near",c:6,t:"prep",x:1,y:"Latin pressus — pressed up close → English press.",p:"prep"},
+ {f:"près de",e:"near",c:6,t:"prep",y:"Latin pressus — pressed up close → English press.",p:"prep"},
  {f:"sous",e:"under (directly beneath)",c:6,t:"prep",n:"vs en dessous de (lower than, below)",y:"Latin subtus → sub-; sous-marin = submarine.",p:"prep"},
  {f:"sur",e:"on",c:6,t:"prep",y:"Latin super → English sur- (surface = on the face).",p:"prep"},
  /* --- L'extérieur (taught in Activité 1B — flagged exception to glossaire parity) --- */
  {f:"le portail",e:"the gate",c:6,t:"ext",y:"Big porte → English portal; identical.",p:"n"},
  {f:"le toit",e:"the roof",c:6,t:"ext",y:"Latin tectum (covering) → protect, architect; the roof pro-tects.",p:"n"},
- {f:"la porte d'entrée",e:"the front door",c:6,t:"ext",x:1,y:"porte from Latin porta → English portal, port — the entering door.",p:"n"},
- {f:"la fenêtre",e:"the window",c:6,t:"ext",x:1,y:"Latin fenestra → English defenestrate (throw out the window); circumflex hides the s.",p:"n"},
+ {f:"la porte d'entrée",e:"the front door",c:6,t:"ext",y:"porte from Latin porta → English portal, port — the entering door.",p:"n"},
+ {f:"la fenêtre",e:"the window",c:6,t:"ext",y:"Latin fenestra → English defenestrate (throw out the window); circumflex hides the s.",p:"n"},
  {f:"le garage",e:"the garage",c:6,t:"ext",y:"From garer (to shelter, park); English took garage whole.",p:"n"},
  {f:"le jardin",e:"the garden / yard",c:6,t:"ext",y:"Frankish gard → English garden and yard — all three the same word.",p:"n"},
  {f:"le trottoir",e:"the sidewalk",c:6,t:"ext",y:"From trotter — the strip where you trot along.",p:"n"}
@@ -1354,7 +1354,7 @@ var VOCAB=[
  {f:"l'aubergine",e:"the eggplant",c:7,t:"marl",n:"f.",y:"Arabic al-bāḏinjān via Catalan; British English uses aubergine — same word.",p:"n"},
  {f:"la cerise",e:"the cherry",c:7,t:"mar",y:"Latin cerasium → English cherry; cerise is also English for cherry-red.",p:"n"},
  {f:"le champignon",e:"the mushroom",c:7,t:"marl",y:"From champ (field, Latin campus) — the field-grower; English champignon = button mushroom.",p:"n"},
- {f:"le chou",e:"the cabbage",c:7,t:"marl",x:1,y:"Latin caulis → English cauliflower (chou-fleur!) and coleslaw; chou = cole.",p:"n"},
+ {f:"le chou",e:"the cabbage",c:7,t:"marl",y:"Latin caulis → English cauliflower (chou-fleur!) and coleslaw; chou = cole.",p:"n"},
  {f:"le citron",e:"the lemon",c:7,t:"mar",y:"Citrus family — but faux ami: citron = lemon, not 'citron.'",p:"n"},
  {f:"la courgette",e:"the zucchini",c:7,t:"marl",y:"Little courge (gourd, Latin cucurbita); British courgette — the little gourd.",p:"n"},
  {f:"les épinards",e:"the spinach",c:7,t:"marl",n:"m. pl.",y:"Persian via Arabic → English spinach; é- masks the s: épinard ≈ spinach.",p:"n"},
@@ -1363,7 +1363,7 @@ var VOCAB=[
  {f:"le haricot vert",e:"the green bean",c:7,t:"marl",y:"Aztec ayacotl via Spanish → English haricot beans; vert → verdant, green.",p:"n"},
  {f:"la laitue",e:"the lettuce",c:7,t:"marl",y:"Latin lactuca — from lac, milk (the milky sap); lait hides inside laitue, lettuce.",p:"n"},
  {f:"le légume",e:"the vegetable",c:7,t:"marl",y:"Latin legumen → English legume; French widened it to all vegetables.",p:"n"},
- {f:"l'oignon",e:"the onion",c:7,t:"marl",x:1,n:"m.",y:"→ English onion — same word; French kept the g in spelling.",p:"n"},
+ {f:"l'oignon",e:"the onion",c:7,t:"marl",n:"m.",y:"→ English onion — same word; French kept the g in spelling.",p:"n"},
  {f:"l'orange",e:"the orange",c:7,t:"mar",n:"f.",y:"Sanskrit nāranga via Arabic — the same journey as English orange.",p:"n"},
  {f:"le pamplemousse",e:"the grapefruit",c:7,t:"mar",y:"Dutch pompelmoes, 'swollen lemon' — say it out loud: pample-moose.",p:"n"},
  {f:"la pêche",e:"the peach",c:7,t:"mar",y:"Latin persica, 'the Persian fruit' → English peach; pêche ≈ peach.",p:"n"},
@@ -1380,7 +1380,7 @@ var VOCAB=[
  {f:"le crabe",e:"the crab",c:7,t:"poiss",y:"Germanic crab with a French -e.",p:"n"},
  {f:"la crevette",e:"the shrimp",c:7,t:"poiss",y:"Norman for 'little goat' (chevrette) — shrimp hop like little goats.",p:"n"},
  {f:"les fruits de mer",e:"the seafood",c:7,t:"poiss",n:"m. pl.",y:"'Fruits of the sea' — literal and lovely.",p:"n"},
- {f:"l'huître",e:"the oyster",c:7,t:"poiss",x:1,n:"f.",y:"Latin ostrea → English oyster; the circumflex hides the s: huistre ≈ oyster.",p:"n"},
+ {f:"l'huître",e:"the oyster",c:7,t:"poiss",n:"f.",y:"Latin ostrea → English oyster; the circumflex hides the s: huistre ≈ oyster.",p:"n"},
  {f:"la moule",e:"the mussel",c:7,t:"poiss",n:"le moule = the baking pan (different gender, different word)",y:"Latin musculus, 'little mouse' → English mussel AND muscle — same word.",p:"n"},
  {f:"le saumon",e:"the salmon",c:7,t:"poiss",y:"Latin salmo → English salmon; English keeps a silent l, French dropped it.",p:"n"},
  {f:"le thon",e:"the tuna",c:7,t:"poiss",y:"Latin thunnus → English tuna; the th- survives only in spelling.",p:"n"},
@@ -1388,7 +1388,7 @@ var VOCAB=[
  {f:"les céréales",e:"the (breakfast) cereals",c:7,t:"superm",n:"f. pl.",y:"From Ceres, the Roman grain goddess → English cereal.",p:"n"},
  {f:"la farine",e:"the flour",c:7,t:"superm",y:"Latin farina → English farina (fine flour); identical.",p:"n"},
  {f:"la noix",e:"the walnut, the nut",c:7,t:"superm",y:"Latin nux (nut) → English nucleus — the 'nut' of the cell; noix ≈ nux.",p:"n"},
- {f:"l'oeuf",e:"the egg",a:["l'œuf"],c:7,t:"superm",x:1,n:"m. — pl. les oeufs",y:"Latin ovum → English oval, ovulate; œuf is ovum worn smooth.",p:"n"},
+ {f:"l'oeuf",e:"the egg",a:["l'œuf"],c:7,t:"superm",n:"m. — pl. les oeufs",y:"Latin ovum → English oval, ovulate; œuf is ovum worn smooth.",p:"n"},
  {f:"les pâtes",e:"the pasta",c:7,t:"superm",n:"f. pl.",y:"Latin pasta → English pasta, paste; circumflex hides the s: pastes.",p:"n"},
  {f:"le riz",e:"the rice",c:7,t:"superm",y:"Latin oriza → English rice; riz ≈ rice.",p:"n"},
  /* --- Les produits laitiers --- */
@@ -1396,7 +1396,7 @@ var VOCAB=[
  {f:"le fromage",e:"the cheese",c:7,t:"lait",y:"Latin formaticum — cheese 'given form' in a mold (forma → form).",p:"n"},
  {f:"la glace",e:"the ice cream",c:7,t:"lait",y:"Latin glacies → English glacier, glacial; ice cream is a little glacier.",p:"n"},
  {f:"le lait",e:"the milk",c:7,t:"lait",y:"Latin lac/lactis → English lactose, lactate; lait = lact-.",p:"n"},
- {f:"le yaourt",e:"the yogurt",c:7,t:"lait",x:1,y:"Turkish yoğurt — same borrow as English yogurt, spelled by French ears.",p:"n"},
+ {f:"le yaourt",e:"the yogurt",c:7,t:"lait",y:"Turkish yoğurt — same borrow as English yogurt, spelled by French ears.",p:"n"},
  /* --- Les condiments --- */
  {f:"la cannelle",e:"the cinnamon",c:7,t:"cond",y:"Little canne (cane) — cinnamon comes as rolled little canes of bark.",p:"n"},
  {f:"le cornichon",e:"the pickle (gherkin)",c:7,t:"cond",y:"Little corne (horn) — pickles shaped like tiny horns; English borrowed cornichon whole.",p:"n"},
@@ -1426,7 +1426,7 @@ var VOCAB=[
  {f:"le pain",e:"the bread",c:7,t:"boul",y:"Latin panis → English pantry (bread room) and companion — one you share bread with.",p:"n"},
  {f:"la pâtisserie",e:"the pastry / pastry shop",c:7,t:"boul",y:"From pâte (dough) — the paste-craft; English pastry, same root.",p:"n"},
  {f:"la tarte",e:"the pie",c:7,t:"boul",y:"→ English tart; identical.",p:"n"},
- {f:"la viennoiserie",e:"the European breakfast pastry",c:7,t:"boul",x:1,y:"'Vienna-ware' — croissants reached Paris via Viennese bakers.",p:"n"},
+ {f:"la viennoiserie",e:"the European breakfast pastry",c:7,t:"boul",y:"'Vienna-ware' — croissants reached Paris via Viennese bakers.",p:"n"},
  /* --- Ustensiles --- */
  {f:"l'assiette",e:"the plate",c:7,t:"ust",n:"f.",y:"From asseoir (to sit) — where food sits; ne pas être dans son assiette = off one's seat, unwell.",p:"n"},
  {f:"le bol",e:"the small bowl",c:7,t:"ust",y:"Borrowed FROM English bowl — a rare reverse loan.",p:"n"},
@@ -1440,7 +1440,7 @@ var VOCAB=[
  {f:"le moule",e:"the baking pan / mold",c:7,t:"ust",n:"m. — la moule = the mussel",y:"Latin modulus → English mold, module; LE moule = mold, LA moule = mussel — gender flips it.",p:"n"},
  {f:"la passoire",e:"the colander",c:7,t:"ust",y:"From passer — what the food passes through; the passer.",p:"n"},
  {f:"le plat",e:"the dish (container / course)",c:7,t:"ust",y:"Greek platys (flat) → English plate, platter, plateau.",p:"n"},
- {f:"la poêle",e:"the frying pan",c:7,t:"ust",x:1,y:"Latin patella (little pan — also your kneecap!); circumflex hides the s — cf. Spanish paella, same pan.",p:"n"},
+ {f:"la poêle",e:"the frying pan",c:7,t:"ust",y:"Latin patella (little pan — also your kneecap!); circumflex hides the s — cf. Spanish paella, same pan.",p:"n"},
  {f:"la râpe",e:"the grater",c:7,t:"ust",y:"Germanic → English rasp and grate; circumflex hides the s: raspe = rasp.",p:"n"},
  {f:"le saladier",e:"the mixing bowl",c:7,t:"ust",y:"salade + -ier, the container suffix — the salad-holder.",p:"n"},
  {f:"la spatule",e:"the spatula",c:7,t:"ust",y:"Latin spatula → English spatula; identical.",p:"n"},
@@ -1449,7 +1449,7 @@ var VOCAB=[
  {f:"croustillant",e:"crispy",c:7,t:"adj",n:"f. croustillante",y:"From croûte (Latin crusta → crust); crusty-crisp.",p:"adj"},
  {f:"délicieux",e:"delicious",c:7,t:"adj",n:"f. délicieuse",y:"Straight cognate: delicious.",p:"adj"},
  {f:"épicé",e:"spicy",c:7,t:"adj",n:"f. épicée",y:"Spiced — épice = spice, é- masking the s.",p:"adj"},
- {f:"frais",e:"fresh",c:7,t:"adj",x:1,n:"f. fraîche",y:"Germanic frisk → English fresh; frais ≈ fresh.",p:"adj"},
+ {f:"frais",e:"fresh",c:7,t:"adj",n:"f. fraîche",y:"Germanic frisk → English fresh; frais ≈ fresh.",p:"adj"},
  {f:"onctueux",e:"smooth / creamy",c:7,t:"adj",n:"f. onctueuse",y:"Latin unctus, oiled → English unctuous; smooth as oil.",p:"adj"},
  {f:"réconfortant",e:"comforting",c:7,t:"adj",n:"f. réconfortante",y:"Cognate: re-comforting.",p:"adj"},
  {f:"savoureux",e:"savory / tasty",c:7,t:"adj",n:"f. savoureuse",y:"Latin sapor → English savor, savory; same family.",p:"adj"},
@@ -1475,7 +1475,7 @@ var VOCAB=[
  {f:"hacher",e:"to chop, to mince, to grind (cut very fine)",c:7,t:"verb",n:"vs couper and découper",y:"Frankish happja (axe) → English hatchet and hash; hatchet-chop it.",p:"v"},
  {f:"mélanger",e:"to mix (combine ingredients)",c:7,t:"verb",n:"vs remuer (to stir)",y:"From mêler (Latin misculare → mix, meddle); English mélange is this word.",p:"v"},
  {f:"mettre au four",e:"to put in the oven (the phrase with au four)",c:7,t:"verb",n:"vs enfourner (the one-word verb)",y:"Put to the oven; mettre from Latin mittere → mission, transmit.",p:"v"},
- {f:"porter à ébullition",e:"to bring to a boil (heat it until it boils)",c:7,t:"verb",x:1,n:"vs faire bouillir (to boil something)",y:"Bring to ebullition — English ebullient = bubbling over.",p:"v"},
+ {f:"porter à ébullition",e:"to bring to a boil (heat it until it boils)",c:7,t:"verb",n:"vs faire bouillir (to boil something)",y:"Bring to ebullition — English ebullient = bubbling over.",p:"v"},
  {f:"remuer",e:"to stir (keep it moving with a spoon)",c:7,t:"verb",n:"vs mélanger (to combine)",y:"re + muer — keep it moving; to stir.",p:"v"},
  {f:"verser",e:"to pour",c:7,t:"verb",y:"Latin versare (to turn) → English reverse; pour = tip the vessel over.",p:"v"},
  /* --- Quantités --- */
@@ -1515,11 +1515,11 @@ var VOCAB=[
  {f:"le bras",e:"the arm",c:8,t:"corpsm",y:"Latin bracchium → English brace, bracelet, embrace — the bracelet goes on the bras.",p:"n"},
  {f:"le cerveau",e:"the brain",c:8,t:"corps",y:"Latin cerebrum → English cerebral; cerveau = cerebrum worn down.",p:"n"},
  {f:"la cheville",e:"the ankle",c:8,t:"corpsm",y:"Latin clavicula, 'little key' — the same word that gave English clavicle; the leg's key-pin.",p:"n"},
- {f:"le coeur",e:"the heart",a:["le cœur"],c:8,t:"corpst",x:1,y:"Latin cor/cordis → English cordial, courage, accord; cœur = your core.",p:"n"},
+ {f:"le coeur",e:"the heart",a:["le cœur"],c:8,t:"corpst",y:"Latin cor/cordis → English cordial, courage, accord; cœur = your core.",p:"n"},
  {f:"le cou",e:"the neck",c:8,t:"corps",y:"Latin collum → English collar — the collar goes on the cou.",p:"n"},
  {f:"le coude",e:"the elbow",c:8,t:"corpsm",y:"Latin cubitus → English cubit, the elbow-to-fingertip measure.",p:"n"},
  {f:"la dent",e:"the tooth",c:8,t:"corps",y:"Latin dens/dentis → English dental, dentist.",p:"n"},
- {f:"le doigt",e:"the finger",c:8,t:"corpsm",x:1,y:"Latin digitus → English digit — fingers are digits; digital!",p:"n"},
+ {f:"le doigt",e:"the finger",c:8,t:"corpsm",y:"Latin digitus → English digit — fingers are digits; digital!",p:"n"},
  {f:"le dos",e:"the back",c:8,t:"corpst",y:"Latin dorsum → English dorsal (fin) and endorse — to write on the back.",p:"n"},
  {f:"l'épaule",e:"the shoulder",c:8,t:"corpst",n:"f.",y:"Latin spatula, 'little blade' (the shoulder blade) → English epaulette; é- masks the s.",p:"n"},
  {f:"le front",e:"the forehead",c:8,t:"corps",y:"Latin frons → English front; the forehead is the front of the head — an affront is to the face.",p:"n"},
@@ -1534,25 +1534,25 @@ var VOCAB=[
  {f:"l'os",e:"the bone",c:8,t:"corpst",n:"m. — pl. les os (the s is pronounced in l'os, silent in les os)",y:"Latin os/ossis → English ossify — to turn to bone.",p:"n"},
  {f:"la peau",e:"the skin",c:8,t:"corpst",y:"Latin pellis → English pelt and peel; your skin is your pelt.",p:"n"},
  {f:"le pied",e:"the foot",c:8,t:"corpsm",y:"Latin pes/pedis → English pedal, pedestrian, pedicure.",p:"n"},
- {f:"le poignet",e:"the wrist",c:8,t:"corpsm",x:1,y:"Little poing (fist, Latin pugnus → pugilist, pugnacious); the wrist cocks the pugilist's fist.",p:"n"},
+ {f:"le poignet",e:"the wrist",c:8,t:"corpsm",y:"Little poing (fist, Latin pugnus → pugilist, pugnacious); the wrist cocks the pugilist's fist.",p:"n"},
  {f:"la poitrine",e:"the chest",c:8,t:"corpst",y:"Latin pectus/pector- → English pectoral; poi-trine ≈ pec-toral, French sanded off the c.",p:"n"},
  {f:"le poumon",e:"the lung",c:8,t:"corpst",y:"Latin pulmo → English pulmonary; poumons = pulmon-.",p:"n"},
  {f:"le sang",e:"the blood",c:8,t:"corpst",y:"Latin sanguis → English sanguine and sangfroid — 'cold blood.'",p:"n"},
  {f:"la tête",e:"the head",c:8,t:"corps",y:"Latin testa, 'pot' — Roman slang for head; circumflex hides the s: teste.",p:"n"},
  {f:"le ventre",e:"the stomach area / belly",c:8,t:"corpst",y:"Latin venter → English ventral (belly-side) and ventriloquist, the belly-speaker.",p:"n"},
  {f:"le visage",e:"the face",c:8,t:"corps",y:"From Latin visus (sight → visual, visor); the face is what's seen — the visor covers the visage.",p:"n"},
- {f:"l'œil",e:"the eye",a:["l'oeil"],c:8,t:"corps",x:1,n:"m. — pl. les yeux (irregular plural)",y:"Latin oculi → English ocular; the singular œil keeps the oc- shape better.",p:"n"},
+ {f:"l'œil",e:"the eye",a:["l'oeil"],c:8,t:"corps",n:"m. — pl. les yeux (irregular plural)",y:"Latin oculi → English ocular; the singular œil keeps the oc- shape better.",p:"n"},
  /* --- À l'hôpital (split: symptômes/blessures · soins/personnel/matériel) --- */
  {f:"l'accouchement",e:"the childbirth, the delivery (of a baby)",c:8,t:"hopm",n:"m.",y:"From coucher (to lie down → English couch); delivery is the lying-in.",p:"n"},
  {f:"l'aide-soignant",e:"the nursing assistant",c:8,t:"hopm",n:"m. — f. l'aide-soignante",y:"aide (helper) + soigner (to care) — the care-helper.",p:"n"},
  {f:"la blessure",e:"the injury, the wound (any harm to the body)",c:8,t:"hop",n:"vs la plaie (an open cut or sore)",y:"From blesser, to wound — faux ami: nothing blessed about it; Frankish 'to bruise.'",p:"n"},
  {f:"le brancard",e:"the stretcher (carried by bearers)",c:8,t:"hopm",n:"vs la civière (close synonym; brancard is the more common word)",y:"From branche — carrying-poles cut from branches; a stretcher is two branches and cloth.",p:"n"},
  {f:"le brancardier",e:"the stretcher bearer",c:8,t:"hopm",n:"f. la brancardière",y:"The branch-pole carrier — stretcher bearer.",p:"n"},
- {f:"la brûlure",e:"the burn",c:8,t:"hop",x:1,y:"From brûler (circumflex hides the s: brusler); crème brûlée = burnt cream.",p:"n"},
+ {f:"la brûlure",e:"the burn",c:8,t:"hop",y:"From brûler (circumflex hides the s: brusler); crème brûlée = burnt cream.",p:"n"},
  {f:"la civière",e:"the stretcher, the gurney (in an ambulance or hospital)",c:8,t:"hopm",n:"vs le brancard (close synonym)",y:"Old French hand-barrow; think: the gurney carries civilians.",p:"n"},
  {f:"la courbature",e:"the muscle soreness, the body ache",c:8,t:"hop",y:"From courber (to bend, Latin curvare → curve); soreness that keeps you curved over.",p:"n"},
  {f:"la démangeaison",e:"the itch",c:8,t:"hop",y:"From démanger — itching 'eats at' you (manger = eat); the skin-nibbles.",p:"n"},
- {f:"la diarrhée",e:"the diarrhea",c:8,t:"hop",x:1,y:"Greek dia + rhein, 'flow through' — identical to English diarrhea.",p:"n"},
+ {f:"la diarrhée",e:"the diarrhea",c:8,t:"hop",y:"Greek dia + rhein, 'flow through' — identical to English diarrhea.",p:"n"},
  {f:"l'effet secondaire",e:"the side effect",c:8,t:"hop",n:"m.",y:"Cognate: the secondary effect = side effect.",p:"n"},
  {f:"la guérison",e:"the healing",c:8,t:"hop",y:"From guérir (ward off); healing is warding the illness off.",p:"n"},
  {f:"la fièvre",e:"the fever",c:8,t:"hop",y:"Latin febris → English fever, febrile; fièvre = febr-.",p:"n"},
@@ -1561,7 +1561,7 @@ var VOCAB=[
  {f:"la morsure",e:"the bite (from an animal or insect)",c:8,t:"hop",n:"vs la piqûre (a sting or an injection)",y:"From mordre (Latin mordere → mordant, remorse — the bite-back of conscience); the bite.",p:"n"},
  {f:"la pédiatrie",e:"the pediatric medicine",c:8,t:"hopm",y:"Greek paid- (child) + iatros (healer) — same as English pediatrics.",p:"n"},
  {f:"la plaie",e:"the wound (an open cut or sore)",c:8,t:"hop",n:"vs la blessure (any injury)",y:"Latin plaga, blow/wound → English plague — a plague is a great wound.",p:"n"},
- {f:"la piqûre",e:"the sting (an insect) or the injection (a shot)",c:8,t:"hop",x:1,n:"vs la morsure (a bite)",y:"From piquer (→ English pique, piquant); the little prick — shot or sting.",p:"n"},
+ {f:"la piqûre",e:"the sting (an insect) or the injection (a shot)",c:8,t:"hop",n:"vs la morsure (a bite)",y:"From piquer (→ English pique, piquant); the little prick — shot or sting.",p:"n"},
  {f:"les premiers soins",e:"the first aid",c:8,t:"hopm",n:"m. pl.",y:"First cares = first aid; soin = care.",p:"n"},
  {f:"la prise en charge",e:"the patient admission",c:8,t:"hopm",y:"The 'taking into charge' — patient admission.",p:"n"},
  {f:"la seringue",e:"the syringe",c:8,t:"hopm",y:"Greek syrinx, reed-pipe → English syringe; same word.",p:"n"},
@@ -1574,7 +1574,7 @@ var VOCAB=[
  {f:"la grippe",e:"the flu",c:8,t:"mal",y:"From gripper (→ English grip); the flu grips you — English once called it 'the grippe' too.",p:"n"},
  {f:"la maladie",e:"the disease / the illness",c:8,t:"mal",y:"Latin male habitus, 'badly kept' → English malady.",p:"n"},
  {f:"le microbe",e:"the germ",c:8,t:"mal",y:"Greek mikro + bios, 'small life' — identical to English microbe.",p:"n"},
- {f:"le paludisme",e:"the malaria",c:8,t:"mal",x:1,y:"Latin palus, swamp — the swamp disease (malaria = 'bad air,' same idea, different word).",p:"n"},
+ {f:"le paludisme",e:"the malaria",c:8,t:"mal",y:"Latin palus, swamp — the swamp disease (malaria = 'bad air,' same idea, different word).",p:"n"},
  {f:"la peste",e:"the plague",c:8,t:"mal",y:"Latin pestis → English pest, pestilence, pesky.",p:"n"},
  {f:"la rage",e:"the rabies",c:8,t:"mal",y:"Literally 'the rage' — Latin rabies; rabies makes animals rage.",p:"n"},
  /* --- Nutrition et mode de vie --- */
@@ -1629,23 +1629,23 @@ var VOCAB=[
  {f:"la dégustation de vin",e:"the wine tasting",c:9,t:"evts",y:"Latin gustare, to taste → English gusto and disgust; tasting with gusto.",p:"n"},
  {f:"la détente",e:"the relaxation",c:9,t:"evts",y:"dé + tendre, 'un-tense' → English détente, the Cold War thaw; relaxation is de-tensioning.",p:"n"},
  {f:"l'exposition",e:"the exhibit",c:9,t:"evts",n:"f.",y:"Cognate exposition — works ex-posed to view.",p:"n"},
- {f:"le faire-part",e:"the wedding invitation / announcement",c:9,t:"evt",x:1,y:"Literally 'make-known' — faire part de = to inform; the formal announcement.",p:"n"},
+ {f:"le faire-part",e:"the wedding invitation / announcement",c:9,t:"evt",y:"Literally 'make-known' — faire part de = to inform; the formal announcement.",p:"n"},
  {f:"les félicitations",e:"the congratulations",c:9,t:"evt",n:"f. pl.",y:"Latin felix, happy → English felicity, felicitations.",p:"n"},
  {f:"la fête prénatale",e:"the baby shower",a:["la baby shower"],c:9,t:"evt",y:"The before-birth fête; circumflex hides the s — feste → English feast.",p:"n"},
  {f:"le feu d'artifice",e:"the fireworks show",c:9,t:"evts",y:"'Fire of artifice' — artificial fire = fireworks.",p:"n"},
  {f:"le foyer",e:"the home",c:9,t:"evt",y:"Latin focus — the hearth! Home is the family's focus; English foyer too.",p:"n"},
  {f:"le goût",e:"the taste",c:9,t:"evts",y:"Latin gustus → English gusto, gustatory; circumflex hides the s: gousts.",p:"n"},
- {f:"l'hôte",e:"the host (the one who invites)",c:9,t:"evts",x:1,n:"m. — f. l'hôtesse · vs l'invité (the guest)",y:"Latin hospes → English host, hospitality; circumflex hides the s: hoste = host — but hôte can mean host OR guest.",p:"n"},
+ {f:"l'hôte",e:"the host (the one who invites)",c:9,t:"evts",n:"m. — f. l'hôtesse · vs l'invité (the guest)",y:"Latin hospes → English host, hospitality; circumflex hides the s: hoste = host — but hôte can mean host OR guest.",p:"n"},
  {f:"l'impair",e:"the mess-up / the blunder",c:9,t:"evts",n:"m.",y:"Literally 'un-even' (pair → English pair, par); a blunder leaves things odd, not even.",p:"n"},
  {f:"l'invité",e:"the guest (invited to a party or to someone's home)",c:9,t:"evts",n:"m. — f. l'invitée · vs le convive (a guest at a meal) and l'hôte (the host)",y:"The invited one — cognate invitee.",p:"n"},
  {f:"la journée portes ouvertes",e:"the open house",c:9,t:"evt",y:"'Open-doors day' — the open house, literally.",p:"n"},
  {f:"la montre",e:"the watch",c:9,t:"evt",y:"From montrer (Latin monstrare → demonstrate); the watch shows the time.",p:"n"},
  {f:"le panier",e:"the basket",c:9,t:"evt",y:"Latin panarium, bread basket — panis again; the basket was for pain.",p:"n"},
- {f:"la pendaison de crémaillère",e:"the housewarming party",c:9,t:"evts",x:1,y:"'Hanging of the pot-hook' — the medieval move-in ritual: hang the hearth hook, feed your helpers.",p:"n"},
+ {f:"la pendaison de crémaillère",e:"the housewarming party",c:9,t:"evts",y:"'Hanging of the pot-hook' — the medieval move-in ritual: hang the hearth hook, feed your helpers.",p:"n"},
  {f:"la reconnaissance",e:"the gratitude",c:9,t:"evts",y:"re + connaissance, 're-knowing' → English recognition AND reconnaissance; gratitude is recognizing what was done.",p:"n"},
  {f:"la rencontre",e:"the meeting / the encounter",c:9,t:"evts",y:"re + encontre → English encounter, the same word.",p:"n"},
  {f:"le traiteur",e:"the caterer",c:9,t:"evts",y:"From traiter — the caterer treats your guests.",p:"n"},
- {f:"le vernissage",e:"the exhibit opening event",c:9,t:"evts",x:1,y:"From vernis (varnish) — artists varnished paintings at the private view: varnishing day.",p:"n"},
+ {f:"le vernissage",e:"the exhibit opening event",c:9,t:"evts",y:"From vernis (varnish) — artists varnished paintings at the private view: varnishing day.",p:"n"},
  /* --- Verbes (Ch 9) --- */
  {f:"avoir envie de",e:"to feel like",c:9,t:"verb",y:"envie from Latin invidia → English envy; wanting is a small envy toward the thing.",p:"v"},
  {f:"avoir hâte de",e:"to look forward to",c:9,t:"verb",y:"hâte → English haste (circumflex hides the s); to have haste for it — can't wait.",p:"v"},
@@ -1675,7 +1675,7 @@ var VOCAB=[
  {f:"s'intéresser à",e:"to be interested in",c:9,t:"va",y:"Cognate: to interest oneself in.",p:"v"},
  {f:"téléphoner à",e:"to call (phone)",c:9,t:"va",y:"Cognate — but French phones TO someone: à required.",p:"v"},
  /* --- Adjectifs (Ch 9) --- */
- {f:"casanier",e:"homebody",c:9,t:"adj",x:1,n:"f. casanière",y:"From casa (house, via Italian/Spanish) — the casa-dweller; homebody.",p:"adj"},
+ {f:"casanier",e:"homebody",c:9,t:"adj",n:"f. casanière",y:"From casa (house, via Italian/Spanish) — the casa-dweller; homebody.",p:"adj"},
  {f:"chargé",e:"busy (schedule)",c:9,t:"adj",n:"f. chargée",y:"Literally 'loaded' (→ English charge, cargo); a loaded schedule.",p:"adj"},
  {f:"courant",e:"current / common",c:9,t:"adj",n:"f. courante",y:"Literally 'running' (courir → English current, courier); common = what's running around.",p:"adj"},
  {f:"déguisé",e:"disguised / in costume",c:9,t:"adj",n:"f. déguisée",y:"dé + guise → English disguise — the same word.",p:"adj"},
@@ -1702,7 +1702,7 @@ var VOCAB=[
   });
 })();
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* self-heal: re-derive status from counters so any word (incl. bonjour) that has
@@ -1780,7 +1780,6 @@ function vocPool(){
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
-  if(vocTrickyOnly) arr=arr.filter(function(i){return VOCAB[i].x;});
   if(vocNewOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]===undefined;});
   if(vocHideKnown) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]!=="known";});
   if(vocRusty) arr=arr.filter(function(i){return isRusty(state.vocab, state.vocabStats, VOCAB[i].f);});
@@ -1789,7 +1788,7 @@ function vocPool(){
 function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); vocIdx=0; vocShown=false; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
-   ignores topic/tricky/hide-known so the table is a complete chapter reference */
+   ignores topic/hide-known so the table is a complete chapter reference */
 function vocChapterScope(){
   var arr=VOCAB.map(function(v,i){return i;});
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
@@ -1860,7 +1859,7 @@ function renderVoc(){
   document.getElementById("vocPos").textContent=(vocIdx+1)+" / "+vocOrder.length;
   var mark=state.vocab[v.f];
   var tag=el("div","vcat"); tag.style.background=CATS.er.bg; tag.style.color=CATS.er.c;
-  function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+(v.x?" · tricky spelling":"")+" · "+statMeta(state.vocabStats[v.f]); }
+  function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+" · "+statMeta(state.vocabStats[v.f]); }
   tag.textContent=vocTagText();
   card.appendChild(tag);
 
@@ -1970,7 +1969,6 @@ function renderVoc(){
     ans.innerHTML="<div class='prompt'><div class='big "+(vocDir==="en"?"fr":"")+"'>"+answerText+"</div></div>";
     if(v.n) ans.appendChild(el("div","note",esc(v.n)));
     if(vocTrain && v.y) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
-    if(v.x) ans.appendChild(el("div","note","Tricky spelling — watch the accents and double letters."));
     ans.appendChild(pronRow(v.f));
     card.appendChild(ans);
     var act=el("div","vactions");
@@ -2017,7 +2015,6 @@ document.getElementById("chapterFilterVoc").addEventListener("change",function()
 });
 document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
-document.getElementById("vocTricky").addEventListener("click",function(){vocTrickyOnly=!vocTrickyOnly;this.style.background=vocTrickyOnly?"var(--ink)":"";this.style.color=vocTrickyOnly?"#fff":"";vocBuild();renderVoc();});
 document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
   vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";
