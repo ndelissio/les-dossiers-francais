@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 1 · Dossier Français — v3.4.0</title>
+<title>Unité 1 · Dossier Français — v3.4.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -293,7 +293,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 1 · v3.4.0</div>
+      <div class="eyebrow">French Basic Course · Unit 1 · v3.4.1</div>
       <h1><b>Unité&nbsp;1</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -433,7 +433,6 @@
       <button class="ghost" id="vocTrainBtn">Training</button>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
-      <button class="ghost" id="vocTricky">Tricky spellings</button>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
       <button class="ghost" id="newOnlyBtnVoc">New only</button>
@@ -538,8 +537,9 @@
   </section>
 
   <footer>
-    <strong>Dossier v3.4.0</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
+    <strong>Dossier v3.4.1</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v3.4.1 (6 Oct 2026): <strong>Vocabulaire — the "tricky spelling" tag is gone.</strong> It was a subjective flag with no clear rule behind it, so the "Tricky spellings" filter, the "tricky spelling" label on the card header and the reminder on the answer are removed, along with the flag on 111 cards. Nothing else about the cards changed, and saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v3.4.0 (6 Oct 2026): <strong>Vocabulaire pass — part-of-speech tags, clearer English cues, gender handling.</strong> Every English cue now carries a small part-of-speech tag (noun, adjective, verb, adverb, preposition, conjunction, expression, number), so a short or weak translation is never ambiguous. <strong>Nationalities:</strong> every nationality now has both a masculine and a feminine card, and the cue says which gender to write; 18 feminine cards added (marocaine, mexicaine, argentine, brésilienne, ukrainienne, japonaise, congolaise, algérienne, anglaise, béninoise, camerounaise, dominicaine, haïtienne, ivoirienne, malienne, portoricaine, québécoise, taïwanaise), and the 11 masculine cards that had no gender label now carry (m.). <strong>Adjectives:</strong> six masculine/feminine pairs merged into one card that accepts either gender — marié(e), gentil(le), paresseux(-euse), généreux(-euse), sportif(-ive), ennuyeux(-euse) — and 29 more masculine-only cards (divorcé(e), fiancé(e), aîné(e), cadet(te), amusant(e), grand(e)…, the person nouns l'avocat(e), l'enseignant(e), l'instituteur(-trice), l'ouvrier(-ière), le pharmacien(ne), le benjamin(e), and je suis perdu(e)) accept either gender; the masculine/feminine grader from Units 3–4 now ships here. Noun pairs where the feminine is a different word (le cousin / la cousine, le jumeau / la jumelle, l'infirmier / l'infirmière, la femme au foyer / l'homme au foyer) and enchanté / enchantée stay separate. <strong>Gender hints out of the cue:</strong> 54 cards no longer give away the article or the form in the English cue; the gender shows on the answer note instead. <strong>Plural → singular</strong> so gender can be trained: l'activité communicative, l'exercice, l'enfant, le petit-enfant; seven words that are typically plural stay plural (les ciseaux, les écouteurs, les devoirs, les instructions, les beaux-parents, les grands-parents, les parents) with "m. pl." / "f. pl." on the reveal. <strong>Close synonyms:</strong> 37 cards now carry a distinguishing English cue and a "vs" note (de rien / je vous en prie, excusez-moi / pardon, le mari / l'époux, la femme / l'épouse, le gendre / le beau-fils, nager / faire de la natation, aimer / adorer, le fleuve / la rivière, se trouver / se situer, aîné / cadet / le benjamin…). Fixed the cue "the it's cloudy". Unit 1 now has 563 cards (551 + 18 feminine nationalities − 6 merged pairs). <strong>Gender on the reveal:</strong> 21 l’… nouns that showed no gender anywhere now show m. or f. on the answer note. Saved progress is carried over: a renamed card keeps its status, and where two cards merged the new card counts as known only if both were known.<br></span>
     <span style="color:var(--mute)">v3.3.2 (28 Sep 2026): <strong>"Drill misses" replaced with "New only."</strong> The old filter showed cards marked "still learning," which mostly duplicated Hide known. The button now shows only cards you've never attempted — not known, not still learning, never answered. Renamed internally (missMode/vocMissOnly → newOnlyMode/vocNewOnly); the now-meaningless worst-accuracy sort is removed. No vocab or verb data changed.<br></span>
     <span style="color:var(--mute)">v3.3.1 (16 Sep 2026): <strong>Dashboard grammar ledger rolled up by chapter.</strong> The Tableau de bord's Grammaire block listed every drill individually (21 rows for Unit 1); it now shows one aggregated coverage row per chapter — Ch 1–4 — matching the Vocabulaire block's layout right above it. Per-drill titles and best-round scores are unchanged and still visible inside the Grammaire tab itself; this only shortens the dashboard summary. No scoring or saved-progress changes.<br></span>
@@ -1254,7 +1254,7 @@ document.getElementById("verbTable").addEventListener("click",function(e){
 });
 
 /* =============== VOCABULARY BANK + TRAINER =============== */
-/* entry: {f:french, e:english, c:chapter(1-4), t:topic, x:1 if tricky-to-spell} */
+/* entry: {f:french, e:english, c:chapter(1-4), t:topic} */
 var VTOPICS={
   greet:"Greetings & politeness", ques:"Useful questions", natcore:"Nationalities (core)", natmore:"Nationalities (more)", num:"Numbers",
   famcore:"Immediate family", famgen:"Grandparents & grandchildren", famext:"Extended family", famstep:"Blended family & godparents", status:"Family status", persplus:"Personality — positive traits", persminus:"Personality — challenging traits", phys:"Physical appearance",
@@ -1271,53 +1271,53 @@ var VOCAB=[
  {f:"bonne nuit",e:"good night (before sleep)",c:1,t:"greet",y:"nuit from Latin nox/noctis → English nocturnal.",p:"expr"},
  {f:"bonne journée",e:"have a good day",c:1,t:"greet",y:"journée = the day's whole span (vs jour, the day itself) — same journ- as English journey.",p:"expr"},
  {f:"bonne soirée",e:"have a good evening",c:1,t:"greet",y:"soirée = the evening's span, from soir; English borrowed the whole word as soirée.",p:"expr"},
- {f:"à bientôt",e:"see you soon",c:1,t:"greet",x:1,y:"bien (well, Latin bene) + tôt (soon) — literally 'to very soon.'",p:"expr"},
+ {f:"à bientôt",e:"see you soon",c:1,t:"greet",y:"bien (well, Latin bene) + tôt (soon) — literally 'to very soon.'",p:"expr"},
  {f:"à demain",e:"see you tomorrow",c:1,t:"greet",y:"à + demain (tomorrow, Latin de mane, 'from the morning').",p:"expr"},
- {f:"à tout à l'heure",e:"see you later (today)",c:1,t:"greet",x:1,y:"'to all at the hour' — see you at this very hour, i.e. shortly.",p:"expr"},
+ {f:"à tout à l'heure",e:"see you later (today)",c:1,t:"greet",y:"'to all at the hour' — see you at this very hour, i.e. shortly.",p:"expr"},
  {f:"merci",e:"thank you",c:1,t:"greet",y:"Latin merces, wages/reward → English mercy, mercenary; thanks as a small reward.",p:"expr"},
  {f:"de rien",e:"you're welcome (casual reply to thanks)",c:1,t:"greet",n:"vs je vous en prie (formal)",y:"literally 'of nothing' — the same shrug as English 'it's nothing.'",p:"expr"},
  {f:"je vous en prie",e:"you're welcome (formal; also: please, go ahead)",c:1,t:"greet",n:"vs de rien (casual)",y:"from prier, to beg/pray (Latin precari → English pray, deprecate); 'I beg it of you' — formal.",p:"expr"},
- {f:"s'il vous plaît",e:"please (formal)",c:1,t:"greet",x:1,y:"'if it pleases you' — plaire (Latin placere → English please, placid); formal register.",p:"v"},
+ {f:"s'il vous plaît",e:"please (formal)",c:1,t:"greet",y:"'if it pleases you' — plaire (Latin placere → English please, placid); formal register.",p:"v"},
  {f:"s'il te plaît",e:"please (informal)",c:1,t:"greet",y:"same construction as s'il vous plaît, informal register (tu).",p:"v"},
- {f:"enchanté",e:"pleased to meet you (m.)",c:1,t:"greet",x:1,y:"Latin incantare, to chant a spell over → English enchant, chant; meeting you casts a small spell.",p:"expr"},
- {f:"enchantée",e:"pleased to meet you (f.)",c:1,t:"greet",x:1,y:"feminine of enchanté — same incantare root, +e.",p:"expr"},
+ {f:"enchanté",e:"pleased to meet you (m.)",c:1,t:"greet",y:"Latin incantare, to chant a spell over → English enchant, chant; meeting you casts a small spell.",p:"expr"},
+ {f:"enchantée",e:"pleased to meet you (f.)",c:1,t:"greet",y:"feminine of enchanté — same incantare root, +e.",p:"expr"},
  {f:"comment ça va",e:"how are you?",c:1,t:"greet",y:"comment (how, Latin quomodo) + ça va, 'it goes' (aller, to go) — literally 'how it's going.'",p:"expr"},
  {f:"quoi de neuf",e:"what's new?",c:1,t:"greet",y:"quoi (what) + neuf (new, Latin novus → English novel, novice); 'what's new.'",p:"expr"},
  {f:"bon après-midi",e:"have a good afternoon",c:1,t:"greet",y:"après (after, Latin ad post) + midi (noon, Latin medius dies, 'mid-day').",p:"expr"},
  {f:"à ce soir",e:"see you this evening",c:1,t:"greet",y:"à + ce (this) + soir (evening) — 'to this evening.'",p:"expr"},
- {f:"fais de beaux rêves",e:"sweet dreams",c:1,t:"greet",x:1,y:"rêver gave English reverie (a waking daydream) — same word family as beaux rêves.",p:"expr"},
+ {f:"fais de beaux rêves",e:"sweet dreams",c:1,t:"greet",y:"rêver gave English reverie (a waking daydream) — same word family as beaux rêves.",p:"expr"},
  {f:"de même",e:"likewise",c:1,t:"greet",y:"même, 'same,' from Latin (i)psimus/metipsimus, a superlative of ipse ('self'); 'likewise.'",p:"expr"},
- {f:"comment vous appelez-vous",e:"what's your name? (formal)",c:1,t:"ques",x:1,y:"s'appeler, 'to call oneself' (appeler, Latin appellare → English appeal, appellation).",p:"expr"},
- {f:"comment ça s'écrit",e:"how do you spell that?",c:1,t:"ques",x:1,y:"écrire, Latin scribere → English scribe, script, describe; 'how does it write itself.'",p:"expr"},
+ {f:"comment vous appelez-vous",e:"what's your name? (formal)",c:1,t:"ques",y:"s'appeler, 'to call oneself' (appeler, Latin appellare → English appeal, appellation).",p:"expr"},
+ {f:"comment ça s'écrit",e:"how do you spell that?",c:1,t:"ques",y:"écrire, Latin scribere → English scribe, script, describe; 'how does it write itself.'",p:"expr"},
  {f:"d'où venez-vous",e:"where are you from?",c:1,t:"ques",y:"venir, Latin venire → English convene, venue, advent; 'from where do you come.'",p:"expr"},
  {f:"où habitez-vous",e:"where do you live?",c:1,t:"ques",y:"habiter, Latin habitare → English habit, habitat — where one 'has' residence.",p:"expr"},
- {f:"quel âge avez-vous",e:"how old are you?",c:1,t:"ques",x:1,y:"âge, Latin aetaticum/aetas → English age; straight cognate.",p:"expr"},
+ {f:"quel âge avez-vous",e:"how old are you?",c:1,t:"ques",y:"âge, Latin aetaticum/aetas → English age; straight cognate.",p:"expr"},
  {f:"quelle est votre adresse",e:"what's your address?",c:1,t:"ques",y:"adresse, Latin ad + directus → English address, direct — French kept it, English re-borrowed it.",p:"expr"},
- {f:"quel est votre numéro de téléphone",e:"what's your phone number?",c:1,t:"ques",x:1,y:"numéro (Latin numerus → number) + téléphone (Greek tēle 'far' + phōnē 'sound').",p:"expr"},
+ {f:"quel est votre numéro de téléphone",e:"what's your phone number?",c:1,t:"ques",y:"numéro (Latin numerus → number) + téléphone (Greek tēle 'far' + phōnē 'sound').",p:"expr"},
  {f:"quelle est votre adresse mail",e:"what's your email address?",a:["quelle est votre adresse e-mail","quelle est votre adresse électronique","quel est votre mail","quel est votre e-mail","quel est votre mél","quel est votre courriel"],c:1,t:"ques",y:"mail is the English loanword; French also has native courriel (courrier + électronique) and mél.",p:"expr"},
  {f:"américain",e:"American (m.)",c:1,t:"natcore",y:"from Amerigo Vespucci, the explorer whose first name gave 'America'; -ain is the nationality suffix (Latin -anus).",p:"adj"},
  {f:"américaine",e:"American (f.)",c:1,t:"natcore",y:"feminine of américain, +e.",p:"adj"},
- {f:"français",e:"French (m.)",c:1,t:"natcore",x:1,y:"from the Franks, a Germanic tribe whose name meant roughly 'the free ones' — English 'frank' (speak frankly) is the same root.",p:"adj"},
- {f:"française",e:"French (f.)",c:1,t:"natcore",x:1,y:"feminine of français, +e.",p:"adj"},
- {f:"sénégalais",e:"Senegalese (m.)",c:1,t:"natcore",x:1,y:"from Sénégal (the river/country) + -ais, the nationality suffix (Latin -ensis).",p:"adj"},
- {f:"sénégalaise",e:"Senegalese (f.)",c:1,t:"natcore",x:1,y:"feminine of sénégalais, +e.",p:"adj"},
+ {f:"français",e:"French (m.)",c:1,t:"natcore",y:"from the Franks, a Germanic tribe whose name meant roughly 'the free ones' — English 'frank' (speak frankly) is the same root.",p:"adj"},
+ {f:"française",e:"French (f.)",c:1,t:"natcore",y:"feminine of français, +e.",p:"adj"},
+ {f:"sénégalais",e:"Senegalese (m.)",c:1,t:"natcore",y:"from Sénégal (the river/country) + -ais, the nationality suffix (Latin -ensis).",p:"adj"},
+ {f:"sénégalaise",e:"Senegalese (f.)",c:1,t:"natcore",y:"feminine of sénégalais, +e.",p:"adj"},
  {f:"chinois",e:"Chinese (m.)",c:1,t:"natcore",y:"from Chine, ultimately from Qín, the dynasty that also gave English 'China.'",p:"adj"},
  {f:"chinoise",e:"Chinese (f.)",c:1,t:"natcore",y:"feminine of chinois, +e.",p:"adj"},
  {f:"canadien",e:"Canadian (m.)",c:1,t:"natcore",y:"from Canada, Iroquoian kanata, 'village/settlement' — the whole country is named after one village.",p:"adj"},
- {f:"canadienne",e:"Canadian (f.)",c:1,t:"natcore",x:1,y:"feminine of canadien; also, confusingly, a type of sheepskin coat in French.",p:"adj"},
+ {f:"canadienne",e:"Canadian (f.)",c:1,t:"natcore",y:"feminine of canadien; also, confusingly, a type of sheepskin coat in French.",p:"adj"},
  {f:"allemand",e:"German (m.)",c:1,t:"natcore",y:"from the Alemanni, a Germanic tribal confederation ('all men'); Romance languages name Germany for this tribe, unlike English 'German' (from Roman Germania).",p:"adj"},
  {f:"allemande",e:"German (f.)",c:1,t:"natcore",y:"feminine of allemand, +e.",p:"adj"},
  {f:"espagnol",e:"Spanish (m.)",c:1,t:"natcore",y:"from Hispania, the Roman name for the Iberian peninsula — same root as English 'Hispanic.'",p:"adj"},
  {f:"espagnole",e:"Spanish (f.)",c:1,t:"natcore",y:"feminine of espagnol, +e.",p:"adj"},
  {f:"italien",e:"Italian (m.)",c:1,t:"natcore",y:"from Italia + -ien; the name Italia itself is pre-Roman and debated (possibly 'land of young cattle').",p:"adj"},
- {f:"italienne",e:"Italian (f.)",c:1,t:"natcore",x:1,y:"feminine of italien, +ne.",p:"adj"},
+ {f:"italienne",e:"Italian (f.)",c:1,t:"natcore",y:"feminine of italien, +ne.",p:"adj"},
  {f:"marocain",e:"Moroccan (m.)",c:1,t:"natmore",y:"from Maroc, itself from Marrakech — the country is named after its old capital city.",p:"adj"},
  {f:"marocaine",e:"Moroccan (f.)",c:1,t:"natmore",p:"adj"},
  {f:"mexicain",e:"Mexican (m.)",c:1,t:"natmore",y:"from México, from Mēxihco, the Nahuatl (Aztec) name for the Aztec people and their capital.",p:"adj"},
  {f:"mexicaine",e:"Mexican (f.)",c:1,t:"natmore",p:"adj"},
  {f:"argentin",e:"Argentinian (m.)",c:1,t:"natmore",y:"from Argentina, Latin argentum (silver) → English argent (heraldic silver) — named for the Río de la Plata, 'River of Silver.'",p:"adj"},
  {f:"argentine",e:"Argentinian (f.)",c:1,t:"natmore",p:"adj"},
- {f:"brésilien",e:"Brazilian (m.)",c:1,t:"natmore",x:1,y:"from Brésil, named for pau-brasil ('ember-red wood'), the brazilwood exported from there — the country is named after a tree.",p:"adj"},
+ {f:"brésilien",e:"Brazilian (m.)",c:1,t:"natmore",y:"from Brésil, named for pau-brasil ('ember-red wood'), the brazilwood exported from there — the country is named after a tree.",p:"adj"},
  {f:"brésilienne",e:"Brazilian (f.)",c:1,t:"natmore",p:"adj"},
  {f:"ukrainien",e:"Ukrainian (m.)",c:1,t:"natmore",y:"from Ukraine, Slavic u kraju, 'at the border' — the borderland.",p:"adj"},
  {f:"ukrainienne",e:"Ukrainian (f.)",c:1,t:"natmore",p:"adj"},
@@ -1338,7 +1338,7 @@ var VOCAB=[
  {f:"camerounaise",e:"Cameroonian (f.)",c:1,t:"natmore",p:"adj"},
  {f:"dominicain",e:"Dominican (m.)",c:1,t:"natmore",y:"from (République) Dominicaine, named for Santo Domingo — itself named for Saint Dominic.",p:"adj"},
  {f:"dominicaine",e:"Dominican (f.)",c:1,t:"natmore",p:"adj"},
- {f:"haïtien",e:"Haitian (m.)",c:1,t:"natmore",x:1,y:"from Haïti, Taíno (indigenous) Ayiti, 'land of high mountains.'",p:"adj"},
+ {f:"haïtien",e:"Haitian (m.)",c:1,t:"natmore",y:"from Haïti, Taíno (indigenous) Ayiti, 'land of high mountains.'",p:"adj"},
  {f:"haïtienne",e:"Haitian (f.)",c:1,t:"natmore",p:"adj"},
  {f:"ivoirien",e:"Ivorian (m.)",c:1,t:"natmore",y:"from Côte d'Ivoire, 'Ivory Coast,' named for the historic ivory trade there.",p:"adj"},
  {f:"ivoirienne",e:"Ivorian (f.)",c:1,t:"natmore",p:"adj"},
@@ -1346,19 +1346,19 @@ var VOCAB=[
  {f:"malienne",e:"Malian (f.)",c:1,t:"natmore",p:"adj"},
  {f:"portoricain",e:"Puerto Rican (m.)",c:1,t:"natmore",y:"from Porto Rico / Puerto Rico, Spanish 'rich port.'",p:"adj"},
  {f:"portoricaine",e:"Puerto Rican (f.)",c:1,t:"natmore",p:"adj"},
- {f:"québécois",e:"Quebecer (m.)",c:1,t:"natmore",x:1,y:"from Québec, Algonquin kepék, 'where the river narrows' — the St. Lawrence at Quebec City.",p:"adj"},
+ {f:"québécois",e:"Quebecer (m.)",c:1,t:"natmore",y:"from Québec, Algonquin kepék, 'where the river narrows' — the St. Lawrence at Quebec City.",p:"adj"},
  {f:"québécoise",e:"Quebecer (f.)",c:1,t:"natmore",p:"adj"},
- {f:"taïwanais",e:"Taiwanese (m.)",c:1,t:"natmore",x:1,y:"from the island name Taïwan; the modern spelling settled through Chinese romanization.",p:"adj"},
+ {f:"taïwanais",e:"Taiwanese (m.)",c:1,t:"natmore",y:"from the island name Taïwan; the modern spelling settled through Chinese romanization.",p:"adj"},
  {f:"taïwanaise",e:"Taiwanese (f.)",c:1,t:"natmore",p:"adj"},
  {f:"quatorze",e:"14",c:1,t:"num",y:"Latin quattuordecim (quattuor 'four' + decem 'ten') → quatorze, same shape as English fourteen.",p:"num"},
  {f:"lundi",e:"Monday",c:1,t:"cal",y:"Latin lunae dies, 'day of the Moon' → lundi; same idea as English Monday.",p:"n"},
  {f:"mardi",e:"Tuesday",c:1,t:"cal",y:"Latin Martis dies, 'day of Mars' → mardi; English Tuesday instead honors the Norse god Tiw.",p:"n"},
- {f:"mercredi",e:"Wednesday",c:1,t:"cal",x:1,y:"Latin Mercurii dies, 'day of Mercury' → mercredi; English Wednesday honors Norse Woden instead.",p:"n"},
+ {f:"mercredi",e:"Wednesday",c:1,t:"cal",y:"Latin Mercurii dies, 'day of Mercury' → mercredi; English Wednesday honors Norse Woden instead.",p:"n"},
  {f:"jeudi",e:"Thursday",c:1,t:"cal",y:"Latin Jovis dies, 'day of Jupiter' → jeudi; English Thursday honors Norse Thor, Jupiter's rough counterpart.",p:"n"},
  {f:"vendredi",e:"Friday",c:1,t:"cal",y:"Latin Veneris dies, 'day of Venus' → vendredi; English Friday honors Norse Frigg, Venus's counterpart.",p:"n"},
  {f:"samedi",e:"Saturday",c:1,t:"cal",y:"Latin sabbati dies, 'day of the Sabbath' → samedi — French kept the religious name; English Saturday kept Saturn instead.",p:"n"},
  {f:"dimanche",e:"Sunday",c:1,t:"cal",y:"Latin dies dominicus, 'the Lord's day' → dimanche; English Sunday instead keeps the pagan Sun-day.",p:"n"},
- {f:"aujourd'hui",e:"today",c:1,t:"cal",x:1,y:"literally 'on the day of today' — au + jour + de + hui (hui alone meant 'today,' from Latin hodie); French doubled up for emphasis and it stuck.",p:"adv"},
+ {f:"aujourd'hui",e:"today",c:1,t:"cal",y:"literally 'on the day of today' — au + jour + de + hui (hui alone meant 'today,' from Latin hodie); French doubled up for emphasis and it stuck.",p:"adv"},
  {f:"demain",e:"tomorrow",c:1,t:"cal",y:"Latin de mane, 'from the morning' → demain, tomorrow.",p:"adv"},
  {f:"hier",e:"yesterday",c:1,t:"cal",y:"Latin heri → hier, yesterday; a straight, unbroken descent.",p:"adv"},
  {f:"tous les jours",e:"every day",c:1,t:"cal",y:"tous (all, Latin totus → English total) + les jours (the days) — 'all the days.'",p:"adv"},
@@ -1377,7 +1377,7 @@ var VOCAB=[
  {f:"la calculatrice",e:"the calculator",c:1,t:"class",y:"Latin calculus, 'small pebble' used for counting → English calculate, calculus; the pebble that counts.",p:"n"},
  {f:"la carte",e:"the map",c:1,t:"class",y:"Latin charta, a papyrus sheet → English card, chart; a map is literally 'the sheet.'",p:"n"},
  {f:"la chaise",e:"the chair",c:1,t:"class",y:"a dialectal variant of chaire (chair, Latin cathedra → English cathedral, the bishop's 'chair'); chaise and chaire split from one word.",p:"n"},
- {f:"les ciseaux",e:"the scissors",c:1,t:"class",x:1,n:"m. pl.",y:"Latin caesus, 'cut' (caedere → also English concise, precise, incisor) — the tool that cuts.",p:"n"},
+ {f:"les ciseaux",e:"the scissors",c:1,t:"class",n:"m. pl.",y:"Latin caesus, 'cut' (caedere → also English concise, precise, incisor) — the tool that cuts.",p:"n"},
  {f:"le crayon",e:"the pencil",c:1,t:"class",y:"from craie, chalk (Latin creta → English crayon is this exact loanword, and 'Crete' the island, an old chalk source).",p:"n"},
  {f:"le dictionnaire",e:"the dictionary",c:1,t:"class",y:"Latin dictio, 'a saying' (dicere, to say → English diction, dictate) — straight cognate dictionary.",p:"n"},
  {f:"les écouteurs",e:"the headphones",c:1,t:"class",n:"m. pl.",y:"écouter (to listen, see écoutez) + -eur (agent) — 'the listeners.'",p:"n"},
@@ -1400,10 +1400,10 @@ var VOCAB=[
  {f:"l'exercice",e:"the exercise",c:1,t:"subj",n:"m.",y:"Latin exercere, to keep busy/train (ex + arcere, to enclose) → English exercise; straight cognate.",p:"n"},
  {f:"la grammaire",e:"the grammar",c:1,t:"subj",y:"Greek grammatikē, 'the art of letters' (gramma, letter) → English grammar; the same root also gave English 'glamour' — a grammar-book was once thought a book of magic.",p:"n"},
  {f:"les instructions",e:"the instructions",c:1,t:"subj",n:"f. pl.",y:"Latin instruere, to build up/equip (in + struere, to pile → English structure, construct) → cognate instruction.",p:"n"},
- {f:"l'interprétation",e:"the interpretation",c:1,t:"subj",x:1,n:"f.",y:"Latin interpretari → English interpretation; straight cognate.",p:"n"},
+ {f:"l'interprétation",e:"the interpretation",c:1,t:"subj",n:"f.",y:"Latin interpretari → English interpretation; straight cognate.",p:"n"},
  {f:"la lecture",e:"the reading",c:1,t:"subj",y:"from lire, to read (Latin legere) + -ure; English 'lecture' is this exact word, first meaning 'a reading aloud.'",p:"n"},
  {f:"la prononciation",e:"the pronunciation",c:1,t:"subj",y:"Latin pronuntiare (pro + nuntiare, to announce → English announce, pronounce) → cognate pronunciation.",p:"n"},
- {f:"la tâche",e:"the task",c:1,t:"subj",x:1,y:"Frankish *taika, a sign or token, via Medieval Latin tasca → English task; the same root.",p:"n"},
+ {f:"la tâche",e:"the task",c:1,t:"subj",y:"Frankish *taika, a sign or token, via Medieval Latin tasca → English task; the same root.",p:"n"},
  {f:"la traduction",e:"the translation",c:1,t:"subj",y:"Latin traducere (trans + ducere, to lead across → English traduce, conduct) → cognate translation/traduction.",p:"n"},
  {f:"le vocabulaire",e:"the vocabulary",c:1,t:"subj",y:"Latin vocabulum, a name or word (vocare, to call → English vocal, vocation) → cognate vocabulary.",p:"n"},
  {f:"qu'est-ce que c'est",e:"what is it?",c:1,t:"surv",y:"literally 'what is it that this is' — que (what) + est-ce que (question marker) + c'est (this is), stacked.",p:"expr"},
@@ -1419,33 +1419,33 @@ var VOCAB=[
  {f:"je peux aller aux toilettes",e:"may I go to the restroom?",c:1,t:"surv",y:"toilettes, from toile, cloth (Latin tela → English toilet first meant the cloth on a dressing table) — the room is named after the fabric, not the fixture.",p:"expr"},
  /* ===== Chapter 2 : family, family status, personality, physical appearance, professions, numbers 70–100 ===== */
  {f:"soixante-dix",e:"70",c:2,t:"num",y:"soixante (Latin sexaginta, sixty) + dix (ten) — French counts 70 as 'sixty-ten,' unlike Belgian/Swiss French's own septante.",p:"num"},
- {f:"quatre-vingts",e:"80",c:2,t:"num",x:1,y:"'four twenties' (quatre + vingt) — a vigesimal (base-20) leftover from Gaulish counting, the same system that gave English the word 'score' (four-score).",p:"num"},
- {f:"quatre-vingt-dix",e:"90",c:2,t:"num",x:1,y:"'four-twenty-ten' = 80+10, the same vigesimal logic as quatre-vingts.",p:"num"},
+ {f:"quatre-vingts",e:"80",c:2,t:"num",y:"'four twenties' (quatre + vingt) — a vigesimal (base-20) leftover from Gaulish counting, the same system that gave English the word 'score' (four-score).",p:"num"},
+ {f:"quatre-vingt-dix",e:"90",c:2,t:"num",y:"'four-twenty-ten' = 80+10, the same vigesimal logic as quatre-vingts.",p:"num"},
  {f:"soixante-dix-huit",e:"78",c:2,t:"num",y:"soixante-dix (70) + huit, eight (Latin octo → English octet, October) = 78.",p:"num"},
  {f:"le frère",e:"the brother",c:2,t:"famcore",y:"Latin frater → English fraternal, fraternity; frère is this word worn smooth.",p:"n"},
- {f:"la sœur",e:"the sister",c:2,t:"famcore",x:1,y:"Latin soror → English sorority; the r survived, the o rounded into œu.",p:"n"},
- {f:"la mère",e:"the mother",c:2,t:"famcore",x:1,y:"Latin mater → English maternal, matron.",p:"n"},
- {f:"le père",e:"the father",c:2,t:"famcore",x:1,y:"Latin pater → English paternal, patron.",p:"n"},
- {f:"la grand-mère",e:"the grandmother",c:2,t:"famgen",x:1,y:"grand (Latin grandis, big) + mère — 'big mother,' the same logic as English grandmother.",p:"n"},
- {f:"le grand-père",e:"the grandfather",c:2,t:"famgen",x:1,y:"grand + père — 'big father.'",p:"n"},
- {f:"l'arrière-grand-mère",e:"the great-grandmother",c:2,t:"famgen",x:1,n:"f.",y:"arrière (behind, Latin ad retro → English retro) + grand-mère — 'the mother behind the grandmother.'",p:"n"},
+ {f:"la sœur",e:"the sister",c:2,t:"famcore",y:"Latin soror → English sorority; the r survived, the o rounded into œu.",p:"n"},
+ {f:"la mère",e:"the mother",c:2,t:"famcore",y:"Latin mater → English maternal, matron.",p:"n"},
+ {f:"le père",e:"the father",c:2,t:"famcore",y:"Latin pater → English paternal, patron.",p:"n"},
+ {f:"la grand-mère",e:"the grandmother",c:2,t:"famgen",y:"grand (Latin grandis, big) + mère — 'big mother,' the same logic as English grandmother.",p:"n"},
+ {f:"le grand-père",e:"the grandfather",c:2,t:"famgen",y:"grand + père — 'big father.'",p:"n"},
+ {f:"l'arrière-grand-mère",e:"the great-grandmother",c:2,t:"famgen",n:"f.",y:"arrière (behind, Latin ad retro → English retro) + grand-mère — 'the mother behind the grandmother.'",p:"n"},
  {f:"le beau-frère",e:"the brother-in-law / stepbrother",c:2,t:"famstep",y:"beau (Latin bellus, handsome) used here in its old euphemistic in-law sense, + frère.",p:"n"},
- {f:"la belle-sœur",e:"the sister-in-law / stepsister",c:2,t:"famstep",x:1,y:"belle (feminine of beau, same in-law sense) + sœur.",p:"n"},
+ {f:"la belle-sœur",e:"the sister-in-law / stepsister",c:2,t:"famstep",y:"belle (feminine of beau, same in-law sense) + sœur.",p:"n"},
  {f:"le beau-père",e:"the father-in-law / stepfather",c:2,t:"famstep",y:"beau + père — father-in-law or stepfather.",p:"n"},
  {f:"la belle-mère",e:"the mother-in-law / stepmother",c:2,t:"famstep",y:"belle + mère.",p:"n"},
  {f:"le demi-frère",e:"the half-brother",c:2,t:"famstep",y:"demi, half (Latin dimidius → English demi-, as in demitasse) + frère.",p:"n"},
- {f:"la demi-sœur",e:"the half-sister",c:2,t:"famstep",x:1,y:"demi + sœur.",p:"n"},
+ {f:"la demi-sœur",e:"the half-sister",c:2,t:"famstep",y:"demi + sœur.",p:"n"},
  {f:"l'oncle",e:"the uncle",c:2,t:"famext",n:"m.",y:"Latin avunculus, mother's brother, worn down to oncle — the same root gives English 'avuncular.'",p:"n"},
  {f:"la tante",e:"the aunt",c:2,t:"famext",y:"Latin amita, father's sister, softened by nursery speech into tante.",p:"n"},
  {f:"le cousin",e:"the cousin (m.)",c:2,t:"famext",y:"Latin consobrinus, 'mother's sister's child,' collapsed to cousin — English borrowed the French form whole.",p:"n"},
  {f:"la cousine",e:"the cousin (f.)",c:2,t:"famext",y:"feminine of cousin, +e.",p:"n"},
  {f:"le neveu",e:"the nephew",c:2,t:"famext",y:"Latin nepos → English nephew — the same root gives English 'nepotism,' favoring one's nephews.",p:"n"},
- {f:"la nièce",e:"the niece",c:2,t:"famext",x:1,y:"Latin neptis, feminine of nepos → nièce, niece — same root as neveu.",p:"n"},
+ {f:"la nièce",e:"the niece",c:2,t:"famext",y:"Latin neptis, feminine of nepos → nièce, niece — same root as neveu.",p:"n"},
  {f:"le mari",e:"the husband (everyday word)",c:2,t:"famcore",n:"vs l'époux (formal or legal word)",y:"Latin maritus → English marital, marry; mari, 'the married one.'",p:"n"},
- {f:"l'époux",e:"the husband, the spouse (formal or legal word)",c:2,t:"famcore",x:1,n:"m. — vs le mari (everyday word)",y:"Latin sponsus, 'pledged/betrothed' (spondere, to pledge → English sponsor, respond) → époux.",p:"n"},
+ {f:"l'époux",e:"the husband, the spouse (formal or legal word)",c:2,t:"famcore",n:"m. — vs le mari (everyday word)",y:"Latin sponsus, 'pledged/betrothed' (spondere, to pledge → English sponsor, respond) → époux.",p:"n"},
  {f:"la femme",e:"the wife (everyday word); also: the woman",c:2,t:"famcore",n:"vs l'épouse (formal or legal word)",y:"Latin femina → English feminine; femme kept 'woman' and added 'wife.'",p:"n"},
  {f:"l'épouse",e:"the wife, the spouse (formal or legal word)",c:2,t:"famcore",n:"f. — vs la femme (everyday word)",y:"feminine of époux — same sponsus/spouse root.",p:"n"},
- {f:"le fils",e:"the son",c:2,t:"famcore",x:1,y:"Latin filius → English filial; fils kept only the bare shape.",p:"n"},
+ {f:"le fils",e:"the son",c:2,t:"famcore",y:"Latin filius → English filial; fils kept only the bare shape.",p:"n"},
  {f:"la fille",e:"the daughter / girl",c:2,t:"famcore",y:"Latin filia, daughter → fille, which later drifted to also mean 'girl.'",p:"n"},
  {f:"l'enfant",e:"the child",c:2,t:"famcore",n:"m./f.",y:"Latin infans, 'not yet speaking' (in- + fari, to speak → English fable, ineffable) → enfant, same root as English infant.",p:"n"},
  {f:"le petit-fils",e:"the grandson",c:2,t:"famgen",y:"petit, small (obscure pre-Latin root) + fils — 'small son' = grandson.",p:"n"},
@@ -1455,15 +1455,15 @@ var VOCAB=[
  {f:"le gendre",e:"the son-in-law (your daughter's husband)",c:2,t:"famstep",n:"vs le beau-fils (stepson, or informally son-in-law)",y:"Latin gener → gendre, son-in-law — the same root as English 'gender' and 'generate,' all about lineage.",p:"n"},
  {f:"le jumeau",e:"the twin (m.)",c:2,t:"famext",y:"Latin gemellus, diminutive of geminus, twin (→ English gemini, gemel) → jumeau.",p:"n"},
  {f:"la jumelle",e:"the twin (f.)",c:2,t:"famext",y:"feminine of jumeau; also 'binoculars' — paired lenses, the same twin logic.",p:"n"},
- {f:"célibataire",e:"single",c:2,t:"status",x:1,y:"Latin caelebs, unmarried → English celibate; célibataire is the cognate noun/adjective.",p:"adj"},
+ {f:"célibataire",e:"single",c:2,t:"status",y:"Latin caelebs, unmarried → English celibate; célibataire is the cognate noun/adjective.",p:"adj"},
  {f:"marié(e)",e:"married",c:2,t:"status",y:"from marier, to marry (Latin maritare, from maritus — see mari).",p:"adj"},
- {f:"divorcé(e)",e:"divorced",c:2,t:"status",x:1,y:"Latin divortium (di- + vertere, to turn → English divert, versus) — divorce is literally 'a turning apart.'",p:"adj"},
+ {f:"divorcé(e)",e:"divorced",c:2,t:"status",y:"Latin divortium (di- + vertere, to turn → English divert, versus) — divorce is literally 'a turning apart.'",p:"adj"},
  {f:"veuf",e:"a widower",c:2,t:"status",y:"Latin viduus, 'bereft' → veuf — and, distantly, the very same Indo-European root that separately gave English 'widow.'",p:"n"},
  {f:"veuve",e:"a widow",c:2,t:"status",y:"Latin vidua (feminine of viduus) → veuve — same deep root as English 'widow,' inherited by a different path.",p:"n"},
- {f:"fiancé(e)",e:"engaged",c:2,t:"status",x:1,y:"from fiancer, to pledge (Latin fidare, to trust → English fidelity, confide) — English 'fiancé' borrowed the French word whole.",p:"adj"},
- {f:"séparé(e)",e:"separated",c:2,t:"status",x:1,y:"Latin separare (se-, apart + parare, to prepare → English prepare, parade) — cognate separate.",p:"adj"},
- {f:"remarié(e)",e:"remarried",c:2,t:"status",x:1,y:"re- (again) + marié — remarried.",p:"adj"},
- {f:"aîné(e)",e:"the oldest sibling (the eldest)",c:2,t:"status",x:1,n:"vs cadet (younger or middle) and le benjamin (youngest)",y:"contraction of Old French ainzné (ainz, before + né, born) — 'born before,' the eldest.",p:"adj"},
+ {f:"fiancé(e)",e:"engaged",c:2,t:"status",y:"from fiancer, to pledge (Latin fidare, to trust → English fidelity, confide) — English 'fiancé' borrowed the French word whole.",p:"adj"},
+ {f:"séparé(e)",e:"separated",c:2,t:"status",y:"Latin separare (se-, apart + parare, to prepare → English prepare, parade) — cognate separate.",p:"adj"},
+ {f:"remarié(e)",e:"remarried",c:2,t:"status",y:"re- (again) + marié — remarried.",p:"adj"},
+ {f:"aîné(e)",e:"the oldest sibling (the eldest)",c:2,t:"status",n:"vs cadet (younger or middle) and le benjamin (youngest)",y:"contraction of Old French ainzné (ainz, before + né, born) — 'born before,' the eldest.",p:"adj"},
  {f:"cadet(te)",e:"the younger or middle sibling (any child after the oldest)",c:2,t:"status",n:"vs aîné (oldest) and le benjamin (youngest)",y:"Gascon capdet, 'little chief' (Latin caput, head → English capital, captain) — once the younger son of a noble house, later a military rank; English 'cadet' is this same loan.",p:"adj"},
  {f:"le benjamin(e)",e:"the youngest child (the baby of the family)",c:2,t:"status",n:"vs aîné (oldest) and cadet (younger or middle)",y:"from the Biblical Benjamin, Jacob's youngest son — a family's 'benjamin' is its baby.",p:"n"},
  {f:"enfant unique",e:"an only child",c:2,t:"status",y:"enfant (child) + unique (Latin unicus, one-of-a-kind → English unique).",p:"n"},
@@ -1472,26 +1472,26 @@ var VOCAB=[
  {f:"amusant(e)",e:"fun, amusing (makes people laugh)",c:2,t:"persplus",y:"from amuser (à + muser, to idle/gaze about) → English amuse, muse; 'amusing' is literally 'idling-inducing.'",p:"adj"},
  {f:"bavard(e)",e:"talkative",c:2,t:"persminus",y:"from bave, drool (onomatopoeic) — a bavard talks so much it's like drooling words; no English cognate.",p:"adj"},
  {f:"timide",e:"shy",c:2,t:"persminus",y:"Latin timidus (timere, to fear → English timid) — straight cognate.",p:"adj"},
- {f:"sympathique",e:"nice, likable (easy to get along with)",c:2,t:"persplus",x:1,n:"vs gentil (kind, caring)",y:"Greek syn- (together) + pathos, feeling (→ English sympathy, empathy) — straight cognate.",p:"adj"},
+ {f:"sympathique",e:"nice, likable (easy to get along with)",c:2,t:"persplus",n:"vs gentil (kind, caring)",y:"Greek syn- (together) + pathos, feeling (→ English sympathy, empathy) — straight cognate.",p:"adj"},
  {f:"sociable",e:"sociable",c:2,t:"persplus",y:"Latin sociabilis (socius, companion → English society, associate) — straight cognate.",p:"adj"},
  {f:"optimiste",e:"optimistic",c:2,t:"persplus",y:"Latin optimus, 'best' (superlative of bonus) → English optimist — straight cognate.",p:"adj"},
  {f:"méchant(e)",e:"mean",c:2,t:"persminus",y:"Old French mescheoir, 'to fall badly' (mes-, badly + choir, to fall, Latin cadere → English cadence, case) — a méchant person has 'gone wrong.'",p:"adj"},
  {f:"gentil(le)",e:"kind (sweet, caring toward others)",c:2,t:"persplus",n:"vs sympathique (likable)",y:"Latin gentilis, 'of good family' (gens, clan → English gentle, gentry) — nobility softened into kindness.",p:"adj"},
- {f:"obéissant(e)",e:"obedient",c:2,t:"persplus",x:1,y:"from obéir, to obey (Latin oboedire, ob- + audire, to hear → English audio, audience) — obedience is literally 'hearing toward' someone.",p:"adj"},
- {f:"paresseux(-euse)",e:"lazy",c:2,t:"persminus",x:1,y:"from paresse, laziness (Latin pigritia, sluggishness) — no clean English cognate; picture someone permanently 'paused.'",p:"adj"},
- {f:"généreux(-euse)",e:"generous",c:2,t:"persplus",x:1,y:"Latin generosus, 'of noble birth' (genus, stock → English gene, generate) — like gentil, birth-nobility became a virtue-word.",p:"adj"},
+ {f:"obéissant(e)",e:"obedient",c:2,t:"persplus",y:"from obéir, to obey (Latin oboedire, ob- + audire, to hear → English audio, audience) — obedience is literally 'hearing toward' someone.",p:"adj"},
+ {f:"paresseux(-euse)",e:"lazy",c:2,t:"persminus",y:"from paresse, laziness (Latin pigritia, sluggishness) — no clean English cognate; picture someone permanently 'paused.'",p:"adj"},
+ {f:"généreux(-euse)",e:"generous",c:2,t:"persplus",y:"Latin generosus, 'of noble birth' (genus, stock → English gene, generate) — like gentil, birth-nobility became a virtue-word.",p:"adj"},
  {f:"sportif(-ive)",e:"athletic",c:2,t:"persplus",y:"from sport — itself a French loan into English that came home again: Old French desport ('carry away, amuse') → English sport → back into French as sportif.",p:"adj"},
- {f:"talentueux(-euse)",e:"talented",c:2,t:"persplus",x:1,y:"Greek talanton, a weight of money (a 'talent') — the Biblical parable of the talents gave English (and French) 'talent' its sense of innate gift.",p:"adj"},
- {f:"peureux(-euse)",e:"fearful",c:2,t:"persminus",x:1,y:"from peur, fear (Latin pavor → the rare English medical term 'pavor,' night terror) — 'full of fear.'",p:"adj"},
+ {f:"talentueux(-euse)",e:"talented",c:2,t:"persplus",y:"Greek talanton, a weight of money (a 'talent') — the Biblical parable of the talents gave English (and French) 'talent' its sense of innate gift.",p:"adj"},
+ {f:"peureux(-euse)",e:"fearful",c:2,t:"persminus",y:"from peur, fear (Latin pavor → the rare English medical term 'pavor,' night terror) — 'full of fear.'",p:"adj"},
  {f:"calme",e:"calm",c:2,t:"persplus",y:"Greek kauma, 'midday heat' (when everything goes still) → Latin cauma → calme — the direct root of English 'calm' too.",p:"adj"},
- {f:"ennuyeux(-euse)",e:"boring",c:2,t:"persminus",x:1,y:"from ennui, boredom (Latin in odio, 'in hatred/disgust') — English borrowed 'ennui' as the exact French noun.",p:"adj"},
+ {f:"ennuyeux(-euse)",e:"boring",c:2,t:"persminus",y:"from ennui, boredom (Latin in odio, 'in hatred/disgust') — English borrowed 'ennui' as the exact French noun.",p:"adj"},
  {f:"créatif(-ive)",e:"creative",c:2,t:"persplus",y:"Latin creare, to create → cognate creative.",p:"adj"},
- {f:"égoïste",e:"selfish",c:2,t:"persminus",x:1,y:"Latin ego, 'I' → English ego, egoist — straight cognate, self-centered by definition.",p:"adj"},
- {f:"enthousiaste",e:"enthusiastic",c:2,t:"persplus",x:1,y:"Greek enthousiasmos, 'possessed by a god' (en- + theos, god → English theology) → cognate enthusiast, originally a religious word.",p:"adj"},
- {f:"heureux(-euse)",e:"happy (content)",c:2,t:"persplus",x:1,n:"vs joyeux (outwardly cheerful)",y:"from heur, luck (Latin augurium → English augury, the omen-reading that predicted fortune) — 'happy' = 'lucky.'",p:"adj"},
+ {f:"égoïste",e:"selfish",c:2,t:"persminus",y:"Latin ego, 'I' → English ego, egoist — straight cognate, self-centered by definition.",p:"adj"},
+ {f:"enthousiaste",e:"enthusiastic",c:2,t:"persplus",y:"Greek enthousiasmos, 'possessed by a god' (en- + theos, god → English theology) → cognate enthusiast, originally a religious word.",p:"adj"},
+ {f:"heureux(-euse)",e:"happy (content)",c:2,t:"persplus",n:"vs joyeux (outwardly cheerful)",y:"from heur, luck (Latin augurium → English augury, the omen-reading that predicted fortune) — 'happy' = 'lucky.'",p:"adj"},
  {f:"jaloux(-ouse)",e:"jealous",c:2,t:"persminus",y:"Greek zēlos, 'zeal/rivalry' → Latin zelosus → jaloux — a direct cousin of English 'zeal' and 'jealous' itself.",p:"adj"},
  {f:"joyeux(-euse)",e:"joyful, cheerful (openly merry)",c:2,t:"persplus",n:"vs heureux (happy, content)",y:"Latin gaudium, joy (gaudere, to rejoice → English joy, and 'gaudy,' once meaning festively bright) → joyeux.",p:"adj"},
- {f:"têtu(e)",e:"stubborn",c:2,t:"persminus",x:1,y:"from tête, head (Latin testa, 'pot' — Roman slang for skull) — a têtu person is 'all head,' hard-headed.",p:"adj"},
+ {f:"têtu(e)",e:"stubborn",c:2,t:"persminus",y:"from tête, head (Latin testa, 'pot' — Roman slang for skull) — a têtu person is 'all head,' hard-headed.",p:"adj"},
  {f:"triste",e:"sad",c:2,t:"persminus",y:"Latin tristis → English writers borrowed 'tristesse' as this exact French noun; straight cognate.",p:"adj"},
  {f:"responsable",e:"responsible",c:2,t:"persplus",y:"Latin respondere, to answer/pledge back → English respond — a responsible person 'answers for' things.",p:"adj"},
  {f:"blond(e)",e:"blond",c:2,t:"phys",y:"Frankish *blund → English blond/blonde; a Germanic word the Franks brought into French.",p:"adj"},
@@ -1504,14 +1504,14 @@ var VOCAB=[
  {f:"roux",e:"red-haired",a:["rousse"],c:2,t:"phys",n:"f. rousse",y:"Latin russus, red → English russet; the hair-color roux and the reddish-brown butter-flour roux are the same word.",p:"adj"},
  {f:"de taille moyenne",e:"of average height",c:2,t:"phys",y:"taille, size (from tailler, to cut, Latin taliare → English tailor, detail) + moyenne, average (Latin medianus → English median).",p:"adj"},
  {f:"le médecin",e:"the doctor",c:2,t:"prof",y:"Latin medicus, physician (mederi, to heal → English medicine) — médecin keeps the word nearly intact.",p:"n"},
- {f:"l'infirmier",e:"the nurse (m.)",c:2,t:"prof",x:1,n:"m.",y:"Latin infirmus, 'not strong' (in- + firmus → English firm, infirm) — the nurse tends the infirm.",p:"n"},
- {f:"l'infirmière",e:"the nurse (f.)",c:2,t:"prof",x:1,n:"f.",y:"feminine of infirmier, +ère.",p:"n"},
+ {f:"l'infirmier",e:"the nurse (m.)",c:2,t:"prof",n:"m.",y:"Latin infirmus, 'not strong' (in- + firmus → English firm, infirm) — the nurse tends the infirm.",p:"n"},
+ {f:"l'infirmière",e:"the nurse (f.)",c:2,t:"prof",n:"f.",y:"feminine of infirmier, +ère.",p:"n"},
  {f:"l'avocat(e)",e:"the lawyer",c:2,t:"prof",y:"Latin advocatus, 'one called to aid' (ad- + vocare, to call → English vocal, advocate) — avocat and English 'advocate' are the same word; confusingly, avocat also means avocado, a separate Aztec-derived word that collided with it in form.",p:"n"},
- {f:"l'ingénieur",e:"the engineer",c:2,t:"prof",x:1,n:"m.",y:"Latin ingenium, natural cleverness (in- + gignere, to beget → English gene, ingenious) — an engineer is, at root, 'an ingenious person.'",p:"n"},
- {f:"l'enseignant(e)",e:"the teacher",c:2,t:"prof",x:1,y:"from enseigner, to teach (Latin insignare, to mark out → English insignia, ensign) — a teacher 'marks the way.'",p:"n"},
- {f:"l'instituteur(-trice)",e:"the primary-school teacher",c:2,t:"prof",x:1,y:"Latin instituere, to set up (in- + statuere, to set → English institute, statute) — the one who 'establishes' young minds.",p:"n"},
+ {f:"l'ingénieur",e:"the engineer",c:2,t:"prof",n:"m.",y:"Latin ingenium, natural cleverness (in- + gignere, to beget → English gene, ingenious) — an engineer is, at root, 'an ingenious person.'",p:"n"},
+ {f:"l'enseignant(e)",e:"the teacher",c:2,t:"prof",y:"from enseigner, to teach (Latin insignare, to mark out → English insignia, ensign) — a teacher 'marks the way.'",p:"n"},
+ {f:"l'instituteur(-trice)",e:"the primary-school teacher",c:2,t:"prof",y:"Latin instituere, to set up (in- + statuere, to set → English institute, statute) — the one who 'establishes' young minds.",p:"n"},
  {f:"le boulanger",e:"the baker",c:2,t:"prof",y:"from boule, a round loaf (Latin bulla, round object → English bowl) — maker of round loaves.",p:"n"},
- {f:"le pâtissier",e:"the pastry chef",c:2,t:"prof",x:1,y:"from pâte, dough (Latin pasta → English paste, pasta) — the pastry-maker.",p:"n"},
+ {f:"le pâtissier",e:"the pastry chef",c:2,t:"prof",y:"from pâte, dough (Latin pasta → English paste, pasta) — the pastry-maker.",p:"n"},
  {f:"le cuisinier",e:"the cook",c:2,t:"prof",y:"from cuisine, kitchen (Latin coquere, to cook → English cook, culinary) — the cook.",p:"n"},
  {f:"le serveur",e:"the waiter",c:2,t:"prof",y:"from servir, to serve (Latin servire → English serve, servant, servile).",p:"n"},
  {f:"le coiffeur",e:"the hairdresser",c:2,t:"prof",y:"from coiffe, a headdress (Frankish *kuffja, cap) — the hairdresser 'does the head-covering.'",p:"n"},
@@ -1519,8 +1519,8 @@ var VOCAB=[
  {f:"le peintre",e:"the painter",c:2,t:"prof",y:"Latin pinctor (pingere, to paint → English paint, pigment, depict) — peintre and English 'painter' share this root.",p:"n"},
  {f:"le photographe",e:"the photographer",c:2,t:"prof",y:"Greek phōs/phōtos, light + graphein, to write — 'light-writer,' identical to English photographer.",p:"n"},
  {f:"le comptable",e:"the accountant",c:2,t:"prof",y:"from compter, to count (Latin computare → English compute) — the one who counts (accounts).",p:"n"},
- {f:"le fonctionnaire",e:"the civil servant",c:2,t:"prof",x:1,y:"Latin functio, performance (fungi, to perform → English function, defunct) — a civil servant performs a 'function' of the state.",p:"n"},
- {f:"l'ouvrier(-ière)",e:"the worker, the laborer",c:2,t:"prof",x:1,y:"from œuvre, a work (Latin opera → English opera, operate) — a worker produces œuvres.",p:"n"},
+ {f:"le fonctionnaire",e:"the civil servant",c:2,t:"prof",y:"Latin functio, performance (fungi, to perform → English function, defunct) — a civil servant performs a 'function' of the state.",p:"n"},
+ {f:"l'ouvrier(-ière)",e:"the worker, the laborer",c:2,t:"prof",y:"from œuvre, a work (Latin opera → English opera, operate) — a worker produces œuvres.",p:"n"},
  {f:"le pharmacien(ne)",e:"the pharmacist",c:2,t:"prof",y:"Greek pharmakon, drug — and also 'poison,' the same word covering both → English pharmacy.",p:"n"},
  {f:"l'agent immobilier",e:"the real-estate agent",c:2,t:"prof",n:"m.",y:"agent (Latin agere, to act → English act) + immobilier, im- + mobile (Latin mobilis, movable) — the agent for 'immovable property,' real estate.",p:"n"},
  {f:"la femme au foyer",e:"the homemaker (f.)",c:2,t:"prof",y:"femme (woman) + au foyer, 'at the hearth' (Latin focus, hearth → English focus — the hearth was literally the household's center).",p:"n"},
@@ -1533,13 +1533,13 @@ var VOCAB=[
  {f:"la marraine",e:"the godmother",c:2,t:"famstep",y:"a parallel formation to parrain from Latin matrina (mater, mother) — the godmother.",p:"n"},
  {f:"les grands-parents",e:"the grandparents",c:2,t:"famgen",n:"m. pl.",y:"grands (big) + parents (Latin parentes, 'those who bring forth,' parere, to give birth → English parent) — 'big parents.'",p:"n"},
  {f:"les parents",e:"the parents",c:2,t:"famcore",n:"m. pl.",y:"Latin parentes, 'those who bring forth' (parere, to give birth → English generate, parent).",p:"n"},
- {f:"pacsé",e:"in a civil union",c:2,t:"status",x:1,y:"from PACS, Pacte civil de solidarité, France's 1999 civil-union law — pacsé is 'PACS'd,' a verb built from the acronym.",p:"adj"},
+ {f:"pacsé",e:"in a civil union",c:2,t:"status",y:"from PACS, Pacte civil de solidarité, France's 1999 civil-union law — pacsé is 'PACS'd,' a verb built from the acronym.",p:"adj"},
  {f:"finir",e:"to finish",c:2,t:"verb",y:"Latin finire, to end/bound (finis, boundary → English finish, finite, define) — same root, still visible in the -is- of finissons.",p:"v"},
  {f:"faire",e:"to do / to make",c:2,t:"verb",y:"Latin facere → English fact, factory, manufacture — one of the most productive Latin roots in English.",p:"v"},
  /* ===== Chapter 3 : daily routine, leisure & sport, household chores, weather, months, telling time, numbers 100–1 000 000 ===== */
  {f:"deux cents",e:"200",c:3,t:"num",y:"deux (two, Latin duo) + cents (Latin centum → English century, percent) = 200.",p:"num"},
  {f:"se lever",e:"to get up",c:3,t:"routine",y:"Latin levare, to raise → English lever, elevate, levitate — 'to raise oneself.'",p:"v"},
- {f:"se réveiller",e:"to wake up",c:3,t:"routine",x:1,y:"re- (again) + veiller, to be awake (Latin vigilare → English vigil, vigilant) — 'to wake again.'",p:"v"},
+ {f:"se réveiller",e:"to wake up",c:3,t:"routine",y:"re- (again) + veiller, to be awake (Latin vigilare → English vigil, vigilant) — 'to wake again.'",p:"v"},
  {f:"se doucher",e:"to take a shower",c:3,t:"routine",y:"from douche, a shower (Italian doccia, a water pipe) — English 'douche' is the same loanword.",p:"v"},
  {f:"s'habiller",e:"to get dressed",c:3,t:"routine",y:"from habit, clothing (Latin habitus, one's bearing/dress → English habit, in its monk's-robe sense).",p:"v"},
  {f:"se brosser les dents",e:"to brush one's teeth",c:3,t:"routine",y:"brosser, from brosse (Frankish bristle-root, see Ch1) + les dents (Latin dens/dentis → English dental).",p:"v"},
@@ -1547,27 +1547,27 @@ var VOCAB=[
  {f:"se coucher",e:"to go to bed",c:3,t:"routine",y:"Latin collocare, to lay in place (com- + locare, to place → English locate) — a couch is literally 'a laying-place.'",p:"v"},
  {f:"s'amuser",e:"to have fun",c:3,t:"routine",y:"à + muser, to idle/gaze about (Old French muse) → English amuse, muse.",p:"v"},
  {f:"se coiffer",e:"to style one's hair",c:3,t:"routine",y:"from coiffe, headdress (Frankish *kuffja, cap) — same root as le coiffeur, Ch2.",p:"v"},
- {f:"se dépêcher",e:"to hurry",c:3,t:"routine",x:1,y:"dé- (undo) + Old French empeechier, to hinder (Latin impedicare, to entangle the feet → English impede, pedal) — 'to un-hinder oneself.'",p:"v"},
- {f:"s'ennuyer",e:"to get bored",c:3,t:"routine",x:1,y:"from ennui, boredom (Latin in odio, 'in hatred') — see ennuyeux, Ch2.",p:"v"},
+ {f:"se dépêcher",e:"to hurry",c:3,t:"routine",y:"dé- (undo) + Old French empeechier, to hinder (Latin impedicare, to entangle the feet → English impede, pedal) — 'to un-hinder oneself.'",p:"v"},
+ {f:"s'ennuyer",e:"to get bored",c:3,t:"routine",y:"from ennui, boredom (Latin in odio, 'in hatred') — see ennuyeux, Ch2.",p:"v"},
  {f:"se laver",e:"to wash (oneself)",c:3,t:"routine",y:"Latin lavare → English lave, lavatory, launder.",p:"v"},
  {f:"se peigner",e:"to comb one's hair",c:3,t:"routine",y:"from peigne, a comb (Latin pecten → English 'pectinate,' comb-shaped, a rare biology term).",p:"v"},
  {f:"se préparer",e:"to get ready",c:3,t:"routine",y:"Latin praeparare (prae- + parare, to make ready → English prepare, apparatus).",p:"v"},
  {f:"se promener",e:"to take a walk",c:3,t:"routine",y:"pro- (forward) + mener, to lead (Latin minare, to drive cattle with threats → English menace!) — a walk is 'leading oneself forward.'",p:"v"},
  {f:"se raser",e:"to shave",c:3,t:"routine",y:"Latin radere, to scrape → English raze, razor — the same root, unmistakably.",p:"v"},
  {f:"se reposer",e:"to rest",c:3,t:"routine",y:"re- + poser, to place/rest (Latin pausare → English pause, pose) — 'to pause oneself.'",p:"v"},
- {f:"prendre le petit-déjeuner",e:"to have breakfast",c:3,t:"routine",x:1,y:"petit-déjeuner, from desjeuner, 'to break the fast' (dé- + jeûner, Latin jejunus → English jejune) — the same idea as English breakfast.",p:"v"},
- {f:"déjeuner",e:"to have lunch",c:3,t:"routine",x:1,y:"same 'break the fast' root as petit-déjeuner — shifted in France to mean midday lunch.",p:"v"},
- {f:"dîner",e:"to have dinner",c:3,t:"routine",x:1,y:"Vulgar Latin disjejunare, 'to break the fast' — the very same root as déjeuner, remarkably, just drifted to a different meal over time.",p:"v"},
+ {f:"prendre le petit-déjeuner",e:"to have breakfast",c:3,t:"routine",y:"petit-déjeuner, from desjeuner, 'to break the fast' (dé- + jeûner, Latin jejunus → English jejune) — the same idea as English breakfast.",p:"v"},
+ {f:"déjeuner",e:"to have lunch",c:3,t:"routine",y:"same 'break the fast' root as petit-déjeuner — shifted in France to mean midday lunch.",p:"v"},
+ {f:"dîner",e:"to have dinner",c:3,t:"routine",y:"Vulgar Latin disjejunare, 'to break the fast' — the very same root as déjeuner, remarkably, just drifted to a different meal over time.",p:"v"},
  {f:"rentrer à la maison",e:"to come home (with the destination spelled out)",c:3,t:"routine",n:"vs rentrer (to go back, to return)",y:"rentrer, re- + entrer (Latin intrare → English enter) + maison (Latin mansio, a staying-place → English mansion) — 'to re-enter the mansion.'",p:"v"},
- {f:"faire de la randonnée",e:"to go hiking",c:3,t:"sport",x:1,y:"randonnée, from randon, a rush/gallop (Frankish *rant, a running) — the same root gives English 'random.'",p:"v"},
+ {f:"faire de la randonnée",e:"to go hiking",c:3,t:"sport",y:"randonnée, from randon, a rush/gallop (Frankish *rant, a running) — the same root gives English 'random.'",p:"v"},
  {f:"faire les magasins",e:"to go shopping (to browse the stores)",c:3,t:"outings",n:"vs faire les courses (grocery shopping)",y:"magasin, Arabic makhāzin (storehouses) via Italian — the same root gives English 'magazine,' originally a storehouse.",p:"v"},
  {f:"faire du vélo",e:"to ride a bike",a:["faire de la bicyclette"],c:3,t:"sport",y:"vélo, short for vélocipède (Latin velox, swift + pes, foot → English velocity, pedal) — 'the swift-foot.'",p:"v"},
  {f:"aller au restaurant",e:"to go to a restaurant",c:3,t:"outings",y:"restaurant, from restaurer, to restore (Latin restaurare → English restore) — originally a restorative-broth shop; English borrowed the noun whole.",p:"v"},
  {f:"faire du surf",e:"to surf",c:3,t:"sport",y:"surf is the English loanword, itself of obscure origin (possibly a sailor's corruption of 'suff').",p:"v"},
- {f:"regarder la télé",e:"to watch TV",c:3,t:"hobbies",x:1,y:"regarder, re- + garder, to watch (Frankish *wardon → English ward, guard, regard) + télé, short for télévision (Greek tēle, far + Latin visio, sight).",p:"v"},
+ {f:"regarder la télé",e:"to watch TV",c:3,t:"hobbies",y:"regarder, re- + garder, to watch (Frankish *wardon → English ward, guard, regard) + télé, short for télévision (Greek tēle, far + Latin visio, sight).",p:"v"},
  {f:"jouer de la guitare",e:"to play the guitar",c:3,t:"music",y:"jouer, Latin jocari, to jest/play (jocus → English jocular) + guitare, from Greek kithara — English guitar is this same word.",p:"v"},
  {f:"aller à la plage",e:"to go to the beach",c:3,t:"outings",y:"plage, from Italian piaggia, a sloping shore (Greek plagios, slanting) — the beach as 'the slope.'",p:"v"},
- {f:"aller en boîte",e:"to go clubbing",c:3,t:"outings",x:1,y:"boîte, box (Latin buxus, boxwood, the tree first boxes were carved from → English box) — 'to go into the box,' a small packed club.",p:"v"},
+ {f:"aller en boîte",e:"to go clubbing",c:3,t:"outings",y:"boîte, box (Latin buxus, boxwood, the tree first boxes were carved from → English box) — 'to go into the box,' a small packed club.",p:"v"},
  {f:"faire de la natation",e:"to do swimming as a sport (faire expression)",c:3,t:"sport",n:"vs nager (the one-word verb)",y:"natation, Latin natare, to swim → English natant, natatorium (a swimming pool's formal name).",p:"v"},
  {f:"faire du camping",e:"to go camping",c:3,t:"sport",y:"camping, English loanword, from camp (Latin campus, a field → English campus) — the field where a tent goes up.",p:"v"},
  {f:"lire un livre",e:"to read a book",c:3,t:"hobbies",y:"lire (Latin legere → English legible) + livre (Latin liber, tree-bark once written on → English library).",p:"v"},
@@ -1575,14 +1575,14 @@ var VOCAB=[
  {f:"faire du sport",e:"to play sports / to exercise",c:3,t:"sport",y:"sport, from Old French desport ('carry away, amuse') → English sport → borrowed back into French; see sportif, Ch2.",p:"v"},
  {f:"faire de la musculation",e:"to do weightlifting",c:3,t:"sport",y:"muscle, Latin musculus, 'little mouse' — a flexing bicep looked like a mouse moving under the skin.",p:"v"},
  {f:"faire du cheval",e:"to go horseback riding (casual)",c:3,t:"sport",y:"cheval, Latin caballus, a workhorse — the colloquial Latin word (not classical equus) that gives English cavalry, chivalry, cavalier.",p:"v"},
- {f:"faire de l'équitation",e:"to do horseback riding (discipline)",c:3,t:"sport",x:1,y:"équitation, Latin equitare, to ride (equus, horse → English equine, equestrian) — the classical-register twin of cheval.",p:"v"},
+ {f:"faire de l'équitation",e:"to do horseback riding (discipline)",c:3,t:"sport",y:"équitation, Latin equitare, to ride (equus, horse → English equine, equestrian) — the classical-register twin of cheval.",p:"v"},
  {f:"faire de la danse",e:"to do dance, to take dance (as an activity, faire expression)",c:3,t:"sport",n:"vs danser (the one-word verb)",y:"Frankish *dansōn → English dance — French and English share this Germanic-origin word outright.",p:"v"},
- {f:"faire de l'escalade",e:"to go rock climbing",c:3,t:"sport",x:1,y:"escalader, to scale (Latin scala, ladder → English scale, escalate, escalator) — climbing is 'laddering up.'",p:"v"},
+ {f:"faire de l'escalade",e:"to go rock climbing",c:3,t:"sport",y:"escalader, to scale (Latin scala, ladder → English scale, escalate, escalator) — climbing is 'laddering up.'",p:"v"},
  {f:"faire du bricolage",e:"to do home improvements / DIY",c:3,t:"hobbies",y:"bricoler, to tinker (Old French bricole, a catapult's unpredictable rebound) — English 'bricolage' borrowed the exact word for improvised design.",p:"v"},
  {f:"faire du jardinage",e:"to do gardening",c:3,t:"hobbies",y:"jardin, garden (Frankish *gardo → English garden, yard) — all the same Germanic root.",p:"v"},
  {f:"faire les courses",e:"to do the grocery shopping (errands, food)",c:3,t:"hobbies",n:"vs faire les magasins (browsing stores)",y:"course, a run/errand (Latin cursus, a running → English course, cursor, current) — errands as 'runnings.'",p:"v"},
  {f:"sortir",e:"to go out, to leave (also: to go out socially)",c:3,t:"outings",y:"Latin sortiri, to draw lots/obtain by fate (sors, lot → English sort, consort, resort) — the shift to 'go out' happened in Vulgar Latin.",p:"v"},
- {f:"pique-niquer",e:"to have a picnic",c:3,t:"outings",x:1,y:"pique (to peck, from piquer) + nique (a trifle, echoic) — English borrowed the whole compound as picnic.",p:"v"},
+ {f:"pique-niquer",e:"to have a picnic",c:3,t:"outings",y:"pique (to peck, from piquer) + nique (a trifle, echoic) — English borrowed the whole compound as picnic.",p:"v"},
  {f:"peindre",e:"to paint",c:3,t:"hobbies",y:"Latin pingere, to paint → English paint, pigment, depict, picture.",p:"v"},
  {f:"cuisiner",e:"to cook (one-word verb)",c:3,t:"hobbies",n:"The one-word verb. The chores card wants the faire expression: faire la cuisine.",y:"from cuisine, kitchen (Latin coquere, to cook → English cook, culinary, concoct); see le cuisinier, Ch2.",p:"v"},
  {f:"visiter un musée",e:"to visit a museum",c:3,t:"outings",y:"visiter (Latin visitare, to go see → English visit) + musée (Greek Mouseion, 'shrine of the Muses' → English museum).",p:"v"},
@@ -1590,16 +1590,16 @@ var VOCAB=[
  {f:"jouer au foot",e:"to play soccer",c:3,t:"games",y:"foot is the English loanword (football), clipped in French to foot.",p:"v"},
  {f:"jouer au basket",e:"to play basketball",c:3,t:"games",y:"basket, the English loanword (basketball), clipped the same way as foot.",p:"v"},
  {f:"jouer aux cartes",e:"to play cards",c:3,t:"games",y:"carte, Latin charta, a papyrus sheet → English card, chart; see la carte, Ch1.",p:"v"},
- {f:"jouer aux échecs",e:"to play chess",c:3,t:"games",x:1,y:"échecs, from eschec, 'check!' in chess — ultimately Persian shah, 'king' (checkmate = shah mat, 'the king is helpless'); English check and chess trace the same path.",p:"v"},
- {f:"jouer aux jeux vidéo",e:"to play video games",c:3,t:"games",x:1,y:"jeu, Latin jocus, a game (→ English jocular) + vidéo, Latin videre, to see (→ English video, vision).",p:"v"},
+ {f:"jouer aux échecs",e:"to play chess",c:3,t:"games",y:"échecs, from eschec, 'check!' in chess — ultimately Persian shah, 'king' (checkmate = shah mat, 'the king is helpless'); English check and chess trace the same path.",p:"v"},
+ {f:"jouer aux jeux vidéo",e:"to play video games",c:3,t:"games",y:"jeu, Latin jocus, a game (→ English jocular) + vidéo, Latin videre, to see (→ English video, vision).",p:"v"},
  {f:"jouer de la batterie",e:"to play the drums",c:3,t:"music",y:"batterie, from battre, to beat (Latin battuere → English batter, battery, combat) — a drum kit is 'the beating-set,' same word as an electrical battery.",p:"v"},
- {f:"jouer de la flûte",e:"to play the flute",c:3,t:"music",x:1,y:"flûte, of imitative/uncertain origin, possibly linked to Latin flare, to blow (→ English inflate); English flute is the same loanword.",p:"v"},
+ {f:"jouer de la flûte",e:"to play the flute",c:3,t:"music",y:"flûte, of imitative/uncertain origin, possibly linked to Latin flare, to blow (→ English inflate); English flute is the same loanword.",p:"v"},
  {f:"jouer du piano",e:"to play the piano",c:3,t:"music",y:"piano, short for Italian pianoforte, 'soft-loud' — named for the instrument's dynamic range, unlike the harpsichord.",p:"v"},
  {f:"aller à un concert",e:"to go to a concert",c:3,t:"outings",y:"concert, Latin concertare (com- + certare, to contend → English certain) — originally 'a striving together,' softened into 'playing together.'",p:"v"},
- {f:"aller à la bibliothèque",e:"to go to the library",c:3,t:"outings",x:1,y:"Greek biblion, book (→ English Bible, bibliography) + thēkē, a storage place — 'book-storehouse.'",p:"v"},
+ {f:"aller à la bibliothèque",e:"to go to the library",c:3,t:"outings",y:"Greek biblion, book (→ English Bible, bibliography) + thēkē, a storage place — 'book-storehouse.'",p:"v"},
  {f:"aller au musée",e:"to go to the museum",c:3,t:"outings",y:"see visiter un musée — Greek Mouseion, shrine of the Muses.",p:"v"},
  {f:"aller au cinéma",e:"to go to the movies",c:3,t:"outings",y:"short for cinématographe (Greek kinēma, movement + graphein, to write) — 'movement-writing,' identical formation to English cinema.",p:"v"},
- {f:"faire le ménage",e:"to do the housework",c:3,t:"chores",x:1,y:"ménage, from Latin mansio via maison — housework as 'the household-doing'; the same root as English 'menage' and, distantly, 'manage.'",p:"v"},
+ {f:"faire le ménage",e:"to do the housework",c:3,t:"chores",y:"ménage, from Latin mansio via maison — housework as 'the household-doing'; the same root as English 'menage' and, distantly, 'manage.'",p:"v"},
  {f:"passer l'aspirateur",e:"to vacuum",c:3,t:"chores",y:"aspirateur, from aspirer, to breathe in (Latin ad- + spirare, to breathe → English aspire, respire, spirit) — the vacuum, 'the in-breather.'",p:"v"},
  {f:"faire la lessive",e:"to do the laundry",c:3,t:"chores",y:"lessive, Latin lixivia, 'lye-water' (lix, ash-water) — English 'lixiviate' is the same rare root; wash was once done with ash-lye, not soap.",p:"v"},
  {f:"faire la cuisine",e:"to cook (faire expression)",c:3,t:"chores",n:"The faire expression. The leisure card wants the one-word verb: cuisiner.",y:"see cuisiner / le cuisinier — Latin coquere, to cook.",p:"v"},
@@ -1619,28 +1619,28 @@ var VOCAB=[
  {f:"il fait froid",e:"it's cold",c:3,t:"weather",y:"froid, Latin frigidus → English frigid, refrigerate.",p:"expr"},
  {f:"il fait frais",e:"it's cool",c:3,t:"weather",y:"frais, Frankish *frisk → English fresh — a Germanic loan into French, not Latin this time.",p:"expr"},
  {f:"il y a du soleil",e:"it's sunny (there is sunshine)",c:3,t:"weather",n:"vs ensoleillé (the adjective)",y:"soleil, Latin sol → English solar, solstice.",p:"expr"},
- {f:"le temps est nuageux",e:"it's cloudy",a:["il fait gris","le temps est couvert","il y a des nuages","nuageux","couvert"],c:3,t:"weather",x:1,n:"Also taught: il fait gris · le temps est couvert · il y a des nuages",y:"nuage, cloud, from Latin nubes — the same family gives English 'nuance,' which first meant a subtle shading of cloud-color.",p:"expr"},
+ {f:"le temps est nuageux",e:"it's cloudy",a:["il fait gris","le temps est couvert","il y a des nuages","nuageux","couvert"],c:3,t:"weather",n:"Also taught: il fait gris · le temps est couvert · il y a des nuages",y:"nuage, cloud, from Latin nubes — the same family gives English 'nuance,' which first meant a subtle shading of cloud-color.",p:"expr"},
  {f:"un orage",e:"a (thunder)storm",c:3,t:"weather",y:"orage, from Latin aura, a breeze (→ English aura) — a storm as 'a great gust.'",p:"n"},
- {f:"il y a du brouillard",e:"it's foggy",c:3,t:"weather",x:1,y:"brouillard, from brouiller, to blur/mix up (Frankish *brod, broth) — fog 'muddles' the view, the same root idea as English 'broth' and 'imbroglio.'",p:"expr"},
- {f:"ensoleillé",e:"sunny (the adjective: the weather is …)",a:["le temps est ensoleillé"],c:3,t:"weather",x:1,n:"vs il y a du soleil (the expression)",y:"en- + soleil (sun) — 'sunned,' i.e. sunny.",p:"adj"},
+ {f:"il y a du brouillard",e:"it's foggy",c:3,t:"weather",y:"brouillard, from brouiller, to blur/mix up (Frankish *brod, broth) — fog 'muddles' the view, the same root idea as English 'broth' and 'imbroglio.'",p:"expr"},
+ {f:"ensoleillé",e:"sunny (the adjective: the weather is …)",a:["le temps est ensoleillé"],c:3,t:"weather",n:"vs il y a du soleil (the expression)",y:"en- + soleil (sun) — 'sunned,' i.e. sunny.",p:"adj"},
  {f:"orageux",e:"stormy (the weather is…)",a:["le temps est orageux"],c:3,t:"weather",y:"adjective of orage (see above) — stormy.",p:"adj"},
  {f:"pluvieux",e:"rainy (the weather is…)",a:["le temps est pluvieux"],c:3,t:"weather",y:"Latin pluvia, rain (pluere → see il pleut) → English pluvial, pluvious.",p:"adj"},
  {f:"le printemps",e:"the spring",c:3,t:"season",n:"au printemps — in the spring (the odd one out: au, not en)",y:"prime (Latin primus, first → English prime) + temps (Latin tempus, time → English temporal) — 'the first season' of the year.",p:"n"},
- {f:"l'été",e:"the summer",c:3,t:"season",x:1,n:"m. — en été — in the summer",y:"Latin aestas, summer (aestus, heat → English estival, and distantly 'estuary').",p:"n"},
- {f:"l'automne",e:"the fall / autumn",c:3,t:"season",x:1,n:"m. — en automne — in the fall",y:"Latin autumnus, of debated (possibly Etruscan) origin → English autumn, straight cognate.",p:"n"},
+ {f:"l'été",e:"the summer",c:3,t:"season",n:"m. — en été — in the summer",y:"Latin aestas, summer (aestus, heat → English estival, and distantly 'estuary').",p:"n"},
+ {f:"l'automne",e:"the fall / autumn",c:3,t:"season",n:"m. — en automne — in the fall",y:"Latin autumnus, of debated (possibly Etruscan) origin → English autumn, straight cognate.",p:"n"},
  {f:"l'hiver",e:"the winter",c:3,t:"season",n:"m. — en hiver — in the winter",y:"Latin hibernum (tempus), 'winter (time)' → English hibernate is this exact root.",p:"n"},
  {f:"janvier",e:"January",c:3,t:"cal",y:"Latin Ianuarius, month of Janus, the two-faced god of doorways and beginnings → English January.",p:"n"},
- {f:"février",e:"February",c:3,t:"cal",x:1,y:"Latin Februarius, from februa, a Roman purification festival held that month → English February.",p:"n"},
+ {f:"février",e:"February",c:3,t:"cal",y:"Latin Februarius, from februa, a Roman purification festival held that month → English February.",p:"n"},
  {f:"mars",e:"March",c:3,t:"cal",y:"Latin Martius, month of Mars, god of war → English March.",p:"n"},
  {f:"avril",e:"April",c:3,t:"cal",y:"Latin Aprilis, possibly from aperire, to open (→ English aperture) — the month things 'open up.'",p:"n"},
  {f:"mai",e:"May",c:3,t:"cal",y:"Latin Maius, month of Maia, a Roman goddess of growth → English May.",p:"n"},
  {f:"juin",e:"June",c:3,t:"cal",y:"Latin Junius, month of Juno, queen of the gods → English June.",p:"n"},
  {f:"juillet",e:"July",c:3,t:"cal",y:"Latin Julius, renamed for Julius Caesar, born that month → English July.",p:"n"},
- {f:"août",e:"August",c:3,t:"cal",x:1,y:"Latin Augustus, renamed for Emperor Augustus → English August; French nearly lost every letter but kept a circumflex as a memory of the s.",p:"n"},
+ {f:"août",e:"August",c:3,t:"cal",y:"Latin Augustus, renamed for Emperor Augustus → English August; French nearly lost every letter but kept a circumflex as a memory of the s.",p:"n"},
  {f:"septembre",e:"September",c:3,t:"cal",y:"Latin septem, seven (→ English septet) — originally the seventh month, before January and February were added to the calendar's front.",p:"n"},
  {f:"octobre",e:"October",c:3,t:"cal",y:"Latin octo, eight (→ English octet, octopus) — originally the eighth month, same shift as septembre.",p:"n"},
  {f:"novembre",e:"November",c:3,t:"cal",y:"Latin novem, nine (→ English novena) — originally the ninth month.",p:"n"},
- {f:"décembre",e:"December",c:3,t:"cal",x:1,y:"Latin decem, ten (→ English decade, decimal) — originally the tenth month, hence 'Decem-ber.'",p:"n"},
+ {f:"décembre",e:"December",c:3,t:"cal",y:"Latin decem, ten (→ English decade, decimal) — originally the tenth month, hence 'Decem-ber.'",p:"n"},
  {f:"quelle heure est-il",e:"what time is it?",c:3,t:"time",y:"heure, Latin hora → English hour; quelle, Latin qualis → English quality — 'what hour is it.'",p:"expr"},
  {f:"midi",e:"noon",c:3,t:"time",y:"mi- (Latin medius, middle → English median) + di, day (Latin dies) — 'mid-day,' noon.",p:"n"},
  {f:"minuit",e:"midnight",c:3,t:"time",y:"mi- (middle) + nuit (Latin nox/noctis, night → English nocturnal) — 'mid-night.'",p:"n"},
@@ -1649,17 +1649,17 @@ var VOCAB=[
  {f:"moins le quart",e:"quarter to",c:3,t:"time",y:"moins, less (Latin minus → English minus) + le quart — 'minus the quarter.'",p:"expr"},
  /* ===== Chapter 4 : places in town, transport, directions & place, travel expressions ===== */
  {f:"la banque",e:"the bank",c:4,t:"place",y:"Italian banca, a bench/counter — medieval money-changers sat on one; English bank, bankrupt (banca rotta, 'broken bench') come the same way.",p:"n"},
- {f:"la bibliothèque",e:"the library",c:4,t:"place",x:1,y:"Greek biblion, book (→ English Bible, bibliography) + thēkē, a storage place — 'book-storehouse'; see aller à la bibliothèque.",p:"n"},
+ {f:"la bibliothèque",e:"the library",c:4,t:"place",y:"Greek biblion, book (→ English Bible, bibliography) + thēkē, a storage place — 'book-storehouse'; see aller à la bibliothèque.",p:"n"},
  {f:"le café",e:"the café, the coffee shop",c:4,t:"place",y:"Arabic qahwa → Turkish kahve → café; English coffee is the same word by a different spelling path.",p:"n"},
- {f:"le cinéma",e:"the movie theater",c:4,t:"place",x:1,y:"short for cinématographe (Greek kinēma, movement + graphein, to write) — identical formation to English cinema.",p:"n"},
+ {f:"le cinéma",e:"the movie theater",c:4,t:"place",y:"short for cinématographe (Greek kinēma, movement + graphein, to write) — identical formation to English cinema.",p:"n"},
  {f:"le commissariat de police",e:"the police station",c:4,t:"place",y:"commissariat, from commettre, to entrust (Latin com- + mittere, to send → English commit, mission) + police (Greek politeia, civic administration → English politics).",p:"n"},
- {f:"l'église",e:"the church",c:4,t:"place",x:1,n:"f.",y:"Greek ekklēsia, 'an assembly called out' (ek- + kalein, to call → English ecclesiastical) → église.",p:"n"},
+ {f:"l'église",e:"the church",c:4,t:"place",n:"f.",y:"Greek ekklēsia, 'an assembly called out' (ek- + kalein, to call → English ecclesiastical) → église.",p:"n"},
  {f:"la gare",e:"the train station",c:4,t:"place",y:"from garer, to park/dock a boat (Frankish *waron, to watch over → English wary, aware) — a station as 'the parking place.'",p:"n"},
- {f:"l'hôpital",e:"the hospital",c:4,t:"place",x:1,n:"m.",y:"Latin hospitalis (hospes, guest/host → English host, hospitality) — hôpital, hostel, and hotel are triplets from one root, split by sound-change and borrowing.",p:"n"},
- {f:"l'hôtel",e:"the hotel",c:4,t:"place",x:1,n:"m.",y:"same hospes root as hôpital — the circumflex again hides a lost s (hostel).",p:"n"},
+ {f:"l'hôpital",e:"the hospital",c:4,t:"place",n:"m.",y:"Latin hospitalis (hospes, guest/host → English host, hospitality) — hôpital, hostel, and hotel are triplets from one root, split by sound-change and borrowing.",p:"n"},
+ {f:"l'hôtel",e:"the hotel",c:4,t:"place",n:"m.",y:"same hospes root as hôpital — the circumflex again hides a lost s (hostel).",p:"n"},
  {f:"le magasin",e:"the store",c:4,t:"place",y:"Arabic makhāzin, storehouses, via Italian — the same root gives English 'magazine'; see faire les magasins.",p:"n"},
  {f:"la mairie",e:"the city hall",a:["l’hôtel de ville"],c:4,t:"place",n:"Also taught: l’hôtel de ville",y:"from maire, mayor (Latin major, greater → English major, mayor) — one root, two sound-paths.",p:"n"},
- {f:"le musée",e:"the museum",c:4,t:"place",x:1,y:"Greek Mouseion, 'shrine of the Muses' → English museum; see aller au musée.",p:"n"},
+ {f:"le musée",e:"the museum",c:4,t:"place",y:"Greek Mouseion, 'shrine of the Muses' → English museum; see aller au musée.",p:"n"},
  {f:"la poste",e:"the post office",c:4,t:"place",y:"Latin positus, placed (ponere, to place → English position) — relay stations were 'posted' along a route; English post is the same word.",p:"n"},
  {f:"la pharmacie",e:"the pharmacy",c:4,t:"place",y:"Greek pharmakon, drug (and, confusingly, also poison) → English pharmacy; see le pharmacien.",p:"n"},
  {f:"le restaurant",e:"the restaurant",c:4,t:"place",y:"from restaurer, to restore (Latin restaurare → English restore) — originally a restorative-broth shop; English borrowed the noun whole.",p:"n"},
@@ -1667,8 +1667,8 @@ var VOCAB=[
  {f:"la piscine",e:"the swimming pool",c:4,t:"place",y:"Latin piscina, a fishpond (piscis, fish → English piscine, Pisces) — a pool was first a fish-pond.",p:"n"},
  {f:"le stade",e:"the stadium",c:4,t:"place",y:"Greek stadion, a fixed-length running track (also a unit of distance) → English stadium — the same word.",p:"n"},
  {f:"le centre commercial",e:"the shopping mall",c:4,t:"place",y:"centre (Greek kentron, a sharp point → English center) + commercial (Latin commercium, com- + merx, merchandise → English commerce).",p:"n"},
- {f:"la librairie",e:"the bookstore",c:4,t:"place",x:1,y:"Latin librarium, a bookcase (liber, book → English library) — confusingly, a librairie SELLS books; a lending library is une bibliothèque.",p:"n"},
- {f:"la boulangerie",e:"the bakery",c:4,t:"place",x:1,y:"from boule, round loaf, see le boulanger.",p:"n"},
+ {f:"la librairie",e:"the bookstore",c:4,t:"place",y:"Latin librarium, a bookcase (liber, book → English library) — confusingly, a librairie SELLS books; a lending library is une bibliothèque.",p:"n"},
+ {f:"la boulangerie",e:"the bakery",c:4,t:"place",y:"from boule, round loaf, see le boulanger.",p:"n"},
  {f:"le pont",e:"the bridge",c:4,t:"place",y:"Latin pons/pontis → English pontoon, and pontiff — literally 'bridge-builder,' an old Roman priestly title later inherited by the Pope.",p:"n"},
  {f:"le carrefour",e:"the intersection (major / crossroads)",c:4,t:"place",n:"The bigger, major intersection (crossroads). A small street crossing is un croisement.",y:"Latin quadrifurcus, 'four-forked' (quattuor, four + furca, fork → English fork) — the classic four-way crossing.",p:"n"},
  {f:"le rond-point",e:"the roundabout",c:4,t:"place",y:"rond (round, Latin rotundus → English round, rotund) + point (Latin punctum → English point, puncture).",p:"n"},
@@ -1682,22 +1682,22 @@ var VOCAB=[
  {f:"la voiture",e:"the car",c:4,t:"transport",y:"Latin vectura, a conveyance (vehere, to carry → English vehicle, vector); see laver la voiture.",p:"n"},
  {f:"le bus",e:"the bus (city bus)",c:4,t:"transport",n:"vs l'autocar (long-distance or tour coach)",y:"short for autobus — Latin omnibus, 'for all' (omnis, all → English omnipresent) — a bus is literally 'the for-everyone (vehicle).'",p:"n"},
  {f:"l'autocar",e:"the coach (long-distance or tour bus)",c:4,t:"transport",n:"m. — vs le bus (city bus)",y:"auto- (self, Greek autos) + car — 'car' itself went French → English → back into French, from char/carre (Latin carrus, a wagon → English cargo, chariot).",p:"n"},
- {f:"le métro",e:"the subway",c:4,t:"transport",x:1,y:"short for métropolitain (Greek mētēr, mother + polis, city → English metropolis) — 'the metropolitan (railway).'",p:"n"},
+ {f:"le métro",e:"the subway",c:4,t:"transport",y:"short for métropolitain (Greek mētēr, mother + polis, city → English metropolis) — 'the metropolitan (railway).'",p:"n"},
  {f:"à pied",e:"on foot",c:4,t:"transport",y:"pied, Latin pes/pedis, foot → English pedal, pedestrian — 'on foot.'",p:"adv"},
- {f:"le covoiturage",e:"the carpooling",c:4,t:"transport",x:1,y:"co- (together, Latin cum) + voiturage (from voiture) — 'car-togethering,' carpooling.",p:"n"},
+ {f:"le covoiturage",e:"the carpooling",c:4,t:"transport",y:"co- (together, Latin cum) + voiturage (from voiture) — 'car-togethering,' carpooling.",p:"n"},
  {f:"le transport en commun",e:"the public transportation",c:4,t:"transport",y:"transport, Latin trans- + portare, to carry (→ English portable) + en commun, 'in common' (Latin communis → English common).",p:"n"},
- {f:"l'aéroport",e:"the airport",c:4,t:"transport",x:1,n:"m.",y:"aéro- (Greek aēr, air → English aerial) + port (Latin portus, harbor → English port) — 'air-harbor.'",p:"n"},
+ {f:"l'aéroport",e:"the airport",c:4,t:"transport",n:"m.",y:"aéro- (Greek aēr, air → English aerial) + port (Latin portus, harbor → English port) — 'air-harbor.'",p:"n"},
  {f:"à gauche",e:"to / on the left",c:4,t:"dir",y:"gauche, from Frankish *wenkjan, to totter/waver — English 'gauche' (socially awkward) is the same loanword; the left hand was long considered the clumsy one.",p:"v"},
  {f:"à droite",e:"to / on the right",c:4,t:"dir",y:"droite, Latin directus, straight (→ English direct) — the right hand was considered 'the correct one,' same bias as English 'right.'",p:"v"},
  {f:"tout droit",e:"straight ahead",c:4,t:"dir",y:"tout (all, Latin totus → English total) + droit (see à droite) — 'all straight,' i.e. straight ahead.",p:"adv"},
- {f:"jusqu'au bout de la rue",e:"to the end of the street",c:4,t:"dir",x:1,y:"bout, an end (from bouter, to strike/push, Frankish *botan → English butt, as in 'butt end') + rue (Latin ruga, a furrow → English rugose) — 'to the furrow's end.'",p:"v"},
+ {f:"jusqu'au bout de la rue",e:"to the end of the street",c:4,t:"dir",y:"bout, an end (from bouter, to strike/push, Frankish *botan → English butt, as in 'butt end') + rue (Latin ruga, a furrow → English rugose) — 'to the furrow's end.'",p:"v"},
  {f:"en face de",e:"across from",c:4,t:"dir",y:"face, Latin facies, appearance (→ English face, facial) — 'in the face of,' across from.",p:"prep"},
- {f:"à côté de",e:"next to",c:4,t:"dir",x:1,y:"côté, Latin costatum (costa, rib/side → English coast) — 'at the side of.'",p:"prep"},
+ {f:"à côté de",e:"next to",c:4,t:"dir",y:"côté, Latin costatum (costa, rib/side → English coast) — 'at the side of.'",p:"prep"},
  {f:"au coin de",e:"at the corner of",c:4,t:"dir",y:"coin, Latin cuneus, a wedge (→ English coin — early coins were struck with a wedge-shaped die) — a corner is 'a wedge-point.'",p:"prep"},
- {f:"près de",e:"near",c:4,t:"dir",x:1,y:"près, Latin pressus (premere, to press → English press, pressure) — 'pressed close,' near.",p:"prep"},
+ {f:"près de",e:"near",c:4,t:"dir",y:"près, Latin pressus (premere, to press → English press, pressure) — 'pressed close,' near.",p:"prep"},
  {f:"loin de",e:"far from",c:4,t:"dir",y:"loin, Latin longe, far (longus, long → English long, longitude) — 'far' as 'a long way.'",p:"prep"},
  {f:"devant",e:"in front of",c:4,t:"dir",y:"de- + avant (Latin ab ante, 'from before' → English advance, avant-garde) — 'in front of.'",p:"prep"},
- {f:"derrière",e:"behind",c:4,t:"dir",x:1,y:"de- + Latin retro, behind (→ English retro, rear).",p:"prep"},
+ {f:"derrière",e:"behind",c:4,t:"dir",y:"de- + Latin retro, behind (→ English retro, rear).",p:"prep"},
  {f:"entre",e:"between",c:4,t:"dir",y:"Latin inter → English inter-, between — a straight-line descendant.",p:"prep"},
  {f:"traversez le pont",e:"cross the bridge",c:4,t:"dir",y:"traverser, Latin trans- + vertere, to turn (→ English traverse, transverse, verse) — 'to turn across.'",p:"v"},
  {f:"excusez-moi",e:"excuse me (to get someone's attention or to ask to pass)",c:4,t:"expr",n:"vs pardon (a quick \"sorry\")",y:"Latin excusare (ex- + causa, a legal case → English cause, excuse) — 'to excuse' is 'to free from the case against you.'",p:"expr"},
@@ -1706,19 +1706,19 @@ var VOCAB=[
  {f:"je suis perdu(e)",e:"I'm lost",c:4,t:"expr",y:"perdu, from perdre, to lose (Latin perdere, per- + dare, to give away utterly → English perdition) — 'utterly given away,' lost.",p:"expr"},
  {f:"je voudrais",e:"I would like",c:4,t:"expr",y:"conditional of vouloir, Latin volere, to wish (→ English volition, voluntary) — 'I would wish.'",p:"expr"},
  {f:"où se trouve",e:"where is … located?",c:4,t:"expr",y:"trouver, debated origin, likely Vulgar Latin tropare, to compose (→ English trope, troubadour) — 'to find' once meant 'to compose a tune.'",p:"expr"},
- {f:"pourriez-vous",e:"could you …?",c:4,t:"expr",x:1,y:"conditional of pouvoir, Latin posse → English possible, potent — 'could you.'",p:"expr"},
+ {f:"pourriez-vous",e:"could you …?",c:4,t:"expr",y:"conditional of pouvoir, Latin posse → English possible, potent — 'could you.'",p:"expr"},
  {f:"l'aire de jeux",e:"the playground",c:4,t:"place",n:"f.",y:"aire, Latin area, an open space (→ English area) + jeux, games (Latin jocus → English jocular).",p:"n"},
- {f:"l'arrondissement",e:"the district, the borough",c:4,t:"place",x:1,n:"m.",y:"from arrondir, to round off (à- + rond, round, Latin rotundus → English round) — Paris's districts were drawn to round the city into administrative circles.",p:"n"},
- {f:"le bâtiment",e:"the building",c:4,t:"place",x:1,y:"from bâtir, to build (Frankish *bastjan, to weave/build with bast fiber) — a distant cousin of English 'baste,' to sew loosely.",p:"n"},
+ {f:"l'arrondissement",e:"the district, the borough",c:4,t:"place",n:"m.",y:"from arrondir, to round off (à- + rond, round, Latin rotundus → English round) — Paris's districts were drawn to round the city into administrative circles.",p:"n"},
+ {f:"le bâtiment",e:"the building",c:4,t:"place",y:"from bâtir, to build (Frankish *bastjan, to weave/build with bast fiber) — a distant cousin of English 'baste,' to sew loosely.",p:"n"},
  {f:"le boulevard",e:"the boulevard",c:4,t:"place",y:"from Dutch bolwerc, a rampart (→ English bulwark) — grand avenues were built where old city walls came down.",p:"n"},
  {f:"le centre-ville",e:"the downtown",c:4,t:"place",y:"centre + ville, Latin villa, a country estate (→ English village, villa) — 'city-center.'",p:"n"},
- {f:"le château",e:"the castle",c:4,t:"place",x:1,y:"Latin castellum, small fort (→ English castle); the circumflex hides a lost s: chasteau → château.",p:"n"},
+ {f:"le château",e:"the castle",c:4,t:"place",y:"Latin castellum, small fort (→ English castle); the circumflex hides a lost s: chasteau → château.",p:"n"},
  {f:"le croisement",e:"the crossing (minor intersection)",c:4,t:"place",n:"A smaller street crossing. A major intersection is un carrefour.",y:"from croiser, to cross (Latin crux/crucis, a cross → English crucial, crucifix) — a small crossing.",p:"n"},
  {f:"le fleuve",e:"the large river (flows into the sea)",c:4,t:"place",n:"vs la rivière (smaller, flows into another river)",y:"Latin fluvius, a river (fluere, to flow → English fluid, influence) — a fleuve specifically empties into the sea.",p:"n"},
  {f:"la rivière",e:"the river (smaller; flows into another river)",c:4,t:"place",n:"vs le fleuve (flows into the sea)",y:"Latin riparia, riverbank land (ripa, bank → English river, riparian) — a rivière feeds into a fleuve or another river.",p:"n"},
  {f:"la maison",e:"the house",c:4,t:"place",y:"Latin mansio, a staying-place → English mansion; see rentrer à la maison.",p:"n"},
  {f:"le passage piéton",e:"the crosswalk",c:4,t:"place",y:"passage (Latin passus, a step → English pass, passenger) + piéton (Latin pes/pedis, foot → English pedestrian).",p:"n"},
- {f:"le pâté de maisons",e:"the (city) block",c:4,t:"place",x:1,y:"pâté in its old literal sense, 'a lump/mass' (Latin pasta, dough → English paste, pastry) — a block as 'a lump of houses,' same root as the food pâté.",p:"n"},
+ {f:"le pâté de maisons",e:"the (city) block",c:4,t:"place",y:"pâté in its old literal sense, 'a lump/mass' (Latin pasta, dough → English paste, pastry) — a block as 'a lump of houses,' same root as the food pâté.",p:"n"},
  {f:"la piste cyclable",e:"the bike path",c:4,t:"place",y:"piste, Italian pista, a track (Latin pinsere, to pound → English piston) + cyclable, from cycle (Greek kyklos, wheel → English bicycle).",p:"n"},
  {f:"la rue",e:"the street",c:4,t:"place",y:"Latin ruga, a wrinkle or furrow (→ English rugose, corrugate) — a street as 'a furrow' through town.",p:"n"},
  {f:"la rue à double sens",e:"the two-way street",c:4,t:"place",y:"double (Latin duplus → English double) + sens, direction (Latin sensus → English sense) — 'double-direction street.'",p:"n"},
@@ -1726,7 +1726,7 @@ var VOCAB=[
  {f:"le salon de coiffure",e:"the hair salon",c:4,t:"place",y:"salon, from a large room (Frankish *sal, hall) + coiffure (see se coiffer).",p:"n"},
  {f:"la tour",e:"the tower",c:4,t:"place",y:"Latin turris → English tower — a straight, unbroken line of descent.",p:"n"},
  {f:"la voie ferrée",e:"the railroad",c:4,t:"place",y:"voie, Latin via, a way (→ English via, voyage) + ferrée, from fer, iron (Latin ferrum → English ferrous) — 'the iron way.'",p:"n"},
- {f:"le poids-lourd",e:"the heavy truck / semi",c:4,t:"transport",x:1,y:"poids, weight (Latin pensum, from pendere, to hang/weigh → English pendant, pension) + lourd, heavy, of uncertain pre-Latin origin.",p:"n"},
+ {f:"le poids-lourd",e:"the heavy truck / semi",c:4,t:"transport",y:"poids, weight (Latin pensum, from pendere, to hang/weigh → English pendant, pension) + lourd, heavy, of uncertain pre-Latin origin.",p:"n"},
  {f:"à deux pas de",e:"just a step from",c:4,t:"dir",y:"deux (two) + pas, a step (Latin passus → English pace, pass) — 'two steps from,' very near.",p:"prep"},
  {f:"après",e:"after",c:4,t:"dir",y:"Latin ad post (post, after → English post-, posterior) — 'after.'",p:"prep"},
  {f:"avant",e:"before",c:4,t:"dir",y:"Latin ab ante, 'from before' (→ English ante-, antecedent) — 'before.'",p:"prep"},
@@ -1737,7 +1737,7 @@ var VOCAB=[
  {f:"ici",e:"here",c:4,t:"dir",y:"Latin ecce hic, 'behold here' → ici.",p:"adv"},
  {f:"là",e:"there",c:4,t:"dir",y:"Latin illac, 'by that way' → là, there.",p:"adv"},
  {f:"là-bas",e:"over there",c:4,t:"dir",y:"là + bas, low (Latin bassus → English base, bass) — 'there below.'",p:"adv"},
- {f:"jusqu'à",e:"up to / until",c:4,t:"dir",x:1,y:"de + usque (Latin usque, all the way to) + à — 'up to, until.'",p:"prep"},
+ {f:"jusqu'à",e:"up to / until",c:4,t:"dir",y:"de + usque (Latin usque, all the way to) + à — 'up to, until.'",p:"prep"},
  {f:"vers",e:"towards",c:4,t:"dir",y:"Latin versus, 'turned toward' (vertere, to turn → English verse, version) — French vers and English 'versus' are literally the same word.",p:"prep"},
  {f:"aérien",e:"aerial / air- (adj.)",c:4,t:"adj",y:"Greek aēr, air → English aerial, aeronautics — cognate.",p:"adj"},
  {f:"bondé",e:"crowded / packed",c:4,t:"adj",y:"from bonde, a barrel-bung (Frankish *bunda) — a packed crowd is like a barrel stopped up tight.",p:"adj"},
@@ -1769,7 +1769,7 @@ var VOCAB=[
   });
 })();
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* self-heal: re-derive status from counters so any word (incl. bonjour) that has
@@ -1876,7 +1876,6 @@ function vocPool(){
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
-  if(vocTrickyOnly) arr=arr.filter(function(i){return VOCAB[i].x;});
   if(vocNewOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]===undefined;});
   if(vocHideKnown) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]!=="known";});
   if(vocRusty) arr=arr.filter(function(i){return isRusty(state.vocab, state.vocabStats, VOCAB[i].f);});
@@ -1885,7 +1884,7 @@ function vocPool(){
 function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); vocIdx=0; vocShown=false; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
-   ignores topic/tricky/hide-known so the table is a complete chapter reference */
+   ignores topic/hide-known so the table is a complete chapter reference */
 function vocChapterScope(){
   var arr=VOCAB.map(function(v,i){return i;});
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
@@ -1956,7 +1955,7 @@ function renderVoc(){
   document.getElementById("vocPos").textContent=(vocIdx+1)+" / "+vocOrder.length;
   var mark=state.vocab[v.f];
   var tag=el("div","vcat"); tag.style.background=CATS.er.bg; tag.style.color=CATS.er.c;
-  function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+(v.x?" · tricky spelling":"")+" · "+statMeta(state.vocabStats[v.f]); }
+  function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+" · "+statMeta(state.vocabStats[v.f]); }
   tag.textContent=vocTagText();
   card.appendChild(tag);
 
@@ -2065,7 +2064,6 @@ function renderVoc(){
     ans.innerHTML="<div class='prompt'><div class='big "+(vocDir==="en"?"fr":"")+"'>"+answerText+"</div></div>";
     if(v.n) ans.appendChild(el("div","note",esc(v.n)));
     if(v.y) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
-    if(v.x) ans.appendChild(el("div","note","Tricky spelling — watch the accents and double letters."));
     ans.appendChild(pronRow(v.f));
     card.appendChild(ans);
     var act=el("div","vactions");
@@ -2111,7 +2109,6 @@ document.getElementById("chapterFilterVoc").addEventListener("change",function()
 });
 document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
-document.getElementById("vocTricky").addEventListener("click",function(){vocTrickyOnly=!vocTrickyOnly;this.style.background=vocTrickyOnly?"var(--ink)":"";this.style.color=vocTrickyOnly?"#fff":"";vocBuild();renderVoc();});
 document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
   vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";

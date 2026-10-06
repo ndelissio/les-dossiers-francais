@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 3 · Dossier Français — v1.4.0</title>
+<title>Unité 3 · Dossier Français — v1.4.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -297,7 +297,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v1.4.0</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v1.4.1</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -460,7 +460,6 @@
       <button class="ghost" id="vocTrainBtn">Training</button>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
-      <button class="ghost" id="vocTricky">Tricky spellings</button>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
       <button class="ghost" id="newOnlyBtnVoc">New only</button>
@@ -565,8 +564,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v1.4.0</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v1.4.1</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.4.1 (6 Oct 2026): <strong>Vocabulaire — the "tricky spelling" tag is gone.</strong> It was a subjective flag with no clear rule behind it, so the "Tricky spellings" filter, the "tricky spelling" label on the card header and the reminder on the answer are removed, along with the flag on 37 cards. Nothing else about the cards changed, and saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v1.4.0 (6 Oct 2026): <strong>Vocabulaire pass — part-of-speech tags, singular nouns, cleaner French cards, clearer English cues.</strong> Every English cue now carries a small part-of-speech tag (noun, adjective, verb, adverb, preposition, conjunction, expression, number), so a short or weak translation is never ambiguous. <strong>Plural → singular</strong> so gender can be trained (36 cards): clothing (la botte, la chaussure, l'escarpin, le soulier, le sous-vêtement, le talon, la boucle d'oreille, la chaussette, le collant, le gant, la moufle, la pantoufle, la semelle), the six eye-colour cards (now un œil bleu, un œil gris, un œil marron, un œil noir, un œil noisette, un œil vert — un oeil is accepted), le nuage, l'achat, la lingette, le chantier, le bijou (Chapter 14, sharing the Chapter 11 card's French key) and the AOL 120 nouns (un soldat, un terroriste, un camarade, une arme, une grenade, une barricade, un front…). Typically plural words stay plural with their gender on the reveal (les cheveux + colour, les lunettes de soleil, les bretelles, les frais, les intempéries, des troupes, les forces, les douanes, les alentours, les jumelles…). <strong>Cleaner French cards:</strong> the five le/la cards became le cambrioleur(-euse), le commissaire, le joaillier(-ière), le procureur(e), le voleur(-euse) (either gender is accepted); croiser quelqu'un, annoncer quelque chose, marquer quelqu'un and serrer quelqu'un dans ses bras lost the quelqu'un / quelque chose from the French (the English cue says "(someone)" / "(something)"). Five reading fragments that are not vocabulary were removed from AOL 120: des tonnes de drogue, des kilomètres, des milliards d'euros, des viatiques, les directives reçues. <strong>Close synonyms:</strong> 24 more cards now carry a "vs" note and a distinguishing cue — renommé / réputé, la coupure de courant / la panne d'électricité, la canicule / une vague de chaleur, cependant / toutefois, couvert / nuageux, s'informer / se renseigner, assortir / s'accorder avec / se marier avec, gros / corpulent / costaud / fort / trapu, le bilan humain / le bilan, accomplir / effectuer. English glosses improved on 88 cards in all. Unit 3 now has 548 cards (553 − 5 fragments). <strong>Gender on the reveal:</strong> 3 l’… nouns that showed no gender anywhere now show m. or f. on the answer note. Saved progress is carried over: a renamed card keeps its status, and where two cards merged the new card counts as known only if both were known.<br></span>
     <span style="color:var(--mute)">v1.3.5 (28 Sep 2026): <strong>"Drill misses" replaced with "New only."</strong> The old filter showed cards marked "still learning," which mostly duplicated Hide known. The button now shows only cards you've never attempted — not known, not still learning, never answered. Renamed internally (missMode/vocMissOnly → newOnlyMode/vocNewOnly); the now-meaningless worst-accuracy sort is removed. No vocab or verb data changed.<br></span>
     <span style="color:var(--mute)">v1.3.4 (20 Sep 2026): <strong>Hotfix — aller/venir passé composé.</strong> <strong>Conjugaison</strong>: the vedettes <em>aller</em> and <em>venir</em> showed <em>ai allé</em> / <em>ai venu</em> in the passé-composé rows; they now use être with the agreement forms (<em>suis allé/allée</em>, <em>es venu/venue</em>…), like the other être verbs. The same fix applies to <em>mourir</em> (<em>suis mort/morte</em>…), which is only reachable through Drill ciblé — its trainer card drills futur simple only. Card data and saved progress untouched.<br></span>
@@ -1298,7 +1298,7 @@ document.getElementById("verbTable").addEventListener("click",function(e){
 });
 
 /* =============== VOCABULARY BANK + TRAINER =============== */
-/* entry: {f:french, e:english, c:chapter(6-9), t:topic, x:1 if tricky-to-spell, y:etymology mnemonic (Training only)} */
+/* entry: {f:french, e:english, c:chapter(6-9), t:topic, y:etymology mnemonic (Training only)} */
 var VTOPICS={
   vet:"Clothing", vacc:"Accessories", vadj:"Adjectives (clothing)", phys:"Build & body type",
   vis:"The face", chev:"Hair", teint:"Complexion & skin", yeux:"The eyes", vmots:"Shopping & fashion words",
@@ -1319,7 +1319,7 @@ var VOCAB=[
  {f:"la chaussure",e:"the shoe (standard word)",c:11,t:"vet",n:"vs le soulier (Quebec)",y:"Latin calceus (shoe) → chausser, to shoe; la chaussée (roadway) is what shoes tread.",p:"n"},
  {f:"la chemise",e:"the shirt (men's, buttoned)",c:11,t:"vet",n:"vs le chemisier (women's blouse)",y:"Late Latin camisia → English chemise; the -ise ending survived intact.",p:"n"},
  {f:"le chemisier",e:"the blouse (women's shirt)",c:11,t:"vet",n:"vs la chemise (men's) — note the gender flip",y:"A chemise with the tailor's -ier suffix — the shirt made womanly, and masculine in gender.",p:"n"},
- {f:"le costume",e:"the suit (man's, jacket + trousers)",c:11,t:"vet",x:1,n:"vs le tailleur (woman's suit) — faux ami: not a Halloween costume (un déguisement)",y:"Italian costume, 'custom, habit' — the customary dress; English kept the theatrical sense.",p:"n"},
+ {f:"le costume",e:"the suit (man's, jacket + trousers)",c:11,t:"vet",n:"vs le tailleur (woman's suit) — faux ami: not a Halloween costume (un déguisement)",y:"Italian costume, 'custom, habit' — the customary dress; English kept the theatrical sense.",p:"n"},
  {f:"la culotte",e:"the panties (women's underwear)",c:11,t:"vet",n:"vs le slip (men's briefs)",y:"Little cul — the sans-culottes of 1789 were 'without breeches'; today it's underwear.",p:"n"},
  {f:"la doudoune",e:"the down jacket / the puffer",c:11,t:"vet",y:"Baby-talk doubling of doux (soft) — the soft-soft jacket; say it and you feel the puff.",p:"n"},
  {f:"l'escarpin",e:"the stiletto, the pump",c:11,t:"vet",n:"m.",y:"Italian scarpa (shoe) → escarpin; a scarp is steep — so is the heel.",p:"n"},
@@ -1331,17 +1331,17 @@ var VOCAB=[
  {f:"le pantalon",e:"the pants / the trousers",c:11,t:"vet",n:"singular in French: un pantalon",y:"From Pantalone, the commedia dell'arte old man in long trousers → English pantaloons, pants.",p:"n"},
  {f:"le pull",e:"the sweater",c:11,t:"vet",y:"Clipped English pull-over — French pulled off the over.",p:"n"},
  {f:"la robe",e:"the dress",c:11,t:"vet",y:"Germanic rauba, plunder (stolen clothing!) → English robe and rob — a dress with a criminal past.",p:"n"},
- {f:"le slip",e:"the briefs (men's underwear)",c:11,t:"vet",x:1,n:"faux ami — not a woman's slip (une combinaison); vs la culotte (women's)",y:"English 'slip' borrowed and re-aimed at underwear — what you slip on first.",p:"n"},
+ {f:"le slip",e:"the briefs (men's underwear)",c:11,t:"vet",n:"faux ami — not a woman's slip (une combinaison); vs la culotte (women's)",y:"English 'slip' borrowed and re-aimed at underwear — what you slip on first.",p:"n"},
  {f:"le soulier",e:"the shoe (Quebec term)",c:11,t:"vet",n:"vs la chaussure (France standard)",y:"Old French soller, from Latin solea (sandal → sole); Quebec kept the older word.",p:"n"},
  {f:"le sous-vêtement",e:"the piece of underwear (general term)",c:11,t:"vet",y:"Literally under-garments — sous + vêtements; transparent once you see it.",p:"n"},
- {f:"le soutien-gorge",e:"the bra",c:11,t:"vet",x:1,y:"Literally 'throat-support' — gorge politely meant the bosom; the hyphen carries the compound.",p:"n"},
+ {f:"le soutien-gorge",e:"the bra",c:11,t:"vet",y:"Literally 'throat-support' — gorge politely meant the bosom; the hyphen carries the compound.",p:"n"},
  {f:"le tailleur",e:"the suit (woman's, jacket + skirt/trousers)",c:11,t:"vet",n:"vs le costume (man's) — also means the tailor himself",y:"From tailler, to cut (→ English tailor); the woman's suit is named for its cutter.",p:"n"},
  {f:"le talon",e:"the heel (of a shoe)",c:11,t:"vet",n:"also the heel of the foot; high heels = les talons hauts",y:"Latin talus (ankle bone) → talon; English talon is the same claw-heel.",p:"n"},
  {f:"la tenue",e:"the attire / the outfit",c:11,t:"vet",y:"From tenir, to hold — how you hold yourself; une tenue = the held-together look.",p:"n"},
- {f:"le treillis",e:"the combat fatigues",c:11,t:"vet",x:1,y:"Latin trilicium, triple-woven cloth → trellis (the lattice); coarse weave became army wear.",p:"n"},
- {f:"la veste",e:"the jacket (blazer, suit jacket)",c:11,t:"vet",x:1,n:"faux ami — not a vest (le gilet); vs le blouson (bomber)",y:"Latin vestis (garment → vestment); French kept it as the jacket, English drifted to the vest.",p:"n"},
+ {f:"le treillis",e:"the combat fatigues",c:11,t:"vet",y:"Latin trilicium, triple-woven cloth → trellis (the lattice); coarse weave became army wear.",p:"n"},
+ {f:"la veste",e:"the jacket (blazer, suit jacket)",c:11,t:"vet",n:"faux ami — not a vest (le gilet); vs le blouson (bomber)",y:"Latin vestis (garment → vestment); French kept it as the jacket, English drifted to the vest.",p:"n"},
  /* --- Accessoires --- */
- {f:"le bijou",e:"the piece of jewelry",c:11,t:"vacc",x:1,n:"pl. les bijoux — -x plural",y:"Breton bizou, ring for the finger (biz) — one of French's few Breton words.",p:"n"},
+ {f:"le bijou",e:"the piece of jewelry",c:11,t:"vacc",n:"pl. les bijoux — -x plural",y:"Breton bizou, ring for the finger (biz) — one of French's few Breton words.",p:"n"},
  {f:"la boucle d'oreille",e:"the earring",c:11,t:"vacc",y:"boucle = buckle/loop (Latin buccula, little cheek of a helmet) — loops for the ears.",p:"n"},
  {f:"le bonnet",e:"the beanie (knit winter hat)",c:11,t:"vacc",n:"vs le chapeau (hat) and la casquette (cap)",y:"Medieval Latin abonnis — English bonnet; in French it slid onto the wooly head.",p:"n"},
  {f:"les bretelles",e:"the suspenders",c:11,t:"vacc",n:"f. pl.",y:"From an old word for strap-loop; think bre-TELLES hold the panTALons.",p:"n"},
@@ -1419,13 +1419,13 @@ var VOCAB=[
  {f:"clair",e:"light (complexion)",c:11,t:"teint",n:"f. claire",y:"Latin clarus → English clear, clarity; a light complexion is a clear one.",p:"adj"},
  {f:"foncé",e:"dark (color, complexion)",c:11,t:"teint",n:"f. foncée — vs sombre (dark/gloomy mood or light)",y:"From fond, the bottom (Latin fundus → English foundation) — deep-toned, from the depths.",p:"adj"},
  {f:"mat",e:"olive (complexion) / matte",c:11,t:"teint",n:"f. mate — le teint mat",y:"Same word as matte paint — no shine; olive-toned skin, matte finish.",p:"adj"},
- {f:"le teint",e:"the complexion",c:11,t:"teint",x:1,y:"From teindre, to dye (Latin tingere → English tint, tinge) — your natural tint.",p:"n"},
+ {f:"le teint",e:"the complexion",c:11,t:"teint",y:"From teindre, to dye (Latin tingere → English tint, tinge) — your natural tint.",p:"n"},
  /* --- Les yeux --- */
  {f:"un œil bleu",e:"a blue eye",a:["un oeil bleu"],c:11,t:"yeux",n:"m. — pl. les yeux bleus (avoir les yeux bleus)",y:"Frankish blao → both blue and bleu; the same word twice-borrowed.",p:"n"},
  {f:"un œil gris",e:"a gray eye",a:["un oeil gris"],c:11,t:"yeux",n:"m. — pl. les yeux gris (avoir les yeux gris)",y:"Gray eyes — gris as in grisaille painting, all-gray.",p:"n"},
- {f:"un œil marron",e:"a brown eye",a:["un oeil marron"],c:11,t:"yeux",x:1,n:"m. — pl. les yeux marron (avoir les yeux marron) — color word is invariable",y:"marron = the chestnut (→ marrons glacés); chestnut-colored, and frozen in form — no agreement.",p:"n"},
+ {f:"un œil marron",e:"a brown eye",a:["un oeil marron"],c:11,t:"yeux",n:"m. — pl. les yeux marron (avoir les yeux marron) — color word is invariable",y:"marron = the chestnut (→ marrons glacés); chestnut-colored, and frozen in form — no agreement.",p:"n"},
  {f:"un œil noir",e:"a black (very dark) eye",a:["un oeil noir"],c:11,t:"yeux",n:"m. — pl. les yeux noirs (avoir les yeux noirs). Not to be confused with un œil au beurre noir = a black eye (bruise)",y:"noir again — dark-as-ink eyes, no bruise implied.",p:"n"},
- {f:"un œil noisette",e:"a hazel eye",a:["un oeil noisette"],c:11,t:"yeux",x:1,n:"m. — pl. les yeux noisette (avoir les yeux noisette) — color word is invariable",y:"noisette = the hazelnut (little noix); hazel eyes are hazelnut eyes — literally.",p:"n"},
+ {f:"un œil noisette",e:"a hazel eye",a:["un oeil noisette"],c:11,t:"yeux",n:"m. — pl. les yeux noisette (avoir les yeux noisette) — color word is invariable",y:"noisette = the hazelnut (little noix); hazel eyes are hazelnut eyes — literally.",p:"n"},
  {f:"un œil vert",e:"a green eye",a:["un oeil vert"],c:11,t:"yeux",n:"m. — pl. les yeux verts (avoir les yeux verts)",y:"Latin viridis → English verdant, verdict has no green in it — but vert does.",p:"n"},
  /* --- Autres mots (Ch 11) --- */
  {f:"amérindien",e:"Native American",c:11,t:"vmots",n:"f. amérindienne",y:"Améri(que) + indien — the blend English also built: Amerindian.",p:"adj"},
@@ -1439,7 +1439,7 @@ var VOCAB=[
  {f:"la haute couture",e:"the high fashion / fashion design",c:11,t:"vmots",y:"High sewing — couture from coudre, to sew (Latin consuere → English suture); fashion is stitching.",p:"n"},
  {f:"la garde-robe",e:"the wardrobe",c:11,t:"vmots",y:"Robe-guard — exactly how English built wardrobe (ward + robe), mirrored.",p:"n"},
  {f:"la grande surface",e:"the big-box store / the supermarket",c:11,t:"vmots",y:"The 'big surface' — French names the store by its floor area.",p:"n"},
- {f:"jeter un coup d'œil",e:"to take a quick look / to glance",c:11,t:"vmots",x:1,y:"To throw a blow-of-eye — you hurl a glance; œ accepts oe in typing.",p:"v"},
+ {f:"jeter un coup d'œil",e:"to take a quick look / to glance",c:11,t:"vmots",y:"To throw a blow-of-eye — you hurl a glance; œ accepts oe in typing.",p:"v"},
  {f:"la marque",e:"the brand",c:11,t:"vmots",y:"Germanic marka → English mark and marque; the maker's mark = the brand.",p:"n"},
  {f:"la mode",e:"the fashion",c:11,t:"vmots",n:"la mode = fashion; le mode = the method/mode",y:"Latin modus, manner → English mode; à la mode = in the manner of now.",p:"n"},
  {f:"le motif",e:"the pattern (on fabric)",c:11,t:"vmots",y:"English motif is this word — the repeating design idea.",p:"n"},
@@ -1449,10 +1449,10 @@ var VOCAB=[
  {f:"acheter",e:"to buy",c:11,t:"verb",y:"Latin accaptare — to capture toward you; a purchase is a capture.",p:"v"},
  {f:"s'accorder avec",e:"to go with, to be in harmony with (clothes that match)",c:11,t:"verb",n:"vs assortir (to put together as a set)",y:"From accord (à + cœur? no — Latin cor, heart is the folk tale; chords in harmony) — pieces in accord.",p:"v"},
  {f:"assortir",e:"to match, to put together as a set (items that go together)",c:11,t:"verb",n:"vs s'accorder avec (to go with) and se marier avec (to blend well with)",y:"à + sorte — to put in the same sort; English assorted is the shuffled cousin.",p:"v"},
- {f:"dépenser",e:"to spend",c:11,t:"verb",x:1,n:"faux ami — not to dispense",y:"Latin dispendere, to weigh out money → English expend; spending is weighing out silver.",p:"v"},
+ {f:"dépenser",e:"to spend",c:11,t:"verb",n:"faux ami — not to dispense",y:"Latin dispendere, to weigh out money → English expend; spending is weighing out silver.",p:"v"},
  {f:"économiser",e:"to save (money)",c:11,t:"verb",y:"Greek oikonomia, household management → economize; saving is running the house well.",p:"v"},
  {f:"enfiler",e:"to slip on, to pull on (clothing)",c:11,t:"verb",y:"en + fil (thread) — to thread yourself into a garment like thread into a needle.",p:"v"},
- {f:"épouser",e:"to fit snugly (clothing) / to marry",c:11,t:"verb",x:1,y:"Latin sponsare → English spouse, espouse; a fitted dress marries your shape.",p:"v"},
+ {f:"épouser",e:"to fit snugly (clothing) / to marry",c:11,t:"verb",y:"Latin sponsare → English spouse, espouse; a fitted dress marries your shape.",p:"v"},
  {f:"essayer",e:"to try on / to try",c:11,t:"verb",y:"Latin exagium, a weighing → English essay and assay; trying on is testing the weight.",p:"v"},
  {f:"mettre en valeur",e:"to highlight / to show off (an outfit)",c:11,t:"verb",y:"To put into value — English 'add value' wears the same idea.",p:"v"},
  {f:"porter",e:"to wear / to carry",c:11,t:"verb",y:"Latin portare → English porter, transport; wearing is carrying clothes around.",p:"v"},
@@ -1467,7 +1467,7 @@ var VOCAB_CH12=[
  {f:"le brouillard",e:"the fog (thick)",c:12,t:"meteo",n:"vs la brume (haze, lighter)",y:"From brouiller, to muddle (→ English embroil); fog muddles the view — scrambled air, like œufs brouillés.",p:"n"},
  {f:"la brume",e:"the haze / the mist (light)",c:12,t:"meteo",n:"vs le brouillard (thick fog)",y:"Latin bruma, winter solstice → English brumal; the light winter veil.",p:"n"},
  {f:"la buée",e:"the condensation (on glass)",c:12,t:"meteo",y:"From old buer, to steam with washing — the laundry-steam that fogs your mirror.",p:"n"},
- {f:"la canicule",e:"the scorching heat wave (days of extreme, oppressive heat)",c:12,t:"meteo2",x:1,n:"vs une vague de chaleur (the plain term; canicule is the intense one)",y:"Latin canicula, 'little dog' — Sirius the Dog Star rises in the hottest weeks: the dog days.",p:"n"},
+ {f:"la canicule",e:"the scorching heat wave (days of extreme, oppressive heat)",c:12,t:"meteo2",n:"vs une vague de chaleur (the plain term; canicule is the intense one)",y:"Latin canicula, 'little dog' — Sirius the Dog Star rises in the hottest weeks: the dog days.",p:"n"},
  {f:"la chaleur",e:"the heat",c:12,t:"meteo2",y:"Latin calor → English calorie — heat by name; a calorie heats a gram of water.",p:"n"},
  {f:"la chaleur de plomb",e:"the blazing heat (lead-heavy)",c:12,t:"meteo2",y:"Heat of lead — plomb (Latin plumbum → English plumber, plumb line); heat that weighs like lead.",p:"n"},
  {f:"le coup de soleil",e:"the sunburn",c:12,t:"meteo2",y:"A blow-of-sun — French injuries arrive as coups: coup de soleil, coup de foudre.",p:"n"},
@@ -1480,12 +1480,12 @@ var VOCAB_CH12=[
  {f:"l'ensoleillement",e:"the sunshine (amount of sun)",c:12,t:"meteo2",n:"m.",y:"en + soleil + -ment — the be-sunning; how sunned a place gets.",p:"n"},
  {f:"le flocon",e:"the (snow)flake",c:12,t:"meteo",y:"Latin floccus, tuft of wool → English flock (of wool); snow falls as wool-tufts.",p:"n"},
  {f:"la fonte des glaces",e:"the melting of the ice caps",c:12,t:"meteo2",y:"From fondre, to melt (Latin fundere → English foundry, fondue) — fondue is melted cheese, fonte melted ice.",p:"n"},
- {f:"la foudre",e:"the lightning (the bolt that strikes)",c:12,t:"meteo",x:1,n:"f. — vs l'éclair (the flash); le coup de foudre = love at first sight",y:"Latin fulgur → English fulgurate; the strike itself — being foudroyé is being thunderstruck.",p:"n"},
+ {f:"la foudre",e:"the lightning (the bolt that strikes)",c:12,t:"meteo",n:"f. — vs l'éclair (the flash); le coup de foudre = love at first sight",y:"Latin fulgur → English fulgurate; the strike itself — being foudroyé is being thunderstruck.",p:"n"},
  {f:"la fraîcheur",e:"the coolness",c:12,t:"meteo2",y:"From frais → English fresh; cool air is fresh air.",p:"n"},
  {f:"le froid",e:"the cold",c:12,t:"meteo2",y:"Latin frigidus → English frigid, refrigerator — the fridge is the froid-box.",p:"n"},
  {f:"la froideur",e:"the coldness (of manner or air)",c:12,t:"meteo2",n:"vs le froid (the cold itself)",y:"Cold-ness — the abstract chill; mostly emotional frost.",p:"n"},
  {f:"la gelée",e:"the frost",c:12,t:"meteo",n:"also = jelly (frozen-set fruit)",y:"From geler (Latin gelare → English gelatin, congeal) — frost and jelly both set solid.",p:"n"},
- {f:"la grêle",e:"the hail",c:12,t:"meteo",x:1,y:"Frankish origin; the circumflex crowns it — grêle pelts down with a hat on.",p:"n"},
+ {f:"la grêle",e:"the hail",c:12,t:"meteo",y:"Frankish origin; the circumflex crowns it — grêle pelts down with a hat on.",p:"n"},
  {f:"la grisaille",e:"the grayness / the gloom",c:12,t:"meteo2",y:"From gris — grisaille is the all-gray painting technique; gray weather as art term.",p:"n"},
  {f:"les intempéries",e:"the bad weather (severe conditions)",c:12,t:"meteo",n:"f. pl. — vs le mauvais temps (plain bad weather)",y:"Latin in + temperies — un-tempered weather; English intemperate skies.",p:"n"},
  {f:"la menace",e:"the threat",c:12,t:"meteo",y:"Latin minacia → English menace — a menacing sky is a straight cognate.",p:"n"},
@@ -1500,7 +1500,7 @@ var VOCAB_CH12=[
  {f:"le temps lourd",e:"the muggy weather",c:12,t:"meteo2",n:"il fait lourd = it's muggy",y:"Heavy weather — lourd (heavy); mugginess weighs on you.",p:"n"},
  {f:"le tonnerre",e:"the thunder",c:12,t:"meteo",y:"Latin tonare → English astonish and stun — thunder is what astonishes; tonnerre = the tone of the sky.",p:"n"},
  {f:"une vague de chaleur",e:"a heat wave, a hot spell (the plain term)",c:12,t:"meteo2",n:"vs la canicule (the scorching, extreme one)",y:"vague = wave (Old Norse vágr) — heat arriving in waves, exactly the English image.",p:"n"},
- {f:"le verglas",e:"the black ice",c:12,t:"meteo",x:1,y:"verre (glass) + glace (ice) — glass-ice; the road glazed like a window.",p:"n"},
+ {f:"le verglas",e:"the black ice",c:12,t:"meteo",y:"verre (glass) + glace (ice) — glass-ice; the road glazed like a window.",p:"n"},
  /* --- Expressions idiomatiques météo --- */
  {f:"être trempé comme une soupe",e:"to be soaked to the bone",c:12,t:"mexp",y:"Soaked like a soup — originally the bread (la soupe!) drenched in broth; you are the bread.",p:"v"},
  {f:"il fait un froid de canard",e:"it's freezing cold (duck-cold)",c:12,t:"mexp",y:"Duck-hunting cold — hunters freeze motionless in duck season; canard-cold is stakeout cold.",p:"expr"},
@@ -1556,7 +1556,7 @@ var VOCAB_CH12=[
  {f:"l'inondation",e:"the flood",c:12,t:"mmots",n:"f. — vs la crue (the water rise)",y:"Latin inundare → English inundate — the unda (wave) rolls in.",p:"n"},
  {f:"la panne d'électricité",e:"the power failure, the outage (a breakdown)",c:12,t:"mmots",n:"vs la coupure de courant (a cut-off); en panne = broken down",y:"panne — the sail hanging slack; a car en panne has lost its wind.",p:"n"},
  {f:"s'informer",e:"to keep oneself informed (follow the news)",c:12,t:"verb",n:"vs se renseigner (to ask for information about something specific)",y:"Latin informare — to shape the mind; forming yourself with facts.",p:"v"},
- {f:"le sinistré",e:"the disaster victim",a:["la sinistrée","le/la sinistré(e)"],c:12,t:"mmots",x:1,n:"f. la sinistrée — glossaire : le/la sinistré(e)",y:"Latin sinister, the ill-omened left side → English sinister; struck by the sinister event.",p:"n"},
+ {f:"le sinistré",e:"the disaster victim",a:["la sinistrée","le/la sinistré(e)"],c:12,t:"mmots",n:"f. la sinistrée — glossaire : le/la sinistré(e)",y:"Latin sinister, the ill-omened left side → English sinister; struck by the sinister event.",p:"n"},
  /* --- Verbes (Ch 12, infinitive cards) --- */
  {f:"s'abattre sur",e:"to fall upon / to pound down on (a storm)",c:12,t:"verb",y:"To batter down onto — battre (→ English battery, combat); the storm batters itself onto the coast.",p:"v"},
  {f:"s'améliorer",e:"to improve (weather)",c:12,t:"verb",y:"Latin melior, better → English ameliorate — same word in a raincoat.",p:"v"},
@@ -1580,13 +1580,13 @@ var VOCAB_CH13=[
  /* ===== Chapter 13 : Vacations & Destinations — end-of-chapter glossaire ===== */
  /* --- Les noms --- */
  {f:"l'auberge",e:"the inn",c:13,t:"nmots2",n:"f.",y:"Occitan alberga, Germanic *haribergo (army + shelter) — the same root as English harbor and harbinger.",p:"n"},
- {f:"l'auberge de jeunesse",e:"the youth hostel",c:13,t:"nmots2",x:1,n:"f.",y:"auberge (above) + jeunesse (young-ness, from jeune → English juvenile) — budget lodging for the young.",p:"n"},
+ {f:"l'auberge de jeunesse",e:"the youth hostel",c:13,t:"nmots2",n:"f.",y:"auberge (above) + jeunesse (young-ness, from jeune → English juvenile) — budget lodging for the young.",p:"n"},
  {f:"le bagage cabine",e:"the carry-on bag",c:13,t:"nmots",y:"Old French bague, bundle (→ English baggage, borrowed whole) + cabine (English cabin) — the bundle you keep in the cabin.",p:"n"},
  {f:"le billet",e:"the ticket",c:13,t:"nmots",y:"Medieval Latin bulla, seal, via billette → English bill and billet — a sealed note, now your boarding pass.",p:"n"},
  {f:"la cabane",e:"the cabin / the hut",c:13,t:"nmots2",y:"Occitan cabana → English cabin — the same word, softened vowel.",p:"n"},
  {f:"la campagne",e:"the countryside",c:13,t:"nmots2",y:"Latin campus, field → English campaign, camp — flat open field-country.",p:"n"},
  {f:"le congé",e:"the leave (time off)",c:13,t:"nmots",n:"les congés payés = paid vacation",y:"Latin commeatus, permission to go → congé is granted leave.",p:"n"},
- {f:"le covoiturage",e:"the carpooling",c:13,t:"nmots",x:1,y:"co- (together) + voiture (car, Latin vehiculum → English vehicle) + -age — literally 'co-carring.'",p:"n"},
+ {f:"le covoiturage",e:"the carpooling",c:13,t:"nmots",y:"co- (together) + voiture (car, Latin vehiculum → English vehicle) + -age — literally 'co-carring.'",p:"n"},
  {f:"la détente",e:"the relaxation",c:13,t:"nmots2",y:"From détendre, to release tension (dé + tendre, Latin tendere → English tend, tension) — the untensing.",p:"n"},
  {f:"l'échange",e:"the exchange",c:13,t:"nmots",n:"m.",y:"English exchange — nearly the same word, ex + change (Latin cambiare → English change).",p:"n"},
  {f:"l'époque",e:"the era",c:13,t:"nmots2",n:"f. — à l'époque = back then",y:"Greek epokhē, a stopping point → English epoch.",p:"n"},
@@ -1594,13 +1594,13 @@ var VOCAB_CH13=[
  {f:"l'étape",e:"the stage / the leg (of a trip)",c:13,t:"nmots",n:"f.",y:"Old Dutch stapel, a storage-post (→ English staple) — each leg of a journey is a stop-point.",p:"n"},
  {f:"l'exigence",e:"the requirement",c:13,t:"nmots2",n:"f.",y:"Latin exigere, to demand → English exigency, exact — what is exacted from you.",p:"n"},
  {f:"la faune",e:"the wildlife",c:13,t:"nmots2",y:"Latin Faunus, the Roman god of forests and animals → English fauna, the same word.",p:"n"},
- {f:"les frais",e:"the expenses",c:13,t:"nmots",x:1,n:"m. pl. — no singular in this sense; not the adjective frais (fresh)",y:"Old French frait, a loss (Latin frangere, to break → English fracture) — the cost that 'breaks' your budget.",p:"n"},
+ {f:"les frais",e:"the expenses",c:13,t:"nmots",n:"m. pl. — no singular in this sense; not the adjective frais (fresh)",y:"Old French frait, a loss (Latin frangere, to break → English fracture) — the cost that 'breaks' your budget.",p:"n"},
  {f:"la gamme",e:"the range",c:13,t:"nmots",y:"Medieval Latin gamma, the musical scale (Greek letter Γ) → English gamut — a whole gamut of options.",p:"n"},
  {f:"la gourde",e:"the reusable water bottle",c:13,t:"nmots2",y:"Latin cucurbita, gourd/squash → English gourd — bottles were once dried gourds.",p:"n"},
  {f:"la lingette",e:"the wipe",c:13,t:"nmots2",y:"Diminutive of linge, linen (Latin lineus → English linen) — little linens, now wet wipes.",p:"n"},
  {f:"le logement insolite",e:"the unusual lodging",c:13,t:"nmots2",y:"loger (Frankish *laubja, leaf-shelter → English lodge) + insolite (Latin insolitus, unaccustomed) — lodging out of the ordinary.",p:"n"},
  {f:"la location",e:"the rental",c:13,t:"nmots",y:"Latin locare, to place/let → English location and lease — same Latin root, two English descendants.",p:"n"},
- {f:"la montgolfière",e:"the hot air balloon",c:13,t:"nmots",x:1,y:"Named for the Montgolfier brothers, who flew the first one in 1783 — a proper noun turned common noun, like sandwich.",p:"n"},
+ {f:"la montgolfière",e:"the hot air balloon",c:13,t:"nmots",y:"Named for the Montgolfier brothers, who flew the first one in 1783 — a proper noun turned common noun, like sandwich.",p:"n"},
  {f:"le périple",e:"the journey (long, winding)",c:13,t:"nmots",n:"vs le trajet (the route) and le voyage",y:"Greek periplous, a sailing-around → English periplus — an odyssey-scale trip.",p:"n"},
  {f:"la plupart",e:"the majority",c:13,t:"nmots",y:"plus + part — literally 'the most part'; English 'for the most part' says the same thing.",p:"n"},
  {f:"le récit",e:"the tale / the account",c:13,t:"nmots2",y:"From réciter (Latin recitare → English recite) — a récit is a told account.",p:"n"},
@@ -1646,7 +1646,7 @@ var VOCAB_CH13=[
  {f:"jetable",e:"disposable",c:13,t:"tadj",n:"m./f.",y:"From jeter, to throw (Latin jactare → English jettison, jet) + -able — throw-away-able.",p:"expr"},
  {f:"pratique",e:"practical",c:13,t:"tadj",n:"m./f.",y:"Greek praktikos → English practical, practice — same root, tighter spelling.",p:"adj"},
  {f:"propre",e:"clean / own",c:13,t:"tadj",n:"BANGS-style meaning shift: ma propre valise (my own suitcase) vs une valise propre (a clean suitcase)",y:"Latin proprius → English proper, property — meaning flips with position.",p:"adj"},
- {f:"rémunéré",e:"paid / remunerated",c:13,t:"tadj",x:1,n:"f. rémunérée",y:"Latin remunerare, re + munus, gift/duty (→ English remunerate, municipal) — formally 'paid.'",p:"adj"},
+ {f:"rémunéré",e:"paid / remunerated",c:13,t:"tadj",n:"f. rémunérée",y:"Latin remunerare, re + munus, gift/duty (→ English remunerate, municipal) — formally 'paid.'",p:"adj"},
  {f:"renommé",e:"renowned, famous (celebrated far and wide)",c:13,t:"tadj",n:"f. renommée — vs réputé (well-regarded for its good reputation)",y:"re + nommer, to name (Latin nominare → English nominate) — named again and again, i.e. famous.",p:"adj"},
  {f:"répandu",e:"widespread",c:13,t:"tadj",n:"f. répandue",y:"Latin re + expandere → English expand — spread back out, i.e. widespread.",p:"adj"},
  {f:"reposé",e:"rested",c:13,t:"tadj",n:"f. reposée",y:"From reposer, to rest (Latin re + pausare → English pause, repose) — the exact English cognate.",p:"adj"},
@@ -1678,9 +1678,9 @@ var VOCAB_CH14=[
  {f:"l'annexion",e:"the annexation",c:14,t:"cmots",n:"f.",y:"Latin annexio, a binding-on (ad + nectere, to bind → English annex, connect) — Alsace-Lorraine's forced binding to Germany, 1870.",p:"n"},
  {f:"l'attentat",e:"the terrorist attack (a bombing or assassination attempt)",c:14,t:"cmots",n:"m.",y:"Latin attentare, to make an attempt on (ad + tentare → English attempt) — an attentat is a violent 'attempt.'",p:"n"},
  {f:"le bijou",e:"the jewel (a precious piece)",c:14,t:"cmots",n:"pl. les bijoux — -x plural",y:"Breton bizou, a ring → French bijou, borrowed whole into English for any small, exquisite item.",p:"n"},
- {f:"le cambriolage",e:"the burglary / the break-in",c:14,t:"cmots",x:1,y:"From cambrioler (dialectal cambre, room, + -ioler) — literally the 'room-job'; Arsène Lupin's specialty.",p:"n"},
- {f:"le cambrioleur(-euse)",e:"the burglar",c:14,t:"cmots",x:1,n:"f. la cambrioleuse",y:"From cambrioler (above) — the one who does the room-job.",p:"n"},
- {f:"le cessez-le-feu",e:"the ceasefire",c:14,t:"cmots",x:1,y:"A frozen command — cessez (stop) + le feu (Latin focus → English focus, fuel) — literally 'stop the fire,' just like English.",p:"n"},
+ {f:"le cambriolage",e:"the burglary / the break-in",c:14,t:"cmots",y:"From cambrioler (dialectal cambre, room, + -ioler) — literally the 'room-job'; Arsène Lupin's specialty.",p:"n"},
+ {f:"le cambrioleur(-euse)",e:"the burglar",c:14,t:"cmots",n:"f. la cambrioleuse",y:"From cambrioler (above) — the one who does the room-job.",p:"n"},
+ {f:"le cessez-le-feu",e:"the ceasefire",c:14,t:"cmots",y:"A frozen command — cessez (stop) + le feu (Latin focus → English focus, fuel) — literally 'stop the fire,' just like English.",p:"n"},
  {f:"le champ de bataille",e:"the battlefield",c:14,t:"cmots",y:"champ (Latin campus → English camp) + bataille (Latin battualia, fencing drills → English battle) — the exact English compound, mirrored.",p:"n"},
  {f:"la claque",e:"the smack / the slap",c:14,t:"cmots",y:"Onomatopoeic — the sound of the hit itself; English clack and click share the same slapping root.",p:"n"},
  {f:"le commissaire",e:"the (police) commissioner",a:["la commissaire"],c:14,t:"cmots",n:"m./f. — same form",y:"Latin committere, to entrust → English commit, commission — the one entrusted with the case.",p:"n"},
@@ -1691,10 +1691,10 @@ var VOCAB_CH14=[
  {f:"l'évasion",e:"the escape",c:14,t:"cmots",n:"f.",y:"Latin evasio → English evasion — same word, but French keeps the literal jailbreak sense too.",p:"n"},
  {f:"le hors-la-loi",e:"the outlaw",c:14,t:"cmots",y:"hors (outside, Latin foris → English foreign) + la loi (Latin lex → English legal) — literally 'outside-the-law,' the same construction as English.",p:"n"},
  {f:"l'indice",e:"the clue / the hint",c:14,t:"cmots",n:"m.",y:"Latin indicium, a disclosure (in + dicere, to say → English indicate, dictate) — what points, silently, to the truth.",p:"n"},
- {f:"le joaillier(-ière)",e:"the jeweler",c:14,t:"cmots",x:1,n:"f. la joaillière — vs le bijoutier (costume jewelry)",y:"From joyau, a jewel (Latin gaudium, joy → English joy) — jewels as crystallized delight.",p:"n"},
- {f:"le procureur(e)",e:"the prosecutor",c:14,t:"cmots",x:1,y:"Latin procurare, to take care of on someone's behalf → English procure, proxy — the one who acts for the state.",p:"n"},
- {f:"le sang-froid",e:"the cool-headedness",c:14,t:"cmots",x:1,y:"'Cold blood' — sang (Latin sanguis → English sanguine) + froid (Latin frigidus → English frigid) — English borrowed this exact phrase for icy composure.",p:"n"},
- {f:"le tapage",e:"the disturbance / the ruckus",c:14,t:"cmots",x:1,y:"From taper, to bang (imitative) → English tap — nonstop banging-around noise.",p:"n"},
+ {f:"le joaillier(-ière)",e:"the jeweler",c:14,t:"cmots",n:"f. la joaillière — vs le bijoutier (costume jewelry)",y:"From joyau, a jewel (Latin gaudium, joy → English joy) — jewels as crystallized delight.",p:"n"},
+ {f:"le procureur(e)",e:"the prosecutor",c:14,t:"cmots",y:"Latin procurare, to take care of on someone's behalf → English procure, proxy — the one who acts for the state.",p:"n"},
+ {f:"le sang-froid",e:"the cool-headedness",c:14,t:"cmots",y:"'Cold blood' — sang (Latin sanguis → English sanguine) + froid (Latin frigidus → English frigid) — English borrowed this exact phrase for icy composure.",p:"n"},
+ {f:"le tapage",e:"the disturbance / the ruckus",c:14,t:"cmots",y:"From taper, to bang (imitative) → English tap — nonstop banging-around noise.",p:"n"},
  {f:"le vol",e:"the theft / the flight",c:14,t:"cmots",n:"two senses (voler = to steal AND to fly) — context decides",y:"Latin volare, to fly → English volatile — a thief 'flies off' with the goods, hence one word for both senses.",p:"n"},
  {f:"le voleur(-euse)",e:"the thief",c:14,t:"cmots",y:"From voler (above) — the one who 'flies away' with your things.",p:"n"},
  /* --- Noms : journey, work & feelings --- */
@@ -1706,7 +1706,7 @@ var VOCAB_CH14=[
  {f:"la galère",e:"a pain / a hassle (figurative)",c:14,t:"cmots2",n:"fam.",y:"Italian galera, a rowing-ship worked by convicts → English galley — modern hassles as a rower's ordeal.",p:"n"},
  {f:"l'imprudence",e:"the carelessness / the recklessness",c:14,t:"cmots2",n:"f.",y:"in + prudence (Latin prudentia, foresight → English prudent) — the absence of foresight.",p:"n"},
  {f:"l'intégralité",e:"the entirety / the whole",c:14,t:"cmots2",n:"f. — dans son intégralité = in its entirety",y:"Latin integer, whole/untouched → English integral, integrity — nothing removed.",p:"n"},
- {f:"le paquebot",e:"the (ocean) liner",c:14,t:"cmots2",x:1,y:"English 'packet boat,' borrowed and respelled — the ship that once carried mail packets across the Atlantic.",p:"n"},
+ {f:"le paquebot",e:"the (ocean) liner",c:14,t:"cmots2",y:"English 'packet boat,' borrowed and respelled — the ship that once carried mail packets across the Atlantic.",p:"n"},
  {f:"le pays d'accueil",e:"the host country",c:14,t:"cmots2",y:"pays (Latin pagus → English peasant, pagan) + accueil, welcome (from accueillir, Latin colligere → English collect) — literally 'welcome-country.'",p:"n"},
  {f:"le périple",e:"the (long) journey",c:14,t:"cmots2",n:"see Ch 13 — the odyssey word",y:"Greek periplous, a sailing-around → English periplus — Arsène Lupin's transatlantic périple.",p:"n"},
  {f:"la prouesse",e:"the feat / the achievement",c:14,t:"cmots2",y:"From preux, valiant (Old French, Latin prodesse, to be of use) → English prowess — the exact same word.",p:"n"},
@@ -1735,7 +1735,7 @@ var VOCAB_CH14=[
  {f:"à jamais",e:"forever",c:14,t:"cexpr",y:"jamais (Latin jam magis, 'now more,' → 'ever again') — à jamais seals it as permanent, never to be undone.",p:"adv"},
  {f:"à l'époque",e:"back then",c:14,t:"cexpr",y:"époque (Greek epokhē → English epoch) — 'at the epoch [in question],' i.e. back in that time.",p:"adv"},
  {f:"de bon cœur",e:"wholeheartedly",c:14,t:"cexpr",y:"'From a good heart' — cœur (Latin cor → English cordial, courage) — the exact image of English 'wholehearted.'",p:"adv"},
- {f:"de fond en comble",e:"from top to bottom",c:14,t:"cexpr",x:1,y:"fond (the bottom, Latin fundus → English foundation) + comble (the topmost point, Latin cumulus → English accumulate) — bottom to peak, i.e. thoroughly.",p:"adv"},
+ {f:"de fond en comble",e:"from top to bottom",c:14,t:"cexpr",y:"fond (the bottom, Latin fundus → English foundation) + comble (the topmost point, Latin cumulus → English accumulate) — bottom to peak, i.e. thoroughly.",p:"adv"},
  {f:"habilement",e:"skillfully",c:14,t:"cexpr",y:"From habile, skillful (Latin habilis, easy to handle → English able, ability) — the -ment adverb of 'able.'",p:"adv"},
  {f:"issu(e) de",e:"coming from / stemming from",c:14,t:"cexpr",y:"Past participle of issir, to go out (Latin exire → English exit, issue) — 'issued from,' the same word English kept for 'issue.'",p:"adj"},
  /* --- Verbes (Ch 14, infinitive cards) --- */
@@ -1758,13 +1758,13 @@ var VOCAB_CH14=[
  {f:"appartenir",e:"to belong (to)",c:14,t:"cmgloss",n:"conjugates like tenir",y:"Latin appertinere (ad + pertinere → English pertain, appertain) — English 'appertain' is the same word, barely disguised.",p:"v"},
  {f:"le chantier",e:"the construction site",c:14,t:"cmgloss",n:"un chantier naval = a shipyard",y:"Latin canterius, a rafter/support beam → English cantilever — the site where the beams go up.",p:"n"},
  {f:"craindre",e:"to fear / to be afraid of",c:14,t:"cmgloss",n:"-aindre family — see the Conjugaison card",y:"Vulgar Latin *cremere, blending tremere (to tremble → English tremor) and premere (to press) — fear as the trembling itself.",p:"v"},
- {f:"dans le giron de",e:"within the fold of / under the wing of",c:14,t:"cmgloss",x:1,y:"giron, the lap (Frankish *gero, a fold of cloth) — sheltered 'in the lap' of a family or institution.",p:"prep"},
+ {f:"dans le giron de",e:"within the fold of / under the wing of",c:14,t:"cmgloss",y:"giron, the lap (Frankish *gero, a fold of cloth) — sheltered 'in the lap' of a family or institution.",p:"prep"},
  {f:"débarquer",e:"to disembark / to land",c:14,t:"cmgloss",y:"dé + barque, a small boat (Latin barca → English bark, embark) — the reverse of embarking: getting off the boat.",p:"v"},
  {f:"en manque de",e:"lacking / in need of",c:14,t:"cmgloss",y:"manque, from manquer, to lack (Italian mancare, Latin mancus, maimed → English maim) — literally 'in the missing of.'",p:"prep"},
  {f:"profane",e:"secular / a layperson",c:14,t:"cmgloss",y:"Latin pro + fanum, outside the temple (→ English fane, profane) — outside sacred ground, i.e. non-religious.",p:"adj"},
  {f:"ramener",e:"to bring back",c:14,t:"cmgloss",y:"re + amener, to lead (Latin ad + minare, to drive animals → English amenable) — leading something back.",p:"v"},
  {f:"se répandre",e:"to spread (news, rumor)",c:14,t:"cmgloss",y:"re + épandre (Latin expandere → English expand) — news 'expanding' outward through the ship.",p:"v"},
- {f:"un tisserand",e:"a weaver / a textile worker",c:14,t:"cmgloss",x:1,n:"f. la tisserande",y:"From tisser, to weave (Latin texere → English text, textile) — the one who weaves the cloth (and the word 'text').",p:"n"},
+ {f:"un tisserand",e:"a weaver / a textile worker",c:14,t:"cmgloss",n:"f. la tisserande",y:"From tisser, to weave (Latin texere → English text, textile) — the one who weaves the cloth (and the word 'text').",p:"n"},
 ];
 var VOCAB_AOL=[
  /* ===== AOL 120 : Advanced Operational Language — outside the textbook sequence ===== */
@@ -1796,8 +1796,8 @@ var VOCAB_AOL=[
  {f:"le matériel sophistiqué",e:"the sophisticated equipment",c:900,t:"aoleqp",p:"n"},
  {f:"un avion",e:"a plane",c:900,t:"aoleqp",p:"n"},
  {f:"un avion de chasse",e:"a fighter plane",c:900,t:"aoleqp",p:"n"},
- {f:"le Rafale",e:"the Rafale (French fighter jet)",c:900,t:"aoleqp",x:1,n:"also: un avion Rafale — same aircraft",p:"n"},
- {f:"un char",e:"a tank (military)",a:["un char d'assaut","un char de combat"],c:900,t:"aoleqp",x:1,n:"also accepted: un char d'assaut, un char de combat",p:"n"},
+ {f:"le Rafale",e:"the Rafale (French fighter jet)",c:900,t:"aoleqp",n:"also: un avion Rafale — same aircraft",p:"n"},
+ {f:"un char",e:"a tank (military)",a:["un char d'assaut","un char de combat"],c:900,t:"aoleqp",n:"also accepted: un char d'assaut, un char de combat",p:"n"},
  {f:"un drone",e:"a drone",c:900,t:"aoleqp",p:"n"},
  {f:"un hélicoptère",e:"a helicopter",c:900,t:"aoleqp",p:"n"},
  {f:"une bombe",e:"a bomb",c:900,t:"aoleqp",p:"n"},
@@ -1871,7 +1871,7 @@ var VOCAB_AOL=[
  {f:"le travail",e:"the work",c:900,t:"aolconc",p:"n"},
  {f:"mes respects",e:"my respects",c:900,t:"aolconc",p:"expr"},
  {f:"neutralisé",e:"neutralized",c:900,t:"aolinc",n:"adjective",p:"adj"},
- {f:"le Niger",e:"Niger",c:900,t:"aolprep",x:1,p:"n"},
+ {f:"le Niger",e:"Niger",c:900,t:"aolprep",p:"n"},
  {f:"le nord",e:"the north",c:900,t:"aolprep",p:"n"},
  {f:"notamment",e:"in particular",c:900,t:"aolprep",p:"adv"},
  {f:"peu à peu",e:"little by little",c:900,t:"aolprep",p:"adv"},
@@ -1892,7 +1892,7 @@ var VOCAB_AOL=[
  {f:"une expérience exigeante",e:"a demanding experience",c:900,t:"aolconc",p:"n"},
  {f:"une tâche cruciale",e:"a crucial task",c:900,t:"aolconc",p:"n"},
  {f:"un ratissage",e:"a sweep (of an area)",c:900,t:"aolinc",p:"n"},
- {f:"les Émirats Arabes Unis",e:"the United Arab Emirates",c:900,t:"aolprep",x:1,n:"m. pl. (proper noun)",p:"n"},
+ {f:"les Émirats Arabes Unis",e:"the United Arab Emirates",c:900,t:"aolprep",n:"m. pl. (proper noun)",p:"n"},
  {f:"une ampleur",e:"a scale, an extent (the magnitude of something)",c:900,t:"aolconc",p:"n"},
  {f:"une position",e:"a position",c:900,t:"aolconc",p:"n"},
  {f:"une situation",e:"a situation",c:900,t:"aolconc",p:"n"},
@@ -1904,7 +1904,7 @@ var VOCAB_AOL=[
 ];
 VOCAB=VOCAB.concat(VOCAB_CH12,VOCAB_CH13,VOCAB_CH14,VOCAB_AOL);
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocTrickyOnly=false, vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* Progress is keyed by the French string. When a card's French changes (plural → singular, a merged
@@ -2018,7 +2018,6 @@ function vocPool(){
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
-  if(vocTrickyOnly) arr=arr.filter(function(i){return VOCAB[i].x;});
   if(vocNewOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]===undefined;});
   if(vocHideKnown) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]!=="known";});
   if(vocRusty) arr=arr.filter(function(i){return isRusty(state.vocab, state.vocabStats, VOCAB[i].f);});
@@ -2027,7 +2026,7 @@ function vocPool(){
 function vocBuild(){ vocOrder=vocPool(); shuffleArr(vocOrder); vocIdx=0; vocShown=false; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
-   ignores topic/tricky/hide-known so the table is a complete chapter reference */
+   ignores topic/hide-known so the table is a complete chapter reference */
 function vocChapterScope(){
   var arr=VOCAB.map(function(v,i){return i;});
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
@@ -2098,7 +2097,7 @@ function renderVoc(){
   document.getElementById("vocPos").textContent=(vocIdx+1)+" / "+vocOrder.length;
   var mark=state.vocab[v.f];
   var tag=el("div","vcat"); tag.style.background=CATS.op.bg; tag.style.color=CATS.op.c;
-  function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+(v.x?" · tricky spelling":"")+" · "+statMeta(state.vocabStats[v.f]); }
+  function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+" · "+statMeta(state.vocabStats[v.f]); }
   tag.textContent=vocTagText();
   card.appendChild(tag);
 
@@ -2207,7 +2206,6 @@ function renderVoc(){
     ans.innerHTML="<div class='prompt'><div class='big "+(vocDir==="en"?"fr":"")+"'>"+answerText+"</div></div>";
     if(v.n) ans.appendChild(el("div","note",esc(v.n)));
     if(v.y) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
-    if(v.x) ans.appendChild(el("div","note","Tricky spelling — watch the accents and double letters."));
     card.appendChild(ans);
     var act=el("div","vactions");
     if(vocTrain){
@@ -2253,7 +2251,6 @@ document.getElementById("chapterFilterVoc").addEventListener("change",function()
 });
 document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
-document.getElementById("vocTricky").addEventListener("click",function(){vocTrickyOnly=!vocTrickyOnly;this.style.background=vocTrickyOnly?"var(--ink)":"";this.style.color=vocTrickyOnly?"#fff":"";vocBuild();renderVoc();});
 document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
   vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";
