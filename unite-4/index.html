@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.4.4</title>
+<title>Unité 4 · Dossier Français — v0.5.0</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -296,7 +296,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.4.4</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.5.0</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -504,7 +504,7 @@
   <!-- ===================== TEST ===================== -->
   <section class="panel" id="p-test" role="tabpanel">
     <h2 class="sec">Quizzes &amp; Unit 4 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 16, Ch 17, Ch 18 and Ch 19 so far). The <b>Unit 4 practice exam</b> is à venir pending the study guide.</p>
+    <p class="lead">10 randomized questions per chapter bank (Ch 16–19) — plus the <b>Unit 4 practice exam</b>, modeled on your Test 4 study guide. Answers feed Analyse.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -520,7 +520,7 @@
           <option value="17">Chapter 17 quiz</option>
           <option value="18">Chapter 18 quiz</option>
           <option value="19">Chapter 19 quiz</option>
-          <option value="exam" disabled>Unit 4 practice exam (à venir)</option>
+          <option value="exam">Unit 4 practice exam</option>
         </select>
         <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
       </div>
@@ -590,8 +590,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.4.4</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.5.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.5.0 (5 Oct 2026): <strong>Unit 4 practice exam — built from the Test 4 study guide.</strong> The Examen blanc picker gains the <strong>Unit 4 practice exam</strong>; the à venir placeholder and disabled option are gone. <strong>Compréhension</strong>: 3 of 6 passages drawn per attempt, matching the guide's passage types (news article, public-service announcement, ad, cartoon, interview) across all four chapters' themes — earthquake report, heatwave notice, intergenerational housing ad, neighborhood-renewal article, social-media/junk-food cartoon, emergency-room interview — each with two multiple-choice questions and one self-graded short answer in English. The Test 4 audio sections cannot be reproduced here, so the audio-style types (announcements, interviews) appear as transcripts. <strong>Vocabulaire</strong>: 12 of 80, the complete Test 4 word list, EN → FR, articles required, accents strict, with the œ words accepting oe spellings. 75 of the 80 are existing trainer cards (Ch 16: 23, Ch 17: 19, Ch 18: 17, Ch 19: 16); five (la crainte, une quête, une réplique, un chirurgien, vulgariser) are on the study guide but have no trainer card yet. English cues carry a disambiguator wherever a near-synonym card exists (indemne vs sain et sauf, néfaste vs nuisible, hurler vs crier, séisme vs tremblement de terre, lutter contre vs se battre, le renom vs la réputation), and the few genuinely interchangeable pairs accept both answers (à la fois / en même temps, à plein temps / à temps plein, provisoire / temporaire). <strong>Grammaire</strong>: 12 of 35, seven items for each of the five structures on the guide — relative pronouns (dont, qui, où, ce que, ce dont, ce qui), hypothèse (si + présent), nominalisation, pronoms démonstratifs, passé composé avec avoir et être — with no tense or auxiliary labels in the stems; fill-ins feed Analyse with chapter and structure tags. Fresh random draw every attempt; history is saved under "Unit 4 exam". No changes to Vocabulaire, Conjugaison, Grammaire drills, Pratique orale or saved progress.<br></span>
     <span style="color:var(--mute)">v0.4.4 (1 Oct 2026): <strong>Vocabulaire — words shared between chapters are back in every chapter that teaches them.</strong> Earlier builds left a word out of a chapter when another chapter already had a card for it, so studying one chapter could skip words from its own glossaire. Those 24 cards are restored, using the same French key as the existing card, so progress is shared: knowing a word in one chapter marks it known in the others. <strong>Chapter 17</strong> (+11, now 229 cards: 144 glossaire + 85 mini-glossaire): enlever, former, finir par and faire partie de (also in Chapter 16); décaler, virer, améliorer, soigner, éventuel(le), la sage-femme and ainsi (also in Chapter 18). <strong>Chapter 18</strong> (+2, now 200 cards: 130 glossaire + 70 mini-glossaire): finir par and ancré (also in Chapter 16). <strong>Chapter 19</strong> (+11, now 166 cards: 133 glossaire + 33 mini-glossaire): demeurer (also in Chapter 16); heurter, soigner, mettre en garde and la chaîne alimentaire (also in Chapter 18); déraciné(e), se heurter à, le freinage, dérailler, percuter and une pente (also in Chapter 17). Unit 4 now has 787 cards covering 763 distinct words. Saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.4.3 (28 Sep 2026): <strong>"Drill misses" replaced with "New only."</strong> The old filter showed cards marked "still learning," which mostly duplicated Hide known. The button now shows only cards you've never attempted — not known, not still learning, never answered. Renamed internally (missMode/vocMissOnly → newOnlyMode/vocNewOnly); the now-meaningless worst-accuracy sort is removed. No vocab or verb data changed.<br></span>
     <span style="color:var(--mute)">v0.4.2 (21 Sep 2026): <strong>Etymology mémos.</strong> Added a one-sentence etymology "Mémo" to 758 of Unit 4's 763 vocabulaire cards (192 Chapter 16, 217 Chapter 17, 195 Chapter 18, 154 Chapter 19), closing the gap the v0.4.0 changelog flagged. Five cards were left without one rather than risk a fabricated derivation, because standard references mark their origin as genuinely obscure or disputed: trier (Ch 17), chamboulé(e) (Ch 19), la bécane, le tracas and bafouiller (Ch 18). No other field was changed on any card.<br></span>
@@ -2979,11 +2980,179 @@ function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.ran
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
 
 
-/* ===== UNIT 3 EXAM BANK — built from the Test 3 study guide (Ch 11–14) ===== */
-/* ===== UNIT 4 EXAM BANK — à venir pending the Unit 4 study guide ===== */
-var EXAM_READ=[];
-var EXAM_VOCAB=[];
-var EXAM_GRAM=[];
+/* ===== UNIT 4 EXAM BANK — built from the Test 4 study guide (Ch 16–19) ===== */
+var EXAM_READ=[
+ {title:"Article — séisme dans le nord-ouest",
+  text:"Un séisme de magnitude 6,2 a secoué le nord-ouest du pays dans la nuit de mardi à mercredi. Plusieurs immeubles se sont effondrés et les secouristes cherchent encore des survivants sous les décombres. Le dernier bilan s'alourdit : 48 morts et plus de 300 blessés. Une forte réplique, ressentie hier à l'aube, a poussé de nombreux habitants à dormir dehors par peur d'un nouvel effondrement. Les pompiers ont bouclé plusieurs rues du centre-ville, trop dangereuses. Un petit garçon a été retrouvé indemne après vingt heures sous un mur écroulé. Les hôpitaux, débordés, lancent un appel aux dons de sang et de médicaments.",
+  qs:[
+   {type:"mc",q:"What event is the article reporting?",o:["An earthquake in the northwest of the country","A fire in a city-center hospital","A flood after days of rain","A train accident near the border"],a:"An earthquake in the northwest of the country"},
+   {type:"mc",q:"Why did many residents sleep outside?",o:["They feared another collapse after an aftershock","The government ordered an evacuation of the whole region","Their homes had been flooded","The power was out in every neighborhood"],a:"They feared another collapse after an aftershock"},
+   {type:"sa",q:"What happened to the little boy?",model:"He was found unharmed after about twenty hours under a collapsed wall."}
+  ]},
+ {title:"Message d'intérêt public — canicule",
+  text:"MESSAGE DE LA PRÉFECTURE — CANICULE. Une vague de chaleur s'installe sur la région jusqu'à dimanche, avec des températures proches de 40 degrés. Buvez de l'eau régulièrement, même sans soif, et évitez de sortir entre midi et 16 heures. Prenez des nouvelles de vos voisins âgés, surtout s'ils vivent seuls : les personnes âgées et les jeunes enfants sont les plus fragiles. En cas de malaise, de forte fièvre ou de maux de tête violents, appelez le 15 ou rendez-vous aux urgences. Les maisons de retraite ouvrent des salles climatisées au public l'après-midi.",
+  qs:[
+   {type:"mc",q:"How long is the heatwave expected to last?",o:["Until Sunday","Until the end of the month","Only this afternoon","Until Wednesday"],a:"Until Sunday"},
+   {type:"mc",q:"Who does the message single out as the most vulnerable?",o:["Elderly people and young children","Athletes and outdoor workers","Tourists and students","Pregnant women and teenagers"],a:"Elderly people and young children"},
+   {type:"sa",q:"What should someone do in case of fainting, a high fever or severe headaches?",model:"Call 15 (emergency number) or go to the emergency room."}
+  ]},
+ {title:"Petite annonce — colocation solidaire",
+  text:"COLOCATION SOLIDAIRE — Madame Duval, 78 ans, retraitée, propose une chambre lumineuse dans sa maison à un étudiant sérieux ou à une étudiante sérieuse. En échange d'un loyer très modeste, elle cherche quelqu'un qui accepte de partager le dîner trois soirs par semaine et de l'aider pour les courses. Cette cohabitation entre générations est une belle occasion de partage et de soutien mutuel. Étudiant à plein temps ? Pas de problème : vos horaires de cours passent avant tout. Appelez le 04 78 55 12 30 après 18 heures.",
+  qs:[
+   {type:"mc",q:"What is Madame Duval offering?",o:["A room in her house at a very low rent","A free apartment downtown","A part-time job as a caregiver","A summer exchange program"],a:"A room in her house at a very low rent"},
+   {type:"mc",q:"What is expected of the person who rents the room?",o:["Share dinner three evenings a week and help with the shopping","Pay the full market rent and do all the housework","Look after her garden every weekend","Be home every night by 10 p.m."],a:"Share dinner three evenings a week and help with the shopping"},
+   {type:"sa",q:"What does the ad say about the tenant's class schedule?",model:"Studies come first — a full-time student is fine, and class hours take priority."}
+  ]},
+ {title:"Article — un quartier se reprend en main",
+  text:"Dans le quartier des Lilas, les habitants ont décidé de reprendre leur rue en main. Depuis le printemps, un collectif de citadins organise des ateliers de réparation de vélos, ramasse les déchets le samedi matin et a financé une grande fresque sur le mur de l'école. Le projet, d'abord à petite échelle, s'élargit au fur et à mesure que de nouveaux voisins s'impliquent. La mairie a promis de soutenir l'initiative et d'installer des panneaux solaires sur le toit de l'école : une énergie renouvelable, durable et à portée de main.",
+  qs:[
+   {type:"mc",q:"What did the neighborhood collective pay for on the school wall?",o:["A large mural","A new clock","A security camera","A bulletin board"],a:"A large mural"},
+   {type:"mc",q:"How has the project changed since the spring?",o:["It started small and is growing as more neighbors get involved","It has been shut down by the city","It has moved to another neighborhood","It is now run entirely by city employees"],a:"It started small and is growing as more neighbors get involved"},
+   {type:"sa",q:"What has city hall promised to do?",model:"Support the initiative and install solar panels on the school roof."}
+  ]},
+ {title:"Dessin de presse — « Génération connectée »",
+  text:"DESSIN DE PRESSE (description). Un adolescent est affalé devant un grand écran, un hamburger dans une main, son téléphone dans l'autre. Sur le mur derrière lui, une affiche : « Mangez cinq fruits et légumes par jour ». Une bulle sort du téléphone : « Plus de 3 000 j'aime ! » Sa mère, debout à la porte, soupire : « Il a mordu à l'hameçon des réseaux sociaux… et il a oublié de bouger. » Légende : « Génération connectée, corps déconnecté. »",
+  qs:[
+   {type:"mc",q:"What is the cartoon criticizing?",o:["Teenagers' unhealthy habits tied to social media and junk food","The high price of fruits and vegetables","Parents who spend too much time on their phones","The poor quality of school lunches"],a:"Teenagers' unhealthy habits tied to social media and junk food"},
+   {type:"mc",q:"What does the mother complain about?",o:["He fell for social media and forgot to move","He never answers her calls","He is eating too many fruits and vegetables","He refuses to leave his room for dinner"],a:"He fell for social media and forgot to move"},
+   {type:"sa",q:"What does the caption « Génération connectée, corps déconnecté » suggest?",model:"A hyper-connected generation is neglecting its bodies/physical health."}
+  ]},
+ {title:"Interview radio — aux urgences",
+  text:"INTERVIEW RADIO — le docteur Karim Benali, chirurgien aux urgences. — Combien de patients recevez-vous un soir de week-end ? — Une centaine, en moyenne. Beaucoup viennent pour une cheville foulée, ou pour un genou qui fait mal après un match. Mais ce qui m'inquiète, ce sont ceux qui ne consultent pas leur généraliste à temps. — Quel conseil donnez-vous ? — D'abord, soignez-vous avant que la douleur s'aggrave. Ensuite, évitez la malbouffe et bougez : une bonne hygiène de vie améliore l'espérance de vie, c'est prouvé.",
+  qs:[
+   {type:"mc",q:"Why do many patients come in on weekend nights?",o:["Sprained ankles and sore knees after sports","Burns from kitchen accidents","Food poisoning from restaurants","Injuries from car accidents"],a:"Sprained ankles and sore knees after sports"},
+   {type:"mc",q:"What worries the doctor the most?",o:["People who don't see their general practitioner in time","Patients who skip their medication","Long waiting times at the hospital","A shortage of surgeons"],a:"People who don't see their general practitioner in time"},
+   {type:"sa",q:"What advice does the doctor give?",model:"Get treated early before the pain worsens, avoid junk food and keep moving — a healthy lifestyle improves life expectancy."}
+  ]}
+];
+/* Vocabulaire — the complete Test 4 word list (80 words), EN → FR. Articles required per the standing rule; accents strict.
+   Cues carry a disambiguator where a near-synonym lives in the trainer (indemne/sain et sauf, néfaste/nuisible, hurler/crier, séisme/tremblement de terre, lutter contre/se battre, le renom/la réputation).
+   ch omitted where the word has no trainer card (la crainte, une quête, un chirurgien, vulgariser). Draw: 12. */
+var EXAM_VOCAB=[
+ {ch:"17",q:"at the same time, both",a:["à la fois","en même temps"]},
+ {ch:"17",q:"aware of (conscious of something)",a:["conscient de","consciente de"]},
+ {ch:"16",q:"to host, to put (someone) up",a:["héberger","loger"]},
+ {ch:"16",q:"it doesn't matter, no matter (indifferent to the choice)",a:["peu importe","ça n'a pas d'importance"]},
+ {ch:"16",q:"small-scale, on a small scale",a:["à petite échelle"]},
+ {q:"the apprehension, the fear of something to come (formal)",a:["la crainte","une crainte"]},
+ {ch:"19",q:"to scream, to howl (at the top of one's lungs — far more extreme than shouting)",a:["hurler"]},
+ {ch:"18",q:"early, precocious (arriving or developing sooner than expected)",a:["précoce"]},
+ {ch:"16",q:"full-time",a:["à plein temps","à temps plein"]},
+ {ch:"18",q:"the cyberbullying",a:["le cyberharcèlement","du cyberharcèlement","le harcèlement en ligne"]},
+ {ch:"18",q:"to get involved",a:["s'impliquer"]},
+ {ch:"17",q:"to prioritize, to opt for (to choose over other options)",a:["privilégier"]},
+ {ch:"17",q:"within reach",a:["à portée de main","à portée de la main"]},
+ {ch:"16",q:"the gap, the shift (as in the time difference of jet lag)",a:["le décalage","un décalage"]},
+ {ch:"19",q:"impassable (said of a road)",a:["impraticable"]},
+ {ch:"19",q:"temporary, provisional",a:["provisoire","temporaire"]},
+ {ch:"16",q:"pleasant, enjoyable",a:["agréable"]},
+ {ch:"17",q:"the waste, the garbage",a:["les déchets","des déchets"]},
+ {ch:"19",q:"the blaze, the large destructive fire",a:["l'incendie","un incendie"]},
+ {q:"the quest (figuratively, a goal one seeks to achieve)",a:["la quête","une quête"]},
+ {ch:"17",q:"the nursing assistant",a:["l'aide-soignant","l'aide-soignante","un aide-soignant","une aide-soignante"]},
+ {ch:"19",q:"the rubble, the debris",a:["les décombres","des décombres"]},
+ {ch:"19",q:"unharmed, unhurt (not injured at all, without a scratch)",a:["indemne"]},
+ {ch:"18",q:"the diet (a way of eating)",a:["le régime","un régime"]},
+ {ch:"19",q:"to become heavier; to rise (of a toll or a total)",a:["s'alourdir"]},
+ {ch:"16",q:"relaxed (at ease, not tense)",a:["détendu","détendue"]},
+ {ch:"18",q:"to fast (to go without food)",a:["jeûner"]},
+ {ch:"17",q:"the renown, the prestige attached to a name",a:["le renom","un renom","la renommée"]},
+ {ch:"18",q:"to improve (something)",a:["améliorer"]},
+ {ch:"18",q:"gifted (naturally talented)",a:["doué","douée"]},
+ {ch:"18",q:"to fight against (a problem or a cause)",a:["lutter contre"]},
+ {ch:"17",q:"renewable",a:["renouvelable"]},
+ {ch:"16",q:"in love (with someone)",a:["amoureux","amoureuse","amoureux de","amoureuse de","être amoureux de","être amoureuse de"]},
+ {ch:"16",q:"the rights",a:["les droits","des droits"]},
+ {ch:"16",q:"the retirement home",a:["la maison de retraite","une maison de retraite"]},
+ {ch:"19",q:"the aftershock (following an earthquake)",a:["la réplique","une réplique","la réplique sismique","une réplique sismique"]},
+ {ch:"17",q:"the expectation; also, the wait",a:["l'attente","une attente"]},
+ {ch:"17",q:"sustainable, lasting",a:["durable"]},
+ {ch:"18",q:"the junk food",a:["la malbouffe","de la malbouffe"]},
+ {ch:"17",q:"the riches, the wealth (resources a country or person holds)",a:["les richesses","des richesses","la richesse","une richesse"]},
+ {ch:"16",q:"gradually, at the same pace as something else happens",a:["au fur et à mesure"]},
+ {ch:"16",q:"to save (money)",a:["économiser","épargner"]},
+ {ch:"19",q:"the oil spill",a:["la marée noire","une marée noire"]},
+ {ch:"19",q:"safe and sound (having come through the danger alive and well)",a:["sain et sauf","saine et sauve","sains et saufs","saines et sauves"]},
+ {ch:"19",q:"off the coast of, out at sea from",a:["au large de"]},
+ {ch:"19",q:"the collapse, the cave-in (a structure or the ground giving way)",a:["l'effondrement","un effondrement"]},
+ {ch:"18",q:"the medicine, the medication",a:["les médicaments","des médicaments","le médicament","un médicament"]},
+ {ch:"19",q:"the rescue (the act of saving people)",a:["le sauvetage","un sauvetage"]},
+ {ch:"16",q:"to turn out to be, to prove to be",a:["s'avérer","se révéler"]},
+ {ch:"17",q:"to widen, to broaden (a road, a circle, a debate)",a:["élargir"]},
+ {ch:"16",q:"the household",a:["le ménage","un ménage"]},
+ {ch:"19",q:"the earthquake (the technical or news-report term — think “seismic”)",a:["le séisme","un séisme"]},
+ {ch:"16",q:"a foolish act, a dumb decision (the kind of thing a child does that gets them into trouble)",a:["une bêtise","la bêtise","une sottise","la sottise"]},
+ {ch:"16",q:"to get along (with someone)",a:["s'entendre","s'entendre bien"]},
+ {ch:"16",q:"the customs, the mores (habits and traditions of a society)",a:["les mœurs","les moeurs","les coutumes"]},
+ {ch:"18",q:"to care for, to treat (a patient or an illness)",a:["soigner"]},
+ {ch:"19",q:"to cordon off, to seal off (an area)",a:["boucler"]},
+ {ch:"16",q:"the life expectancy",a:["l'espérance de vie","une espérance de vie"]},
+ {ch:"18",q:"to take the bait (fall for it, as a fish does)",a:["mordre à l'hameçon","mordre à l'appât"]},
+ {ch:"16",q:"the support (emotional or moral backing)",a:["le soutien","un soutien"]},
+ {ch:"19",q:"the heatwave",a:["la canicule","une canicule","la vague de chaleur","une vague de chaleur"]},
+ {ch:"16",q:"demanding (expecting a lot of others or of oneself)",a:["exigeant","exigeante"]},
+ {ch:"18",q:"harmful in its consequences (e.g. a harmful effect on health)",a:["néfaste"]},
+ {ch:"19",q:"the witness",a:["le témoin","un témoin","la témoin","une témoin"]},
+ {ch:"18",q:"the ankle",a:["la cheville","une cheville"]},
+ {ch:"17",q:"to hurt (to cause pain, to be painful)",a:["faire mal","faire mal à"]},
+ {ch:"18",q:"the navel, the belly button",a:["le nombril","un nombril"]},
+ {ch:"17",q:"exactly, absolutely (as a reply: “I agree completely”)",a:["tout à fait"]},
+ {q:"the surgeon",a:["le chirurgien","la chirurgienne","un chirurgien","une chirurgienne"]},
+ {ch:"17",q:"the mural painting",a:["la fresque","une fresque","la peinture murale","une peinture murale"]},
+ {ch:"17",q:"the bet, the gamble",a:["le pari","un pari"]},
+ {ch:"18",q:"the emergency room",a:["les urgences","des urgences"]},
+ {ch:"17",q:"the city dweller",a:["le citadin","la citadine","un citadin","une citadine"]},
+ {ch:"17",q:"the general practitioner (a doctor who is not a specialist)",a:["le généraliste","la généraliste","un généraliste","une généraliste","le médecin généraliste","un médecin généraliste"]},
+ {ch:"16",q:"the sharing",a:["le partage","un partage"]},
+ {ch:"17",q:"to be worth",a:["valoir"]},
+ {ch:"16",q:"the living together (sharing a home)",a:["la cohabitation","une cohabitation"]},
+ {ch:"18",q:"the knee",a:["le genou","un genou"]},
+ {ch:"16",q:"to allow oneself, to be able to afford",a:["se permettre"]},
+ {q:"to popularize, to make a technical subject accessible to the public",a:["vulgariser"]}
+];
+/* Grammaire — five structures named on the study guide (relative pronouns, hypothèse, nominalisation, pronoms démonstratifs, passé composé avoir/être), 7 items each. No tense/auxiliary labels in the stems. Draw: 12. */
+var EXAM_GRAM=[
+ /* relative pronouns */
+ {ch:"16",q:"Voici le livre ___ je t'ai parlé hier.",a:["dont"],m:{vg:"dont"}},
+ {ch:"16",q:"Les voisins ___ habitent au troisième étage ont organisé une fête.",a:["qui"],m:{vg:"dont"}},
+ {ch:"16",q:"La ville ___ nous avons passé nos vacances a beaucoup changé.",a:["où"],m:{vg:"dont"}},
+ {ch:"16",q:"L'ami ___ la fille a gagné le concours est très fier.",a:["dont"],m:{vg:"dont"}},
+ {ch:"18",q:"Elle n'a pas compris ___ le professeur lui a expliqué.",a:["ce que"],m:{vg:"cequi"}},
+ {ch:"18",q:"Dites-moi ___ vous avez besoin pour votre voyage.",a:["ce dont"],m:{vg:"cequi"}},
+ {ch:"18",q:"___ m'étonne le plus, c'est sa patience.",a:["Ce qui"],m:{vg:"cequi"}},
+ /* hypothesis: si + présent */
+ {ch:"18",q:"Si tu ___ (finir) tes devoirs à temps, nous irons au cinéma.",a:["finis"],m:{vg:"hypofut"}},
+ {ch:"18",q:"Si nous n'___ (agir) pas maintenant, la situation s'aggravera.",a:["agissons"],m:{vg:"hypofut"}},
+ {ch:"18",q:"Si le séisme est violent, les secours ___ (arriver) en quelques heures.",a:["arriveront"],m:{vg:"hypofut"}},
+ {ch:"18",q:"Si vous voyez un incendie, ___ (appeler) immédiatement les pompiers.",a:["appelez"],m:{vg:"hypofut"}},
+ {ch:"18",q:"Si elle ___ (avoir) de la fièvre demain, elle ira chez le généraliste.",a:["a"],m:{vg:"hypofut"}},
+ {ch:"18",q:"S'il pleut demain, nous ___ (rester) à la maison.",a:["resterons"],m:{vg:"hypofut"}},
+ {ch:"18",q:"Si elle réussit son examen, elle ___ (devenir) chirurgienne.",a:["deviendra"],m:{vg:"hypofut"}},
+ /* nominalization */
+ {ch:"19",q:"Les secouristes ont sauvé trois mineurs. → « ___ de trois mineurs par les secouristes »",a:["sauvetage","le sauvetage"],m:{vg:"nomin"}},
+ {ch:"19",q:"La planète se réchauffe rapidement. → « Le ___ rapide de la planète »",a:["réchauffement"],m:{vg:"nomin"}},
+ {ch:"19",q:"La rivière a inondé le village. → « ___ du village par la rivière »",a:["inondation","l'inondation"],m:{vg:"nomin"}},
+ {ch:"19",q:"Les premiers secours sont arrivés sur place. → « ___ des premiers secours sur place »",a:["arrivée","l'arrivée"],m:{vg:"nomin"}},
+ {ch:"19",q:"Le pont est fragile. → « La ___ du pont inquiète les ingénieurs »",a:["fragilité"],m:{vg:"nomin"}},
+ {ch:"19",q:"Elle est fière de ses élèves. → « Sa ___ est évidente »",a:["fierté"],m:{vg:"nomin"}},
+ {ch:"19",q:"Les habitants ont fui la ville. → « ___ des habitants »",a:["fuite","la fuite"],m:{vg:"nomin"}},
+ /* demonstrative pronouns */
+ {ch:"18",q:"Ma voiture est plus rapide que ___ de mon frère.",a:["celle"],m:{vg:"demonpro"}},
+ {ch:"18",q:"Mes notes sont meilleures que ___ de l'année dernière.",a:["celles"],m:{vg:"demonpro"}},
+ {ch:"18",q:"Cette maison-ci est trop petite, mais ___ est parfaite.",a:["celle-là"],m:{vg:"demonpro"}},
+ {ch:"18",q:"Les citadins de Paris sont plus stressés que ___ de la campagne.",a:["ceux"],m:{vg:"demonpro"}},
+ {ch:"18",q:"J'ai lu deux articles ; ___ que tu m'as recommandé était passionnant.",a:["celui"],m:{vg:"demonpro"}},
+ {ch:"18",q:"Parmi toutes ces fresques, ___ de la gare est ma préférée.",a:["celle"],m:{vg:"demonpro"}},
+ {ch:"18",q:"Mon quartier est calme, mais ___ de ma sœur est très bruyant.",a:["celui"],m:{vg:"demonpro"}},
+ /* passé composé: avoir & être */
+ {q:"Hier soir, les pompiers ___ (arriver) en dix minutes.",a:["sont arrivés"],m:{vg:"pc"}},
+ {q:"Nous ___ (voir) la fumée depuis la route.",a:["avons vu"],m:{vg:"pc"}},
+ {q:"Elle ___ (sortir) son passeport de son sac.",a:["a sorti"],m:{vg:"pc"}},
+ {q:"Elle ___ (sortir) de l'immeuble juste avant l'effondrement.",a:["est sortie"],m:{vg:"pc"}},
+ {q:"Léa et Camille ___ (partir) très tôt ce matin.",a:["sont parties"],m:{vg:"pc"}},
+ {q:"J'___ (descendre) les valises à la cave.",a:["ai descendu"],m:{vg:"pc"}},
+ {q:"Le blessé ___ (mourir) à l'hôpital cette nuit.",a:["est mort"],m:{vg:"pc"}}
+];
 /* ===== quiz / exam engine ===== */
 var quizPick="11", testItems=[];
 document.getElementById("quizPick").addEventListener("change",function(){ quizPick=this.value; renderTestHist(); });
@@ -2993,7 +3162,7 @@ function renderTestHist(){
   var h=document.getElementById("testHist");
   var mine=state.tests.filter(function(t){ return (t.kind||"quiz")===histKind() || (!t.kind && quizPick!=="exam"); });
   if(!mine.length){ h.textContent = quizPick==="exam"
-    ? "Modeled on your Test 3 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
+    ? "Modeled on your Test 4 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
     : "10 randomized questions from the Chapter "+quizPick+" bank — a different draw every attempt."; return; }
   var last=mine[mine.length-1];
   var best=mine.reduce(function(m,t){return Math.max(m,Math.round(t.score/t.total*100));},0);
@@ -3059,13 +3228,14 @@ document.getElementById("startTest").onclick=function(){
     });
     /* Section 2 — Vocabulaire */
     host.appendChild(el("h2","sec","Vocabulaire"));
-    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 3 word list."));
+    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 4 word list."));
     pick(EXAM_VOCAB, CONFIG.EXAM.vocab).forEach(function(t){
       var q=mkFillQ({q:"Translate: <b>"+t.q+"</b>",a:t.a,m:t.m,ch:t.ch},qi,"Vocabulaire");
       host.appendChild(q); qs.push(q); qi++;
     });
     /* Section 3 — Grammaire */
     host.appendChild(el("h2","sec","Grammaire"));
+    host.appendChild(el("p","hist","Fill each blank. Where a verb is given in parentheses, conjugate it as the sentence requires."));
     pick(EXAM_GRAM, CONFIG.EXAM.gram).forEach(function(t){
       var q=mkFillQ(t,qi,"Grammaire"); host.appendChild(q); qs.push(q); qi++;
     });
