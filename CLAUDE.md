@@ -77,8 +77,9 @@ of git. To prevent this:
   `main` and pushing still waits for explicit go-ahead.
 - Ship procedure when several chapters are in flight (Unit 4 model):
   - Ship one chapter at a time, in a fixed order. Each later chapter merges
-    the new `origin/main`, re-scans for duplicate vocab against everything
-    already shipped, re-verifies, and only then ships.
+    the new `origin/main`, re-scans its vocab against everything
+    already shipped (repeats kept, with `f:` aligned to the shipped card — see
+    cross-chapter repeats rule), re-verifies, and only then ships.
   - Give branches provisional versions only. Assign the real version by merge
     order — three branches that each planned "v0.2.0" collide on the same
     three version strings and the changelog.
@@ -181,15 +182,29 @@ of git. To prevent this:
       bare, colliding glosses (e.g. both just "harmful").
     - Flag every collision found while assembling a vocab bank for review
       before building, same as any other ambiguous vocab call.
-- Cross-chapter duplicate scan: progress is keyed by `f:`, so the same French
-  word in two chapters is one shared state entry, not two cards. A later
-  chapter drops any card an already-shipped chapter has (an earlier chapter's
-  copy is not moved); never ship duplicate `f:` keys. Scan with a real script
-  over the loaded VOCAB, exact AND form-insensitive (ignore articles,
-  `se`/`s'` and the `(e)` shorthand) — exact matching missed `la pente` vs
-  `une pente`, and `ancré` (Ch 16) vs `ancré(e)` (Ch 18) shipped as a
-  duplicate until v0.4.1. After dropping, re-check the surviving cues against
-  neighbouring chapters' cards (synonym collision rule below).
+- Cross-chapter repeats: KEEP them. A word in a chapter's glossaire (or an
+  approved mini-glossaire shortlist) gets a card in that chapter even if
+  another chapter already has it, so students studying one chapter never miss
+  it. (This replaces the old "later chapter drops the duplicate" rule, which
+  removed `soigner` from Ch 17 because Ch 18 shipped first. Unit 4's 24
+  dropped repeats were restored in v0.4.4; Units 1–3 were built under the old
+  rule and have not been backfilled.)
+  - Progress is keyed by `f:`, so repeats share one progress entry: marking
+    it known in one chapter marks it known in every chapter that has it.
+    That's intended.
+  - The repeat must use the exact same `f:` string as the existing card, so
+    the two share progress instead of drifting apart as near-duplicates
+    (`la pente` vs `une pente`, `ancré` vs `ancré(e)`). Still scan with a real
+    script over the loaded VOCAB, exact AND form-insensitive (ignore
+    articles, `se`/`s'` and the `(e)` shorthand), and normalize any
+    form-insensitive match to the existing card's `f:`. `e:`, `a:`, `n:`,
+    `y:` may differ to fit the chapter's context, but `a:` should accept the
+    same answers in both.
+  - Never two cards with the same `f:` inside one chapter.
+  - Run the synonym collision rule (below) against neighbouring chapters'
+    cards too.
+  - Changelog: list each chapter's repeats ("also in Chapter NN") instead of
+    "not duplicated", and count repeats in that chapter's card total.
 - Vocab grouping size: keep each topic/subtag group to ~20–25 words max. Split
   oversized groups into coherent subtopics rather than letting one balloon.
 - Articles are always required in Vocabulaire spelling grading (no toggle).
