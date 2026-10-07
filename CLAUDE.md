@@ -275,6 +275,30 @@ of git. To prevent this:
   family; header tags `p` part of speech, `fa` faux ami (explanation text),
   `rg` register. The in-card `n:` keeps only the gender token ("m.", "f. pl.").
   Cards without `d:` keep the old in-card Mémo.
+  - Rollout status: Unit 4 has memo cards on every chapter (19 in v0.7.0/0.7.1,
+    18 in v0.7.3, 16 and 17 in v0.7.4). Units 1–3 have NOT been done — they are
+    the next job (one chapter or topic block per PR; the units are not organised
+    by chapter the way Unit 4 is, so pick a sensible block). The engine
+    (`hasMemo`, `memoShow`/`memoHide`, `.memo*` CSS) lives only in
+    `unite-4/index.html` and must be ported to a unit's file before its first
+    memo card (the Unit 4 changelog entry for v0.7.0 lists what was added).
+  - Content pipeline that worked: dump the chapter's cards (`f`, `e`, `p`,
+    `n`, `a`, `y`); write one JS module per chunk keyed by `f` (about
+    100 cards each, can be drafted in parallel), reusing the existing text for any
+    `f` that already has a memo card in another chapter (same `f` = same
+    progress = same memo); apply the fields to the VOCAB literals by `f`; trim
+    `n:` to the gender token only (move any other note — "vs …", "fam.",
+    "faux ami —", "also: …" — into `vs`/`rg`/`fa`/`d`); keep the existing `y:`
+    etymology (do not rewrite it); every card gets `d` and `ex`; `mn` is
+    omitted when no hook is worth giving (never filler). Check participe passé
+    auxiliaries (être only for pronominal verbs and the listed être verbs),
+    feminine forms, and that every faux ami is a real false friend.
+  - Verify before shipping: Node syntax check of the extracted script; the
+    harness load; a render test that a memo card shows only after answering and
+    shows the right fields; a seeded-localStorage test that progress is intact;
+    a headless screenshot (desktop + phone width) of one noun, one verb and one
+    faux-ami card. Changelog counts (cards with mnemonic, forms, vs, etc.) are
+    computed from the data, not estimated.
 - Progress keys: progress is keyed by `f:`. Any change to an `f:` string must
   add an `[old, new]` pair (`null` for a removed card) to that unit's
   `VOCAB_ALIASES`; the loader moves saved progress across and keeps merged
