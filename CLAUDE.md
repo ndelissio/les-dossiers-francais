@@ -275,19 +275,19 @@ of git. To prevent this:
   family; header tags `p` part of speech, `fa` faux ami (explanation text),
   `rg` register. The in-card `n:` keeps only the gender token ("m.", "f. pl.").
   Cards without `d:` keep the old in-card Mémo.
-  - Rollout status: Unit 4 has memo cards on every chapter (19 in v0.7.0/0.7.1,
-    18 in v0.7.3, 16 and 17 in v0.7.4). Units 1–3 have NOT been done — they are
-    the next job (one chapter or topic block per PR; the units are not organised
-    by chapter the way Unit 4 is, so pick a sensible block). The engine
-    (`hasMemo`, `memoShow`/`memoHide`, `.memo*` CSS) lives only in
-    `unite-4/index.html` and must be ported to a unit's file before its first
-    memo card (the Unit 4 changelog entry for v0.7.0 lists what was added).
+  - Rollout status: DONE for all four units — Unit 4 (Ch 19 v0.7.0/0.7.1, Ch 18
+    v0.7.3, Ch 16 and 17 v0.7.4), Units 1–3 (U1 v3.5.0, U2 v1.4.0, U3 v1.5.0,
+    every card). The memo engine (`hasMemo`, `memoShow`/`memoHide`, `.memo*`
+    CSS, the `#memocard` slot, slide-in glow and gentle scroll) is in all four
+    unit files; a new unit fork inherits it. Every NEW vocab card in any unit
+    needs the full memo fields (`d`, `ex`, and the rest where they apply), or
+    it falls back to the old in-card Mémo and breaks the pattern.
   - Content pipeline that worked: dump the chapter's cards (`f`, `e`, `p`,
     `n`, `a`, `y`); write one JS module per chunk keyed by `f` (about
     100 cards each, can be drafted in parallel), reusing the existing text for any
     `f` that already has a memo card in another chapter (same `f` = same
     progress = same memo); apply the fields to the VOCAB literals by `f`; trim
-    `n:` to the gender token only (move any other note — "vs …", "fam.",
+    `n:` to the gender token only (nouns only — an adjective's feminine goes in `fm`, never in `n:`) (move any other note — "vs …", "fam.",
     "faux ami —", "also: …" — into `vs`/`rg`/`fa`/`d`); keep the existing `y:`
     etymology (do not rewrite it); every card gets `d` and `ex`; `mn` is
     omitted when no hook is worth giving (never filler). Check participe passé
