@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.7.7</title>
+<title>Unité 4 · Dossier Français — v0.7.8</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -162,7 +162,7 @@
   .vt-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px}
   .vt-item{display:flex; align-items:baseline; gap:9px; padding:6px 10px; border-radius:8px; border:1px solid transparent; font-size:13.5px; min-width:0}
   .vt-item .vt-fr{font-family:var(--serif); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:0 1 auto}
-  .vt-item .vt-en{color:var(--mute); font-size:11.5px; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1 1 auto}
+  .vt-item .vt-en{color:var(--mute); font-size:11.5px; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1 1 0; min-width:0}
   .vt-ct{flex:0 0 auto; font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; letter-spacing:.2px}
   .vt-ct .ok{color:var(--known); font-weight:700} .vt-ct .no{color:var(--accent); font-weight:700}
   .vt-ct0{color:var(--line)}
@@ -311,7 +311,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.7.7</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.7.8</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -605,8 +605,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.7.7</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.7.8</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.7.8 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
     <span style="color:var(--mute)">v0.7.7 (7 Oct 2026): <strong>Review pass on the Chapter 16 and 17 memo cards — corrections.</strong> Every Chapter 16 and 17 card was re-read for factual and wording errors. <strong>Etymologies fixed</strong> where a claim did not hold: avouer (from Latin advocare, not vovere), soigner (Frankish soin, not related to sorrow), au ralenti, le revenu, la pension alimentaire, la colocation, le fournisseur, une flotte, un wagon-citerne, dérailler, ferroviaire, décaler, le décalage, déstabilisant, faire preuve, la bombe de peinture, le piéton, le palais, and the word families of avouer, primer sur, un village de bout de ligne, la cadence and se rencontrer. <strong>English cues made clearer:</strong> anticipé(e) is now "early, in advance"; le stomatologue "the stomatologist"; officieux(-euse) "unofficial, semi-official"; une commande "a control (on a machine or device)"; une pente "a slope, an incline"; montrer "to show, to display"; réintégrer "to reinstate, to return to (a position or place)"; à force de "by dint of, through sheer repetition of". <strong>Part of speech:</strong> à la rencontre de and à quel point are no longer tagged as verbs. The faux ami note on la quarantaine now says it does mean quarantine, but usually means "about forty". Saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.7.6 (7 Oct 2026): <strong>Gentler scroll on the Mémo card.</strong> When the Mémo card opens below the visible area, the page now moves only far enough to show the start of the card instead of pulling the card up the screen, so your right/wrong verdict stays in view. The slide-in and blue glow are unchanged.<br></span>
     <span style="color:var(--mute)">v0.7.5 (7 Oct 2026): <strong>Memo card is easier to notice.</strong> When the Mémo card opens it now slides up, flashes a soft blue glow that fades over about a second and a half, and carries a blue top edge. If it opens below the visible part of the screen (common on a phone), the page scrolls so the top of the card is in view. Reduced-motion settings turn the animation and smooth scrolling off. No content or progress changes.<br></span>
@@ -1106,7 +1107,7 @@ function renderVerbTable(){
     list.forEach(function(i){
       var v=V[i], s=verbStatus(v.fr);
       var cls = s==="known"?"vt-known":(s==="learn"?"vt-learn":"vt-new");
-      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.fr+"</span><span class='vt-en'>"+v.en+"</span>"+ctBadge(state.verbStats[v.fr])+
+      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.fr+"</span><span class='vt-en' title='"+v.en.replace(/'/g,"&#39;")+"'>"+v.en+"</span>"+ctBadge(state.verbStats[v.fr])+
         "</div>";
     });
     html+="</div></div>";
@@ -2391,7 +2392,7 @@ function renderVocTable(){
     list.forEach(function(i){
       var v=VOCAB[i], s=vocStatus(v.f);
       var cls = s==="known"?"vt-known":(s==="learn"?"vt-learn":"vt-new");
-      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.f+"</span><span class='vt-en'>"+v.e+"</span>"+ctBadge(state.vocabStats[v.f])+
+      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.f+"</span><span class='vt-en' title='"+v.e.replace(/'/g,"&#39;")+"'>"+v.e+"</span>"+ctBadge(state.vocabStats[v.f])+
         "</div>";
     });
     html+="</div></div>";
