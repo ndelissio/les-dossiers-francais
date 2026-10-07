@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 2 · Dossier Français — v1.4.0</title>
+<title>Unité 2 · Dossier Français — v1.4.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -162,7 +162,7 @@
   .vt-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px}
   .vt-item{display:flex; align-items:baseline; gap:9px; padding:6px 10px; border-radius:8px; border:1px solid transparent; font-size:13.5px; min-width:0}
   .vt-item .vt-fr{font-family:var(--serif); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:0 1 auto}
-  .vt-item .vt-en{color:var(--mute); font-size:11.5px; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1 1 auto}
+  .vt-item .vt-en{color:var(--mute); font-size:11.5px; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1 1 0; min-width:0}
   .vt-ct{flex:0 0 auto; font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; letter-spacing:.2px}
   .vt-ct .ok{color:var(--known); font-weight:700} .vt-ct .no{color:var(--accent); font-weight:700}
   .vt-ct0{color:var(--line)}
@@ -311,7 +311,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v1.4.0</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v1.4.1</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -574,8 +574,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v1.4.0</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v1.4.1</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.4.1 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
     <span style="color:var(--mute)">v1.4.0 (7 Oct 2026): <strong>Memo cards for every Vocabulaire word.</strong> Once you answer, reveal, or mark a card known, a separate <strong>Mémo card</strong> opens under the trainer (above the progress table): <em>Meaning</em>, <em>Not to confuse with</em>, <em>Mnemonic</em>, <em>Forms</em> (participe passé with avoir or être for verbs; feminine and irregular forms), <em>Synonyms / opposites</em> and <em>Etymology</em>, with <em>Example</em>, <em>Construction</em> and <em>Word family</em> behind <strong>More</strong>. It slides in with a soft blue glow so it is easy to notice, and the page only scrolls as far as needed to show its top. All 458 cards have a meaning line and an example; 419 have a mnemonic, 183 have forms, 211 a not-to-confuse-with note, 54 synonyms or opposites, 360 a construction, 373 a word family and 458 an etymology. <strong>Faux ami</strong> tags on 19 cards (la cave, la chambre, l'entrée, le four, la commode, marron, ancien, propre, appliquer, disposer, le citron, le raisin, la casserole, onctueux, savoureux, le menu, retirer, l'exposition, assister à). <strong>Register</strong> tags on 6 informal, formal or technical cards. The old in-card notes ("vs …", "also taught …", feminine forms, faux ami warnings) moved into the Mémo card, so the reveal now shows only the gender of a noun. <strong>Review pass:</strong> every new card was re-read for factual and wording errors; etymologies that did not hold up were corrected (including some older ones, such as le toit, la buanderie, le lavabo, le coussin, agencer, le jardin), a few English cues were made clearer, and part-of-speech tags were fixed on cards wrongly tagged as verbs (à droite de, à gauche de). Etymology used to appear only in Training mode; it now shows on the Mémo card after every answer. Saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v1.3.1 (6 Oct 2026): <strong>Vocabulaire — the "tricky spelling" tag is gone.</strong> It was a subjective flag with no clear rule behind it, so the "Tricky spellings" filter, the "tricky spelling" label on the card header and the reminder on the answer are removed, along with the flag on 39 cards. Nothing else about the cards changed, and saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v1.3.0 (6 Oct 2026): <strong>Vocabulaire pass — part-of-speech tags, singular nouns, clearer English cues.</strong> Every English cue now carries a small part-of-speech tag (noun, adjective, verb, adverb, preposition, conjunction, expression, number), so a short or weak translation is never ambiguous. <strong>Plural → singular</strong> so gender can be trained (16 cards): le coussin, le légume, le petit pois, la crevette, l'huître, la moule, la noix, le cornichon, l'épice, la dent, le doigt, l'os, le poumon, l'œil (l'oeil is accepted), la démangeaison, le goût. Nine words that are typically plural stay plural, each with its gender on the reveal: les épinards, les fruits de mer, les céréales, les pâtes, les premiers soins, les soins médicaux, les urgences, les voies respiratoires, les félicitations. <strong>Close synonyms:</strong> 49 cards now carry a distinguishing English cue and a "vs" note — le canapé / le divan / le sofa, l'armoire / le placard, agencer / aménager / arranger / disposer, cuire / faire cuire / cuisiner, battre / fouetter, mélanger / remuer, enfourner / mettre au four, faire bouillir / porter à ébullition, la blessure / la plaie, le brancard / la civière, soigner / guérir / récupérer, se porter / se sentir, le convive / l'invité / l'hôte, se rencontrer / se retrouver, au-dessus de / en dessous de / sous, peu de / un peu de, une carafe / un pichet, la cuisinière / la plaque de cuisson, le menu / la formule, chaleureux / douillet / accueillant, la morsure / la piqûre. English glosses improved on 77 cards in all (for example "a dozen of" → "a dozen"). The masculine/feminine grader from Units 3–4 now ships here. Unit 2 stays at 458 cards. <strong>Gender on the reveal:</strong> 5 l’… nouns that showed no gender anywhere now show m. or f. on the answer note. Saved progress is carried over: a renamed card keeps its status, and where two cards merged the new card counts as known only if both were known.<br></span>
@@ -984,7 +985,7 @@ function renderVerbTable(){
     list.forEach(function(i){
       var v=V[i], s=verbStatus(v.fr);
       var cls = s==="known"?"vt-known":(s==="learn"?"vt-learn":"vt-new");
-      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.fr+"</span><span class='vt-en'>"+v.en+"</span>"+ctBadge(state.verbStats[v.fr])+
+      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.fr+"</span><span class='vt-en' title='"+v.en.replace(/'/g,"&#39;")+"'>"+v.en+"</span>"+ctBadge(state.verbStats[v.fr])+
         "</div>";
     });
     html+="</div></div>";
@@ -1868,7 +1869,7 @@ function renderVocTable(){
     list.forEach(function(i){
       var v=VOCAB[i], s=vocStatus(v.f);
       var cls = s==="known"?"vt-known":(s==="learn"?"vt-learn":"vt-new");
-      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.f+"</span><span class='vt-en'>"+v.e+"</span>"+ctBadge(state.vocabStats[v.f])+
+      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.f+"</span><span class='vt-en' title='"+v.e.replace(/'/g,"&#39;")+"'>"+v.e+"</span>"+ctBadge(state.vocabStats[v.f])+
         "</div>";
     });
     html+="</div></div>";
