@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.7.4</title>
+<title>Unité 4 · Dossier Français — v0.7.5</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -116,7 +116,9 @@
   .prompt .small{font-size:14px; color:var(--mute); font-weight:500; margin-bottom:2px}
   .prompt .big{font-size:30px; font-weight:600}
   .prompt .big.fr{font-style:italic}
-  .memo{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px 12px; margin-top:14px}
+  .memo{background:var(--card); border:1px solid var(--line); border-top:3px solid var(--bleu); border-radius:var(--radius); padding:14px 18px 12px; margin-top:14px; animation:memopop .5s cubic-bezier(.2,.8,.2,1) both, memoglow 1.6s ease-out}
+  @keyframes memopop{from{opacity:0; transform:translateY(14px) scale(.985)}to{opacity:1; transform:none}}
+  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:#e6ebf5}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
   .memo-h{display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-family:var(--serif); font-size:20px; font-weight:600; margin-bottom:6px}
   .memo-h .vpos{margin-left:0}
   .memo-fr{font-style:italic; margin-right:4px}
@@ -309,7 +311,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.7.4</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.7.5</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -603,8 +605,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.7.4</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.7.5</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters). Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.7.5 (7 Oct 2026): <strong>Memo card is easier to notice.</strong> When the Mémo card opens it now slides up, flashes a soft blue glow that fades over about a second and a half, and carries a blue top edge. If it opens below the visible part of the screen (common on a phone), the page scrolls so the top of the card is in view. Reduced-motion settings turn the animation and smooth scrolling off. No content or progress changes.<br></span>
     <span style="color:var(--mute)">v0.7.4 (6 Oct 2026): <strong>Memo cards — Chapters 16 and 17.</strong> All 421 cards of Chapters 16 (158 glossaire + 34 mini-glossaire = 192) and 17 (144 glossaire + 85 mini-glossaire = 229) now open the Mémo card after you answer, with the same layout as Chapters 18 and 19: <em>Meaning</em>, <em>Not to confuse with</em>, <em>Forms</em>, <em>Synonyms / opposites</em>, <em>Etymology</em> and <em>Mnemonic</em>, with <em>Example</em>, <em>Construction</em> and <em>Word family</em> behind <strong>More</strong>. Every card has a meaning line and an example; 417 have a mnemonic, 253 have forms (participe passé with avoir or être for verbs; feminine forms), 212 a not-to-confuse-with note, 184 synonyms or opposites, 392 a construction and 406 a word family. <strong>Faux ami</strong> tags on 24 cards (la pension alimentaire, le pensionnaire, l'engagement, compréhensif(-ive), à l'étranger, demeurer, supporter, avoir envie de, être fier(-ère) de, réaliser, le concours, le délai d'attente, la quarantaine, engagé(e), libéral(e), éventuel(le), en effet, en fait, divertir, un relief, faire barrage à, officieux(-euse), le cabinet de médecin, la formation). <strong>Register</strong> tags on 27 formal, informal, slang or technical cards. The old in-card notes ("vs …", "fam.", "faux ami —", "also: …") moved into the Mémo card, so those cards now show only the gender on the reveal. Seventeen cards shared with Chapters 18 and 19 (e.g. soigner, percuter, se heurter à, éventuel(le)) reuse the same memo text. Three etymologies that did not hold up (un bac, siglé(e), le cabinet de médecin) were corrected. Every Unit 4 card now has a Mémo card. Saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.7.3 (6 Oct 2026): <strong>Memo cards — Chapter 18.</strong> All 199 Chapter 18 cards (129 glossaire + 70 mini-glossaire) now open the Mémo card after you answer, with the same layout as Chapter 19: <em>Meaning</em>, <em>Not to confuse with</em>, <em>Forms</em>, <em>Synonyms / opposites</em>, <em>Etymology</em> and <em>Mnemonic</em>, with <em>Example</em>, <em>Construction</em> and <em>Word family</em> behind <strong>More</strong>. Every card has a meaning line and an example; 189 have a mnemonic (a card is left without one when no hook was worth giving), 85 have forms (participe passé with avoir or être for verbs; feminine forms), 48 a not-to-confuse-with note, 28 synonyms or opposites, 73 a construction and 91 a word family. <strong>Faux ami</strong> tags on six cards: le footballeur (football is soccer), concurrent(e) (rival, not 'at the same time'), néfaste (harmful, not 'nefarious'), l'humeur (mood, not 'humor'), transpirer (to sweat, not 'to transpire'), éventuel(le) (possible, never 'eventual'). <strong>Register</strong> tags on nine informal or humorous cards (la malbouffe, la bécane, le coup de mou, bourré(e) de, se ficher (de), manger sur le pouce, virer, voire, un(e) sportif(-ive) de salon). Words that Chapter 18 shares with Chapter 19 (heurter, mettre en garde, soigner, la chaîne alimentaire) reuse the same memo text. The two cards written with « un(e) » (un(e) allié(e), un(e) sportif(-ive) de salon) are now tagged as nouns. Chapters 16 and 17 are unchanged and keep their in-card Mémo until they get the same treatment. Saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.7.2 (6 Oct 2026): <strong>Vocabulaire — the "tricky spelling" tag is gone.</strong> It was a subjective flag with no clear rule behind it, so the "Tricky spellings" filter, the "tricky spelling" label on the card header and the reminder on the answer are removed, along with the flag on 60 cards. Nothing else about the cards changed, and saved progress is untouched.<br></span>
@@ -805,6 +808,8 @@ function memoShow(v){
   var more=row("ex","Example")+row("cs","Construction")+row("fam","Word family");
   if(more) h+="<div class='memo-extra' style='display:"+(memoMoreOpen?"block":"none")+"'>"+more+"</div><button class='ghost memo-more' type='button' aria-expanded='"+memoMoreOpen+"'>"+(memoMoreOpen?"Less \u25b4":"More \u25be")+"</button>";
   box.innerHTML=h; box.style.display="block";
+  /* if the card opened below the visible area, bring its top into view (once, not on every re-render) */
+  try{ var r=box.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight; if(r.top>vh*0.5){ var calm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches; window.scrollTo({top:window.pageYOffset+r.top-Math.round(vh*0.3), behavior:calm?"auto":"smooth"}); } }catch(e){}
   var mb=box.querySelector(".memo-more");
   if(mb) mb.onclick=function(){ memoMoreOpen=!memoMoreOpen; var ex=box.querySelector(".memo-extra"); ex.style.display=memoMoreOpen?"block":"none"; mb.textContent=memoMoreOpen?"Less \u25b4":"More \u25be"; mb.setAttribute("aria-expanded",memoMoreOpen); };
 }
