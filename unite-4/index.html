@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.8.0</title>
+<title>Unité 4 · Dossier Français — v0.8.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -311,7 +311,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.8.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.8.1</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -606,8 +606,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.8.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.8.1</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.8.1 (8 Oct 2026): <strong>Tableau de bord — AOL 220 progress row.</strong> The Vocabulaire block of the dashboard now ends with an "AOL 220" row showing how many of its 146 cards you know, in the same bar-and-count format as the chapters. It is never dimmed as "à venir", since AOL 220 sits outside the chapter sequence. The "Vocab known · to Ch" headline count still follows your course chapter and does not include AOL 220. No other changes.<br></span>
     <span style="color:var(--mute)">v0.8.0 (8 Oct 2026): <strong>AOL 220 vocabulary — Vocabulaire tab only.</strong> 146 cards (131 new + 15 repeats) from the AOL 220 vocabulary list, sourced outside the textbook sequence. New chapter filter option "AOL 220" (internal chapter id 900, clear of the real chapter numbers). Included in "All chapters" scope, excluded from "Up to my level" since it is not part of the chapter progression. Nine topic tags: People, groups & institutions 14 · Equipment, weapons & vehicles 21 · Operations, conflict & security 19 · Economy, technology & society 16 · Verbs — acting & changing 21 · Verbs — leading, claiming & supporting 15 · Verb phrases with avoir, être, faire & mettre 13 · Adjectives & participles 14 · Connectors & adverbs 13. Every card has a Mémo card. <strong>Repeats</strong> (same French as the existing card, so they share one progress entry): effectuer (also in Chapter 18); éventuel(le) (also in Chapter 17 and 18); à nouveau (also in Chapter 16); alors que (also in Chapter 17); au large de (also in Chapter 19); lors de (also in Chapter 18); voire (also in Chapter 18); améliorer (also in Chapter 17 and 18); diminuer (also in Chapter 17); subir (also in Chapter 18); croître (also in Chapter 16); avoir lieu (also in Chapter 16); le navire (also in Chapter 19); le défi (also in Chapter 16); le droit (also in Chapter 16). Where two cards are close synonyms the cues now separate them and both cards carry a "not to confuse with" note: le navire / un bateau, une citerne / un réservoir, soit / c’est-à-dire, lorsque / lors de, mener / effectuer, revendiquer / se réclamer de, and promouvoir / favoriser (the Chapter 18 favoriser card gained that note). Two list entries were merged (aux premières loges, une recrue), plural nouns that are not plural in French were made singular, and the list’s typos were fixed. No changes to Conjugaison, Grammaire, Examen blanc, or the dashboard. The vocabulary table heading and the card tag now read "AOL 220" instead of "Ch 900".<br></span>
     <span style="color:var(--mute)">v0.7.9 (8 Oct 2026): <strong>Etymology fix on jouer des tours (à).</strong> The Chapter 18 card said jouer comes from Latin jocari without explaining the "play" sense, and gave tour as tornare. It now says jouer is from jocare/jocari, to joke, with "play" as a later sense (the reason English has joke and jocular), and tour is from tornus, a lathe. The filler mnemonic that only repeated the meaning is removed. One card changed; no cards added or removed, so counts are unchanged and saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.7.8 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
@@ -3606,11 +3607,11 @@ function refreshDash(){
   var L=document.getElementById("ledger"); L.innerHTML="";
   /* --- 1. VOCABULAIRE — primary block, per chapter --- */
   L.appendChild(el("div","ledhead","<b>Vocabulaire</b> — the DLPT engine"));
-  var byCh={16:{k:0,t:0},17:{k:0,t:0},18:{k:0,t:0},19:{k:0,t:0}};
+  var byCh={16:{k:0,t:0},17:{k:0,t:0},18:{k:0,t:0},19:{k:0,t:0},900:{k:0,t:0}};   /* 900 = AOL 220: outside the chapter sequence, never à venir */
   var vkAll=0, vtAll=0;
   VOCAB.forEach(function(v){ var b=byCh[v.c]; if(b){ b.t++; vtAll++; if(state.vocab[v.f]==="known"){ b.k++; vkAll++; } } });
-  [16,17,18,19].forEach(function(c){
-    var d=byCh[c], pct=d.t?Math.round(d.k/d.t*100):0, dim=(c>state.currentCh)||!d.t;
+  [16,17,18,19,900].forEach(function(c){
+    var d=byCh[c], pct=d.t?Math.round(d.k/d.t*100):0, dim=(c!==900&&c>state.currentCh)||!d.t;
     var vrow=el("div","ledrow"); if(dim) vrow.style.opacity=".45";
     vrow.innerHTML="<div class='name'>"+(CH_NAMES[c]||("Ch "+c))+"<small>vocab known"+(dim?" · à venir":"")+"</small></div>"+
       "<div class='bar'><i style='width:"+pct+"%;background:var(--accent)'></i></div>"+
