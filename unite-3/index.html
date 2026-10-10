@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 3 · Dossier Français — v1.5.1</title>
+<title>Unité 3 · Dossier Français — v1.6.0</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -311,7 +311,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v1.5.1</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v1.6.0</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -356,7 +356,7 @@
       <div class="grid3">
         <div class="stat"><span class="n" id="dVocab" style="color:var(--accent)">0</span><span class="l" id="dVocabL"><b>Vocab known</b> · to Ch —</span></div>
         <div class="stat"><span class="n" id="dGram">—</span><span class="l">Grammar coverage</span></div>
-        <div class="stat"><span class="n" id="dVerbs">0</span><span class="l">Verbs mastered</span></div>
+        <div class="stat"><span class="n" id="dVerbs">0</span><span class="l">Conjugations mastered</span></div>
       </div>
     </div>
 
@@ -375,7 +375,7 @@
       <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
       <li><b>Hide known</b>, <b>New only</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
       <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
-      <li><b>Passé composé</b> and <b>Imparfait</b> = reps only; présent is the mastery table.</li>
+      <li><b>Futur simple</b> and <b>Conditionnel</b> are the mastery tables — they fill the progress bars. Every other tense, présent included, is reps only.</li>
       <li><b>Training</b> = feedback only, nothing recorded.</li>
     </ul>
 
@@ -579,8 +579,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v1.5.1</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v1.6.0</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.6.0 (10 Oct 2026): <strong>Conjugaison — the progress bar now measures the futur simple and the conditionnel.</strong> The 33 Conjugaison verbs now carry 39 mastery rows (27 futur simple + 12 conditionnel — each verb counts for the tenses it has) in place of 33 présent rows; the trainer opens on the futur simple, and the Tableau de bord ledger, the Conjugations mastered stat, the progress table, the struggle list and the Conjugueur trophy all follow. Présent, passé composé, imparfait, futur proche and passé récent stay available as reps (not recorded). Progress is saved per tense; your earlier présent marks are kept untouched, but the Tableau de bord conjugation bar and the Conjugations mastered stat now count the two new tenses, so the bar starts from zero for anyone who had mastered présent. The "Conjugueur" trophy now requires every futur simple and conditionnel row to be green. No vocabulary or grammar data changed.<br></span>
     <span style="color:var(--mute)">v1.5.1 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
     <span style="color:var(--mute)">v1.5.0 (7 Oct 2026): <strong>Memo cards for every Vocabulaire word.</strong> Once you answer, reveal, or mark a card known, a separate <strong>Mémo card</strong> opens under the trainer (above the progress table): <em>Meaning</em>, <em>Not to confuse with</em>, <em>Mnemonic</em>, <em>Forms</em> (participe passé with avoir or être for verbs; feminine and irregular forms), <em>Synonyms / opposites</em> and <em>Etymology</em>, with <em>Example</em>, <em>Construction</em> and <em>Word family</em> behind <strong>More</strong>. It slides in with a soft blue glow so it is easy to notice, and the page only scrolls as far as needed to show its top. All 548 cards have a meaning line and an example; 504 have a mnemonic, 279 have forms, 268 a not-to-confuse-with note, 108 synonyms or opposites, 432 a construction, 481 a word family and 483 an etymology. <strong>Faux ami</strong> tags on 14 cards (le costume, le slip, la veste, l'allure, dépenser, le relief, la location, l'attentat, la blessure, profane, le matériel sophistiqué, au large de, plusieurs saisies de drogue, le contrôle). <strong>Register</strong> tags on 39 informal, formal or technical cards. The old in-card notes ("vs …", "also taught …", feminine forms, faux ami warnings) moved into the Mémo card, so the reveal now shows only the gender of a noun. <strong>Review pass:</strong> every new card was re-read for factual and wording errors; etymologies that did not hold up were corrected (including some older ones, such as le soulier, la location, louer, répandu, l'allure, le tonnerre), a few English cues were made clearer, and part-of-speech tags were fixed on cards wrongly tagged as verbs (jetable, du jamais vu !). Saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v1.4.1 (6 Oct 2026): <strong>Vocabulaire — the "tricky spelling" tag is gone.</strong> It was a subjective flag with no clear rule behind it, so the "Tricky spellings" filter, the "tricky spelling" label on the card header and the reminder on the answer are removed, along with the flag on 37 cards. Nothing else about the cards changed, and saved progress is untouched.<br></span>
@@ -625,6 +626,7 @@ var CONFIG={
   DEFAULT_CH:11,                 /* chapter a fresh install assumes */
   QUIZ_SIZE:10,                 /* questions per chapter quiz */
   EXAM:{read:3, vocab:12, gram:12}, /* unit-exam section quotas */
+  MASTERY:["fs","cond"],          /* tenses whose rows carry mastery (the progress bar) */
   RUSTY_DAYS:14                 /* known + unseen this long = rusty */
 };
 /* ---------------- storage (guarded so it never crashes in a sandbox) ---------------- */
@@ -985,6 +987,13 @@ var ALLER_PRES=["vais","vas","va","allons","allez","vont"];
 var VENIR_PRES=["viens","viens","vient","venons","venez","viennent"];
 var REFL=["me","te","se","nous","vous","se"];
 function tnOf(v){ return v.tn || ALL_TN; }
+/* mastery model: a verb's mastery tenses are CONFIG.MASTERY (or its own mt), limited to tenses the verb has */
+function masteryTenses(v){ return (v.mt||CONFIG.MASTERY||["pres"]).filter(function(t){ return tnOf(v).indexOf(t)!==-1; }); }
+function isMastery(v,t){ return masteryTenses(v).indexOf(t)!==-1; }
+function vkt(v,t){ return t==="pres" ? v.fr : v.fr+"|"+t; }
+function vk(v){ return vkt(v,verbTense); }
+function tenseLbl(t){ var d=TENSES.filter(function(x){return x.id===t;})[0]; return d?d.lbl:t; }
+function totalPairs(){ var n=0; V.forEach(function(v){ n+=masteryTenses(v).length; }); return n; }
 function baseInf(v){ return v.fr.replace(/^s'\s?/,"").replace(/^se\s+/,"").replace(/\s*\(.*\)$/,"").split(" ")[0]==="être"&&/invité/.test(v.fr)?"être invité(e)":v.fr.replace(/^s'\s?/,"").replace(/^se\s+/,""); }
 function vowelStart(s){ return /^[aeéèêiîoôuh]/i.test(s); }
 function reflFor(i, next){ var r=REFL[i]; if((r==="me"||r==="te"||r==="se") && vowelStart(next)) return r.charAt(0)+"'"; return r+" "; }
@@ -1047,7 +1056,7 @@ function formAt(v,i){
 }
 
 /* =============== VERB TRAINER UI =============== */
-var dir="en", catSel="all", newOnlyMode=false, hideKnownV=false, rustyV=false, scopeLevel=true, chapterSelV="any", order=[], idx=0, revealed=false, verbMode="fill", verbTrain=false, verbTense="pres";
+var dir="en", catSel="all", newOnlyMode=false, hideKnownV=false, rustyV=false, scopeLevel=true, chapterSelV="any", order=[], idx=0, revealed=false, verbMode="fill", verbTrain=false, verbTense=(CONFIG.MASTERY||["pres"])[0];
 var catFilter=document.getElementById("catFilter");
 Object.keys(CATS).forEach(function(k){ var o=el("option"); o.value=k; o.textContent=CATS[k].label; catFilter.appendChild(o); });
 
@@ -1057,13 +1066,13 @@ function pool(){
   else if(scopeLevel){ arr=arr.filter(function(i){return chOf(V[i])<=state.currentCh;}); }
   if(catSel!=="all") arr=arr.filter(function(i){return V[i].cat===catSel;});
   arr=arr.filter(function(i){ return tnOf(V[i]).indexOf(verbTense)!==-1; });
-  if(newOnlyMode) arr=arr.filter(function(i){return state.verbs[V[i].fr]===undefined;});
-  if(hideKnownV) arr=arr.filter(function(i){return state.verbs[V[i].fr]!=="known";});
-  if(rustyV) arr=arr.filter(function(i){return isRusty(state.verbs, state.verbStats, V[i].fr);});
+  if(newOnlyMode) arr=arr.filter(function(i){return state.verbs[vk(V[i])]===undefined;});
+  if(hideKnownV) arr=arr.filter(function(i){return state.verbs[vk(V[i])]!=="known";});
+  if(rustyV) arr=arr.filter(function(i){return isRusty(state.verbs, state.verbStats, vk(V[i]));});
   return arr;
 }
 function buildOrder(){ order=pool(); shuffleArr(order); idx=0; revealed=false; }
-function knownCount(){ return Object.keys(state.verbs).filter(function(k){return state.verbs[k]==="known";}).length; }
+function knownCount(){ var n=0; V.forEach(function(v){ masteryTenses(v).forEach(function(t){ if(state.verbs[vkt(v,t)]==="known") n++; }); }); return n; }
 
 /* indices in the current CHAPTER scope only (chapter filter / up-to-level / all) —
    ignores group/miss/hide-known so the table is a complete chapter reference */
@@ -1090,7 +1099,7 @@ function renderVerbTable(){
       "<span><span class='vt-dot k'></span>Known</span>"+
       "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master (a clean first try counts)</span>"+
     "</div>"+
-    "<div class='vt-scope'>Scope: "+scopeLabel+" · "+idxs.length+" verbs</div>";
+    "<div class='vt-scope'>Scope: "+scopeLabel+" · "+idxs.length+" verbs · "+tenseLbl(verbTense)+(isMastery({fr:"x"},verbTense)?"":" (reps only — not tracked)")+"</div>";
 
   if(!idxs.length){ box.innerHTML=html+"<div class='vt-sub'>No verbs in this scope.</div>"; return; }
 
@@ -1099,14 +1108,14 @@ function renderVerbTable(){
   Object.keys(byCh).map(Number).sort(function(a,b){return a-b;}).forEach(function(c){
     var list=byCh[c];
     var k=0,l=0,n=0;
-    list.forEach(function(i){ var s=verbStatus(V[i].fr); if(s==="known")k++; else if(s==="learn")l++; else n++; });
+    list.forEach(function(i){ var s=verbStatus(vk(V[i])); if(s==="known")k++; else if(s==="learn")l++; else n++; });
     html+="<div class='vt-chapter'><div class='vt-secthead'><h4>"+(CH_NAMES[c]||("Chapitre "+c))+"</h4>"+
       "<button class='ghost vt-reset' data-idxs='"+list.join(",")+"'>Reset these "+list.length+"</button></div>"+
       "<div class='vt-sub'>"+k+" known · "+l+" to rework · "+n+" new</div><div class='vt-grid'>";
     list.forEach(function(i){
-      var v=V[i], s=verbStatus(v.fr);
+      var v=V[i], s=verbStatus(vk(v));
       var cls = s==="known"?"vt-known":(s==="learn"?"vt-learn":"vt-new");
-      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.fr+"</span><span class='vt-en' title='"+v.en.replace(/'/g,"&#39;")+"'>"+v.en+"</span>"+ctBadge(state.verbStats[v.fr])+
+      html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.fr+"</span><span class='vt-en' title='"+v.en.replace(/'/g,"&#39;")+"'>"+v.en+"</span>"+ctBadge(state.verbStats[vk(v)])+
         "</div>";
     });
     html+="</div></div>";
@@ -1116,7 +1125,7 @@ function renderVerbTable(){
 }
 function updateVerbToggle(){
   var idxs=verbChapterScope(), k=0;
-  idxs.forEach(function(i){ if(state.verbs[V[i].fr]==="known")k++; });
+  idxs.forEach(function(i){ if(state.verbs[vk(V[i])]==="known")k++; });
   var open=verbTableVisible();
   document.getElementById("verbTableToggle").textContent=(open?"Hide":"Show")+" progress table — "+k+"/"+idxs.length+" known "+(open?"▴":"▾");
 }
@@ -1125,7 +1134,7 @@ function refreshVerbTableIfOpen(){ if(verbTableVisible()) renderVerbTable(); }
 function renderVerb(){
   var card=document.getElementById("vcard");
   document.getElementById("vCount").textContent = order.length+" in this set";
-  document.getElementById("vKnown").textContent = knownCount()+" / "+V.length+" known overall";
+  document.getElementById("vKnown").textContent = knownCount()+" / "+totalPairs()+" known overall";
   if(order.length===0){
     card.innerHTML="<div style='margin:auto;text-align:center;color:var(--mute);padding:30px 0'>Nothing here. "+
       (newOnlyMode?"No unseen verbs left in this scope — turn off New only.":"Try a different group.")+"</div>";
@@ -1133,10 +1142,10 @@ function renderVerb(){
   }
   if(idx>=order.length) idx=0;
   var v=V[order[idx]], cat=CATS[v.cat];
-  var status=state.verbs[v.fr];
+  var status=state.verbs[vk(v)];
   card.innerHTML="";
   var tag=el("span","vcat",cat.label); tag.style.color=cat.c; tag.style.background=cat.bg; card.appendChild(tag);
-  var vmeta=el("span","vcat",statMeta(state.verbStats[v.fr])); vmeta.style.color="var(--ink-2)"; vmeta.style.background="var(--line)"; vmeta.style.marginLeft="6px"; card.appendChild(vmeta);
+  var vmeta=el("span","vcat",statMeta(state.verbStats[vk(v)])); vmeta.style.color="var(--ink-2)"; vmeta.style.background="var(--line)"; vmeta.style.marginLeft="6px"; card.appendChild(vmeta);
   if(chOf(v)>state.currentCh){
     var ah=el("span","vcat","À venir · "+CH_NAMES[chOf(v)]);
     ah.style.color="#fff"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
@@ -1145,7 +1154,7 @@ function renderVerb(){
 
   /* ===== FILL-IN MODE: type every conjugated form ===== */
   if(verbMode==="fill"){
-    var repsOnly=(verbTense!=="pres");
+    var repsOnly=!isMastery(v,verbTense);
     var tDef=TENSES.filter(function(t){return t.id===verbTense;})[0]||TENSES[0];
     var forms=formsFor(v,verbTense);
     if(repsOnly){ vmeta.textContent=tDef.lbl+" reps · not recorded"; }
@@ -1166,7 +1175,7 @@ function renderVerb(){
       if(v.note) card.appendChild(el("div","note",v.note));
       card.appendChild(el("div","note","Training — copy the forms below; nothing is recorded."));
     }
-    if(repsOnly && !verbTrain) card.appendChild(el("div","note",tDef.lbl+" — reps only, nothing recorded. Présent is the mastery table."));
+    if(repsOnly && !verbTrain) card.appendChild(el("div","note",tDef.lbl+" — reps only, nothing recorded. Mastery tenses: "+masteryTenses(v).map(tenseLbl).join(", ")+"."));
     var fgrid=el("div","conjfill"), inputs=[];
     for(var fi=0;fi<6;fi++){
       var rrow=el("div","cfrow");
@@ -1210,7 +1219,7 @@ function renderVerb(){
         else { inp.classList.add("no"); vd.className="cfverdict no"; vd.textContent="→ "+bareForm; }
         if(!verbTrain && !repsOnly && got.trim()!==""){                              /* v1.0.0-b6: empty slots never tally */
           anaRecord(ok, close, {pron:["je","tu","il","nous","vous","ils"][k], vg:v.cat, src:"conj", ch:(v.c||CONFIG.DEFAULT_CH)}, true);
-          var vs=state.verbStats[v.fr]||(state.verbStats[v.fr]={c:0,w:0,s:0});    /* slot-level struggle streaks */
+          var vs=state.verbStats[vk(v)]||(state.verbStats[vk(v)]={c:0,w:0,s:0});    /* slot-level struggle streaks */
           vs.sm=vs.sm||[0,0,0,0,0,0];
           vs.sm[k]= ok ? 0 : (vs.sm[k]||0)+1;
         }
@@ -1224,12 +1233,12 @@ function renderVerb(){
           : (exact+" / "+answerable+" exact · not recorded — fix and re-check");
         return;
       }
-      recordAnswer(state.verbStats, state.verbs, v.fr, allRight);
-      vmeta.textContent=statMeta(state.verbStats[v.fr]);
+      recordAnswer(state.verbStats, state.verbs, vk(v), allRight);
+      vmeta.textContent=statMeta(state.verbStats[vk(v)]);
       lockFill();
-      var st=state.verbs[v.fr], sc=state.verbStats[v.fr];
+      var st=state.verbs[vk(v)], sc=state.verbStats[vk(v)];
       saveState(); refreshDash();
-      document.getElementById("vKnown").textContent = knownCount()+" / "+V.length+" known overall";
+      document.getElementById("vKnown").textContent = knownCount()+" / "+totalPairs()+" known overall";
       fillVerdict.style.display="block";
       fillVerdict.className="verdict "+(allRight?"ok":"no");
       fillVerdict.textContent = allRight
@@ -1241,7 +1250,7 @@ function renderVerb(){
     function revealFill(){
       for(var k=0;k<6;k++){ var inp=inputs[k]; if(!inp) continue; inp.value=altSplit(forms[k])[0]; inp.classList.remove("no","warn"); inp.classList.add("ok"); var vd=inp.parentNode.querySelector(".cfverdict"); vd.className="cfverdict ok"; vd.textContent="✓"; }
       if(repsOnly){ fillVerdict.style.display="block"; fillVerdict.className="verdict warn"; fillVerdict.textContent="Answers shown — "+tDef.lbl+" reps, nothing recorded."; return; }
-      recordAnswer(state.verbStats, state.verbs, v.fr, false); vmeta.textContent=statMeta(state.verbStats[v.fr]); lockFill(); saveState(); refreshDash();
+      recordAnswer(state.verbStats, state.verbs, vk(v), false); vmeta.textContent=statMeta(state.verbStats[vk(v)]); lockFill(); saveState(); refreshDash();
       fillVerdict.style.display="block"; fillVerdict.className="verdict warn"; fillVerdict.textContent="Answers shown — counts as a miss, still learning."; refreshVerbTableIfOpen();
     }
 
@@ -1256,12 +1265,12 @@ function renderVerb(){
     fact.appendChild(rb2); fact.appendChild(cb); fact.appendChild(nb);
     card.appendChild(fact);
     var mkf=el("button","ghost","Je connais déjà ✓"); mkf.style.display="none"; mkf.style.marginTop="10px";
-    mkf.onclick=function(){ markKnown(state.verbStats, state.verbs, v.fr); mkf.disabled=true; vmeta.textContent=statMeta(state.verbStats[v.fr]);
+    mkf.onclick=function(){ markKnown(state.verbStats, state.verbs, vk(v)); mkf.disabled=true; vmeta.textContent=statMeta(state.verbStats[vk(v)]);
       fillVerdict.style.display="block"; fillVerdict.className="verdict ok"; fillVerdict.textContent="✓ Marked known — "+v.fr+" (a future miss puts it back in rotation)";
       saveState(); refreshDash(); refreshVerbTableIfOpen();
-      document.getElementById("vKnown").textContent = knownCount()+" / "+V.length+" known overall"; };
+      document.getElementById("vKnown").textContent = knownCount()+" / "+totalPairs()+" known overall"; };
     card.appendChild(mkf);
-    var _lockF0=lockFill; lockFill=function(){ _lockF0(); if(state.verbs[v.fr]!=="known") mkf.style.display=""; };
+    var _lockF0=lockFill; lockFill=function(){ _lockF0(); if(state.verbs[vk(v)]!=="known") mkf.style.display=""; };
     document.getElementById("vPos").textContent=(idx+1)+" / "+order.length;
     setTimeout(function(){ if(realIdx.length) inputs[realIdx[0]].focus(); },30);
     return;
@@ -1272,7 +1281,7 @@ function pruneOrder(){ /* drop items that no longer match live filters; keep pos
   if(!hideKnownV && !newOnlyMode) return;
   var old=order, oldIdx=idx, kept=[], newIdx=0;
   for(var k=0;k<old.length;k++){
-    var i=old[k], st=state.verbs[V[i].fr];
+    var i=old[k], st=state.verbs[vk(V[i])];
     if(hideKnownV && st==="known") continue;
     if(newOnlyMode && st!==undefined) continue;
     kept.push(i); if(k<=oldIdx) newIdx=kept.length;
@@ -1331,7 +1340,7 @@ document.getElementById("verbTable").addEventListener("click",function(e){
   var rb=e.target.closest(".vt-reset");
   if(rb){ var idxs=rb.dataset.idxs.split(",").map(Number);
     if(confirm("Reset progress for these "+idxs.length+" verbs? (marks and ✓/✗ history)")){
-      idxs.forEach(function(i){ var fr=V[i].fr; delete state.verbs[fr]; delete state.verbStats[fr
+      idxs.forEach(function(i){ var fr=vk(V[i]); delete state.verbs[fr]; delete state.verbStats[fr
 ]; });
       saveState(); renderVerbTable(); refreshDash(); buildOrder(); renderVerb();
     } }
@@ -3169,13 +3178,13 @@ function refreshDash(){
     L.appendChild(row);
   });
   /* --- 3. CONJUGAISON — mastery by group --- */
-  L.appendChild(el("div","ledhead","<b>Conjugaison</b> — mastered tables (présent)"));
+  L.appendChild(el("div","ledhead","<b>Conjugaison</b> — mastered tables (futur simple + conditionnel)"));
   var byCat={}; Object.keys(CATS).forEach(function(k){byCat[k]={k:0,t:0};});
-  V.forEach(function(v){ byCat[v.cat].t++; if(state.verbs[v.fr]==="known") byCat[v.cat].k++; });
+  V.forEach(function(v){ masteryTenses(v).forEach(function(t){ byCat[v.cat].t++; if(state.verbs[vkt(v,t)]==="known") byCat[v.cat].k++; }); });
   Object.keys(CATS).forEach(function(k){
     var d=byCat[k]; if(!d.t) return; var pct=Math.round(d.k/d.t*100);
     var row=el("div","ledrow");
-    row.innerHTML="<div class='name'>"+CATS[k].label+"<small>verbs known</small></div>"+
+    row.innerHTML="<div class='name'>"+CATS[k].label+"<small>conjugations known</small></div>"+
       "<div class='bar'><i style='width:"+pct+"%;background:"+CATS[k].c+"'></i></div>"+
       "<div class='pct'>"+d.k+"/"+d.t+"</div>";
     L.appendChild(row);
@@ -3308,7 +3317,7 @@ var ACH=[
   {id:"a_s25", icon:"⚡", name:"Série de 25",         desc:"25 correct answers in a row."},
   {id:"a_s50", icon:"🏆", name:"Machine",             desc:"50 correct answers in a row."},
   {id:"a_v6",  icon:"📗", name:"Chapitre 11 maîtrisé", desc:"Every Chapter 11 vocab card is green."},
-  {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every verb in the Conjugaison tab is green."},
+  {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every conjugation in the Conjugaison tab is green (futur simple + conditionnel)."},
   {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
   {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
   {id:"a_round",  icon:"🎯",name:"Round parfait",     desc:"A 10/10 grammar-drill round."},
@@ -3347,7 +3356,7 @@ function sweepMastery(statusMap){
       var all=has11 && VOCAB.every(function(v){ return v.c!==11 || state.vocab[v.f]==="known"; });
       if(all) award("a_v6");
     } else if(statusMap===state.verbs){
-      var allv=V.length && V.every(function(v){ return state.verbs[v.fr]==="known"; });
+      var allv=totalPairs() && V.every(function(v){ return masteryTenses(v).every(function(t){ return state.verbs[vkt(v,t)]==="known"; }); });
       if(allv) award("a_conj");
     }
   }catch(e){}
@@ -3479,15 +3488,15 @@ function renderInsights(){
   /* struggle list — trainers feed this (3+ misses in a row, clears on one correct) */
   var S=document.getElementById("insStruggle"); var rows=[];
   Object.keys(state.vocabStats).forEach(function(k){ var s=state.vocabStats[k]; if(s&&(s.m||0)>=3) rows.push([k,s.m,"vocab"]); });
-  Object.keys(state.verbStats).forEach(function(k){ var s=state.verbStats[k]; if(s&&(s.m||0)>=3) rows.push([k,s.m,"verb"]); });
+  Object.keys(state.verbStats).forEach(function(k){ var s=state.verbStats[k]; if(s&&(s.m||0)>=3) rows.push([k.replace(/\|(\w+)$/," ($1)"),s.m,"verb"]); });
   var SPRON=["je","tu","il","nous","vous","ils"];
   Object.keys(state.verbStats).forEach(function(k){
     var s=state.verbStats[k]; if(!s||!s.sm) return;
-    var vv=null; for(var vi=0;vi<V.length;vi++){ if(V[vi].fr===k){ vv=V[vi]; break; } }
+    var kf=k.split("|")[0], kt=k.split("|")[1]||"pres", vv=null; for(var vi=0;vi<V.length;vi++){ if(V[vi].fr===kf){ vv=V[vi]; break; } }
     s.sm.forEach(function(n,i){
       if(n>=3){
-        var form=vv?altSplit(conjOf(vv)[i])[0]:"";
-        rows.push([k+" · "+SPRON[i]+(form && form!=="—" ? " → "+form : ""), n, "conj"]);
+        var form=vv?altSplit(formsFor(vv,kt)[i])[0]:"";
+        rows.push([kf+(kt!=="pres"?" ("+kt+")":"")+" · "+SPRON[i]+(form && form!=="—" ? " → "+form : ""), n, "conj"]);
       }
     });
   });
@@ -3724,6 +3733,7 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
+[].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
 buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
 renderVerbTable(); renderVocTable(); renderOpi();
 document.getElementById("quizPick").value="6"; quizPick=document.getElementById("quizPick").value; renderTestHist();

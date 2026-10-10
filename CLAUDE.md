@@ -299,6 +299,62 @@ of git. To prevent this:
     a headless screenshot (desktop + phone width) of one noun, one verb and one
     faux-ami card. Changelog counts (cards with mnemonic, forms, vs, etc.) are
     computed from the data, not estimated.
+- Memo-card sourcing and audit (every vocab/memo build, any unit): do not
+  write or accept translations, definitions, examples or etymologies from
+  memory alone. Cross-check against real sources and name the source in the
+  build report and in any audit finding.
+  - French senses and definitions: Le Robert (dictionnaire.lerobert.com),
+    Larousse (larousse.fr), CNRTL/TLFi (cnrtl.fr — definitions and etymology).
+  - French–English equivalents: WordReference (wordreference.com/fren) and
+    Collins French–English.
+  - Real-world usage of a collocation or example sentence: Linguee and
+    Reverso Context.
+  - Etymology: CNRTL/TLFi, fr.wiktionary.org, en.wiktionary.org. Verify
+    anything doubtful; leave `y:` out rather than guess (a missing etymology
+    beats a wrong one).
+  - Legal vocabulary (courts, procedure, penalties): the official French
+    definitions — service-public.fr, legifrance.gouv.fr, vie-publique.fr —
+    and the English equivalent must match what they say.
+  - The mnemonic (`mn`) must follow from the etymology or cognate it cites;
+    drop it when there is no real hook.
+  - Spot-check plain words, verify every unusual, idiomatic, technical or
+    textbook-divergent one. Log each English gloss changed from the textbook
+    ("textbook said X, now Y") with its source.
+  - What actually works (found in the Oct 2026 audits of Unit 5 and Unit 4
+    Ch 19): fr.wiktionary.org and en.wiktionary.org are the working
+    etymology sources (en.wiktionary separates true cognates from
+    look-alikes); WordReference, Larousse search snippets and OQLF for
+    senses and usage; Service-Public, Légifrance and Vie-publique for legal
+    terms. CNRTL/TLFi and Le Robert pages usually do not render through the
+    fetch tool, and Reverso, Linguee and Collins are often blocked. A claim
+    that only one source supports, or that could not be checked against
+    TLFi/Robert, is marked "unverified" in the build report and hedged in the
+    card ("probably", "disputed") or left out.
+  - Known failure modes to check on every card: a padded English "cognate"
+    that is not actually related (preview, architect, demure, allure,
+    suspend); a folk etymology or a narrated origin story stated as fact; a
+    `fam` entry that is a look-alike, not a relative (ouvrier/ouvrir,
+    citer/cité, quant à/quand); a `fa` flag asserted but untrue (prévenir
+    also means "to prevent"); a `sy` that lists a broader category or an
+    antonym; a `vs` that restates an antonym nobody would confuse; a cue
+    that names the answer word or the required mood; and a mnemonic that
+    only repeats the cognate already in `y` ("Monopole: monopoly.") — delete
+    it, or replace it with a hook that follows from the etymology.
+- Conjugaison mastery follows the tense or mood the unit introduced (decided
+  10 Oct 2026, Unit 5 build). The Conjugaison progress bar, the Tableau
+  "Conjugations mastered" stat, the progress table, the struggle list and the
+  Conjugueur trophy count (verb × mastery tense) pairs, not présent by
+  default. Mastery tenses per unit: U1 présent · U2 passé composé + imparfait
+  · U3 futur simple + conditionnel · U4 unchanged (introduced no new tense;
+  présent) · U5 subjonctif présent + plus-que-parfait. Every other tense is
+  reps only (not recorded). A brand-new regular verb added to a chapter's
+  vocab can use `mt:["pres"]` to count in présent. Engine: `CONFIG.MASTERY`
+  (tense ids), optional per-verb `mt`, `masteryTenses(v)`, `isMastery(v,t)`;
+  progress keys in `state.verbs` / `state.verbStats` are the French verb for
+  présent (legacy key) and `verb|tense` for every other tense. Old saved
+  présent marks stay as history and new tenses start at zero, so say so in
+  the changelog whenever a unit's bar changes tense. A new unit fork sets
+  `CONFIG.MASTERY` to the tense or mood it introduces.
 - Progress keys: progress is keyed by `f:`. Any change to an `f:` string must
   add an `[old, new]` pair (`null` for a removed card) to that unit's
   `VOCAB_ALIASES`; the loader moves saved progress across and keeps merged
