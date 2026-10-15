@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 4 · Dossier Français — v1.1.0</title>
+<title>Unité 4 · Dossier Français — v1.1.0.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -69,7 +69,7 @@
     background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
   nav.tabs::-webkit-scrollbar{display:none}
   nav.tabs button{
-    appearance:none; flex:0 0 auto; position:relative; border:0; background:none; color:var(--ink-2);
+    appearance:none; flex:1 0 auto; text-align:center; position:relative; border:0; background:none; color:var(--ink-2);
     font-family:var(--sans); font-size:13.5px; font-weight:600; white-space:nowrap;
     padding:9px 15px 8px; margin:6px 0 0 -3px; cursor:pointer; transition:color .12s ease}
   nav.tabs button::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--tab); border:1px solid color-mix(in srgb,var(--c) 62%,var(--tab-edge)); border-bottom:0;
@@ -512,7 +512,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v1.1.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v1.1.0.1</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -795,8 +795,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v1.1.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v1.1.0.1</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.1.0.1 (15 Oct 2026, hotfix): <strong>The folder tabs now stretch across the whole page.</strong> They used to bunch up on the left two-thirds; they now share the full width, ending at the right edge of the content. On a phone they still scroll sideways. Appearance only: no data, grading or progress changed.<br></span>
     <span style="color:var(--mute)">v1.1.0 (15 Oct 2026): <strong>Vocabulaire — Recognize runs both ways, Training moves left, and mastery needs three in a row.</strong> <strong>Recognize</strong> now follows the EN → FR / FR → EN switch like Recall: from English you pick the French word (four options, articles included), from French you pick the meaning. The direction switch now sits on the Comment row and is dimmed only in Spelling, which is always English to French. <strong>Training</strong> moved to the left of Spelling, Recognize and Recall. <strong>Mastery:</strong> a correct answer on the first pass no longer turns a card green by itself, in the Vocabulaire and Conjugaison trainers alike. Every card goes green only after three correct answers in a row (a miss still resets the run), and <em>Je connais déjà</em> still marks a card known at once. The rule applies going forward only: cards already green stay green (even if they got there on one clean answer) until your next miss, which resets them like any other. <strong>Recall</strong> loses the &quot;Marked: known / still learning&quot; strip under the card, which repeated what the tag above the card and the progress table already show. Nothing else changed (no card, grading or drill content).<br></span>
     <span style="color:var(--mute)">v1.0.2 (15 Oct 2026): <strong>Grammaire content pass — the 13 grammar drills get the new teaching layer.</strong> Each now opens with a one-line instruction and an always-visible rule card (3 to 5 bullets, forms in bold, examples from the unit's vocabulary); every one of the 167 items carries a one-line <em>why</em> shown after you answer, right or wrong; and 67 items are inline drop-downs (2 to 4 options, shuffled) mixed in with the typed ones. <strong>Leak audit:</strong> 51 hints that named the answer or its rule were removed (the why line says it after you answer instead; 2 hints that only separate two valid answers stay); the label in parentheses is gone from all 10 Quel / lequel sentences, from 3 demonstrative-pronoun items and from 2 restriction items, where it told you the answer. Rewritten items keep the same answers. The four Vocab en contexte drills (Ch. 16 to 19) keep their original notes. A correction to earlier notes: the 17 drills hold 219 items (167 grammar and 52 vocabulary in context), not 170. No grading, progress or vocabulary changed.<br></span>
     <span style="color:var(--mute)">v1.0.1 (15 Oct 2026): <strong>Grammaire — Unité 5's drill engine comes to Unité 4 (it was meant to ship with 1.0.0).</strong> Typed answers now sit on a Seyès-ruled field with an accent key row; after Check you get one verdict line (correct · accents · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined, and a skip shows the answer alone. Accents always count. A settings strip adds <em>Format</em> (mixed, typing only or drop-down only) and <em>From</em> (all questions or My misses); misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds count toward best scores. The engine also supports inline drop-downs, an always-visible rule card and a one-line why per item; the existing 17 drills (170 items) run unchanged through an adapter that splits the infinitive cue out of each sentence, so they keep their original instruction notes until each chapter gets its own rule cards and drop-downs. Coverage, best scores and Analyse feeds are unchanged. <strong>Vocabulaire</strong>: a noun's gender no longer takes a bar across the card; it joins the part-of-speech tag (for example NOUN · F.) after you answer, and the Mémo card header. Also: 14 cards (12 distinct glosses) had a gloss so long that it wrapped across the card (for example “to get to the bottom of, to bring the truth of (a cause or a circumstance) to light”); each is now a single line. Nothing else changed.<br></span>
