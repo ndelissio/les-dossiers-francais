@@ -118,6 +118,7 @@ of git. To prevent this:
   3. `<strong>` tag in the footer masthead
 - Before building: verify the actual current version in the working file first.
   Building on a stale base silently reverts intervening changes.
+- Landing-page status tag: every unit below v1.0.0 shows the amber **In build** tag (`.status.build`); the green **Active** tag only from v1.0.0. Reaching 1.0.0 is Nicholas's decision alone; never bump to 1.0.0 or flip a unit to Active on your own. (This supersedes the older "flip to Active in the last chapter's commit" line.)
 - The landing page (`index.html`) shows each unit's version as a separate
   hardcoded `<span>` in that unit's folder card footer — it does NOT read from
   the unit files. Whenever a unit's version bumps, update its landing-page
@@ -440,4 +441,22 @@ of git. To prevent this:
   - Put the article inside the option when gender would give the answer away.
   - Don't test nominalisation with gender-only choices.
 - **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
-- **Layout (Unit 5 v0.2.0):** flat, light blue-grey leaning folder tabs (lightly overlapped; each tab has its own muted colour as an outline, with a faint glow on the selected one), ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit still in build shows an amber "In build" tag on the landing page.
+- **Layout (Unit 5 v0.2.0):** flat, light blue-grey leaning folder tabs (lightly overlapped; each tab has its own muted colour as an outline, with a faint glow on the selected one), ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit below 1.0.0 shows the amber "In build" tag on the landing page.
+
+### Prépa examen (Unit 4 v0.9.0 pilot, decided 15 Oct 2026)
+- Students use the oral practice, the blank exam and the conjugation trainer least; what they praised were the two reference drills (study-guide vocabulary spelling and study-guide grammar topics). So exam prep trains the skills the exam needs, not the exam's format.
+- One **Prépa examen** tab replaces Examen blanc and Pratique orale. Three sub-sections:
+  - **Vocabulaire:** the study guide's word list, spelled (EN → FR), recognised (FR → EN) or browsed.
+  - **Grammaire:** one topic per study-guide grammar point, rule card always visible.
+  - **Oral:** a script builder (English notes, French on the ruled page, tense chip per section, offline checks for length vs 2:00, linking words, study-guide words, rough tense counts). No Rehearse mode and no AI check, because the dossier is an offline static file.
+- Content comes from the unit's study guide. Until the guide is uploaded the tab stays "à venir" (Unit 5 has no guide yet). Unit 4's content is the Test 4 guide: 80 words, 106 grammar items, 6 oral prompts.
+- Prépa is a training space: it does not feed Analyse, the mastery bars or achievements. Misses are kept per item (`state.prep.vmiss`, `state.prep.gmiss`). Accents always count; no override.
+- The misses pile is deliberately NOT weighted into any mixed review: a miss often just means a new word or a slipped accent, and "rusty" is meaningless when a chapter lasts 4–5 days.
+- Removed with the old tabs: the chapter quiz banks, the unit exam bank, the OPI prompt deck, the Analyse "Examen" donut, and the achievements Sans faute and Hat-trick. Saved quiz history stays in the browser unseen.
+- Carry the same tab to Unit 5 when its study guide is uploaded: the engine (`PREP` in `unite-4/index.html`) reads one `DATA` object (`RAW` words, `TOPICS` rule cards, `ITEMS`, `ORAL`), so a new unit supplies data only.
+
+### Dark mode and Vocabulaire modes (Unit 4 v0.9.0 and Unit 5 v0.2.0, decided 15 Oct 2026)
+- **Dark mode** follows the device (`prefers-color-scheme`); a round masthead button forces light or dark (Alt-click returns to the device setting). The choice is stored under `frTheme`, shared by every unit on the same origin, and applied before paint by a tiny head script. Palette: the reference's violet-tinted near-black (`--paper:#13121B`, `--card:#1C1A27`, soft violet accent, red kept for errors). Light mode is unchanged.
+- Colours live in tokens (`--surface`, `--tint`, `--hover`, `--chip`, `--neutral`, `--err-bg`, `--on-solid`, …). Never write a literal hex in new CSS, and use `var(--on-solid)` for text on a solid coloured button.
+- **Vocabulaire modes:** Spelling (default) · Recognize · Recall. Recognize shows the French and asks for the meaning from four options (keys 1–4). Wrong options come from `vocChoices()`: same part of speech, no shared content word in the gloss, not listed in the other card's `sy`/`vs`, same topic first, then same chapter. Recognize answers count toward mastery like the other modes; Training records nothing. The EN/FR direction applies to Recall only.
+- Not yet done: dark mode on the landing page (it has its own stylesheet), and Units 1–3.

@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 4 · Dossier Français — v0.8.3</title>
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<title>Unité 4 · Dossier Français — v0.9.0</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -42,12 +45,12 @@
   .brand h1{font-family:var(--serif); font-weight:600; font-size:30px; margin:2px 0 0; letter-spacing:-.01em}
   .brand h1 span{color:var(--accent)}
   .countchip{
-    display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff;
+    display:flex; align-items:center; gap:10px; background:var(--ink); color:var(--on-solid);
     border-radius:999px; padding:7px 14px 7px 8px; font-size:13px;
     cursor:pointer; border:none; font-family:inherit;
   }
   .countchip b{font-variant-numeric:tabular-nums; font-size:15px}
-  .countchip .dot{background:var(--accent); color:#fff; border-radius:999px; width:30px; height:30px;
+  .countchip .dot{background:var(--accent); color:var(--on-solid); border-radius:999px; width:30px; height:30px;
     display:grid; place-items:center; font-weight:800; font-size:13px}
   .dlptDateRow{display:none; align-items:center; gap:8px; margin-top:8px}
   .dlptDateRow.on{display:flex}
@@ -87,7 +90,7 @@
   .ledrow{display:grid; grid-template-columns:128px 1fr 52px; align-items:center; gap:12px}
   .ledrow .name{font-size:13.5px; font-weight:600}
   .ledrow .name small{display:block; color:var(--mute); font-weight:500; font-size:11.5px}
-  .bar{height:9px; background:#ece6d8; border-radius:999px; overflow:hidden}
+  .bar{height:9px; background:var(--chip); border-radius:999px; overflow:hidden}
   .bar > i{display:block; height:100%; background:var(--known); border-radius:999px; transition:width .5s cubic-bezier(.4,0,.2,1)}
   .ledrow .pct{text-align:right; font-variant-numeric:tabular-nums; font-size:13px; font-weight:700; color:var(--ink-2)}
 
@@ -100,7 +103,7 @@
   .seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--card)}
   .seg button{appearance:none; border:0; background:none; padding:7px 13px; font-size:12.5px; font-weight:600;
     color:var(--ink-2); cursor:pointer}
-  .seg button[aria-pressed="true"]{background:var(--ink); color:#fff}
+  .seg button[aria-pressed="true"]{background:var(--ink); color:var(--on-solid)}
   select.filter{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card);
     border:1px solid var(--line); border-radius:999px; padding:7px 12px; cursor:pointer}
   /* the topic list changes with the chapter, so the pill sizes itself to a different longest option each time; pin it to its own full row at a fixed width so it never changes size or jumps rows */
@@ -120,7 +123,7 @@
   .prompt .big.fr{font-style:italic}
   .memo{background:var(--card); border:1px solid var(--line); border-top:3px solid var(--bleu); border-radius:var(--radius); padding:14px 18px 12px; margin-top:14px; animation:memopop .5s cubic-bezier(.2,.8,.2,1) both, memoglow 1.6s ease-out}
   @keyframes memopop{from{opacity:0; transform:translateY(14px) scale(.985)}to{opacity:1; transform:none}}
-  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:#e6ebf5}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
+  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:var(--tint)}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
   .memo-h{display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-family:var(--serif); font-size:20px; font-weight:600; margin-bottom:6px}
   .memo-h .vpos{margin-left:0}
   .memo-fr{font-style:italic; margin-right:4px}
@@ -143,16 +146,16 @@
   .conjfill{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,auto); grid-auto-flow:column; gap:10px 22px; margin-top:16px}
   .cfrow{display:flex; align-items:center; gap:8px}
   .cfrow .pron{color:var(--mute); min-width:74px; font-family:var(--serif); font-size:15px}
-  input.cfin{flex:1; min-width:0; width:100%; font-family:var(--serif); font-size:15.5px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:#fff}
+  input.cfin{flex:1; min-width:0; width:100%; font-family:var(--serif); font-size:15.5px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--surface)}
   input.cfin:focus{outline:2px solid var(--bleu); outline-offset:1px}
   input.cfin.ok{border-color:var(--known); background:var(--known-soft)}
   input.cfin.warn{border-color:var(--learn); background:var(--learn-soft)}
-  input.cfin.no{border-color:var(--accent); background:#fbe9e7}
+  input.cfin.no{border-color:var(--accent); background:var(--err-bg)}
   .cfverdict{font-family:var(--serif); font-size:13px; white-space:nowrap; min-width:14px}
   .cfverdict.ok{color:var(--known)} .cfverdict.warn{color:var(--learn)} .cfverdict.no{color:var(--accent)}
   .cfdash{color:var(--mute); font-family:var(--serif)}
   /* vocabulary progress table */
-  .voctable{border:1px solid var(--line); border-radius:14px; padding:16px; background:#fff}
+  .voctable{border:1px solid var(--line); border-radius:14px; padding:16px; background:var(--surface)}
   .vt-legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--mute); margin-bottom:6px; align-items:center}
   .vt-dot{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
   .vt-dot.k{background:var(--known)} .vt-dot.l{background:var(--learn)} .vt-dot.n{background:var(--accent)}
@@ -168,20 +171,20 @@
   .vt-ct{flex:0 0 auto; font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; letter-spacing:.2px}
   .vt-ct .ok{color:var(--known); font-weight:700} .vt-ct .no{color:var(--accent); font-weight:700}
   .vt-ct0{color:var(--line)}
-  .vt-known{background:var(--known-soft); border-color:#bfe3cf}
-  .vt-learn{background:var(--learn-soft); border-color:#f0dcaf}
-  .vt-new{background:#fbe9e7; border-color:#f3c9c2}
+  .vt-known{background:var(--known-soft); border-color:var(--ok-line)}
+  .vt-learn{background:var(--learn-soft); border-color:var(--warn-line)}
+  .vt-new{background:var(--err-bg); border-color:var(--err-line)}
   .ex{font-family:var(--serif); font-style:italic; margin-top:12px; font-size:15px; color:var(--ink-2)}
   .ex small{display:block; font-style:normal; font-family:var(--sans); color:var(--mute); font-size:12px; margin-top:1px}
   .vactions{margin-top:auto; display:flex; gap:10px; padding-top:18px}
   .btn{appearance:none; border:0; border-radius:10px; padding:12px 14px; font-size:14px; font-weight:700; cursor:pointer;
     font-family:var(--sans); flex:1}
-  .btn.reveal{background:var(--ink); color:#fff}
-  .btn.know{background:var(--known); color:#fff}
-  .btn.dunno{background:var(--learn); color:#fff}
-  .btn.go{background:var(--known); color:#fff}                 /* Check */
-  .btn.neutral{background:#e7e0d0; color:var(--ink-2)}         /* neutral Next */
-  .btn.neutral:hover{background:#ded6c4}
+  .btn.reveal{background:var(--ink); color:var(--on-solid)}
+  .btn.know{background:var(--known); color:var(--on-solid)}
+  .btn.dunno{background:var(--learn); color:var(--on-solid)}
+  .btn.go{background:var(--known); color:var(--on-solid)}                 /* Check */
+  .btn.neutral{background:var(--neutral); color:var(--ink-2)}         /* neutral Next */
+  .btn.neutral:hover{background:var(--neutral-h)}
   .btn:active{transform:translateY(1px)}
   /* drill button row: Reveal (left) · Check (centered) · Next (right) — equal width, as before */
   .vactions.drill{gap:10px}
@@ -207,7 +210,7 @@
   /* chapter-level collapsible group wrapping the per-drill accordions */
   .chgroup{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-bottom:16px; background:var(--card)}
   .chgroup > summary{list-style:none; cursor:pointer; padding:15px 18px; font-family:var(--serif); font-weight:800; font-size:16.5px;
-    display:flex; align-items:center; gap:12px; background:#eef2fa; color:var(--ink)}
+    display:flex; align-items:center; gap:12px; background:var(--tint); color:var(--ink)}
   .chgroup > summary::-webkit-details-marker{display:none}
   .chgroup > summary .chtitle{flex:1}
   .chgroup > summary .chmeta{font-size:12px; color:var(--mute); font-weight:600}
@@ -215,7 +218,7 @@
   .chgroup[open] > summary::after{content:"▴"}
   .chgroup[open] > summary{border-bottom:1px solid var(--line)}
   .chgroup .chbody{padding:14px 16px 2px}
-  .chgroup.ahead > summary{background:#f1eee7; color:var(--mute)}
+  .chgroup.ahead > summary{background:var(--ahead); color:var(--mute)}
   .q{padding:14px 0; border-bottom:1px dotted var(--line)}
   .q:last-child{border-bottom:0}
   .q .qt{font-family:var(--serif); font-size:16px; margin-bottom:9px}
@@ -230,19 +233,19 @@
   .wbank .wchip{display:inline-block; padding:2px 10px; border:1px solid var(--line); border-radius:999px; background:var(--card); font-size:13px; white-space:nowrap}
   .row-in{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
   input.txt{font-family:var(--serif); font-size:16px; padding:9px 12px; border:1px solid var(--line); border-radius:9px;
-    background:#fff; min-width:180px; color:var(--ink)}
+    background:var(--surface); min-width:180px; color:var(--ink)}
   input.txt:focus{outline:2px solid var(--bleu); outline-offset:1px}
   .opts{display:flex; flex-direction:column; gap:7px; margin-top:4px}
   .opt{display:flex; align-items:center; gap:9px; padding:9px 12px; border:1px solid var(--line); border-radius:9px;
-    cursor:pointer; font-size:14.5px; background:#fff}
+    cursor:pointer; font-size:14.5px; background:var(--surface)}
   .opt:hover{border-color:var(--ink)}
-  .opt.sel{border-color:var(--bleu); background:#eef2fa}
+  .opt.sel{border-color:var(--bleu); background:var(--tint)}
   .opt.right{border-color:var(--known); background:var(--known-soft)}
   .opt.wrong{border-color:var(--accent); background:var(--accent-soft)}
   .verdict{font-size:13px; font-weight:700; margin-top:7px}
   .verdict.ok{color:var(--known)} .verdict.no{color:var(--accent)} .verdict.warn{color:var(--learn)}
   .drill-foot{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
-  .pill{font-size:12px;font-weight:700;color:var(--ink-2);background:#ece6d8;border-radius:999px;padding:4px 11px}
+  .pill{font-size:12px;font-weight:700;color:var(--ink-2);background:var(--chip);border-radius:999px;padding:4px 11px}
 
   .test-head{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px}
   .timer{font-variant-numeric:tabular-nums; font-weight:800; font-size:18px}
@@ -296,7 +299,7 @@
   .trophy .tdesc{font-size:12px; color:var(--ink-2)}
   .trophy .tdate{font-size:11px; color:var(--known); font-weight:700; margin-top:4px}
   #toasts{position:fixed; right:16px; bottom:16px; z-index:99; display:flex; flex-direction:column; gap:8px}
-  .toast{background:var(--ink); color:#fff; border-radius:12px; padding:12px 16px; font-size:14px;
+  .toast{background:var(--ink); color:var(--on-solid); border-radius:12px; padding:12px 16px; font-size:14px;
     box-shadow:0 6px 24px rgba(22,36,61,.35); display:flex; gap:10px; align-items:center;
     animation:toastin .3s ease}
   .toast b{color:#ffd66e}
@@ -305,6 +308,170 @@
   .strugrow:last-child{border-bottom:0}
   .strugrow .miss{color:var(--accent); font-weight:700; font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+  /* ---- v0.2.0 drill components (from the Unité 4 reference drills, recoloured to the dossier's own tokens) ---- */
+  :root{ --seyes:rgba(42,74,143,.10); --seyes-strong:rgba(42,74,143,.22); --margin:rgba(192,57,43,.38); --near:#b9772b; --near-soft:#f6ecdb; }
+  .seyes{position:relative; display:block; width:100%; max-width:560px; border:1px solid var(--line); border-radius:9px;
+    background-color:var(--surface);
+    background-image:
+      linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 35.5px, transparent 35.5px),
+      repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+      repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
+  .seyes input{display:block; width:100%; min-width:0; border:0; background:transparent; color:var(--ink); font-family:var(--serif); font-size:22px; padding:10px 14px 10px 48px; outline:none}
+  .seyes:focus-within{border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
+  .seyes.ok{border-color:var(--known)} .seyes.bad{border-color:var(--accent)}
+  .akeys{display:none; flex-wrap:wrap; gap:6px; margin-top:8px}
+  .vcard .akeys, .q.kf .akeys{display:flex}
+  .akey{appearance:none; cursor:pointer; min-width:32px; height:32px; padding:0 6px; border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:16px}
+  .akey:hover{border-color:var(--bleu); color:var(--bleu)}
+  .akey:focus-visible{outline:2px solid var(--bleu); outline-offset:1px}
+  .fq{font-family:var(--serif); font-size:19px; line-height:1.6; margin-bottom:10px}
+  .fq .cue{color:var(--mute); font-size:.82em; white-space:nowrap}
+  .gap{display:inline-block; min-width:3em; border-bottom:2px solid var(--bleu); color:var(--bleu); text-align:center; line-height:1.15; padding:0 4px}
+  .gap.ok{border-color:var(--known); color:var(--known)} .gap.bad{border-color:var(--accent); color:var(--accent)}
+  select.gapsel{font-family:var(--serif); font-size:inherit; color:var(--bleu); background:var(--tint); border:0; border-bottom:2px solid var(--bleu); border-radius:6px 6px 0 0; padding:1px 4px; max-width:100%; cursor:pointer}
+  select.gapsel:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  select.gapsel.ok{color:var(--known); background:var(--known-soft); border-color:var(--known)}
+  select.gapsel.bad{color:var(--accent); background:var(--accent-soft); border-color:var(--accent)}
+  .fb{border-radius:9px; padding:11px 14px; margin-top:10px; display:flex; flex-direction:column; gap:7px; font-size:14px}
+  .fb.ok{background:var(--known-soft)} .fb.near{background:var(--near-soft)} .fb.bad{background:var(--accent-soft)}
+  .fb strong.fbv{font-size:14.5px}
+  .fb.ok strong.fbv{color:var(--known)} .fb.near strong.fbv{color:var(--near)} .fb.bad strong.fbv{color:var(--accent)}
+  .cmp{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:baseline}
+  .cmp .l{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); font-weight:700}
+  .cmp .w{font-family:var(--serif); font-size:19px; min-width:0; overflow-wrap:anywhere}
+  .fx{color:var(--accent); text-decoration:line-through; text-decoration-thickness:2px}
+  .fm{color:var(--accent); background:var(--surface); border-bottom:2px solid var(--accent); border-radius:2px}
+  .fb .full{font-family:var(--serif); font-size:16.5px}
+  .fb .why{font-size:13.5px; color:var(--ink)}
+  .fb .fnote{font-size:13px; color:var(--ink-2)}
+  .linkish{appearance:none; border:0; background:none; padding:0; cursor:pointer; font:inherit; font-size:13px; color:var(--bleu); text-decoration:underline; text-underline-offset:3px; align-self:flex-start}
+  .rulecard{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--bleu); border-radius:0 10px 10px 0; padding:12px 16px; margin:2px 0 12px; font-size:14px}
+  .rulecard h4{margin:0 0 6px; font-family:var(--serif); font-size:16px}
+  .rulecard ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:3px}
+  .rulecard b{color:var(--bleu)} .rulecard em{font-family:var(--serif)}
+  .gins{font-size:13.5px; color:var(--ink-2); margin:0 0 10px}
+  .gbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
+  .gbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
+  .gbar label{display:inline-flex; align-items:center; gap:6px}
+  .gbar input[type=checkbox]{accent-color:var(--bleu); width:16px; height:16px}
+  .gres{margin-top:14px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:var(--card); display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center}
+  .gres .big{font-family:var(--serif); font-size:26px; font-weight:600}
+  .gres .pct{color:var(--ink-2); font-size:14px}
+  .gempty{color:var(--mute); font-size:14px; padding:8px 0}
+  .qchk{margin-top:8px}
+  @media (max-width:480px){ .fq{font-size:17px} .seyes input{font-size:20px} }
+  .seyes input[readonly]{cursor:default}
+  /* English glosses: the explanatory parenthetical sits on its own line and never wraps on desktop */
+  .en-x{display:block; margin-top:3px; font-family:var(--sans); font-size:.5em; font-weight:400; line-height:1.3; color:var(--ink-2); white-space:nowrap}
+  .big.fr .en-x{font-style:normal}
+  @media (max-width:640px){ .en-x{white-space:normal} }
+
+  /* ---- Prépa examen (v0.9.0) ---- */
+  #p-prep [hidden]{display:none !important}
+  .psub{margin:4px 0 14px}
+  .pbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
+  .pbar label{display:inline-flex; align-items:center; gap:6px}
+  .pbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
+  .pcard{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 1px 0 rgba(22,36,61,.04), 0 8px 20px -14px rgba(22,36,61,.28)}
+  .pprog{height:4px; background:var(--line)} .pprog i{display:block; height:100%; background:var(--bleu); width:0; transition:width .25s ease}
+  .pmeta{display:flex; justify-content:space-between; gap:12px; padding:12px 20px 0; font-size:13px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .pbody{padding:14px 20px 20px; display:flex; flex-direction:column; gap:14px}
+  .ptag{align-self:flex-start; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--bleu); background:var(--tint); padding:3px 9px; border-radius:5px}
+  .pins{font-size:13.5px; color:var(--ink-2); margin:0}
+  .pprompt{font-family:var(--serif); font-size:28px; line-height:1.25; margin:0}
+  .pprompt.fr{font-style:italic}
+  .psent{font-family:var(--serif); font-size:23px; line-height:1.55; margin:0}
+  .psent .cue{color:var(--mute); font-size:.8em; white-space:nowrap}
+  .pkeys{display:flex !important; margin-top:-6px}
+  .prow{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .phint{margin-left:auto; font-size:12.5px; color:var(--mute)}
+  .pbtn{appearance:none; cursor:pointer; padding:9px 16px; border-radius:9px; font-weight:700; font-size:14px; font-family:var(--sans); border:1px solid var(--line); color:var(--ink); background:var(--card)}
+  .pbtn.primary{background:var(--ink); border-color:var(--ink); color:var(--on-solid)}
+  .pbtn:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .pscore{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .pscore .big{font-family:var(--serif); font-size:44px; font-weight:600; line-height:1}
+  .pscore .pct{color:var(--ink-2); font-size:15px}
+  .pempty{color:var(--ink-2); font-size:14px; margin:0}
+  .pnote{color:var(--ink-2); font-size:13px; margin:0}
+  .pchip{display:inline-block; margin-left:6px; font-size:11px; letter-spacing:.05em; text-transform:uppercase; font-weight:700; color:var(--bleu); background:var(--tint); padding:1px 7px; border-radius:4px; white-space:nowrap}
+  .misslist{display:flex; flex-direction:column; border-top:1px solid var(--line)}
+  .misslist > div{display:flex; flex-direction:column; gap:2px; padding:9px 0; border-bottom:1px solid var(--line)}
+  .misslist .fr{font-family:var(--serif); font-size:16.5px}
+  .misslist .en .en-x{display:inline; margin-left:4px; font-size:.85em}
+  .misslist .yours{font-size:12.5px; color:var(--accent)}
+  .misslist .pt{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700}
+  .bytopic{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; font-size:14px; font-variant-numeric:tabular-nums}
+  .bytopic span:nth-child(even){text-align:right; color:var(--ink-2)}
+  #prepGRule small{font-family:var(--sans); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700; margin-left:8px}
+  .psearch{font:inherit; font-size:14px; padding:8px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink); width:100%}
+  .ptbl{max-height:520px; overflow:auto; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
+  .ptbl table{width:100%; border-collapse:collapse; font-size:14px}
+  .ptbl td{padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  .ptbl td.fr{font-family:var(--serif); font-size:16px; white-space:nowrap} .ptbl td.en{color:var(--ink-2)}
+  .ptbl .en-x{display:inline; margin-left:5px; font-size:.85em}
+  #p-prep .opt b{min-width:18px; color:var(--mute)}
+  #p-prep .opt .en-x{display:inline; margin-left:6px; font-size:.82em}
+  /* oral script builder */
+  .otopics{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:0 0 12px}
+  .otopic{appearance:none; cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:2px; padding:9px 12px; border:1px solid var(--line); border-radius:10px; background:var(--card); min-width:0; font-family:var(--sans); color:var(--ink)}
+  .otopic b{font-family:var(--serif); font-size:15px; font-weight:600; line-height:1.25}
+  .otopic span{font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .otopic .on{font-size:11px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--mute)}
+  .otopic[aria-current="true"]{border-color:var(--bleu); background:var(--tint)}
+  .otopic:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .obar{position:sticky; top:52px; z-index:15; background:var(--paper); padding:8px 0; margin:0 0 6px}
+  .ochecks{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:4px 22px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:13px; font-variant-numeric:tabular-nums}
+  .ochk{display:flex; justify-content:space-between; gap:10px} .ochk b{white-space:nowrap} .ochk .y{color:var(--known)} .ochk .n2{color:var(--learn)}
+  .ometer{grid-column:1/-1; height:8px; border-radius:4px; background:var(--line); position:relative; overflow:hidden}
+  .ometer i{position:absolute; left:0; top:0; bottom:0; background:var(--bleu); border-radius:4px}
+  .ometer::after{content:""; position:absolute; top:0; bottom:0; left:calc(100% * 120 / 150); width:2px; background:var(--ink); opacity:.5}
+  .otophead{display:flex; flex-direction:column; gap:6px; margin:6px 0 10px}
+  .otophead h3{font-family:var(--serif); font-size:24px; font-weight:600; margin:0}
+  .oprompt{font-family:var(--serif); font-style:italic; color:var(--ink-2); margin:0}
+  .ochoice{display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-size:13.5px; color:var(--ink-2)}
+  .ochoice select,.ochoice input{font:inherit; font-size:14px; padding:6px 9px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink)}
+  .osec{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:0 0 12px; display:flex; flex-direction:column; gap:10px}
+  .osechead{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:baseline}
+  .osechead h4{margin:0; font-family:var(--serif); font-size:18px; font-weight:600}
+  .oqa{font-family:var(--serif); font-size:17px; margin:0}
+  .oqs{margin:0; padding-left:18px; color:var(--ink-2); font-size:13.5px; display:flex; flex-direction:column; gap:2px}
+  .opanes{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:12px}
+  .opane{display:flex; flex-direction:column; gap:5px; min-width:0}
+  .opane label{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--mute)}
+  .opane textarea{font:inherit; width:100%; resize:vertical; border:1px solid var(--line); border-radius:8px; color:var(--ink); background:var(--surface)}
+  .opane textarea:focus{outline:none; border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
+  .oen{font-size:14.5px; line-height:1.5; padding:9px 11px; min-height:128px; background:var(--paper) !important}
+  textarea.ofr{font-family:var(--serif); font-size:18px; line-height:32px; padding:4px 12px 0 44px; min-height:136px; background-color:var(--surface); background-attachment:local;
+    background-image:
+      linear-gradient(to right, transparent 32px, var(--margin) 32px, var(--margin) 33.5px, transparent 33.5px),
+      repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+      repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
+  .owc{font-size:12.5px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .obox{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:0 0 12px; font-size:13.5px}
+  .obox h4{margin:0 0 6px; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--mute)}
+  .obox ul{margin:0; padding-left:16px; display:flex; flex-direction:column; gap:3px}
+  .obank{display:flex; flex-wrap:wrap; gap:5px}
+  .obank span{font-family:var(--serif); font-size:14px; padding:2px 8px; border-radius:6px; border:1px solid var(--line); background:var(--paper)}
+  .obank span.used{border-color:var(--known); background:var(--known-soft); color:var(--known)}
+  @media (max-width:640px){ .opanes{grid-template-columns:minmax(0,1fr)} .otopics{grid-template-columns:repeat(2,minmax(0,1fr))} .pprompt{font-size:24px} .psent{font-size:20px} .phint{display:none} .obar{top:48px} }
+
+  /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
+  :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
+    --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }  }
+  :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
+  
+  .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+  .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
+    transition:background .12s ease, border-color .12s ease}
+  .themebtn:hover{border-color:var(--bleu)}
+  .themebtn:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+
+  /* multiple-choice options (Recognize): readable when locked, parenthetical on the same line */
+  .opts .opt{color:var(--ink); text-align:left; font-family:inherit}
+  .opts .opt:disabled{color:var(--ink); opacity:1; cursor:default}
+  .opts .opt .en-x{display:inline; margin-left:6px; font-size:.85em; white-space:normal}
 </style>
 </head>
 <body>
@@ -313,10 +480,11 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.8.3</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.9.0</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
-    <div>
+    <div class="topright">
+      <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
       <button type="button" class="countchip" id="dlptChip" title="Click to set your test date">
         <span class="dot" id="dDays">—</span>
         <span>days to <b>DLPT / OPI</b></span>
@@ -333,8 +501,7 @@
     <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
-    <button role="tab" aria-selected="false" data-tab="test">Examen blanc</button>
-    <button role="tab" aria-selected="false" data-tab="oral">Pratique orale</button>
+    <button role="tab" aria-selected="false" data-tab="prep">Prépa examen</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
   </nav>
 
@@ -450,7 +617,8 @@
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
-        <li><b>Recall</b> flips EN↔FR; <b>Spelling</b> makes you type it — accents count, each card grades once.</li>
+        <li><b>Spelling</b> (the default) makes you type it — accents count, each card grades once.</li>
+        <li><b>Recognize</b> shows the French and asks for the meaning (four options, keys 1–4); <b>Recall</b> flips a card EN↔FR and you say how you did.</li>
         <li>Articles are part of the answer — <em>le/la</em> counts, wrong or missing article is a miss.</li>
         <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
         <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
@@ -475,8 +643,9 @@
     </div>
     <div class="frow"><span class="flabel">Comment</span>
       <div class="seg" id="vocModeSeg">
-        <button data-mode="recall" aria-pressed="true">Recall</button>
-        <button data-mode="spell" aria-pressed="false">Spelling</button>
+        <button data-mode="spell" aria-pressed="true">Spelling</button>
+        <button data-mode="mc" aria-pressed="false">Recognize</button>
+        <button data-mode="recall" aria-pressed="false">Recall</button>
       </div>
       <button class="ghost" id="vocTrainBtn">Training</button>
     </div>
@@ -519,61 +688,73 @@
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
-  <!-- ===================== TEST ===================== -->
-  <section class="panel" id="p-test" role="tabpanel">
-    <h2 class="sec">Quizzes &amp; Unit 4 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 16–19) — plus the <b>Unit 4 practice exam</b>, modeled on your Test 4 study guide. Answers feed Analyse.</p>
+  <!-- ===================== PRÉPA EXAMEN ===================== -->
+  <section class="panel" id="p-prep" role="tabpanel">
+    <h2 class="sec">Prépa examen</h2>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
-        <li>Accents strict.</li>
-        <li>Answers feed Analyse.</li>
+        <li><b>Vocabulaire</b> — the study-guide words: spell them, recognise them, or browse the list.</li>
+        <li><b>Grammaire</b> — one topic per study-guide grammar point; the rule stays on screen.</li>
+        <li><b>Oral</b> — build your answers: English notes first, then French on the ruled page.</li>
+        <li>Accents always count. Misses pile up under <b>From → My misses</b>. Nothing here is graded into Analyse.</li>
       </ul>
     </details>
-
-    <div id="testIntro" class="card">
-      <div class="test-head">
-        <select class="filter" id="quizPick">
-          <option value="16">Chapter 16 quiz</option>
-          <option value="17">Chapter 17 quiz</option>
-          <option value="18">Chapter 18 quiz</option>
-          <option value="19">Chapter 19 quiz</option>
-          <option value="exam">Unit 4 practice exam</option>
-        </select>
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
-      </div>
-      <p class="hist" id="testHist"></p>
+    <div class="seg psub" id="prepSub">
+      <button type="button" data-sub="vocab" aria-pressed="true">Vocabulaire</button>
+      <button type="button" data-sub="gram" aria-pressed="false">Grammaire</button>
+      <button type="button" data-sub="oral" aria-pressed="false">Oral</button>
     </div>
 
-    <div id="testRun" style="display:none">
-      <div class="test-head">
-        <span class="pill" id="tProg"></span>
+    <div id="prep-vocab">
+      <div class="pbar">
+        <div class="seg" id="prepVMode">
+          <button type="button" data-mode="write" aria-pressed="true">Spell (EN → FR)</button>
+          <button type="button" data-mode="mcq" aria-pressed="false">Recognize (FR → EN)</button>
+          <button type="button" data-mode="list" aria-pressed="false">Word list</button>
+        </div>
+        <label id="prepVSizeCtl">Words <select id="prepVSize"><option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="80">All 80</option></select></label>
+        <label id="prepVSrcCtl">From <select id="prepVSrc"><option value="all">All words</option><option value="miss">My misses</option></select></label>
+        <button type="button" class="ghost" id="prepVNew">New set</button>
       </div>
-      <div id="testQs"></div>
-      <div class="drill-foot">
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 26px" id="submitTest">Submit &amp; score</button>
-      </div>
+      <section class="pcard" id="prepVCard" aria-live="polite"></section>
     </div>
 
-    <div id="testResult" style="display:none"></div>
+    <div id="prep-gram" hidden>
+      <div class="pbar">
+        <label>Topic <select id="prepGTopic"><option value="all">All five, mixed</option></select></label>
+        <label>Questions <select id="prepGSize"><option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="999">All</option></select></label>
+        <label>Format <select id="prepGFmt"><option value="mix">Mixed</option><option value="type">Typing only</option><option value="pick">Drop-down only</option></select></label>
+        <label>From <select id="prepGSrc"><option value="all">All questions</option><option value="miss">My misses</option></select></label>
+        <button type="button" class="ghost" id="prepGNew">New set</button>
+      </div>
+      <section class="rulecard" id="prepGRule" aria-label="Rule summary"></section>
+      <section class="pcard" id="prepGCard" aria-live="polite"></section>
+    </div>
+
+    <div id="prep-oral" hidden>
+      <nav class="otopics" id="prepOTopics" aria-label="Oral prompts"></nav>
+      <div class="obar" id="prepOBar"></div>
+      <div id="prepOMain"></div>
+      <div id="prepOBanks"></div>
+    </div>
   </section>
 
   <!-- ===================== INSIGHTS ===================== -->
   <section class="panel" id="p-insights" role="tabpanel">
     <h2 class="sec">Analyse — how you miss</h2>
-    <p class="lead">Built from every graded answer — trainers, drills, quizzes. Training mode is never recorded. First grade per item counts.</p>
+    <p class="lead">Built from every graded answer — trainers and drills. Training mode is never recorded. First grade per item counts.</p>
     <div class="card" id="insWeak"><p class="hist">No graded answers yet — grade a few cards and come back.</p></div>
     <div class="card" id="insWeakCh" style="margin-top:12px;font-size:14px"><span class="hist">Weakest chapter: — (5+ graded answers per chapter required)</span></div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px">
       <h2 class="sec" style="margin:0">Misses by source</h2>
-      <button id="anaReset" style="background:var(--accent);color:#fff;border:none;border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Reset stats</button>
+      <button id="anaReset" style="background:var(--accent);color:var(--on-solid);border:none;border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Reset stats</button>
     </div>
     <p class="lead" id="anaSince"></p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px">
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Vocabulaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnVoc" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnVocL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Conjugaison</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnConj" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnConjL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Grammaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnGram" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnGramL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
-      <div class="card"><div style="font-weight:700;margin-bottom:8px">Examen</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnQuiz" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnQuizL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
     </div>
     <h2 class="sec" style="margin-top:26px">Error types</h2>
     <div class="card"><div class="ledger" id="insBuckets"></div></div>
@@ -587,29 +768,10 @@
     <div class="trophygrid" id="insTrophy"></div>
   </section>
 
-  <!-- ===================== ORAL / OPI ===================== -->
-  <section class="panel" id="p-oral" role="tabpanel">
-    <h2 class="sec">Oral practice — OPI prompts</h2>
-    <p class="lead">Speaking trains out loud. Cards mirror the Unit 4 tasks.</p>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>Pick one, hit a timer, talk.</li>
-        <li>45 → 30 → 15 seconds.</li>
-        <li>No grading, just reps.</li>
-      </ul>
-    </details>
-    <div class="opicard" id="opiCard"><!-- filled by JS --></div>
-    <div class="vnav">
-      <button id="opiPrev">‹ Prev</button>
-      <span id="opiPos"></span>
-      <button id="opiNext">Next ›</button>
-    </div>
-  </section>
-
   <footer>
-    <strong>Dossier Unité 4 · v0.8.3</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.9.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.9.0 (15 Oct 2026): <strong>Prépa examen — one tab trains the skills the exam needs.</strong> It replaces Examen blanc and Pratique orale, whose exam-shaped quizzes and prompt timer are retired (99 chapter-quiz questions, the 121 question exam bank and 24 prompt cards removed; the Analyse tab loses its Examen donut; saved quiz history stays in your browser but is no longer shown, and the two quiz achievements, Sans faute and Hat-trick, are gone). <strong>Vocabulaire</strong>: the 80 Test 4 study-guide words — spell them (English to French) on a Seyès-ruled field with an accent key row, recognise them (French to English, keys 1–4), or browse the filterable list; sets of 10, 20, 40 or all, a misses pile (<em>From → My misses</em>) and <em>Retry the missed</em>. <strong>Grammaire</strong>: 106 study-guide items (58 typed, 48 drop-downs) in 5 topics (Pronoms relatifs 20 · Si + présent → futur 20 · Nominalisation 28 · Pronoms démonstratifs 18 · Passé composé : avoir ou être 20); the rule card for the current topic stays on screen, every answer is followed by a one-line why, and a mixed set is balanced across topics. <strong>Oral</strong>: a script builder for the 6 oral prompts (29 sections plus 8 examiner questions) — English notes beside French on the ruled page, the tense each section needs, and offline checks for length against a two-minute answer, linking words, study-guide words used and rough passé composé / imparfait counts; scripts save in this browser. Accents always count. Nothing in Prépa examen feeds Analyse or the mastery bars. Also in this version: the French-flag tab icon, and the feedback card, grading ladder (verdicts, You / Correct diff) and English-gloss layout from the Unité 5 pilot, used inside the new tab only. The Vocabulaire and Grammaire tabs are unchanged. <strong>Dark mode</strong>: the dossier follows your device's light or dark setting; the round button in the masthead forces light or dark (Alt-click returns to the device setting), and the choice is shared by every unit in this browser. The dark theme is a violet-tinted near-black with a soft violet accent; light mode is unchanged. <strong>Vocabulaire modes</strong>: Spelling is now the default, <em>Recognize</em> (French on the card, pick the meaning from four options, keys 1–4) is new, and Recall is third; the EN/FR direction applies to Recall only. Wrong options are the same part of speech, never a shared word of the gloss or a listed synonym, and same-topic first; Recognize answers count toward mastery like the other modes (Training records nothing).<br></span>
     <span style="color:var(--mute)">v0.8.3 (10 Oct 2026): <strong>Chapter 19 vocabulary — Mémo card corrections.</strong> A line-by-line check of the Chapter 19 Mémo cards against Wiktionary, WordReference and Larousse found wrong or doubtful etymologies, false English relatives, wrong faux-ami notes and mnemonics that followed a sound-alike instead of the real root. 71 of the 166 Chapter 19 cards were edited (101 field changes). <strong>Etymologies:</strong> 34 corrected or softened where the sources disagree (one card, chamboulé(e), gained an etymology it lacked). <strong>False relatives removed:</strong> 9 cards (l’éboulement and boule; se renverser and verser; prévoir and preview; la toiture and architect; le flanc and link; à pleine allure and the English allure; un avertisseur and avert; affluer and couler; demeurer and demure). <strong>Faux amis:</strong> 4 fixed (prévenir does also mean to prevent a harm; un avertisseur and advertise are the same word; le bilan is not about a bank balance; allouer added: it is not “to allow”). <strong>Mnemonics:</strong> 10 circular ones deleted (“X is X” with nothing added) and 17 rewritten to follow the real root. Also: sharper meanings for heurter, disparu(e), révolté(e), signifier, une pente, la tôle, un avertisseur, un passage à niveau and au large de; replacement examples for pétrolier(-ière), entrechoqué(e) and le vide; synonym and register fixes. Some of these words also appear in Chapters 17, 18 and AOL 220 under the same key; only the Chapter 19 copy changed here. No cards were added, removed or re-keyed, so saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.8.2 (8 Oct 2026): <strong>Vocabulaire — the topic filter no longer jumps when you change chapter.</strong> The "All topics" pill sized itself to the longest topic name of whichever chapter was selected, so its width changed from chapter to chapter and, on a wide screen, it could hop between the chapter filter’s row and the next row. It now sits on its own row at a fixed width (full width on a phone), so it stays put. Long topic names are cut off with an ellipsis in the closed pill; the full name still shows in the list. No other changes.<br></span>
     <span style="color:var(--mute)">v0.8.1 (8 Oct 2026): <strong>Tableau de bord — AOL 220 progress row.</strong> The Vocabulaire block of the dashboard now ends with an "AOL 220" row showing how many of its 146 cards you know, in the same bar-and-count format as the chapters. It is never dimmed as "à venir", since AOL 220 sits outside the chapter sequence. The "Vocab known · to Ch" headline count still follows your course chapter and does not include AOL 220. No other changes.<br></span>
@@ -650,8 +812,6 @@ var CONFIG={
   UNIT:4,
   KEY:"fr_dossier_u4",          /* NEVER change within a unit — saved progress lives here (namespaced: no collision with other units) */
   DEFAULT_CH:16,                 /* chapter a fresh install assumes */
-  QUIZ_SIZE:10,                 /* questions per chapter quiz */
-  EXAM:{read:3, vocab:12, gram:12}, /* unit-exam section quotas */
   RUSTY_DAYS:14                 /* known + unseen this long = rusty */
 };
 /* ---------------- storage (guarded so it never crashes in a sandbox) ---------------- */
@@ -742,6 +902,115 @@ function norm(s){ return (s||"").toLowerCase().replace(/[’´]/g,"'").replace(/
 function bare(s){ return norm(s).normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
 function el(tag,cls,html){ var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---------------- answer grading (v0.2.0) ----------------
+   Verdict ladder from the Unité 4 reference drills (design-reference/grading.js), inlined — the dossier is a single offline file.
+   Pure functions, no DOM. Namespaced as FG so it never collides with the engine's own norm/esc/bare helpers.
+   Ladder, first match wins: ok · accent · article · gender · pronoun · agreement · auxiliary · close · wrong.
+   Dossier change vs the reference: "auxiliary" fires only when the avoir/être family differs (a plus-que-parfait answer with the right
+   participle and the wrong tense of the auxiliary — a fini vs avait fini — is "close"/"wrong", never "wrong auxiliary"). */
+var FG=(function(){
+  var VOWEL=/^[aeiouyàâäéèêëîïôöûüùœh]/i;
+  function norm(s){
+    return (s||"").normalize("NFC").replace(/[’‘`´]/g,"'").toLowerCase()
+      .replace(/\s+/g," ").trim().replace(/\b(l|s|d|j|m|t|qu)' +/g,"$1'");
+  }
+  function fold(s){ return norm(s).normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/œ/g,"oe").replace(/æ/g,"ae"); }
+  function splitArt(s){ var m=s.match(/^(les|le|la|une|un|des|l')\s?(.+)$/); return m?{art:m[1],body:m[2]}:null; }
+  function articleForms(form,g){
+    var p=splitArt(form); if(!p) return [form];
+    var b=p.body, v=VOWEL.test(b);
+    var gen=(p.art==="le"||p.art==="un")?"m":(p.art==="la"||p.art==="une")?"f":(p.art==="les"||p.art==="des")?"pl":(g||"m").charAt(0)==="f"?"f":"m";
+    if(g && /p$/.test(g)) gen="pl";
+    if(gen==="pl") return ["les "+b,"des "+b];
+    if(gen==="m") return [(v?"l'":"le ")+b,"un "+b];
+    return [(v?"l'":"la ")+b,"une "+b];
+  }
+  /* item: {f, a:[alternates], type:"n"|"v"|"x"|"pc", g, articleOptional} */
+  function prepare(item){
+    var forms=[item.f].concat(item.a||[]).map(norm), acc=[];
+    forms.forEach(function(s){ acc.push(s); if(item.type==="n") articleForms(s,item.g).forEach(function(x){ acc.push(x); }); });
+    var bodies=[];
+    if(item.type==="n") forms.forEach(function(s){ var b=(splitArt(s)||{body:s}).body; if(bodies.indexOf(b)<0) bodies.push(b); });
+    if(item.articleOptional) bodies.forEach(function(b){ acc.push(b); });
+    var refl=item.type==="v" && /^(s'|se )/.test(norm(item.f)) ? norm(item.f).replace(/^(s'|se )/,"") : null;
+    var seen={}, uniq=acc.filter(function(x){ return seen[x]?false:(seen[x]=1); });
+    var o={}; for(var k in item) o[k]=item[k];
+    o.acc=uniq; o.bodies=bodies; o.refl=refl; return o;
+  }
+  function lev(a,b){
+    var m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+    var prev=[],cur=[],i,j; for(j=0;j<=n;j++) prev[j]=j;
+    for(i=1;i<=m;i++){ cur[0]=i;
+      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
+      var t=prev; prev=cur; cur=t; }
+    return prev[n];
+  }
+  function ppBase(w){ return w.replace(/(es|e|s)$/,""); }
+  var AVOIR=/^(ai|as|a|avons|avez|ont|avais|avait|avions|aviez|avaient|aurai|auras|aura|aurons|aurez|auront|aurais|aurait|aurions|auriez|auraient|aie|aies|ait|ayons|ayez|aient|eut|eus|eurent)$/;
+  var ETRE=/^(suis|es|est|sommes|êtes|sont|étais|était|étions|étiez|étaient|serai|seras|sera|serons|serez|seront|serais|serait|serions|seriez|seraient|sois|soit|soyons|soyez|soient|fus|fut|furent)$/;
+  function auxFamily(words){ var w=words[words.length-1]||""; return AVOIR.test(w)?"a":ETRE.test(w)?"e":""; }
+  function grade(input,it){
+    var n=norm(input), fd=fold(input);
+    if(it.acc.indexOf(n)>-1) return {v:"ok",target:n};
+    var accHit=null; it.acc.forEach(function(a){ if(!accHit && fold(a)===fd) accHit=a; });
+    if(accHit) return {v:"accent",target:accHit};
+    function withArt(b){ var r=null; it.acc.forEach(function(a){ if(!r && (a.slice(-(b.length+1))===" "+b || a==="l'"+b)) r=a; }); return r||it.acc[0]; }
+    if(it.type==="n"){
+      var bi=-1; it.bodies.forEach(function(b,i){ if(bi<0 && fold(b)===fd) bi=i; });
+      if(bi>-1) return {v:"article",target:withArt(it.bodies[bi])};
+      var p=splitArt(n);
+      if(p){ var gi=-1; it.bodies.forEach(function(b,i){ if(gi<0 && fold(b)===fold(p.body)) gi=i; });
+        if(gi>-1) return {v:"gender",target:withArt(it.bodies[gi])}; }
+    }
+    if(it.refl && fold(it.refl)===fd) return {v:"pronoun",target:norm(it.f)};
+    if(it.type==="pc"){
+      var iw=n.split(" ");
+      for(var k=0;k<it.acc.length;k++){
+        var a=it.acc[k], aw=a.split(" ");
+        if(iw.length!==aw.length) continue;
+        var last=iw.length-1;
+        if(ppBase(iw[last])!==ppBase(aw[last])) continue;
+        var ri=iw.slice(0,last), ra=aw.slice(0,last), restSame=ri.join(" ")===ra.join(" ");
+        if(restSame) return {v:"agreement",target:a};
+        var fi=auxFamily(ri), fa=auxFamily(ra);
+        if(fi && fa && fi!==fa) return {v:"auxiliary",target:a};
+      }
+    }
+    var best=it.acc[0], d=Infinity;
+    it.acc.forEach(function(a){ var kk=lev(n,a); if(kk<d){ d=kk; best=a; } });
+    if(lev(fd,fold(best))<=2 && fold(best).length>=5) return {v:"close",target:best};
+    return {v:"wrong",target:best};
+  }
+  /* character diff (LCS) → [youChars, correctChars], each [{c,bad}] */
+  function diff(a,b){
+    var m=a.length,n=b.length,L=[],i,j;
+    for(i=0;i<=m;i++){ L.push([]); for(j=0;j<=n;j++) L[i].push(0); }
+    for(i=m-1;i>=0;i--) for(j=n-1;j>=0;j--) L[i][j]=a.charAt(i)===b.charAt(j)?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+    var ua=[],tb=[]; i=0; j=0;
+    while(i<m && j<n){
+      if(a.charAt(i)===b.charAt(j)){ ua.push({c:a.charAt(i),bad:false}); tb.push({c:b.charAt(j),bad:false}); i++; j++; }
+      else if(L[i+1][j]>=L[i][j+1]){ ua.push({c:a.charAt(i),bad:true}); i++; }
+      else { tb.push({c:b.charAt(j),bad:true}); j++; }
+    }
+    while(i<m) ua.push({c:a.charAt(i++),bad:true});
+    while(j<n) tb.push({c:b.charAt(j++),bad:true});
+    return [ua,tb];
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  /* You row: marked(you,"fx") → struck through in red. Correct row: marked(correct,"fm") → underlined in red. A wrong space shows as "·". */
+  function marked(arr,cls){ return arr.map(function(o){ return o.bad ? "<span class=\""+cls+"\">"+esc(o.c===" "?"·":o.c)+"</span>" : esc(o.c); }).join(""); }
+  var VERDICTS={
+    ok:{title:"Correct",tone:"ok"}, accent:{title:"Check the accents",tone:"near"}, article:{title:"Article missing",tone:"near"},
+    gender:{title:"Wrong article: check the gender",tone:"near"}, pronoun:{title:"Reflexive pronoun missing",tone:"near"},
+    agreement:{title:"Check the agreement",tone:"near"}, auxiliary:{title:"Wrong auxiliary",tone:"bad"},
+    close:{title:"Close: check the spelling",tone:"near"}, wrong:{title:"Not quite",tone:"bad"}, skip:{title:"Here's the answer",tone:"bad"}
+  };
+  return {norm:norm,fold:fold,prepare:prepare,grade:grade,diff:diff,marked:marked,esc:esc,VERDICTS:VERDICTS,articleForms:articleForms,auxFamily:auxFamily};
+})();
+
+/* English gloss: a trailing explanatory parenthetical (two or more words) goes on its own line under the main gloss; short grammatical cues such as (someone) or (at) stay inline */
+function enHTML(e){ var m=String(e).match(/^(.*?)\s*(\([^()]*\s[^()]*\))$/); return m ? esc(m[1])+"<span class='en-x'>"+esc(m[2])+"</span>" : esc(e); }
 
 /* ---------------- articles ---------------- */
 function normArt(a){ return (a||"").toLowerCase().replace(/[’´]/g,"'"); }
@@ -1149,7 +1418,7 @@ function renderVerb(){
   var vmeta=el("span","vcat",statMeta(state.verbStats[v.fr])); vmeta.style.color="var(--ink-2)"; vmeta.style.background="var(--line)"; vmeta.style.marginLeft="6px"; card.appendChild(vmeta);
   if(chOf(v)>state.currentCh){
     var ah=el("span","vcat","À venir · "+CH_NAMES[chOf(v)]);
-    ah.style.color="#fff"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
+    ah.style.color="var(--on-solid)"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
     card.appendChild(ah);
   }
 
@@ -1292,7 +1561,7 @@ function pruneOrder(){ /* drop items that no longer match live filters; keep pos
 function next(){ pruneOrder(); if(!(hideKnownV||newOnlyMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
 function prev(){ idx=(idx-1+order.length)%Math.max(order.length,1); revealed=false; renderVerb(); }
 
-document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"#fff":"";revealed=false;renderVerb();});
+document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"var(--on-solid)":"";revealed=false;renderVerb();});
 document.getElementById("verbTenseSeg").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b) return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});
@@ -1314,15 +1583,15 @@ document.getElementById("chapterFilterV").addEventListener("change",function(){
   buildOrder(); renderVerb(); refreshVerbTableIfOpen();
 });
 document.getElementById("hideKnownBtnV").onclick=function(){
-  hideKnownV=!hideKnownV; this.style.background=hideKnownV?"var(--known)":""; this.style.color=hideKnownV?"#fff":"";
+  hideKnownV=!hideKnownV; this.style.background=hideKnownV?"var(--known)":""; this.style.color=hideKnownV?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("rustyBtnV").onclick=function(){
-  rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"#fff":"";
+  rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("newOnlyBtnV").onclick=function(){
-  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"#fff":"";
+  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("shufBtn").onclick=function(){
@@ -2410,7 +2679,7 @@ VOCAB.push.apply(VOCAB,[
   W.forEach(function(w){ VOCAB.push(w); });
 })();
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="spell", vocScope="level", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* Progress is keyed by the French string. When a card's French changes (plural → singular, a merged
@@ -2584,6 +2853,36 @@ function updateVocToggle(){
 function refreshVocTableIfOpen(){ if(vocTableVisible()) renderVocTable(); }
 function vocKnownCount(){ return Object.keys(state.vocab).filter(function(k){return state.vocab[k]==="known";}).length; }
 
+/* ---------------- Recognize mode: French on the card, pick the English meaning (four options) ---------------- */
+var VOC_STOP={the:1,an:1,to:1,of:1,be:1,in:1,on:1,and:1,or:1,one:1,something:1,someone:1,oneself:1,with:1,for:1,from:1,by:1,at:1,is:1,it:1,that:1,who:1,which:1};
+function glossWords(e){ return String(e).replace(/\s*\([^)]*\)/g," ").toLowerCase().split(/[^a-z']+/).filter(function(w){ return w.length>2 && !VOC_STOP[w]; }); }
+function vocBare(f){ return f.replace(/^(le |la |les |l'|un |une |s'|se )/i,"").toLowerCase(); }
+/* wrong options: same part of speech, never a near-synonym (shared content word in the gloss, or listed in the other card's sy / vs), same topic first, then same chapter */
+function vocChoices(v){
+  var gw=glossWords(v.e), mine=((v.sy||"")+" "+(v.vs||"")).toLowerCase(), fv=vocBare(v.f);
+  function pool(samePos){
+    return VOCAB.filter(function(x){
+      if(x===v||x.f===v.f||x.e===v.e) return false;
+      if(samePos && x.p!==v.p) return false;
+      var xw=glossWords(x.e); if(gw.some(function(w){ return xw.indexOf(w)>-1; })) return false;
+      if(mine.indexOf(vocBare(x.f))>-1 || ((x.sy||"")+" "+(x.vs||"")).toLowerCase().indexOf(fv)>-1) return false;
+      return true; });
+  }
+  var tier=function(x){ return x.t===v.t?0:(x.c===v.c?1:2); }, out=[], seen={}; seen[v.e]=1;
+  [true,false].forEach(function(samePos){
+    if(out.length>=3) return;
+    var p=shuffleArr(pool(samePos)); p.sort(function(a,b){ return tier(a)-tier(b); });
+    p.forEach(function(x){ if(out.length<3&&!seen[x.e]){ seen[x.e]=1; out.push(x); } });
+  });
+  return shuffleArr(out.concat([v]));
+}
+var vocMc=null;
+document.addEventListener("keydown",function(e){
+  if(!vocMc||vocMode!=="mc") return; var pv=document.getElementById("p-vocab"); if(!pv||!pv.classList.contains("on")) return;
+  var t=e.target&&e.target.tagName; if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA") return;
+  if(/^[1-4]$/.test(e.key)&&!vocMc.done){ vocMc.pick(+e.key-1); }
+  else if(e.key==="Enter"&&vocMc.done&&!(e.target.closest&&e.target.closest("button"))){ e.preventDefault(); vocNext(); }
+});
 function renderVoc(){
   var card=document.getElementById("voccard"); card.innerHTML=""; memoHide();
   document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known";
@@ -2696,6 +2995,34 @@ function renderVoc(){
     return;
   }
 
+  if(vocMode==="mc"){
+    /* recognize mode: pick the meaning of the French word; counts toward mastery like Recall and Spelling (Training records nothing) */
+    var mcOpts=vocChoices(v), mcDone=false;
+    card.appendChild(el("div","prompt","<div class='small'>Pick the meaning"+posPill(v)+"</div><div class='big fr'>"+esc(v.f)+"</div>"));
+    var mcBox=el("div","opts");
+    mcOpts.forEach(function(o,k){ var b=el("button","opt","<b>"+(k+1)+"</b><span>"+enHTML(o.e)+"</span>"); b.type="button"; b.onclick=function(){ mcPick(k); }; mcBox.appendChild(b); });
+    card.appendChild(mcBox);
+    var mcAct=el("div","vactions"), mcNext=el("button","btn neutral","Next ›"); mcNext.style.display="none"; mcNext.onclick=vocNext; mcAct.appendChild(mcNext); card.appendChild(mcAct);
+    var mcAns=el("div"); card.appendChild(mcAns);
+    var mcMark=el("button","ghost","Je connais déjà ✓"); mcMark.style.display="none"; mcMark.style.marginTop="10px"; card.appendChild(mcMark);
+    var mcApi={done:false,pick:function(k){ mcPick(k); }}; vocMc=mcApi;
+    function mcPick(k){
+      if(mcDone) return; mcDone=true; mcApi.done=true; var ok=(mcOpts[k]===v);
+      [].forEach.call(mcBox.children,function(b,i){ b.disabled=true; if(mcOpts[i]===v) b.classList.add("right"); else if(i===k) b.classList.add("wrong"); });
+      if(!vocTrain){
+        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText();
+        saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
+      }
+      if(v.n) mcAns.appendChild(el("div","note",esc(v.n)));
+      if(v.y && !hasMemo(v)) mcAns.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
+      memoShow(v);
+      mcNext.style.display=""; mcNext.focus();
+      if(!vocTrain && state.vocab[v.f]!=="known"){ mcMark.style.display="";
+        mcMark.onclick=function(){ markKnown(state.vocabStats, state.vocab, v.f); mcMark.disabled=true; tag.textContent=vocTagText(); saveState(); refreshDash(); refreshVocTableIfOpen(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; }; }
+    }
+    return;
+  }
+
   /* recall mode: flip EN<->FR */
   var promptText = vocDir==="en" ? v.e : v.f;
   var answerText = vocDir==="en" ? v.f : v.e;
@@ -2742,7 +3069,7 @@ function vocPrune(){
 function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocNewOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
 function vocPrev(){ if(!vocOrder.length)return; vocIdx=(vocIdx-1+vocOrder.length)%vocOrder.length; vocShown=false; renderVoc(); }
 
-document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="spell"?".4":"1";vocShown=false;renderVoc();});
+document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="recall"?"1":".4";vocShown=false;renderVoc();});
 /* v1.0.0: vocArtSeg listener removed with the toggle */
 document.getElementById("vocScopeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocScope=b.dataset.scope;rebuildVocTopics();vocBuild();renderVoc();refreshVocTableIfOpen();});
 document.getElementById("chapterFilterVoc").addEventListener("change",function(){
@@ -2750,18 +3077,19 @@ document.getElementById("chapterFilterVoc").addEventListener("change",function()
   document.getElementById("vocScopeSeg").style.opacity=vocChapterSel==="any"?"1":".4";
   rebuildVocTopics(); vocBuild(); renderVoc(); refreshVocTableIfOpen();
 });
-document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
+document.getElementById("vocDirSeg").style.opacity=".4";   /* the EN/FR direction applies to Recall only */
+document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode!=="recall")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
-document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
+document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"var(--on-solid)":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
-  vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";
+  vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"var(--on-solid)":"";
   vocBuild(); renderVoc();
 };
 document.getElementById("rustyBtnVoc").onclick=function(){
-  vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"#fff":"";
+  vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"var(--on-solid)":"";
   vocBuild(); renderVoc();
 };
-document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"#fff":"";vocBuild();renderVoc();});
+document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"var(--on-solid)":"";vocBuild();renderVoc();});
 document.getElementById("resetVocab").onclick=function(){
   if(confirm("Clear all vocabulary marks?")){ state.vocab={}; state.vocabStats={}; saveState(); vocBuild(); renderVoc(); refreshDash(); refreshVocTableIfOpen(); }
 };
@@ -3158,452 +3486,329 @@ function scoreDrill(d){
   }
 }
 
-/* =============== PRACTICE TEST =============== */
-var TEST=[
- /* ===== Chapter 16 (bank of 24, 10 drawn per quiz) ===== */
- {ch:"16",type:"fill",q:"Le poste ___ elle rêvait depuis toujours lui a enfin été proposé.",a:["dont"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"La maison de retraite ___ accueille ma tante est très moderne.",a:["qui"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Mon métier est stressant ; ___ semble bien plus tranquille. (le métier de mon frère)",a:["le sien"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"___ agence d'adoption avez-vous contactée ?",a:["Quelle"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Deux dossiers sont arrivés ce matin. ___ dois-je traiter en premier ?",a:["Lequel"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"___ la famille s'est réunie pour Noël cette année.",a:["Toute"],m:{cat:"gen"}},
- {ch:"16",type:"mc",q:"Une famille où les enfants ont deux parents du même sexe est dite…",o:["homoparentale", "monoparentale", "recomposée", "nucléaire"],a:"homoparentale"},
- {ch:"16",type:"mc",q:"Un ménage dont un seul parent élève les enfants est dit…",o:["monoparental", "homoparental", "recomposé", "conjugal"],a:"monoparental"},
- {ch:"16",type:"fill",q:"Après leur divorce, chacun a refait sa vie ; c'est maintenant une famille ___.",a:["recomposée"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Elle cherche du travail depuis six mois ; elle est toujours au ___.",a:["chômage"],m:{cat:"gen"}},
- {ch:"16",type:"mc",q:"« La conjugalité » désigne…",o:["l'état de vivre en couple", "le divorce", "l'adoption", "la retraite"],a:"l'état de vivre en couple"},
- {ch:"16",type:"fill",q:"Après des années de vie commune, ils ont décidé de se ___.",a:["pacser"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Elle s'est enfin ___ dans son nouveau quartier après un long moment d'isolement.",a:["insérée"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Grâce aux progrès de la médecine, l'espérance de ___ ne cesse d'augmenter.",a:["vie"],m:{cat:"gen"}},
- {ch:"16",type:"mc",q:"« Le noyau familial » désigne…",o:["les parents et leurs enfants", "les grands-parents seulement", "un groupe d'amis", "un couple sans enfants"],a:"les parents et leurs enfants"},
- {ch:"16",type:"fill",q:"C'est la manière ___ elle élève ses enfants qui impressionne tout le monde.",a:["dont"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Le documentaire ___ nous avons parlé hier traite de la GPA.",a:["dont"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"C'est le jour ___ elle a rencontré son mari.",a:["où"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"Voici mes clés de voiture. As-tu perdu ___ ? (tes clés)",a:["les tiennes"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"___ ces pensionnaires participent aux activités du mardi.",a:["Tous"],m:{cat:"gen"}},
- {ch:"16",type:"fill",q:"J'ai apporté mon dossier ; avez-vous apporté ___ ? (votre dossier)",a:["le vôtre"],m:{cat:"gen"}},
- {ch:"16",type:"mc",q:"Prendre soin d'une personne âgée au quotidien, c'est lui offrir…",o:["de l'accompagnement", "du chômage", "un héritage", "une pension alimentaire"],a:"de l'accompagnement"},
- {ch:"16",type:"fill",q:"Il a hérité d'un bel ___ à la mort de ses grands-parents.",a:["héritage"],m:{cat:"gen"}},
- {ch:"16",type:"mc",q:"Il est fier de son fils ; on peut dire qu'il en est…",o:["fier", "jaloux", "honteux", "sûr"],a:"fier"},
-
- /* ===== Chapter 18 (bank of 24, 10 drawn per quiz) ===== */
- {ch:"18",type:"fill",q:"Si tu ___ (se sentir) stressé, fais du sport.",a:["te sens"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Si vous mangez mieux, vous ___ (être) plus en forme.",a:["serez"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"D'habitude, si je fais du sport le matin, je ___ (se sentir) mieux toute la journée.",a:["me sens"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Ce médicament-ci coûte cher ; je préfère ___. (ce médicament-là)",a:["celui-là"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Mes symptômes sont pires que ___ de mon frère. (les symptômes)",a:["ceux"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Sa maladie ressemble beaucoup à ___ de sa mère. (la maladie)",a:["celle"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Je ne comprends pas ___ le stresse autant avant un examen.",a:["ce qui"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"___ tu manges influence directement ton niveau d'énergie.",a:["Ce que"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Elle ne sait pas ___ elle a besoin pour se rétablir complètement.",a:["ce dont"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"Une personne qui aime parler de sport mais qui ne le pratique jamais lui-même est…",o:["un sportif de salon", "un cordon bleu", "un concurrent", "un grimpeur"],a:"un sportif de salon"},
- {ch:"18",type:"mc",q:"« La malbouffe » désigne…",o:["la nourriture peu saine, transformée", "un régime très strict", "un repas gastronomique", "un aliment biologique"],a:"la nourriture peu saine, transformée"},
- {ch:"18",type:"fill",q:"Elle travaille beaucoup trop en ce moment ; elle risque le ___.",a:["surmenage"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"« Se rétablir » signifie…",o:["récupérer, aller mieux après une maladie", "tomber malade", "perdre connaissance", "avoir une crise cardiaque"],a:"récupérer, aller mieux après une maladie"},
- {ch:"18",type:"fill",q:"Après son accident, elle a mis plusieurs semaines à se ___.",a:["rétablir"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"Un mode de vie qui n'implique que très peu de mouvement est dit…",o:["sédentaire", "sportif", "mécanisé", "précoce"],a:"sédentaire"},
- {ch:"18",type:"fill",q:"Un effet ___ sur la santé est un effet nuisible dans son résultat, pas au sens concret d'un parasite.",a:["néfaste"],m:{cat:"gen"}},
- {ch:"18",type:"fill",q:"Les moustiques sont considérés comme des insectes ___ dans cette région.",a:["nuisibles"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"« Perdre connaissance » veut dire…",o:["s'évanouir", "s'endormir", "se réveiller", "se souvenir"],a:"s'évanouir"},
- {ch:"18",type:"fill",q:"Ce jeune athlète est très ___ pour la natation.",a:["doué"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"« L'estime de soi » désigne…",o:["le respect et la confiance qu'on a en soi-même", "la fatigue physique", "la peur des autres", "un trouble du sommeil"],a:"le respect et la confiance qu'on a en soi-même"},
- {ch:"18",type:"fill",q:"Le dimanche, ils prennent toujours un brunch bien ___ en famille.",a:["copieux"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"Un médecin qui aide spécifiquement à la naissance des bébés s'appelle…",o:["une sage-femme", "un médecin traitant", "un chirurgien", "un pharmacien"],a:"une sage-femme"},
- {ch:"18",type:"fill",q:"S'il fait beau ce week-end, nous ___ (aller) à la plage.",a:["irons"],m:{cat:"gen"}},
- {ch:"18",type:"mc",q:"« S'impliquer » signifie…",o:["s'engager activement dans quelque chose", "s'éloigner de quelque chose", "se reposer", "abandonner un projet"],a:"s'engager activement dans quelque chose"}
-];
-/* ===== Chapter 17 (bank of 27, 10 drawn per quiz) — own contiguous block ===== */
-TEST.push.apply(TEST,[
- {ch:"17",type:"fill",q:"Le médecin m'a dit qu'il n'y a ___ patient en attente ce matin.",a:["aucun"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Elle est nouvelle en ville : elle n'y connaît ___ parmi les habitants.",a:["personne"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Tu as entendu quelque chose ? — Non, je n'ai ___ entendu.",a:["rien"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Qui t'a aidé à installer les panneaux ? — ___ ne m'a aidé.",a:["Personne"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Ce sont les start-ups ___ ont créé ces nouveaux services de transport.",a:["qui"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Ce sont ces pentes ___ le conducteur avait peur.",a:["dont"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"C'est le quartier ___ les jeunes artistes exposent leurs fresques.",a:["où"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"C'est cette borne de recharge ___ la mairie a installée devant la gare.",a:["que"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Il a réduit sa facture d'électricité ___ des panneaux solaires. (installer)",a:["en installant"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Elle s'est fait mal ___ du vélo. (tomber)",a:["en tombant"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"___ un rendez-vous par téléphone, vous éviterez l'attente. (prendre)",a:["En prenant"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Elle a réussi son examen ___ toute la nuit. (réviser)",a:["en révisant"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Tout ___ vivant en ville, il rêve d'une maison à la campagne.",a:["en"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Dans les zones rurales, la ___ médicale s'aggrave chaque année.",a:["désertification"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Les hôteliers ont ___ Airbnb en justice pour concurrence déloyale.",a:["assigné"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Leur modèle est beaucoup moins ___ que celui des loueurs sur Airbnb : les charges y sont bien plus élevées.",a:["rentable"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Le train a ___ près du centre-ville et plusieurs wagons ont explosé.",a:["déraillé"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Cet artiste lance et rattrape des balles : il pratique le ___.",a:["jonglage"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Il y a trop de voitures dans le centre-ville : les ___ durent des heures.",a:["embouteillages"],m:{cat:"gen"}},
- {ch:"17",type:"fill",q:"Le suivi ___ des patients est assuré par le médecin traitant.",a:["médical"],m:{cat:"gen"}},
- {ch:"17",type:"mc",q:"« La désertification médicale » désigne…",o:["le manque de médecins dans une région","la fermeture des pharmacies","l'excès de spécialistes en ville","la hausse du prix des consultations"],a:"le manque de médecins dans une région"},
- {ch:"17",type:"mc",q:"Un « constat amiable » sert à…",o:["décrire un accident avec l'autre conducteur","payer une amende","prendre un rendez-vous chez le médecin","réserver un scooter électrique"],a:"décrire un accident avec l'autre conducteur"},
- {ch:"17",type:"mc",q:"Un « trompe-l'oeil » est…",o:["une peinture qui crée une illusion en trois dimensions","un numéro de cirque avec des épées","un scooter électrique partagé","un poème en forme de dessin"],a:"une peinture qui crée une illusion en trois dimensions"},
- {ch:"17",type:"mc",q:"Une personne « déracinée » est…",o:["arrachée à son lieu d'origine","très riche","sans emploi","très timide"],a:"arrachée à son lieu d'origine"},
- {ch:"17",type:"mc",q:"Quelle phrase est correcte au passé composé ?",o:["Je n'ai rencontré personne.","Je n'ai personne rencontré.","Je ne rencontré personne.","Je n'ai pas personne rencontré."],a:"Je n'ai rencontré personne."},
- {ch:"17",type:"mc",q:"Quelle phrase utilise correctement le gérondif ?",o:["Il a appris le français en regardant des films.","Il a appris le français en regardé des films.","Il a appris le français en il regardant des films.","Il a appris le français à regardant des films."],a:"Il a appris le français en regardant des films."},
- {ch:"17",type:"mc",q:"Pour mettre en relief le sujet de « Les profs corrigent les examens », on dit…",o:["Ce sont les profs qui corrigent les examens.","Ce sont les profs que corrigent les examens.","Ce sont les profs dont corrigent les examens.","C'est les profs où corrigent les examens."],a:"Ce sont les profs qui corrigent les examens."}
-]);
-
-/* ===== Chapter 19 (bank of 24, 10 drawn per quiz) ===== */
-TEST.push(
- {ch:"19",type:"fill",q:"Le gouvernement a réagi trop lentement. → « ___ tardive du gouvernement »",a:["réaction","la réaction"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"L'équipe est solidaire. → « La ___ de l'équipe face à la crise »",a:["solidarité"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Tous les vols, ___ celui de Rome, ont été annulés à cause de la neige.",a:["y compris"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Le forfait coûte 120 euros, boissons ___.",a:["comprises","incluses"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Nous partirons demain, ___ la tempête s'aggrave.",a:["sauf si"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Personne n'a été blessé, ___ le conducteur.",a:["sauf","excepté","à part","à l'exception de","hormis"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Il ne reste ___ abri dans le village. (only one)",a:["qu'un"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Elle a quitté la salle ___ dire un mot.",a:["sans"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Les habitants ont refusé ___ quitter leur maison.",a:["de"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Il a passé la nuit à ___ (attendait) les secours.",a:["attendre"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Il vaut mieux ___ pas conduire pendant l'alerte.",a:["ne"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Les enfants ont appris ___ nager avant l'été.",a:["à"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Après l'effondrement de l'immeuble, les secouristes ont fouillé les ___.",a:["décombres"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"La ___ a fait plus de morts que prévu : le thermomètre a dépassé 40 degrés.",a:["canicule"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Le ___ provisoire du cyclone fait état de 18 morts.",a:["bilan"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Pour éviter une collision, le camion s'est ___ sur le bas-côté.",a:["déporté"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Le train a ___ une voiture au passage à niveau.",a:["percuté"],m:{cat:"gen"}},
- {ch:"19",type:"fill",q:"Il y a eu une ___ de courant dans tout le quartier après l'orage.",a:["coupure"],m:{cat:"gen"}},
- {ch:"19",type:"mc",q:"Dans un bilan officiel, une personne dont on est sans nouvelles après la catastrophe est dite…",o:["portée disparue", "indemne", "sauve", "rassurante"],a:"portée disparue"},
- {ch:"19",type:"mc",q:"Quelle phrase est correcte ?",o:["Le loyer, charges comprises, est de 700 euros.", "Le loyer, charges compris, est de 700 euros.", "Le loyer, y comprises les charges, est de 700 euros.", "Le loyer, charges inclus, est de 700 euros."],a:"Le loyer, charges comprises, est de 700 euros."},
- {ch:"19",type:"mc",q:"Quelle phrase veut dire qu'elle n'a rien mangé d'autre que du riz ?",o:["Elle n'a mangé que du riz.", "Elle n'a pas mangé de riz.", "Elle n'a jamais mangé de riz.", "Elle n'a plus mangé de riz."],a:"Elle n'a mangé que du riz."},
- {ch:"19",type:"mc",q:"Un « séisme » désigne…",o:["un tremblement de terre", "une avalanche", "une inondation", "une tornade"],a:"un tremblement de terre"},
- {ch:"19",type:"mc",q:"Une personne qui habite tout près du lieu du sinistre est un(e)…",o:["riverain(e)", "badaud(e)", "secouriste", "survivant(e)"],a:"riverain(e)"},
- {ch:"19",type:"mc",q:"Une « marée noire » est…",o:["une pollution par du pétrole en mer", "une marée très haute", "une tempête de nuit", "un incendie de forêt"],a:"une pollution par du pétrole en mer"}
-);
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
 
-
-/* ===== UNIT 4 EXAM BANK — built from the Test 4 study guide (Ch 16–19) ===== */
-var EXAM_READ=[
- {title:"Article — séisme dans le nord-ouest",
-  text:"Un séisme de magnitude 6,2 a secoué le nord-ouest du pays dans la nuit de mardi à mercredi. Plusieurs immeubles se sont effondrés et les secouristes cherchent encore des survivants sous les décombres. Le dernier bilan s'alourdit : 48 morts et plus de 300 blessés. Une forte réplique, ressentie hier à l'aube, a poussé de nombreux habitants à dormir dehors par peur d'un nouvel effondrement. Les pompiers ont bouclé plusieurs rues du centre-ville, trop dangereuses. Un petit garçon a été retrouvé indemne après vingt heures sous un mur écroulé. Les hôpitaux, débordés, lancent un appel aux dons de sang et de médicaments.",
-  qs:[
-   {type:"mc",q:"What event is the article reporting?",o:["An earthquake in the northwest of the country","A fire in a city-center hospital","A flood after days of rain","A train accident near the border"],a:"An earthquake in the northwest of the country"},
-   {type:"mc",q:"Why did many residents sleep outside?",o:["They feared another collapse after an aftershock","The government ordered an evacuation of the whole region","Their homes had been flooded","The power was out in every neighborhood"],a:"They feared another collapse after an aftershock"},
-   {type:"sa",q:"What happened to the little boy?",model:"He was found unharmed after about twenty hours under a collapsed wall."}
-  ]},
- {title:"Message d'intérêt public — canicule",
-  text:"MESSAGE DE LA PRÉFECTURE — CANICULE. Une vague de chaleur s'installe sur la région jusqu'à dimanche, avec des températures proches de 40 degrés. Buvez de l'eau régulièrement, même sans soif, et évitez de sortir entre midi et 16 heures. Prenez des nouvelles de vos voisins âgés, surtout s'ils vivent seuls : les personnes âgées et les jeunes enfants sont les plus fragiles. En cas de malaise, de forte fièvre ou de maux de tête violents, appelez le 15 ou rendez-vous aux urgences. Les maisons de retraite ouvrent des salles climatisées au public l'après-midi.",
-  qs:[
-   {type:"mc",q:"How long is the heatwave expected to last?",o:["Until Sunday","Until the end of the month","Only this afternoon","Until Wednesday"],a:"Until Sunday"},
-   {type:"mc",q:"Who does the message single out as the most vulnerable?",o:["Elderly people and young children","Athletes and outdoor workers","Tourists and students","Pregnant women and teenagers"],a:"Elderly people and young children"},
-   {type:"sa",q:"What should someone do in case of fainting, a high fever or severe headaches?",model:"Call 15 (emergency number) or go to the emergency room."}
-  ]},
- {title:"Petite annonce — colocation solidaire",
-  text:"COLOCATION SOLIDAIRE — Madame Duval, 78 ans, retraitée, propose une chambre lumineuse dans sa maison à un étudiant sérieux ou à une étudiante sérieuse. En échange d'un loyer très modeste, elle cherche quelqu'un qui accepte de partager le dîner trois soirs par semaine et de l'aider pour les courses. Cette cohabitation entre générations est une belle occasion de partage et de soutien mutuel. Étudiant à plein temps ? Pas de problème : vos horaires de cours passent avant tout. Appelez le 04 78 55 12 30 après 18 heures.",
-  qs:[
-   {type:"mc",q:"What is Madame Duval offering?",o:["A room in her house at a very low rent","A free apartment downtown","A part-time job as a caregiver","A summer exchange program"],a:"A room in her house at a very low rent"},
-   {type:"mc",q:"What is expected of the person who rents the room?",o:["Share dinner three evenings a week and help with the shopping","Pay the full market rent and do all the housework","Look after her garden every weekend","Be home every night by 10 p.m."],a:"Share dinner three evenings a week and help with the shopping"},
-   {type:"sa",q:"What does the ad say about the tenant's class schedule?",model:"Studies come first — a full-time student is fine, and class hours take priority."}
-  ]},
- {title:"Article — un quartier se reprend en main",
-  text:"Dans le quartier des Lilas, les habitants ont décidé de reprendre leur rue en main. Depuis le printemps, un collectif de citadins organise des ateliers de réparation de vélos, ramasse les déchets le samedi matin et a financé une grande fresque sur le mur de l'école. Le projet, d'abord à petite échelle, s'élargit au fur et à mesure que de nouveaux voisins s'impliquent. La mairie a promis de soutenir l'initiative et d'installer des panneaux solaires sur le toit de l'école : une énergie renouvelable, durable et à portée de main.",
-  qs:[
-   {type:"mc",q:"What did the neighborhood collective pay for on the school wall?",o:["A large mural","A new clock","A security camera","A bulletin board"],a:"A large mural"},
-   {type:"mc",q:"How has the project changed since the spring?",o:["It started small and is growing as more neighbors get involved","It has been shut down by the city","It has moved to another neighborhood","It is now run entirely by city employees"],a:"It started small and is growing as more neighbors get involved"},
-   {type:"sa",q:"What has city hall promised to do?",model:"Support the initiative and install solar panels on the school roof."}
-  ]},
- {title:"Dessin de presse — « Génération connectée »",
-  text:"DESSIN DE PRESSE (description). Un adolescent est affalé devant un grand écran, un hamburger dans une main, son téléphone dans l'autre. Sur le mur derrière lui, une affiche : « Mangez cinq fruits et légumes par jour ». Une bulle sort du téléphone : « Plus de 3 000 j'aime ! » Sa mère, debout à la porte, soupire : « Il a mordu à l'hameçon des réseaux sociaux… et il a oublié de bouger. » Légende : « Génération connectée, corps déconnecté. »",
-  qs:[
-   {type:"mc",q:"What is the cartoon criticizing?",o:["Teenagers' unhealthy habits tied to social media and junk food","The high price of fruits and vegetables","Parents who spend too much time on their phones","The poor quality of school lunches"],a:"Teenagers' unhealthy habits tied to social media and junk food"},
-   {type:"mc",q:"What does the mother complain about?",o:["He fell for social media and forgot to move","He never answers her calls","He is eating too many fruits and vegetables","He refuses to leave his room for dinner"],a:"He fell for social media and forgot to move"},
-   {type:"sa",q:"What does the caption « Génération connectée, corps déconnecté » suggest?",model:"A hyper-connected generation is neglecting its bodies/physical health."}
-  ]},
- {title:"Interview radio — aux urgences",
-  text:"INTERVIEW RADIO — le docteur Karim Benali, chirurgien aux urgences. — Combien de patients recevez-vous un soir de week-end ? — Une centaine, en moyenne. Beaucoup viennent pour une cheville foulée, ou pour un genou qui fait mal après un match. Mais ce qui m'inquiète, ce sont ceux qui ne consultent pas leur généraliste à temps. — Quel conseil donnez-vous ? — D'abord, soignez-vous avant que la douleur s'aggrave. Ensuite, évitez la malbouffe et bougez : une bonne hygiène de vie améliore l'espérance de vie, c'est prouvé.",
-  qs:[
-   {type:"mc",q:"Why do many patients come in on weekend nights?",o:["Sprained ankles and sore knees after sports","Burns from kitchen accidents","Food poisoning from restaurants","Injuries from car accidents"],a:"Sprained ankles and sore knees after sports"},
-   {type:"mc",q:"What worries the doctor the most?",o:["People who don't see their general practitioner in time","Patients who skip their medication","Long waiting times at the hospital","A shortage of surgeons"],a:"People who don't see their general practitioner in time"},
-   {type:"sa",q:"What advice does the doctor give?",model:"Get treated early before the pain worsens, avoid junk food and keep moving — a healthy lifestyle improves life expectancy."}
-  ]}
-];
-/* Vocabulaire — the complete Test 4 word list (80 words), EN → FR. Articles required per the standing rule; accents strict.
-   Cues carry a disambiguator where a near-synonym lives in the trainer (indemne/sain et sauf, néfaste/nuisible, hurler/crier, séisme/tremblement de terre, lutter contre/se battre, le renom/la réputation).
-   ch omitted where the word has no trainer card (la crainte, une quête, un chirurgien, vulgariser). Draw: 12. */
-var EXAM_VOCAB=[
- {ch:"17",q:"at the same time, both",a:["à la fois","en même temps"]},
- {ch:"17",q:"aware of (conscious of something)",a:["conscient de","consciente de"]},
- {ch:"16",q:"to host, to put (someone) up",a:["héberger","loger"]},
- {ch:"16",q:"it doesn't matter, no matter (indifferent to the choice)",a:["peu importe","ça n'a pas d'importance"]},
- {ch:"16",q:"small-scale, on a small scale",a:["à petite échelle"]},
- {q:"the apprehension, the fear of something to come (formal)",a:["la crainte","une crainte"]},
- {ch:"19",q:"to scream, to howl (at the top of one's lungs — far more extreme than shouting)",a:["hurler"]},
- {ch:"18",q:"early, precocious (arriving or developing sooner than expected)",a:["précoce"]},
- {ch:"16",q:"full-time",a:["à plein temps","à temps plein"]},
- {ch:"18",q:"the cyberbullying",a:["le cyberharcèlement","du cyberharcèlement","le harcèlement en ligne"]},
- {ch:"18",q:"to get involved",a:["s'impliquer"]},
- {ch:"17",q:"to prioritize, to opt for (to choose over other options)",a:["privilégier"]},
- {ch:"17",q:"within reach",a:["à portée de main","à portée de la main"]},
- {ch:"16",q:"the gap, the shift (as in the time difference of jet lag)",a:["le décalage","un décalage"]},
- {ch:"19",q:"impassable (said of a road)",a:["impraticable"]},
- {ch:"19",q:"temporary, provisional",a:["provisoire","temporaire"]},
- {ch:"16",q:"pleasant, enjoyable",a:["agréable"]},
- {ch:"17",q:"the waste, the garbage",a:["les déchets","des déchets"]},
- {ch:"19",q:"the blaze, the large destructive fire",a:["l'incendie","un incendie"]},
- {q:"the quest (figuratively, a goal one seeks to achieve)",a:["la quête","une quête"]},
- {ch:"17",q:"the nursing assistant",a:["l'aide-soignant","l'aide-soignante","un aide-soignant","une aide-soignante"]},
- {ch:"19",q:"the rubble, the debris",a:["les décombres","des décombres"]},
- {ch:"19",q:"unharmed, unhurt (not injured at all, without a scratch)",a:["indemne"]},
- {ch:"18",q:"the diet (a way of eating)",a:["le régime","un régime"]},
- {ch:"19",q:"to become heavier; to rise (of a toll or a total)",a:["s'alourdir"]},
- {ch:"16",q:"relaxed (at ease, not tense)",a:["détendu","détendue"]},
- {ch:"18",q:"to fast (to go without food)",a:["jeûner"]},
- {ch:"17",q:"the renown, the prestige attached to a name",a:["le renom","un renom","la renommée"]},
- {ch:"18",q:"to improve (something)",a:["améliorer"]},
- {ch:"18",q:"gifted (naturally talented)",a:["doué","douée"]},
- {ch:"18",q:"to fight against (a problem or a cause)",a:["lutter contre"]},
- {ch:"17",q:"renewable",a:["renouvelable"]},
- {ch:"16",q:"in love (with someone)",a:["amoureux","amoureuse","amoureux de","amoureuse de","être amoureux de","être amoureuse de"]},
- {ch:"16",q:"the rights",a:["les droits","des droits"]},
- {ch:"16",q:"the retirement home",a:["la maison de retraite","une maison de retraite"]},
- {ch:"19",q:"the aftershock (following an earthquake)",a:["la réplique","une réplique","la réplique sismique","une réplique sismique"]},
- {ch:"17",q:"the expectation; also, the wait",a:["l'attente","une attente"]},
- {ch:"17",q:"sustainable, lasting",a:["durable"]},
- {ch:"18",q:"the junk food",a:["la malbouffe","de la malbouffe"]},
- {ch:"17",q:"the riches, the wealth (resources a country or person holds)",a:["les richesses","des richesses","la richesse","une richesse"]},
- {ch:"16",q:"gradually, at the same pace as something else happens",a:["au fur et à mesure"]},
- {ch:"16",q:"to save (money)",a:["économiser","épargner"]},
- {ch:"19",q:"the oil spill",a:["la marée noire","une marée noire"]},
- {ch:"19",q:"safe and sound (having come through the danger alive and well)",a:["sain et sauf","saine et sauve","sains et saufs","saines et sauves"]},
- {ch:"19",q:"off the coast of, out at sea from",a:["au large de"]},
- {ch:"19",q:"the collapse, the cave-in (a structure or the ground giving way)",a:["l'effondrement","un effondrement"]},
- {ch:"18",q:"the medicine, the medication",a:["les médicaments","des médicaments","le médicament","un médicament"]},
- {ch:"19",q:"the rescue (the act of saving people)",a:["le sauvetage","un sauvetage"]},
- {ch:"16",q:"to turn out to be, to prove to be",a:["s'avérer","se révéler"]},
- {ch:"17",q:"to widen, to broaden (a road, a circle, a debate)",a:["élargir"]},
- {ch:"16",q:"the household",a:["le ménage","un ménage"]},
- {ch:"19",q:"the earthquake (the technical or news-report term — think “seismic”)",a:["le séisme","un séisme"]},
- {ch:"16",q:"a foolish act, a dumb decision (the kind of thing a child does that gets them into trouble)",a:["une bêtise","la bêtise","une sottise","la sottise"]},
- {ch:"16",q:"to get along (with someone)",a:["s'entendre","s'entendre bien"]},
- {ch:"16",q:"the customs, the mores (habits and traditions of a society)",a:["les mœurs","les moeurs","les coutumes"]},
- {ch:"18",q:"to care for, to treat (a patient or an illness)",a:["soigner"]},
- {ch:"19",q:"to cordon off, to seal off (an area)",a:["boucler"]},
- {ch:"16",q:"the life expectancy",a:["l'espérance de vie","une espérance de vie"]},
- {ch:"18",q:"to take the bait (fall for it, as a fish does)",a:["mordre à l'hameçon","mordre à l'appât"]},
- {ch:"16",q:"the support (emotional or moral backing)",a:["le soutien","un soutien"]},
- {ch:"19",q:"the heatwave",a:["la canicule","une canicule","la vague de chaleur","une vague de chaleur"]},
- {ch:"16",q:"demanding (expecting a lot of others or of oneself)",a:["exigeant","exigeante"]},
- {ch:"18",q:"harmful in its consequences (e.g. a harmful effect on health)",a:["néfaste"]},
- {ch:"19",q:"the witness",a:["le témoin","un témoin","la témoin","une témoin"]},
- {ch:"18",q:"the ankle",a:["la cheville","une cheville"]},
- {ch:"17",q:"to hurt (to cause pain, to be painful)",a:["faire mal","faire mal à"]},
- {ch:"18",q:"the navel, the belly button",a:["le nombril","un nombril"]},
- {ch:"17",q:"exactly, absolutely (as a reply: “I agree completely”)",a:["tout à fait"]},
- {q:"the surgeon",a:["le chirurgien","la chirurgienne","un chirurgien","une chirurgienne"]},
- {ch:"17",q:"the mural painting",a:["la fresque","une fresque","la peinture murale","une peinture murale"]},
- {ch:"17",q:"the bet, the gamble",a:["le pari","un pari"]},
- {ch:"18",q:"the emergency room",a:["les urgences","des urgences"]},
- {ch:"17",q:"the city dweller",a:["le citadin","la citadine","un citadin","une citadine"]},
- {ch:"17",q:"the general practitioner (a doctor who is not a specialist)",a:["le généraliste","la généraliste","un généraliste","une généraliste","le médecin généraliste","un médecin généraliste"]},
- {ch:"16",q:"the sharing",a:["le partage","un partage"]},
- {ch:"17",q:"to be worth",a:["valoir"]},
- {ch:"16",q:"the living together (sharing a home)",a:["la cohabitation","une cohabitation"]},
- {ch:"18",q:"the knee",a:["le genou","un genou"]},
- {ch:"16",q:"to allow oneself, to be able to afford",a:["se permettre"]},
- {q:"to popularize, to make a technical subject accessible to the public",a:["vulgariser"]}
-];
-/* Grammaire — five structures named on the study guide (relative pronouns, hypothèse, nominalisation, pronoms démonstratifs, passé composé avoir/être), 7 items each. No tense/auxiliary labels in the stems. Draw: 12. */
-var EXAM_GRAM=[
- /* relative pronouns */
- {ch:"16",q:"Voici le livre ___ je t'ai parlé hier.",a:["dont"],m:{vg:"dont"}},
- {ch:"16",q:"Les voisins ___ habitent au troisième étage ont organisé une fête.",a:["qui"],m:{vg:"dont"}},
- {ch:"16",q:"La ville ___ nous avons passé nos vacances a beaucoup changé.",a:["où"],m:{vg:"dont"}},
- {ch:"16",q:"L'ami ___ la fille a gagné le concours est très fier.",a:["dont"],m:{vg:"dont"}},
- {ch:"18",q:"Elle n'a pas compris ___ le professeur lui a expliqué.",a:["ce que"],m:{vg:"cequi"}},
- {ch:"18",q:"Dites-moi ___ vous avez besoin pour votre voyage.",a:["ce dont"],m:{vg:"cequi"}},
- {ch:"18",q:"___ m'étonne le plus, c'est sa patience.",a:["Ce qui"],m:{vg:"cequi"}},
- /* hypothesis: si + présent */
- {ch:"18",q:"Si tu ___ (finir) tes devoirs à temps, nous irons au cinéma.",a:["finis"],m:{vg:"hypofut"}},
- {ch:"18",q:"Si nous n'___ (agir) pas maintenant, la situation s'aggravera.",a:["agissons"],m:{vg:"hypofut"}},
- {ch:"18",q:"Si le séisme est violent, les secours ___ (arriver) en quelques heures.",a:["arriveront"],m:{vg:"hypofut"}},
- {ch:"18",q:"Si vous voyez un incendie, ___ (appeler) immédiatement les pompiers.",a:["appelez"],m:{vg:"hypofut"}},
- {ch:"18",q:"Si elle ___ (avoir) de la fièvre demain, elle ira chez le généraliste.",a:["a"],m:{vg:"hypofut"}},
- {ch:"18",q:"S'il pleut demain, nous ___ (rester) à la maison.",a:["resterons"],m:{vg:"hypofut"}},
- {ch:"18",q:"Si elle réussit son examen, elle ___ (devenir) chirurgienne.",a:["deviendra"],m:{vg:"hypofut"}},
- /* nominalization */
- {ch:"19",q:"Les secouristes ont sauvé trois mineurs. → « ___ de trois mineurs par les secouristes »",a:["sauvetage","le sauvetage"],m:{vg:"nomin"}},
- {ch:"19",q:"La planète se réchauffe rapidement. → « Le ___ rapide de la planète »",a:["réchauffement"],m:{vg:"nomin"}},
- {ch:"19",q:"La rivière a inondé le village. → « ___ du village par la rivière »",a:["inondation","l'inondation"],m:{vg:"nomin"}},
- {ch:"19",q:"Les premiers secours sont arrivés sur place. → « ___ des premiers secours sur place »",a:["arrivée","l'arrivée"],m:{vg:"nomin"}},
- {ch:"19",q:"Le pont est fragile. → « La ___ du pont inquiète les ingénieurs »",a:["fragilité"],m:{vg:"nomin"}},
- {ch:"19",q:"Elle est fière de ses élèves. → « Sa ___ est évidente »",a:["fierté"],m:{vg:"nomin"}},
- {ch:"19",q:"Les habitants ont fui la ville. → « ___ des habitants »",a:["fuite","la fuite"],m:{vg:"nomin"}},
- /* demonstrative pronouns */
- {ch:"18",q:"Ma voiture est plus rapide que ___ de mon frère.",a:["celle"],m:{vg:"demonpro"}},
- {ch:"18",q:"Mes notes sont meilleures que ___ de l'année dernière.",a:["celles"],m:{vg:"demonpro"}},
- {ch:"18",q:"Cette maison-ci est trop petite, mais ___ est parfaite.",a:["celle-là"],m:{vg:"demonpro"}},
- {ch:"18",q:"Les citadins de Paris sont plus stressés que ___ de la campagne.",a:["ceux"],m:{vg:"demonpro"}},
- {ch:"18",q:"J'ai lu deux articles ; ___ que tu m'as recommandé était passionnant.",a:["celui"],m:{vg:"demonpro"}},
- {ch:"18",q:"Parmi toutes ces fresques, ___ de la gare est ma préférée.",a:["celle"],m:{vg:"demonpro"}},
- {ch:"18",q:"Mon quartier est calme, mais ___ de ma sœur est très bruyant.",a:["celui"],m:{vg:"demonpro"}},
- /* passé composé: avoir & être */
- {q:"Hier soir, les pompiers ___ (arriver) en dix minutes.",a:["sont arrivés"],m:{vg:"pc"}},
- {q:"Nous ___ (voir) la fumée depuis la route.",a:["avons vu"],m:{vg:"pc"}},
- {q:"Elle ___ (sortir) son passeport de son sac.",a:["a sorti"],m:{vg:"pc"}},
- {q:"Elle ___ (sortir) de l'immeuble juste avant l'effondrement.",a:["est sortie"],m:{vg:"pc"}},
- {q:"Léa et Camille ___ (partir) très tôt ce matin.",a:["sont parties"],m:{vg:"pc"}},
- {q:"J'___ (descendre) les valises à la cave.",a:["ai descendu"],m:{vg:"pc"}},
- {q:"Le blessé ___ (mourir) à l'hôpital cette nuit.",a:["est mort"],m:{vg:"pc"}}
-];
-/* ===== quiz / exam engine ===== */
-var quizPick="11", testItems=[];
-document.getElementById("quizPick").addEventListener("change",function(){ quizPick=this.value; renderTestHist(); });
-
-function histKind(){ return quizPick==="exam" ? "Unit 4 exam" : ("Ch "+quizPick+" quiz"); }
-function renderTestHist(){
-  var h=document.getElementById("testHist");
-  var mine=state.tests.filter(function(t){ return (t.kind||"quiz")===histKind() || (!t.kind && quizPick!=="exam"); });
-  if(!mine.length){ h.textContent = quizPick==="exam"
-    ? "Modeled on your Test 4 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
-    : "10 randomized questions from the Chapter "+quizPick+" bank — a different draw every attempt."; return; }
-  var last=mine[mine.length-1];
-  var best=mine.reduce(function(m,t){return Math.max(m,Math.round(t.score/t.total*100));},0);
-  h.textContent=histKind()+" — attempts: "+mine.length+" · last "+last.score+"/"+last.total+" · best "+best+"%";
-}
-
-function mkFillQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q.replace("___","<span class='blank'>____</span>")));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-  row.appendChild(inp); q.appendChild(row); q._kind="fill"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-function mkMcQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q));
-  var opts=el("div","opts");
-  shuffleArr(t.o.slice()).forEach(function(o){
-    var op=el("label","opt"); op.innerHTML="<input type='radio' name='xq"+i+"' value='"+o.replace(/'/g,"&#39;")+"'> <span>"+o+"</span>";
-    op.querySelector("input").addEventListener("change",function(){
-      [].forEach.call(opts.children,function(c){c.classList.remove("sel");}); op.classList.add("sel");
-    });
-    opts.appendChild(op);
-  });
-  q.appendChild(opts); q._kind="mc"; q._opts=opts; q._t=t; q._tag=tag;
-  return q;
-}
-function mkSaQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+" · short answer, self-graded</span><br>"+t.q+" <span class='hist'>(answer in English)</span>"));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.spellcheck=false; row.appendChild(inp); q.appendChild(row);
-  var host=el("div"); q.appendChild(host);
-  var rv=el("button","ghost","Reveal model answer"); host.appendChild(rv);
-  rv.onclick=function(){
-    host.innerHTML="";
-    host.appendChild(el("div","model","<b>Model:</b> "+t.model));
-    var g=el("div","sagrade");
-    var yb=el("button","btn know","I had it ✓"), nb2=el("button","btn dunno","I missed it ✗");
-    yb.onclick=function(){ q._self=true; yb.disabled=true; nb2.disabled=true; nb2.style.opacity=".4"; inp.disabled=true; };
-    nb2.onclick=function(){ q._self=false; yb.disabled=true; nb2.disabled=true; yb.style.opacity=".4"; inp.disabled=true; };
-    g.appendChild(yb); g.appendChild(nb2); host.appendChild(g);
-  };
-  q._kind="sa"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-
-document.getElementById("startTest").onclick=function(){
-  document.getElementById("testIntro").style.display="none";
-  document.getElementById("testResult").style.display="none";
-  document.getElementById("testRun").style.display="block";
-  var host=document.getElementById("testQs"); host.innerHTML="";
-  var qi=0, qs=[];
-  if(quizPick==="exam"){
-    /* Section 1 — Compréhension */
-    host.appendChild(el("h2","sec","Compréhension"));
-    pick(EXAM_READ, CONFIG.EXAM.read).forEach(function(p){
-      var pv=el("div","passage","<div class='ptitle'>"+p.title+"</div>"+p.text);
-      host.appendChild(pv);
-      p.qs.forEach(function(t){
-        var q = t.type==="mc" ? mkMcQ(t,qi,"Compréhension") : mkSaQ(t,qi,"Compréhension");
-        host.appendChild(q); qs.push(q); qi++;
-      });
-    });
-    /* Section 2 — Vocabulaire */
-    host.appendChild(el("h2","sec","Vocabulaire"));
-    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 4 word list."));
-    pick(EXAM_VOCAB, CONFIG.EXAM.vocab).forEach(function(t){
-      var q=mkFillQ({q:"Translate: <b>"+t.q+"</b>",a:t.a,m:t.m,ch:t.ch},qi,"Vocabulaire");
-      host.appendChild(q); qs.push(q); qi++;
-    });
-    /* Section 3 — Grammaire */
-    host.appendChild(el("h2","sec","Grammaire"));
-    host.appendChild(el("p","hist","Fill each blank. Where a verb is given in parentheses, conjugate it as the sentence requires."));
-    pick(EXAM_GRAM, CONFIG.EXAM.gram).forEach(function(t){
-      var q=mkFillQ(t,qi,"Grammaire"); host.appendChild(q); qs.push(q); qi++;
-    });
-  } else {
-    var poolQ=TEST.filter(function(t){return t.ch===quizPick;});
-    pick(poolQ, Math.min(CONFIG.QUIZ_SIZE, poolQ.length)).forEach(function(t){
-      var q = t.type==="mc" ? mkMcQ(t,qi,"Ch."+t.ch) : mkFillQ(t,qi,"Ch."+t.ch);
-      host.appendChild(q); qs.push(q); qi++;
+/* =============== PRÉPA EXAMEN (v0.9.0) ===============
+   Replaces Examen blanc and Pratique orale. Trains the skills the exam needs, not the exam format:
+   Vocabulaire (the study-guide word list, spelled and recognised) · Grammaire (one topic per study-guide grammar point,
+   typed items and drop-downs, rule card always visible) · Oral (a script builder: English notes beside a ruled French page,
+   with offline length / linking-word / unit-word / tense checks).
+   Content is the Test 4 study guide. It is a training space: nothing here feeds Analyse or the mastery bars; misses
+   are kept per item for "My misses" and "Retry the missed". Accents always count. Saved in state.prep. */
+var PREP=(function(){
+  var DATA={"RAW":[["à la fois","at the same time","x"],["à petite échelle","small-scale","x"],["à plein temps","full-time","x"],["à portée de main","within reach","x"],["agréable","pleasant","a"],["un aide-soignant","a nursing assistant","n","m",["une aide-soignante"]],["s'alourdir","to become heavier, to worsen","v"],["améliorer","to improve","v"],["amoureux","in love","a",null,["amoureuse"]],["une attente","an expectation, a wait","n","f"],["au fur et à mesure","gradually, as, over time","x"],["au large de","off the coast of","x"],["s'avérer","to turn out to be, to prove to be","v"],["une bêtise","a stupid act, a dumb decision","n","f"],["boucler","to cordon off, to loop","v"],["la canicule","the heatwave","n","f"],["la cheville","the ankle","n","f"],["un chirurgien","a surgeon","n","m",["une chirurgienne"]],["un citadin","a city dweller","n","m",["une citadine"]],["la cohabitation","living together","n","f"],["conscient de","aware of","a",null,["consciente de"]],["la crainte","the fear","n","f"],["le cyberharcèlement","the cyberbullying","n","m"],["un décalage","a shift, a gap","n","m"],["les déchets","the waste, garbage","n","mp"],["les décombres","the rubble","n","mp"],["détendu","relaxed","a",null,["détendue"]],["doué","gifted","a",null,["douée"]],["les droits","the rights","n","mp"],["durable","sustainable","a"],["économiser","to save money","v"],["l'effondrement","the collapse","n","m"],["élargir","to widen, to make larger","v"],["s'entendre","to get along","v"],["l'espérance de vie","the life expectancy","n","f"],["exigeant","demanding","a",null,["exigeante"]],["faire mal","to hurt","v"],["une fresque","a mural painting","n","f"],["un généraliste","a general medicine doctor","n","m",["une généraliste"]],["le genou","the knee","n","m"],["héberger","to host, to accommodate","v"],["hurler","to scream, to yell","v"],["s'impliquer","to get involved","v"],["impraticable","impassable","a"],["un incendie","a fire (that burns something down)","n","m"],["indemne","unharmed","a"],["jeûner","to fast (go without food)","v"],["lutter contre","to fight against","v"],["une maison de retraite","a retirement home","n","f"],["la malbouffe","the junk food","n","f"],["une marée noire","an oil spill","n","f"],["les médicaments","the medicine, medication","n","mp"],["un ménage","a household","n","m"],["les mœurs","the traditions, customs, mores","n","fp"],["mordre à l'hameçon","to take the bait","x"],["néfaste","harmful","a"],["le nombril","the belly button, navel","n","m"],["un pari","a bet, a gamble","n","m"],["le partage","the sharing","n","m"],["se permettre","to afford, to allow oneself","v"],["peu importe","it doesn't matter, either way","x"],["précoce","precocious, early","a"],["privilégier","to favor, to opt for, to prioritize","v"],["provisoire","temporary","a"],["une quête","a quest (a goal you seek to achieve)","n","f"],["un régime","a diet","n","m"],["le renom","the renown, fame","n","m"],["renouvelable","renewable","a"],["une réplique","an aftershock (earthquake)","n","f"],["les richesses","the wealth, riches","n","fp"],["sain et sauf","safe and sound","x",null,["saine et sauve"]],["le sauvetage","the rescue","n","m"],["un séisme","an earthquake","n","m"],["soigner","to care for, to treat","v"],["le soutien","the support","n","m"],["un témoin","a witness","n","m"],["tout à fait","exactly, completely","x"],["les urgences","the emergency room","n","fp"],["valoir","to be worth","v"],["vulgariser","to popularize, to make accessible","v"]],"TOPICS":{"rel":{"name":"Pronoms relatifs","en":"Relative pronouns","rule":"<ul>\n    <li><b>qui</b> = subject; a verb follows. <em>Le témoin qui a appelé…</em></li>\n    <li><b>que / qu'</b> = direct object; a subject follows. <em>La fresque que nous avons vue…</em></li>\n    <li><b>où</b> = place or time. <em>Le jour où…</em></li>\n    <li><b>dont</b> replaces <b>de</b> + noun: parler de, avoir besoin de, avoir envie de, être conscient de, possession (“whose”). <em>Le livre dont j'ai besoin…</em></li>\n    <li><b>ce qui / ce que / ce dont</b> = “what”, when there is no noun before it.</li></ul>"},"si":{"name":"Si + présent → futur","en":"Hypothesis","rule":"<ul>\n    <li><b>Si + présent</b>, then <b>futur simple</b> (or présent, or impératif). Never futur or conditionnel right after <b>si</b>.</li>\n    <li><b>si + il/ils → s'il, s'ils</b>; no elision with elle/on.</li>\n    <li>Futur = infinitive + <b>-ai -as -a -ons -ez -ont</b> (-re verbs drop the e: prendre → prendr-).</li>\n    <li>Irregular stems: être <b>ser-</b>, avoir <b>aur-</b>, aller <b>ir-</b>, faire <b>fer-</b>, pouvoir <b>pourr-</b>, venir <b>viendr-</b>, voir <b>verr-</b>, falloir <b>faudr-</b>, valoir <b>vaudr-</b>. Accent shift: emmener → <b>emmèner-</b>.</li></ul>"},"nom":{"name":"Nominalisation","en":"Verb → noun","rule":"<ul>\n    <li>Turns a verb into a noun. Headlines and news copy run on it: <em>Les prix augmentent</em> → <em>Augmentation des prix</em>.</li>\n    <li><b>-tion / -ation, -ure, -ée</b> → feminine: l'amélioration, la fermeture, l'arrivée.</li>\n    <li><b>-ment, -age</b> → masculine: l'effondrement, le sauvetage.</li>\n    <li>Short forms come from the verb stem: baisser → la baisse, lutter → la lutte, soutenir → le soutien.</li>\n    <li>Typed answers: the noun alone is enough. An article is optional, but it has to match the gender.</li></ul>"},"dem":{"name":"Pronoms démonstratifs","en":"“The one(s)”","rule":"<ul>\n    <li>Replace a noun already mentioned and agree with it: <b>celui</b> (m), <b>celle</b> (f), <b>ceux</b> (m pl), <b>celles</b> (f pl).</li>\n    <li>Never stand alone. Always followed by <b>-ci / -là</b>, <b>de</b> + noun, or <b>qui / que / dont / où</b>.</li>\n    <li><em>Ta veste ou celle de Marc ?</em> · <em>Ceux qui mangent sain…</em></li>\n    <li>No specific noun (an idea or situation) → <b>ça / cela / ceci</b>.</li></ul>"},"pc":{"name":"Passé composé : avoir ou être","en":"Auxiliaries + agreement","rule":"<ul>\n    <li>Most verbs: <b>avoir</b>, no agreement with the subject.</li>\n    <li><b>être</b>: aller, venir, arriver, partir, entrer, sortir, monter, descendre, tomber, rester, naître, mourir, rentrer, retourner, passer, devenir, revenir, and <b>every pronominal verb</b>. The participle agrees with the subject.</li>\n    <li>Monter, descendre, sortir, rentrer, passer take <b>avoir</b> when they have a direct object: <em>Elle a sorti la poubelle.</em></li>\n    <li>With avoir, agree with a direct object placed <b>before</b> the verb (que, la, les…): <em>la fresque que j'ai vue</em>.</li>\n    <li>Pronominal: no agreement when se is indirect (<em>se téléphoner</em>) or a direct object follows (<em>s'est lavé les mains</em>).</li></ul>"}},"ITEMS":[{"id":"rel-1","t":"rel","k":"pick","s":"Le témoin ___ a appelé les pompiers habite en face.","ch":["qui","que","où","dont"],"x":"A verb (a appelé) follows directly, so the pronoun is the subject: <b>qui</b>."},{"id":"rel-2","t":"rel","k":"pick","s":"C'est le quartier ___ l'incendie a commencé.","ch":["où","que","qui","dont"],"x":"A place: <b>où</b>."},{"id":"rel-3","t":"rel","k":"pick","s":"Voici le médicament ___ tu as besoin.","ch":["dont","que","qui","où"],"x":"avoir besoin <b>de</b> → <b>dont</b>."},{"id":"rel-4","t":"rel","k":"pick","s":"La fresque ___ nous avons vue hier est magnifique.","ch":["que","qui","dont","où"],"x":"Subject “nous” follows; la fresque is the direct object of voir → <b>que</b>. (Note the agreement: vue.)"},{"id":"rel-5","t":"rel","k":"pick","s":"Le chirurgien ___ je t'ai parlé est très doué.","ch":["dont","que","qui","où"],"x":"parler <b>de</b> quelqu'un → <b>dont</b>."},{"id":"rel-6","t":"rel","k":"pick","s":"Je me souviens du jour ___ le séisme a frappé la ville.","ch":["où","que","dont","qui"],"x":"A moment in time: <b>où</b>."},{"id":"rel-7","t":"rel","k":"pick","s":"C'est une amie ___ le mari est généraliste.","ch":["dont","que","qui","où"],"x":"Possession (“whose husband”) → <b>dont</b>."},{"id":"rel-8","t":"rel","k":"pick","s":"Les déchets ___ les touristes laissent sur la plage sont un vrai problème.","ch":["que","qui","dont","où"],"x":"Subject “les touristes” follows; les déchets is the object of laisser → <b>que</b>."},{"id":"rel-9","t":"rel","k":"pick","s":"La maison de retraite ___ ma grand-mère habite est très agréable.","ch":["où","que","dont","qui"],"x":"A place: <b>où</b>."},{"id":"rel-10","t":"rel","k":"pick","s":"C'est un problème ___ nous sommes tous conscients.","ch":["dont","que","qui","où"],"x":"être conscient <b>de</b> → <b>dont</b>."},{"id":"rel-11","t":"rel","k":"pick","s":"___ me fait peur, c'est la canicule.","ch":["Ce qui","Ce que","Ce dont","Qui"],"x":"No noun before it, and a verb follows (me fait) → <b>ce qui</b>."},{"id":"rel-12","t":"rel","k":"pick","s":"Dis-moi ___ tu as besoin.","ch":["ce dont","ce que","ce qui","dont"],"x":"No noun before it + avoir besoin <b>de</b> → <b>ce dont</b>."},{"id":"rel-13","t":"rel","k":"pick","s":"Je ne comprends pas ___ mon voisin veut dire.","ch":["ce que","ce qui","ce dont","que"],"x":"No noun before it; a subject follows → <b>ce que</b>."},{"id":"rel-14","t":"rel","k":"type","s":"Le livre ___ j'ai envie coûte trente euros.","a":["dont"],"x":"avoir envie <b>de</b> → <b>dont</b>."},{"id":"rel-15","t":"rel","k":"type","s":"La voisine ___ m'a aidé est restée indemne.","a":["qui"],"x":"A verb follows (m'a aidé) → subject → <b>qui</b>."},{"id":"rel-16","t":"rel","k":"type","s":"Le régime ___ mon médecin m'a conseillé est très exigeant.","a":["que"],"x":"A subject follows (mon médecin) → object → <b>que</b>."},{"id":"rel-17","t":"rel","k":"type","s":"Le village ___ nous passons nos vacances est très calme.","a":["où"],"x":"A place: <b>où</b>."},{"id":"rel-18","t":"rel","k":"type","s":"L'accident ___ tout le monde parle s'est produit hier soir.","a":["dont"],"x":"parler <b>de</b> → <b>dont</b>."},{"id":"rel-19","t":"rel","k":"type","s":"La cohabitation est un choix ___ beaucoup de jeunes font.","a":["que"],"x":"A subject follows (beaucoup de jeunes) → <b>que</b>."},{"id":"rel-20","t":"rel","k":"type","s":"J'ai acheté tout ___ tu m'as demandé.","a":["ce que"],"x":"tout + no noun + a subject follows → <b>ce que</b>."},{"id":"si-21","t":"si","k":"pick","s":"Si tu ___ demain, on ira au marché.","ch":["viens","viendras"],"x":"Right after <b>si</b>: présent, never futur."},{"id":"si-22","t":"si","k":"pick","s":"S'il fait beau samedi, nous ___ une randonnée.","ch":["ferons","ferions","faisions","avons fait"],"x":"Si + présent → <b>futur simple</b>. faire → fer- → ferons."},{"id":"si-23","t":"si","k":"pick","s":"Si vous jeûnez avant la prise de sang, les résultats ___ plus fiables.","ch":["seront","seraient","étaient","soient"],"x":"Si + présent → futur: être → ser- → <b>seront</b>."},{"id":"si-24","t":"si","k":"pick","s":"___ pleut, la route sera impraticable.","ch":["S'il","Si il"],"x":"si + il always contracts: <b>s'il</b>."},{"id":"si-25","t":"si","k":"pick","s":"Si elle ___ du soutien, elle s'impliquera davantage.","ch":["reçoit","recevra","recevrait","recevait"],"x":"After si: présent → <b>reçoit</b> (ç before o)."},{"id":"si-26","t":"si","k":"pick","s":"Si on économise, on ___ partir en vacances cet été.","ch":["pourra","pourrait","pouvait","pouvra"],"x":"pouvoir → irregular stem pourr- → <b>pourra</b>."},{"id":"si-27","t":"si","k":"pick","s":"Si tu manges trop de malbouffe, tu ___ mal au ventre.","ch":["auras","aurais","avais","aurai"],"x":"avoir → aur- + tu ending -as → <b>auras</b>."},{"id":"si-28","t":"si","k":"pick","s":"Si les pompiers ___ à temps, la maison restera debout.","ch":["arrivent","arriveront"],"x":"The si clause takes the présent: <b>arrivent</b>."},{"id":"si-29","t":"si","k":"pick","s":"Si tu ___ fatigué, repose-toi.","ch":["es","seras"],"x":"Si + présent → impératif is fine; the si clause stays présent: <b>es</b>."},{"id":"si-30","t":"si","k":"type","s":"Si tu viens ce soir, je te ___ mes photos de voyage.","a":["montrerai"],"cue":"(montrer)","x":"Regular: infinitive + -ai → <b>montrerai</b>."},{"id":"si-31","t":"si","k":"type","s":"Si tu as mal au genou, nous ___ aux urgences.","a":["irons"],"cue":"(aller)","x":"aller → ir- → <b>irons</b>."},{"id":"si-32","t":"si","k":"type","s":"Si vous ___ le temps, passez nous voir.","a":["avez"],"cue":"(avoir)","x":"The si clause is présent: <b>avez</b>. The result here is an impératif."},{"id":"si-33","t":"si","k":"type","s":"Si elles finissent tôt, elles ___ nous rejoindre.","a":["viendront"],"cue":"(venir)","x":"venir → viendr- → <b>viendront</b>."},{"id":"si-34","t":"si","k":"type","s":"Si la canicule continue, il ___ boire beaucoup d'eau.","a":["faudra"],"cue":"(falloir)","x":"falloir → faudr- → <b>faudra</b>."},{"id":"si-35","t":"si","k":"type","s":"Si tu ___ ce restaurant, tu ne le regretteras pas.","a":["essaies","essayes"],"cue":"(essayer)","x":"Présent after si: <b>essaies</b> (essayes is also accepted)."},{"id":"si-36","t":"si","k":"type","s":"Si nous partons maintenant, nous ___ le train de 8 h.","a":["prendrons"],"cue":"(prendre)","x":"-re verb drops the e: prendr- → <b>prendrons</b>."},{"id":"si-37","t":"si","k":"type","s":"Si je réussis l'examen, je ___ très content.","a":["serai"],"cue":"(être)","x":"être → ser- → <b>serai</b>."},{"id":"si-38","t":"si","k":"type","s":"Si on ___ ensemble, on trouvera une solution.","a":["travaille"],"cue":"(travailler)","x":"After si: présent → <b>travaille</b>."},{"id":"si-39","t":"si","k":"type","s":"Si tu veux, nous ___ les enfants à l'école demain.","a":["emmènerons"],"cue":"(emmener)","x":"The stem takes a grave accent: <b>emmènerons</b>."},{"id":"si-40","t":"si","k":"type","s":"Si tu restes une semaine, ça ___ la peine.","a":["vaudra"],"cue":"(valoir)","x":"valoir → vaudr- → <b>vaudra</b>."},{"id":"nom-41","t":"nom","k":"type","s":"améliorer → ___","a":["l'amélioration"],"g":"f","noun":1,"ins":"Spell the noun (article optional).","x":"-ation → feminine: <b>l'amélioration</b> (une amélioration)."},{"id":"nom-42","t":"nom","k":"type","s":"s'effondrer → ___","a":["l'effondrement"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","x":"-ment → masculine: <b>l'effondrement</b> (un effondrement)."},{"id":"nom-43","t":"nom","k":"type","s":"sauver → ___","a":["le sauvetage"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","cue":"(a rescue operation)","x":"-age → masculine: <b>le sauvetage</b>."},{"id":"nom-44","t":"nom","k":"type","s":"élargir → ___","a":["l'élargissement"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","x":"-ir verbs often take -issement: <b>l'élargissement</b>."},{"id":"nom-45","t":"nom","k":"type","s":"partager → ___","a":["le partage"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","x":"-age → masculine: <b>le partage</b>."},{"id":"nom-46","t":"nom","k":"type","s":"héberger → ___","a":["l'hébergement"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","x":"-ment → masculine: <b>l'hébergement</b>."},{"id":"nom-47","t":"nom","k":"type","s":"vulgariser → ___","a":["la vulgarisation"],"g":"f","noun":1,"ins":"Spell the noun (article optional).","x":"-isation → feminine: <b>la vulgarisation</b>."},{"id":"nom-48","t":"nom","k":"type","s":"arriver → ___","a":["l'arrivée"],"g":"f","noun":1,"ins":"Spell the noun (article optional).","x":"-ée → feminine: <b>l'arrivée</b>."},{"id":"nom-49","t":"nom","k":"type","s":"découvrir → ___","a":["la découverte"],"g":"f","noun":1,"ins":"Spell the noun (article optional).","x":"From the participle découvert → <b>la découverte</b>."},{"id":"nom-50","t":"nom","k":"type","s":"craindre → ___","a":["la crainte"],"g":"f","noun":1,"ins":"Spell the noun (article optional).","x":"<b>la crainte</b> (fear)."},{"id":"nom-51","t":"nom","k":"type","s":"hurler → ___","a":["le hurlement"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","x":"-ment → masculine: <b>le hurlement</b>."},{"id":"nom-52","t":"nom","k":"type","s":"jeûner → ___","a":["le jeûne"],"g":"m","noun":1,"ins":"Spell the noun (article optional).","x":"Short form from the stem, keeping the circumflex: <b>le jeûne</b>."},{"id":"nom-53","t":"nom","k":"type","s":"attendre → ___","a":["l'attente"],"g":"f","noun":1,"ins":"Spell the noun (article optional).","x":"<b>l'attente</b> (une attente), feminine."},{"id":"nom-54","t":"nom","k":"type","s":"Les loyers baissent à Lyon. → ___ des loyers à Lyon","a":["baisse","la baisse","une baisse"],"ins":"Rewrite as a headline: type the noun.","x":"baisser → <b>la baisse</b>. Headlines usually drop the article: “Baisse des loyers à Lyon”."},{"id":"nom-55","t":"nom","k":"type","s":"La mairie ferme la piscine municipale. → ___ de la piscine municipale","a":["fermeture","la fermeture"],"ins":"Rewrite as a headline: type the noun.","x":"fermer → -ure → <b>la fermeture</b>."},{"id":"nom-56","t":"nom","k":"type","s":"L'État soutient les petits commerces. → ___ de l'État aux petits commerces","a":["soutien","le soutien"],"ins":"Rewrite as a headline: type the noun.","x":"soutenir → <b>le soutien</b>."},{"id":"nom-57","t":"nom","k":"type","s":"Les secours évacuent le quartier. → ___ du quartier","a":["évacuation","l'évacuation","une évacuation"],"ins":"Rewrite as a headline: type the noun.","x":"évacuer → -ation → <b>l'évacuation</b>."},{"id":"nom-58","t":"nom","k":"type","s":"Le gouvernement réforme les retraites. → ___ des retraites","a":["réforme","la réforme","une réforme"],"ins":"Rewrite as a headline: type the noun.","x":"réformer → short form <b>la réforme</b>."},{"id":"nom-59","t":"nom","k":"type","s":"La ville interdit les voitures au centre. → ___ des voitures au centre-ville","a":["interdiction","l'interdiction","une interdiction"],"ins":"Rewrite as a headline: type the noun.","x":"interdire → -iction → <b>l'interdiction</b>."},{"id":"nom-60","t":"nom","k":"type","s":"Le prix de l'essence augmente. → ___ du prix de l'essence","a":["augmentation","l'augmentation","une augmentation"],"ins":"Rewrite as a headline: type the noun.","x":"augmenter → -ation → <b>l'augmentation</b>."},{"id":"nom-61","t":"nom","k":"pick","s":"___ du pont a fait trois blessés.","ch":["L'effondrement","L'effondration","L'effondrage","L'effondrée"],"x":"s'effondrer → <b>l'effondrement</b>."},{"id":"nom-62","t":"nom","k":"pick","s":"Tout le monde attend ___ des pompiers.","ch":["l'arrivée","l'arrivement","l'arrivation","l'arrive"],"x":"arriver → <b>l'arrivée</b>."},{"id":"nom-63","t":"nom","k":"pick","s":"On annonce ___ de l'école pour septembre.","ch":["la réouverture","le réouvrement","la réouvertion","le réouvrage"],"x":"rouvrir → <b>la réouverture</b> (-ure, feminine)."},{"id":"nom-64","t":"nom","k":"pick","s":"Ce projet favorise ___ durable.","ch":["le développement","la développation","le développage","la développure"],"x":"développer → <b>le développement</b>."},{"id":"nom-65","t":"nom","k":"pick","s":"___ des océans inquiète les scientifiques.","ch":["La pollution","La polluance","Le polluement","Le polluage"],"x":"polluer → <b>la pollution</b>."},{"id":"nom-66","t":"nom","k":"pick","s":"___ des enfants à l'école se fait à 8 h.","ch":["L'accueil","L'accueillement","L'accueillance","L'accueillage"],"x":"accueillir → short form <b>l'accueil</b>."},{"id":"nom-67","t":"nom","k":"pick","s":"___ des prix inquiète les ménages.","ch":["La hausse","La haussation","La haussure","Le haussage"],"x":"hausser → short form <b>la hausse</b>."},{"id":"nom-68","t":"nom","k":"pick","s":"___ contre le cyberharcèlement continue.","ch":["La lutte","Le luttement","La luttation","Le luttage"],"x":"lutter → short form <b>la lutte</b>."},{"id":"dem-69","t":"dem","k":"pick","s":"J'aime bien ta veste, mais je préfère ___ de Marc.","ch":["celle","celui","ceux","celles"],"x":"la veste → feminine singular → <b>celle</b>."},{"id":"dem-70","t":"dem","k":"pick","s":"Ces médicaments-ci sont pour toi ; ___-là sont pour ton père.","ch":["ceux","celui","celle","celles"],"x":"les médicaments → masculine plural → <b>ceux</b>."},{"id":"dem-71","t":"dem","k":"pick","s":"Quel appartement ? — ___ qui donne sur la mer.","ch":["Celui","Celle","Ceux","Celles"],"x":"l'appartement → masculine singular → <b>celui</b>."},{"id":"dem-72","t":"dem","k":"pick","s":"Les fresques de ce quartier sont plus belles que ___ du centre-ville.","ch":["celles","celui","celle","ceux"],"x":"les fresques → feminine plural → <b>celles</b>."},{"id":"dem-73","t":"dem","k":"pick","s":"De tous les régimes, ___ que je préfère, c'est le régime méditerranéen.","ch":["celui","celle","ceux","celles"],"x":"un régime → masculine singular → <b>celui</b>."},{"id":"dem-74","t":"dem","k":"pick","s":"Les urgences de l'hôpital Nord sont lentes, mais ___ de l'hôpital Sud sont plus rapides.","ch":["celles","celui","celle","ceux"],"x":"les urgences → feminine plural → <b>celles</b>."},{"id":"dem-75","t":"dem","k":"pick","s":"Ma cheville gauche va bien, mais ___ de droite me fait mal.","ch":["celle","celui","ceux","celles"],"x":"la cheville → feminine singular → <b>celle</b>."},{"id":"dem-76","t":"dem","k":"pick","s":"Parmi mes amis, ___ qui s'entendent le mieux avec moi sont Paul et Hugo.","ch":["ceux","celui","celle","celles"],"x":"les amis → masculine plural → <b>ceux</b>."},{"id":"dem-77","t":"dem","k":"pick","s":"Mon ordinateur est plus rapide que ___ de mon frère.","ch":["celui","celle","ceux","celles"],"x":"l'ordinateur → masculine singular → <b>celui</b>."},{"id":"dem-78","t":"dem","k":"pick","s":"Tu veux partir à cinq heures du matin ? ___ ne me plaît pas du tout.","ch":["Ça","Celui","Celle","Ceux"],"x":"It refers to the idea, not a noun → <b>ça</b> (cela)."},{"id":"dem-79","t":"dem","k":"type","s":"Quelle robe veux-tu ? — ___-ci ou celle-là ?","a":["Celle"],"x":"la robe → <b>celle</b>-ci."},{"id":"dem-80","t":"dem","k":"type","s":"Ce sont tes chaussures ou ___ de ta sœur ?","a":["celles"],"x":"les chaussures → feminine plural → <b>celles</b>."},{"id":"dem-81","t":"dem","k":"type","s":"Ce chirurgien est plus doué que ___ que j'ai vu l'année dernière.","a":["celui"],"x":"le chirurgien → <b>celui</b>."},{"id":"dem-82","t":"dem","k":"type","s":"Les enfants qui mangent sain sont en meilleure forme que ___ qui mangent de la malbouffe.","a":["ceux"],"x":"les enfants → masculine plural → <b>ceux</b>."},{"id":"dem-83","t":"dem","k":"type","s":"Les vols du matin sont complets, mais ___ du soir sont libres.","a":["ceux"],"x":"les vols → masculine plural → <b>ceux</b>."},{"id":"dem-84","t":"dem","k":"type","s":"Cette maison-ci est moins chère que ___-là.","a":["celle"],"x":"la maison → <b>celle</b>-là."},{"id":"dem-85","t":"dem","k":"type","s":"Voici deux témoignages : ___ de la voisine est le plus précis.","a":["celui"],"x":"le témoignage → masculine singular → <b>celui</b>."},{"id":"dem-86","t":"dem","k":"type","s":"Quel gâteau tu veux ? — ___-ci, il a l'air délicieux.","a":["Celui"],"x":"le gâteau → <b>celui</b>-ci."},{"id":"pc-87","t":"pc","k":"type","s":"Hier soir, Léa ___ très tard.","a":["est rentrée"],"cue":"(rentrer)","ins":"Type the verb in the passé composé.","x":"rentrer with no direct object → être; agrees with Léa → <b>est rentrée</b>."},{"id":"pc-88","t":"pc","k":"type","s":"Nous ___ les valises du grenier.","a":["avons descendu"],"cue":"(descendre)","ins":"Type the verb in the passé composé.","x":"Direct object (les valises) after the verb → avoir, no agreement → <b>avons descendu</b>."},{"id":"pc-89","t":"pc","k":"type","s":"Mes parents ___ à Marseille en 1985.","a":["sont nés"],"cue":"(naître)","ins":"Type the verb in the passé composé.","x":"naître → être; masculine plural → <b>sont nés</b>."},{"id":"pc-90","t":"pc","k":"type","s":"Le témoin ___ les pompiers tout de suite.","a":["a appelé"],"cue":"(appeler)","ins":"Type the verb in the passé composé.","x":"Ordinary verb → avoir → <b>a appelé</b>."},{"id":"pc-91","t":"pc","k":"type","s":"Elles ___ à six heures pour éviter la canicule.","a":["sont parties"],"cue":"(partir)","ins":"Type the verb in the passé composé.","x":"partir → être; feminine plural → <b>sont parties</b>."},{"id":"pc-92","t":"pc","k":"type","s":"Ma sœur et moi, nous ___ dans le projet.","a":["nous sommes impliqués","nous sommes impliquées"],"cue":"(s'impliquer)","ins":"Type the verb in the passé composé.","x":"Pronominal → être, agrees with nous → <b>nous sommes impliqué(e)s</b>."},{"id":"pc-93","t":"pc","k":"type","s":"Les maisons ___ pendant le séisme.","a":["se sont effondrées"],"cue":"(s'effondrer)","ins":"Type the verb in the passé composé.","x":"Pronominal → être; les maisons is feminine plural → <b>se sont effondrées</b>."},{"id":"pc-94","t":"pc","k":"type","s":"Tu as vu la fresque ? — Oui, je l'___ hier.","a":["ai vue"],"cue":"(voir)","ins":"Type the verb in the passé composé.","x":"avoir + direct object before the verb (l' = la fresque) → agreement → <b>ai vue</b>."},{"id":"pc-95","t":"pc","k":"type","s":"Ils ___ indemnes de l'accident.","a":["sont sortis"],"cue":"(sortir)","ins":"Type the verb in the passé composé.","x":"sortir with no direct object → être → <b>sont sortis</b>."},{"id":"pc-96","t":"pc","k":"type","s":"Elle ___ la poubelle avant de partir.","a":["a sorti"],"cue":"(sortir)","ins":"Type the verb in the passé composé.","x":"sortir + direct object (la poubelle) → avoir, no agreement → <b>a sorti</b>."},{"id":"pc-97","t":"pc","k":"type","s":"Ma grand-mère ___ trois jours à l'hôpital.","a":["est restée"],"cue":"(rester)","ins":"Type the verb in the passé composé.","x":"rester → être; feminine → <b>est restée</b>."},{"id":"pc-98","t":"pc","k":"type","s":"Ils ___ dès le premier jour.","a":["se sont entendus"],"cue":"(s'entendre)","ins":"Type the verb in the passé composé.","x":"Pronominal → être; se is a direct object (entendre quelqu'un) → agreement → <b>se sont entendus</b>."},{"id":"pc-99","t":"pc","k":"pick","s":"Elle ___ l'escalier en courant.","ch":["a monté","est montée"],"x":"Direct object (l'escalier) → <b>avoir</b>: a monté."},{"id":"pc-100","t":"pc","k":"pick","s":"Elle ___ au troisième étage à pied.","ch":["est montée","a monté"],"x":"No direct object → <b>être</b>, with agreement: est montée."},{"id":"pc-101","t":"pc","k":"pick","s":"Les enfants ___ dans la piscine.","ch":["sont tombés","ont tombé","sont tombé","ont tombés"],"x":"tomber → être; masculine plural → <b>sont tombés</b>."},{"id":"pc-102","t":"pc","k":"pick","s":"Les médicaments que le médecin m'___ sont efficaces.","ch":["a donnés","a donné","est donné","sont donnés"],"x":"avoir + direct object before the verb (que = les médicaments) → <b>a donnés</b>."},{"id":"pc-103","t":"pc","k":"pick","s":"Elles se sont ___ hier soir.","ch":["téléphoné","téléphonées"],"x":"téléphoner <b>à</b> quelqu'un → se is indirect → no agreement: <b>téléphoné</b>."},{"id":"pc-104","t":"pc","k":"pick","s":"Marie s'est ___ les mains.","ch":["lavé","lavée"],"x":"The direct object (les mains) comes after the verb → no agreement: <b>lavé</b>."},{"id":"pc-105","t":"pc","k":"pick","s":"Nous ___ une semaine très agréable à Nice.","ch":["avons passé","sommes passés","avons passée","sommes passé"],"x":"passer + direct object (une semaine) → avoir; the object comes after → <b>avons passé</b>."},{"id":"pc-106","t":"pc","k":"pick","s":"Le chat ___ du toit, mais il est sain et sauf.","ch":["est tombé","a tombé"],"x":"tomber → <b>être</b>: est tombé."}],"ORAL":[{"id":"t1","n":1,"title":"Présentation","short":"Famille, travail, ville…","prompt":"Parlez de votre famille, vos voyages, vos loisirs, vos études, votre ville natale, etc.","goal":["Structure and develop each answer","Pronunciation","Fluency"],"focus":"Mostly présent, with past tenses for background","sections":[{"k":"famille","label":"Famille","tense":"Présent","q":["Who is in your family? Where they live, what they do.","One detail that makes them real: a habit, a trait, a tradition."]},{"k":"travail","label":"Travail","tense":"Présent + passé composé","q":["What do you do now, and what did you do before?","Why did you choose it? What do you like about it?"]},{"k":"ville","label":"Ville natale & résidence","tense":"Présent + imparfait","q":["Where are you from? Describe it in two or three details.","Where do you live now? Compare the two."]},{"k":"voyages","label":"Voyages","tense":"Passé composé + imparfait","q":["One or two places you've been, and what you thought of them."]},{"k":"etudes","label":"Études","tense":"Passé composé + présent","q":["Where and what did you study?","What are you studying now, and why?"]},{"k":"loisirs","label":"Loisirs","tense":"Présent","q":["What do you do in your free time? How often, with whom?","Why do you enjoy it?"]}],"conn":["d'abord","ensuite","en ce qui concerne","quant à","de plus","par ailleurs","par contre","en fait","c'est pourquoi","pour conclure"],"words":["s'entendre","à plein temps","agréable","exigeant","doué","se permettre","privilégier","au fur et à mesure","un ménage","améliorer"]},{"id":"t2","n":2,"title":"Un jour typique","short":"Présent","prompt":"Comment l'étudiant passe / célèbre ce jour-là. Choisir un seul jour.","goal":["Use the présent throughout","Vary the vocabulary","Detail and justify: a structured, coherent account"],"focus":"Présent","choice":{"label":"Which day?","opts":["Le jour de Thanksgiving","Le jour de Noël","Le jour de mon anniversaire","Le jour de l'anniversaire de mon fils / ma fille","Autre"]},"sections":[{"k":"intro","label":"Introduction","tense":"Présent","q":["Which day, and what does it mean to you or your family?","Where do you usually spend it, and with whom?"]},{"k":"matin","label":"Le matin","tense":"Présent","q":["How does the day start? Who gets up first, what gets prepared?"]},{"k":"midi","label":"Le repas / l'après-midi","tense":"Présent","q":["The main event: the meal, the gifts, the activity. Who does what?","Describe one dish or ritual in detail."]},{"k":"soir","label":"Le soir","tense":"Présent","q":["How does the day wind down?"]},{"k":"concl","label":"Conclusion","tense":"Présent (+ si → futur)","q":["Why do you like this day? Has it changed over the years?","Optional: how will you spend it this year?"]}],"conn":["d'habitude","chaque année","en général","d'abord","ensuite","puis","vers midi","pendant que","après le repas","le soir","enfin","pour finir"],"words":["à la fois","agréable","le partage","détendu","la malbouffe","un régime","jeûner","économiser","un ménage","les mœurs"]},{"id":"t3","n":3,"title":"Voyages récents","short":"3 dernières années","prompt":"Un voyage des trois dernières années : où ? avec qui ? activités pendant le voyage ?","goal":["Right tenses: passé composé for events, imparfait for description","Vary the vocabulary","Detail and justify"],"focus":"Passé composé + imparfait","sections":[{"k":"ou","label":"Où et quand ?","tense":"Passé composé + imparfait","q":["Where did you go, when, and for how long?","Why that destination?"]},{"k":"qui","label":"Avec qui ?","tense":"Passé composé + imparfait","q":["Who came along? How did you travel?"]},{"k":"activites","label":"Activités","tense":"Passé composé","q":["Three or four activities, in order.","One moment in detail: a meal, a visit, a surprise."]},{"k":"impressions","label":"Impressions","tense":"Imparfait","q":["What was it like: weather, people, atmosphere?","How did you feel?"]},{"k":"concl","label":"Conclusion","tense":"Si + présent → futur","q":["Would you recommend it? Will you go back?"]}],"conn":["il y a deux ans","l'été dernier","pendant une semaine","d'abord","le lendemain","ensuite","puis","tout à coup","malheureusement","heureusement","finalement","si j'ai l'occasion"],"words":["héberger","à portée de main","au large de","la canicule","valoir","peu importe","une fresque","agréable","détendu","le renom"]},{"id":"t4","n":4,"title":"Description d'un lieu","short":"Présent","prompt":"Un lieu où vous avez travaillé ou étudié. Comment c'est ? Comment est l'ambiance ? Votre impression ? Pourquoi ce lieu ?","goal":["Use the présent to describe","Vary the vocabulary (place, layout, atmosphere)","Detail and justify your impression and choice"],"focus":"Présent","sections":[{"k":"lieu","label":"Le lieu","tense":"Présent (+ passé composé)","q":["What is the place, and where is it?","What did you do there?"]},{"k":"exterieur","label":"L'extérieur","tense":"Présent","q":["Buildings, size, surroundings, what you see as you arrive."]},{"k":"interieur","label":"L'intérieur","tense":"Présent","q":["Rooms, layout, light, what is where."]},{"k":"ambiance","label":"L'ambiance","tense":"Présent","q":["The atmosphere: the people, the noise, the rhythm of the day."]},{"k":"impression","label":"Impression & choix","tense":"Présent + passé composé","q":["What do you think of it?","Why did you choose this place?"]}],"conn":["à côté de","en face de","au fond de","au milieu de","à gauche","à droite","au rez-de-chaussée","à l'étage","d'un côté","de l'autre côté","ce qui me plaît, c'est","celui qui"],"words":["agréable","exigeant","détendu","à la fois","à portée de main","élargir","une fresque","la cohabitation","le partage","provisoire"]},{"id":"t5","n":5,"title":"Un jour mémorable","short":"Passé composé & imparfait","prompt":"Quand ? Où ? Comment c'était ? Activités ? Pourquoi c'est mémorable ?","goal":["Imparfait for setting, description and emotions; passé composé for the actions","Vary the vocabulary","Detail and justify why it matters"],"focus":"Imparfait + passé composé","sections":[{"k":"quand","label":"Quand ? Où ?","tense":"Imparfait","q":["When and where was it? Where were you in life at that point?"]},{"k":"comment","label":"Comment c'était ?","tense":"Imparfait","q":["Set the scene: weather, place, people, how you felt beforehand."]},{"k":"activites","label":"Activités","tense":"Passé composé","q":["What happened, in order: four to six actions.","One turning point."]},{"k":"pourquoi","label":"Pourquoi c'est mémorable","tense":"Imparfait","q":["Why does it stay with you? Emotions, opinion, what it meant."]}],"conn":["c'était en","à l'époque","ce jour-là","d'abord","ensuite","tout à coup","soudain","pendant que","au moment où","finalement","c'est pourquoi","je m'en souviens parce que"],"words":["s'avérer","un pari","indemne","sain et sauf","amoureux","une attente","faire mal","hurler","une bêtise","à la fois"]},{"id":"t6","n":6,"title":"Jeu de rôle","short":"Témoin","prompt":"Vous êtes témoin d'un accident / d'un vol. Que s'est-il passé ? L'examinateur vous pose des questions.","goal":["Imparfait for the scene, passé composé for the events","Give precise details: time, place, people","Answer follow-up questions directly"],"focus":"Imparfait + passé composé","choice":{"label":"Scenario","opts":["Un accident","Un vol","Autre"]},"sections":[{"k":"contexte","label":"Le contexte","tense":"Imparfait","q":["Where were you, when, and what were you doing?","Conditions: weather, traffic, people around."]},{"k":"evenement","label":"Ce qui s'est passé","tense":"Passé composé","q":["The event in order. What did you see and hear?"]},{"k":"description","label":"Description","tense":"Imparfait","q":["The people or vehicles: age, clothes, color, direction."]},{"k":"apres","label":"Après","tense":"Passé composé","q":["Who called for help, who arrived, was anyone hurt?","What did you do?"]},{"k":"q1","qa":1,"label":"Où étiez-vous exactement au moment de l'incident ?"},{"k":"q2","qa":1,"label":"Qu'est-ce que vous faisiez à ce moment-là ?"},{"k":"q3","qa":1,"label":"À quelle heure est-ce que c'est arrivé ?"},{"k":"q4","qa":1,"label":"Pouvez-vous décrire la personne ou le véhicule ?"},{"k":"q5","qa":1,"label":"Quel temps faisait-il ? Est-ce qu'on voyait bien ?"},{"k":"q6","qa":1,"label":"Est-ce qu'il y a eu des blessés ?"},{"k":"q7","qa":1,"label":"Qui a appelé les secours ?"},{"k":"q8","qa":1,"label":"Qu'est-ce que vous avez fait ensuite ?"}],"conn":["j'étais en train de","au moment où","tout à coup","soudain","à ce moment-là","aussitôt","juste après","ensuite","si je me souviens bien","il me semble que","je ne suis pas sûr, mais"],"words":["un témoin","boucler","un incendie","les urgences","sain et sauf","indemne","hurler","les décombres","le sauvetage","faire mal"]}]};
+  var P=state.prep=state.prep||{};
+  var pref=function(k,d){ return P[k]===undefined?d:P[k]; };
+  var $=function(id){ return document.getElementById(id); };
+  var esc2=FG.esc, norm2=FG.norm, fold2=FG.fold;
+  function shuf(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  var KEYS=["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+  function keysHTML(){ return KEYS.map(function(k){ return "<button type=\"button\" class=\"akey\" data-k=\""+esc2(k)+"\" tabindex=\"-1\">"+esc2(k)+"</button>"; }).join(""); }
+  function wireKeys(root,inp,onChange){
+    [].forEach.call(root.querySelectorAll(".akey"),function(b){
+      b.addEventListener("mousedown",function(e){ e.preventDefault(); });
+      b.addEventListener("click",function(){ if(inp.readOnly||inp.disabled) return; var k=b.dataset.k, s=inp.selectionStart==null?inp.value.length:inp.selectionStart, en=inp.selectionEnd==null?s:inp.selectionEnd;
+        inp.value=inp.value.slice(0,s)+k+inp.value.slice(en); inp.setSelectionRange(s+k.length,s+k.length); inp.focus(); if(onChange) onChange(); });
     });
   }
-  testItems=qs;
-  document.getElementById("tProg").textContent=qs.length+" questions · "+(quizPick==="exam"?"Unit 4 practice exam":"Chapter "+quizPick+" quiz");
-  window.scrollTo({top:0,behavior:"smooth"});
-};
-document.getElementById("submitTest").onclick=scoreTest;
+  function save(){ saveState(); }
+  /* one verdict line, then You / Correct on a miss (a skip shows the answer alone), then the why */
+  function fbHTML(verdict,val,target,why){
+    var V=FG.VERDICTS[verdict], h="<div class=\"fb "+V.tone+"\"><strong class=\"fbv\">"+V.title+"</strong>";
+    if(verdict==="skip") h+="<div class=\"cmp\"><span class=\"l\">Correct</span><span class=\"w\">"+esc2(target)+"</span></div>";
+    else if(verdict!=="ok"){ var df=FG.diff(norm2(val),norm2(target));
+      h+="<div class=\"cmp\"><span class=\"l\">You</span><span class=\"w\">"+FG.marked(df[0],"fx")+"</span><span class=\"l\">Correct</span><span class=\"w\">"+FG.marked(df[1],"fm")+"</span></div>"; }
+    if(why) h+="<div class=\"why\">"+why+"</div>";
+    return h+"</div>";
+  }
+  function progHead(S,label){
+    var right=S.res.filter(function(r){ return r.ok; }).length;
+    return "<div class=\"pprog\"><i style=\"width:"+(S.queue.length?S.i/S.queue.length*100:0)+"%\"></i></div><div class=\"pmeta\"><span>"+label+" "+(S.i+1)+" of "+S.queue.length+"</span><span>"+right+" correct so far</span></div>";
+  }
 
-function tallyMiss(tag, ok){
-  var t=state.missTally[tag]||(state.missTally[tag]={w:0,t:0});
-  t.t++; if(!ok) t.w++;
-}
-function scoreTest(){
-  var score=0;
-  testItems.forEach(function(q){
-    var t=q._t, ok=false;
-    if(q._kind==="mc"){
-      var ans=Array.isArray(t.a)?t.a:[t.a];
-      var sel=q._opts.querySelector("input:checked"), given=sel?sel.value:"";
-      ok=ans.some(function(a){return norm(a)===norm(given);});
-      [].forEach.call(q._opts.children,function(op){
-        var inpEl=op.querySelector("input"); inpEl.disabled=true;
-        var val=inpEl.value;
-        if(ans.some(function(a){return norm(a)===norm(val);})) op.classList.add("right");
-        else if(val===given && given) op.classList.add("wrong");
-      });
-    } else if(q._kind==="sa"){
-      ok = q._self===true;
-      q._inp.disabled=true;
-      if(q._self===undefined){
-        var v0=el("div","verdict no"); v0.textContent="✗ Not self-graded — counted as a miss. Model: "+t.model; q.appendChild(v0);
-      }
-    } else {
-      var ans2=Array.isArray(t.a)?t.a:[t.a];
-      var given2=q._inp.value;
-      ok=ans2.some(function(a){return norm(a)===norm(given2);});
-      var close=!ok && given2.trim() && ans2.some(function(a){return bare(a)===bare(given2);});
-      q._inp.disabled=true; q._inp.style.borderColor=ok?"var(--known)":"var(--accent)";
-      var v=el("div","verdict "+(ok?"ok":"no"));
-      v.textContent = ok?"✓ Correct":(close?"✗ Accents — "+ans2[0]:"✗ "+ans2[0]);
-      q.appendChild(v);
-      anaRecord(ok, !!close, withSrc(q._t.m,"quiz",null,(+q._t.ch||null)));   /* quiz/exam fill-ins feed Analyse */
+  /* ---------------- Vocabulaire ---------------- */
+  var TYPE={n:"noun",v:"verb",a:"adjective",x:"expression"};
+  var W=DATA.RAW.map(function(r,i){
+    var t=r[2], g=r[3]||null, alts=r[4]||[];
+    return {id:i,f:r[0],e:r[1],t:t,g:g,alts:alts,it:FG.prepare({f:r[0],a:alts,type:t==="n"?"n":(t==="v"?"v":"x"),g:g})};
+  });
+  var typeLabel=function(w){ return w.t==="n"&&w.g&&/p$/.test(w.g)?"noun · plural":TYPE[w.t]; };
+  var vm_=function(){ return P.vmiss=P.vmiss||{}; };
+  function vMiss(w,ok){ var m=vm_(); if(ok){ if(m[w.f]){ m[w.f]--; if(m[w.f]<=0) delete m[w.f]; } } else m[w.f]=(m[w.f]||0)+1; save(); }
+  var V={mode:pref("vmode","write"),size:pref("vsize","20"),src:"all",queue:[],i:0,res:[],answered:false,cur:null};
+  function vCard(){ return $("prepVCard"); }
+  function vSync(){
+    [].forEach.call(document.querySelectorAll("#prepVMode button"),function(b){ b.setAttribute("aria-pressed",String(b.dataset.mode===V.mode)); });
+    $("prepVSize").value=V.size; var s=$("prepVSrc"); s.options[1].textContent="My misses ("+Object.keys(vm_()).length+")"; s.value=V.src;
+    var quiz=V.mode!=="list"; $("prepVSizeCtl").hidden=!quiz; $("prepVSrcCtl").hidden=!quiz; $("prepVNew").hidden=!quiz;
+  }
+  function vNew(list){
+    if(list) V.queue=shuf(list);
+    else { var pool=W; if(V.src==="miss"){ pool=W.filter(function(w){ return vm_()[w.f]; }); if(!pool.length){ V.src="all"; pool=W; } }
+      V.queue=shuf(pool).slice(0,V.size==="80"?pool.length:Math.min(pool.length,+V.size)); }
+    V.i=0; V.res=[]; V.answered=false; vSync(); vRender();
+  }
+  function vRender(){
+    if(V.mode==="list") return vList();
+    if(V.i>=V.queue.length) return vResults();
+    V.answered=false; V.cur=V.queue[V.i]; V.mode==="write"?vWrite():vMCQ();
+  }
+  function vWrite(){
+    var w=V.cur, c=vCard();
+    c.innerHTML=progHead(V,"Word")+"<div class=\"pbody\"><span class=\"ptag\">"+typeLabel(w)+"</span><p class=\"pprompt\">"+enHTML(w.e)+"</p>"+
+      "<div class=\"seyes\"><input id=\"prepVAns\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" lang=\"fr\" aria-label=\"Your French answer\" placeholder=\""+(w.t==="n"?"article + noun":"en français")+"\"></div>"+
+      "<div class=\"akeys pkeys\">"+keysHTML()+"</div>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepVCheck\">Check</button><button type=\"button\" class=\"pbtn\" id=\"prepVSkip\">I don't know</button><span class=\"phint\">Enter to check · Enter again for next</span></div><div id=\"prepVFb\"></div></div>";
+    var inp=$("prepVAns"); inp.focus({preventScroll:true});
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); V.answered?vNext():vCheck(); } });
+    wireKeys(c,inp);
+    $("prepVCheck").onclick=function(){ V.answered?vNext():vCheck(); };
+    $("prepVSkip").onclick=function(){ if(!V.answered) vCheck(true); };
+  }
+  function vCheck(skip){
+    var w=V.cur, inp=$("prepVAns"), val=inp.value;
+    if(!skip && !norm2(val)){ inp.focus(); return; }
+    V.answered=true; inp.readOnly=true;
+    var g=skip?{v:"skip",target:w.f}:FG.grade(val,w.it), ok=g.v==="ok";
+    V.res.push({w:w,input:skip?"":val,v:g.v,ok:ok}); vMiss(w,ok);
+    inp.parentNode.classList.add(ok?"ok":"bad");
+    $("prepVFb").innerHTML=fbHTML(g.v,val,g.target);
+    $("prepVCheck").textContent=V.i+1<V.queue.length?"Next word":"See results"; $("prepVSkip").hidden=true; $("prepVCheck").focus({preventScroll:true});
+  }
+  function vNext(){ V.i++; vRender(); }
+  function vMCQ(){
+    var w=V.cur, c=vCard();
+    var same=shuf(W.filter(function(x){ return x.id!==w.id&&x.t===w.t; })), other=shuf(W.filter(function(x){ return x.id!==w.id&&x.t!==w.t; }));
+    var opts=shuf([w].concat(same.concat(other).slice(0,3)));
+    c.innerHTML=progHead(V,"Word")+"<div class=\"pbody\"><span class=\"ptag\">Pick the meaning</span><p class=\"pprompt\" lang=\"fr\">"+esc2(w.f)+"</p>"+
+      "<div class=\"opts\">"+opts.map(function(o,k){ return "<button type=\"button\" class=\"opt\" data-id=\""+o.id+"\"><b>"+(k+1)+"</b><span>"+enHTML(o.e)+"</span></button>"; }).join("")+"</div>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepVNext\" hidden>Next word</button><span class=\"phint\">Keys 1–4 · Enter for next</span></div></div>";
+    [].forEach.call(c.querySelectorAll(".opt"),function(b){ b.onclick=function(){ vPick(+b.dataset.id); }; });
+  }
+  function vPick(id){
+    if(V.answered) return; V.answered=true;
+    var w=V.cur, ok=id===w.id; V.res.push({w:w,input:ok?"":W[id].e,v:ok?"ok":"wrong",ok:ok}); vMiss(w,ok);
+    [].forEach.call(vCard().querySelectorAll(".opt"),function(b){ var bid=+b.dataset.id; b.disabled=true; if(bid===w.id) b.classList.add("right"); else if(bid===id) b.classList.add("wrong"); });
+    var nb=$("prepVNext"); nb.hidden=false; nb.textContent=V.i+1<V.queue.length?"Next word":"See results"; nb.onclick=vNext; nb.focus({preventScroll:true});
+  }
+  function vResults(){
+    var total=V.res.length, right=V.res.filter(function(r){ return r.ok; }).length, wrong=V.res.filter(function(r){ return !r.ok; });
+    var lbl={accent:"accents",article:"article missing",gender:"gender",pronoun:"pronoun missing",close:"spelling",wrong:"",skip:"skipped"};
+    vCard().innerHTML="<div class=\"pprog\"><i style=\"width:100%\"></i></div><div class=\"pbody\"><span class=\"ptag\">Results</span>"+
+      "<div class=\"pscore\"><span class=\"big\">"+right+" / "+total+"</span><span class=\"pct\">"+(total?Math.round(right/total*100):0)+"% · "+Object.keys(vm_()).length+" word"+(Object.keys(vm_()).length===1?"":"s")+" in your misses pile</span></div>"+
+      (wrong.length?"<div class=\"misslist\">"+wrong.map(function(r){ return "<div><span class=\"fr\" lang=\"fr\">"+esc2(r.w.f)+"</span><span class=\"en\">"+enHTML(r.w.e)+"</span>"+(r.input||r.v==="skip"?"<span class=\"yours\">"+(r.v==="skip"?"skipped":"You: "+esc2(r.input))+(lbl[r.v]?" · "+lbl[r.v]:"")+"</span>":"")+"</div>"; }).join("")+"</div>":"<p class=\"pempty\">Clean sweep. No misses this round.</p>")+
+      "<div class=\"prow\">"+(wrong.length?"<button type=\"button\" class=\"pbtn primary\" id=\"prepVRetry\">Retry the "+wrong.length+" missed</button>":"")+"<button type=\"button\" class=\"pbtn\" id=\"prepVAgain\">New set</button></div></div>";
+    var r=$("prepVRetry"); if(r) r.onclick=function(){ vNew(wrong.map(function(x){ return x.w; })); };
+    $("prepVAgain").onclick=function(){ vNew(); }; vSync();
+  }
+  function vList(){
+    vCard().innerHTML="<div class=\"pbody\"><input class=\"psearch\" id=\"prepVQ\" type=\"search\" placeholder=\"Filter French or English\" aria-label=\"Filter words\" autocomplete=\"off\"><div class=\"ptbl\"><table><tbody id=\"prepVRows\"></tbody></table></div></div>";
+    function draw(){
+      var q=fold2($("prepVQ").value), rows=W.filter(function(w){ return !q||fold2(w.f).indexOf(q)>-1||w.e.toLowerCase().indexOf(q)>-1; });
+      $("prepVRows").innerHTML=rows.map(function(w){ return "<tr><td class=\"fr\" lang=\"fr\">"+esc2(w.f)+(w.alts.length?"<span class=\"pnote\"> · "+w.alts.map(esc2).join(", ")+"</span>":"")+(vm_()[w.f]?"<span class=\"pchip\">missed ×"+vm_()[w.f]+"</span>":"")+"</td><td class=\"en\">"+enHTML(w.e)+"</td></tr>"; }).join("")||"<tr><td class=\"en\">No match.</td></tr>";
     }
-    if(q._kind==="mc"||q._kind==="sa"){ onGraded(ok); }
-    tallyMiss(q._tag, ok);
-    if(ok) score++;
-  });
-  var total=testItems.length;
-  state.tests.push({kind:histKind(),score:score,total:total,date:new Date().toISOString().slice(0,10)});
-  if(quizPick!=="exam" && score===total && total>=10){
-    state.life.pq=(state.life.pq||0)+1;
-    award("a_quiz100");
-    if(state.life.pq>=3) award("a_quiz3x");
+    $("prepVQ").addEventListener("input",draw); draw();
   }
-  saveState(); refreshDash(); renderTestHist();
-  document.getElementById("submitTest").style.display="none";
-  var res=document.getElementById("testResult"); res.style.display="block";
-  var pct=Math.round(score/total*100);
-  var msg = pct>=90?"Excellent — these mechanics are solid.":pct>=75?"Strong. Clean up the misses and re-run.":pct>=60?"Getting there — drill the weak chapters in Grammaire.":"Foundation work needed — slow down and use the Verbes + Grammaire tabs.";
-  res.innerHTML="<div class='card'><div class='scorebox'><div class='big' style='color:"+(pct>=75?"var(--known)":pct>=60?"var(--learn)":"var(--accent)")+"'>"+score+"/"+total+"</div><div class='lbl'>"+pct+"% · "+msg+"</div></div></div>";
-  var again=el("button","btn reveal"); again.style.cssText="flex:0 0 auto;padding:12px 26px;margin-top:12px"; again.textContent="New attempt";
-  again.onclick=function(){ document.getElementById("testRun").style.display="none"; res.style.display="none";
-    document.getElementById("submitTest").style.display=""; document.getElementById("testIntro").style.display="block"; renderTestHist(); window.scrollTo({top:0,behavior:"smooth"}); };
-  res.appendChild(again);
-  window.scrollTo({top:document.getElementById("testResult").offsetTop-20,behavior:"smooth"});
-}
+  document.addEventListener("keydown",function(e){
+    if(!$("p-prep").classList.contains("on")||pref("sub","vocab")!=="vocab") return;
+    if(V.mode!=="mcq"||V.i>=V.queue.length||(e.target.tagName==="SELECT")) return;
+    if(/^[1-4]$/.test(e.key)&&!V.answered){ var b=vCard().querySelectorAll(".opt")[+e.key-1]; if(b) vPick(+b.dataset.id); }
+    else if(e.key==="Enter"&&V.answered&&e.target.id!=="prepVNext"){ e.preventDefault(); vNext(); }
+  });
+
+  /* ---------------- Grammaire ---------------- */
+  var TOPICS=DATA.TOPICS, I=DATA.ITEMS.map(function(it){
+    if(it.k==="type") it._p=FG.prepare({f:it.a[0],a:it.a.slice(1),type:it.t==="pc"?"pc":(it.noun?"n":"x"),g:it.g,articleOptional:!!it.noun});
+    return it; });
+  var gm_=function(){ return P.gmiss=P.gmiss||{}; };
+  function gMiss(it,ok){ var m=gm_(); if(ok){ if(m[it.id]){ m[it.id]--; if(m[it.id]<=0) delete m[it.id]; } } else m[it.id]=(m[it.id]||0)+1; save(); }
+  var G={topic:pref("gtopic","all"),size:pref("gsize","20"),fmt:pref("gfmt","mix"),src:"all",queue:[],i:0,res:[],answered:false,cur:null,order:null};
+  var fullSentence=function(it,ans){ return it.s.replace("___",ans); };
+  var cueHTML=function(it){ return it.cue?" <span class=\"cue\">"+esc2(it.cue)+"</span>":""; };
+  function gSync(){
+    $("prepGTopic").value=G.topic; $("prepGSize").value=G.size; $("prepGFmt").value=G.fmt;
+    var s=$("prepGSrc"); s.options[1].textContent="My misses ("+Object.keys(gm_()).length+")"; s.value=G.src;
+  }
+  function gRule(t){ var T0=TOPICS[t]; $("prepGRule").innerHTML="<h4>"+esc2(T0.name)+" <small>"+esc2(T0.en)+"</small></h4>"+T0.rule; }
+  function gNew(list){
+    if(list) G.queue=shuf(list);
+    else {
+      var pool=I.filter(function(it){ return (G.topic==="all"||it.t===G.topic)&&(G.fmt==="mix"||it.k===G.fmt); });
+      if(G.src==="miss"){ var m=pool.filter(function(it){ return gm_()[it.id]; }); if(m.length) pool=m; else G.src="all"; }
+      var n=Math.min(pool.length,+G.size);
+      if(G.topic==="all"){   /* round-robin across topics so a mixed set stays balanced */
+        var by={}; shuf(pool).forEach(function(it){ (by[it.t]=by[it.t]||[]).push(it); });
+        var keys=shuf(Object.keys(by)), out=[];
+        while(out.length<n){ var added=false; keys.forEach(function(k){ if(out.length<n&&by[k].length){ out.push(by[k].shift()); added=true; } }); if(!added) break; }
+        G.queue=shuf(out);
+      } else G.queue=shuf(pool).slice(0,n);
+    }
+    G.i=0; G.res=[]; gSync(); gRender();
+  }
+  function gRender(){
+    if(G.i>=G.queue.length) return gResults();
+    G.answered=false; G.cur=G.queue[G.i]; gRule(G.cur.t); G.cur.k==="type"?gType():gPick();
+  }
+  function gBtns(){ var c=$("prepGCheck"); c.textContent=G.i+1<G.queue.length?"Next question":"See results"; var sk=$("prepGSkip"); if(sk) sk.hidden=true; c.focus({preventScroll:true}); }
+  function gType(){
+    var it=G.cur, parts=it.s.split("___"), c=$("prepGCard");
+    c.innerHTML=progHead(G,"Question")+"<div class=\"pbody\"><span class=\"ptag\">"+esc2(TOPICS[it.t].name)+"</span><p class=\"pins\">"+esc2(it.ins||"Type the missing word(s).")+"</p>"+
+      "<p class=\"psent\" lang=\"fr\">"+esc2(parts[0])+"<span class=\"gap\" id=\"prepGap\">&nbsp;</span>"+esc2(parts[1])+cueHTML(it)+"</p>"+
+      "<div class=\"seyes\"><input id=\"prepGAns\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" lang=\"fr\" aria-label=\"Your answer\"></div>"+
+      "<div class=\"akeys pkeys\">"+keysHTML()+"</div>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepGCheck\">Check</button><button type=\"button\" class=\"pbtn\" id=\"prepGSkip\">I don't know</button><span class=\"phint\">Enter to check · Enter again for next</span></div><div id=\"prepGFb\"></div></div>";
+    var inp=$("prepGAns"); inp.focus({preventScroll:true});
+    inp.addEventListener("input",function(){ $("prepGap").textContent=inp.value||" "; });
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); G.answered?gNext():gCheckType(); } });
+    wireKeys(c,inp,function(){ $("prepGap").textContent=inp.value; });
+    $("prepGCheck").onclick=function(){ G.answered?gNext():gCheckType(); };
+    $("prepGSkip").onclick=function(){ if(!G.answered) gCheckType(true); };
+  }
+  function gCheckType(skip){
+    var it=G.cur, inp=$("prepGAns"), val=inp.value;
+    if(!skip && !norm2(val)){ inp.focus(); return; }
+    G.answered=true; inp.readOnly=true;
+    var g=skip?{v:"skip",target:it.a[0]}:FG.grade(val,it._p), ok=g.v==="ok";
+    G.res.push({it:it,input:skip?"":val,v:g.v,ok:ok}); gMiss(it,ok);
+    inp.parentNode.classList.add(ok?"ok":"bad");
+    var gap=$("prepGap"); gap.textContent=ok?val.trim():it.a[0]; gap.classList.add(ok?"ok":"bad");
+    $("prepGFb").innerHTML=fbHTML(g.v,val,g.target,it.x); gBtns();
+  }
+  function gPick(){
+    var it=G.cur, parts=it.s.split("___"), c=$("prepGCard"); G.order=shuf(it.ch);
+    c.innerHTML=progHead(G,"Question")+"<div class=\"pbody\"><span class=\"ptag\">"+esc2(TOPICS[it.t].name)+"</span><p class=\"pins\">Choose the right form"+(it.ch.length===2?" (2 options)":"")+".</p>"+
+      "<p class=\"psent\" lang=\"fr\">"+esc2(parts[0])+"<select class=\"gapsel\" id=\"prepGPick\" aria-label=\"Choose the missing word\"><option value=\"\" selected disabled>choisir…</option>"+G.order.map(function(o,k){ return "<option value=\""+k+"\">"+esc2(o)+"</option>"; }).join("")+"</select>"+esc2(parts[1])+cueHTML(it)+"</p>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepGCheck\">Check</button><span class=\"phint\">Keys 1–"+G.order.length+" pick · Enter to check</span></div><div id=\"prepGFb\"></div></div>";
+    var sel=$("prepGPick"); sel.addEventListener("change",function(){ $("prepGCheck").focus({preventScroll:true}); });
+    $("prepGCheck").onclick=function(){ G.answered?gNext():gCheckPick(); }; sel.focus({preventScroll:true});
+  }
+  function gCheckPick(){
+    var it=G.cur, sel=$("prepGPick"); if(sel.value===""){ sel.focus(); return; }
+    G.answered=true; var chosen=G.order[+sel.value], ok=chosen===it.ch[0];
+    G.res.push({it:it,input:ok?"":chosen,v:ok?"ok":"wrong",ok:ok}); gMiss(it,ok);
+    sel.disabled=true; sel.classList.add(ok?"ok":"bad");
+    $("prepGFb").innerHTML=fbHTML(ok?"ok":"wrong",chosen,it.ch[0],it.x); gBtns();
+  }
+  document.addEventListener("keydown",function(e){
+    if(!$("p-prep").classList.contains("on")||pref("sub","vocab")!=="gram") return;
+    if(!G.cur||G.i>=G.queue.length||G.cur.k!=="pick"||e.target.tagName==="SELECT"&&e.target.id!=="prepGPick") return;
+    var sel=$("prepGPick"); if(!sel) return;
+    if(/^[1-4]$/.test(e.key)&&!G.answered&&+e.key<=G.order.length){ e.preventDefault(); sel.value=String(+e.key-1); }
+    else if(e.key==="Enter"&&e.target.id!=="prepGCheck"){ e.preventDefault(); G.answered?gNext():gCheckPick(); }
+  });
+  function gNext(){ G.i++; gRender(); }
+  function gResults(){
+    var total=G.res.length, right=G.res.filter(function(r){ return r.ok; }).length, wrong=G.res.filter(function(r){ return !r.ok; });
+    var per={}; G.res.forEach(function(r){ var p=per[r.it.t]=per[r.it.t]||[0,0]; p[1]++; if(r.ok) p[0]++; });
+    $("prepGRule").innerHTML="<h4>Results by topic</h4><div class=\"bytopic\">"+Object.keys(TOPICS).filter(function(t){ return per[t]; }).map(function(t){ return "<span>"+esc2(TOPICS[t].name)+"</span><span>"+per[t][0]+" / "+per[t][1]+"</span>"; }).join("")+"</div>";
+    var canon=function(it){ return it.k==="pick"?it.ch[0]:it.a[0]; };
+    $("prepGCard").innerHTML="<div class=\"pprog\"><i style=\"width:100%\"></i></div><div class=\"pbody\"><span class=\"ptag\">Results</span>"+
+      "<div class=\"pscore\"><span class=\"big\">"+right+" / "+total+"</span><span class=\"pct\">"+(total?Math.round(right/total*100):0)+"% · "+Object.keys(gm_()).length+" question"+(Object.keys(gm_()).length===1?"":"s")+" in your misses pile</span></div>"+
+      (wrong.length?"<div class=\"misslist\">"+wrong.map(function(r){ return "<div><span class=\"pt\">"+esc2(TOPICS[r.it.t].name)+"</span><span class=\"fr\" lang=\"fr\">"+esc2(fullSentence(r.it,canon(r.it)))+"</span><span class=\"yours\">"+(r.v==="skip"?"skipped":"You: "+esc2(r.input)+(FG.VERDICTS[r.v]&&r.v!=="wrong"?" · "+FG.VERDICTS[r.v].title.toLowerCase():""))+"</span></div>"; }).join("")+"</div>":"<p class=\"pempty\">Clean sweep. No misses this round.</p>")+
+      "<div class=\"prow\">"+(wrong.length?"<button type=\"button\" class=\"pbtn primary\" id=\"prepGRetry\">Retry the "+wrong.length+" missed</button>":"")+"<button type=\"button\" class=\"pbtn\" id=\"prepGAgain\">New set</button></div></div>";
+    var r=$("prepGRetry"); if(r) r.onclick=function(){ gNew(wrong.map(function(x){ return x.it; })); };
+    $("prepGAgain").onclick=function(){ gNew(); }; gSync();
+  }
+
+  /* ---------------- Oral: script builder ---------------- */
+  var OT=DATA.ORAL, OBY={}; OT.forEach(function(t){ OBY[t.id]=t; });
+  var PAST={t3:1,t5:1,t6:1}, WPM=120;
+  var words=function(s){ return (s||"").match(/[A-Za-zÀ-ÖØ-öø-ÿœŒ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿœŒ]+)*/g)||[]; };
+  var wc=function(s){ return words(s).length; };
+  var fmtTime=function(sec){ return Math.floor(sec/60)+":"+String(Math.round(sec%60)).padStart(2,"0"); };
+  function stemOf(w){ var s=fold2(w).replace(/^(le |la |les |un |une |l'|s'|se )/,""); if(s.indexOf(" ")<0&&/(er|ir|re|oir)$/.test(s)&&s.length>5){ var st=s.replace(/(oir|er|ir|re)$/,""); if(st.length>=4) s=st; } return s; }
+  function hasStem(text,stem){ return new RegExp("(^|[^a-z])"+stem.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).test(text); }
+  var UNIT_STEMS=W.map(function(w){ return {w:w.f,s:stemOf(w.f)}; });
+  var NOT_IMPF={}; "mais jamais francais anglais frais palais desormais japonais marocain vrais mauvais epais biais relais marais quebecois lait fait trait souhait portrait attrait bienfait forfait sujet avions millions questions nations raisons maisons saisons reunions opinions stations emotions informations attentions vacances".split(" ").forEach(function(x){ NOT_IMPF[x]=1; });
+  function tenseSignals(t){
+    var f=fold2(t);
+    var pc=(f.match(/\b(ai|as|a|avons|avez|ont|suis|es|est|sommes|etes|sont)\s+(\w+(e|ee|es|ees|i|ie|is|ies|u|ue|us|ues|it|ite|ert|erte|ort|orte))\b/g)||[]).length;
+    var impf=(f.match(/\b[a-z]+(ais|ait|ions|iez|aient)\b/g)||[]).filter(function(w){ return !NOT_IMPF[w]; }).length;
+    return {pc:pc,impf:impf};
+  }
+  var O=P.oral=P.oral||{}, oCur=OBY[pref("otopic","t1")]?pref("otopic","t1"):"t1";
+  var oSec=function(tid,k){ var t=O[tid]=O[tid]||{choice:"",other:"",sections:{}}; return t.sections[k]=t.sections[k]||{en:"",fr:""}; };
+  var oSaveT=null; function oSave(){ clearTimeout(oSaveT); oSaveT=setTimeout(save,400); }
+  function oWords(t,qa){ return t.sections.filter(function(s){ return !!s.qa===!!qa; }).reduce(function(n,s){ return n+wc(oSec(t.id,s.k).fr); },0); }
+  function oTopics(){
+    $("prepOTopics").innerHTML=OT.map(function(t){ var w=oWords(t,false);
+      return "<button type=\"button\" class=\"otopic\" data-t=\""+t.id+"\" aria-current=\""+(t.id===oCur)+"\"><span class=\"on\">Sujet "+t.n+"</span><b>"+esc2(t.title)+"</b><span>"+(w?w+" words · ≈ "+fmtTime(w/WPM*60):esc2(t.short))+"</span></button>"; }).join("");
+    [].forEach.call(document.querySelectorAll(".otopic"),function(b){ b.onclick=function(){ oSwitch(b.dataset.t); }; });
+  }
+  function oSwitch(id){ oCur=id; P.otopic=id; save(); oTopics(); oMain(); oBar(); }
+  function oMain(){
+    var t=OBY[oCur], st=O[t.id]=O[t.id]||{choice:"",other:"",sections:{}};
+    var h="<div class=\"otophead\"><h3>"+t.n+". "+esc2(t.title)+"</h3><p class=\"oprompt\" lang=\"fr\">"+esc2(t.prompt)+"</p>";
+    if(t.choice) h+="<div class=\"ochoice\"><label for=\"oChoice\">"+esc2(t.choice.label)+"</label><select id=\"oChoice\"><option value=\"\">Choose…</option>"+t.choice.opts.map(function(o){ return "<option"+(st.choice===o?" selected":"")+">"+esc2(o)+"</option>"; }).join("")+"</select><input id=\"oOther\" type=\"text\" placeholder=\"Describe your choice\" value=\""+esc2(st.other||"")+"\""+(st.choice==="Autre"?"":" hidden")+"></div>";
+    h+="</div>";
+    var qaHead=false;
+    t.sections.forEach(function(s){
+      if(s.qa&&!qaHead){ qaHead=true; h+="<div class=\"otophead\" style=\"margin-top:6px\"><h3>Questions de l'examinateur</h3><p class=\"pnote\">Likely follow-ups. Prepare a short, direct answer to each.</p></div>"; }
+      var v=oSec(t.id,s.k), id=t.id+"-"+s.k;
+      h+="<section class=\"osec\"><div class=\"osechead\">"+(s.qa?"<p class=\"oqa\" lang=\"fr\">"+esc2(s.label)+"</p>":"<h4>"+esc2(s.label)+"</h4><span class=\"pchip\">"+esc2(s.tense)+"</span>")+"</div>"+
+        (s.q?"<ul class=\"oqs\">"+s.q.map(function(q){ return "<li>"+esc2(q)+"</li>"; }).join("")+"</ul>":"")+
+        "<div class=\"opanes\"><div class=\"opane\"><label for=\"en-"+id+"\">Notes (English)</label><textarea class=\"oen\" id=\"en-"+id+"\" data-k=\""+s.k+"\" data-f=\"en\" placeholder=\"What you want to say\">"+esc2(v.en)+"</textarea></div>"+
+        "<div class=\"opane\"><label for=\"fr-"+id+"\">Mon français</label><textarea class=\"ofr\" id=\"fr-"+id+"\" data-k=\""+s.k+"\" data-f=\"fr\" lang=\"fr\" spellcheck=\"false\" autocapitalize=\"sentences\" placeholder=\"Votre texte…\">"+esc2(v.fr)+"</textarea></div></div>"+
+        "<div class=\"owc\" id=\"wc-"+id+"\"></div></section>";
+    });
+    $("prepOMain").innerHTML=h;
+    t.sections.forEach(function(s){ oWc(t.id,s.k); });
+    if(t.choice){ var sel=$("oChoice"), oth=$("oOther"); sel.onchange=function(){ st.choice=sel.value; oth.hidden=sel.value!=="Autre"; oSave(); }; oth.oninput=function(){ st.other=oth.value; oSave(); }; }
+    [].forEach.call($("prepOMain").querySelectorAll("textarea"),function(ta){ ta.addEventListener("input",function(){
+      var k=ta.dataset.k; oSec(t.id,k)[ta.dataset.f]=ta.value; if(ta.dataset.f==="fr") oWc(t.id,k); oSave(); oBarSoon(); oTopicsSoon(); }); });
+  }
+  function oWc(tid,k){ var el=$("wc-"+tid+"-"+k); if(!el) return; var n=wc(oSec(tid,k).fr); el.textContent=n?n+" words · ≈ "+fmtTime(n/WPM*60):"No French yet"; }
+  var oBarT=null, oTopT=null; function oBarSoon(){ clearTimeout(oBarT); oBarT=setTimeout(oBar,250); } function oTopicsSoon(){ clearTimeout(oTopT); oTopT=setTimeout(oTopics,500); }
+  function oBar(){
+    var t=OBY[oCur];
+    var main=t.sections.filter(function(s){ return !s.qa; }).map(function(s){ return oSec(t.id,s.k).fr||""; }).join("\n");
+    var qa=t.sections.filter(function(s){ return s.qa; }).map(function(s){ return oSec(t.id,s.k).fr||""; }).join("\n");
+    var f=fold2(main+"\n"+qa), n=wc(main), secs=n/WPM*60, pct=Math.min(100,secs/150*100);
+    var connUsed=t.conn.filter(function(c){ return hasStem(f,fold2(c)); });
+    var anyConn=["d'abord","ensuite","puis","enfin","finalement","pourtant","cependant","donc","alors","parce que","car","puisque","comme","de plus","en plus","par contre","en revanche","tout a coup","soudain","pendant que","au moment ou","quand","lorsque","bref","c'est pourquoi","grace a","a cause de","par exemple","d'un cote","au debut","a la fin","malgre"].filter(function(c){ return hasStem(f,c); }).length;
+    var unit=UNIT_STEMS.filter(function(o){ return o.s.length>=3&&hasStem(f,o.s); }).map(function(o){ return o.w; });
+    var bankUsed={}; t.words.forEach(function(w){ if(hasStem(f,stemOf(w))) bankUsed[w]=1; });
+    var cls=function(ok){ return ok?"y":"n2"; };
+    var chk="<div class=\"ochk\"><span>Length</span><b class=\""+cls(secs>=105&&secs<=150)+"\">"+n+" words · ≈ "+fmtTime(secs)+"</b></div><div class=\"ometer\" aria-hidden=\"true\"><i style=\"width:"+pct+"%\"></i></div>"+
+      "<div class=\"ochk\"><span>Linking words</span><b class=\""+cls(anyConn>=5)+"\">"+anyConn+(anyConn>=5?"":" (aim for 5+)")+"</b></div>"+
+      "<div class=\"ochk\"><span>Unité 4 words</span><b class=\""+cls(unit.length>=3)+"\">"+unit.length+(unit.length>=3?"":" (aim for 3+)")+"</b></div>";
+    if(PAST[t.id]){ var ts=tenseSignals(main+"\n"+qa); chk+="<div class=\"ochk\"><span>Passé composé ≈</span><b class=\""+cls(ts.pc)+"\">"+ts.pc+"</b></div><div class=\"ochk\"><span>Imparfait ≈</span><b class=\""+cls(ts.impf)+"\">"+ts.impf+"</b></div>"; }
+    if(t.id==="t6"){ var q=t.sections.filter(function(s){ return s.qa; }), done=q.filter(function(s){ return wc(oSec(t.id,s.k).fr)>0; }).length; chk+="<div class=\"ochk\"><span>Questions answered</span><b class=\""+cls(done===q.length)+"\">"+done+" / "+q.length+"</b></div>"; }
+    $("prepOBar").innerHTML="<div class=\"ochecks\">"+chk+"</div>";
+    $("prepOBanks").innerHTML="<div class=\"obox\"><h4>Objectives</h4><ul>"+t.goal.map(function(g){ return "<li>"+esc2(g)+"</li>"; }).join("")+"</ul><p class=\"pnote\">Tense focus: "+esc2(t.focus)+"</p></div>"+
+      "<div class=\"obox\"><h4>Linking words to try</h4><div class=\"obank\">"+t.conn.map(function(c){ return "<span lang=\"fr\" class=\""+(connUsed.indexOf(c)>-1?"used":"")+"\">"+esc2(c)+"</span>"; }).join("")+"</div>"+
+      "<h4 style=\"margin-top:10px\">Unité 4 words that fit</h4><div class=\"obank\">"+t.words.map(function(w){ return "<span lang=\"fr\" class=\""+(bankUsed[w]?"used":"")+"\">"+esc2(w)+"</span>"; }).join("")+"</div>"+
+      (unit.length?"<h4 style=\"margin-top:10px\">Study-guide words you used</h4><div class=\"obank\">"+unit.map(function(w){ return "<span lang=\"fr\" class=\"used\">"+esc2(w)+"</span>"; }).join("")+"</div>":"")+"</div>";
+  }
+
+  /* ---------------- shell ---------------- */
+  function show(sub){
+    P.sub=sub; save();
+    [].forEach.call(document.querySelectorAll("#prepSub button"),function(b){ b.setAttribute("aria-pressed",String(b.dataset.sub===sub)); });
+    ["vocab","gram","oral"].forEach(function(s){ $("prep-"+s).hidden=s!==sub; });
+    if(sub==="oral"){ oTopics(); oMain(); oBar(); }
+  }
+  function init(){
+    var tp=$("prepGTopic"); Object.keys(TOPICS).forEach(function(k){ var o=document.createElement("option"); o.value=k; o.textContent=TOPICS[k].name; tp.appendChild(o); });
+    [].forEach.call(document.querySelectorAll("#prepSub button"),function(b){ b.onclick=function(){ show(b.dataset.sub); }; });
+    [].forEach.call(document.querySelectorAll("#prepVMode button"),function(b){ b.onclick=function(){ var was=V.mode; V.mode=b.dataset.mode; P.vmode=V.mode; save();
+      if(V.mode==="list"){ vSync(); vList(); } else if(was==="list"&&V.queue.length&&V.i<V.queue.length&&V.mode===V.qmode){ vSync(); vRender(); } else { V.qmode=V.mode; vNew(); } }; });
+    $("prepVSize").onchange=function(e){ V.size=e.target.value; P.vsize=V.size; save(); vNew(); };
+    $("prepVSrc").onchange=function(e){ V.src=e.target.value; vNew(); };
+    $("prepVNew").onclick=function(){ vNew(); };
+    $("prepGTopic").onchange=function(e){ G.topic=e.target.value; P.gtopic=G.topic; save(); gNew(); };
+    $("prepGSize").onchange=function(e){ G.size=e.target.value; P.gsize=G.size; save(); gNew(); };
+    $("prepGFmt").onchange=function(e){ G.fmt=e.target.value; P.gfmt=G.fmt; save(); gNew(); };
+    $("prepGSrc").onchange=function(e){ G.src=e.target.value; gNew(); };
+    $("prepGNew").onclick=function(){ gNew(); };
+    V.qmode=V.mode==="list"?"write":V.mode;
+    if(V.mode==="list"){ vSync(); vList(); } else vNew();
+    gNew();
+    show(pref("sub","vocab"));
+  }
+  return {init:init,show:show,_W:W,_I:I,_V:V,_G:G,_vNew:vNew,_gNew:gNew};
+})();
 
 /* =============== DASHBOARD =============== */
 function refreshDash(){
@@ -3704,69 +3909,6 @@ function setupDash(){
   refreshDash();
 }
 
-/* =============== ORAL — OPI PROMPT DECK (no audio, no grading: reps) =============== */
-var OPI=[
- {t:"Ch 16 · Family through generations",d:"Comment la structure familiale a-t-elle changé entre la génération de vos grands-parents et la vôtre ? — How has the family structure changed between your grandparents' generation and your own?",s:["de nos jours vs autrefois","monoparental(e), recomposé(e), homoparental(e)."]},
- {t:"Ch 16 · Grandparents' role",d:"Quel rôle les grands-parents jouent-ils dans votre famille, ou dans les familles en général ? — What role do grandparents play in your family, or in families in general?",s:["transmettre, s'occuper de","dont — la manière dont ils…"]},
- {t:"Ch 16 · Adult children at home",d:"Que pensez-vous du fait que des adultes reviennent vivre chez leurs parents ? Avantages et défis. — What do you think of adults moving back in with their parents? Benefits and challenges.",s:["la cohabitation, l'équilibre","possessive pronouns: le mien vs le leur."]},
- {t:"Ch 16 · A family you admire",d:"Décrivez une famille — la vôtre ou une autre — dont la structure vous semble intéressante. — Describe a family — yours or another — whose structure you find interesting.",s:["dont — noun + de constructions","recomposé(e), le noyau familial."]},
- {t:"Ch 16 · Aging and retirement homes",d:"Quel est votre avis sur les maisons de retraite ? Quelle option préférez-vous pour vos propres parents ? — What is your opinion on retirement homes? What option would you prefer for your own parents?",s:["quel vs lequel","l'accompagnement, la maison de retraite."]},
- {t:"Ch 16 · Your family's story",d:"Racontez comment votre propre famille a évolué au fil du temps — mariages, divorces, déménagements. — Tell how your own family has evolved over time — marriages, divorces, moves.",s:["tout, toute, tous, toutes","se pacser, divorcer de."]},
- {t:"Ch 18 · Your relationship with food",d:"Décrivez votre relation avec la nourriture — êtes-vous plutôt cordon bleu, gourmet, ou pressé(e) ? — Describe your relationship with food — are you more of a master chef, a gourmet, or someone always in a hurry?",s:["manger sur le pouce, la malbouffe, un régime équilibré","si + présent + futur/impératif."]},
- {t:"Ch 18 · Managing stress",d:"Comment gérez-vous le stress au quotidien ? Donnez des conseils à un(e) ami(e) stressé(e). — How do you manage stress day to day? Give advice to a stressed friend.",s:["si + présent + impératif, pour donner des conseils","le sommeil, s'impliquer, se rétablir."]},
- {t:"Ch 18 · Sport and daily life",d:"Comment intégrez-vous le sport dans votre emploi du temps chargé ? Quels obstacles rencontrez-vous ? — How do you fit sport into a busy schedule? What obstacles do you face?",s:["être en forme, sédentaire, aménager ses horaires","celui/celle/ceux/celles pour comparer."]},
- {t:"Ch 18 · Technology and health",d:"Selon vous, la technologie a-t-elle un effet plutôt néfaste ou plutôt bénéfique sur la santé ? — In your view, does technology have a more harmful or more beneficial effect on health?",s:["néfaste vs nuisible","ce qui, ce que, ce dont."]},
- {t:"Ch 18 · A health scare or injury",d:"Racontez une fois où vous ou un proche avez été malade ou blessé(e). Qu'est-ce qui vous a aidé à vous rétablir ? — Tell about a time you or someone close to you was sick or injured. What helped you recover?",s:["se rétablir, subir, guérir","ce dont j'avais besoin, c'était…"]},
- {t:"Ch 18 · Health advice for a friend",d:"Un(e) ami(e) mange mal, ne dort pas assez et ne fait jamais de sport. Que lui conseillez-vous ? — A friend eats poorly, doesn't sleep enough, and never exercises. What do you advise them?",s:["si + présent + impératif","manger sain, se coucher tôt, faire du sport."]}
-];
-OPI.push.apply(OPI,[
- {t:"Ch 17 · The city of tomorrow",d:"Comment imaginez-vous la ville de demain ? Décrivez deux ou trois caractéristiques écologiques. — How do you picture the city of tomorrow? Describe two or three eco-friendly features.",s:["durable, diminuer, trier","le gérondif : en utilisant, en réduisant…"]},
- {t:"Ch 17 · Medical deserts",d:"Y a-t-il assez de médecins près de chez vous ? Comment font les gens qui n'ont pas de médecin traitant ? — Are there enough doctors near you? What do people do who have no primary care provider?",s:["le délai d'attente, la désertification médicale","ne … personne, ne … aucun"]},
- {t:"Ch 17 · Getting around the city",d:"Quel moyen de transport préférez-vous en ville — vélo, scooter électrique, transports en commun, voiture ? Pourquoi ? — Which way of getting around a city do you prefer — bike, electric scooter, public transit, car? Why?",s:["l'embouteillage, la piste cyclable","c'est … que — mettre votre choix en relief"]},
- {t:"Ch 17 · A start-up idea",d:"Présentez une idée de start-up qui améliorerait la vie en ville. — Pitch a start-up idea that would improve city life.",s:["le lancement, la mise en place, rentable","c'est … qui — qui fait quoi dans votre projet"]},
- {t:"Ch 17 · Street art and culture",d:"Quel rôle l'art de rue joue-t-il dans une ville ? Y a-t-il des fresques ou des spectacles dans la vôtre ? — What role does street art play in a city? Are there murals or shows in yours?",s:["la fresque, le graffeur, la déambulation","c'est … où — où se passent les spectacles"]},
- {t:"Ch 17 · What bothers you about cities",d:"Qu'est-ce qui vous dérange le plus dans une grande ville — le bruit, les embouteillages, la pollution ? Que ne fait-on pas assez ? — What bothers you most about a big city — noise, traffic jams, pollution? What isn't being done enough?",s:["le désagrément, encombrer","rien ne…, personne ne…, en + participe présent"]}
-]);
-OPI.push(
- {t:"Ch 19 · Report a natural disaster",d:"Présentez un court bulletin d'information sur une catastrophe naturelle : type de catastrophe, région touchée, bilan humain, dégâts. — Give a short news report on a natural disaster: type, affected region, human toll, damage.",s:["le bilan s'est alourdi, les secouristes, les décombres","la nominalisation : l'effondrement, l'évacuation, le sauvetage"]},
- {t:"Ch 19 · Advice before an emergency",d:"Que conseilleriez-vous à des visiteurs pour se préparer à un séisme ou à un incendie ? Donnez huit conseils. — What would you advise visitors to do to prepare for an earthquake or a fire? Give eight tips.",s:["vous devriez, il faut, évitez de, ne pas + infinitif","sans + infinitif : sortir sans prendre l'ascenseur"]},
- {t:"Ch 19 · Witness of an accident",d:"Racontez un accident dont vous avez été témoin (ou dont vous avez entendu parler) : ce qui s'est passé, les causes, les conséquences. — Tell about an accident you witnessed (or heard about): what happened, the causes, the consequences.",s:["heurter, percuter, se renverser, dérailler","ne … que, seulement · sauf si, à part"]},
- {t:"Ch 19 · Government vs. relief organizations",d:"Après une catastrophe, qui réagit le mieux : le gouvernement ou les associations comme la Croix-Rouge ? Défendez votre avis. — After a disaster, who responds better: the government or organizations like the Red Cross? Defend your view.",s:["se mobiliser, intervenir, allouer des fonds","y compris, à l'exception de"]},
- {t:"Ch 19 · Extreme weather you've lived through",d:"Avez-vous déjà vécu un phénomène météo extrême, ou en avez-vous vu un à la télévision ? Racontez ce qui s'est passé. — Have you lived through extreme weather, or seen it on TV? Tell what happened.",s:["la canicule, la tempête hivernale, les routes impraticables","prévenir, prévoir, survenir, revenir — présent et passé composé"]},
- {t:"Ch 19 · A disaster in the news",d:"Résumez un article récent sur un incendie, une inondation, un déraillement ou un naufrage, puis posez deux questions à votre partenaire. — Summarize a recent article about a fire, flood, derailment or shipwreck, then ask your partner two questions.",s:["où, quand, qui, quoi, pourquoi, conséquences","faire état de, faire la lumière sur, sain(e) et sauf(-ve), porté(e) disparu(e)"]}
-);
-var opiIdx=0, opiTimer=null;
-function stopOpiTimer(){ if(opiTimer){ clearInterval(opiTimer); opiTimer=null; } }
-function renderOpi(){
-  stopOpiTimer();
-  var c=document.getElementById("opiCard"), p=OPI[opiIdx];
-  c.innerHTML="";
-  c.appendChild(el("h3",null,p.t));
-  c.appendChild(el("div","hist",p.d));
-  var ul=el("ul","scaf"); p.s.forEach(function(x){ ul.appendChild(el("li",null,x)); }); c.appendChild(ul);
-  var tm=el("div","opitimer","—"); c.appendChild(tm);
-  var row=el("div","vactions drill");
-  [45,30,15].forEach(function(secs){
-    var b=el("button","btn reveal",secs+" s");
-    b.onclick=function(){
-      stopOpiTimer(); var left=secs;
-      tm.classList.remove("hot"); tm.textContent="0:"+(left<10?"0":"")+left;
-      opiTimer=setInterval(function(){
-        left--; if(left<=5) tm.classList.add("hot");
-        tm.textContent = left>0 ? "0:"+(left<10?"0":"")+left : "Time — wrap it up!";
-        if(left<=0) stopOpiTimer();
-      },1000);
-    };
-    row.appendChild(b);
-  });
-  var stop=el("button","btn neutral","Stop"); stop.onclick=function(){ stopOpiTimer(); tm.textContent="—"; tm.classList.remove("hot"); };
-  row.appendChild(stop);
-  c.appendChild(row);
-  document.getElementById("opiPos").textContent=(opiIdx+1)+" / "+OPI.length;
-}
-document.getElementById("opiNext").onclick=function(){ opiIdx=(opiIdx+1)%OPI.length; renderOpi(); };
-document.getElementById("opiPrev").onclick=function(){ opiIdx=(opiIdx-1+OPI.length)%OPI.length; renderOpi(); };
-
 /* =============== INSIGHTS + ACHIEVEMENTS (v1.0.0-b1) ===============
    Bucket analytics come from GRADED DRILL + QUIZ answers only (D6: trainers are
    a safe space and feed just the struggle list). First grade per item counts. */
@@ -3789,8 +3931,6 @@ var ACH=[
   {id:"a_v18", icon:"📗", name:"Chapitre 18 maîtrisé", desc:"Every Chapter 18 vocab card is green."},
   {id:"a_v19", icon:"📙", name:"Chapitre 19 maîtrisé", desc:"Every Chapter 19 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every verb in the Conjugaison tab is green."},
-  {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
-  {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
   {id:"a_round",  icon:"🎯",name:"Round parfait",     desc:"A 10/10 grammar-drill round."},
   {id:"a_acc",    icon:"✍️",name:"Accent aigu",       desc:"20+ graded answers in a session, mostly correct, zero accent-only misses."},
   {id:"a_cb",     icon:"💪",name:"La revanche",       desc:"Master a word after missing it 3+ times in a row."},
@@ -3942,7 +4082,6 @@ function renderInsights(){
     var gp=gk.map(function(k,i){ return [GRAM_LBL[k]||k,S.gram[k].m||0,CY[i%CY.length]]; });
     if(!gp.length) gp=[["—",0,CY[0]]];
     drawDonut("dnGram","dnGramL",gp);
-    drawDonut("dnQuiz","dnQuizL",[["Accents",S.quiz.acc.m,"#c0392b"],["Gender",S.quiz.gen.m,"#b9772b"],["Spelling",S.quiz.sp.m,"#2a4a8f"]]);
   })();
   /* buckets ledger */
   var L=document.getElementById("insBuckets"); L.innerHTML="";
@@ -4203,7 +4342,7 @@ document.querySelector("nav.tabs").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b)return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-selected","false");});
   b.setAttribute("aria-selected","true");
-  ["dash","verbs","vocab","gram","test","insights","oral"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
+  ["dash","verbs","vocab","gram","prep","insights"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
   if(b.dataset.tab==="insights") renderInsights();
   window.scrollTo({top:0});
 });
@@ -4214,11 +4353,30 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
-renderVerbTable(); renderVocTable(); renderOpi();
-document.getElementById("quizPick").value="16"; quizPick=document.getElementById("quizPick").value; renderTestHist();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); setupDash(); setupDlptChip(); renderAnaSince();
+renderVerbTable(); renderVocTable(); PREP.init();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
+
+/* =============== THEME (device by default; masthead button forces light or dark) =============== */
+(function(){
+  var KEY="frTheme", btn=document.getElementById("themeBtn"), root=document.documentElement, mq=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)");
+  function saved(){ try{ var t=localStorage.getItem(KEY); return t==="light"||t==="dark"?t:null; }catch(e){ return null; } }
+  function effective(){ return saved()||((mq&&mq.matches)?"dark":"light"); }
+  function paint(){
+    var s=saved(), e=effective();
+    if(s) root.setAttribute("data-theme",s); else root.removeAttribute("data-theme");
+    btn.textContent=e==="dark"?"\u263E":"\u2600";
+    var lbl=(e==="dark"?"Dark":"Light")+(s?"":" (device setting)")+" — click for "+(e==="dark"?"light":"dark")+(s?", Alt-click to follow the device":"");
+    btn.title=lbl; btn.setAttribute("aria-label",lbl);
+  }
+  btn.addEventListener("click",function(ev){
+    try{ if(ev.altKey) localStorage.removeItem(KEY); else localStorage.setItem(KEY,effective()==="dark"?"light":"dark"); }catch(e){}
+    paint();
+  });
+  if(mq&&mq.addEventListener) mq.addEventListener("change",paint);
+  paint();
+})();
 </script>
 </body>
 </html>

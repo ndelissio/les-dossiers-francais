@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <title>Unité 5 · Dossier Français — v0.2.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
@@ -43,12 +45,12 @@
   .brand h1{font-family:var(--serif); font-weight:600; font-size:30px; margin:2px 0 0; letter-spacing:-.01em}
   .brand h1 span{color:var(--accent)}
   .countchip{
-    display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff;
+    display:flex; align-items:center; gap:10px; background:var(--ink); color:var(--on-solid);
     border-radius:999px; padding:7px 14px 7px 8px; font-size:13px;
     cursor:pointer; border:none; font-family:inherit;
   }
   .countchip b{font-variant-numeric:tabular-nums; font-size:15px}
-  .countchip .dot{background:var(--accent); color:#fff; border-radius:999px; width:30px; height:30px;
+  .countchip .dot{background:var(--accent); color:var(--on-solid); border-radius:999px; width:30px; height:30px;
     display:grid; place-items:center; font-weight:800; font-size:13px}
   .dlptDateRow{display:none; align-items:center; gap:8px; margin-top:8px}
   .dlptDateRow.on{display:flex}
@@ -106,7 +108,7 @@
   .ledrow{display:grid; grid-template-columns:128px 1fr 52px; align-items:center; gap:12px}
   .ledrow .name{font-size:13.5px; font-weight:600}
   .ledrow .name small{display:block; color:var(--mute); font-weight:500; font-size:11.5px}
-  .bar{height:9px; background:#ece6d8; border-radius:999px; overflow:hidden}
+  .bar{height:9px; background:var(--chip); border-radius:999px; overflow:hidden}
   .bar > i{display:block; height:100%; background:var(--known); border-radius:999px; transition:width .5s cubic-bezier(.4,0,.2,1)}
   .ledrow .pct{text-align:right; font-variant-numeric:tabular-nums; font-size:13px; font-weight:700; color:var(--ink-2)}
 
@@ -119,7 +121,7 @@
   .seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--card)}
   .seg button{appearance:none; border:0; background:none; padding:7px 13px; font-size:12.5px; font-weight:600;
     color:var(--ink-2); cursor:pointer}
-  .seg button[aria-pressed="true"]{background:var(--ink); color:#fff}
+  .seg button[aria-pressed="true"]{background:var(--ink); color:var(--on-solid)}
   select.filter{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card);
     border:1px solid var(--line); border-radius:999px; padding:7px 12px; cursor:pointer}
   /* the topic list changes with the chapter, so the pill sizes itself to a different longest option each time; pin it to its own full row at a fixed width so it never changes size or jumps rows */
@@ -139,7 +141,7 @@
   .prompt .big.fr{font-style:italic}
   .memo{background:var(--card); border:1px solid var(--line); border-top:3px solid var(--bleu); border-radius:var(--radius); padding:14px 18px 12px; margin-top:14px; animation:memopop .5s cubic-bezier(.2,.8,.2,1) both, memoglow 1.6s ease-out}
   @keyframes memopop{from{opacity:0; transform:translateY(14px) scale(.985)}to{opacity:1; transform:none}}
-  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:#e6ebf5}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
+  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:var(--tint)}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
   .memo-h{display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-family:var(--serif); font-size:20px; font-weight:600; margin-bottom:6px}
   .memo-h .vpos{margin-left:0}
   .memo-fr{font-style:italic; margin-right:4px}
@@ -162,16 +164,16 @@
   .conjfill{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,auto); grid-auto-flow:column; gap:10px 22px; margin-top:16px}
   .cfrow{display:flex; align-items:center; gap:8px}
   .cfrow .pron{color:var(--mute); min-width:96px; font-family:var(--serif); font-size:15px}
-  input.cfin{flex:1; min-width:0; width:100%; font-family:var(--serif); font-size:15.5px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:#fff}
+  input.cfin{flex:1; min-width:0; width:100%; font-family:var(--serif); font-size:15.5px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--surface)}
   input.cfin:focus{outline:2px solid var(--bleu); outline-offset:1px}
   input.cfin.ok{border-color:var(--known); background:var(--known-soft)}
   input.cfin.warn{border-color:var(--learn); background:var(--learn-soft)}
-  input.cfin.no{border-color:var(--accent); background:#fbe9e7}
+  input.cfin.no{border-color:var(--accent); background:var(--err-bg)}
   .cfverdict{font-family:var(--serif); font-size:13px; white-space:nowrap; min-width:14px}
   .cfverdict.ok{color:var(--known)} .cfverdict.warn{color:var(--learn)} .cfverdict.no{color:var(--accent)}
   .cfdash{color:var(--mute); font-family:var(--serif)}
   /* vocabulary progress table */
-  .voctable{border:1px solid var(--line); border-radius:14px; padding:16px; background:#fff}
+  .voctable{border:1px solid var(--line); border-radius:14px; padding:16px; background:var(--surface)}
   .vt-legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--mute); margin-bottom:6px; align-items:center}
   .vt-dot{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
   .vt-dot.k{background:var(--known)} .vt-dot.l{background:var(--learn)} .vt-dot.n{background:var(--accent)}
@@ -187,20 +189,20 @@
   .vt-ct{flex:0 0 auto; font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; letter-spacing:.2px}
   .vt-ct .ok{color:var(--known); font-weight:700} .vt-ct .no{color:var(--accent); font-weight:700}
   .vt-ct0{color:var(--line)}
-  .vt-known{background:var(--known-soft); border-color:#bfe3cf}
-  .vt-learn{background:var(--learn-soft); border-color:#f0dcaf}
-  .vt-new{background:#fbe9e7; border-color:#f3c9c2}
+  .vt-known{background:var(--known-soft); border-color:var(--ok-line)}
+  .vt-learn{background:var(--learn-soft); border-color:var(--warn-line)}
+  .vt-new{background:var(--err-bg); border-color:var(--err-line)}
   .ex{font-family:var(--serif); font-style:italic; margin-top:12px; font-size:15px; color:var(--ink-2)}
   .ex small{display:block; font-style:normal; font-family:var(--sans); color:var(--mute); font-size:12px; margin-top:1px}
   .vactions{margin-top:auto; display:flex; gap:10px; padding-top:18px}
   .btn{appearance:none; border:0; border-radius:10px; padding:12px 14px; font-size:14px; font-weight:700; cursor:pointer;
     font-family:var(--sans); flex:1}
-  .btn.reveal{background:var(--ink); color:#fff}
-  .btn.know{background:var(--known); color:#fff}
-  .btn.dunno{background:var(--learn); color:#fff}
-  .btn.go{background:var(--known); color:#fff}                 /* Check */
-  .btn.neutral{background:#e7e0d0; color:var(--ink-2)}         /* neutral Next */
-  .btn.neutral:hover{background:#ded6c4}
+  .btn.reveal{background:var(--ink); color:var(--on-solid)}
+  .btn.know{background:var(--known); color:var(--on-solid)}
+  .btn.dunno{background:var(--learn); color:var(--on-solid)}
+  .btn.go{background:var(--known); color:var(--on-solid)}                 /* Check */
+  .btn.neutral{background:var(--neutral); color:var(--ink-2)}         /* neutral Next */
+  .btn.neutral:hover{background:var(--neutral-h)}
   .btn:active{transform:translateY(1px)}
   /* drill button row: Reveal (left) · Check (centered) · Next (right) — equal width, as before */
   .vactions.drill{gap:10px}
@@ -226,7 +228,7 @@
   /* chapter-level collapsible group wrapping the per-drill accordions */
   .chgroup{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-bottom:16px; background:var(--card)}
   .chgroup > summary{list-style:none; cursor:pointer; padding:15px 18px; font-family:var(--serif); font-weight:800; font-size:16.5px;
-    display:flex; align-items:center; gap:12px; background:#eef2fa; color:var(--ink)}
+    display:flex; align-items:center; gap:12px; background:var(--tint); color:var(--ink)}
   .chgroup > summary::-webkit-details-marker{display:none}
   .chgroup > summary .chtitle{flex:1}
   .chgroup > summary .chmeta{font-size:12px; color:var(--mute); font-weight:600}
@@ -234,7 +236,7 @@
   .chgroup[open] > summary::after{content:"▴"}
   .chgroup[open] > summary{border-bottom:1px solid var(--line)}
   .chgroup .chbody{padding:14px 16px 2px}
-  .chgroup.ahead > summary{background:#f1eee7; color:var(--mute)}
+  .chgroup.ahead > summary{background:var(--ahead); color:var(--mute)}
   .q{padding:14px 0; border-bottom:1px dotted var(--line)}
   .q:last-child{border-bottom:0}
   .q .qt{font-family:var(--serif); font-size:16px; margin-bottom:9px}
@@ -249,19 +251,19 @@
   .wbank .wchip{display:inline-block; padding:2px 10px; border:1px solid var(--line); border-radius:999px; background:var(--card); font-size:13px; white-space:nowrap}
   .row-in{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
   input.txt{font-family:var(--serif); font-size:16px; padding:9px 12px; border:1px solid var(--line); border-radius:9px;
-    background:#fff; min-width:180px; color:var(--ink)}
+    background:var(--surface); min-width:180px; color:var(--ink)}
   input.txt:focus{outline:2px solid var(--bleu); outline-offset:1px}
   .opts{display:flex; flex-direction:column; gap:7px; margin-top:4px}
   .opt{display:flex; align-items:center; gap:9px; padding:9px 12px; border:1px solid var(--line); border-radius:9px;
-    cursor:pointer; font-size:14.5px; background:#fff}
+    cursor:pointer; font-size:14.5px; background:var(--surface)}
   .opt:hover{border-color:var(--ink)}
-  .opt.sel{border-color:var(--bleu); background:#eef2fa}
+  .opt.sel{border-color:var(--bleu); background:var(--tint)}
   .opt.right{border-color:var(--known); background:var(--known-soft)}
   .opt.wrong{border-color:var(--accent); background:var(--accent-soft)}
   .verdict{font-size:13px; font-weight:700; margin-top:7px}
   .verdict.ok{color:var(--known)} .verdict.no{color:var(--accent)} .verdict.warn{color:var(--learn)}
   .drill-foot{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
-  .pill{font-size:12px;font-weight:700;color:var(--ink-2);background:#ece6d8;border-radius:999px;padding:4px 11px}
+  .pill{font-size:12px;font-weight:700;color:var(--ink-2);background:var(--chip);border-radius:999px;padding:4px 11px}
 
   .test-head{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px}
   .timer{font-variant-numeric:tabular-nums; font-weight:800; font-size:18px}
@@ -315,7 +317,7 @@
   .trophy .tdesc{font-size:12px; color:var(--ink-2)}
   .trophy .tdate{font-size:11px; color:var(--known); font-weight:700; margin-top:4px}
   #toasts{position:fixed; right:16px; bottom:16px; z-index:99; display:flex; flex-direction:column; gap:8px}
-  .toast{background:var(--ink); color:#fff; border-radius:12px; padding:12px 16px; font-size:14px;
+  .toast{background:var(--ink); color:var(--on-solid); border-radius:12px; padding:12px 16px; font-size:14px;
     box-shadow:0 6px 24px rgba(22,36,61,.35); display:flex; gap:10px; align-items:center;
     animation:toastin .3s ease}
   .toast b{color:#ffd66e}
@@ -328,7 +330,7 @@
   /* ---- v0.2.0 drill components (from the Unité 4 reference drills, recoloured to the dossier's own tokens) ---- */
   :root{ --seyes:rgba(42,74,143,.10); --seyes-strong:rgba(42,74,143,.22); --margin:rgba(192,57,43,.38); --near:#b9772b; --near-soft:#f6ecdb; }
   .seyes{position:relative; display:block; width:100%; max-width:560px; border:1px solid var(--line); border-radius:9px;
-    background-color:#fff;
+    background-color:var(--surface);
     background-image:
       linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 35.5px, transparent 35.5px),
       repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
@@ -345,7 +347,7 @@
   .fq .cue{color:var(--mute); font-size:.82em; white-space:nowrap}
   .gap{display:inline-block; min-width:3em; border-bottom:2px solid var(--bleu); color:var(--bleu); text-align:center; line-height:1.15; padding:0 4px}
   .gap.ok{border-color:var(--known); color:var(--known)} .gap.bad{border-color:var(--accent); color:var(--accent)}
-  select.gapsel{font-family:var(--serif); font-size:inherit; color:var(--bleu); background:#eef2fa; border:0; border-bottom:2px solid var(--bleu); border-radius:6px 6px 0 0; padding:1px 4px; max-width:100%; cursor:pointer}
+  select.gapsel{font-family:var(--serif); font-size:inherit; color:var(--bleu); background:var(--tint); border:0; border-bottom:2px solid var(--bleu); border-radius:6px 6px 0 0; padding:1px 4px; max-width:100%; cursor:pointer}
   select.gapsel:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
   select.gapsel.ok{color:var(--known); background:var(--known-soft); border-color:var(--known)}
   select.gapsel.bad{color:var(--accent); background:var(--accent-soft); border-color:var(--accent)}
@@ -357,7 +359,7 @@
   .cmp .l{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); font-weight:700}
   .cmp .w{font-family:var(--serif); font-size:19px; min-width:0; overflow-wrap:anywhere}
   .fx{color:var(--accent); text-decoration:line-through; text-decoration-thickness:2px}
-  .fm{color:var(--accent); background:#fff; border-bottom:2px solid var(--accent); border-radius:2px}
+  .fm{color:var(--accent); background:var(--surface); border-bottom:2px solid var(--accent); border-radius:2px}
   .fb .full{font-family:var(--serif); font-size:16.5px}
   .fb .why{font-size:13.5px; color:var(--ink)}
   .fb .fnote{font-size:13px; color:var(--ink-2)}
@@ -393,8 +395,25 @@
   .btn:active,.ghost:active{transform:translateY(0) scale(.98)}
   .btn:focus-visible,.ghost:focus-visible,.seg button:focus-visible,.countchip:focus-visible,summary:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
   .acc > summary,.chgroup > summary{transition:background .12s ease}
-  .acc > summary:hover{background:#f3efe4}
+  .acc > summary:hover{background:var(--hover)}
   @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
+
+  /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
+  :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
+    --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="test"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
+  :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
+  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="test"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
+  .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+  .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
+    transition:background .12s ease, border-color .12s ease}
+  .themebtn:hover{border-color:var(--bleu)}
+  .themebtn:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+
+  /* multiple-choice options (Recognize): readable when locked, parenthetical on the same line */
+  .opts .opt{color:var(--ink); text-align:left; font-family:inherit}
+  .opts .opt:disabled{color:var(--ink); opacity:1; cursor:default}
+  .opts .opt .en-x{display:inline; margin-left:6px; font-size:.85em; white-space:normal}
 </style>
 </head>
 <body>
@@ -406,7 +425,8 @@
       <div class="eyebrow">French Basic Course · Unit 5 · v0.2.0</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
-    <div>
+    <div class="topright">
+      <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
       <button type="button" class="countchip" id="dlptChip" title="Click to set your test date">
         <span class="dot" id="dDays">—</span>
         <span>days to <b>DLPT / OPI</b></span>
@@ -540,7 +560,8 @@
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
-        <li><b>Recall</b> flips EN↔FR; <b>Spelling</b> makes you type it on ruled paper — accents always count, each card grades once. After a miss, <b>You</b> shows what you typed and <b>Correct</b> what was missing.</li>
+        <li><b>Spelling</b> (the default) makes you type it on ruled paper — accents always count, each card grades once. After a miss, <b>You</b> shows what you typed and <b>Correct</b> what was missing.</li>
+        <li><b>Recognize</b> shows the French and asks for the meaning (four options, keys 1–4); <b>Recall</b> flips a card EN↔FR and you say how you did.</li>
         <li>Articles are part of the answer — <em>le/la</em> counts, wrong or missing article is a miss.</li>
         <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
         <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
@@ -560,8 +581,9 @@
     </div>
     <div class="frow"><span class="flabel">Comment</span>
       <div class="seg" id="vocModeSeg">
-        <button data-mode="recall" aria-pressed="true">Recall</button>
-        <button data-mode="spell" aria-pressed="false">Spelling</button>
+        <button data-mode="spell" aria-pressed="true">Spelling</button>
+        <button data-mode="mc" aria-pressed="false">Recognize</button>
+        <button data-mode="recall" aria-pressed="false">Recall</button>
       </div>
       <button class="ghost" id="vocTrainBtn">Training</button>
     </div>
@@ -651,7 +673,7 @@
     <div class="card" id="insWeakCh" style="margin-top:12px;font-size:14px"><span class="hist">Weakest chapter: — (5+ graded answers per chapter required)</span></div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px">
       <h2 class="sec" style="margin:0">Misses by source</h2>
-      <button id="anaReset" style="background:var(--accent);color:#fff;border:none;border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Reset stats</button>
+      <button id="anaReset" style="background:var(--accent);color:var(--on-solid);border:none;border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Reset stats</button>
     </div>
     <p class="lead" id="anaSince"></p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px">
@@ -695,7 +717,7 @@
   <footer>
     <strong>Dossier Unité 5 · v0.2.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
-    <span style="color:var(--mute)">v0.2.0 (15 Oct 2026): <strong>New drill design — piloted in Unité 5.</strong> <strong>Typed answers</strong> now sit on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row under it, in Vocabulaire spelling and in every Grammaire drill. <strong>Feedback after Check</strong>: one verdict line, then a <em>You</em> row with wrong or extra letters struck through in red and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Grammaire adds a one-line why where one is written. Verdict ladder: correct · accents · article missing · wrong gender article · reflexive pronoun missing · agreement · wrong auxiliary · close spelling · not quite. Accents always count. <strong>Grading change</strong>: in Vocabulaire spelling, un/une now count for le/la on a noun (articles are still required). <strong>Grammaire</strong>: a settings strip (Format: mixed, typing only or drop-down only · From: all questions or My misses); drop-down items sit inline in the sentence (keys 1–4 pick an option); each drill can carry an always-visible rule card (at most 5 bullets) above its questions; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds count toward best scores. Existing drills run unchanged through an adapter that splits the infinitive cue out of each sentence. <strong>Pilot content — Chapter 21</strong>: rule card, instruction line and a why line on every item for 3 drills — hyp21 16 items / 6 drop-downs · relc21 20 items / 6 drop-downs · subj21 23 items / 7 drop-downs — 59 why lines and 19 drop-downs in all. Vocab en contexte (Ch. 21) and the Chapter 22–24 drills keep their original instruction notes and gain the same treatment chapter by chapter. <strong>Vocabulaire</strong>: one chapter drop-down (it opens on your current chapter; All chapters is the first option) replaces the level toggle and the chapter pill, on the same row as the topic filter. 144 English glosses had their explanatory parenthetical shortened (7 of those dropped it as redundant); on every card the parenthetical now sits on its own line under the main gloss and never wraps on desktop. The long page introductions on the Conjugaison, Vocabulaire, Grammaire and Examen blanc tabs are gone. No vocabulary, verb or mastery data changed; saved progress is untouched. <strong>Layout</strong>: flat blue-grey leaning folder tabs, lightly overlapped, each with its own muted colour (an outline, plus a faint glow on the selected one), in the order Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; a French-flag tab icon; a tricolore rule under the masthead; softer card shadows, button press states and visible keyboard focus rings.<br></span>
+    <span style="color:var(--mute)">v0.2.0 (15 Oct 2026): <strong>New drill design — piloted in Unité 5.</strong> <strong>Typed answers</strong> now sit on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row under it, in Vocabulaire spelling and in every Grammaire drill. <strong>Feedback after Check</strong>: one verdict line, then a <em>You</em> row with wrong or extra letters struck through in red and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Grammaire adds a one-line why where one is written. Verdict ladder: correct · accents · article missing · wrong gender article · reflexive pronoun missing · agreement · wrong auxiliary · close spelling · not quite. Accents always count. <strong>Grading change</strong>: in Vocabulaire spelling, un/une now count for le/la on a noun (articles are still required). <strong>Grammaire</strong>: a settings strip (Format: mixed, typing only or drop-down only · From: all questions or My misses); drop-down items sit inline in the sentence (keys 1–4 pick an option); each drill can carry an always-visible rule card (at most 5 bullets) above its questions; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds count toward best scores. Existing drills run unchanged through an adapter that splits the infinitive cue out of each sentence. <strong>Pilot content — Chapter 21</strong>: rule card, instruction line and a why line on every item for 3 drills — hyp21 16 items / 6 drop-downs · relc21 20 items / 6 drop-downs · subj21 23 items / 7 drop-downs — 59 why lines and 19 drop-downs in all. Vocab en contexte (Ch. 21) and the Chapter 22–24 drills keep their original instruction notes and gain the same treatment chapter by chapter. <strong>Vocabulaire</strong>: one chapter drop-down (it opens on your current chapter; All chapters is the first option) replaces the level toggle and the chapter pill, on the same row as the topic filter. 144 English glosses had their explanatory parenthetical shortened (7 of those dropped it as redundant); on every card the parenthetical now sits on its own line under the main gloss and never wraps on desktop. The long page introductions on the Conjugaison, Vocabulaire, Grammaire and Examen blanc tabs are gone. No vocabulary, verb or mastery data changed; saved progress is untouched. <strong>Layout</strong>: flat blue-grey leaning folder tabs, lightly overlapped, each with its own muted colour (an outline, plus a faint glow on the selected one), in the order Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; a French-flag tab icon; a tricolore rule under the masthead; softer card shadows, button press states and visible keyboard focus rings. <strong>Dark mode</strong>: the dossier follows your device's light or dark setting; the round button in the masthead forces light or dark (Alt-click returns to the device setting), and the choice is shared by every unit in this browser. The dark theme is a violet-tinted near-black with a soft violet accent; light mode is unchanged. <strong>Vocabulaire modes</strong>: Spelling is now the default, <em>Recognize</em> (French on the card, pick the meaning from four options, keys 1–4) is new, and Recall is third; the EN/FR direction applies to Recall only. Wrong options are the same part of speech, never a shared word of the gloss or a listed synonym, and same-topic first; Recognize answers count toward mastery like the other modes (Training records nothing).<br></span>
     <span style="color:var(--mute)">v0.1.0 (10 Oct 2026): <strong>Unité 5 launch — Chapters 21–24.</strong> Forked from the Unité 4 v0.8.2 engine; Unité 5 progress saves under its own key. <strong>Chapter 21 — Schooling</strong>: 134 vocabulaire cards (102 glossaire + 32 mini-glossaire) in 9 topic groups; 12 irregular verbs in Conjugaison; 4 grammar drills (74 items: L'hypothèse sur le présent (si + imparfait) · Les pronoms relatifs composés (lequel, auquel, duquel…) · Le subjonctif présent · Vocab en contexte — Ch. 21); a 26-question quiz bank; 7 oral prompts. <strong>Chapter 22 — Press & Media</strong>: 166 vocabulaire cards (144 glossaire + 22 mini-glossaire, including 3 repeats: fiable (also in Chapter 21), remettre en question (also in Chapter 21), s'engager (à) (also in Chapter 21)) in 10 topic groups; 11 irregular verbs in Conjugaison; 4 grammar drills (66 items: Le plus-que-parfait · La voix passive · Les connecteurs de l'alternative · Vocab en contexte — Ch. 22); a 26-question quiz bank; 7 oral prompts. <strong>Chapter 23 — Political Systems & Extremism</strong>: 181 vocabulaire cards (137 glossaire + 44 mini-glossaire, including 8 repeats: la junte (also in Chapter 22), la laïcité (also in Chapter 21), soutenir (also in Chapter 22), s'appuyer (sur) (also in Chapter 21), avoir accès (à) (also in Chapter 21), renforcer (also in Chapter 22), l'ouvrier(-ière) (also in Chapter 21), remettre en question (also in Chapter 21)) in 11 topic groups; 6 irregular verbs in Conjugaison; 4 grammar drills (78 items: Les expressions de la cause (partie 2) · Les expressions de la conséquence · Les pronoms relatifs simples et composés · Vocab en contexte — Ch. 23); a 28-question quiz bank; 8 oral prompts. <strong>Chapter 24 — Crime & Justice</strong>: 150 vocabulaire cards (129 glossaire + 21 mini-glossaire, including 10 repeats: le dédommagement (also in Chapter 23), l'attentat (also in Chapter 23), le harcèlement (also in Chapter 21), nier (also in Chapter 22), poursuivre (also in Chapter 23), soupçonner (also in Chapter 23), agresser (also in Chapter 22), mettre en lumière (also in Chapter 22), susciter (also in Chapter 22), la prison ferme (also in Chapter 23)) in 13 topic groups; 8 irregular verbs in Conjugaison; 6 grammar drills (113 items: Le subjonctif après certaines conjonctions · Renforcement de la voix passive · Renforcement des temps du passé · Le conditionnel passé de l'incertitude · Opinions, avant que / avant de, après que · Vocab en contexte — Ch. 24); a 28-question quiz bank; 8 oral prompts. Conjugaison also gains two new tenses for every verb, as reps only: <strong>plus-que-parfait</strong> and <strong>subjonctif présent</strong> (the subjunctive rows are labelled que je / que tu / qu'il…, and the answer is accepted with or without que + pronoun); the passé composé and plus-que-parfait now keep a masculine plural participle ending in s or x unchanged (nous étions mis, not miss). Every Mémo card was audited against dictionary and etymology sources before release (fr./en. Wiktionary, WordReference, Larousse, Service-Public and Légifrance for the legal terms); 231 of the 631 cards carry a mnemonic, kept only where it follows from the etymology or cognate it cites. Total: 631 vocabulaire cards. Cross-chapter repeats share one progress entry (same French key). The Unit 5 practice exam is à venir pending the study guide; the Chapter 25 review chapter has no new content and is not built.<br></span>
     </details><br>
     Progress is stored in this browser only — open the same downloaded file in the same browser to keep it. Clearing site data or using private mode resets it.
@@ -1411,7 +1433,7 @@ function renderVerb(){
   var vmeta=el("span","vcat",statMeta(state.verbStats[vk(v)])); vmeta.style.color="var(--ink-2)"; vmeta.style.background="var(--line)"; vmeta.style.marginLeft="6px"; card.appendChild(vmeta);
   if(chOf(v)>state.currentCh){
     var ah=el("span","vcat","À venir · "+CH_NAMES[chOf(v)]);
-    ah.style.color="#fff"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
+    ah.style.color="var(--on-solid)"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
     card.appendChild(ah);
   }
 
@@ -1554,7 +1576,7 @@ function pruneOrder(){ /* drop items that no longer match live filters; keep pos
 function next(){ pruneOrder(); if(!(hideKnownV||newOnlyMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
 function prev(){ idx=(idx-1+order.length)%Math.max(order.length,1); revealed=false; renderVerb(); }
 
-document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"#fff":"";revealed=false;renderVerb();});
+document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"var(--on-solid)":"";revealed=false;renderVerb();});
 document.getElementById("verbTenseSeg").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b) return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});
@@ -1576,15 +1598,15 @@ document.getElementById("chapterFilterV").addEventListener("change",function(){
   buildOrder(); renderVerb(); refreshVerbTableIfOpen();
 });
 document.getElementById("hideKnownBtnV").onclick=function(){
-  hideKnownV=!hideKnownV; this.style.background=hideKnownV?"var(--known)":""; this.style.color=hideKnownV?"#fff":"";
+  hideKnownV=!hideKnownV; this.style.background=hideKnownV?"var(--known)":""; this.style.color=hideKnownV?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("rustyBtnV").onclick=function(){
-  rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"#fff":"";
+  rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("newOnlyBtnV").onclick=function(){
-  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"#fff":"";
+  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("shufBtn").onclick=function(){
@@ -2361,7 +2383,7 @@ var VOCAB=[
  {f:"un enfant de chœur",e:"an altar boy, a choirboy",c:24,t:"c24m3",x:1,p:"n",d:"A child who assists the priest at Mass; figuratively, an innocent person.",vs:"un ange — an angel",y:"chœur, Latin chorus, from Greek khoros, a dance and its singers → English chorus, choir.",ex:"Gérard n'était pas un enfant de chœur dans sa jeunesse. (Gérard was no angel in his youth.)",cs:"ce n'est pas un enfant de chœur = he's no angel · le chœur = the choir; the chorus",fam:"le chœur (choir; chorus), la chorale (choir), l'enfant (child)"},
  {f:"faire place à",e:"to give way to, to make room for",c:24,t:"c24m3",x:1,p:"v",d:"To be replaced by something else; to leave room for something.",vs:"céder la place à — to yield one's place to",fm:"participe passé fait place à (avoir)",ex:"L'inquiétude a fait place à la colère. (Worry gave way to anger.)",cs:"faire place à + noun · faire de la place pour + noun = to make room for · faites place ! = make way!",fam:"la place (place; room; square), placer (to place), remplacer (to replace)"}
 ];
-var vocMode="recall", vocScope="all", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="spell", vocScope="all", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* Progress is keyed by the French string. When a card's French changes (plural → singular, a merged
@@ -2496,6 +2518,36 @@ function updateVocToggle(){
 function refreshVocTableIfOpen(){ if(vocTableVisible()) renderVocTable(); }
 function vocKnownCount(){ return Object.keys(state.vocab).filter(function(k){return state.vocab[k]==="known";}).length; }
 
+/* ---------------- Recognize mode: French on the card, pick the English meaning (four options) ---------------- */
+var VOC_STOP={the:1,an:1,to:1,of:1,be:1,in:1,on:1,and:1,or:1,one:1,something:1,someone:1,oneself:1,with:1,for:1,from:1,by:1,at:1,is:1,it:1,that:1,who:1,which:1};
+function glossWords(e){ return String(e).replace(/\s*\([^)]*\)/g," ").toLowerCase().split(/[^a-z']+/).filter(function(w){ return w.length>2 && !VOC_STOP[w]; }); }
+function vocBare(f){ return f.replace(/^(le |la |les |l'|un |une |s'|se )/i,"").toLowerCase(); }
+/* wrong options: same part of speech, never a near-synonym (shared content word in the gloss, or listed in the other card's sy / vs), same topic first, then same chapter */
+function vocChoices(v){
+  var gw=glossWords(v.e), mine=((v.sy||"")+" "+(v.vs||"")).toLowerCase(), fv=vocBare(v.f);
+  function pool(samePos){
+    return VOCAB.filter(function(x){
+      if(x===v||x.f===v.f||x.e===v.e) return false;
+      if(samePos && x.p!==v.p) return false;
+      var xw=glossWords(x.e); if(gw.some(function(w){ return xw.indexOf(w)>-1; })) return false;
+      if(mine.indexOf(vocBare(x.f))>-1 || ((x.sy||"")+" "+(x.vs||"")).toLowerCase().indexOf(fv)>-1) return false;
+      return true; });
+  }
+  var tier=function(x){ return x.t===v.t?0:(x.c===v.c?1:2); }, out=[], seen={}; seen[v.e]=1;
+  [true,false].forEach(function(samePos){
+    if(out.length>=3) return;
+    var p=shuffleArr(pool(samePos)); p.sort(function(a,b){ return tier(a)-tier(b); });
+    p.forEach(function(x){ if(out.length<3&&!seen[x.e]){ seen[x.e]=1; out.push(x); } });
+  });
+  return shuffleArr(out.concat([v]));
+}
+var vocMc=null;
+document.addEventListener("keydown",function(e){
+  if(!vocMc||vocMode!=="mc") return; var pv=document.getElementById("p-vocab"); if(!pv||!pv.classList.contains("on")) return;
+  var t=e.target&&e.target.tagName; if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA") return;
+  if(/^[1-4]$/.test(e.key)&&!vocMc.done){ vocMc.pick(+e.key-1); }
+  else if(e.key==="Enter"&&vocMc.done&&!(e.target.closest&&e.target.closest("button"))){ e.preventDefault(); vocNext(); }
+});
 function renderVoc(){
   var card=document.getElementById("voccard"); card.innerHTML=""; memoHide();
   document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known";
@@ -2597,6 +2649,34 @@ function renderVoc(){
     return;
   }
 
+  if(vocMode==="mc"){
+    /* recognize mode: pick the meaning of the French word; counts toward mastery like Recall and Spelling (Training records nothing) */
+    var mcOpts=vocChoices(v), mcDone=false;
+    card.appendChild(el("div","prompt","<div class='small'>Pick the meaning"+posPill(v)+"</div><div class='big fr'>"+esc(v.f)+"</div>"));
+    var mcBox=el("div","opts");
+    mcOpts.forEach(function(o,k){ var b=el("button","opt","<b>"+(k+1)+"</b><span>"+enHTML(o.e)+"</span>"); b.type="button"; b.onclick=function(){ mcPick(k); }; mcBox.appendChild(b); });
+    card.appendChild(mcBox);
+    var mcAct=el("div","vactions"), mcNext=el("button","btn neutral","Next ›"); mcNext.style.display="none"; mcNext.onclick=vocNext; mcAct.appendChild(mcNext); card.appendChild(mcAct);
+    var mcAns=el("div"); card.appendChild(mcAns);
+    var mcMark=el("button","ghost","Je connais déjà ✓"); mcMark.style.display="none"; mcMark.style.marginTop="10px"; card.appendChild(mcMark);
+    var mcApi={done:false,pick:function(k){ mcPick(k); }}; vocMc=mcApi;
+    function mcPick(k){
+      if(mcDone) return; mcDone=true; mcApi.done=true; var ok=(mcOpts[k]===v);
+      [].forEach.call(mcBox.children,function(b,i){ b.disabled=true; if(mcOpts[i]===v) b.classList.add("right"); else if(i===k) b.classList.add("wrong"); });
+      if(!vocTrain){
+        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText();
+        saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
+      }
+      if(v.n) mcAns.appendChild(el("div","note",esc(v.n)));
+      if(v.y && !hasMemo(v)) mcAns.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
+      memoShow(v);
+      mcNext.style.display=""; mcNext.focus();
+      if(!vocTrain && state.vocab[v.f]!=="known"){ mcMark.style.display="";
+        mcMark.onclick=function(){ markKnown(state.vocabStats, state.vocab, v.f); mcMark.disabled=true; tag.textContent=vocTagText(); saveState(); refreshDash(); refreshVocTableIfOpen(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; }; }
+    }
+    return;
+  }
+
   /* recall mode: flip EN<->FR */
   var promptText = vocDir==="en" ? enHTML(v.e) : v.f;
   var answerText = vocDir==="en" ? v.f : enHTML(v.e);
@@ -2643,24 +2723,25 @@ function vocPrune(){
 function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocNewOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
 function vocPrev(){ if(!vocOrder.length)return; vocIdx=(vocIdx-1+vocOrder.length)%vocOrder.length; vocShown=false; renderVoc(); }
 
-document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="spell"?".4":"1";vocShown=false;renderVoc();});
+document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="recall"?"1":".4";vocShown=false;renderVoc();});
 /* v1.0.0: vocArtSeg listener removed with the toggle */
 document.getElementById("chapterFilterVoc").addEventListener("change",function(){
   vocChapterSel=this.value;
   rebuildVocTopics(); vocBuild(); renderVoc(); refreshVocTableIfOpen();
 });
-document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
+document.getElementById("vocDirSeg").style.opacity=".4";   /* the EN/FR direction applies to Recall only */
+document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode!=="recall")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
-document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
+document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"var(--on-solid)":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
-  vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";
+  vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"var(--on-solid)":"";
   vocBuild(); renderVoc();
 };
 document.getElementById("rustyBtnVoc").onclick=function(){
-  vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"#fff":"";
+  vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"var(--on-solid)":"";
   vocBuild(); renderVoc();
 };
-document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"#fff":"";vocBuild();renderVoc();});
+document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"var(--on-solid)":"";vocBuild();renderVoc();});
 document.getElementById("resetVocab").onclick=function(){
   if(confirm("Clear all vocabulary marks?")){ state.vocab={}; state.vocabStats={}; saveState(); vocBuild(); renderVoc(); refreshDash(); refreshVocTableIfOpen(); }
 };
@@ -4035,6 +4116,26 @@ renderVerbTable(); renderVocTable(); renderOpi();
 document.getElementById("quizPick").value="21"; quizPick=document.getElementById("quizPick").value; renderTestHist();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
+
+/* =============== THEME (device by default; masthead button forces light or dark) =============== */
+(function(){
+  var KEY="frTheme", btn=document.getElementById("themeBtn"), root=document.documentElement, mq=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)");
+  function saved(){ try{ var t=localStorage.getItem(KEY); return t==="light"||t==="dark"?t:null; }catch(e){ return null; } }
+  function effective(){ return saved()||((mq&&mq.matches)?"dark":"light"); }
+  function paint(){
+    var s=saved(), e=effective();
+    if(s) root.setAttribute("data-theme",s); else root.removeAttribute("data-theme");
+    btn.textContent=e==="dark"?"\u263E":"\u2600";
+    var lbl=(e==="dark"?"Dark":"Light")+(s?"":" (device setting)")+" — click for "+(e==="dark"?"light":"dark")+(s?", Alt-click to follow the device":"");
+    btn.title=lbl; btn.setAttribute("aria-label",lbl);
+  }
+  btn.addEventListener("click",function(ev){
+    try{ if(ev.altKey) localStorage.removeItem(KEY); else localStorage.setItem(KEY,effective()==="dark"?"light":"dark"); }catch(e){}
+    paint();
+  });
+  if(mq&&mq.addEventListener) mq.addEventListener("change",paint);
+  paint();
+})();
 </script>
 </body>
 </html>
