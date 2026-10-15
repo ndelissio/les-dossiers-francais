@@ -1,0 +1,4 @@
+# test screenshots written by headless checks
+*.png.tmp
+unite-*/*.png
+m_*.png
