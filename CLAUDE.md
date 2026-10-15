@@ -118,6 +118,7 @@ of git. To prevent this:
   3. `<strong>` tag in the footer masthead
 - Before building: verify the actual current version in the working file first.
   Building on a stale base silently reverts intervening changes.
+- Landing-page status tag: every unit below v1.0.0 shows the amber **In build** tag (`.status.build`); the green **Active** tag only from v1.0.0. Reaching 1.0.0 is Nicholas's decision alone; never bump to 1.0.0 or flip a unit to Active on your own. (This supersedes the older "flip to Active in the last chapter's commit" line.)
 - The landing page (`index.html`) shows each unit's version as a separate
   hardcoded `<span>` in that unit's folder card footer — it does NOT read from
   the unit files. Whenever a unit's version bumps, update its landing-page
@@ -403,3 +404,59 @@ of git. To prevent this:
 ## Model preference
 - Default to Sonnet for dossier builds.
 - Reserve Opus-tier reasoning for isolated edge-case judgment calls only.
+
+## Drill design standard (from the Unité 4 reference drills)
+
+`design-reference/` holds the two working drills Nicholas built outside the repo, plus the grading module and its probes. `design-reference/README.md` has the full component inventory, grading ladder, item schemas, authoring lessons and rule-card guideline.
+
+### Direction (decided 15 Oct 2026)
+- Scope: drill components inside the current shell, not a visual redesign and not a build-step engine. The module is inlined into each unit file (`FG` in Unit 5), duplicated per unit like the rest of the engine.
+- Identity: keep the dossier's navy palette; the Seyès ruling and red-pen marks use the existing tokens. Violet ink and Literata are not adopted.
+- Data: existing `{q,a,hint,m}` drill items keep working through `gAdapt()`, which splits the infinitive cue out of `q` at load. Per chapter, the content pass adds `ins`, `rt` + `rule` (rule card), `x` (why line) and `ch` (drop-down options, correct first) per drill/item.
+- Rollout: Unit 5 first (v0.2.0 pilot: Ch. 21 `hyp21`, `relc21`, `subj21` converted), then backport Units 4 → 3 → 2 → 1 one at a time under the worktree and ship rules. Unit 5 is still 0.x, so its pilot is a MINOR bump; a backport onto a shipped unit is a MAJOR bump. Convert the remaining Unit 5 drills (voc21 and Ch. 22–24) chapter by chapter.
+- The misses pile (`state.gramMiss`) stays separate from Analyse.
+- `design-reference/unit-grading.test.js` runs the reference probes plus the dossier additions against a unit's inlined `FG`. Run it when you carry the module into another unit.
+- Dossier changes to the reference module: "auxiliary" fires only when the avoir/être family differs, so a wrong tense of the right auxiliary is never labelled "wrong auxiliary" (it would leak the tense); `auxFamily` is exported.
+
+### Settled (apply to new drill builds)
+- **Typed answers sit on a Seyès-ruled field** (French copybook paper with a red margin line), with an accent key row underneath. Grammar drills keep the keys with the last-focused item only, so clicking Check never reflows the page.
+- **Feedback after Check is compact:**
+  - One verdict line at the top, and no other status text ("counts as a miss", streak notes).
+  - On a miss, a **You** row with wrong or extra characters struck through in red, and a **Correct** row with missed characters underlined in red. The correct answer appears once; no repeated full-answer line under the rows.
+  - A skip shows the **Correct** row alone.
+  - Grammaire adds a one-line why after the rows. There is no "count it" override.
+- **Grading uses the verdict ladder:** ok, accent, article, gender, pronoun, agreement, auxiliary, close, wrong.
+  - Normalize before comparing.
+  - Generate article variants (le↔un, la↔une, les↔des, l' by gender).
+  - Accents always count: there is no strict-accents option. An accent slip is an amber "Check the accents" miss.
+  - Vocabulaire still builds its accepted forms with `vocCands()`; `FG` only grades.
+- **English glosses (`e:`):** keep any explanatory parenthetical under about 30 characters; if the main gloss already says it, drop the parenthetical. The trainer shows a trailing parenthetical of two or more words on its own line under the main gloss and never wraps it on desktop (`enHTML()`). Short grammatical cues such as (someone) or (at) stay inline.
+- **Vocabulaire filters:** one chapter drop-down (opens on the current chapter, All chapters first) and the topic filter on one row. There is no level toggle.
+- **Tab pages carry no long introductory paragraphs;** put guidance in a short "How to use" list.
+- **Grammar drills mix typed items with inline drop-downs** of 2 or 4 options. The `<select>` sits in the sentence at the blank. The correct option is stored first and shuffled at render.
+- **Each grammar topic has an always-visible rule card:** at most 5 bullets, forms in bold, examples using the unit's vocabulary. A drill without `rule` keeps its original instruction note.
+- **Every converted grammar item carries an `x` why line,** shown after answering whether right or wrong.
+- **Leak audit for drop-downs:**
+  - Read each option placed in the sentence (elision, agreement, the article before the blank).
+  - Put the article inside the option when gender would give the answer away.
+  - Don't test nominalisation with gender-only choices.
+- **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
+- **Layout (Unit 5 v0.2.0):** flat, light blue-grey leaning folder tabs (lightly overlapped; each tab has its own muted colour as an outline, with a faint glow on the selected one), ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit below 1.0.0 shows the amber "In build" tag on the landing page.
+
+### Prépa examen (Unit 4 v0.9.0 pilot, decided 15 Oct 2026)
+- Students use the oral practice, the blank exam and the conjugation trainer least; what they praised were the two reference drills (study-guide vocabulary spelling and study-guide grammar topics). So exam prep trains the skills the exam needs, not the exam's format.
+- One **Prépa examen** tab replaces Examen blanc and Pratique orale. Three sub-sections:
+  - **Vocabulaire:** the study guide's word list, spelled (EN → FR), recognised (FR → EN) or browsed.
+  - **Grammaire:** one topic per study-guide grammar point, rule card always visible.
+  - **Oral:** a script builder (English notes, French on the ruled page, tense chip per section, offline checks for length vs 2:00, linking words, study-guide words, rough tense counts). No Rehearse mode and no AI check, because the dossier is an offline static file.
+- Content comes from the unit's study guide. Until the guide is uploaded the tab stays "à venir" (Unit 5 has no guide yet). Unit 4's content is the Test 4 guide: 80 words, 106 grammar items, 6 oral prompts.
+- Prépa is a training space: it does not feed Analyse, the mastery bars or achievements. Misses are kept per item (`state.prep.vmiss`, `state.prep.gmiss`). Accents always count; no override.
+- The misses pile is deliberately NOT weighted into any mixed review: a miss often just means a new word or a slipped accent, and "rusty" is meaningless when a chapter lasts 4–5 days.
+- Removed with the old tabs: the chapter quiz banks, the unit exam bank, the OPI prompt deck, the Analyse "Examen" donut, and the achievements Sans faute and Hat-trick. Saved quiz history stays in the browser unseen.
+- Carry the same tab to Unit 5 when its study guide is uploaded: the engine (`PREP` in `unite-4/index.html`) reads one `DATA` object (`RAW` words, `TOPICS` rule cards, `ITEMS`, `ORAL`), so a new unit supplies data only.
+
+### Dark mode and Vocabulaire modes (Unit 4 v0.9.0 and Unit 5 v0.2.0, decided 15 Oct 2026)
+- **Dark mode** follows the device (`prefers-color-scheme`); a round masthead button forces light or dark (Alt-click returns to the device setting). The choice is stored under `frTheme`, shared by every unit on the same origin, and applied before paint by a tiny head script. Palette: the reference's violet-tinted near-black (`--paper:#13121B`, `--card:#1C1A27`, soft violet accent, red kept for errors). Light mode is unchanged.
+- Colours live in tokens (`--surface`, `--tint`, `--hover`, `--chip`, `--neutral`, `--err-bg`, `--on-solid`, …). Never write a literal hex in new CSS, and use `var(--on-solid)` for text on a solid coloured button.
+- **Vocabulaire modes:** Spelling (default) · Recognize · Recall. Recognize shows the French and asks for the meaning from four options (keys 1–4). Wrong options come from `vocChoices()`: same part of speech, no shared content word in the gloss, not listed in the other card's `sy`/`vs`, same topic first, then same chapter. Recognize answers count toward mastery like the other modes; Training records nothing. The EN/FR direction applies to Recall only.
+- The landing page has dark mode too (same `frTheme` key and masthead button, its own tokens). Not yet done: Units 1–3.

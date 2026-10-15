@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <title>Les Dossiers Français</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,13 +20,18 @@
     --steel:#4A5D6B;
     --hairline:#D9D4C3;
     --hairline-dark:#3a4a58;
+    --dot:rgba(28,43,57,0.05);
+    --shadow:rgba(28,43,57,0.35);
+    --ok-fg:#1F6E3C; --ok-bg:#E1EFE3;
+    --build-fg:#8A5A00; --build-edge:#B7791F; --build-bg:#FBE9BE;
+    color-scheme:light;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--paper);
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(28,43,57,0.05) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
     background-size:22px 22px;
     color:var(--ink);
     font-family:'Inter',sans-serif;
@@ -119,7 +127,7 @@
   }
   .folder:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 22px -12px rgba(28,43,57,0.35);
+    box-shadow:0 10px 22px -12px var(--shadow);
     border-color:var(--ink);
   }
   .folder-top{
@@ -153,8 +161,9 @@
     white-space:nowrap;
     flex-shrink:0;
   }
-  .status.active{color:#1F6E3C;border-color:#1F6E3C;background:#E1EFE3;}
+  .status.active{color:var(--ok-fg);border-color:var(--ok-fg);background:var(--ok-bg);}
   .status.pending{color:var(--stamp);}
+  .status.build{color:var(--build-fg);border-color:var(--build-edge);background:var(--build-bg);}
 
   .folder-foot{
     display:flex;
@@ -250,6 +259,24 @@
     .letterhead-row{flex-direction:column;align-items:flex-start;}
   }
 
+  /* dark mode: follows the device; the round button forces light or dark (Alt-click returns to the device setting) */
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --paper:#13121B; --paper-card:#1C1A27; --sage:#8F8CA6; --stamp:#FF8279; --steel:#BDBAD0; --hairline:#312E42; --hairline-dark:#4A4660; --dot:rgba(167,151,255,0.06); --shadow:rgba(0,0,0,0.6); --ok-fg:#6ED69C; --ok-bg:#17321F; --build-fg:#F2B45C; --build-edge:#8A6A2A; --build-bg:#36290F; } }
+  :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --paper:#13121B; --paper-card:#1C1A27; --sage:#8F8CA6; --stamp:#FF8279; --steel:#BDBAD0; --hairline:#312E42; --hairline-dark:#4A4660; --dot:rgba(167,151,255,0.06); --shadow:rgba(0,0,0,0.6); --ok-fg:#6ED69C; --ok-bg:#17321F; --build-fg:#F2B45C; --build-edge:#8A6A2A; --build-bg:#36290F; }
+  .themebtn{
+    appearance:none;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--hairline-dark);
+    background:var(--paper-card);
+    color:var(--ink);
+    font-size:1.05rem; line-height:1;
+    cursor:pointer;
+    display:grid; place-items:center; padding:0;
+    transition:border-color 0.15s ease;
+  }
+  .themebtn:hover{border-color:var(--ink);}
+  .themebtn:focus-visible{outline:2px solid var(--stamp); outline-offset:2px;}
+
   .backup-row{
     display:flex;
     flex-wrap:wrap;
@@ -292,6 +319,7 @@
       <img src="assets/france-flag.svg" alt="French flag" class="flag-icon">
       <h1>Les Dossiers <span>Français</span></h1>
     </div>
+    <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
   </div>
 </div>
 
@@ -352,10 +380,10 @@
           <p class="chapters">Chapters 16–19</p>
           <p class="chapters">+ AOL 220 vocabulary</p>
         </div>
-        <span class="status active">Active</span>
+        <span class="status build">In build</span>
       </div>
       <div class="folder-foot">
-        <span>v0.8.3</span>
+        <span>v0.9.0</span>
         <span class="open-cue">Open →</span>
       </div>
     </a>
@@ -366,10 +394,10 @@
           <h2>Unit 5</h2>
           <p class="chapters">Chapters 21–24</p>
         </div>
-        <span class="status active">Active</span>
+        <span class="status build">In build</span>
       </div>
       <div class="folder-foot">
-        <span>v0.1.0</span>
+        <span>v0.2.0</span>
         <span class="open-cue">Open →</span>
       </div>
     </a>
@@ -522,6 +550,26 @@ function importProgress(file){
       importFile.value="";
     };
   }
+})();
+
+/* theme: device by default; the masthead button forces light or dark — one choice (frTheme) for the whole site */
+(function(){
+  var KEY="frTheme", btn=document.getElementById("themeBtn"), root=document.documentElement, mq=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)");
+  function saved(){ try{ var t=localStorage.getItem(KEY); return t==="light"||t==="dark"?t:null; }catch(e){ return null; } }
+  function effective(){ return saved()||((mq&&mq.matches)?"dark":"light"); }
+  function paint(){
+    var s=saved(), e=effective();
+    if(s) root.setAttribute("data-theme",s); else root.removeAttribute("data-theme");
+    btn.textContent=e==="dark"?"\u263E":"\u2600";
+    var lbl=(e==="dark"?"Dark":"Light")+(s?"":" (device setting)")+" — click for "+(e==="dark"?"light":"dark")+(s?", Alt-click to follow the device":"");
+    btn.title=lbl; btn.setAttribute("aria-label",lbl);
+  }
+  btn.addEventListener("click",function(ev){
+    try{ if(ev.altKey) localStorage.removeItem(KEY); else localStorage.setItem(KEY,effective()==="dark"?"light":"dark"); }catch(e){}
+    paint();
+  });
+  if(mq&&mq.addEventListener) mq.addEventListener("change",paint);
+  paint();
 })();
 </script>
 

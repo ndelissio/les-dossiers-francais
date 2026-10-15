@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unité 4 Grammar Drill</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap">
+<style>
+/* Layout: one narrow column — header, settings strip, always-visible rule card, one question card (Seyès-ruled entry or inline drop-down), results below. Same system as the Unité 4 Spelling Drill. */
+:root{
+  --paper:#F7F7FB; --surface:#FFFFFF; --ink:#1D1A2C; --muted:#68657C; --line:#E2E0EC;
+  --violet:#4936A6; --violet-soft:#ECE9FA; --violet-ink:#3A2B8C;
+  --red:#BE3229; --red-soft:#FBEAE7; --green:#23744A; --green-soft:#E4F3EA; --amber:#8F5B00; --amber-soft:#FAF0DA;
+  --seyes:rgba(73,54,166,.09); --seyes-strong:rgba(73,54,166,.20); --margin:rgba(190,50,41,.38);
+  --f-word:'Literata', Georgia, 'Times New Roman', serif;
+  --f-ui:'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#A3A0B8; --line:#312E42;
+  --violet:#A797FF; --violet-soft:#2A2445; --violet-ink:#C6BCFF;
+  --red:#FF8279; --red-soft:#3A1F22; --green:#6ED69C; --green-soft:#17321F; --amber:#F2C15E; --amber-soft:#36290F;
+  --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.16); --margin:rgba(255,130,121,.35);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#A3A0B8; --line:#312E42;
+  --violet:#A797FF; --violet-soft:#2A2445; --violet-ink:#C6BCFF;
+  --red:#FF8279; --red-soft:#3A1F22; --green:#6ED69C; --green-soft:#17321F; --amber:#F2C15E; --amber-soft:#36290F;
+  --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.16); --margin:rgba(255,130,121,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.5}
+.wrap{max-width:680px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--f-word);font-weight:600;font-size:30px;line-height:1.15;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:62ch}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+label.ctl{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--muted)}
+select.set{font:inherit;font-size:13.5px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);max-width:100%}
+input[type=checkbox]{accent-color:var(--violet);width:16px;height:16px}
+
+/* rule card */
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.rule h2{margin:0;font-family:var(--f-word);font-size:18px;font-weight:600}
+.rule h2 small{font-family:var(--f-ui);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-left:8px}
+.rule ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.rule em{font-family:var(--f-word);font-style:italic}
+.rule b{color:var(--violet-ink)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.prog{height:4px;background:var(--line)}
+.prog i{display:block;height:100%;background:var(--violet);width:0;transition:width .25s ease}
+.meta{display:flex;justify-content:space-between;gap:12px;padding:12px 20px 0;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.body{padding:14px 20px 20px;display:flex;flex-direction:column;gap:14px}
+.tag{align-self:flex-start;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--violet-ink);background:var(--violet-soft);padding:3px 8px;border-radius:5px}
+.ins{font-size:13.5px;color:var(--muted);margin:0}
+.sent{font-family:var(--f-word);font-size:24px;line-height:1.55;margin:0}
+.sent .cue{color:var(--muted);font-size:.8em;white-space:nowrap}
+.gap{display:inline-block;min-width:3.2em;border-bottom:2px solid var(--violet);color:var(--violet-ink);text-align:center;line-height:1.2}
+.gap.ok{border-color:var(--green);color:var(--green)} .gap.bad{border-color:var(--red);color:var(--red)}
+select.pick{font-family:var(--f-word);font-size:21px;color:var(--violet-ink);background:var(--violet-soft);border:0;border-bottom:2px solid var(--violet);border-radius:6px 6px 0 0;padding:2px 6px;max-width:100%;cursor:pointer}
+select.pick:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+select.pick.ok{color:var(--green);background:var(--green-soft);border-color:var(--green)}
+select.pick.bad{color:var(--red);background:var(--red-soft);border-color:var(--red)}
+
+.ruled{position:relative;border-radius:8px;border:1px solid var(--line);
+  background-color:var(--surface);
+  background-image:
+    linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 35.5px, transparent 35.5px),
+    repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+    repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px);
+}
+.ruled input{width:100%;border:0;background:transparent;color:var(--ink);font-family:var(--f-word);font-size:24px;padding:12px 14px 12px 48px;outline:none}
+.ruled:focus-within{border-color:var(--violet);box-shadow:0 0 0 3px var(--violet-soft)}
+.ruled.ok{border-color:var(--green)} .ruled.bad{border-color:var(--red)}
+.keys{display:flex;flex-wrap:wrap;gap:6px}
+.key{all:unset;cursor:pointer;min-width:34px;height:34px;display:inline-grid;place-items:center;border:1px solid var(--line);border-radius:7px;font-family:var(--f-word);font-size:17px;background:var(--paper);color:var(--ink)}
+.key:hover{border-color:var(--violet);color:var(--violet-ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{all:unset;cursor:pointer;padding:9px 16px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--violet);border-color:var(--violet);color:var(--surface)}
+.btn.ghost{color:var(--muted)}
+.btn:focus-visible,.key:focus-visible,.linkish:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.hint{font-size:12.5px;color:var(--muted);margin-left:auto}
+
+.fb{border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.fb.ok{background:var(--green-soft)} .fb.near{background:var(--amber-soft)} .fb.bad{background:var(--red-soft)}
+.fb strong.v{font-size:14.5px}
+.fb.ok strong.v{color:var(--green)} .fb.near strong.v{color:var(--amber)} .fb.bad strong.v{color:var(--red)}
+.cmp{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline}
+.cmp span.l{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cmp .w{font-family:var(--f-word);font-size:20px;min-width:0;overflow-wrap:anywhere}
+.x{color:var(--red);text-decoration:line-through;text-decoration-thickness:2px}
+.m{color:var(--red);background:var(--surface);border-bottom:2px solid var(--red);border-radius:2px}
+.full{font-family:var(--f-word);font-size:17px}
+.why{font-size:13.5px;color:var(--ink)}
+.why b{font-weight:600}
+.note{color:var(--muted);font-size:13px}
+.linkish{all:unset;cursor:pointer;font-size:13px;color:var(--violet-ink);text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+
+.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.score .big{font-family:var(--f-word);font-size:44px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.score .pct{color:var(--muted);font-size:15px}
+.bytopic{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;font-size:14px;font-variant-numeric:tabular-nums}
+.bytopic span:nth-child(even){text-align:right;color:var(--muted)}
+.misslist{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.misslist div{display:flex;flex-direction:column;gap:2px;padding:9px 0;border-bottom:1px solid var(--line)}
+.misslist .fr{font-family:var(--f-word);font-size:16.5px}
+.misslist .yours{font-size:12.5px;color:var(--red)}
+.misslist .t{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.empty{color:var(--muted);font-size:14px}
+@media (max-width:480px){ h1{font-size:25px} .sent{font-size:21px} select.pick{font-size:19px} .ruled input{font-size:21px} .hint{display:none} }
+@media (prefers-reduced-motion:reduce){ .prog i{transition:none} }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Test 4 · Unité 4 · Grammaire</div>
+    <h1>Unité 4 Grammar Drill</h1>
+    <p class="sub">The five grammar points on the Test 4 study guide, mixing typed answers and drop-down choices. Sentences reuse the chapter 16–19 vocabulary.</p>
+  </header>
+
+  <div class="bar" role="group" aria-label="Drill settings">
+    <label class="ctl">Topic
+      <select class="set" id="topic">
+        <option value="all">All five, mixed</option>
+        <option value="rel">Pronoms relatifs</option>
+        <option value="si">Si + présent → futur</option>
+        <option value="nom">Nominalisation</option>
+        <option value="dem">Pronoms démonstratifs</option>
+        <option value="pc">Passé composé</option>
+      </select>
+    </label>
+    <label class="ctl">Questions
+      <select class="set" id="size"><option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="999">All</option></select>
+    </label>
+    <label class="ctl">Format
+      <select class="set" id="fmt"><option value="mix">Mixed</option><option value="type">Typing only</option><option value="pick">Drop-down only</option></select>
+    </label>
+    <label class="ctl">From
+      <select class="set" id="src"><option value="all">All questions</option><option value="miss">My misses</option></select>
+    </label>
+    <label class="ctl"><input type="checkbox" id="strict" checked> Strict accents</label>
+    <button type="button" class="btn ghost" id="newSet">New set</button>
+  </div>
+
+  <section class="rule" id="rule" aria-label="Rule summary"></section>
+  <section class="card" id="card" aria-live="polite"></section>
+</div>
+
+<script>
+/* ---------------- topics + always-visible rule summaries ---------------- */
+const TOPICS = {
+  rel:{name:"Pronoms relatifs", en:"Relative pronouns", rule:`<ul>
+    <li><b>qui</b> = subject; a verb follows. <em>Le témoin qui a appelé…</em></li>
+    <li><b>que / qu'</b> = direct object; a subject follows. <em>La fresque que nous avons vue…</em></li>
+    <li><b>où</b> = place or time. <em>Le jour où…</em></li>
+    <li><b>dont</b> replaces <b>de</b> + noun: parler de, avoir besoin de, avoir envie de, être conscient de, possession (“whose”). <em>Le livre dont j'ai besoin…</em></li>
+    <li><b>ce qui / ce que / ce dont</b> = “what”, when there is no noun before it.</li></ul>`},
+  si:{name:"Si + présent → futur", en:"Hypothesis", rule:`<ul>
+    <li><b>Si + présent</b>, then <b>futur simple</b> (or présent, or impératif). Never futur or conditionnel right after <b>si</b>.</li>
+    <li><b>si + il/ils → s'il, s'ils</b>; no elision with elle/on.</li>
+    <li>Futur = infinitive + <b>-ai -as -a -ons -ez -ont</b> (-re verbs drop the e: prendre → prendr-).</li>
+    <li>Irregular stems: être <b>ser-</b>, avoir <b>aur-</b>, aller <b>ir-</b>, faire <b>fer-</b>, pouvoir <b>pourr-</b>, venir <b>viendr-</b>, voir <b>verr-</b>, falloir <b>faudr-</b>, valoir <b>vaudr-</b>. Accent shift: emmener → <b>emmèner-</b>.</li></ul>`},
+  nom:{name:"Nominalisation", en:"Verb → noun", rule:`<ul>
+    <li>Turns a verb into a noun. Headlines and news copy run on it: <em>Les prix augmentent</em> → <em>Augmentation des prix</em>.</li>
+    <li><b>-tion / -ation, -ure, -ée</b> → feminine: l'amélioration, la fermeture, l'arrivée.</li>
+    <li><b>-ment, -age</b> → masculine: l'effondrement, le sauvetage.</li>
+    <li>Short forms come from the verb stem: baisser → la baisse, lutter → la lutte, soutenir → le soutien.</li>
+    <li>Typed answers: the noun alone is enough. An article is optional, but it has to match the gender.</li></ul>`},
+  dem:{name:"Pronoms démonstratifs", en:"“The one(s)”", rule:`<ul>
+    <li>Replace a noun already mentioned and agree with it: <b>celui</b> (m), <b>celle</b> (f), <b>ceux</b> (m pl), <b>celles</b> (f pl).</li>
+    <li>Never stand alone. Always followed by <b>-ci / -là</b>, <b>de</b> + noun, or <b>qui / que / dont / où</b>.</li>
+    <li><em>Ta veste ou celle de Marc ?</em> · <em>Ceux qui mangent sain…</em></li>
+    <li>No specific noun (an idea or situation) → <b>ça / cela / ceci</b>.</li></ul>`},
+  pc:{name:"Passé composé : avoir ou être", en:"Auxiliaries + agreement", rule:`<ul>
+    <li>Most verbs: <b>avoir</b>, no agreement with the subject.</li>
+    <li><b>être</b>: aller, venir, arriver, partir, entrer, sortir, monter, descendre, tomber, rester, naître, mourir, rentrer, retourner, passer, devenir, revenir, and <b>every pronominal verb</b>. The participle agrees with the subject.</li>
+    <li>Monter, descendre, sortir, rentrer, passer take <b>avoir</b> when they have a direct object: <em>Elle a sorti la poubelle.</em></li>
+    <li>With avoir, agree with a direct object placed <b>before</b> the verb (que, la, les…): <em>la fresque que j'ai vue</em>.</li>
+    <li>Pronominal: no agreement when se is indirect (<em>se téléphoner</em>) or a direct object follows (<em>s'est lavé les mains</em>).</li></ul>`}
+};
+
+/* ---------------- items ---------------- */
+/* T(topic, sentence, answer(s), extra) typed · P(topic, sentence, [correct, ...distractors], extra) drop-down
+   "___" marks the blank. extra: cue (shown after sentence), ins (instruction), x (why), g (noun gender for article variants) */
+const I = []; let _n = 0;
+const T = (t,s,a,e={}) => I.push(Object.assign({id:t+"-"+(++_n), t, k:"type", s, a:[].concat(a)}, e));
+const P = (t,s,ch,e={}) => I.push(Object.assign({id:t+"-"+(++_n), t, k:"pick", s, ch}, e));
+
+/* --- pronoms relatifs --- */
+P("rel","Le témoin ___ a appelé les pompiers habite en face.",["qui","que","où","dont"],{x:"A verb (a appelé) follows directly, so the pronoun is the subject: <b>qui</b>."});
+P("rel","C'est le quartier ___ l'incendie a commencé.",["où","que","qui","dont"],{x:"A place: <b>où</b>."});
+P("rel","Voici le médicament ___ tu as besoin.",["dont","que","qui","où"],{x:"avoir besoin <b>de</b> → <b>dont</b>."});
+P("rel","La fresque ___ nous avons vue hier est magnifique.",["que","qui","dont","où"],{x:"Subject “nous” follows; la fresque is the direct object of voir → <b>que</b>. (Note the agreement: vue.)"});
+P("rel","Le chirurgien ___ je t'ai parlé est très doué.",["dont","que","qui","où"],{x:"parler <b>de</b> quelqu'un → <b>dont</b>."});
+P("rel","Je me souviens du jour ___ le séisme a frappé la ville.",["où","que","dont","qui"],{x:"A moment in time: <b>où</b>."});
+P("rel","C'est une amie ___ le mari est généraliste.",["dont","que","qui","où"],{x:"Possession (“whose husband”) → <b>dont</b>."});
+P("rel","Les déchets ___ les touristes laissent sur la plage sont un vrai problème.",["que","qui","dont","où"],{x:"Subject “les touristes” follows; les déchets is the object of laisser → <b>que</b>."});
+P("rel","La maison de retraite ___ ma grand-mère habite est très agréable.",["où","que","dont","qui"],{x:"A place: <b>où</b>."});
+P("rel","C'est un problème ___ nous sommes tous conscients.",["dont","que","qui","où"],{x:"être conscient <b>de</b> → <b>dont</b>."});
+P("rel","___ me fait peur, c'est la canicule.",["Ce qui","Ce que","Ce dont","Qui"],{x:"No noun before it, and a verb follows (me fait) → <b>ce qui</b>."});
+P("rel","Dis-moi ___ tu as besoin.",["ce dont","ce que","ce qui","dont"],{x:"No noun before it + avoir besoin <b>de</b> → <b>ce dont</b>."});
+P("rel","Je ne comprends pas ___ mon voisin veut dire.",["ce que","ce qui","ce dont","que"],{x:"No noun before it; a subject follows → <b>ce que</b>."});
+T("rel","Le livre ___ j'ai envie coûte trente euros.","dont",{x:"avoir envie <b>de</b> → <b>dont</b>."});
+T("rel","La voisine ___ m'a aidé est restée indemne.","qui",{x:"A verb follows (m'a aidé) → subject → <b>qui</b>."});
+T("rel","Le régime ___ mon médecin m'a conseillé est très exigeant.","que",{x:"A subject follows (mon médecin) → object → <b>que</b>."});
+T("rel","Le village ___ nous passons nos vacances est très calme.","où",{x:"A place: <b>où</b>."});
+T("rel","L'accident ___ tout le monde parle s'est produit hier soir.","dont",{x:"parler <b>de</b> → <b>dont</b>."});
+T("rel","La cohabitation est un choix ___ beaucoup de jeunes font.","que",{x:"A subject follows (beaucoup de jeunes) → <b>que</b>."});
+T("rel","J'ai acheté tout ___ tu m'as demandé.","ce que",{x:"tout + no noun + a subject follows → <b>ce que</b>."});
+
+/* --- si + présent → futur --- */
+P("si","Si tu ___ demain, on ira au marché.",["viens","viendras"],{x:"Right after <b>si</b>: présent, never futur."});
+P("si","S'il fait beau samedi, nous ___ une randonnée.",["ferons","ferions","faisions","avons fait"],{x:"Si + présent → <b>futur simple</b>. faire → fer- → ferons."});
+P("si","Si vous jeûnez avant la prise de sang, les résultats ___ plus fiables.",["seront","seraient","étaient","soient"],{x:"Si + présent → futur: être → ser- → <b>seront</b>."});
+P("si","___ pleut, la route sera impraticable.",["S'il","Si il"],{x:"si + il always contracts: <b>s'il</b>."});
+P("si","Si elle ___ du soutien, elle s'impliquera davantage.",["reçoit","recevra","recevrait","recevait"],{x:"After si: présent → <b>reçoit</b> (ç before o)."});
+P("si","Si on économise, on ___ partir en vacances cet été.",["pourra","pourrait","pouvait","pouvra"],{x:"pouvoir → irregular stem pourr- → <b>pourra</b>."});
+P("si","Si tu manges trop de malbouffe, tu ___ mal au ventre.",["auras","aurais","avais","aurai"],{x:"avoir → aur- + tu ending -as → <b>auras</b>."});
+P("si","Si les pompiers ___ à temps, la maison restera debout.",["arrivent","arriveront"],{x:"The si clause takes the présent: <b>arrivent</b>."});
+P("si","Si tu ___ fatigué, repose-toi.",["es","seras"],{x:"Si + présent → impératif is fine; the si clause stays présent: <b>es</b>."});
+T("si","Si tu viens ce soir, je te ___ mes photos de voyage.","montrerai",{cue:"(montrer)",x:"Regular: infinitive + -ai → <b>montrerai</b>."});
+T("si","Si tu as mal au genou, nous ___ aux urgences.","irons",{cue:"(aller)",x:"aller → ir- → <b>irons</b>."});
+T("si","Si vous ___ le temps, passez nous voir.","avez",{cue:"(avoir)",x:"The si clause is présent: <b>avez</b>. The result here is an impératif."});
+T("si","Si elles finissent tôt, elles ___ nous rejoindre.","viendront",{cue:"(venir)",x:"venir → viendr- → <b>viendront</b>."});
+T("si","Si la canicule continue, il ___ boire beaucoup d'eau.","faudra",{cue:"(falloir)",x:"falloir → faudr- → <b>faudra</b>."});
+T("si","Si tu ___ ce restaurant, tu ne le regretteras pas.",["essaies","essayes"],{cue:"(essayer)",x:"Présent after si: <b>essaies</b> (essayes is also accepted)."});
+T("si","Si nous partons maintenant, nous ___ le train de 8 h.","prendrons",{cue:"(prendre)",x:"-re verb drops the e: prendr- → <b>prendrons</b>."});
+T("si","Si je réussis l'examen, je ___ très content.","serai",{cue:"(être)",x:"être → ser- → <b>serai</b>."});
+T("si","Si on ___ ensemble, on trouvera une solution.","travaille",{cue:"(travailler)",x:"After si: présent → <b>travaille</b>."});
+T("si","Si tu veux, nous ___ les enfants à l'école demain.","emmènerons",{cue:"(emmener)",x:"The stem takes a grave accent: <b>emmènerons</b>."});
+T("si","Si tu restes une semaine, ça ___ la peine.","vaudra",{cue:"(valoir)",x:"valoir → vaudr- → <b>vaudra</b>."});
+
+/* --- nominalisation --- */
+const NI = "Spell the noun (article optional).";
+T("nom","améliorer → ___","l'amélioration",{g:"f",noun:1,ins:NI,x:"-ation → feminine: <b>l'amélioration</b> (une amélioration)."});
+T("nom","s'effondrer → ___","l'effondrement",{g:"m",noun:1,ins:NI,x:"-ment → masculine: <b>l'effondrement</b> (un effondrement)."});
+T("nom","sauver → ___","le sauvetage",{g:"m",noun:1,ins:NI,cue:"(a rescue operation)",x:"-age → masculine: <b>le sauvetage</b>."});
+T("nom","élargir → ___","l'élargissement",{g:"m",noun:1,ins:NI,x:"-ir verbs often take -issement: <b>l'élargissement</b>."});
+T("nom","partager → ___","le partage",{g:"m",noun:1,ins:NI,x:"-age → masculine: <b>le partage</b>."});
+T("nom","héberger → ___","l'hébergement",{g:"m",noun:1,ins:NI,x:"-ment → masculine: <b>l'hébergement</b>."});
+T("nom","vulgariser → ___","la vulgarisation",{g:"f",noun:1,ins:NI,x:"-isation → feminine: <b>la vulgarisation</b>."});
+T("nom","arriver → ___","l'arrivée",{g:"f",noun:1,ins:NI,x:"-ée → feminine: <b>l'arrivée</b>."});
+T("nom","découvrir → ___","la découverte",{g:"f",noun:1,ins:NI,x:"From the participle découvert → <b>la découverte</b>."});
+T("nom","craindre → ___","la crainte",{g:"f",noun:1,ins:NI,x:"<b>la crainte</b> (fear)."});
+T("nom","hurler → ___","le hurlement",{g:"m",noun:1,ins:NI,x:"-ment → masculine: <b>le hurlement</b>."});
+T("nom","jeûner → ___","le jeûne",{g:"m",noun:1,ins:NI,x:"Short form from the stem, keeping the circumflex: <b>le jeûne</b>."});
+T("nom","attendre → ___","l'attente",{g:"f",noun:1,ins:NI,x:"<b>l'attente</b> (une attente), feminine."});
+T("nom","Les loyers baissent à Lyon. → ___ des loyers à Lyon",["baisse","la baisse","une baisse"],{ins:"Rewrite as a headline: type the noun.",x:"baisser → <b>la baisse</b>. Headlines usually drop the article: “Baisse des loyers à Lyon”."});
+T("nom","La mairie ferme la piscine municipale. → ___ de la piscine municipale",["fermeture","la fermeture"],{ins:"Rewrite as a headline: type the noun.",x:"fermer → -ure → <b>la fermeture</b>."});
+T("nom","L'État soutient les petits commerces. → ___ de l'État aux petits commerces",["soutien","le soutien"],{ins:"Rewrite as a headline: type the noun.",x:"soutenir → <b>le soutien</b>."});
+T("nom","Les secours évacuent le quartier. → ___ du quartier",["évacuation","l'évacuation","une évacuation"],{ins:"Rewrite as a headline: type the noun.",x:"évacuer → -ation → <b>l'évacuation</b>."});
+T("nom","Le gouvernement réforme les retraites. → ___ des retraites",["réforme","la réforme","une réforme"],{ins:"Rewrite as a headline: type the noun.",x:"réformer → short form <b>la réforme</b>."});
+T("nom","La ville interdit les voitures au centre. → ___ des voitures au centre-ville",["interdiction","l'interdiction","une interdiction"],{ins:"Rewrite as a headline: type the noun.",x:"interdire → -iction → <b>l'interdiction</b>."});
+T("nom","Le prix de l'essence augmente. → ___ du prix de l'essence",["augmentation","l'augmentation","une augmentation"],{ins:"Rewrite as a headline: type the noun.",x:"augmenter → -ation → <b>l'augmentation</b>."});
+P("nom","___ du pont a fait trois blessés.",["L'effondrement","L'effondration","L'effondrage","L'effondrée"],{x:"s'effondrer → <b>l'effondrement</b>."});
+P("nom","Tout le monde attend ___ des pompiers.",["l'arrivée","l'arrivement","l'arrivation","l'arrive"],{x:"arriver → <b>l'arrivée</b>."});
+P("nom","On annonce ___ de l'école pour septembre.",["la réouverture","le réouvrement","la réouvertion","le réouvrage"],{x:"rouvrir → <b>la réouverture</b> (-ure, feminine)."});
+P("nom","Ce projet favorise ___ durable.",["le développement","la développation","le développage","la développure"],{x:"développer → <b>le développement</b>."});
+P("nom","___ des océans inquiète les scientifiques.",["La pollution","La polluance","Le polluement","Le polluage"],{x:"polluer → <b>la pollution</b>."});
+P("nom","___ des enfants à l'école se fait à 8 h.",["L'accueil","L'accueillement","L'accueillance","L'accueillage"],{x:"accueillir → short form <b>l'accueil</b>."});
+P("nom","___ des prix inquiète les ménages.",["La hausse","La haussation","La haussure","Le haussage"],{x:"hausser → short form <b>la hausse</b>."});
+P("nom","___ contre le cyberharcèlement continue.",["La lutte","Le luttement","La luttation","Le luttage"],{x:"lutter → short form <b>la lutte</b>."});
+
+/* --- pronoms démonstratifs --- */
+const D4 = a => [a].concat(["celui","celle","ceux","celles"].filter(x => x!==a.toLowerCase()));
+const cap = s => s[0].toUpperCase()+s.slice(1);
+P("dem","J'aime bien ta veste, mais je préfère ___ de Marc.",D4("celle"),{x:"la veste → feminine singular → <b>celle</b>."});
+P("dem","Ces médicaments-ci sont pour toi ; ___-là sont pour ton père.",D4("ceux"),{x:"les médicaments → masculine plural → <b>ceux</b>."});
+P("dem","Quel appartement ? — ___ qui donne sur la mer.",D4("celui").map(cap),{x:"l'appartement → masculine singular → <b>celui</b>."});
+P("dem","Les fresques de ce quartier sont plus belles que ___ du centre-ville.",D4("celles"),{x:"les fresques → feminine plural → <b>celles</b>."});
+P("dem","De tous les régimes, ___ que je préfère, c'est le régime méditerranéen.",D4("celui"),{x:"un régime → masculine singular → <b>celui</b>."});
+P("dem","Les urgences de l'hôpital Nord sont lentes, mais ___ de l'hôpital Sud sont plus rapides.",D4("celles"),{x:"les urgences → feminine plural → <b>celles</b>."});
+P("dem","Ma cheville gauche va bien, mais ___ de droite me fait mal.",D4("celle"),{x:"la cheville → feminine singular → <b>celle</b>."});
+P("dem","Parmi mes amis, ___ qui s'entendent le mieux avec moi sont Paul et Hugo.",D4("ceux"),{x:"les amis → masculine plural → <b>ceux</b>."});
+P("dem","Mon ordinateur est plus rapide que ___ de mon frère.",D4("celui"),{x:"l'ordinateur → masculine singular → <b>celui</b>."});
+P("dem","Tu veux partir à cinq heures du matin ? ___ ne me plaît pas du tout.",["Ça","Celui","Celle","Ceux"],{x:"It refers to the idea, not a noun → <b>ça</b> (cela)."});
+T("dem","Quelle robe veux-tu ? — ___-ci ou celle-là ?","Celle",{x:"la robe → <b>celle</b>-ci."});
+T("dem","Ce sont tes chaussures ou ___ de ta sœur ?","celles",{x:"les chaussures → feminine plural → <b>celles</b>."});
+T("dem","Ce chirurgien est plus doué que ___ que j'ai vu l'année dernière.","celui",{x:"le chirurgien → <b>celui</b>."});
+T("dem","Les enfants qui mangent sain sont en meilleure forme que ___ qui mangent de la malbouffe.","ceux",{x:"les enfants → masculine plural → <b>ceux</b>."});
+T("dem","Les vols du matin sont complets, mais ___ du soir sont libres.","ceux",{x:"les vols → masculine plural → <b>ceux</b>."});
+T("dem","Cette maison-ci est moins chère que ___-là.","celle",{x:"la maison → <b>celle</b>-là."});
+T("dem","Voici deux témoignages : ___ de la voisine est le plus précis.","celui",{x:"le témoignage → masculine singular → <b>celui</b>."});
+T("dem","Quel gâteau tu veux ? — ___-ci, il a l'air délicieux.","Celui",{x:"le gâteau → <b>celui</b>-ci."});
+
+/* --- passé composé : avoir / être --- */
+const PI = "Type the verb in the passé composé.";
+T("pc","Hier soir, Léa ___ très tard.","est rentrée",{cue:"(rentrer)",ins:PI,x:"rentrer with no direct object → être; agrees with Léa → <b>est rentrée</b>."});
+T("pc","Nous ___ les valises du grenier.","avons descendu",{cue:"(descendre)",ins:PI,x:"Direct object (les valises) after the verb → avoir, no agreement → <b>avons descendu</b>."});
+T("pc","Mes parents ___ à Marseille en 1985.","sont nés",{cue:"(naître)",ins:PI,x:"naître → être; masculine plural → <b>sont nés</b>."});
+T("pc","Le témoin ___ les pompiers tout de suite.","a appelé",{cue:"(appeler)",ins:PI,x:"Ordinary verb → avoir → <b>a appelé</b>."});
+T("pc","Elles ___ à six heures pour éviter la canicule.","sont parties",{cue:"(partir)",ins:PI,x:"partir → être; feminine plural → <b>sont parties</b>."});
+T("pc","Ma sœur et moi, nous ___ dans le projet.",["nous sommes impliqués","nous sommes impliquées"],{cue:"(s'impliquer)",ins:PI,x:"Pronominal → être, agrees with nous → <b>nous sommes impliqué(e)s</b>."});
+T("pc","Les maisons ___ pendant le séisme.","se sont effondrées",{cue:"(s'effondrer)",ins:PI,x:"Pronominal → être; les maisons is feminine plural → <b>se sont effondrées</b>."});
+T("pc","Tu as vu la fresque ? — Oui, je l'___ hier.","ai vue",{cue:"(voir)",ins:PI,x:"avoir + direct object before the verb (l' = la fresque) → agreement → <b>ai vue</b>."});
+T("pc","Ils ___ indemnes de l'accident.","sont sortis",{cue:"(sortir)",ins:PI,x:"sortir with no direct object → être → <b>sont sortis</b>."});
+T("pc","Elle ___ la poubelle avant de partir.","a sorti",{cue:"(sortir)",ins:PI,x:"sortir + direct object (la poubelle) → avoir, no agreement → <b>a sorti</b>."});
+T("pc","Ma grand-mère ___ trois jours à l'hôpital.","est restée",{cue:"(rester)",ins:PI,x:"rester → être; feminine → <b>est restée</b>."});
+T("pc","Ils ___ dès le premier jour.","se sont entendus",{cue:"(s'entendre)",ins:PI,x:"Pronominal → être; se is a direct object (entendre quelqu'un) → agreement → <b>se sont entendus</b>."});
+P("pc","Elle ___ l'escalier en courant.",["a monté","est montée"],{x:"Direct object (l'escalier) → <b>avoir</b>: a monté."});
+P("pc","Elle ___ au troisième étage à pied.",["est montée","a monté"],{x:"No direct object → <b>être</b>, with agreement: est montée."});
+P("pc","Les enfants ___ dans la piscine.",["sont tombés","ont tombé","sont tombé","ont tombés"],{x:"tomber → être; masculine plural → <b>sont tombés</b>."});
+P("pc","Les médicaments que le médecin m'___ sont efficaces.",["a donnés","a donné","est donné","sont donnés"],{x:"avoir + direct object before the verb (que = les médicaments) → <b>a donnés</b>."});
+P("pc","Elles se sont ___ hier soir.",["téléphoné","téléphonées"],{x:"téléphoner <b>à</b> quelqu'un → se is indirect → no agreement: <b>téléphoné</b>."});
+P("pc","Marie s'est ___ les mains.",["lavé","lavée"],{x:"The direct object (les mains) comes after the verb → no agreement: <b>lavé</b>."});
+P("pc","Nous ___ une semaine très agréable à Nice.",["avons passé","sommes passés","avons passée","sommes passé"],{x:"passer + direct object (une semaine) → avoir; the object comes after → <b>avons passé</b>."});
+P("pc","Le chat ___ du toit, mais il est sain et sauf.",["est tombé","a tombé"],{x:"tomber → <b>être</b>: est tombé."});
+
+/* ---------------- grading (pure) ---------------- */
+const VOWEL = /^[aeiouyàâäéèêëîïôöûüùœh]/i;
+function norm(s){
+  return (s||"").normalize("NFC").replace(/[’‘`´]/g,"'").toLowerCase()
+    .replace(/\s+/g," ").trim().replace(/\b(l|s|d|j|m|t|qu)' +/g,"$1'");
+}
+function fold(s){ return norm(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/œ/g,"oe").replace(/æ/g,"ae"); }
+function splitArt(s){ const m = s.match(/^(les|le|la|une|un|des|l')\s?(.+)$/); return m ? {art:m[1], body:m[2]} : null; }
+function articleForms(form, g){
+  const p = splitArt(form); if(!p) return [form];
+  const b = p.body, v = VOWEL.test(b);
+  let gen = (p.art==="le"||p.art==="un") ? "m" : (p.art==="la"||p.art==="une") ? "f" : (p.art==="les"||p.art==="des") ? "pl" : (g||"m").startsWith("f") ? "f" : "m";
+  if(gen==="pl") return ["les "+b, "des "+b];
+  if(gen==="m") return [(v?"l'":"le ")+b, "un "+b];
+  return [(v?"l'":"la ")+b, "une "+b];
+}
+I.forEach(it => {
+  if(it.k!=="type") return;
+  let acc = [];
+  it.a.forEach(s => { acc.push(norm(s)); if(it.noun) articleForms(norm(s), it.g).forEach(x => acc.push(x)); });
+  it.bodies = it.noun ? [...new Set(it.a.map(s => (splitArt(norm(s))||{body:norm(s)}).body))] : [];
+  it.bodies.forEach(b => acc.push(b));
+  it.acc = [...new Set(acc)];
+});
+function lev(a,b){
+  const m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,j)=>j), cur=new Array(n+1);
+  for(let i=1;i<=m;i++){ cur[0]=i;
+    for(let j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1)); }
+    [prev,cur]=[cur,prev]; }
+  return prev[n];
+}
+const ppBase = w => w.replace(/(es|e|s)$/,"");
+/* verdicts: ok | accent | article | gender | agreement | auxiliary | close | wrong */
+function grade(input, it){
+  const n = norm(input), fd = fold(input);
+  if(it.acc.includes(n)) return {v:"ok", target:n};
+  const accHit = it.acc.find(a => fold(a)===fd);
+  if(accHit) return {v:"accent", target:accHit};
+  const withArt = b => it.acc.find(a => a.endsWith(" "+b) || a==="l'"+b) || it.acc[0];
+  if(it.noun){
+    const bi = it.bodies.findIndex(b => fold(b)===fd);
+    if(bi>-1) return {v:"article", target:withArt(it.bodies[bi])};
+    const p = splitArt(n);
+    if(p){ const gi = it.bodies.findIndex(b => fold(b)===fold(p.body)); if(gi>-1) return {v:"gender", target:withArt(it.bodies[gi])}; }
+  }
+  if(it.t==="pc"){
+    const iw = n.split(" ");
+    for(const a of it.acc){
+      const aw = a.split(" ");
+      if(iw.length!==aw.length) continue;
+      const last = iw.length-1;
+      if(ppBase(iw[last])!==ppBase(aw[last])) continue;
+      const restSame = iw.slice(0,last).join(" ")===aw.slice(0,last).join(" ");
+      return {v: restSame ? "agreement" : "auxiliary", target:a};
+    }
+  }
+  let best = it.acc[0], d = Infinity;
+  it.acc.forEach(a => { const k = lev(n,a); if(k<d){ d=k; best=a; } });
+  if(lev(fd, fold(best))<=2 && fold(best).length>=5) return {v:"close", target:best};
+  return {v:"wrong", target:best};
+}
+function diff(a,b){
+  const m=a.length,n=b.length, L=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=m-1;i>=0;i--) for(let j=n-1;j>=0;j--) L[i][j] = a[i]===b[j] ? L[i+1][j+1]+1 : Math.max(L[i+1][j],L[i][j+1]);
+  const ua=[], tb=[]; let i=0,j=0;
+  while(i<m && j<n){
+    if(a[i]===b[j]){ ua.push({c:a[i],bad:false}); tb.push({c:b[j],bad:false}); i++; j++; }
+    else if(L[i+1][j]>=L[i][j+1]){ ua.push({c:a[i],bad:true}); i++; }
+    else { tb.push({c:b[j],bad:true}); j++; }
+  }
+  while(i<m) ua.push({c:a[i++],bad:true});
+  while(j<n) tb.push({c:b[j++],bad:true});
+  return [ua,tb];
+}
+if(typeof module!=="undefined") module.exports = {I, TOPICS, grade};
+
+/* ---------------- UI ---------------- */
+if(typeof document!=="undefined"){
+const $ = s => document.querySelector(s);
+const card = $("#card"), ruleBox = $("#rule");
+const store = {
+  get(k,d){ try{ const v = localStorage.getItem("u4g."+k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem("u4g."+k, JSON.stringify(v)); }catch(e){} }
+};
+let miss = store.get("miss", {});
+const S = { topic: store.get("topic","all"), size: store.get("size","20"), fmt: store.get("fmt","mix"), src:"all", strict: store.get("strict", true),
+  queue:[], i:0, res:[], answered:false, cur:null, order:null };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const missCount = () => Object.keys(miss).length;
+const recordMiss = it => { miss[it.id] = (miss[it.id]||0)+1; store.set("miss", miss); };
+const recordHit = it => { if(miss[it.id]){ miss[it.id]--; if(miss[it.id]<=0) delete miss[it.id]; store.set("miss", miss); } };
+const fullSentence = (it, ans) => it.s.replace("___", ans);
+const canon = it => it.k==="pick" ? it.ch[0] : (it.t==="nom" && it.noun ? it.a[0] : it.a[0]);
+
+function syncControls(){
+  $("#topic").value = S.topic; $("#size").value = S.size; $("#fmt").value = S.fmt; $("#strict").checked = S.strict;
+  const src = $("#src"); src.options[1].textContent = "My misses (" + missCount() + ")"; src.value = S.src;
+}
+function showRule(t){
+  const T0 = TOPICS[t];
+  ruleBox.innerHTML = `<h2>${T0.name}<small>${T0.en}</small></h2>${T0.rule}`;
+}
+function newSet(list){
+  if(list){ S.queue = shuffle(list); }
+  else {
+    let pool = I.filter(it => (S.topic==="all" || it.t===S.topic) && (S.fmt==="mix" || it.k===S.fmt));
+    if(S.src==="miss"){ const m = pool.filter(it => miss[it.id]); if(m.length) pool = m; else S.src = "all"; }
+    const n = Math.min(pool.length, +S.size);
+    if(S.topic==="all"){ /* round-robin across topics so a mixed set stays balanced */
+      const by = {}; shuffle(pool).forEach(it => (by[it.t] = by[it.t]||[]).push(it));
+      const keys = shuffle(Object.keys(by)), out = [];
+      while(out.length<n){ let added=false; keys.forEach(k => { if(out.length<n && by[k].length){ out.push(by[k].shift()); added=true; } }); if(!added) break; }
+      S.queue = shuffle(out);
+    } else S.queue = shuffle(pool).slice(0,n);
+  }
+  S.i = 0; S.res = []; syncControls(); render();
+}
+function render(){
+  if(S.i >= S.queue.length) return renderResults();
+  S.answered = false; S.cur = S.queue[S.i];
+  showRule(S.cur.t);
+  S.cur.k==="type" ? renderType() : renderPick();
+}
+function head(){
+  const right = S.res.filter(r=>r.ok).length;
+  return `<div class="prog"><i style="width:${(S.i/S.queue.length)*100}%"></i></div>
+    <div class="meta"><span>Question ${S.i+1} of ${S.queue.length}</span><span>${right} correct so far</span></div>`;
+}
+const cueHTML = it => it.cue ? ` <span class="cue">${esc(it.cue)}</span>` : "";
+
+/* --- typed --- */
+const KEYS = ["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+function renderType(){
+  const it = S.cur, [pre, post] = it.s.split("___");
+  card.innerHTML = head() + `<div class="body">
+    <span class="tag">${TOPICS[it.t].name}</span>
+    <p class="ins">${esc(it.ins || "Type the missing word(s).")}</p>
+    <p class="sent" lang="fr">${esc(pre)}<span class="gap" id="gap">&nbsp;</span>${esc(post)}${cueHTML(it)}</p>
+    <div class="ruled" id="ruled"><input id="ans" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="fr" aria-label="Your answer"></div>
+    <div class="keys" aria-label="Accented letters">${KEYS.map(k=>`<button type="button" class="key" data-k="${esc(k)}" tabindex="-1">${esc(k)}</button>`).join("")}</div>
+    <div class="row"><button type="button" class="btn primary" id="check">Check</button><button type="button" class="btn ghost" id="skip">I don't know</button><span class="hint">Enter to check · Enter again for next</span></div>
+    <div id="fb"></div></div>`;
+  const inp = $("#ans");
+  inp.focus({preventScroll:true});
+  inp.addEventListener("input", () => { $("#gap").textContent = inp.value || " "; });
+  inp.addEventListener("keydown", e => { if(e.key==="Enter"){ e.preventDefault(); S.answered ? next() : checkType(); } });
+  card.querySelectorAll(".key").forEach(b => {
+    b.addEventListener("mousedown", e => e.preventDefault());
+    b.addEventListener("click", () => {
+      if(S.answered) return;
+      const k = b.dataset.k, s = inp.selectionStart ?? inp.value.length, en = inp.selectionEnd ?? s;
+      inp.value = inp.value.slice(0,s) + k + inp.value.slice(en);
+      inp.setSelectionRange(s+k.length, s+k.length); inp.focus(); $("#gap").textContent = inp.value;
+    });
+  });
+  $("#check").onclick = () => S.answered ? next() : checkType();
+  $("#skip").onclick = () => { if(!S.answered) checkType(true); };
+}
+const marked = (arr, cls) => arr.map(o => o.bad ? `<span class="${cls}">${esc(o.c===" "?"·":o.c)}</span>` : esc(o.c)).join("");
+const TITLES = {ok:"Correct", accent:"Check the accents", article:"Article missing", gender:"Wrong article: check the gender",
+  agreement:"Check the agreement", auxiliary:"Wrong auxiliary", close:"Close: check the spelling", wrong:"Not quite", skip:"Here's the answer"};
+const TONE = {ok:"ok", accent:"near", article:"near", gender:"near", agreement:"near", close:"near", auxiliary:"bad", wrong:"bad", skip:"bad"};
+function checkType(skipped){
+  const it = S.cur, inp = $("#ans"), val = inp.value;
+  if(!skipped && !norm(val)){ inp.focus(); return; }
+  S.answered = true; inp.readOnly = true;
+  const g = skipped ? {v:"skip", target:norm(it.a[0])} : grade(val, it);
+  const ok = g.v==="ok" || (g.v==="accent" && !S.strict);
+  const res = {it, input: skipped ? "" : val, v:g.v, ok}; S.res.push(res);
+  ok ? recordHit(it) : recordMiss(it);
+  $("#ruled").classList.add(ok ? "ok" : "bad");
+  const gap = $("#gap"); gap.textContent = ok ? val.trim() : it.a[0]; gap.classList.add(ok ? "ok" : "bad");
+  let title = TITLES[g.v]; if(g.v==="accent" && !S.strict) title = "Correct, but check the accents";
+  let h = `<div class="fb ${ok && g.v==="ok" ? "ok" : TONE[g.v]}"><strong class="v">${title}</strong>`;
+  if(g.v!=="ok" && g.v!=="skip"){
+    const [ua, tb] = diff(norm(val), g.target);
+    h += `<div class="cmp"><span class="l">You</span><span class="w">${marked(ua,"x")}</span><span class="l">Correct</span><span class="w">${marked(tb,"m")}</span></div>`;
+  }
+  h += `<div class="full" lang="fr">${esc(fullSentence(it, it.a[0]))}</div>`;
+  if(it.x) h += `<div class="why">${it.x}</div>`;
+  if(!ok && g.v!=="skip") h += `<button type="button" class="linkish" id="override">My answer was right, count it</button>`;
+  h += `</div>`;
+  $("#fb").innerHTML = h;
+  finishButtons();
+  const ov = $("#override");
+  if(ov) ov.onclick = () => { res.ok = true; delete miss[it.id]; store.set("miss", miss); $("#ruled").classList.replace("bad","ok"); ov.replaceWith(Object.assign(document.createElement("span"),{className:"note",textContent:"Counted as correct."})); $("#check").focus(); };
+}
+function finishButtons(){
+  const c = $("#check"); c.textContent = S.i+1 < S.queue.length ? "Next question" : "See results";
+  const sk = $("#skip"); if(sk) sk.hidden = true;
+  c.focus({preventScroll:true});
+}
+
+/* --- drop-down --- */
+function renderPick(){
+  const it = S.cur, [pre, post] = it.s.split("___");
+  S.order = shuffle(it.ch);
+  card.innerHTML = head() + `<div class="body">
+    <span class="tag">${TOPICS[it.t].name}</span>
+    <p class="ins">Choose the right form${it.ch.length===2 ? " (2 options)" : ""}.</p>
+    <p class="sent" lang="fr">${esc(pre)}<select class="pick" id="pick" aria-label="Choose the missing word"><option value="" selected disabled>choisir…</option>${S.order.map((o,k)=>`<option value="${k}">${esc(o)}</option>`).join("")}</select>${esc(post)}${cueHTML(it)}</p>
+    <div class="row"><button type="button" class="btn primary" id="check">Check</button><span class="hint">Keys 1–${S.order.length} pick · Enter to check</span></div>
+    <div id="fb"></div></div>`;
+  const sel = $("#pick");
+  sel.addEventListener("change", () => $("#check").focus({preventScroll:true}));
+  $("#check").onclick = () => S.answered ? next() : checkPick();
+  sel.focus({preventScroll:true});
+}
+function checkPick(){
+  const it = S.cur, sel = $("#pick");
+  if(sel.value===""){ sel.focus(); return; }
+  S.answered = true;
+  const chosen = S.order[+sel.value], ok = chosen===it.ch[0];
+  S.res.push({it, input: ok ? "" : chosen, v: ok?"ok":"wrong", ok});
+  ok ? recordHit(it) : recordMiss(it);
+  sel.disabled = true; sel.classList.add(ok ? "ok" : "bad");
+  let h = `<div class="fb ${ok?"ok":"bad"}"><strong class="v">${ok ? "Correct" : "Not quite"}</strong>`;
+  if(!ok) h += `<div class="cmp"><span class="l">You</span><span class="w"><span class="x">${esc(chosen)}</span></span><span class="l">Correct</span><span class="w">${esc(it.ch[0])}</span></div>`;
+  h += `<div class="full" lang="fr">${esc(fullSentence(it, it.ch[0]))}</div>`;
+  if(it.x) h += `<div class="why">${it.x}</div>`;
+  h += `</div>`;
+  $("#fb").innerHTML = h;
+  finishButtons();
+}
+document.addEventListener("keydown", e => {
+  if(!S.cur || S.i>=S.queue.length || S.cur.k!=="pick") return;
+  if(e.target.classList && e.target.classList.contains("set")) return;
+  const sel = $("#pick"); if(!sel) return;
+  if(/^[1-4]$/.test(e.key) && !S.answered && +e.key<=S.order.length){ e.preventDefault(); sel.value = String(+e.key-1); }
+  else if(e.key==="Enter" && e.target.id!=="check"){ e.preventDefault(); S.answered ? next() : checkPick(); }
+});
+function next(){ S.i++; render(); }
+
+/* --- results --- */
+function renderResults(){
+  const total = S.res.length, right = S.res.filter(r=>r.ok).length, wrong = S.res.filter(r=>!r.ok);
+  const per = {}; S.res.forEach(r => { const p = per[r.it.t] = per[r.it.t] || [0,0]; p[1]++; if(r.ok) p[0]++; });
+  ruleBox.innerHTML = `<h2>Results by topic</h2><div class="bytopic">${Object.keys(TOPICS).filter(t=>per[t]).map(t=>`<span>${TOPICS[t].name}</span><span>${per[t][0]} / ${per[t][1]}</span>`).join("")}</div>`;
+  card.innerHTML = `<div class="prog"><i style="width:100%"></i></div><div class="body">
+    <span class="tag">Results</span>
+    <div class="score"><span class="big">${right} / ${total}</span><span class="pct">${total?Math.round(right/total*100):0}% · ${missCount()} question${missCount()===1?"":"s"} in your misses pile</span></div>
+    ${wrong.length ? `<div class="misslist">${wrong.map(r=>`<div><span class="t">${TOPICS[r.it.t].name}</span><span class="fr" lang="fr">${esc(fullSentence(r.it, canon(r.it)))}</span><span class="yours">${r.v==="skip" ? "skipped" : "You: " + esc(r.input) + (TITLES[r.v] && r.v!=="wrong" ? " · " + TITLES[r.v].toLowerCase() : "")}</span></div>`).join("")}</div>` : `<p class="empty">Clean sweep. No misses this round.</p>`}
+    <div class="row">${wrong.length ? `<button type="button" class="btn primary" id="retry">Retry the ${wrong.length} missed</button>` : ""}<button type="button" class="btn" id="again">New set</button></div>
+  </div>`;
+  const r = $("#retry"); if(r) r.onclick = () => newSet(wrong.map(x=>x.it));
+  $("#again").onclick = () => newSet();
+  syncControls();
+}
+
+/* --- controls --- */
+$("#topic").onchange = e => { S.topic = e.target.value; store.set("topic", S.topic); newSet(); };
+$("#size").onchange = e => { S.size = e.target.value; store.set("size", S.size); newSet(); };
+$("#fmt").onchange = e => { S.fmt = e.target.value; store.set("fmt", S.fmt); newSet(); };
+$("#src").onchange = e => { S.src = e.target.value; newSet(); };
+$("#strict").onchange = e => { S.strict = e.target.checked; store.set("strict", S.strict); };
+$("#newSet").onclick = () => newSet();
+newSet();
+}
+</script>
+
+</html>

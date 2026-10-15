@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unité 4 Spelling Drill</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap">
+<style>
+/* Layout: one narrow column — header, settings strip, a single "copybook" card ruled like a Seyès notebook, results/list below. */
+:root{
+  --paper:#F7F7FB; --surface:#FFFFFF; --ink:#1D1A2C; --muted:#68657C; --line:#E2E0EC;
+  --violet:#4936A6; --violet-soft:#ECE9FA; --violet-ink:#3A2B8C;
+  --red:#BE3229; --red-soft:#FBEAE7; --green:#23744A; --green-soft:#E4F3EA; --amber:#8F5B00; --amber-soft:#FAF0DA;
+  --seyes:rgba(73,54,166,.09); --seyes-strong:rgba(73,54,166,.20); --margin:rgba(190,50,41,.38);
+  --f-word:'Literata', Georgia, 'Times New Roman', serif;
+  --f-ui:'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#A3A0B8; --line:#312E42;
+  --violet:#A797FF; --violet-soft:#2A2445; --violet-ink:#C6BCFF;
+  --red:#FF8279; --red-soft:#3A1F22; --green:#6ED69C; --green-soft:#17321F; --amber:#F2C15E; --amber-soft:#36290F;
+  --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.16); --margin:rgba(255,130,121,.35);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#A3A0B8; --line:#312E42;
+  --violet:#A797FF; --violet-soft:#2A2445; --violet-ink:#C6BCFF;
+  --red:#FF8279; --red-soft:#3A1F22; --green:#6ED69C; --green-soft:#17321F; --amber:#F2C15E; --amber-soft:#36290F;
+  --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.16); --margin:rgba(255,130,121,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.5}
+.wrap{max-width:660px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:18px}
+header{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--f-word);font-weight:600;font-size:30px;line-height:1.15;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:60ch}
+
+/* settings */
+.bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{all:unset;cursor:pointer;padding:7px 12px;font-size:13.5px;font-weight:500;color:var(--muted)}
+.seg button + button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--violet-soft);color:var(--violet-ink);font-weight:600}
+.seg button:focus-visible,.btn:focus-visible,.key:focus-visible,.opt:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+label.ctl{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--muted)}
+select{font:inherit;font-size:13.5px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+input[type=checkbox]{accent-color:var(--violet);width:16px;height:16px}
+
+/* card */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.prog{height:4px;background:var(--line)}
+.prog i{display:block;height:100%;background:var(--violet);width:0;transition:width .25s ease}
+.meta{display:flex;justify-content:space-between;gap:12px;padding:12px 20px 0;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.body{padding:14px 20px 20px;display:flex;flex-direction:column;gap:14px}
+.tag{align-self:flex-start;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--violet-ink);background:var(--violet-soft);padding:3px 8px;border-radius:5px}
+.prompt{font-family:var(--f-word);font-size:26px;line-height:1.25;margin:0;text-wrap:balance}
+.prompt.fr{font-size:30px}
+
+/* Seyès-ruled answer line */
+.ruled{position:relative;border-radius:8px;border:1px solid var(--line);
+  background-color:var(--surface);
+  background-image:
+    linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 35.5px, transparent 35.5px),
+    repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+    repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px);
+}
+.ruled input{width:100%;border:0;background:transparent;color:var(--ink);font-family:var(--f-word);font-size:24px;padding:12px 14px 12px 48px;outline:none}
+.ruled:focus-within{border-color:var(--violet);box-shadow:0 0 0 3px var(--violet-soft)}
+.ruled.ok{border-color:var(--green)} .ruled.bad{border-color:var(--red)}
+.keys{display:flex;flex-wrap:wrap;gap:6px}
+.key{all:unset;cursor:pointer;min-width:34px;height:34px;display:inline-grid;place-items:center;border:1px solid var(--line);border-radius:7px;font-family:var(--f-word);font-size:17px;background:var(--paper);color:var(--ink)}
+.key:hover{border-color:var(--violet);color:var(--violet-ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{all:unset;cursor:pointer;padding:9px 16px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--violet);border-color:var(--violet);color:var(--surface)}
+.btn.ghost{color:var(--muted)}
+.btn:hover{filter:brightness(1.05)}
+.hint{font-size:12.5px;color:var(--muted);margin-left:auto}
+
+/* feedback */
+.fb{border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.fb.ok{background:var(--green-soft)} .fb.near{background:var(--amber-soft)} .fb.bad{background:var(--red-soft)}
+.fb strong.v{font-size:14.5px}
+.fb.ok strong.v{color:var(--green)} .fb.near strong.v{color:var(--amber)} .fb.bad strong.v{color:var(--red)}
+.cmp{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline}
+.cmp span.l{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cmp .w{font-family:var(--f-word);font-size:20px;min-width:0;overflow-wrap:anywhere}
+.x{color:var(--red);text-decoration:line-through;text-decoration-thickness:2px}
+.m{color:var(--red);background:var(--surface);border-bottom:2px solid var(--red);border-radius:2px}
+.note{color:var(--muted);font-size:13px}
+.linkish{all:unset;cursor:pointer;font-size:13px;color:var(--violet-ink);text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+
+/* MCQ */
+.opts{display:grid;gap:8px}
+.opt{all:unset;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:11px 14px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+.opt b{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.opt:hover:not([disabled]){border-color:var(--violet)}
+.opt.ok{border-color:var(--green);background:var(--green-soft)}
+.opt.bad{border-color:var(--red);background:var(--red-soft)}
+.opt[disabled]{cursor:default}
+
+/* results */
+.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.score .big{font-family:var(--f-word);font-size:44px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.score .pct{color:var(--muted);font-size:15px}
+.misslist{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.misslist div{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:4px 14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.misslist .fr{font-family:var(--f-word);font-size:17px}
+.misslist .en{color:var(--muted);font-size:13.5px}
+.misslist .yours{grid-column:1/-1;font-size:12.5px;color:var(--red)}
+
+/* list */
+.search{width:100%;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:baseline}
+td.fr{font-family:var(--f-word);font-size:16.5px;width:46%}
+td.en{color:var(--muted)}
+.chip{display:inline-block;font-size:11px;font-weight:600;color:var(--red);background:var(--red-soft);padding:1px 6px;border-radius:4px;margin-left:6px;font-family:var(--f-ui);vertical-align:2px}
+.empty{color:var(--muted);font-size:14px}
+@media (max-width:480px){ h1{font-size:25px} .prompt{font-size:22px} .prompt.fr{font-size:26px} .ruled input{font-size:21px} .hint{display:none} }
+@media (prefers-reduced-motion:reduce){ .prog i{transition:none} }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Test 4 · Unité 4 · Chapitres 16–19</div>
+    <h1>Unité 4 Spelling Drill</h1>
+    <p class="sub">All 80 words from the Test 4 study guide. Type the French with articles and accents, or switch to recognition for the reading side.</p>
+  </header>
+
+  <div class="bar" role="group" aria-label="Quiz settings">
+    <div class="seg" id="modeSeg">
+      <button type="button" data-mode="write" aria-pressed="true">Spell (EN → FR)</button>
+      <button type="button" data-mode="mcq" aria-pressed="false">Recognize (FR → EN)</button>
+      <button type="button" data-mode="list" aria-pressed="false">Word list</button>
+    </div>
+    <label class="ctl" id="sizeCtl">Words
+      <select id="size">
+        <option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="80">All 80</option>
+      </select>
+    </label>
+    <label class="ctl" id="srcCtl">From
+      <select id="src"><option value="all">All words</option><option value="miss">My misses</option></select>
+    </label>
+    <label class="ctl" id="strictCtl"><input type="checkbox" id="strict" checked> Strict accents</label>
+    <button type="button" class="btn ghost" id="newSet">New set</button>
+  </div>
+
+  <section class="card" id="card" aria-live="polite"></section>
+</div>
+
+<script>
+/* ---------- data: [french, english, type, gender, alternates] ---------- */
+/* types: n noun, v verb, a adjective, x expression. gender: m, f, mp, fp */
+const RAW = [
+["à la fois","at the same time","x"],
+["à petite échelle","small-scale","x"],
+["à plein temps","full-time","x"],
+["à portée de main","within reach","x"],
+["agréable","pleasant","a"],
+["un aide-soignant","a nursing assistant","n","m",["une aide-soignante"]],
+["s'alourdir","to become heavier, to worsen","v"],
+["améliorer","to improve","v"],
+["amoureux","in love","a",null,["amoureuse"]],
+["une attente","an expectation, a wait","n","f"],
+["au fur et à mesure","gradually, as, over time","x"],
+["au large de","off the coast of","x"],
+["s'avérer","to turn out to be, to prove to be","v"],
+["une bêtise","a stupid act, a dumb decision","n","f"],
+["boucler","to cordon off, to loop","v"],
+["la canicule","the heatwave","n","f"],
+["la cheville","the ankle","n","f"],
+["un chirurgien","a surgeon","n","m",["une chirurgienne"]],
+["un citadin","a city dweller","n","m",["une citadine"]],
+["la cohabitation","living together","n","f"],
+["conscient de","aware of","a",null,["consciente de"]],
+["la crainte","the fear","n","f"],
+["le cyberharcèlement","the cyberbullying","n","m"],
+["un décalage","a shift, a gap","n","m"],
+["les déchets","the waste, garbage","n","mp"],
+["les décombres","the rubble","n","mp"],
+["détendu","relaxed","a",null,["détendue"]],
+["doué","gifted","a",null,["douée"]],
+["les droits","the rights","n","mp"],
+["durable","sustainable","a"],
+["économiser","to save money","v"],
+["l'effondrement","the collapse","n","m"],
+["élargir","to widen, to make larger","v"],
+["s'entendre","to get along","v"],
+["l'espérance de vie","the life expectancy","n","f"],
+["exigeant","demanding","a",null,["exigeante"]],
+["faire mal","to hurt","v"],
+["une fresque","a mural painting","n","f"],
+["un généraliste","a general medicine doctor","n","m",["une généraliste"]],
+["le genou","the knee","n","m"],
+["héberger","to host, to accommodate","v"],
+["hurler","to scream, to yell","v"],
+["s'impliquer","to get involved","v"],
+["impraticable","impassable","a"],
+["un incendie","a fire (that burns something down)","n","m"],
+["indemne","unharmed","a"],
+["jeûner","to fast (go without food)","v"],
+["lutter contre","to fight against","v"],
+["une maison de retraite","a retirement home","n","f"],
+["la malbouffe","the junk food","n","f"],
+["une marée noire","an oil spill","n","f"],
+["les médicaments","the medicine, medication","n","mp"],
+["un ménage","a household","n","m"],
+["les mœurs","the traditions, customs, mores","n","fp"],
+["mordre à l'hameçon","to take the bait","x"],
+["néfaste","harmful","a"],
+["le nombril","the belly button, navel","n","m"],
+["un pari","a bet, a gamble","n","m"],
+["le partage","the sharing","n","m"],
+["se permettre","to afford, to allow oneself","v"],
+["peu importe","it doesn't matter, either way","x"],
+["précoce","precocious, early","a"],
+["privilégier","to favor, to opt for, to prioritize","v"],
+["provisoire","temporary","a"],
+["une quête","a quest (a goal you seek to achieve)","n","f"],
+["un régime","a diet","n","m"],
+["le renom","the renown, fame","n","m"],
+["renouvelable","renewable","a"],
+["une réplique","an aftershock (earthquake)","n","f"],
+["les richesses","the wealth, riches","n","fp"],
+["sain et sauf","safe and sound","x",null,["saine et sauve"]],
+["le sauvetage","the rescue","n","m"],
+["un séisme","an earthquake","n","m"],
+["soigner","to care for, to treat","v"],
+["le soutien","the support","n","m"],
+["un témoin","a witness","n","m"],
+["tout à fait","exactly, completely","x"],
+["les urgences","the emergency room","n","fp"],
+["valoir","to be worth","v"],
+["vulgariser","to popularize, to make accessible","v"]
+];
+
+/* ---------- grading (pure) ---------- */
+const VOWEL = /^[aeiouyàâäéèêëîïôöûüùœh]/i;
+function norm(s){
+  return (s||"").normalize("NFC").replace(/[’‘`´]/g,"'").toLowerCase()
+    .replace(/\s+/g," ").trim().replace(/\b(l|s|d)' +/g,"$1'");
+}
+function fold(s){ return norm(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/œ/g,"oe").replace(/æ/g,"ae"); }
+function splitArt(s){
+  const m = s.match(/^(les|le|la|une|un|des|l')\s?(.+)$/);
+  return m ? {art:m[1], body:m[2]} : null;
+}
+function articleForms(form, g){
+  const p = splitArt(form); if(!p) return [form];
+  const b = p.body, v = VOWEL.test(b);
+  let gen = (p.art==="le"||p.art==="un") ? "m" : (p.art==="la"||p.art==="une") ? "f" : (p.art==="les"||p.art==="des") ? "pl" : (g||"m").startsWith("f") ? "f" : "m";
+  if(g && g.endsWith("p")) gen = "pl";
+  if(gen==="pl") return ["les "+b, "des "+b];
+  if(gen==="m") return [(v?"l'":"le ")+b, "un "+b];
+  return [(v?"l'":"la ")+b, "une "+b];
+}
+function makeWord(r, i){
+  const [f,e,t,g,alts] = r;
+  const shown = [f].concat(alts||[]);
+  let acc = [];
+  shown.forEach(s => { acc.push(norm(s)); if(t==="n") articleForms(norm(s), g).forEach(x=>acc.push(x)); });
+  acc = [...new Set(acc)];
+  const bodies = t==="n" ? [...new Set(shown.map(s => (splitArt(norm(s))||{body:norm(s)}).body))] : [];
+  const refl = t==="v" && /^(s'|se )/.test(f) ? f.replace(/^(s'|se )/,"") : null;
+  return {id:i, f, e, t, g, alts:alts||[], acc, bodies, refl};
+}
+const W = RAW.map(makeWord);
+
+function lev(a,b){
+  const m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,j)=>j), cur=new Array(n+1);
+  for(let i=1;i<=m;i++){ cur[0]=i;
+    for(let j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1)); }
+    [prev,cur]=[cur,prev]; }
+  return prev[n];
+}
+function closest(input, w){
+  const n = norm(input); let best = w.acc[0], d = Infinity;
+  w.acc.forEach(a => { const k = lev(n,a); if(k<d){d=k;best=a;} });
+  return best;
+}
+/* verdicts: ok | accent | article | pronoun | close | wrong */
+function grade(input, w){
+  const n = norm(input), fd = fold(input);
+  if(w.acc.includes(n)) return {v:"ok", target:n};
+  const accHit = w.acc.find(a => fold(a)===fd);
+  if(accHit) return {v:"accent", target:accHit};
+  if(w.t==="n"){
+    const bi = w.bodies.findIndex(b => fold(b)===fd);
+    if(bi>-1) return {v:"article", target:w.acc.find(a => a.endsWith(" "+w.bodies[bi]) || a==="l'"+w.bodies[bi]) || w.acc[0]};
+    const p = splitArt(n);
+    if(p){ const gi = w.bodies.findIndex(b => fold(b)===fold(p.body));
+      if(gi>-1) return {v:"gender", target:w.acc.find(a => a.endsWith(" "+w.bodies[gi]) || a==="l'"+w.bodies[gi]) || w.acc[0]}; }
+  }
+  if(w.refl && fold(w.refl)===fd) return {v:"pronoun", target:norm(w.f)};
+  const t = closest(input, w), d = lev(fd, fold(t));
+  if(d<=2 && fold(t).length>=5) return {v:"close", target:t};
+  return {v:"wrong", target:t};
+}
+/* char diff via LCS: returns [userMarked, targetMarked] as arrays of {c, bad} */
+function diff(a,b){
+  const m=a.length,n=b.length, L=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=m-1;i>=0;i--) for(let j=n-1;j>=0;j--) L[i][j] = a[i]===b[j] ? L[i+1][j+1]+1 : Math.max(L[i+1][j],L[i][j+1]);
+  const ua=[], tb=[]; let i=0,j=0;
+  while(i<m && j<n){
+    if(a[i]===b[j]){ ua.push({c:a[i],bad:false}); tb.push({c:b[j],bad:false}); i++; j++; }
+    else if(L[i+1][j]>=L[i][j+1]){ ua.push({c:a[i],bad:true}); i++; }
+    else { tb.push({c:b[j],bad:true}); j++; }
+  }
+  while(i<m) ua.push({c:a[i++],bad:true});
+  while(j<n) tb.push({c:b[j++],bad:true});
+  return [ua,tb];
+}
+
+if(typeof module!=="undefined") module.exports = {W, grade, norm, fold, diff};
+
+/* ---------- UI ---------- */
+if(typeof document!=="undefined"){
+const $ = s => document.querySelector(s);
+const card = $("#card");
+const store = {
+  get(k,d){ try{ const v = localStorage.getItem("u4v."+k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem("u4v."+k, JSON.stringify(v)); }catch(e){} }
+};
+let miss = store.get("miss", {});
+const S = {
+  mode: store.get("mode","write"), size: store.get("size","20"), src:"all", strict: store.get("strict", true),
+  queue:[], i:0, res:[], answered:false, cur:null
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const TYPE = {n:"noun", v:"verb", a:"adjective", x:"expression"};
+const typeLabel = w => w.t==="n" && w.g && w.g.endsWith("p") ? "noun · plural" : TYPE[w.t];
+const missCount = () => Object.keys(miss).length;
+
+function recordMiss(w){ miss[w.f] = (miss[w.f]||0)+1; store.set("miss", miss); }
+function recordHit(w){ if(miss[w.f]){ miss[w.f]--; if(miss[w.f]<=0) delete miss[w.f]; store.set("miss", miss); } }
+
+function syncControls(){
+  document.querySelectorAll("#modeSeg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode===S.mode)));
+  $("#size").value = S.size; $("#strict").checked = S.strict;
+  const srcSel = $("#src"); srcSel.options[1].textContent = "My misses (" + missCount() + ")"; srcSel.value = S.src;
+  const quiz = S.mode!=="list";
+  ["#sizeCtl","#srcCtl","#newSet"].forEach(s => $(s).hidden = !quiz);
+  $("#strictCtl").hidden = S.mode!=="write";
+}
+
+function newSet(list){
+  if(list){ S.queue = shuffle(list); }
+  else {
+    let pool = W;
+    if(S.src==="miss"){ pool = W.filter(w => miss[w.f]); if(!pool.length){ S.src="all"; pool=W; } }
+    const n = S.size==="80" ? pool.length : Math.min(pool.length, +S.size);
+    S.queue = shuffle(pool).slice(0,n);
+  }
+  S.i = 0; S.res = []; S.answered = false;
+  syncControls(); render();
+}
+
+function render(){
+  if(S.mode==="list") return renderList();
+  if(S.i >= S.queue.length) return renderResults();
+  S.answered = false; S.cur = S.queue[S.i];
+  S.mode==="write" ? renderWrite() : renderMCQ();
+}
+function head(){
+  const right = S.res.filter(r=>r.ok).length;
+  return `<div class="prog"><i style="width:${(S.i/S.queue.length)*100}%"></i></div>
+    <div class="meta"><span>Word ${S.i+1} of ${S.queue.length}</span><span>${right} correct so far</span></div>`;
+}
+
+/* --- spell mode --- */
+const KEYS = ["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+function renderWrite(){
+  const w = S.cur;
+  card.innerHTML = head() + `<div class="body">
+    <span class="tag">${typeLabel(w)}</span>
+    <p class="prompt">${esc(w.e)}</p>
+    <div class="ruled" id="ruled"><input id="ans" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="fr" aria-label="Your French answer" placeholder="${w.t==="n"?"article + noun":"en français"}"></div>
+    <div class="keys" aria-label="Accented letters">${KEYS.map(k=>`<button type="button" class="key" data-k="${esc(k)}" tabindex="-1">${esc(k)}</button>`).join("")}</div>
+    <div class="row" id="actions">
+      <button type="button" class="btn primary" id="check">Check</button>
+      <button type="button" class="btn ghost" id="skip">I don't know</button>
+      <span class="hint">Enter to check · Enter again for next</span>
+    </div>
+    <div id="fb"></div>
+  </div>`;
+  const inp = $("#ans");
+  inp.focus({preventScroll:true});
+  inp.addEventListener("keydown", e => { if(e.key==="Enter"){ e.preventDefault(); S.answered ? next() : check(); } });
+  card.querySelectorAll(".key").forEach(b => b.addEventListener("mousedown", e => e.preventDefault()));
+  card.querySelectorAll(".key").forEach(b => b.addEventListener("click", () => {
+    if(S.answered) return;
+    const k = b.dataset.k, s = inp.selectionStart ?? inp.value.length, en = inp.selectionEnd ?? s;
+    inp.value = inp.value.slice(0,s) + k + inp.value.slice(en);
+    inp.setSelectionRange(s+k.length, s+k.length); inp.focus();
+  }));
+  $("#check").onclick = () => S.answered ? next() : check();
+  $("#skip").onclick = () => { if(!S.answered) check(true); };
+}
+function marked(arr, cls){ return arr.map(o => o.bad ? `<span class="${cls}">${esc(o.c===" "?"·":o.c)}</span>` : esc(o.c)).join(""); }
+function check(skipped){
+  const w = S.cur, inp = $("#ans"), val = inp.value;
+  if(!skipped && !norm(val)) { inp.focus(); return; }
+  S.answered = true; inp.readOnly = true;
+  let g = skipped ? {v:"skip", target:norm(w.f)} : grade(val, w);
+  let ok = g.v==="ok" || (g.v==="accent" && !S.strict);
+  const res = {w, input: skipped ? "" : val, v:g.v, ok};
+  S.res.push(res);
+  ok ? recordHit(w) : recordMiss(w);
+  $("#ruled").classList.add(ok ? "ok" : "bad");
+
+  const titles = {ok:"Correct", accent: S.strict ? "Check the accents" : "Correct, but check the accents", article:"Article missing", gender:"Wrong article: check the gender",
+    pronoun:"Reflexive pronoun missing", close:"Close: check the spelling", wrong:"Not quite", skip:"Here's the answer"};
+  const tone = ok && g.v==="ok" ? "ok" : (g.v==="accent"||g.v==="article"||g.v==="gender"||g.v==="pronoun"||g.v==="close") ? "near" : "bad";
+  let html = `<div class="fb ${tone}"><strong class="v">${titles[g.v]}</strong>`;
+  if(g.v==="ok"){
+    if(norm(val)!==norm(w.f)) html += `<div class="note">Study-guide form: <span style="font-family:var(--f-word)">${esc(w.f)}</span></div>`;
+  } else if(g.v==="skip"){
+    html += `<div class="cmp"><span class="l">Answer</span><span class="w">${esc(w.f)}</span></div>`;
+  } else {
+    const [ua, tb] = diff(norm(val), g.target);
+    html += `<div class="cmp"><span class="l">You</span><span class="w">${marked(ua,"x")}</span><span class="l">Correct</span><span class="w">${marked(tb,"m")}</span></div>`;
+    if(g.target!==norm(w.f)) html += `<div class="note">Study-guide form: <span style="font-family:var(--f-word)">${esc(w.f)}</span></div>`;
+  }
+  if(w.alts.length) html += `<div class="note">Also accepted: ${w.alts.map(esc).join(", ")}</div>`;
+  if(!ok && g.v!=="skip") html += `<button type="button" class="linkish" id="override">My answer was right, count it</button>`;
+  html += `</div>`;
+  $("#fb").innerHTML = html;
+  $("#check").textContent = S.i+1 < S.queue.length ? "Next word" : "See results";
+  $("#skip").hidden = true;
+  const ov = $("#override");
+  if(ov) ov.onclick = () => { res.ok = true; recordHit(w); if(miss[w.f]){delete miss[w.f]; store.set("miss",miss);} ov.replaceWith(Object.assign(document.createElement("span"),{className:"note",textContent:"Counted as correct."})); $("#ruled").classList.replace("bad","ok"); $("#check").focus(); };
+  $("#check").focus({preventScroll:true});
+}
+function next(){ S.i++; render(); }
+
+/* --- recognize mode --- */
+function renderMCQ(){
+  const w = S.cur;
+  const same = shuffle(W.filter(x => x.id!==w.id && x.t===w.t));
+  const others = shuffle(W.filter(x => x.id!==w.id && x.t!==w.t));
+  const opts = shuffle([w].concat(same.concat(others).slice(0,3)));
+  card.innerHTML = head() + `<div class="body">
+    <span class="tag">Pick the meaning</span>
+    <p class="prompt fr" lang="fr">${esc(w.f)}</p>
+    <div class="opts">${opts.map((o,k)=>`<button type="button" class="opt" data-id="${o.id}"><b>${k+1}</b><span>${esc(o.e)}</span></button>`).join("")}</div>
+    <div class="row"><button type="button" class="btn primary" id="nextBtn" hidden>Next word</button><span class="hint">Keys 1–4 · Enter for next</span></div>
+  </div>`;
+  card.querySelectorAll(".opt").forEach(b => b.onclick = () => pick(+b.dataset.id));
+}
+function pick(id){
+  if(S.answered) return; S.answered = true;
+  const w = S.cur, ok = id===w.id;
+  S.res.push({w, input: ok ? "" : (W[id].e), v: ok?"ok":"wrong", ok});
+  ok ? recordHit(w) : recordMiss(w);
+  card.querySelectorAll(".opt").forEach(b => {
+    const bid = +b.dataset.id; b.disabled = true;
+    if(bid===w.id) b.classList.add("ok"); else if(bid===id) b.classList.add("bad");
+  });
+  const nb = $("#nextBtn"); nb.hidden = false; nb.textContent = S.i+1 < S.queue.length ? "Next word" : "See results";
+  nb.onclick = next; nb.focus({preventScroll:true});
+}
+document.addEventListener("keydown", e => {
+  if(S.mode!=="mcq" || S.i>=S.queue.length || e.target.tagName==="SELECT") return;
+  if(/^[1-4]$/.test(e.key) && !S.answered){ const b = card.querySelectorAll(".opt")[+e.key-1]; if(b) pick(+b.dataset.id); }
+  else if(e.key==="Enter" && S.answered && e.target.id!=="nextBtn"){ e.preventDefault(); next(); }
+});
+
+/* --- results --- */
+function renderResults(){
+  const total = S.res.length, right = S.res.filter(r=>r.ok).length;
+  const wrong = S.res.filter(r=>!r.ok);
+  const lbl = {accent:"accents", article:"article missing", gender:"gender", pronoun:"pronoun missing", close:"spelling", wrong:"", skip:"skipped"};
+  card.innerHTML = `<div class="prog"><i style="width:100%"></i></div><div class="body">
+    <span class="tag">Results</span>
+    <div class="score"><span class="big">${right} / ${total}</span><span class="pct">${total?Math.round(right/total*100):0}% · ${missCount()} word${missCount()===1?"":"s"} in your misses pile</span></div>
+    ${wrong.length ? `<div class="misslist">${wrong.map(r=>`<div><span class="fr" lang="fr">${esc(r.w.f)}</span><span class="en">${esc(r.w.e)}</span>${r.input||r.v==="skip"?`<span class="yours">${r.v==="skip"?"skipped":"You: "+esc(r.input)}${lbl[r.v]?" · "+lbl[r.v]:""}</span>`:""}</div>`).join("")}</div>` : `<p class="empty">Clean sweep. No misses this round.</p>`}
+    <div class="row">
+      ${wrong.length ? `<button type="button" class="btn primary" id="retry">Retry the ${wrong.length} missed</button>` : ""}
+      <button type="button" class="btn" id="again">New set</button>
+    </div>
+  </div>`;
+  const r = $("#retry"); if(r) r.onclick = () => newSet(wrong.map(x=>x.w));
+  $("#again").onclick = () => newSet();
+  syncControls();
+}
+
+/* --- list --- */
+function renderList(){
+  card.innerHTML = `<div class="body">
+    <input class="search" id="q" type="search" placeholder="Filter French or English" aria-label="Filter words" autocomplete="off">
+    <div class="tbl"><table><tbody id="rows"></tbody></table></div>
+  </div>`;
+  const draw = () => {
+    const q = fold($("#q").value);
+    const rows = W.filter(w => !q || fold(w.f).includes(q) || w.e.toLowerCase().includes(q));
+    $("#rows").innerHTML = rows.map(w => `<tr><td class="fr" lang="fr">${esc(w.f)}${w.alts.length?`<span class="note"> · ${w.alts.map(esc).join(", ")}</span>`:""}${miss[w.f]?`<span class="chip">missed ×${miss[w.f]}</span>`:""}</td><td class="en">${esc(w.e)}</td></tr>`).join("") || `<tr><td class="en">No match.</td></tr>`;
+  };
+  $("#q").addEventListener("input", draw); draw();
+}
+
+/* --- controls --- */
+document.querySelectorAll("#modeSeg button").forEach(b => b.onclick = () => {
+  const was = S.mode; S.mode = b.dataset.mode; store.set("mode", S.mode);
+  if(S.mode==="list"){ syncControls(); renderList(); }
+  else if(was==="list" && S.queue.length && S.i < S.queue.length && S.mode===S.qmode){ syncControls(); render(); }
+  else { S.qmode = S.mode; newSet(); }
+});
+$("#size").onchange = e => { S.size = e.target.value; store.set("size", S.size); newSet(); };
+$("#src").onchange = e => { S.src = e.target.value; newSet(); };
+$("#strict").onchange = e => { S.strict = e.target.checked; store.set("strict", S.strict); };
+$("#newSet").onclick = () => newSet();
+
+S.qmode = S.mode==="list" ? "write" : S.mode;
+if(S.mode==="list"){ syncControls(); renderList(); } else newSet();
+}
+</script>
+
+</html>
