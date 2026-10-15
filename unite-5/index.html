@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v0.2.2</title>
+<title>Unité 5 · Dossier Français — v0.3.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -422,7 +422,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v0.2.2</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.0</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -561,7 +561,7 @@
       <summary>How to use</summary>
       <ul class="lead-list">
         <li><b>Spelling</b> (the default) makes you type it on ruled paper — accents always count, each card grades once. After a miss, <b>You</b> shows what you typed and <b>Correct</b> what was missing.</li>
-        <li><b>Recognize</b> shows the French and asks for the meaning (four options, keys 1–4); <b>Recall</b> flips a card EN↔FR and you say how you did.</li>
+        <li><b>Recognize</b> is multiple choice (four options, keys 1–4) and <b>Recall</b> flips a card and you say how you did; both run EN → FR or FR → EN.</li>
         <li>Articles are part of the answer — <em>le/la</em> counts, wrong or missing article is a miss.</li>
         <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
         <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
@@ -580,22 +580,22 @@
       <select class="filter" id="vocTopic"><option value="all">All topics</option></select>
     </div>
     <div class="frow"><span class="flabel">Comment</span>
+      <button class="ghost" id="vocTrainBtn">Training</button>
       <div class="seg" id="vocModeSeg">
         <button data-mode="spell" aria-pressed="true">Spelling</button>
         <button data-mode="mc" aria-pressed="false">Recognize</button>
         <button data-mode="recall" aria-pressed="false">Recall</button>
       </div>
-      <button class="ghost" id="vocTrainBtn">Training</button>
+      <div class="seg" id="vocDirSeg">
+        <button data-dir="en" aria-pressed="true">EN → FR</button>
+        <button data-dir="fr" aria-pressed="false">FR → EN</button>
+      </div>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
       <button class="ghost" id="newOnlyBtnVoc">New only</button>
     </div>
-      <div class="seg" id="vocDirSeg">
-        <button data-dir="en" aria-pressed="true">EN → FR</button>
-        <button data-dir="fr" aria-pressed="false">FR → EN</button>
-      </div>
 
     <div class="vprogress"><span id="vocCount">—</span><span id="vocKnown">—</span></div>
     <div class="vcard" id="voccard"><!-- filled by JS --></div>
@@ -715,8 +715,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 5 · v0.2.2</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v0.3.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.3.0 (15 Oct 2026): <strong>Vocabulaire — Recognize runs both ways, Training moves left, and mastery needs three in a row.</strong> <strong>Recognize</strong> now follows the EN → FR / FR → EN switch like Recall: from English you pick the French word (four options, articles included), from French you pick the meaning. The direction switch now sits on the Comment row and is dimmed only in Spelling, which is always English to French. <strong>Training</strong> moved to the left of Spelling, Recognize and Recall. <strong>Mastery:</strong> a correct answer on the first pass no longer turns a card green by itself, in the Vocabulaire and Conjugaison trainers alike. Every card goes green only after three correct answers in a row (a miss still resets the run), and <em>Je connais déjà</em> still marks a card known at once. The rule applies going forward only: cards already green stay green (even if they got there on one clean answer) until your next miss, which resets them like any other. <strong>Recall</strong> loses the &quot;Marked: known / still learning&quot; strip under the card, which repeated what the tag above the card and the progress table already show. Nothing else changed (no card, grading or drill content).<br></span>
     <span style="color:var(--mute)">v0.2.2 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v0.2.1 (15 Oct 2026): <strong>Vocabulaire — shorter topic names.</strong> 21 topic names in the Vocabulaire filter and on the card tag were too long (especially the reading and listening extras, e.g. “attrition, online sources & school expressions”); they are now at most 44 characters, with “Reading & listening extras” shortened to “Extras”. Names only: no card, answer or saved progress changed.<br></span>
     <span style="color:var(--mute)">v0.2.0 (15 Oct 2026): <strong>New drill design — piloted in Unité 5.</strong> <strong>Typed answers</strong> now sit on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row under it, in Vocabulaire spelling and in every Grammaire drill. <strong>Feedback after Check</strong>: one verdict line, then a <em>You</em> row with wrong or extra letters struck through in red and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Grammaire adds a one-line why where one is written. Verdict ladder: correct · accents · article missing · wrong gender article · reflexive pronoun missing · agreement · wrong auxiliary · close spelling · not quite. Accents always count. <strong>Grading change</strong>: in Vocabulaire spelling, un/une now count for le/la on a noun (articles are still required). <strong>Grammaire</strong>: a settings strip (Format: mixed, typing only or drop-down only · From: all questions or My misses); drop-down items sit inline in the sentence (keys 1–4 pick an option); each drill can carry an always-visible rule card (at most 5 bullets) above its questions; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds count toward best scores. Existing drills run unchanged through an adapter that splits the infinitive cue out of each sentence. <strong>Pilot content — Chapter 21</strong>: rule card, instruction line and a why line on every item for 3 drills — hyp21 16 items / 6 drop-downs · relc21 20 items / 6 drop-downs · subj21 23 items / 7 drop-downs — 59 why lines and 19 drop-downs in all. Vocab en contexte (Ch. 21) and the Chapter 22–24 drills keep their original instruction notes and gain the same treatment chapter by chapter. <strong>Vocabulaire</strong>: one chapter drop-down (it opens on your current chapter; All chapters is the first option) replaces the level toggle and the chapter pill, on the same row as the topic filter. 144 English glosses had their explanatory parenthetical shortened (7 of those dropped it as redundant); on every card the parenthetical now sits on its own line under the main gloss and never wraps on desktop. The long page introductions on the Conjugaison, Vocabulaire, Grammaire and Examen blanc tabs are gone. No vocabulary, verb or mastery data changed; saved progress is untouched. <strong>Layout</strong>: flat blue-grey leaning folder tabs, lightly overlapped, each with its own muted colour (an outline, plus a faint glow on the selected one), in the order Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; a French-flag tab icon; a tricolore rule under the masthead; softer card shadows, button press states and visible keyboard focus rings. <strong>Dark mode</strong>: the dossier follows your device's light or dark setting; the round button in the masthead forces light or dark (Alt-click returns to the device setting), and the choice is shared by every unit in this browser. The dark theme is a violet-tinted near-black with a soft violet accent; light mode is unchanged. <strong>Vocabulaire modes</strong>: Spelling is now the default, <em>Recognize</em> (French on the card, pick the meaning from four options, keys 1–4) is new, and Recall is third; the EN/FR direction applies to Recall only. Wrong options are the same part of speech, never a shared word of the gloss or a listed synonym, and same-topic first; Recognize answers count toward mastery like the other modes (Training records nothing).<br></span>
@@ -771,7 +772,7 @@ var canSave = (function(){ try{ localStorage.setItem("__t","1"); localStorage.re
 
 /* ---------------- mastery model (v2.5.0: streaks) ----------------
    Mastery = THREE correct answers IN A ROW; any miss resets the streak to 0.
-   A clean first correct (never missed) still counts as known immediately.
+   A clean first correct no longer counts: a card needs three in a row. Greens earned under the old rule are left as they are until their first miss.
    Lifetime ✓/✗ counters are kept for history and to order the Drill-misses
    queue (worst accuracy first). Migration from the old lifetime-3 rule:
    old greens with ✓ > ✗ are grandfathered at streak 3; shaky greens
@@ -789,7 +790,7 @@ var canSave = (function(){ try{ localStorage.setItem("__t","1"); localStorage.re
 })();
 function deriveStatus(key, s){
   if(!s || (s.c===0 && s.w===0)) return null;          // not yet seen
-  var known = ((s.s||0)>=3) || (s.w===0 && s.c>=1);     // 3 in a row, or clean single correct
+  var known = (s.s||0)>=3;                              // three in a row; a first clean answer no longer counts
   return known ? "known" : "learn";
 }
 function recordAnswer(statsMap, statusMap, key, correct){
@@ -797,7 +798,8 @@ function recordAnswer(statsMap, statusMap, key, correct){
   if(correct){ s.c++; s.s=(s.s||0)+1; if((s.m||0)>=3) s.cb=1; s.m=0; }
   else { s.w++; s.s=0; s.m=(s.m||0)+1; }
   s.t=Date.now();
-  var st = deriveStatus(key, s);
+  var was = statusMap[key], st = deriveStatus(key, s);
+  if(correct && was==="known" && st==="learn") st = "known";   /* a green earned under the old rule stays green until a miss */
   if(st) statusMap[key] = st; else delete statusMap[key];
   onGraded(correct);                              /* streak + lifetime achievements */
   if(st==="known" && s.cb){ delete s.cb; award("a_cb"); }
@@ -1387,7 +1389,7 @@ function renderVerbTable(){
       "<span><span class='vt-dot n'></span>New (not seen)</span>"+
       "<span><span class='vt-dot l'></span>To rework</span>"+
       "<span><span class='vt-dot k'></span>Known</span>"+
-      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master (a clean first try counts)</span>"+
+      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master</span>"+
     "</div>"+
     "<div class='vt-scope'>Scope: "+scopeLabel+" · "+idxs.length+" verbs · "+tenseLbl(verbTense)+(isMastery({fr:"x"},verbTense)?"":" (reps only — not tracked)")+"</div>";
 
@@ -2422,8 +2424,8 @@ var VOCAB_ALIASES=[
   });
   if(touched) saveState();
 })();
-Object.keys(state.vocabStats).forEach(function(f){ var st=deriveStatus(f,state.vocabStats[f]); if(st) state.vocab[f]=st; });
-Object.keys(state.verbStats).forEach(function(fr){ var st=deriveStatus(fr,state.verbStats[fr]); if(st) state.verbs[fr]=st; });
+Object.keys(state.vocabStats).forEach(function(f){ var st=deriveStatus(f,state.vocabStats[f]); if(st==="learn" && state.vocab[f]==="known") st="known"; /* greens earned under the old rule stay until a miss */ if(st) state.vocab[f]=st; });
+Object.keys(state.verbStats).forEach(function(fr){ var st=deriveStatus(fr,state.verbStats[fr]); if(st==="learn" && state.verbs[fr]==="known") st="known"; /* greens earned under the old rule stay until a miss */ if(st) state.verbs[fr]=st; });
 /* self-heal: revoke "Chapitre NN maîtrisé" (a_vNN) unless every vocab card of that chapter is genuinely known —
    guards against cross-fork misfires. */
 [21,22,23,24].forEach(function(ch){
@@ -2487,7 +2489,7 @@ function renderVocTable(){
       "<span><span class='vt-dot n'></span>New (not seen)</span>"+
       "<span><span class='vt-dot l'></span>To rework</span>"+
       "<span><span class='vt-dot k'></span>Known</span>"+
-      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master (a clean first try counts)</span>"+
+      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master</span>"+
     "</div>"+
     "<div class='vt-scope'>Scope: "+scopeLabel+" · "+idxs.length+" words</div>";
 
@@ -2564,7 +2566,6 @@ function renderVoc(){
   var v=VOCAB[vocOrder[vocIdx]];
   document.getElementById("vocCount").textContent=vocOrder.length+" words in scope";
   document.getElementById("vocPos").textContent=(vocIdx+1)+" / "+vocOrder.length;
-  var mark=state.vocab[v.f];
   var tag=el("div","vcat"); tag.style.background=CATS.flag.bg; tag.style.color=CATS.flag.c;
   function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+" · "+statMeta(state.vocabStats[v.f]); }
   tag.textContent=vocTagText();
@@ -2655,11 +2656,11 @@ function renderVoc(){
   }
 
   if(vocMode==="mc"){
-    /* recognize mode: pick the meaning of the French word; counts toward mastery like Recall and Spelling (Training records nothing) */
-    var mcOpts=vocChoices(v), mcDone=false;
-    card.appendChild(el("div","prompt","<div class='small'>Pick the meaning"+posPill(v)+"</div><div class='big fr'>"+esc(v.f)+"</div>"));
+    /* recognize mode: multiple choice in either direction (FR → EN: pick the meaning; EN → FR: pick the French word); counts toward mastery like Recall and Spelling (Training records nothing) */
+    var mcOpts=vocChoices(v), mcDone=false, mcEn=(vocDir==="en");
+    card.appendChild(el("div","prompt","<div class='small'>"+(mcEn?"Pick the French word":"Pick the meaning")+posPill(v)+"</div><div class='big"+(mcEn?"":" fr")+"'>"+(mcEn?enHTML(v.e):esc(v.f))+"</div>"));
     var mcBox=el("div","opts");
-    mcOpts.forEach(function(o,k){ var b=el("button","opt","<b>"+(k+1)+"</b><span>"+enHTML(o.e)+"</span>"); b.type="button"; b.onclick=function(){ mcPick(k); }; mcBox.appendChild(b); });
+    mcOpts.forEach(function(o,k){ var b=el("button","opt","<b>"+(k+1)+"</b><span"+(mcEn?" class='fr'":"")+">"+(mcEn?esc(o.f):enHTML(o.e))+"</span>"); b.type="button"; b.onclick=function(){ mcPick(k); }; mcBox.appendChild(b); });
     card.appendChild(mcBox);
     var mcAct=el("div","vactions"), mcNext=el("button","btn neutral","Next ›"); mcNext.style.display="none"; mcNext.onclick=vocNext; mcAct.appendChild(mcNext); card.appendChild(mcAct);
     var mcAns=el("div"); card.appendChild(mcAns);
@@ -2712,7 +2713,6 @@ function renderVoc(){
     var rb=el("button","btn reveal","Reveal"); rb.onclick=function(){ vocShown=true; renderVoc(); };
     act.appendChild(rb); card.appendChild(act);
   }
-  if(mark){ var m=el("div","note"); m.style.marginTop="10px"; m.style.background=mark==="known"?"var(--known-soft)":"var(--learn-soft)"; m.style.color=mark==="known"?"var(--known)":"var(--learn)"; m.textContent=mark==="known"?"Marked: known":"Marked: still learning"; card.appendChild(m); }
 }
 function vocPrune(){
   if(!vocHideKnown && !vocNewOnly) return;
@@ -2728,14 +2728,14 @@ function vocPrune(){
 function vocNext(){ if(!vocOrder.length)return; vocPrune(); if(!vocOrder.length){ renderVoc(); return; } if(!(vocHideKnown||vocNewOnly)) vocIdx=(vocIdx+1)%vocOrder.length; vocShown=false; renderVoc(); }
 function vocPrev(){ if(!vocOrder.length)return; vocIdx=(vocIdx-1+vocOrder.length)%vocOrder.length; vocShown=false; renderVoc(); }
 
-document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="recall"?"1":".4";vocShown=false;renderVoc();});
+document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="spell"?".4":"1";vocShown=false;renderVoc();});
 /* v1.0.0: vocArtSeg listener removed with the toggle */
 document.getElementById("chapterFilterVoc").addEventListener("change",function(){
   vocChapterSel=this.value;
   rebuildVocTopics(); vocBuild(); renderVoc(); refreshVocTableIfOpen();
 });
-document.getElementById("vocDirSeg").style.opacity=".4";   /* the EN/FR direction applies to Recall only */
-document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode!=="recall")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
+document.getElementById("vocDirSeg").style.opacity=".4";   /* the EN/FR direction applies to Recognize and Recall; Spelling is always EN → FR */
+document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
 document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"var(--on-solid)":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
