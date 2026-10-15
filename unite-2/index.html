@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 2 · Dossier Français — v1.5.0</title>
+<title>Unité 2 · Dossier Français — v1.5.1</title>
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -311,7 +311,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v1.5.0</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v1.5.1</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -574,8 +574,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v1.5.0</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v1.5.1</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.5.1 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v1.5.0 (10 Oct 2026): <strong>Conjugaison progress now tracks the passé composé and the imparfait.</strong> Unit 2 introduced those two tenses, so they now carry the mastery: answers in the <strong>Passé composé</strong> and <strong>Imparfait</strong> tables are recorded (3 correct in a row turns a conjugation green, a miss resets it, <em>Je connais déjà ✓</em>, Hide known, New only and Rusty all work per tense), and the card header now defaults to the passé composé. <strong>Présent is now reps only</strong> — nothing is recorded there. The Tableau de bord stat <em>Verbs mastered</em> becomes <strong>Conjugations mastered</strong> and counts every verb × tense pair (24 verbs × 2 tenses = 48 conjugations); the Conjugaison ledger, the "known overall" counter, the progress table (with its Reset buttons), the Conjugueur achievement and the Analyse struggle list (now written like "aller (pc)") all follow the selected tense. <strong>Heads-up:</strong> if you had mastered verbs in présent, the Tableau conjugation bar will drop, because it now measures passé composé + imparfait instead — nothing is deleted; your old présent progress stays saved as history, and the two new tenses start from zero.<br></span>
     <span style="color:var(--mute)">v1.4.1 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
     <span style="color:var(--mute)">v1.4.0 (7 Oct 2026): <strong>Memo cards for every Vocabulaire word.</strong> Once you answer, reveal, or mark a card known, a separate <strong>Mémo card</strong> opens under the trainer (above the progress table): <em>Meaning</em>, <em>Not to confuse with</em>, <em>Mnemonic</em>, <em>Forms</em> (participe passé with avoir or être for verbs; feminine and irregular forms), <em>Synonyms / opposites</em> and <em>Etymology</em>, with <em>Example</em>, <em>Construction</em> and <em>Word family</em> behind <strong>More</strong>. It slides in with a soft blue glow so it is easy to notice, and the page only scrolls as far as needed to show its top. All 458 cards have a meaning line and an example; 419 have a mnemonic, 183 have forms, 211 a not-to-confuse-with note, 54 synonyms or opposites, 360 a construction, 373 a word family and 458 an etymology. <strong>Faux ami</strong> tags on 19 cards (la cave, la chambre, l'entrée, le four, la commode, marron, ancien, propre, appliquer, disposer, le citron, le raisin, la casserole, onctueux, savoureux, le menu, retirer, l'exposition, assister à). <strong>Register</strong> tags on 6 informal, formal or technical cards. The old in-card notes ("vs …", "also taught …", feminine forms, faux ami warnings) moved into the Mémo card, so the reveal now shows only the gender of a noun. <strong>Review pass:</strong> every new card was re-read for factual and wording errors; etymologies that did not hold up were corrected (including some older ones, such as le toit, la buanderie, le lavabo, le coussin, agencer, le jardin), a few English cues were made clearer, and part-of-speech tags were fixed on cards wrongly tagged as verbs (à droite de, à gauche de). Etymology used to appear only in Training mode; it now shows on the Mémo card after every answer. Saved progress is untouched.<br></span>
@@ -762,7 +763,7 @@ function memoShow(v){
   var box=document.getElementById("memocard"); if(!box) return;
   if(!hasMemo(v)){ memoHide(); return; }
   function row(k,label,cls){ return v[k] ? "<div class='memo-row'><div class='memo-k'>"+label+"</div><div class='memo-v'>"+esc(v[k])+"</div></div>" : ""; }
-  var h="<div class='memo-h'><span class='memo-fr'>"+esc(v.f)+"</span>"+posPill(v)+(v.fa?" <span class='vfa'>faux ami</span>":"")+(v.rg?" <span class='vrg'>"+esc(v.rg)+"</span>":"")+"</div>";
+  var h="<div class='memo-h'><span class='memo-fr'>"+esc(v.f)+"</span>"+posPill(v,true)+(v.fa?" <span class='vfa'>faux ami</span>":"")+(v.rg?" <span class='vrg'>"+esc(v.rg)+"</span>":"")+"</div>";
   h+=row("d","Meaning");
   if(v.fa) h+="<div class='memo-fa'>\u26a0 "+esc(v.fa)+"</div>";
   h+=row("vs","Not to confuse with")+row("fm","Forms")+row("sy","Synonyms / opposites")+row("y","Etymology")+row("mn","Mnemonic");
@@ -776,7 +777,10 @@ function memoShow(v){
 }
 /* part-of-speech tag shown beside the cue (card field p:) */
 var POSL={n:"noun",adj:"adjective",v:"verb",adv:"adverb",prep:"preposition",conj:"conjunction",expr:"expression",num:"number"};
-function posPill(v){ return (v.p && POSL[v.p]) ? " <span class='vpos'>"+POSL[v.p]+"</span>" : ""; }
+function genderOf(v){ return (v.n && /^(m\.\/f\.|m\. pl\.|f\. pl\.|m\.|f\.)$/.test(v.n.trim())) ? v.n.trim() : ""; }
+function posPill(v,withGender){ if(!(v.p && POSL[v.p])) return ""; var g=withGender?genderOf(v):""; return " <span class='vpos'>"+POSL[v.p]+(g?" · "+esc(g):"")+"</span>"; }
+/* after an answer a noun's gender joins the part-of-speech tag beside the cue (no extra line); other card notes keep their own line */
+function revealPos(card,v){ var g=genderOf(v), s=card.querySelector(".prompt .vpos"); if(g && s && POSL[v.p]) s.textContent=POSL[v.p]+" · "+g; }
 
 /* ---------------- pronunciation (browser TTS, offline, no deps) ---------------- */
 var TTS_OK = ("speechSynthesis" in window);
@@ -1931,7 +1935,7 @@ function renderVoc(){
     var vd=el("div","verdict"); vd.style.display="none"; vd.style.marginTop="12px"; card.appendChild(vd);
     var pronHost=el("div"); card.appendChild(pronHost);
 
-    function showPron(){ pronHost.innerHTML=""; if(v.n) pronHost.appendChild(el("div","note",esc(v.n))); pronHost.appendChild(pronRow(v.f)); memoShow(v); }
+    function showPron(){ pronHost.innerHTML=""; if(v.n && !genderOf(v)) pronHost.appendChild(el("div","note",esc(v.n))); revealPos(card,v); pronHost.appendChild(pronRow(v.f)); memoShow(v); }
     function fullLabel(){ return v.f + (sa.gender?(" ("+sa.gender+")"):""); }
     if(vocTrain){
       var model=el("div","note","Modèle : "+fullLabel()); model.style.fontSize="15px"; card.insertBefore(model,row);
@@ -2023,7 +2027,7 @@ function renderVoc(){
   if(vocShown || vocTrain){
     var ans=el("div","answer");
     ans.innerHTML="<div class='prompt'><div class='big "+(vocDir==="en"?"fr":"")+"'>"+answerText+"</div></div>";
-    if(v.n) ans.appendChild(el("div","note",esc(v.n)));
+    if(v.n && !genderOf(v)) ans.appendChild(el("div","note",esc(v.n))); revealPos(card,v);
     if(vocTrain && v.y && !hasMemo(v)) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
     memoShow(v);
     ans.appendChild(pronRow(v.f));

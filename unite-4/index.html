@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 4 · Dossier Français — v1.0.0</title>
+<title>Unité 4 · Dossier Français — v1.0.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -512,7 +512,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v1.0.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v1.0.1</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -705,10 +705,12 @@
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
-        <li>Rounds of 10 per bank — <b>New round 🎲</b> redraws.</li>
+        <li>Rounds of 10 per bank — <b>New round 🎲</b> redraws. Drills that carry a rule card show it above the questions, and answers that have a why line show it after you answer.</li>
+        <li>Some items are drop-downs (keys 1–4 pick an option); <b>Format</b> switches between mixed, typing only and drop-down only. Misses pile up under <b>From → My misses</b>, and <b>Retry the missed</b> replays them.</li>
         <li>Best scores and couverture feed the dashboard.</li>
       </ul>
     </details>
+    <div class="gbar" id="gbar"><!-- filled by JS --></div>
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
@@ -793,8 +795,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v1.0.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v1.0.1</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.0.1 (15 Oct 2026): <strong>Grammaire — Unité 5's drill engine comes to Unité 4 (it was meant to ship with 1.0.0).</strong> Typed answers now sit on a Seyès-ruled field with an accent key row; after Check you get one verdict line (correct · accents · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined, and a skip shows the answer alone. Accents always count. A settings strip adds <em>Format</em> (mixed, typing only or drop-down only) and <em>From</em> (all questions or My misses); misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds count toward best scores. The engine also supports inline drop-downs, an always-visible rule card and a one-line why per item; the existing 17 drills (170 items) run unchanged through an adapter that splits the infinitive cue out of each sentence, so they keep their original instruction notes until each chapter gets its own rule cards and drop-downs. Coverage, best scores and Analyse feeds are unchanged. <strong>Vocabulaire</strong>: a noun's gender no longer takes a bar across the card; it joins the part-of-speech tag (for example NOUN · F.) after you answer, and the Mémo card header. Also: 14 cards (12 distinct glosses) had a gloss so long that it wrapped across the card (for example “to get to the bottom of, to bring the truth of (a cause or a circumstance) to light”); each is now a single line. Nothing else changed.<br></span>
     <span style="color:var(--mute)">v1.0.0 (15 Oct 2026): <strong>Unité 4 reaches 1.0.0.</strong> This release brings Unité 5's Vocabulaire trainer to Unité 4 (after v0.9.0's Prépa examen and v0.9.1's look).  <strong>Spelling</strong> now sits on a Seyès-ruled field with an accent key row, and grades with the shared verdict ladder (correct · accents · article missing · wrong gender article · reflexive pronoun missing · close spelling · not quite): one verdict line, then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone, and Enter again moves on. Accents still always count and articles are still required; un/une now count for le/la on a noun. The accepted forms are unchanged (masculine or feminine shorthand, optional complements, alternates). <strong>Filters</strong>: one chapter drop-down (it opens on your current chapter; All chapters first, AOL 220 last) replaces the level toggle and the chapter pill, on the same row as the topic filter. <strong>English glosses</strong>: 64 cards had their explanatory parenthetical shortened (1 dropped it as redundant); on every card a parenthetical of two or more words now sits on its own line under the main gloss and never wraps on desktop. Card text, answers and saved progress are unchanged (no <code>f:</code> changed). The Grammaire drills are still the earlier design.<br></span>
     <span style="color:var(--mute)">v0.9.1 (15 Oct 2026): <strong>Unité 5's look comes to Unité 4.</strong> The tabs are now flat, light, leaning folder tabs that overlap slightly, each with its own muted colour (an outline, plus a faint glow on the selected one; lightened for dark mode), in the order Tableau de bord · Vocabulaire · Grammaire · Prépa examen · Conjugaison · Analyse. A tricolore rule runs under the masthead, cards get softer shadows, buttons get press states and every control gets a visible keyboard focus ring. The long introductions on the Conjugaison, Vocabulaire and Grammaire tabs are gone. Appearance only: no data, grading or progress changed. The Vocabulaire and Grammaire drills are still the earlier design; their backport is a separate change.<br></span>
     <span style="color:var(--mute)">v0.9.0 (15 Oct 2026): <strong>Prépa examen — one tab trains the skills the exam needs.</strong> It replaces Examen blanc and Pratique orale, whose exam-shaped quizzes and prompt timer are retired (99 chapter-quiz questions, the 121 question exam bank and 24 prompt cards removed; the Analyse tab loses its Examen donut; saved quiz history stays in your browser but is no longer shown, and the two quiz achievements, Sans faute and Hat-trick, are gone). <strong>Vocabulaire</strong>: the 80 Test 4 study-guide words — spell them (English to French) on a Seyès-ruled field with an accent key row, recognise them (French to English, keys 1–4), or browse the filterable list; sets of 10, 20, 40 or all, a misses pile (<em>From → My misses</em>) and <em>Retry the missed</em>. <strong>Grammaire</strong>: 106 study-guide items (58 typed, 48 drop-downs) in 5 topics (Pronoms relatifs 20 · Si + présent → futur 20 · Nominalisation 28 · Pronoms démonstratifs 18 · Passé composé : avoir ou être 20); the rule card for the current topic stays on screen, every answer is followed by a one-line why, and a mixed set is balanced across topics. <strong>Oral</strong>: a script builder for the 6 oral prompts (29 sections plus 8 examiner questions) — English notes beside French on the ruled page, the tense each section needs, and offline checks for length against a two-minute answer, linking words, study-guide words used and rough passé composé / imparfait counts; scripts save in this browser. Accents always count. Nothing in Prépa examen feeds Analyse or the mastery bars. Also in this version: the French-flag tab icon, and the feedback card, grading ladder (verdicts, You / Correct diff) and English-gloss layout from the Unité 5 pilot, used inside the new tab only. The Vocabulaire and Grammaire tabs are unchanged. <strong>Dark mode</strong>: the dossier follows your device's light or dark setting; the round button in the masthead forces light or dark (Alt-click returns to the device setting), and the choice is shared by every unit in this browser. The dark theme is a violet-tinted near-black with a soft violet accent; light mode is unchanged. <strong>Vocabulaire modes</strong>: Spelling is now the default, <em>Recognize</em> (French on the card, pick the meaning from four options, keys 1–4) is new, and Recall is third; the EN/FR direction applies to Recall only. Wrong options are the same part of speech, never a shared word of the gloss or a listed synonym, and same-topic first; Recognize answers count toward mastery like the other modes (Training records nothing).<br></span>
@@ -849,6 +852,8 @@ state.verbs = state.verbs || {};      // fr -> "known" | "learn"
 state.drills = state.drills || {};    // drillId -> best {correct,total}
 ["spell1","spell2","spell3","spell4"].forEach(function(k){ delete state.drills[k]; }); // v3.1.0: Spelling watch retired
 state.gramCov = state.gramCov || {};   /* v1.0.0 U3: per-item drill coverage */
+state.gramMiss = state.gramMiss || {}; /* v1.0.1: drillId -> {item index: miss count} — feeds "My misses" and "Retry the missed" */
+state.prefs = state.prefs || {};       /* v1.0.1: grammar format · grammar source */
 state.tests = state.tests || [];      // [{kind,score,total,date}]
 state.missTally = state.missTally || {}; // tag -> {w,t} from quiz/exam scoring
 state.verbStats = state.verbStats || {};   // fr -> {c:correct, w:wrong}
@@ -1107,7 +1112,7 @@ function memoShow(v){
   var box=document.getElementById("memocard"); if(!box) return;
   if(!hasMemo(v)){ memoHide(); return; }
   function row(k,label,cls){ return v[k] ? "<div class='memo-row'><div class='memo-k'>"+label+"</div><div class='memo-v'>"+esc(v[k])+"</div></div>" : ""; }
-  var h="<div class='memo-h'><span class='memo-fr'>"+esc(v.f)+"</span>"+posPill(v)+(v.fa?" <span class='vfa'>faux ami</span>":"")+(v.rg?" <span class='vrg'>"+esc(v.rg)+"</span>":"")+"</div>";
+  var h="<div class='memo-h'><span class='memo-fr'>"+esc(v.f)+"</span>"+posPill(v,true)+(v.fa?" <span class='vfa'>faux ami</span>":"")+(v.rg?" <span class='vrg'>"+esc(v.rg)+"</span>":"")+"</div>";
   h+=row("d","Meaning");
   if(v.fa) h+="<div class='memo-fa'>\u26a0 "+esc(v.fa)+"</div>";
   h+=row("vs","Not to confuse with")+row("fm","Forms")+row("sy","Synonyms / opposites")+row("y","Etymology")+row("mn","Mnemonic");
@@ -1121,7 +1126,10 @@ function memoShow(v){
 }
 /* part-of-speech tag shown beside the cue (card field p:) */
 var POSL={n:"noun",adj:"adjective",v:"verb",adv:"adverb",prep:"preposition",conj:"conjunction",expr:"expression",num:"number"};
-function posPill(v){ return (v.p && POSL[v.p]) ? " <span class='vpos'>"+POSL[v.p]+"</span>" : ""; }
+function genderOf(v){ return (v.n && /^(m\.\/f\.|m\. pl\.|f\. pl\.|m\.|f\.)$/.test(v.n.trim())) ? v.n.trim() : ""; }
+function posPill(v,withGender){ if(!(v.p && POSL[v.p])) return ""; var g=withGender?genderOf(v):""; return " <span class='vpos'>"+POSL[v.p]+(g?" · "+esc(g):"")+"</span>"; }
+/* after an answer a noun's gender joins the part-of-speech tag beside the cue (no extra line); other card notes keep their own line */
+function revealPos(card,v){ var g=genderOf(v), s=card.querySelector(".prompt .vpos"); if(g && s && POSL[v.p]) s.textContent=POSL[v.p]+" · "+g; }
 
 /* ---------------- pronunciation (browser TTS, offline, no deps) ---------------- */
 var TTS_OK = ("speechSynthesis" in window);
@@ -1773,7 +1781,7 @@ var VOCAB=[
  {f:"s'estomper",e:"to fade away, to blur",c:16,t:"fverb2",y:"From estompe, a blending tool for drawings, borrowed from Dutch stomp, a stump/blunt tool — the very same tool is called a 'stump' in English.",p:"v",d:"To become fainter and less clear: a memory, a feeling, an outline.",mn:"An estompe is an artist's blending stump (English stump): smudge a line until it fades.",fm:"participe passé s'est estompé (être)",sy:"syn. s'effacer, disparaître",ex:"Avec le temps, la douleur s'est estompée. (Over time the pain faded.)",cs:"s'estomper peu à peu = to fade gradually",fam:"l'estompe (blending stump), estomper (to blur)"},
  {f:"être à la hauteur",e:"to live up to (expectations), to be up to the task",c:16,t:"fverb2",y:"hauteur from Latin altus, high → English altitude, exalt — to be 'at the height' expected of you.",p:"v",d:"To be good enough for a job or an expectation.",mn:"Hauteur is height, from altus (altitude): you reach the height required.",fm:"participe passé été à la hauteur (avoir)",sy:"syn. être au niveau · contr. décevoir",ex:"Elle n'était pas à la hauteur de la tâche. (She wasn't up to the task.)",cs:"être à la hauteur de + noun · ne pas être à la hauteur = to fall short",fam:"haut (high), la hauteur (height)"},
  {f:"être au chômage",e:"to be unemployed",c:16,t:"fverb2",y:"From chômer, Late Latin caumare, to rest during the heat (Greek kauma, burning heat) — unemployment's root word once just meant a siesta from the sun.",p:"v",d:"To be without a job.",mn:"Chômer is to stand idle: the working days are off.",fm:"participe passé été au chômage (avoir)",sy:"syn. être sans emploi · contr. avoir un emploi",ex:"Il est au chômage depuis six mois. (He has been unemployed for six months.)",cs:"au chômage, no article · perdre son emploi = to lose one's job",fam:"le chômage (unemployment), le chômeur / la chômeuse (unemployed person), chômer (to be idle)"},
- {f:"se faire à bouffer",e:"to whip up some food, to make oneself something to eat (slang)",c:16,t:"fverb2",y:"bouffer shares that puffed-cheek root with une bouffée and English buffoon — slang for 'to eat' is 'to stuff one's cheeks.'",p:"v",d:"To throw together something to eat for oneself.",vs:"se préparer à manger — the neutral way to say it",mn:"Bouffer puffs out the cheeks, like a buffoon stuffing his mouth.",fm:"participe passé s'est fait à bouffer (être)",ex:"Ce soir, je me fais à bouffer devant la télé. (Tonight I'm fixing myself something to eat in front of the TV.)",cs:"bouffer = to eat, la bouffe = food (both slang)",fam:"la bouffe (grub), la bouffée (puff), la malbouffe (junk food, Ch 18)",rg:"slang"},
+ {f:"se faire à bouffer",e:"to whip up something to eat (slang)",c:16,t:"fverb2",y:"bouffer shares that puffed-cheek root with une bouffée and English buffoon — slang for 'to eat' is 'to stuff one's cheeks.'",p:"v",d:"To throw together something to eat for oneself.",vs:"se préparer à manger — the neutral way to say it",mn:"Bouffer puffs out the cheeks, like a buffoon stuffing his mouth.",fm:"participe passé s'est fait à bouffer (être)",ex:"Ce soir, je me fais à bouffer devant la télé. (Tonight I'm fixing myself something to eat in front of the TV.)",cs:"bouffer = to eat, la bouffe = food (both slang)",fam:"la bouffe (grub), la bouffée (puff), la malbouffe (junk food, Ch 18)",rg:"slang"},
  {f:"se faire des amis",e:"to make friends",c:16,t:"fverb2",y:"ami from Latin amicus, friend (from amare, to love) → English amiable, amity — to make amis is to make people who love you.",p:"v",d:"To meet people and become friends with them.",vs:"rencontrer — to meet someone",mn:"Ami comes from amicus, from amare (to love): amiable.",fm:"participe passé s'est fait des amis (être)",ex:"Elle s'est fait beaucoup d'amis à l'université. (She made a lot of friends at university.)",cs:"se faire un ami / des amis (à + place)",fam:"l'amitié (friendship), amical (friendly)"},
  {f:"faire en sorte que",e:"to make sure that (by arranging it)",c:16,t:"fverb2",y:"sorte from Latin sors, a lot/fate → English sort, consort — to 'make it so' is literally to arrange the outcome's fate.",p:"v",d:"To arrange things so that a result happens.",vs:"s'assurer que (Ch 16) — to check or confirm that",mn:"En sorte: in such a way. You act so that things turn out as you want.",fm:"participe passé fait en sorte (avoir)",ex:"Fais en sorte qu'il soit prêt à huit heures. (Make sure he is ready at eight.)",cs:"faire en sorte que + subjunctive · faire en sorte de + infinitive when the subject is the same",fam:"la sorte (sort, kind), de sorte que (so that)"},
  {f:"faire le deuil de",e:"to grieve the loss of, to come to terms with losing",c:16,t:"fverb2",y:"deuil from Latin dolere, to grieve/feel pain → English doleful, condolence — faire le deuil is to work through that pain.",p:"v",d:"To accept a loss and move on from it.",mn:"Deuil comes from dolere, to grieve (doleful, condolence): the pain you work through.",fm:"participe passé fait le deuil de (avoir)",ex:"Il n'arrive pas à faire le deuil de sa carrière de sportif. (He can't come to terms with the end of his sports career.)",cs:"faire le deuil de + loss (a person, a dream, a project) · être en deuil = to be in mourning",fam:"le deuil (mourning), endeuillé (bereaved), la douleur (pain)"},
@@ -1938,7 +1946,7 @@ var VOCAB=[
  {f:"aigu(ë)",e:"sharp, acute, serious",c:18,t:"c18adj",y:"Latin acutus, sharpened, from acuere, to sharpen → English acute — the same word, softened by French mouths.",p:"adj",d:"Sharp or intense; severe.",vs:"chronique — lasting a long time",mn:"Aigu sounds like acute.",fm:"f. aiguë (diaeresis)",ex:"Elle souffre d'une douleur aiguë. (She suffers a sharp pain.)"},
  {f:"auto-entretenu(e)",e:"self-sustained, self-perpetuating",c:18,t:"c18adj",y:"Auto- is Greek autos, self; entretenir is entre-, Latin inter, between, plus tenir, Latin tenere, to hold → English maintain — something that 'holds itself between,' self-sustaining.",p:"adj",d:"Keeping itself going without outside help, often in a vicious circle.",mn:"Auto (self) + entretenu (maintained): self-maintained.",ex:"Le stress est un cercle auto-entretenu. (Stress is a self-sustaining circle.)",fam:"entretenir (to maintain)"},
  {f:"bourré(e) de",e:"loaded with, full of",c:18,t:"c18adj",y:"Bourre, packing material, is Late Latin burra, coarse wool cloth — the same root that gave bureau, a desk once draped in that cloth; bourré(e) is 'stuffed full' of it.",p:"adj",d:"Packed full of something.",mn:"Bourrer = to stuff, as in stuffing a pillow with padding.",ex:"Ce plat est bourré de sucre. (This dish is loaded with sugar.)",cs:"bourré de + noun",rg:"informal"},
- {f:"concurrent(e)",e:"rival, competing; also used as a noun — a competitor, a contender",c:18,t:"c18adj",y:"Latin concurrere, to run together (con- plus currere, to run → English current) → English concur — rivals running the same race.",p:"adj",d:"Competing; also a competitor.",mn:"Concurrent is tied to la concurrence (competition).",fm:"also a noun: le concurrent / la concurrente",ex:"Une entreprise concurrente a lancé un produit. (A rival company launched a product.)",fam:"la concurrence",fa:"Concurrent means rival or competing, not 'at the same time' like English concurrent."},
+ {f:"concurrent(e)",e:"rival, competing; also a noun: a competitor",c:18,t:"c18adj",y:"Latin concurrere, to run together (con- plus currere, to run → English current) → English concur — rivals running the same race.",p:"adj",d:"Competing; also a competitor.",mn:"Concurrent is tied to la concurrence (competition).",fm:"also a noun: le concurrent / la concurrente",ex:"Une entreprise concurrente a lancé un produit. (A rival company launched a product.)",fam:"la concurrence",fa:"Concurrent means rival or competing, not 'at the same time' like English concurrent."},
  {f:"conçu(e)",e:"designed, conceived",c:18,t:"c18adj",y:"From concevoir, Latin concipere, 'to take together' (con- plus capere, to seize → English capture) → English concept and conceive.",p:"adj",d:"Designed or planned for a purpose.",mn:"Conçu sounds like conceived.",fm:"from concevoir; participe passé conçu",ex:"Ce vélo est conçu pour la montagne. (This bike is designed for the mountains.)",cs:"conçu pour + noun or infinitive"},
  {f:"copieux(-euse)",e:"copious, large, hearty",c:18,t:"c18adj",y:"Latin copia, abundance → English copious — and, through a twist of sense, copy, an abundance of the same text.",p:"adj",d:"Large in quantity, said of a meal.",mn:"Copieux sounds like copious.",sy:"syn. abondant",ex:"Ils ont pris un petit-déjeuner copieux. (They had a hearty breakfast.)"},
  {f:"doué(e)",e:"gifted",c:18,t:"c18adj",y:"From douer, Latin dotare, to endow (from dos, dotis, dowry → English dowry) → English endow; a gifted person is literally 'endowed.'",p:"adj",d:"Naturally talented.",mn:"Doué echoes endowed: gifted with a talent.",ex:"Elle est douée pour les langues. (She is gifted at languages.)",cs:"doué pour / doué en + subject"},
@@ -1988,7 +1996,7 @@ var VOCAB=[
  {f:"manger sain",e:"to eat healthy",c:18,t:"c18v2",y:"Manger is Latin manducare, to chew → English mandible, the jawbone that does the chewing.",p:"v",d:"To choose healthy food.",mn:"Sain echoes sane: sound, healthy.",fm:"participe passé mangé sain (avoir)",sy:"ant. la malbouffe",ex:"Je mange sain pendant la semaine. (I eat healthily during the week.)"},
  {f:"manger sur le pouce",e:"to eat on the go",c:18,t:"c18v2",y:"Pouce is Latin pollex, thumb → English pollex, the anatomical name for it; eating 'sur le pouce' pictures a hasty meal balanced on your thumb instead of a plate.",p:"v",d:"To eat quickly, standing or on the move, without a proper meal.",mn:"Sur le pouce: on the thumb — a quick bite held in the hand.",fm:"participe passé mangé sur le pouce (avoir)",ex:"Il a mangé sur le pouce entre deux réunions. (He grabbed a bite between two meetings.)",cs:"un déjeuner sur le pouce = a quick lunch",rg:"informal"},
  {f:"mettre au point",e:"to develop, to perfect (until it works)",c:18,t:"c18v2",y:"Mettre is Latin mittere, to send → English mission; point is Latin punctum, from pungere, to prick → English puncture — 'to put at the point' is to perfect something, to sharpen it exactly.",p:"v",d:"To refine something until it works properly.",vs:"se développer — to grow and expand",mn:"Mettre au point: put it to the point where it is right.",fm:"participe passé mis au point (avoir)",ex:"Les chercheurs ont mis au point un vaccin. (The researchers developed a vaccine.)",cs:"mettre au point + a product or method"},
- {f:"mettre en garde",e:"to caution against a danger, to put (someone) on guard against a risk",c:18,t:"c18v2",y:"Garde comes from Frankish *wardon, to watch over — the same Germanic root as English ward, guard, and warden.",p:"v",d:"To warn against a danger.",vs:"prévenir — to notify in advance that something is coming",mn:"Mettre en garde: put on guard — en garde!",fm:"participe passé mis en garde (avoir)",ex:"La météo met en garde contre les orages. (The weather service warns against storms.)",cs:"mettre (someone) en garde contre + noun"},
+ {f:"mettre en garde",e:"to caution against a danger, to put on guard",c:18,t:"c18v2",y:"Garde comes from Frankish *wardon, to watch over — the same Germanic root as English ward, guard, and warden.",p:"v",d:"To warn against a danger.",vs:"prévenir — to notify in advance that something is coming",mn:"Mettre en garde: put on guard — en garde!",fm:"participe passé mis en garde (avoir)",ex:"La météo met en garde contre les orages. (The weather service warns against storms.)",cs:"mettre (someone) en garde contre + noun"},
  {f:"mettre en place",e:"to establish, to set up",c:18,t:"c18v2",y:"Place is Greek plateia, a broad street, via Latin platea → English plaza and piazza, cousins of the same word.",p:"v",d:"To set up or establish a system or measure.",vs:"mettre sur pied (Ch 17) — to build something up from scratch",mn:"Mettre en place: put in place.",fm:"participe passé mis en place (avoir)",ex:"La mairie a mis en place un nouveau service. (The town hall set up a new service.)",fam:"la mise en place"},
  {f:"mordre à l'hameçon",e:"to bite, to take the bait",c:18,t:"c18v2",y:"Mordre is Latin mordere, to bite → English morsel, a little bite, and remorse, a biting-back of conscience; hameçon, the fishhook, is from Latin hamus, hook.",p:"v",d:"To take the bait; figuratively, to fall for a trick.",mn:"The hameçon is the fish hook: bite the hook.",fm:"participe passé mordu à l'hameçon (avoir)",ex:"Le poisson a mordu à l'hameçon. (The fish took the bait.)",fam:"mordre (to bite)"},
  {f:"perdre connaissance",e:"to faint, to lose consciousness",c:18,t:"c18v2",y:"Connaissance is from connaître, Latin cognoscere, 'to become acquainted with' (con- plus gnoscere, to know) → English cognition and recognize; perdre is Latin perdere, 'to give away entirely' → English perdition.",p:"v",d:"To pass out; to lose consciousness.",mn:"Perdre connaissance: lose knowing.",fm:"participe passé perdu connaissance (avoir)",sy:"syn. s'évanouir · ant. reprendre conscience",ex:"Il a perdu connaissance sous la chaleur. (He passed out in the heat.)"},
@@ -1999,7 +2007,7 @@ var VOCAB=[
  {f:"se sentir",e:"to feel (a state: tired, well, sad…)",c:18,t:"c18v2",y:"Latin sentire, to feel or perceive → English sense and sentiment.",p:"v",d:"To feel a certain way, physically or mentally.",vs:"ressentir (Ch 16) — to feel an emotion · se porter — health",mn:"Sentir echoes sense and sentiment.",fm:"participe passé s'est senti (être)",ex:"Je me sens fatigué. (I feel tired.)",cs:"se sentir + adjective · sentir alone = to smell"},
  {f:"subir",e:"to undergo, to suffer",c:18,t:"c18v2",y:"Latin subire, 'to go under' (sub- plus ire, to go) — the same sense survives in English undergo, subir's near-exact translation.",p:"v",d:"To suffer or undergo something unpleasant.",mn:"Subir: go (ir) under (sub-), put up with it.",fm:"participe passé subi (avoir)",ex:"Il a subi une opération. (He underwent an operation.)",cs:"subir + noun"},
  {f:"tuer",e:"to kill",c:18,t:"c18v2",y:"Tuer descends, oddly, from Latin tutare, 'to watch over, protect' — the same root as English tutor — the sense slid through 'to extinguish' before landing on 'to kill.'",p:"v",d:"To cause someone or something to die.",fm:"participe passé tué (avoir)",ex:"Le tabac tue des millions de personnes. (Tobacco kills millions of people.)",cs:"se faire tuer = to get killed · se tuer = to kill oneself, or to die in an accident"},
- {f:"virer",e:"to turn, to change direction (a vehicle, a road); also (informal): to fire, to kick out (someone from a job)",c:18,t:"c18v2",y:"Latin gyrare, to turn in a circle (from Greek gyros, circle → English gyroscope) → virer, to turn — and, slangily, to turn someone out of a job.",p:"v",d:"To turn or change direction; informally, to fire someone.",mn:"Virer echoes veer: the car veers.",fm:"participe passé viré (avoir)",ex:"La voiture a viré à gauche. (The car turned left.)",cs:"se faire virer = to get fired",fam:"le virage (bend, turn)",rg:"informal when it means 'to fire'"},
+ {f:"virer",e:"to turn, to change direction; informal: to fire",c:18,t:"c18v2",y:"Latin gyrare, to turn in a circle (from Greek gyros, circle → English gyroscope) → virer, to turn — and, slangily, to turn someone out of a job.",p:"v",d:"To turn or change direction; informally, to fire someone.",mn:"Virer echoes veer: the car veers.",fm:"participe passé viré (avoir)",ex:"La voiture a viré à gauche. (The car turned left.)",cs:"se faire virer = to get fired",fam:"le virage (bend, turn)",rg:"informal when it means 'to fire'"},
  {f:"voler au secours de",e:"to come to the rescue of, to come to the aid of",c:18,t:"c18v2",y:"Voler, to fly, is Latin volare → English volatile; secours is Latin succurrere, 'to run to help' (sub- plus currere, to run) → English succor.",p:"v",d:"To rush to someone's help.",mn:"Voler = to fly: fly to the rescue.",fm:"participe passé volé au secours de (avoir)",ex:"Les voisins ont volé à son secours. (The neighbors rushed to his rescue.)",cs:"voler also means to steal; here it means to fly"},
  /* --- Mini-glossaire : nutrition & sleep science (activity-sourced — flagged exception to glossaire parity, like the Ch 16 family-topics set) --- */
  {f:"une bouchée",e:"a bite",c:18,t:"c18m1",y:"Built on bouche, Latin bucca, cheek or mouth (→ English debouch) — a bouchée is simply 'a mouthful.'",p:"n",d:"A mouthful of food.",mn:"Bouchée comes from bouche (mouth): a mouthful.",ex:"Il a avalé une bouchée de pain. (He swallowed a bite of bread.)",cs:"pour une bouchée de pain = for next to nothing",fam:"la bouche"},
@@ -2183,7 +2191,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"au même titre que",e:"in the same way as",c:17,t:"u17expr",y:"titre, Latin titulus → English title — 'on the same title, the same basis, as.'",p:"prep",d:"In the same way and to the same degree as; on an equal footing with.",mn:"Titre is title: on the same title, the same standing.",sy:"syn. de la même façon que, tout comme",ex:"Le cirque est un art au même titre que la peinture. (The circus is an art form just like painting.)",cs:"A + au même titre que + B",fam:"le titre (title; heading), à titre d'exemple (as an example)"},
  {f:"au mieux",e:"optimally, at best",c:17,t:"u17expr",y:"mieux, Latin melius, 'better' → English ameliorate — the same comparative root as making something better.",p:"adv",d:"In the best possible way; also, in the best case.",mn:"Mieux = better; ameliorate shares the root.",sy:"ant. au pire",ex:"Au mieux, le chantier sera terminé en juin. (At best, the work will be finished in June.)",cs:"faire au mieux = to do one's best · au mieux, + clause = at best",fam:"mieux (better), meilleur (better, adjective), le mieux (the best)"},
  {f:"au niveau de",e:"in terms of, on a par with",c:17,t:"u17expr",y:"niveau, Latin libella, diminutive of libra, 'a balance, a scale' → English level, Libra — checking whether things balance out.",p:"prep",d:"Regarding or concerning a topic; also at the height or position of.",vs:"en matière de — in matters of, the more formal option",mn:"Niveau is level: at the level of.",ex:"Au niveau des transports, la ville a fait des progrès. (In terms of transportation, the city has made progress.)",cs:"au niveau de + noun: au niveau de la sécurité · physical: au niveau du genou = at knee height",fam:"le niveau (level), niveler (to level off), le passage à niveau (level crossing, Ch 19)"},
- {f:"avoir beau",e:"to do something in vain; no matter how much one does, even if",c:17,t:"u17expr",y:"beau, Latin bellus, 'pretty, fine' → English beauty — originally 'to have a fine chance of' doing something, now used ironically for effort that fails anyway.",p:"v",d:"To do something in vain: however much one does it, it changes nothing.",vs:"bien que — although, takes a subjunctive clause; avoir beau takes an infinitive",mn:"Read il a beau crier as 'he can shout all he likes': fine to shout, but it changes nothing.",fm:"participe passé eu beau (avoir)",sy:"syn. en vain",ex:"Elle a beau essayer, la porte reste fermée. (However hard she tries, the door stays shut.)",cs:"avoir beau + infinitive · the result usually follows with mais or no connector"},
+ {f:"avoir beau",e:"to do something in vain, no matter how much",c:17,t:"u17expr",y:"beau, Latin bellus, 'pretty, fine' → English beauty — originally 'to have a fine chance of' doing something, now used ironically for effort that fails anyway.",p:"v",d:"To do something in vain: however much one does it, it changes nothing.",vs:"bien que — although, takes a subjunctive clause; avoir beau takes an infinitive",mn:"Read il a beau crier as 'he can shout all he likes': fine to shout, but it changes nothing.",fm:"participe passé eu beau (avoir)",sy:"syn. en vain",ex:"Elle a beau essayer, la porte reste fermée. (However hard she tries, the door stays shut.)",cs:"avoir beau + infinitive · the result usually follows with mais or no connector"},
  {f:"bénévolement",e:"voluntarily, for free",c:17,t:"u17expr",y:"Latin bene, 'well' (→ English benefit) + velle, 'to wish' (→ English volunteer) — literally 'well-wishing,' i.e. done for free.",p:"adv",d:"Without being paid; doing a task as a volunteer.",vs:"volontairement — of one's own free will, paid or not · gratuitement — free of charge",mn:"Bene (well) + velle (to wish): 'wishing well', and a volunteer works for free.",ex:"Elle travaille bénévolement pour une association. (She works as a volunteer for a charity.)",cs:"travailler bénévolement = to volunteer",fam:"le bénévole (volunteer), le bénévolat (volunteering)"},
  {f:"davantage",e:"more, further",c:17,t:"u17expr",y:"davantage, from d'avantage, avant, Latin ab ante, 'from before' → English advance, avant-garde — 'more, further ahead.'",p:"adv",d:"To a greater degree; more, or further.",vs:"plus — the everyday word, and the only one before an adjective: plus grand",mn:"D'avantage, 'of advantage': an extra edge, so more.",sy:"syn. plus · ant. moins",ex:"Nous avons besoin de davantage de pistes cyclables. (We need more bike paths.)",cs:"davantage de + noun · davantage que = more than",fam:"l'avantage (advantage), avant (before)"},
  {f:"du fait que",e:"as a result of the fact that, because",c:17,t:"u17expr",y:"fait, from faire, Latin facere, 'to do, to make' → English fact, factory — 'stemming from the thing that was done.'",p:"conj",d:"Because of the fact that; it gives a reason.",mn:"Du fait que: out of the fact that.",sy:"syn. parce que, puisque, étant donné que",ex:"Du fait que le métro est bondé, je prends le vélo. (Since the metro is packed, I take the bike.)",cs:"du fait que + indicative · du fait de + noun: du fait de la pluie",fam:"le fait (fact), en fait (actually), au fait (by the way)"},
@@ -2220,7 +2228,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"enlever",e:"to remove, to take off",c:17,t:"u17verb1",y:"Latin in- + levare, to lift (see élever) — to enlever is to 'lift away,' i.e. remove.",p:"v",d:"To take something off or away.",vs:"retirer — to take back out, to withdraw · ôter — to take off, a little more formal",mn:"En + lever: lift it away. Élever lifts something up; enlever lifts it off.",fm:"participe passé enlevé (avoir) · j'enlève, nous enlevons",sy:"syn. retirer, ôter · ant. mettre, remettre",ex:"Enlève ton manteau, il fait chaud ici. (Take off your coat, it's warm in here.)",cs:"enlever quelque chose à quelqu'un = to take something from someone · enlever (a person) = to kidnap",fam:"lever (to lift), élever (to raise), un lever de soleil (sunrise)"},
  {f:"former",e:"to train, to form, to shape",c:17,t:"u17verb1",y:"Latin forma, shape → English form — nearly identical in French and English.",p:"v",d:"To train someone in a skill; also to shape or create something.",vs:"éduquer — to raise or educate a person's character · former — to train in skills",mn:"Former is to form: you form a person's skills like clay.",fm:"participe passé formé (avoir)",ex:"Cette école forme des infirmiers. (This school trains nurses.)",cs:"former quelqu'un à + noun · se former = to train, to take a course",fam:"la formation (training), la forme (shape), informer (to inform)"},
  {f:"décaler",e:"to shift, to offset",c:17,t:"u17verb1",y:"décaler, from dé- + caler, 'to wedge or prop' (from cale, 'a wedge') — to décaler is to take the wedge out so that something shifts out of place.",p:"v",d:"To move something forward or back in time or position.",mn:"Dé-caler: un-wedge (cale = wedge), so it shifts out of place.",fm:"participe passé décalé (avoir)",ex:"On a décalé la réunion d'une heure. (We shifted the meeting by an hour.)",fam:"le décalage (gap, offset)"},
- {f:"virer",e:"to turn, to change direction (a vehicle, a road); also (informal): to fire, to kick out (someone from a job)",c:17,t:"u17verb1",y:"Latin gyrare, to turn in a circle (from Greek gyros, circle → English gyroscope) → virer, to turn — and, slangily, to turn someone out of a job.",p:"v",d:"To turn or change direction; informally, to fire someone.",mn:"Virer echoes veer: the car veers.",fm:"participe passé viré (avoir)",ex:"La voiture a viré à gauche. (The car turned left.)",cs:"se faire virer = to get fired",fam:"le virage (bend, turn)",rg:"informal when it means 'to fire'"},
+ {f:"virer",e:"to turn, to change direction; informal: to fire",c:17,t:"u17verb1",y:"Latin gyrare, to turn in a circle (from Greek gyros, circle → English gyroscope) → virer, to turn — and, slangily, to turn someone out of a job.",p:"v",d:"To turn or change direction; informally, to fire someone.",mn:"Virer echoes veer: the car veers.",fm:"participe passé viré (avoir)",ex:"La voiture a viré à gauche. (The car turned left.)",cs:"se faire virer = to get fired",fam:"le virage (bend, turn)",rg:"informal when it means 'to fire'"},
  {f:"améliorer",e:"to improve",c:17,t:"u17verb1",y:"Meilleur is Latin melior, better → English ameliorate — améliorer keeps the plain verb form of the same word.",p:"v",d:"To make better.",mn:"Améliorer echoes ameliorate: both come from Latin melior, 'better'.",fm:"participe passé amélioré (avoir)",sy:"ant. aggraver",ex:"Le sport améliore la santé. (Sport improves health.)",fam:"meilleur (better), s'améliorer"},
  /* --- Verbes : deciding, dealing with & supporting --- */
  {f:"être privilégié(e)",e:"to be favored, to be in a privileged position",c:17,t:"u17verb2",y:"privilège, Latin privilegium (privus, 'individual' + lex, 'law') → English private, legal — literally 'a private law' made just for you.",p:"v",d:"To enjoy an advantage that others do not have.",vs:"privilégier — to give priority to (an action, not a state)",mn:"Privileged, word for word: a private law (lex) made just for you.",fm:"f. privilégiée · participe passé été privilégié (avoir)",ex:"Les habitants du centre-ville sont privilégiés : tout est à pied. (Downtown residents are privileged: everything is within walking distance.)",cs:"être privilégié(e) = to be lucky or well off · un privilégié = someone with privileges",fam:"le privilège, privilégier"},
@@ -2231,7 +2239,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"franchir la barre de",e:"to cross the mark of, to surpass the threshold of",c:17,t:"u17verb2",y:"franc, the name of the Frankish tribe that also came to mean 'free' → English frank, France — crossing a line 'freely,' unimpeded.",p:"v",d:"To go past a symbolic number or threshold.",mn:"The barre is the bar in high jump: you clear the bar.",fm:"participe passé franchi la barre de (avoir)",ex:"Les ventes ont franchi la barre des mille exemplaires. (Sales topped the one-thousand mark.)",cs:"franchir la barre des + number (franchir la barre des 1 000) · franchir un obstacle = to clear an obstacle",fam:"la barre (bar), franchir (to cross), franc (frank; free)"},
  {f:"laisser reposer",e:"to let something rest",c:17,t:"u17verb2",y:"reposer, from poser, Latin pausare, 'to pause' → English pause, repose — letting something rest is giving it a 'pause.'",p:"v",d:"To leave something alone for a while so it settles, as with dough or meat.",mn:"Reposer is repose: you let it repose, take a pause.",fm:"participe passé laissé reposer (avoir)",ex:"Laissez reposer la pâte pendant une heure. (Let the dough rest for an hour.)",cs:"laisser reposer + noun (la pâte, la viande, la terre) · laisser + infinitive",fam:"se reposer (to rest), le repos (rest), poser (to put down)"},
  {f:"mettre longtemps à",e:"to take a long time to",c:17,t:"u17verb2",y:"temps, Latin tempus → English temporal, tempo — 'to put a long time' into doing something.",p:"v",d:"To take a long time doing something.",mn:"You 'put' a long time into the task: mettre du temps.",fm:"participe passé mis longtemps à (avoir)",sy:"syn. mettre beaucoup de temps à · ant. mettre peu de temps à",ex:"Il met longtemps à s'habiller le matin. (He takes a long time to get dressed in the morning.)",cs:"mettre longtemps à + infinitive · mettre du temps à",fam:"le temps (time), longtemps (a long time), long (long)"},
- {f:"mettre sur pied",e:"to build up, to get (a project or organization) off the ground",c:17,t:"u17verb2",y:"pied, Latin pes, pedis → English pedal, pedestrian — literally 'to put something on its feet.'",p:"v",d:"To set up and launch something, starting from very little.",vs:"mettre en place — to establish or install a system or measure, not necessarily from scratch",mn:"Put it on its feet, like a toddler standing up for the first time.",fm:"participe passé mis sur pied (avoir)",ex:"Elle a mis sur pied un service de livraison pour le quartier. (She got a delivery service going for the neighborhood.)",cs:"mettre sur pied + project, service or organization",fam:"le pied (foot), le piéton (pedestrian), debout (standing)"},
+ {f:"mettre sur pied",e:"to build up, to get (a project) off the ground",c:17,t:"u17verb2",y:"pied, Latin pes, pedis → English pedal, pedestrian — literally 'to put something on its feet.'",p:"v",d:"To set up and launch something, starting from very little.",vs:"mettre en place — to establish or install a system or measure, not necessarily from scratch",mn:"Put it on its feet, like a toddler standing up for the first time.",fm:"participe passé mis sur pied (avoir)",ex:"Elle a mis sur pied un service de livraison pour le quartier. (She got a delivery service going for the neighborhood.)",cs:"mettre sur pied + project, service or organization",fam:"le pied (foot), le piéton (pedestrian), debout (standing)"},
  {f:"obliger",e:"to require, to oblige",c:17,t:"u17verb2",y:"obliger, Latin obligare (ob + ligare, 'to bind' → English ligament) — to require someone of something is to 'bind' them to it.",p:"v",d:"To make someone do something, by law or by necessity.",vs:"forcer — to force physically or by pressure · obliger — to require by law, duty or circumstance",mn:"Obliger is oblige: to bind (like a ligament binds bones) someone to a duty.",fm:"participe passé obligé (avoir) · nous obligeons",ex:"La loi oblige les entreprises à trier leurs déchets. (The law requires companies to sort their waste.)",cs:"obliger quelqu'un à + infinitive · être obligé(e) de + infinitive = to have to",fam:"l'obligation, obligatoire (compulsory), obligé(e) (obliged)"},
  {f:"orienter (vers)",e:"to direct (someone) to",c:17,t:"u17verb2",y:"orienter, from orient, Latin oriens, 'rising (sun)' → English orient, origin — literally 'facing east,' the old way to find your bearings.",p:"v",d:"To direct someone toward a person, place or service that suits them.",mn:"Orienter comes from orient, where the sun rises: you point someone toward the east to get their bearings.",fm:"participe passé orienté (avoir)",ex:"Le médecin m'a orienté vers un spécialiste. (The doctor referred me to a specialist.)",cs:"orienter quelqu'un vers + noun · s'orienter = to find one's way",fam:"l'orientation (guidance), l'Orient (the East), s'orienter"},
  {f:"prendre en compte",e:"to take into account",c:17,t:"u17verb2",y:"compte, from compter, Latin computare → English compute, count — 'to take into the count.'",p:"v",d:"To consider something when making a decision.",mn:"Compte is count: you take it into the count when you add everything up.",fm:"participe passé pris en compte (avoir)",sy:"syn. tenir compte de",ex:"Le plan prend en compte les besoins des habitants. (The plan takes the residents' needs into account.)",cs:"prendre en compte + noun · tenir compte de + noun",fam:"compter (to count), le compte (account), le compte rendu (report)"},
@@ -2240,7 +2248,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"privilégier",e:"to opt for, to give priority to (to choose over others)",c:17,t:"u17verb2",y:"privilégier, from privilège (Latin privus, 'individual' + lex, 'law') → English privilege — to grant someone their very own 'private law,' i.e. to favor them.",p:"v",d:"To give priority to one option over others.",vs:"favoriser — to promote or help along, without choosing between options",mn:"Privilégier is to privilege: you grant one choice its own 'private law'.",fm:"participe passé privilégié (avoir)",ex:"La ville privilégie les transports en commun. (The city gives priority to public transit.)",cs:"privilégier + noun",fam:"le privilège, privilégié(e), favoriser"},
  {f:"recourir à",e:"to resort to, to have recourse to (a measure or method)",c:17,t:"u17verb2",y:"recourir, Latin recurrere (re + currere, 'to run back' → English recur, current) — to resort to something is to 'run back' to it.",p:"v",d:"To use a measure or method when nothing else works.",vs:"faire appel à — to call on a person or service for help",mn:"Recourir is re + courir: you run back to it. English recourse is the same word.",fm:"participe passé recouru (avoir) · conjugates like courir: je recours, nous recourons · futur recourrai",ex:"Le village a dû recourir à des camions-citernes pour l'eau. (The village had to resort to tanker trucks for water.)",cs:"recourir à + noun · avoir recours à = to have recourse to",fam:"courir (to run), le recours (recourse), le cours (course)"},
  {f:"régler un problème",e:"to solve a problem",c:17,t:"u17verb2",y:"régler, from règle, Latin regula, 'a straight rod, a rule' → English regulate — solving a problem is 'ruling' it straight.",p:"v",d:"To fix a problem and settle it for good.",vs:"résoudre un problème — the general verb to solve; régler stresses settling it practically",mn:"Règle is rule or ruler: you put the problem straight with a ruler. Régler is regulate.",fm:"participe passé réglé (avoir) · je règle, nous réglons",ex:"Le technicien a réglé le problème en dix minutes. (The technician solved the problem in ten minutes.)",cs:"régler une facture = to pay a bill · régler un appareil = to adjust a device",fam:"la règle (rule, ruler), le règlement (regulation; payment), la régularité"},
- {f:"signaler",e:"to point out, to draw attention to (a problem or danger) to someone",c:17,t:"u17verb2",y:"signaler, from signe, Latin signum → English sign, signal — to point something out is to 'flag' it with a sign.",p:"v",d:"To bring something to someone's attention, such as a danger or an incident.",vs:"faire état de — to cite or mention officially, in a statement or report",mn:"Signaler is to signal: you flag it with a sign.",fm:"participe passé signalé (avoir)",ex:"Signalez tout incident au responsable. (Report every incident to the person in charge.)",cs:"signaler quelque chose à quelqu'un",fam:"le signal, un signalement (a report; a description), le signe (sign)"},
+ {f:"signaler",e:"to point out, to flag (a problem) to someone",c:17,t:"u17verb2",y:"signaler, from signe, Latin signum → English sign, signal — to point something out is to 'flag' it with a sign.",p:"v",d:"To bring something to someone's attention, such as a danger or an incident.",vs:"faire état de — to cite or mention officially, in a statement or report",mn:"Signaler is to signal: you flag it with a sign.",fm:"participe passé signalé (avoir)",ex:"Signalez tout incident au responsable. (Report every incident to the person in charge.)",cs:"signaler quelque chose à quelqu'un",fam:"le signal, un signalement (a report; a description), le signe (sign)"},
  {f:"se soigner",e:"to treat oneself, to get treatment (for an illness)",c:17,t:"u17verb2",y:"soigner, from soin, probably a Frankish word for 'care, concern' — one of the rare core French verbs with Germanic rather than Latin roots.",p:"v",d:"To look after one's health and get treatment.",vs:"soigner — to care for or treat someone else",mn:"Soin is care: a soigneur is a caretaker, so se soigner is to take care of yourself.",fm:"participe passé s'est soigné (être)",ex:"Il ne se soigne pas assez : il refuse d'aller chez le médecin. (He does not look after himself enough: he refuses to see a doctor.)",cs:"se soigner · se faire soigner = to get treated by someone",fam:"le soin (care), soigneux (careful), soigner"},
  {f:"soutenir",e:"to support, to back (a person, cause or structure)",c:17,t:"u17verb2",y:"soutenir, Latin sustinere (sub + tenere, 'to hold from beneath' → English sustain, tenacious) — support is, literally, 'holding up.'",p:"v",d:"To back someone or something and keep it going.",vs:"supporter — to put up with, not to support",mn:"Sous + tenir: hold from underneath, like a beam. English sustain is the same word.",fm:"participe passé soutenu (avoir) · conjugates like tenir: je soutiens, nous soutenons",ex:"L'État soutient les petites entreprises. (The State supports small businesses.)",cs:"soutenir + noun · soutenir que + fact = to maintain that · soutenir une thèse = to defend a thesis",fam:"tenir (to hold), le soutien (support), le soutien-gorge (bra)"},
  /* cross-chapter repeats — also carried by Chapters 16 and 18; same f: key, shared progress */
@@ -2470,19 +2478,19 @@ VOCAB.push.apply(VOCAB,[
  {f:"s'efforcer",e:"to try hard, to strive (to do something)",t:"c19v3",y:"Built on force, Latin fortis, 'strong' — s'efforcer is literally 'to force oneself,' the same image as English effort.",p:"v",d:"To try hard.",mn:"Ef-force: put force into it, an effort.",fm:"participe passé s'est efforcé (être)",ex:"Les secouristes s'efforcent de retrouver des survivants. (Rescuers strive to find survivors.)",cs:"s'efforcer de + infinitive",fam:"l'effort, la force"},
  {f:"constater",e:"to note, to observe (to establish as a fact)",t:"c19v3",y:"From the noun constat ('official finding'), borrowed from Latin constat, 'it is established,' from constare (stare, 'to stand,' → English constant) — to constater something is to establish it as standing fact.",p:"v",d:"To observe and record something as a fact.",mn:"Con-stat-er: establish the state of the facts.",fm:"participe passé constaté (avoir)",sy:"syn. remarquer, relever",ex:"Les experts ont constaté des dégâts importants. (The experts noted significant damage.)",cs:"constater que + fact"},
  {f:"faire état de",e:"to report, to cite, to mention officially",t:"c19v3",y:"état here is the same Latin status, 'condition, standing,' as in état d'urgence — faire état de something is to put it on the record.",p:"v",d:"To mention or report officially; also to take into account or cite as evidence.",mn:"Faire état de: put something on the record.",fm:"participe passé fait état de (avoir)",ex:"Le rapport fait état de nombreux blessés. (The report mentions many injured.)",cs:"faire état de + noun"},
- {f:"faire la lumière sur",e:"to get to the bottom of, to bring the truth of (a cause or a circumstance) to light",t:"c19v3",y:"lumière is Latin lumen, 'light' (lucere, 'to shine,' → English luminous) — to faire la lumière sur an event is to illuminate it, exactly as in English.",p:"v",d:"To uncover the truth about something.",vs:"éclairer — to light up, or to explain a subject",mn:"Faire la lumière: switch on the light.",fm:"participe passé fait la lumière (avoir)",ex:"L'enquête doit faire la lumière sur les causes de l'accident. (The investigation must shed light on the cause of the accident.)"},
+ {f:"faire la lumière sur",e:"to get to the bottom of, to bring (a cause) to light",t:"c19v3",y:"lumière is Latin lumen, 'light' (lucere, 'to shine,' → English luminous) — to faire la lumière sur an event is to illuminate it, exactly as in English.",p:"v",d:"To uncover the truth about something.",vs:"éclairer — to light up, or to explain a subject",mn:"Faire la lumière: switch on the light.",fm:"participe passé fait la lumière (avoir)",ex:"L'enquête doit faire la lumière sur les causes de l'accident. (The investigation must shed light on the cause of the accident.)"},
  {f:"intervenir",e:"to intervene, to step in",t:"c19v3",y:"Latin intervenire, 'to come between' (venire, 'to come,' → English convene, venue) — nearly identical to English intervene.",p:"v",d:"To step in and act.",mn:"Inter-venir: come between.",fm:"participe passé intervenu (être) · conjugates like venir",ex:"Les pompiers sont intervenus rapidement. (The firefighters stepped in quickly.)",fam:"l'intervention, venir"},
  {f:"jouir de",e:"to enjoy, to benefit from (a right or an advantage)",t:"c19v3",y:"From Latin gaudere, 'to rejoice' — the same root as English joy and enjoy, and even gaudy.",p:"v",d:"To enjoy or benefit from a right or an advantage.",mn:"Jouir de echoes joy: take joy in. Never use jouir alone — it is vulgar.",fm:"participe passé joui (avoir)",ex:"La région jouit d'un climat doux. (The region enjoys a mild climate.)",cs:"jouir de + noun",rg:"formal"},
  {f:"se mobiliser",e:"to rally, to mobilize (to join forces for a cause)",t:"c19v3",y:"mobile is Latin mobilis, 'movable' (movere, 'to move,' → English motion) — se mobiliser is to make oneself movable, ready to act, exactly as in English mobilize.",p:"v",d:"To join forces and take action.",fm:"participe passé s'est mobilisé (être)",ex:"Toute la ville s'est mobilisée pour aider. (The whole town rallied to help.)",fam:"mobile, la mobilisation"},
- {f:"parvenir",e:"to manage to reach, to get through to (after difficulty); to succeed in",t:"c19v3",y:"Latin pervenire, 'to come all the way through to' (venire, 'to come,' → English advent) — the same venire root as intervenir, here meaning to finally get through to a goal.",p:"v",d:"To succeed in reaching something after difficulty.",vs:"accéder à — to gain access to",mn:"Par-venir: come all the way through.",fm:"participe passé parvenu (être) · conjugates like venir",ex:"Les secours sont parvenus jusqu'aux victimes. (The rescuers managed to reach the victims.)",cs:"parvenir à + place, or parvenir à + infinitive"},
+ {f:"parvenir",e:"to manage to reach; to succeed in (after difficulty)",t:"c19v3",y:"Latin pervenire, 'to come all the way through to' (venire, 'to come,' → English advent) — the same venire root as intervenir, here meaning to finally get through to a goal.",p:"v",d:"To succeed in reaching something after difficulty.",vs:"accéder à — to gain access to",mn:"Par-venir: come all the way through.",fm:"participe passé parvenu (être) · conjugates like venir",ex:"Les secours sont parvenus jusqu'aux victimes. (The rescuers managed to reach the victims.)",cs:"parvenir à + place, or parvenir à + infinitive"},
  {f:"prévenir",e:"to warn, to notify in advance (to alert someone beforehand)",t:"c19v3",y:"Latin praevenire, 'to come before' (venire, 'to come') — the same word as English prevent. French kept both senses, 'to forewarn' and 'to forestall a harm,' while English narrowed it to 'stop beforehand.'",p:"v",d:"To warn or inform ahead of time.",vs:"mettre en garde — to caution against a danger",mn:"Pré-venir: come before — to alert before it happens.",fm:"participe passé prévenu (avoir) · conjugates like venir",ex:"Il a prévenu les voisins de l'incendie. (He warned the neighbors of the fire.)",cs:"prévenir (someone) de + noun",fa:"In this chapter prévenir means 'to warn, to notify in advance,' not 'to prevent' (for stopping someone from doing something, use empêcher). But prévenir un accident, une maladie does mean 'to prevent a harm before it happens,' as in la prévention."},
  {f:"prévoir",e:"to foresee, to plan, to forecast",t:"c19v3",y:"Latin praevidere, 'to see beforehand' (videre, 'to see,' → English vision, video); English prevision is the learned cousin of this everyday French verb.",p:"v",d:"To foresee, forecast or plan.",mn:"Pré-voir: see beforehand.",fm:"participe passé prévu (avoir) · future je prévoirai (regular, unlike voir → verrai)",ex:"La météo prévoit de fortes pluies. (The forecast predicts heavy rain.)",fam:"voir (to see), la prévision (forecast)"},
- {f:"provoquer",e:"to trigger, to set off (a disaster or a reaction); also: to provoke",t:"c19v3",y:"Latin provocare, 'to call forth' (vocare, 'to call,' → English vocal) — essentially unchanged into English provoke.",p:"v",d:"To cause or trigger.",mn:"Provoquer echoes provoke: call forth.",fm:"participe passé provoqué (avoir)",sy:"syn. causer, entraîner",ex:"Le court-circuit a provoqué l'incendie. (The short circuit set off the fire.)",fam:"la provocation, vocal"},
+ {f:"provoquer",e:"to trigger, to set off; also: to provoke",t:"c19v3",y:"Latin provocare, 'to call forth' (vocare, 'to call,' → English vocal) — essentially unchanged into English provoke.",p:"v",d:"To cause or trigger.",mn:"Provoquer echoes provoke: call forth.",fm:"participe passé provoqué (avoir)",sy:"syn. causer, entraîner",ex:"Le court-circuit a provoqué l'incendie. (The short circuit set off the fire.)",fam:"la provocation, vocal"},
  {f:"revenir",e:"to come back, to return",t:"c19v3",y:"Latin revenire, 'to come back' (venire, 'to come') — the same word that gives English revenue, literally 'what comes back' to you.",p:"v",d:"To come back.",mn:"Re-venir: come again.",fm:"participe passé revenu (être) · conjugates like venir",ex:"Les habitants reviennent chez eux. (The residents are coming back home.)",fam:"venir"},
  {f:"revoir à la hausse",e:"to revise upwards (a figure or an estimate)",t:"c19v3",y:"hausser comes from Vulgar Latin altiare, 'to make higher' (altus, 'high,' → English altitude) — revoir à la hausse is to revise a figure toward the heights.",p:"v",d:"To raise an estimate or figure.",mn:"Hausse (rise) echoes haut (high): revise it up.",fm:"participe passé revu à la hausse (avoir)",ex:"Le bilan a été revu à la hausse. (The toll was revised upward.)",cs:"revoir à la baisse = to revise downward"},
  {f:"survenir",e:"to occur, to arise (suddenly, unexpectedly)",t:"c19v3",y:"Latin supervenire, 'to come on top of, to arrive unexpectedly' (venire, 'to come') — the same root as the rare English supervene.",p:"v",d:"To happen suddenly and unexpectedly.",mn:"Sur-venir: come on top of you.",fm:"participe passé survenu (être) · conjugates like venir",ex:"Le séisme est survenu à l'aube. (The earthquake occurred at dawn.)"},
  /* cross-chapter repeats — also carried by Chapters 16 and 18; same f: key, shared progress */
- {f:"mettre en garde",e:"to caution against a danger, to put (someone) on guard against a risk",t:"c19v3",y:"Garde comes from Frankish *wardon, to watch over — the same Germanic root as English ward, guard, and warden.",p:"v",d:"To warn against a danger.",vs:"prévenir — to notify in advance that something is coming",mn:"Mettre en garde: put on guard — en garde!",fm:"participe passé mis en garde (avoir)",ex:"La météo met en garde contre les orages. (The weather service warns against storms.)",cs:"mettre (someone) en garde contre + noun"},
+ {f:"mettre en garde",e:"to caution against a danger, to put on guard",t:"c19v3",y:"Garde comes from Frankish *wardon, to watch over — the same Germanic root as English ward, guard, and warden.",p:"v",d:"To warn against a danger.",vs:"prévenir — to notify in advance that something is coming",mn:"Mettre en garde: put on guard — en garde!",fm:"participe passé mis en garde (avoir)",ex:"La météo met en garde contre les orages. (The weather service warns against storms.)",cs:"mettre (someone) en garde contre + noun"},
  {f:"demeurer",e:"to remain, to stay",t:"c19v3",y:"Latin de- + morari, to linger/delay (from mora, delay) → English demur, moratorium — to remain is to keep lingering.",p:"v",d:"To remain; in formal French, also to live somewhere.",mn:"De-meurer: de- + morari, 'to linger,' the same lingering as in moratorium (a pause): it stays put. Not 'demure.'",fm:"participe passé demeuré (être when it means 'to remain')",ex:"Le calme est demeuré dans la ville. (Calm remained in the city.)",fam:"la demeure (residence)",fa:"Demeurer is not 'to demur' (to object); it means to remain.",rg:"formal"},
  /* --- Autres mots --- */
  {f:"au large de",e:"off the coast of",t:"c19exp",y:"large is Latin largus, 'abundant, generous' (→ English large); the nautical sense 'the open sea' comes from picturing the wide, generous expanse of water off a coastline.",p:"prep",d:"Out at sea, off a coast.",vs:"en pleine mer — in the open sea, away from any coast",mn:"Large here is French for wide: out where the water is wide open.",ex:"Le pétrolier a coulé au large de la Bretagne. (The tanker sank off the coast of Brittany.)"},
@@ -2505,7 +2513,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"sismique",e:"seismic",t:"c19mg1",y:"Same Greek seismos, 'a shaking,' as séisme — the more overtly technical-sounding adjective, borrowed straight from the Greek-derived international vocabulary.",p:"adj",d:"Related to earthquakes.",fm:"same form m. / f.",ex:"La zone est très active sur le plan sismique. (The area is very seismically active.)",fam:"le séisme"},
  {f:"vulnérable",e:"vulnerable",t:"c19mg1",y:"Latin vulnerabilis, 'capable of being wounded' (vulnus, 'wound') — borrowed into English essentially unchanged as vulnerable.",p:"adj",d:"Easy to hurt or damage.",fm:"same form m. / f.",ex:"Les côtes sont vulnérables aux tempêtes. (The coasts are vulnerable to storms.)",fam:"la vulnérabilité"},
  {f:"la digue",e:"the levee, the dike",t:"c19mg1",y:"Borrowed from a Low Countries word (Middle Dutch dijc) for an embankment — the same Germanic root as English dike and ditch.",p:"n",d:"A wall built to hold back water.",ex:"La digue a cédé sous la pression de l'eau. (The dike gave way under the pressure of the water.)"},
- {f:"effondré(e)",e:"caved in, sunk down (a structure that gave way); also: devastated (of a person)",t:"c19mg1",y:"Same fond, 'bottom' (Latin fundus → English foundation), root as effondrement — used equally for a collapsed building or a person who has 'hit bottom' emotionally.",p:"adj",d:"Caved in or sunk down; also crushed with grief.",vs:"écroulé(e) — toppled and crumbled; effondré = caved in, gave way",mn:"Ef-FOND-ré: the fond (bottom) gave way.",ex:"Le toit effondré a blessé deux personnes. (The caved-in roof injured two people.)",fam:"s'effondrer, l'effondrement, le fond"},
+ {f:"effondré(e)",e:"caved in, sunk down; also: devastated (of a person)",t:"c19mg1",y:"Same fond, 'bottom' (Latin fundus → English foundation), root as effondrement — used equally for a collapsed building or a person who has 'hit bottom' emotionally.",p:"adj",d:"Caved in or sunk down; also crushed with grief.",vs:"écroulé(e) — toppled and crumbled; effondré = caved in, gave way",mn:"Ef-FOND-ré: the fond (bottom) gave way.",ex:"Le toit effondré a blessé deux personnes. (The caved-in roof injured two people.)",fam:"s'effondrer, l'effondrement, le fond"},
  {f:"le flanc",e:"the side of a hill or mountain, the hillside",t:"c19mg1",y:"From a Frankish word for the hip or side (*hlanku, related to English lank); English flank was borrowed from this same French word.",p:"n",d:"The side of a hill or mountain.",vs:"une pente — the incline itself",ex:"Le village s'accroche au flanc de la montagne. (The village clings to the mountainside.)"},
  {f:"le pan",e:"the section, the chunk (of a wall, hill or roof)",t:"c19mg1",y:"From Latin pannus, 'a piece of cloth, a patch' — the same word behind English pane (as in a windowpane), both meaning 'a distinct section' of something larger.",p:"n",d:"A large flat section of a wall, roof or hillside.",mn:"Pan echoes panel: a flat piece.",ex:"Un pan de mur s'est écroulé. (A section of wall collapsed.)"},
  {f:"mettre à terre",e:"to knock to the ground, to fell (trees, by wind)",t:"c19mg1",y:"mettre is Latin mittere, 'to send, to put' (→ English mission, missile); terre is Latin terra, 'earth' — literally 'to put to the ground.'",p:"v",d:"To knock to the ground.",mn:"Mettre à terre: put on the ground.",fm:"participe passé mis à terre (avoir)",ex:"Le vent a mis à terre des centaines d'arbres. (The wind brought down hundreds of trees.)"},
@@ -2659,7 +2667,7 @@ VOCAB.push.apply(VOCAB,[
  {f:"être affecté à un groupe",e:"to be assigned to a group",c:900,t:"aol2phr",p:"expr",d:"To be officially placed in a unit, a team or a post.",vs:"affecter can also mean to feign (affecter l'indifférence) or to move someone emotionally",fm:"affecté(e): f. affectée",ex:"Il a été affecté à un groupe d'instructeurs. (He was assigned to a group of instructors.)",cs:"être affecté à + unit or place · affecter + person + à + post = to assign",fam:"une affectation (an assignment, a posting)"},
  {f:"être dépendant(e) de",e:"to be dependent on",c:900,t:"aol2phr",y:"dépendre, Latin dependere, to hang from (de- + pendere) → English depend, pendant.",p:"expr",d:"To rely on something or someone so much that you cannot manage without.",vs:"dépendre de — to depend on (the verb); être dépendant de — to be dependent on (the adjective, spelled -ant)",mn:"Dépendant: hanging (pendre) from something.",fm:"dépendant(e): f. dépendante",ex:"Le pays est dépendant du pétrole étranger. (The country is dependent on foreign oil.)",cs:"être dépendant de + noun",fam:"dépendre (to depend), la dépendance (dependence)"},
  {f:"être opérationnel(le)",e:"to be operational",c:900,t:"aol2phr",y:"opération, Latin operatio (opus, work) → English operation, operate.",p:"expr",d:"To be ready and able to work or to fight.",fm:"opérationnel: f. opérationnelle; plural opérationnels",ex:"La nouvelle base sera opérationnelle en mars. (The new base will be operational in March.)",cs:"devenir / rester / être opérationnel",fam:"une opération (an operation), opérer (to operate)"},
- {f:"être aux premières loges",e:"to have a front-row seat, to be right in the middle of the action",a:["aux premières loges"],c:900,t:"aol2phr",y:"loge, Frankish laubja, a shelter → English lodge, lobby; in a theater, la loge is a box.",p:"expr",d:"To be in the best place to watch events, or to be directly affected by them.",ex:"Les journalistes sont aux premières loges pour couvrir la crise. (The journalists have a front-row seat to cover the crisis.)",cs:"être aux premières loges pour + infinitive",fam:"une loge (a theater box, a lodge), un logement"},
+ {f:"être aux premières loges",e:"to have a front-row seat, to be in the action",a:["aux premières loges"],c:900,t:"aol2phr",y:"loge, Frankish laubja, a shelter → English lodge, lobby; in a theater, la loge is a box.",p:"expr",d:"To be in the best place to watch events, or to be directly affected by them.",ex:"Les journalistes sont aux premières loges pour couvrir la crise. (The journalists have a front-row seat to cover the crisis.)",cs:"être aux premières loges pour + infinitive",fam:"une loge (a theater box, a lodge), un logement"},
  {f:"faire l'objet d'une attaque",e:"to be the target of an attack, to be under attack",c:900,t:"aol2phr",p:"expr",d:"To be attacked: to be the thing an attack is aimed at.",vs:"un sujet — a topic or subject; l'objet here means the target of an action",fm:"participe passé fait (avoir); je fais, nous faisons",ex:"La base a fait l'objet d'une attaque cette nuit. (The base was attacked during the night.)",cs:"faire l'objet de + noun: faire l'objet d'une enquête, d'une critique",fam:"une attaque (an attack), un objet"},
  {f:"crier au complot",e:"to cry conspiracy, to claim there is a plot",c:900,t:"aol2phr",p:"expr",d:"To loudly accuse others of secretly plotting against you.",fm:"participe passé crié (avoir)",sy:"syn. dénoncer un complot",ex:"Le parti a crié au complot après sa défaite. (The party cried conspiracy after its defeat.)",cs:"crier à + noun = to cry out 'foul': crier au scandale, crier au loup",fam:"un complot (a plot), crier (to shout)"},
  {f:"rendre indisponible",e:"to make unavailable, to put out of service",c:900,t:"aol2phr",y:"disponible, from Latin disponere, to arrange (dis- + ponere, to place) → English dispose, disposable.",p:"expr",d:"To make something impossible to use or reach, for example a website or a road.",vs:"indisponible — unavailable (a person who is busy, or a system that is down)",fm:"participe passé rendu (avoir); conjugated like vendre: je rends, nous rendons",ex:"L'attaque a rendu le site indisponible pendant deux heures. (The attack made the site unavailable for two hours.)",cs:"rendre + adjective = to make + adjective: rendre fou, rendre possible",fam:"disponible (available), la disponibilité (availability)"},
@@ -2957,7 +2965,7 @@ function renderVoc(){
     var vd=el("div","verdict"); vd.style.display="none"; vd.style.marginTop="12px"; card.appendChild(vd);
     var pronHost=el("div"); card.appendChild(pronHost);
 
-    function showPron(){ pronHost.innerHTML=""; if(v.n) pronHost.appendChild(el("div","note",esc(v.n))); if(v.y && !hasMemo(v)) pronHost.appendChild(el("div","note ety","Mémo · "+esc(v.y))); memoShow(v); }
+    function showPron(){ pronHost.innerHTML=""; if(v.n && !genderOf(v)) pronHost.appendChild(el("div","note",esc(v.n))); revealPos(card,v); if(v.y && !hasMemo(v)) pronHost.appendChild(el("div","note ety","Mémo · "+esc(v.y))); memoShow(v); }
     function fullLabel(){ return v.f + (sa.gender?(" ("+sa.gender+")"):""); }
     if(vocTrain){
       var model=el("div","note","Modèle : "+fullLabel()); model.style.fontSize="15px"; card.insertBefore(model,row);
@@ -3047,7 +3055,7 @@ function renderVoc(){
         recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText();
         saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
       }
-      if(v.n) mcAns.appendChild(el("div","note",esc(v.n)));
+      if(v.n && !genderOf(v)) mcAns.appendChild(el("div","note",esc(v.n))); revealPos(card,v);
       if(v.y && !hasMemo(v)) mcAns.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
       memoShow(v);
       mcNext.style.display=""; mcNext.focus();
@@ -3065,7 +3073,7 @@ function renderVoc(){
   if(vocShown || vocTrain){
     var ans=el("div","answer");
     ans.innerHTML="<div class='prompt'><div class='big "+(vocDir==="en"?"fr":"")+"'>"+answerText+"</div></div>";
-    if(v.n) ans.appendChild(el("div","note",esc(v.n)));
+    if(v.n && !genderOf(v)) ans.appendChild(el("div","note",esc(v.n))); revealPos(card,v);
     if(v.y && !hasMemo(v)) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
     memoShow(v);
     card.appendChild(ans);
@@ -3436,6 +3444,133 @@ function buildDrills(){
   });
 }
 /* build one drill's <details.acc> accordion (used inside a chapter group) */
+/* ---- v0.2.0 drill engine: ruled field, accent keys, verdict ladder + You/Correct diff, inline drop-downs, rule card, misses pile ----
+   Items stay {q,a,hint,m}; gAdapt() splits the infinitive cue out of q at load, so every existing drill runs in the new UI unchanged.
+   Optional per-item fields (all additive): s (sentence, replaces q) · cue · x (why line) · ch (drop-down options, correct first).
+   Optional per-drill fields: ins (one instruction line) · rt + rule (rule card, at most 5 bullets) — a drill without rule keeps its note. */
+var ACCENT_KEYS=["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+function gPrefs(){ var p=state.prefs; if(!p){ p=state.prefs={}; } if(!p.fmt) p.fmt="mix"; if(!p.src) p.src="all"; return p; }
+function gMissTotal(){ var n=0; Object.keys(state.gramMiss||{}).forEach(function(id){ n+=Object.keys(state.gramMiss[id]).length; }); return n; }
+function gMissOf(d){ return (state.gramMiss&&state.gramMiss[d.id])||{}; }
+function gMissLabel(){ var o=document.querySelector("#gSrc option[value=miss]"); if(o) o.textContent="My misses ("+gMissTotal()+")"; }
+function gMissBump(d,bi,ok){
+  state.gramMiss=state.gramMiss||{}; var m=state.gramMiss[d.id]=state.gramMiss[d.id]||{};
+  if(ok){ if(m[bi]){ m[bi]--; if(m[bi]<=0) delete m[bi]; } } else { m[bi]=(m[bi]||0)+1; }
+  if(!Object.keys(m).length) delete state.gramMiss[d.id];
+  saveState(); gMissLabel();
+}
+function gMissClear(d,bi){ var m=state.gramMiss&&state.gramMiss[d.id]; if(m&&m[bi]){ delete m[bi]; if(!Object.keys(m).length) delete state.gramMiss[d.id]; saveState(); gMissLabel(); } }
+function gAdapt(it){
+  if(it._g) return it._g;
+  var s=it.s, cue=it.cue||"";
+  if(s==null){
+    var q=it.q||"", m=q.match(/^([\s\S]*?___[^()]*?)\s*(\([^)]*\))([\s\S]*)$/);
+    if(m){ s=m[1]+m[3]; cue=m[2]; } else s=q;
+  }
+  var ans=Array.isArray(it.a)?it.a:[it.a], tk=FG.norm(ans[0]).split(" ");
+  var pc=tk.length>=2 && tk.length<=4 && !!FG.auxFamily([tk[tk.length-2]]);
+  return it._g={s:s,cue:cue,a:ans,ch:it.ch||null,x:it.x||"",hint:it.hint||"",loose:!!it.loose,pc:pc};
+}
+function gGradeTyped(A,got){
+  var pre=A.loose?normLoose:norm, keys=[], map={};
+  A.a.forEach(function(a){ var k=pre(a); if(!(k in map)){ map[k]=a; keys.push(k); } });
+  var res=FG.grade(pre(got),FG.prepare({f:keys[0],a:keys.slice(1),type:A.pc?"pc":"x"}));
+  var target=map[res.target]!==undefined?map[res.target]:A.a[0];
+  var others=A.a.filter(function(a){ return pre(a)!==pre(target); });
+  return {v:res.v,target:target,others:others};
+}
+function gInsertAt(inp,ch){
+  var a=inp.selectionStart, b=inp.selectionEnd; if(a==null){ a=b=inp.value.length; }
+  inp.value=inp.value.slice(0,a)+ch+inp.value.slice(b); inp.selectionStart=inp.selectionEnd=a+ch.length;
+  inp.dispatchEvent(new Event("input",{bubbles:true})); inp.focus();
+}
+function gKeys(inp){
+  var row=el("div","akeys");
+  ACCENT_KEYS.forEach(function(ch){
+    var b=el("button","akey",ch); b.type="button"; b.setAttribute("aria-label","insert "+ch);
+    b.addEventListener("mousedown",function(e){ e.preventDefault(); });
+    b.addEventListener("click",function(){ if(!inp.disabled) gInsertAt(inp,ch); });
+    row.appendChild(b);
+  });
+  return row;
+}
+/* one drill item: typed (ruled field) or drop-down; returns the .q element */
+function gBuildQ(d,it,det,onDone){
+  var A=gAdapt(it), pk=gPrefs(), bank=d.bankItems||d.items, bi=bank.indexOf(it);
+  var dd=!!(A.ch && pk.fmt!=="type");
+  var q=el("div","q");
+  var sent=el("div","fq"), parts=A.s.split("___"), gap, sel=null, inp=null, pickOrder=null;
+  var pre=el("span",null,parts[0]), post=el("span",null,parts.slice(1).join("___"));
+  if(dd){
+    pickOrder=A.ch.slice(); shuffleArr(pickOrder);
+    sel=el("select","gapsel"); sel.setAttribute("aria-label","choisir");
+    var ph=el("option",null,"choisir…"); ph.value=""; ph.disabled=true; ph.selected=true; sel.appendChild(ph);
+    pickOrder.forEach(function(o){ var op=el("option",null,esc(o)); op.value=o; sel.appendChild(op); });
+    gap=sel;
+  } else { gap=el("span","gap","&nbsp;"); }
+  sent.appendChild(pre); sent.appendChild(gap); sent.appendChild(post);
+  if(A.cue){ sent.appendChild(document.createTextNode(" ")); sent.appendChild(el("span","cue",esc(A.cue))); }
+  q.appendChild(sent);
+  var field=null, fbHost=el("div"), done=false, lockedPick=null;
+  if(!dd){
+    field=el("div","seyes"); inp=el("input"); inp.type="text"; inp.autocapitalize="none"; inp.autocomplete="off"; inp.spellcheck=false;
+    inp.setAttribute("aria-label","answer"); field.appendChild(inp); q.appendChild(field); q.appendChild(gKeys(inp));
+    inp.addEventListener("input",function(){ if(!done) gap.textContent=inp.value||" "; });
+    /* the accent keys stay with the last-focused item, so clicking Check or an override link never reflows the page under the cursor */
+    inp.addEventListener("focus",function(){ [].forEach.call(det.querySelectorAll(".q.kf"),function(x){ x.classList.remove("kf"); }); q.classList.add("kf"); });
+  }
+  var act=el("div","row-in qchk"), cb=el("button","ghost","Check"), sk=el("button","ghost","I don't know");
+  act.appendChild(cb); act.appendChild(sk); q.appendChild(act); q.appendChild(fbHost);
+  if(A.hint) q.appendChild(el("div","hint",esc(A.hint)));
+  q._inp=inp||sel;
+  if(sel) sel.addEventListener("change",function(){ if(done){ sel.value=lockedPick; } });   /* locked, but kept focusable so Enter can move on */
+  function mark(ok){
+    var c=ok?"ok":"bad"; gap.classList.remove("ok","bad"); gap.classList.add(c);
+    if(field){ field.classList.remove("ok","bad"); field.classList.add(c); }
+  }
+  function render(res,got,skipped,correct){
+    var V=FG.VERDICTS[skipped?"skip":res.v], tone=V.tone;
+    var html="<strong class='fbv'>"+V.title+"</strong>";
+    var target=dd?A.ch[0]:res.target;
+    if(skipped){ html+="<div class='cmp'><span class='l'>Correct</span><span class='w'>"+esc(target)+"</span></div>"; }
+    else if(res.v!=="ok"){
+      var you,cor;
+      if(dd){ you="<span class='fx'>"+esc(got)+"</span>"; cor=esc(target); }
+      else { var df=FG.diff(FG.norm(got),FG.norm(target)); you=FG.marked(df[0],"fx"); cor=FG.marked(df[1],"fm"); }
+      html+="<div class='cmp'><span class='l'>You</span><span class='w'>"+you+"</span><span class='l'>Correct</span><span class='w'>"+cor+"</span></div>";
+    }
+    if(A.x) html+="<div class='why'>"+A.x+"</div>";
+    var oth=dd?[]:res.others; if(oth.length) html+="<div class='fnote'>Also accepted: "+oth.map(esc).join(" · ")+"</div>";
+    var fb=el("div","fb "+tone,html);
+    fbHost.innerHTML=""; fbHost.appendChild(fb);
+  }
+  function lock(){ done=true; if(inp) inp.readOnly=true; if(sel) lockedPick=sel.value; cb.disabled=true; sk.disabled=true; cb.style.opacity=sk.style.opacity=".45"; }
+  function check(skipped){
+    if(done) return;
+    var got=dd?sel.value:inp.value;
+    if(!skipped && !String(got).trim()) return;
+    var res, correct, vdt;
+    if(skipped){ res={v:"skip",target:dd?A.ch[0]:A.a[0],others:[]}; correct=false; got=""; }
+    else if(dd){ var okp=FG.norm(got)===FG.norm(A.ch[0]); res={v:okp?"ok":"wrong",target:A.ch[0],others:[]}; correct=okp; }
+    else { res=gGradeTyped(A,got); correct=(res.v==="ok"); }
+    lock(); q._res=correct?"ok":"bad"; mark(correct);
+    if(dd && skipped) sel.value=A.ch[0];
+    if(!dd) gap.textContent=res.target;
+    if(!q._graded){ q._graded=true; anaRecord(correct,(!correct&&res.v==="accent"),withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }
+    if(correct && bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState(); }
+    if(bi>=0) gMissBump(d,bi,correct);
+    render(res,got,skipped,correct); onDone(q);
+  }
+  cb.onclick=function(){ check(false); }; sk.onclick=function(){ check(true); };
+  q._check=function(){ if(!done && String(q._inp.value||"").trim()) check(false); };
+  function nextField(){ var all=[].slice.call(det.querySelectorAll(".q")), i=all.indexOf(q); for(var k=i+1;k<all.length;k++){ if(!all[k]._res){ all[k]._inp.focus(); return; } } }
+  if(inp) inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(done) nextField(); else check(false); } });
+  if(sel) sel.addEventListener("keydown",function(e){
+    if(/^[1-9]$/.test(e.key) && !done){ var n=+e.key; if(n<=pickOrder.length){ sel.value=pickOrder[n-1]; e.preventDefault(); } }
+    else if(e.key==="Enter"){ e.preventDefault(); if(done) nextField(); else check(false); }
+  });
+  return q;
+}
 function pickRound(bank,n){
   var a=bank.slice();
   for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
@@ -3445,51 +3580,38 @@ function covOf(d){ var bank=d.bankItems||d.items||[]; var cv=state.gramCov[d.id]
   for(var k in cv) if(cv[k]) n++; return {n:Math.min(n,bank.length), t:bank.length}; }
 function drillMeta(d){ var best=state.drills[d.id]; var c=covOf(d);
   return d.ch+(c.t?" · couverture "+c.n+"/"+c.t:"")+(best?" · best "+best.correct+"/"+best.total:""); }
-function buildDrillAcc(d){
-  if(d.gen) d.items=d.gen();
-  else { d.bankItems=d.bankItems||d.items; d.items=pickRound(d.bankItems,10); }
-  var det=el("details","acc"); var best=state.drills[d.id];
+/* build one drill's <details.acc> accordion (used inside a chapter group). opts: {items, practice} for a retry/misses round */
+function buildDrillAcc(d,opts){
+  opts=opts||{}; var pk=gPrefs();
+  d.bankItems=d.bankItems||d.items;
+  var bank=d.bankItems, practice=!!opts.practice, empty="";
+  if(opts.items){ d.items=opts.items; }
+  else if(d.gen){ d.items=d.gen(); }
+  else {
+    var pool=bank;
+    if(pk.src==="miss"){ var ms=gMissOf(d); pool=bank.filter(function(x,i){ return ms[i]; }); practice=true; if(!pool.length) empty="No misses to retry in this drill."; }
+    if(pk.fmt==="pick"){ pool=pool.filter(function(x){ return x.ch; }); practice=true; if(!pool.length&&!empty) empty="No drop-down items in this drill yet."; }
+    d.items=pickRound(pool,10);
+  }
+  var det=el("details","acc");
   var sum=el("summary");
   sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
   var body=el("div","body");
-  if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }   /* v1.0.0: rule explainer at the top of each drill */
-  if(d.wb){ var bank=el("div","wbank"); bank.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" \u00b7 ").forEach(function(w){ bank.appendChild(el("span","wchip",esc(w))); }); body.appendChild(bank); }
-  d.items.forEach(function(it,qi){
-    var q=el("div","q");
-    q.appendChild(el("div","qt",it.q.replace("___","<span class='blank'>____</span>")));
-    var row=el("div","row-in");
-    var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-    inp.setAttribute("aria-label","answer"); row.appendChild(inp);
-    var v=el("div","verdict"); v.style.display="none";
-    function check(){
-      if(!inp.value.trim()) return;                     /* v1.0.0-b6: empty check — nothing to grade */
-      var ans=Array.isArray(it.a)?it.a:[it.a];
-      var cmp = it.loose ? normLoose : norm;
-      var got=inp.value, ok=ans.some(function(a){return cmp(a)===cmp(got);});
-      var close=ans.some(function(a){return bare(a).replace(/-/g," ")===bare(got).replace(/-/g," ");});
-      v.style.display="block";
-      if(ok){ v.className="verdict ok"; v.textContent="✓ Correct"; }
-      else if(d.strict && close && got.trim()){ v.className="verdict no"; v.textContent="✗ Spelling — exact accents required: "+ans[0]; }
-      else if(close && got.trim()){ v.className="verdict warn"; v.textContent="≈ Right word — mind the accents: "+ans[0]; }
-      else { v.className="verdict no"; v.textContent="✗ "+ans[0]; }
-      if(!q._graded){ q._graded=true; anaRecord(ok, (!ok && close && !!got.trim()), withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }  /* first grade per item counts */
-      if(ok){ var bank=d.bankItems||d.items, bi=bank.indexOf(it);
-        if(bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState();
-          var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); } }
-      scoreDrill(d);
-    }
-    inp.addEventListener("keydown",function(e){ if(e.key==="Enter") check(); });
-    q._check=check; q._inp=inp;
-    q.appendChild(row); q.appendChild(v);
-    if(it.hint) q.appendChild(el("div","hint",it.hint));
-    body.appendChild(q);
-  });
+  if(d.rule){
+    if(d.ins) body.appendChild(el("p","gins","<b>Instructions :</b> "+d.ins));
+    body.appendChild(el("div","rulecard","<h4>"+(d.rt||"La règle")+"</h4><ul>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>"));
+  } else if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }
+  if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
+  det._d=d; det._body=body; det._practice=practice;
+  if(empty) body.appendChild(el("div","gempty",empty));
+  d.items.forEach(function(it){ body.appendChild(gBuildQ(d,it,det,function(){
+    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); })); });
   var foot=el("div","drill-foot");
   var cbtn=el("button","ghost","Check all");
-  cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ if(qq._inp.value.trim()) qq._check(); }); };
+  cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._check(); }); };
   var rbtn=el("button","ghost","Clear");
-  rbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._inp.value=""; qq.querySelector(".verdict").style.display="none"; }); };
+  rbtn.onclick=function(){ var f=buildDrillAcc(d,{items:d.items,practice:det._practice}); f.open=true; det.parentNode.replaceChild(f,det); };
   foot.appendChild(cbtn); foot.appendChild(rbtn);
   if(d.gen || d.bankItems){
     var gbtn=el("button","ghost","New round 🎲");
@@ -3497,25 +3619,42 @@ function buildDrillAcc(d){
     foot.appendChild(gbtn);
   }
   body.appendChild(foot);
+  var resHost=el("div"); resHost.className="gresHost"; body.appendChild(resHost);
   det.appendChild(body);
-  det._d=d; det._body=body;
   return det;
 }
 function scoreDrill(d){
   var det=[].slice.call(document.querySelectorAll(".acc")).find(function(x){return x._d===d;});
   if(!det) return;
   var qs=det._body.querySelectorAll(".q"), correct=0, answered=0;
-  [].forEach.call(qs,function(qq){
-    var vd=qq.querySelector(".verdict");
-    if(vd.style.display!=="none" && qq._inp.value.trim()){ answered++; if(vd.classList.contains("ok")) correct++; }
-  });
-  if(answered===d.items.length){
-    if(correct===d.items.length && d.items.length>=10) award("a_round");
-    var prev=state.drills[d.id];
-    if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
-      det.querySelector(".meta").innerHTML=drillMeta(d);
+  [].forEach.call(qs,function(qq){ if(qq._res){ answered++; if(qq._res==="ok") correct++; } });
+  var host=det._body.querySelector(".gresHost"); host.innerHTML="";
+  if(answered && answered===d.items.length){
+    var miss=[]; [].forEach.call(qs,function(qq,i){ if(qq._res!=="ok") miss.push(d.items[i]); });
+    var r=el("div","gres","<span class='big'>"+correct+" / "+d.items.length+"</span><span class='pct'>"+Math.round(correct/d.items.length*100)+" %</span>");
+    if(miss.length){ var rb=el("button","ghost","Retry the "+miss.length+" missed");
+      rb.onclick=function(){ var f=buildDrillAcc(d,{items:miss,practice:true}); f.open=true; det.parentNode.replaceChild(f,det); };
+      r.appendChild(rb); }
+    host.appendChild(r);
+    if(!det._practice && d.items.length>=Math.min(10,(d.bankItems||d.items).length)){   /* best scores come from full rounds only */
+      if(correct===d.items.length && d.items.length>=10) award("a_round");
+      var prev=state.drills[d.id];
+      if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
+        det.querySelector(".meta").innerHTML=drillMeta(d);
+      }
     }
   }
+}
+/* settings strip above the drills: format · source */
+function renderGBar(){
+  var host=document.getElementById("gbar"); if(!host) return; var pk=gPrefs();
+  host.innerHTML="<label>Format <select id='gFmt'><option value='mix'>Mixed</option><option value='type'>Typing only</option><option value='pick'>Drop-down only</option></select></label>"+
+    "<label>From <select id='gSrc'><option value='all'>All questions</option><option value='miss'>My misses ("+gMissTotal()+")</option></select></label>"+
+    "";
+  var f=document.getElementById("gFmt"), s=document.getElementById("gSrc");
+  f.value=pk.fmt; s.value=pk.src;
+  f.onchange=function(){ pk.fmt=f.value; saveState(); buildDrills(); };
+  s.onchange=function(){ pk.src=s.value; saveState(); buildDrills(); };
 }
 
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
@@ -4385,7 +4524,7 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); setupDash(); setupDlptChip(); renderAnaSince();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderAnaSince();
 renderVerbTable(); renderVocTable(); PREP.init();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
