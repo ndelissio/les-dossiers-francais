@@ -440,4 +440,4 @@ of git. To prevent this:
   - Put the article inside the option when gender would give the answer away.
   - Don't test nominalisation with gender-only choices.
 - **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
-- **Layout (Unit 5 v0.2.0):** flat, light manila folder tabs, ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit still in build shows an amber "In build" tag on the landing page.
+- **Layout (Unit 5 v0.2.0):** flat, light blue-grey folder tabs (lightly overlapped, one hard corner each), ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit still in build shows an amber "In build" tag on the landing page.
