@@ -441,6 +441,7 @@ of git. To prevent this:
   - Put the article inside the option when gender would give the answer away.
   - Don't test nominalisation with gender-only choices.
 - **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
+- **Unit 4 v0.9.1 carries the same look** (tabs, tricolore rule, polish, no long tab intros) but not yet the drill engine, the chapter drop-down or the shorter glosses; those backports are separate changes.
 - **Layout (Unit 5 v0.2.0):** flat, light blue-grey leaning folder tabs (lightly overlapped; each tab has its own muted colour as an outline, with a faint glow on the selected one), ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit below 1.0.0 shows the amber "In build" tag on the landing page.
 
 ### Prépa examen (Unit 4 v0.9.0 pilot, decided 15 Oct 2026)
