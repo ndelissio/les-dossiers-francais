@@ -226,6 +226,7 @@ of git. To prevent this:
   words that are proper nouns, ungradable function words, or already covered by
   an existing card. Surface the shortlist for review before building, same as
   any other vocab bank content.
+- Vocab topic names (`VTOPICS`) stay short: at most about 42 characters including the chapter tag, and "Extras — …" rather than "Reading & listening extras — …". The long form wraps in the topic filter and on the card tag. (Unit 5 v0.2.1 is done; Units 1–4 are pending, see below.)
 - Study-guide-dependent content stays marked "à venir" until the guide is
   actually uploaded.
 - Chapter scope pattern: each printed textbook volume covers 5 chapters, and
@@ -441,7 +442,7 @@ of git. To prevent this:
   - Put the article inside the option when gender would give the answer away.
   - Don't test nominalisation with gender-only choices.
 - **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
-- **Unit 4 v0.9.1 carries the same look** (tabs, tricolore rule, polish, no long tab intros) but not yet the drill engine, the chapter drop-down or the shorter glosses; those backports are separate changes.
+- **Unit 4 v1.0.0 (Nicholas's decision, 15 Oct 2026; now shows Active) carries the same look** (tabs, tricolore rule, polish, no long tab intros) and the Vocabulaire trainer (ruled-field spelling with the verdict ladder, chapter drop-down, shorter glosses with the parenthetical on its own line). Not yet backported to Unit 4: the Grammaire drill engine (adapter, drop-downs, rule cards, misses pile). Units 1–3 have none of it yet.
 - **Layout (Unit 5 v0.2.0):** flat, light blue-grey leaning folder tabs (lightly overlapped; each tab has its own muted colour as an outline, with a faint glow on the selected one), ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit below 1.0.0 shows the amber "In build" tag on the landing page.
 
 ### Prépa examen (Unit 4 v0.9.0 pilot, decided 15 Oct 2026)
@@ -461,3 +462,6 @@ of git. To prevent this:
 - Colours live in tokens (`--surface`, `--tint`, `--hover`, `--chip`, `--neutral`, `--err-bg`, `--on-solid`, …). Never write a literal hex in new CSS, and use `var(--on-solid)` for text on a solid coloured button.
 - **Vocabulaire modes:** Spelling (default) · Recognize · Recall. Recognize shows the French and asks for the meaning from four options (keys 1–4). Wrong options come from `vocChoices()`: same part of speech, no shared content word in the gloss, not listed in the other card's `sy`/`vs`, same topic first, then same chapter. Recognize answers count toward mastery like the other modes; Training records nothing. The EN/FR direction applies to Recall only.
 - The landing page has dark mode too (same `frTheme` key and masthead button, its own tokens). Not yet done: Units 1–3.
+
+### Pending: next series of updates to Units 1–4
+- **Shorten the vocabulary topic names** (`VTOPICS`) in every chapter of Units 1–4 to the Unit 5 rule (at most about 42 characters including the chapter tag; "Extras — …" for the reading and listening extras). Names only: topic keys, cards and progress stay as they are. Do it in the same pass as the other backports (Grammaire drill engine for Unit 4; Units 1–3 get none of the Unit 5 design yet).
