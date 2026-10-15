@@ -419,19 +419,19 @@ of git. To prevent this:
 
 ### Settled (apply to new drill builds)
 - **Typed answers sit on a Seyès-ruled field** (French copybook paper with a red margin line), with an accent key row underneath. Grammar drills keep the keys with the last-focused item only, so clicking Check never reflows the page.
-- **Feedback after Check:**
-  - A verdict line.
-  - A **You** row with wrong or extra characters struck through in red.
-  - A **Correct** row with missed characters underlined in red.
-  - The full correct sentence.
-  - A one-line why.
-  - A "My answer was right, count it" override.
+- **Feedback after Check is compact:**
+  - One verdict line at the top, and no other status text ("counts as a miss", streak notes).
+  - On a miss, a **You** row with wrong or extra characters struck through in red, and a **Correct** row with missed characters underlined in red. The correct answer appears once; no repeated full-answer line under the rows.
+  - A skip shows the **Correct** row alone.
+  - Grammaire adds a one-line why after the rows. There is no "count it" override.
 - **Grading uses the verdict ladder:** ok, accent, article, gender, pronoun, agreement, auxiliary, close, wrong.
   - Normalize before comparing.
   - Generate article variants (le↔un, la↔une, les↔des, l' by gender).
-  - Strict accents is on by default and can be toggled (one switch shared by Vocabulaire and Grammaire).
+  - Accents always count: there is no strict-accents option. An accent slip is an amber "Check the accents" miss.
   - Vocabulaire still builds its accepted forms with `vocCands()`; `FG` only grades.
-  - The override on a missed Vocabulaire card restores the card's earlier progress and records a correct answer; the Analyse miss is not removed.
+- **English glosses (`e:`):** keep any explanatory parenthetical under about 30 characters; if the main gloss already says it, drop the parenthetical. The trainer shows a trailing parenthetical of two or more words on its own line under the main gloss and never wraps it on desktop (`enHTML()`). Short grammatical cues such as (someone) or (at) stay inline.
+- **Vocabulaire filters:** one chapter drop-down (opens on the current chapter, All chapters first) and the topic filter on one row. There is no level toggle.
+- **Tab pages carry no long introductory paragraphs;** put guidance in a short "How to use" list.
 - **Grammar drills mix typed items with inline drop-downs** of 2 or 4 options. The `<select>` sits in the sentence at the blank. The correct option is stored first and shuffled at render.
 - **Each grammar topic has an always-visible rule card:** at most 5 bullets, forms in bold, examples using the unit's vocabulary. A drill without `rule` keeps its original instruction note.
 - **Every converted grammar item carries an `x` why line,** shown after answering whether right or wrong.
@@ -440,4 +440,4 @@ of git. To prevent this:
   - Put the article inside the option when gender would give the answer away.
   - Don't test nominalisation with gender-only choices.
 - **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
-- **Layout (Unit 5 v0.2.0):** manila folder tabs, ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit still in build shows an amber "In build" tag on the landing page.
+- **Layout (Unit 5 v0.2.0):** flat, light manila folder tabs, ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit still in build shows an amber "In build" tag on the landing page.
