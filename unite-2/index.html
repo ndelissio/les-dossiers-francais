@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 2 · Dossier Français — v2.0.0</title>
+<title>Unité 2 · Dossier Français — v2.0.0.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -63,8 +63,7 @@
   nav.tabs button[data-tab="vocab"]{--c:#c0574a}
   nav.tabs button[data-tab="gram"]{--c:#3f8a73}
   nav.tabs button[data-tab="verbs"]{--c:#7b64a8}
-  nav.tabs button[data-tab="test"]{--c:#b07d2e}
-  nav.tabs button[data-tab="oral"]{--c:#b25a7c}
+  nav.tabs button[data-tab="prep"]{--c:#b07d2e}
   nav.tabs button[data-tab="insights"]{--c:#3a8aa0}
   nav.tabs{display:flex; align-items:flex-end; gap:0; position:sticky; top:0; z-index:20; margin:0 -18px; padding:12px 18px 0 24px;
     background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
@@ -399,9 +398,9 @@
   /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
   :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
     --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
-  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="test"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
   :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
-  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="test"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
+  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
   .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
   .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
     transition:background .12s ease, border-color .12s ease}
@@ -420,7 +419,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v2.0.0</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v2.0.0.1</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -440,9 +439,8 @@
     <button role="tab" aria-selected="true" data-tab="dash">Tableau de bord</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
+    <button role="tab" aria-selected="false" data-tab="prep">Prépa examen</button>
     <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
-    <button role="tab" aria-selected="false" data-tab="test">Examen blanc</button>
-    <button role="tab" aria-selected="false" data-tab="oral">Pratique orale</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
   </nav>
 
@@ -620,49 +618,19 @@
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
-  <!-- ===================== TEST ===================== -->
-  <section class="panel" id="p-test" role="tabpanel">
-    <h2 class="sec">Quizzes &amp; Unit 2 exam</h2>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>10 random questions per chapter bank; the unit practice exam follows your study guide.</li>
-        <li>Accents strict.</li>
-        <li>Answers feed Analyse.</li>
-      </ul>
-    </details>
 
-    <div id="testIntro" class="card">
-      <div class="test-head">
-        <select class="filter" id="quizPick">
-          <option value="6">Chapter 6 quiz</option>
-          <option value="7">Chapter 7 quiz</option>
-          <option value="8">Chapter 8 quiz</option>
-          <option value="9">Chapter 9 quiz</option>
-          <option value="exam">Unit 2 practice exam</option>
-        </select>
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
-      </div>
-      <p class="hist" id="testHist"></p>
+  <!-- ===================== PRÉPA EXAMEN (à venir) ===================== -->
+  <section class="panel" id="p-prep" role="tabpanel">
+    <h2 class="sec">Prépa examen</h2>
+    <div class="card" style="text-align:center;padding:30px 20px">
+      <span class="pill" style="background:var(--learn-soft);color:var(--learn)">à venir</span>
     </div>
-
-    <div id="testRun" style="display:none">
-      <div class="test-head">
-        <span class="pill" id="tProg"></span>
-      </div>
-      <div id="testQs"></div>
-      <div class="drill-foot">
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 26px" id="submitTest">Submit &amp; score</button>
-      </div>
-    </div>
-
-    <div id="testResult" style="display:none"></div>
   </section>
 
   <!-- ===================== INSIGHTS ===================== -->
   <section class="panel" id="p-insights" role="tabpanel">
     <h2 class="sec">Analyse — how you miss</h2>
-    <p class="lead">Built from every graded answer — trainers, drills, quizzes. Training mode is never recorded. First grade per item counts.</p>
+    <p class="lead">Built from every graded answer — trainers and drills. Training mode is never recorded. First grade per item counts.</p>
     <div class="card" id="insWeak"><p class="hist">No graded answers yet — grade a few cards and come back.</p></div>
     <div class="card" id="insWeakCh" style="margin-top:12px;font-size:14px"><span class="hist">Weakest chapter: — (5+ graded answers per chapter required)</span></div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px">
@@ -674,7 +642,6 @@
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Vocabulaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnVoc" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnVocL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Conjugaison</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnConj" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnConjL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Grammaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnGram" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnGramL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
-      <div class="card"><div style="font-weight:700;margin-bottom:8px">Examen</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnQuiz" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnQuizL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
     </div>
     <h2 class="sec" style="margin-top:26px">Error types</h2>
     <div class="card"><div class="ledger" id="insBuckets"></div></div>
@@ -688,30 +655,12 @@
     <div class="trophygrid" id="insTrophy"></div>
   </section>
 
-  <!-- ===================== ORAL / OPI ===================== -->
-  <section class="panel" id="p-oral" role="tabpanel">
-    <h2 class="sec">Oral practice — OPI prompts</h2>
-    <p class="lead">Speaking trains out loud. Cards mirror the Unit 2 tasks.</p>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>Pick one, hit a timer, talk.</li>
-        <li>45 → 30 → 15 seconds.</li>
-        <li>No grading, just reps.</li>
-      </ul>
-    </details>
-    <div class="opicard" id="opiCard"><!-- filled by JS --></div>
-    <div class="vnav">
-      <button id="opiPrev">‹ Prev</button>
-      <span id="opiPos"></span>
-      <button id="opiNext">Next ›</button>
-    </div>
-  </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v2.0.0</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v2.0.0.1</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
-    <span style="color:var(--mute)">v2.0.0 (15 Oct 2026): <strong>Unité 2 takes the new design from Unités 4 and 5.</strong> <strong>Look</strong>: flat, light folder tabs that lean and overlap, each with its own muted colour (an outline, plus a faint glow on the selected tab), spread across the full width of the page; a tricolore rule under the masthead; a French-flag icon in the browser tab; softer card shadows, press states on buttons and a visible keyboard focus ring. The tab order is now Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse, and the long introductions under the tabs are replaced by short <em>How to use</em> lists. <strong>Dark mode</strong> follows the device; a round masthead button forces light or dark (Alt-click returns to the device setting), and the choice is shared by every dossier in this browser. <strong>Vocabulaire</strong>: <em>Spelling</em> is the default mode and is typed on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row; one verdict line follows (correct · check the accents · article missing · wrong-gender article · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Accents always count and articles are required (un/une now count for le/la). <em>Recognize</em> (multiple choice, four options, keys 1–4) and <em>Recall</em> both run EN → FR or FR → EN, with the direction switch on the same row as the mode switch; <em>Training</em> sits to the left of the modes. The up-to-my-level toggle is replaced by one chapter drop-down that opens on your current chapter, on the same row as the topic filter. English notes in parentheses sit on their own line under the gloss. <strong>Mastery</strong> is three correct answers in a row and nothing else: a clean first answer no longer turns a card green, in the Vocabulaire and Conjugaison trainers alike (<em>Je connais déjà</em> still marks a card known at once). This applies from now on only: cards that are already green stay green until your next miss. <strong>Grammaire</strong>: the new drill engine. Typed answers use the same ruled field and verdicts; some items are inline drop-downs (keys 1–4); a <em>Format</em> switch (mixed, typing only, drop-down only) and a <em>From</em> switch (all questions or My misses) sit above the drills; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds record a best score. <strong>Content pass</strong>: 24 grammar drills (478 items) now open with a one-line instruction and an always-visible rule card; every one of the 478 items carries a one-line <em>why</em> shown after you answer; 178 items are drop-downs. Leak audit: 66 hints that named the answer or its rule were removed, and 100 items lost a trailing label that gave the answer away (the infinitive to conjugate stays as the cue); 8 accepted answers were added where a second form is equally correct (for example “il y a” for “ça fait”, “car” for “parce que”, “en dessous de” for “sous”). The four Vocab en contexte drills keep their original notes. In the tense-review drill, 18 sentences gained a time word (for example “Hier, …”, “Autrefois, …”) where a tense label used to sit in the question. <strong>Unchanged</strong>: every vocabulary card, the Conjugaison trainer with its passé composé and imparfait tables, the Examen blanc and Pratique orale content (restyled only) and saved progress.<br></span>
+    <span style="color:var(--mute)">v2.0.0.1 (15 Oct 2026, hotfix): <strong>The old exam tabs are gone and Prépa examen takes their place (à venir).</strong> Examen blanc and Pratique orale are removed from Unité 2, as they were from Unités 4 and 5: the chapter quizzes, the Unité 2 practice exam, the oral prompt deck, the Analyse <em>Examen</em> donut and the Sans faute and Hat-trick achievements. Saved quiz history stays in your browser, unseen. A new <strong>Prépa examen</strong> tab sits after Grammaire and shows <em>à venir</em>. No vocabulary, grammar or progress data changed.<br></span>
+      <span style="color:var(--mute)">v2.0.0 (15 Oct 2026): <strong>Unité 2 takes the new design from Unités 4 and 5.</strong> <strong>Look</strong>: flat, light folder tabs that lean and overlap, each with its own muted colour (an outline, plus a faint glow on the selected tab), spread across the full width of the page; a tricolore rule under the masthead; a French-flag icon in the browser tab; softer card shadows, press states on buttons and a visible keyboard focus ring. The tab order is now Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse, and the long introductions under the tabs are replaced by short <em>How to use</em> lists. <strong>Dark mode</strong> follows the device; a round masthead button forces light or dark (Alt-click returns to the device setting), and the choice is shared by every dossier in this browser. <strong>Vocabulaire</strong>: <em>Spelling</em> is the default mode and is typed on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row; one verdict line follows (correct · check the accents · article missing · wrong-gender article · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Accents always count and articles are required (un/une now count for le/la). <em>Recognize</em> (multiple choice, four options, keys 1–4) and <em>Recall</em> both run EN → FR or FR → EN, with the direction switch on the same row as the mode switch; <em>Training</em> sits to the left of the modes. The up-to-my-level toggle is replaced by one chapter drop-down that opens on your current chapter, on the same row as the topic filter. English notes in parentheses sit on their own line under the gloss. <strong>Mastery</strong> is three correct answers in a row and nothing else: a clean first answer no longer turns a card green, in the Vocabulaire and Conjugaison trainers alike (<em>Je connais déjà</em> still marks a card known at once). This applies from now on only: cards that are already green stay green until your next miss. <strong>Grammaire</strong>: the new drill engine. Typed answers use the same ruled field and verdicts; some items are inline drop-downs (keys 1–4); a <em>Format</em> switch (mixed, typing only, drop-down only) and a <em>From</em> switch (all questions or My misses) sit above the drills; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds record a best score. <strong>Content pass</strong>: 24 grammar drills (478 items) now open with a one-line instruction and an always-visible rule card; every one of the 478 items carries a one-line <em>why</em> shown after you answer; 178 items are drop-downs. Leak audit: 66 hints that named the answer or its rule were removed, and 100 items lost a trailing label that gave the answer away (the infinitive to conjugate stays as the cue); 8 accepted answers were added where a second form is equally correct (for example “il y a” for “ça fait”, “car” for “parce que”, “en dessous de” for “sous”). The four Vocab en contexte drills keep their original notes. In the tense-review drill, 18 sentences gained a time word (for example “Hier, …”, “Autrefois, …”) where a tense label used to sit in the question. <strong>Unchanged</strong>: every vocabulary card, the Conjugaison trainer with its passé composé and imparfait tables, the Examen blanc and Pratique orale content (restyled only) and saved progress.<br></span>
       <span style="color:var(--mute)">v1.5.1 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v1.5.0 (10 Oct 2026): <strong>Conjugaison progress now tracks the passé composé and the imparfait.</strong> Unit 2 introduced those two tenses, so they now carry the mastery: answers in the <strong>Passé composé</strong> and <strong>Imparfait</strong> tables are recorded (3 correct in a row turns a conjugation green, a miss resets it, <em>Je connais déjà ✓</em>, Hide known, New only and Rusty all work per tense), and the card header now defaults to the passé composé. <strong>Présent is now reps only</strong> — nothing is recorded there. The Tableau de bord stat <em>Verbs mastered</em> becomes <strong>Conjugations mastered</strong> and counts every verb × tense pair (24 verbs × 2 tenses = 48 conjugations); the Conjugaison ledger, the "known overall" counter, the progress table (with its Reset buttons), the Conjugueur achievement and the Analyse struggle list (now written like "aller (pc)") all follow the selected tense. <strong>Heads-up:</strong> if you had mastered verbs in présent, the Tableau conjugation bar will drop, because it now measures passé composé + imparfait instead — nothing is deleted; your old présent progress stays saved as history, and the two new tenses start from zero.<br></span>
     <span style="color:var(--mute)">v1.4.1 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
@@ -736,8 +685,6 @@ var CONFIG={
   UNIT:2,
   KEY:"fr_dossier_u2",          /* NEVER change within a unit — saved progress lives here (namespaced: no collision with Unit 1) */
   DEFAULT_CH:6,                 /* chapter a fresh install assumes */
-  QUIZ_SIZE:10,                 /* questions per chapter quiz */
-  EXAM:{read:3, vocab:12, gram:12}, /* unit-exam section quotas */
   MASTERY:["pc","imp"],          /* tenses whose rows carry mastery (the progress bar): Unit 2 introduced the passé composé + imparfait */
   RUSTY_DAYS:14                 /* known + unseen this long = rusty */
 };
@@ -4375,448 +4322,9 @@ var CIB = V.concat(EXTRA_CIB.filter(function(e){ return !V.some(function(x){ ret
   ts.addEventListener("change",function(){ if(document.getElementById("cibHost").children.length) renderCib(); });
 })();
 
-/* =============== PRACTICE TEST =============== */
-var TEST=[
- /* ===== Chapter 6 · Housing (bank of 24, 10 drawn per quiz) ===== */
- {ch:"6",type:"fill",q:"Passé composé: « Nous ___ dans notre nouvel appartement en mai. » (emménager)",a:["avons emménagé"],m:{pron:"nous",vg:"pc"}},
- {ch:"6",type:"fill",q:"Passé composé: « Elle ___ les murs de la chambre en bleu. » (peindre)",a:["a peint"],m:{pron:"il",vg:"pc"}},
- {ch:"6",type:"fill",q:"Negation in the passé composé: « Je ___ le loyer ce mois-ci. » (ne pas payer)",a:["n'ai pas payé"],m:{pron:"je",vg:"pc"}},
- {ch:"6",type:"fill",q:"Passé composé: « Vous ___ la table pour six personnes. » (mettre)",a:["avez mis"],m:{pron:"vous",vg:"pc"}},
- {ch:"6",type:"fill",q:"Passé composé: « Ils ___ trois appartements hier. » (voir)",a:["ont vu"],m:{pron:"ils",vg:"pc"}},
- {ch:"6",type:"fill",q:"Passé composé: « Tu ___ le ménage ce matin ? » (faire)",a:["as fait"],m:{pron:"tu",vg:"pc"}},
- {ch:"6",type:"fill",q:"COD pronoun: « Tu fais ton lit ? — Oui, je ___ fais tous les jours. »",a:["le"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"COD pronoun: « Nous fermons les fenêtres ; nous ___ fermons le soir. »",a:["les"]},
- {ch:"6",type:"fill",q:"COD pronoun + elision: « Il écoute la chanson. → Il ___. » (écoute + pronoun)",a:["l'écoute"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"Conjugate: « Vous ___ nettoyer la cuisine avant ce soir. » (devoir)",a:["devez"],m:{pron:"vous",vg:"mod"}},
- {ch:"6",type:"fill",q:"Conjugate: « Ils ___ acheter un lave-vaisselle. » (vouloir)",a:["veulent"],m:{pron:"ils",vg:"mod"}},
- {ch:"6",type:"fill",q:"Conjugate: « Je ___ visiter l'appartement demain ? » (pouvoir)",a:["peux"],m:{pron:"je",vg:"mod"}},
- {ch:"6",type:"fill",q:"Obligation (impersonal): « ___ signer le contrat avant d'emménager. »",a:["il faut"],m:{vg:"mod"}},
- {ch:"6",type:"fill",q:"Feminine form: « un réfrigérateur neuf → une cuisinière ___ »",a:["neuve"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"Feminine form: « un salon chaleureux → une chambre ___ »",a:["chaleureuse"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"Feminine form: « un loyer cher → une maison ___ »",a:["chère"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"Place and agree: « une maison + petit → une ___ »",a:["petite maison"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"Place and agree: « un fauteuil + rouge → un ___ »",a:["fauteuil rouge"],m:{cat:"gen"}},
- {ch:"6",type:"fill",q:"Vocabulary: the attic is le ___.",a:["grenier"]},
- {ch:"6",type:"fill",q:"Vocabulary: the dishwasher is le ___.",a:["lave-vaisselle","lave vaisselle"]},
- {ch:"6",type:"fill",q:"Vocabulary: the bathtub is la ___.",a:["baignoire"]},
- {ch:"6",type:"fill",q:"Vocabulary: the armchair is le ___.",a:["fauteuil"]},
- {ch:"6",type:"fill",q:"Vocabulary: to move in = ___. (infinitive)",a:["emménager"]},
- {ch:"6",type:"fill",q:"Preposition: « Le tableau est ___ la commode. » (above)",a:["au-dessus de","au dessus de"],m:{cat:"sp"}}
- ,
- /* ===== Chapter 7 · Food (bank of 24, 10 drawn per quiz) ===== */
- {ch:"7",type:"fill",q:"Passé composé: « Elle ___ me voir hier. » (venir)",a:["est venue"],m:{vg:"pc"}},
- {ch:"7",type:"fill",q:"Passé composé: « Nous (m.) ___ au marché ce matin. » (aller)",a:["sommes allés"],m:{pron:"nous",vg:"pc"}},
- {ch:"7",type:"fill",q:"Passé composé: « J'___ la poubelle. » (sortir — COD)",a:["ai sorti"],m:{vg:"pc"}},
- {ch:"7",type:"fill",q:"Passé composé: « Nadia ___ à 7 heures. » (se réveiller)",a:["s'est réveillée"],m:{vg:"pc"}},
- {ch:"7",type:"fill",q:"Passé composé: « Elle ___ les mains. » (se laver — attention à l'accord)",a:["s'est lavé"],m:{vg:"pc"}},
- {ch:"7",type:"fill",q:"Partitif: « Je bois ___ jus d'orange. »",a:["du"],m:{cat:"gen"}},
- {ch:"7",type:"fill",q:"Partitif: « Tu ajoutes ___ ail à la vinaigrette ? »",a:["de l'"],m:{cat:"gen"}},
- {ch:"7",type:"fill",q:"Négation: « Ma soeur ne mange pas ___ viande. »",a:["de"]},
- {ch:"7",type:"fill",q:"Quantité: « J'achète une ___ oeufs. » (a dozen of)",a:["douzaine d'"]},
- {ch:"7",type:"fill",q:"Pronom en: « Vous voulez du thé ? — Oui, j'___ veux. »",a:["en"]},
- {ch:"7",type:"fill",q:"Pronom en: « Tu as trois frères ? — Non, j'en ___ deux. »",a:["ai"]},
- {ch:"7",type:"fill",q:"Adverbe: prudent → ___",a:["prudemment"],m:{cat:"sp"}},
- {ch:"7",type:"fill",q:"Adverbe: courant → ___",a:["couramment"],m:{cat:"sp"}},
- {ch:"7",type:"fill",q:"Vocab: On achète le pain à ___. (magasin, avec l'article)",a:["la boulangerie"]},
- {ch:"7",type:"fill",q:"Vocab: On achète le saumon à ___. (magasin)",a:["la poissonnerie"]},
- {ch:"7",type:"fill",q:"Vocab: the strawberry = ___ (avec l'article)",a:["la fraise"]},
- {ch:"7",type:"fill",q:"Vocab: the potato = ___",a:["la pomme de terre"]},
- {ch:"7",type:"fill",q:"Vocab: the frying pan = ___",a:["la poêle"]},
- {ch:"7",type:"fill",q:"Vocab: the mixing bowl = ___",a:["le saladier"]},
- {ch:"7",type:"fill",q:"Vocab: to simmer = faire ___",a:["mijoter"]},
- {ch:"7",type:"fill",q:"Vocab: to peel = ___",a:["éplucher"],m:{cat:"sp"}},
- {ch:"7",type:"fill",q:"Au restaurant: la liste complète des plats, c'est ___. (pas le « menu »)",a:["la carte"]},
- {ch:"7",type:"fill",q:"Au restaurant: après le repas, on demande ___.",a:["l'addition"]},
- {ch:"7",type:"fill",q:"Passé composé: « Tu (f.) ___ chez toi après le dîner. » (rentrer)",a:["es rentrée"],m:{pron:"tu",vg:"pc"}},
- /* ===== Chapter 8 · Health (bank of 24) ===== */
- {ch:"8",type:"fill",q:"Imparfait: « À la clinique, il y ___ une douzaine d'infirmiers. » (avoir)",a:["avait"],m:{vg:"pc"}},
- {ch:"8",type:"fill",q:"Imparfait: « C'___ difficile de développer un vaccin. » (être)",a:["était"],m:{vg:"pc"}},
- {ch:"8",type:"fill",q:"Imparfait: « Je ne ___ pas mon traitement. » (commencer)",a:["commençais"],m:{pron:"je",vg:"pc"}},
- {ch:"8",type:"fill",q:"Imparfait: « Vous ___ toujours par vous blesser. » (finir)",a:["finissiez"],m:{pron:"vous",vg:"pc"}},
- {ch:"8",type:"fill",q:"Durée: « Je suis malade ___ une semaine. » (ongoing)",a:["depuis"]},
- {ch:"8",type:"fill",q:"Durée: « Ils se sont mariés ___ un an. » (ago)",a:["il y a"]},
- {ch:"8",type:"fill",q:"Durée: « J'ai été malade ___ une semaine, maintenant ça va. »",a:["pendant"]},
- {ch:"8",type:"fill",q:"Cause: « Il est malade ___ un rhume. » (negative cause + nom)",a:["à cause d'","à cause de"]},
- {ch:"8",type:"fill",q:"Cause: « Mon doigt a guéri ___ la compresse. » (positive)",a:["grâce à"]},
- {ch:"8",type:"fill",q:"Conséquence: « Nous étions fatigués, ___ nous sommes restés à la maison. »",a:["alors","donc"]},
- {ch:"8",type:"fill",q:"Savoir/connaître: « Tu ___ mon ami Aziz, n'est-ce pas ? »",a:["connais"],m:{vg:"sc"}},
- {ch:"8",type:"fill",q:"Savoir/connaître: « Nous ne ___ pas chanter. »",a:["savons"],m:{vg:"sc"}},
- {ch:"8",type:"fill",q:"Savoir/connaître: « Ma femme la ___ très bien. »",a:["connaît"],m:{vg:"sc"}},
- {ch:"8",type:"fill",q:"« Albert chante depuis deux heures : il a mal ___ gorge. »",a:["à la"],m:{cat:"gen"}},
- {ch:"8",type:"fill",q:"« Julie a lu neuf heures : elle a mal ___ yeux. »",a:["aux"],m:{cat:"gen"}},
- {ch:"8",type:"fill",q:"« Pierre a mangé trop de bonbons : il a mal ___ ventre. »",a:["au"],m:{cat:"gen"}},
- {ch:"8",type:"fill",q:"Vocab: the ankle = ___ (avec l'article)",a:["la cheville"]},
- {ch:"8",type:"fill",q:"Vocab: the lungs = ___",a:["les poumons"]},
- {ch:"8",type:"fill",q:"Vocab: the wrist = ___",a:["le poignet"]},
- {ch:"8",type:"fill",q:"Vocab: the injection / the sting = ___",a:["la piqûre"],m:{cat:"sp"}},
- {ch:"8",type:"fill",q:"Vocab: the emergency room = ___",a:["les urgences"]},
- {ch:"8",type:"fill",q:"Vocab: to cough = ___",a:["tousser"]},
- {ch:"8",type:"fill",q:"Vocab: to heal, to cure = ___",a:["guérir"]},
- {ch:"8",type:"fill",q:"Vocab: the flu = ___",a:["la grippe"]},
- /* ===== Chapter 9 · Social events (bank of 24) ===== */
- {ch:"9",type:"fill",q:"Relatif: « L'ami ___ m'a invité habite près d'ici. »",a:["qui"]},
- {ch:"9",type:"fill",q:"Relatif: « Le cadeau ___ j'ai acheté est pour mon cousin. »",a:["que"]},
- {ch:"9",type:"fill",q:"Relatif: « Le restaurant ___ on dîne est très chic. »",a:["où"]},
- {ch:"9",type:"fill",q:"Relatif: « 1993 est l'année ___ mon fils est né. »",a:["où"]},
- {ch:"9",type:"fill",q:"COI: « Tu parles à Nadia ? — Oui, je ___ parle. »",a:["lui"]},
- {ch:"9",type:"fill",q:"COI: « Nous avons écrit à nos amis. → Nous ___ avons écrit. »",a:["leur"]},
- {ch:"9",type:"fill",q:"COI impératif: « Offre une fleur à ta mère ! → Offre-___ une fleur ! »",a:["lui"]},
- {ch:"9",type:"fill",q:"COD ou COI: « Il embrasse les enfants. → Il ___ embrasse. »",a:["les"]},
- {ch:"9",type:"fill",q:"COD ou COI: « Il répond aux gens. → Il ___ répond. »",a:["leur"]},
- {ch:"9",type:"fill",q:"Question: « ___ tu fais ce week-end ? » (What…)",a:["qu'est-ce que"]},
- {ch:"9",type:"fill",q:"Question: « ___ vous êtes disponible aujourd'hui ? » (yes/no)",a:["est-ce que"]},
- {ch:"9",type:"fill",q:"Question: « ___ langues parles-tu ? »",a:["quelles"],m:{cat:"gen"}},
- {ch:"9",type:"fill",q:"Question: « ___ jour sommes-nous ? »",a:["quel"],m:{cat:"gen"}},
- {ch:"9",type:"fill",q:"Révision (imparfait): « Avant, nous ___ des lettres. » (écrire)",a:["écrivions"],m:{pron:"nous",vg:"pc"}},
- {ch:"9",type:"fill",q:"Révision (futur proche): « Mon frère ___ le gâteau. » (commander)",a:["va commander"],m:{vg:"pc"}},
- {ch:"9",type:"fill",q:"Révision (passé composé): « Hier, nous ___ un pique-nique. » (faire)",a:["avons fait"],m:{pron:"nous",vg:"pc"}},
- {ch:"9",type:"fill",q:"Vocab: the housewarming party = ___ (avec l'article)",a:["la pendaison de crémaillère"]},
- {ch:"9",type:"fill",q:"Vocab: the wedding invitation = ___",a:["le faire-part"]},
- {ch:"9",type:"fill",q:"Vocab: the caterer = ___",a:["le traiteur"]},
- {ch:"9",type:"fill",q:"Vocab: the fireworks show = ___",a:["le feu d'artifice"]},
- {ch:"9",type:"fill",q:"Vocab: the exhibit opening event = ___",a:["le vernissage"]},
- {ch:"9",type:"fill",q:"Vocab: to look forward to = avoir ___ de",a:["hâte"],m:{cat:"sp"}},
- {ch:"9",type:"fill",q:"Vocab: to get married = ___ (verbe pronominal)",a:["se marier"]},
- {ch:"9",type:"fill",q:"Vocab: to have a drink = prendre ___",a:["un verre"]}
-];
-/* draw a fresh test each run: fixed quota per chapter, random pick, random order within chapter */
+/* shuffle helpers (kept from the removed quiz engine) */
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
-
-/* ===== UNIT 2 EXAM BANK — built from the Test 2 study guide (Chapitres 6–9) ===== */
-/* Compréhension — passage types per the guide: emails, texts, signs, ads, instructions, voice messages. Draw: 3. */
-var EXAM_READ=[
- {title:"E-mail — pendaison de crémaillère",
-  text:"Objet : pendaison de crémaillère ! Salut à tous ! Nous avons emménagé dans notre nouvel appartement le mois dernier. Samedi 21, à partir de 19 h, on fête notre pendaison de crémaillère. Apportez juste quelque chose à boire — un traiteur s'occupe du repas. On est au troisième étage et l'ascenseur est en panne, désolé ! Amitiés, Nadia et Karim.",
-  qs:[
-   {type:"mc",q:"What are Nadia and Karim celebrating?",o:["A housewarming party","A wedding anniversary","A retirement","A graduation"],a:"A housewarming party"},
-   {type:"mc",q:"What should guests bring?",o:["Something to drink","A main dish","A piece of furniture","Nothing at all"],a:"Something to drink"},
-   {type:"sa",q:"Why does the message apologize at the end?",model:"The elevator is broken — guests have to walk up to the third floor."}
-  ]},
- {title:"Messages — on sort dîner ?",
-  text:"« Ça te dit d'aller au restaurant ce soir ? » — « Oui, je suis partant ! Où ? » — « Chez Marius. J'y suis allé la semaine dernière, le poisson est excellent. » — « Parfait. On se retrouve à 20 h ? » — « Plutôt 20 h 30, je dois finir la vaisselle. » — « D'accord, à ce soir ! »",
-  qs:[
-   {type:"mc",q:"What does the first person suggest?",o:["Going out to a restaurant","Cooking fish at home","Having a pre-dinner drink","Hiring a caterer"],a:"Going out to a restaurant"},
-   {type:"mc",q:"Why does the second person prefer 8:30?",o:["He has to finish the dishes","He works until 8","The restaurant opens late","He has to buy a gift"],a:"He has to finish the dishes"},
-   {type:"sa",q:"What does he say about Chez Marius?",model:"He went there last week and the fish is excellent."}
-  ]},
- {title:"Instructions — chez le médecin",
-  text:"Vous avez la grippe. Il faut rester au lit deux ou trois jours et boire beaucoup d'eau. Prenez un comprimé matin et soir, pendant cinq jours. Si vous toussez encore la semaine prochaine, revenez me voir. Attention : ne prenez pas ce médicament avec de l'alcool.",
-  qs:[
-   {type:"mc",q:"What is the diagnosis?",o:["The flu","Measles","A burn","An insect sting"],a:"The flu"},
-   {type:"mc",q:"How should the medicine be taken?",o:["One tablet morning and evening for five days","Two tablets at noon for three days","One tablet per week","Only when coughing"],a:"One tablet morning and evening for five days"},
-   {type:"sa",q:"When should the patient come back?",model:"If he/she is still coughing next week."}
-  ]},
- {title:"Annonce — appartement à louer",
-  text:"À louer : bel appartement au centre-ville, au troisième étage sans ascenseur. Un salon lumineux, deux chambres à coucher, une cuisine équipée avec lave-vaisselle, une salle de bains carrelée avec baignoire. Buanderie au sous-sol. 950 € par mois, charges comprises. Visites samedi de 10 h à midi.",
-  qs:[
-   {type:"mc",q:"Which of these does the apartment have?",o:["A dishwasher","An elevator","A garage","A garden"],a:"A dishwasher"},
-   {type:"mc",q:"Where is the laundry area?",o:["In the basement","In the kitchen","In the bathroom","In the attic"],a:"In the basement"},
-   {type:"sa",q:"When can the apartment be visited?",model:"Saturday from 10 a.m. to noon."}
-  ]},
- {title:"Panneau — au supermarché",
-  text:"CHERS CLIENTS : cette semaine, promotion au rayon boucherie — le porc à moitié prix ! Au rayon boulangerie : deux croissants achetés, un croissant gratuit. Nouveau : réglez vos achats sans passer en caisse avec notre application. Le magasin ferme à 21 h du lundi au samedi ; fermé le dimanche.",
-  qs:[
-   {type:"mc",q:"What is on sale at the butcher's aisle?",o:["Pork at half price","Salmon at half price","Free sausages","Beef for two euros"],a:"Pork at half price"},
-   {type:"mc",q:"What is the bread-aisle offer?",o:["Buy two croissants, get one free","All bread at half price","A free pie with any purchase","Three baguettes for one euro"],a:"Buy two croissants, get one free"},
-   {type:"mc",q:"What can customers now do with the app?",o:["Pay without going through the checkout","Order a caterer","Reserve parking","Get free delivery"],a:"Pay without going through the checkout"}
-  ]},
- {title:"Message vocal — petit accident",
-  text:"Salut, c'est Léa. Écoute, on ne peut pas venir à ton apéro ce soir. Cet après-midi, Thomas faisait du vélo quand il est tombé. Ce n'est pas grave : il a une blessure au genou et mal au coude, c'est tout. Le médecin dit qu'il va guérir vite. On se prend un verre la semaine prochaine ? Bisous !",
-  qs:[
-   {type:"mc",q:"Why can't Léa and Thomas come tonight?",o:["Thomas fell off his bike","Thomas has the flu","Their car broke down","They are moving this afternoon"],a:"Thomas fell off his bike"},
-   {type:"mc",q:"What are his injuries?",o:["A wound on his knee and a sore elbow","A burn on his hand","A twisted ankle","A bite on his forearm"],a:"A wound on his knee and a sore elbow"},
-   {type:"sa",q:"What does Léa suggest at the end?",model:"Getting a drink together next week."}
-  ]}
-];
-/* Vocabulaire — the complete Test 2 word list (93 entries), EN → FR. Articles required per the standing rule; accents strict. Draw: 12. */
-var EXAM_VOCAB=[
- {ch:"6",q:"next to",a:["à côté de"]},
- {ch:"6",q:"the bathtub",a:["la baignoire"]},
- {ch:"6",q:"a laundry room / laundry area",a:["une buanderie"]},
- {ch:"6",q:"a couch",a:["un canapé"]},
- {ch:"6",q:"square (shape)",a:["carré","carrée","carré(e)"]},
- {ch:"6",q:"tiled",a:["carrelé","carrelée","carrelé(e)"]},
- {ch:"6",q:"a bedroom",a:["une chambre à coucher"]},
- {ch:"6",q:"the hallway",a:["le couloir"]},
- {ch:"6",q:"a cushion",a:["un coussin"]},
- {ch:"6",q:"a kitchen",a:["une cuisine"]},
- {ch:"6",q:"in front of",a:["devant"]},
- {ch:"6",q:"right (direction)",a:["droite"]},
- {ch:"6",q:"made of steel",a:["en acier"]},
- {ch:"6",q:"made of leather",a:["en cuir"]},
- {ch:"6",q:"made of wool",a:["en laine"]},
- {ch:"6",q:"made of fabric",a:["en tissu"]},
- {ch:"6",q:"made of glass",a:["en verre"]},
- {ch:"6",q:"between",a:["entre"]},
- {ch:"6",q:"a shelf",a:["une étagère"]},
- {ch:"6",q:"a kitchen sink",a:["un évier"]},
- {ch:"6",q:"an armchair",a:["un fauteuil"]},
- {ch:"6",q:"a window",a:["une fenêtre"]},
- {ch:"6",q:"an attic",a:["un grenier"]},
- {ch:"6",q:"the bathroom sink",a:["le lavabo"]},
- {ch:"6",q:"the dishwasher",a:["le lave-vaisselle"]},
- {ch:"6",q:"the mirror",a:["le miroir"]},
- {ch:"6",q:"round (shape)",a:["rond","ronde","rond(e)"]},
- {ch:"6",q:"a living room",a:["un salon"]},
- {ch:"6",q:"a coffee table",a:["une table basse"]},
- {ch:"6",q:"a rug",a:["un tapis"]},
- {ch:"6",q:"to sell",a:["vendre"]},
- {ch:"7",q:"to season (food)",a:["assaisonner"]},
- {ch:"7",q:"an eggplant",a:["une aubergine"]},
- {ch:"7",q:"a cherry",a:["une cerise"]},
- {ch:"7",q:"a lemon",a:["un citron"]},
- {ch:"7",q:"a zucchini",a:["une courgette"]},
- {ch:"7",q:"a knife",a:["un couteau"]},
- {ch:"7",q:"a croissant (pastry)",a:["un croissant"]},
- {ch:"7",q:"a tablespoon",a:["une cuillère à soupe","une cuiller à soupe"]},
- {ch:"7",q:"the small grocery store",a:["l'épicerie"]},
- {ch:"7",q:"a fork",a:["une fourchette"]},
- {ch:"7",q:"strawberries",a:["des fraises","les fraises"]},
- {ch:"7",q:"raspberries",a:["des framboises","les framboises"]},
- {ch:"7",q:"(some) cheese",a:["du fromage"]},
- {ch:"7",q:"the ice cream",a:["la glace"]},
- {ch:"7",q:"eggs",a:["des œufs","des oeufs","les œufs","les oeufs"]},
- {ch:"7",q:"a peach",a:["une pêche"]},
- {ch:"7",q:"the fish (food)",a:["le poisson"]},
- {ch:"7",q:"the pork",a:["le porc"]},
- {ch:"7",q:"the butcher's aisle",a:["le rayon boucherie"]},
- {ch:"7",q:"the bread aisle",a:["le rayon boulangerie"]},
- {ch:"7",q:"to pay / settle (a bill), to fix",a:["régler"]},
- {ch:"7",q:"the salmon",a:["le saumon"]},
- {ch:"7",q:"the soup",a:["la soupe"]},
- {ch:"7",q:"a pie",a:["une tarte"]},
- {ch:"7",q:"the dishes",a:["la vaisselle"]},
- {ch:"7",q:"a drinking glass",a:["un verre"]},
- {ch:"8",q:"the forearm",a:["l'avant-bras"]},
- {ch:"8",q:"to have a stomachache",a:["avoir mal au ventre"]},
- {ch:"8",q:"a wound",a:["une blessure"]},
- {ch:"8",q:"a beanie",a:["un bonnet"]},
- {ch:"8",q:"a burn",a:["une brûlure"]},
- {ch:"8",q:"the ankles",a:["les chevilles"]},
- {ch:"8",q:"a (disease) transmission / spread",a:["une contamination"]},
- {ch:"8",q:"the neck",a:["le cou"]},
- {ch:"8",q:"the elbow",a:["le coude"]},
- {ch:"8",q:"a finger",a:["un doigt"]},
- {ch:"8",q:"the back (body)",a:["le dos"]},
- {ch:"8",q:"a scarf",a:["une écharpe"]},
- {ch:"8",q:"to be sick with a cold",a:["être enrhumé","être enrhumée","être enrhumé(e)"]},
- {ch:"8",q:"gloves",a:["des gants","les gants"]},
- {ch:"8",q:"the knees",a:["les genoux"]},
- {ch:"8",q:"the flu",a:["la grippe"]},
- {ch:"8",q:"to heal",a:["guérir"]},
- {ch:"8",q:"the hand",a:["la main"]},
- {ch:"8",q:"a bite (animal / insect)",a:["une morsure"]},
- {ch:"8",q:"the skin",a:["la peau"]},
- {ch:"8",q:"a sting, an injection",a:["une piqûre"]},
- {ch:"8",q:"the chest (body)",a:["la poitrine"]},
- {ch:"8",q:"the lungs",a:["les poumons"]},
- {ch:"8",q:"measles",a:["la rougeole"]},
- {ch:"8",q:"overblouses (medical gowns)",a:["des surblouses","les surblouses"]},
- {ch:"8",q:"to cough",a:["tousser"]},
- {ch:"8",q:"a stomach",a:["un ventre"]},
- {ch:"9",q:"a birthday",a:["un anniversaire"]},
- {ch:"9",q:"a pre-dinner drink",a:["un apéritif","un apéro"]},
- {ch:"9",q:"a cruise",a:["une croisière"]},
- {ch:"9",q:"a wedding invitation",a:["un faire-part de mariage"]},
- {ch:"9",q:"to be down to do something",a:["être partant","être partante","être partant(e)"]},
- {ch:"9",q:"a housewarming party",a:["une pendaison de crémaillère"]},
- {ch:"9",q:"open house",a:["les portes ouvertes","des portes ouvertes"]},
- {ch:"9",q:"to get a drink",a:["prendre un verre"]},
- {ch:"9",q:"a caterer",a:["un traiteur"]}
-];
-/* Grammaire — four items per structure named on the study guide. Draw: 12. */
-var EXAM_GRAM=[
- {ch:"6",q:"PC avec avoir : « Hier, nous ___ le salon en bleu. » (peindre)",a:["avons peint"],m:{pron:"nous",vg:"pc"}},
- {ch:"7",q:"PC avec avoir : « Tu ___ une tarte aux fraises ? Bravo ! » (faire)",a:["as fait"],m:{pron:"tu",vg:"pc"}},
- {ch:"6",q:"PC avec avoir : « Ils ___ leur maison le mois dernier. » (vendre)",a:["ont vendu"],m:{pron:"ils",vg:"pc"}},
- {ch:"7",q:"PC avec avoir : « J'___ du saumon au marché ce matin. » (acheter)",a:["ai acheté"],m:{pron:"je",vg:"pc"}},
- {ch:"8",q:"PC avec être : « Elle ___ chez le médecin ce matin. » (aller — accord !)",a:["est allée"],m:{pron:"il",vg:"pc"}},
- {ch:"7",q:"PC avec être : « Nous ___ au restaurant samedi soir. » (aller — nous m. pl.)",a:["sommes allés"],m:{pron:"nous",vg:"pc"}},
- {ch:"9",q:"PC avec être : « Mes parents ___ à la fête vers 19 h. » (arriver)",a:["sont arrivés"],m:{pron:"ils",vg:"pc"}},
- {ch:"9",q:"PC avec être : « Vous ___ à quelle heure hier soir ? » (partir — vous f. pl.)",a:["êtes parties"],m:{pron:"vous",vg:"pc"}},
- {ch:"7",q:"PC pronominal : « Elle ___ à six heures ce matin. » (se lever — accord !)",a:["s'est levée"],m:{pron:"il",vg:"pc"}},
- {ch:"7",q:"PC pronominal : « Nous ___ très tard hier soir. » (se coucher — nous m. pl.)",a:["nous sommes couchés"],m:{pron:"nous",vg:"pc"}},
- {ch:"9",q:"PC pronominal : « Ils ___ au vernissage. » (s'amuser)",a:["se sont amusés"],m:{pron:"ils",vg:"pc"}},
- {ch:"9",q:"PC pronominal : « Je ___ avant la fête. » (se doucher — masc.)",a:["me suis douché"],m:{pron:"je",vg:"pc"}},
- {ch:"8",q:"Imparfait : « Quand j'étais petit, nous ___ à la campagne. » (habiter)",a:["habitions"],m:{pron:"nous",vg:"pc"}},
- {ch:"8",q:"Imparfait : « Il ___ du vélo quand il est tombé. » (faire)",a:["faisait"],m:{pron:"il",vg:"pc"}},
- {ch:"8",q:"Imparfait : « L'année dernière, j'___ souvent mal au dos. » (avoir)",a:["avais"],m:{pron:"je",vg:"pc"}},
- {ch:"9",q:"Imparfait : « Avant, ils ___ leurs anniversaires en famille. » (fêter)",a:["fêtaient"],m:{pron:"ils",vg:"pc"}},
- {ch:"6",q:"Pronom COD : « Tu vois le miroir ? — Oui, je ___ vois. »",a:["le"]},
- {ch:"9",q:"Pronom COI : « Tu as téléphoné à tes parents ? — Oui, je ___ ai téléphoné. »",a:["leur"]},
- {ch:"7",q:"Pronom en : « Vous voulez des framboises ? — Oui, j'___ veux un kilo. »",a:["en"]},
- {ch:"9",q:"COD ou COI ? « Elle parle à sa sœur ? — Oui, elle ___ parle. »",a:["lui"]},
- {ch:"8",q:"Savoir ou connaître : « Je ne ___ pas nager. »",a:["sais"],m:{pron:"je",vg:"sc"}},
- {ch:"8",q:"Savoir ou connaître : « Vous ___ un bon traiteur ? »",a:["connaissez"],m:{pron:"vous",vg:"sc"}},
- {ch:"8",q:"Savoir ou connaître : « Nous ___ bien ce quartier. »",a:["connaissons"],m:{pron:"nous",vg:"sc"}},
- {ch:"8",q:"Savoir ou connaître : « Elle ___ où se trouve la pharmacie. »",a:["sait"],m:{pron:"il",vg:"sc"}},
- {ch:"7",q:"Présent : « Nous ___ la vaisselle après le dîner. » (faire)",a:["faisons"],m:{pron:"nous"}},
- {ch:"6",q:"Présent : « Ils ___ leur appartement du centre-ville. » (vendre)",a:["vendent"],m:{pron:"ils"}},
- {ch:"8",q:"Présent : « Je ___ beaucoup quand je suis enrhumé. » (tousser)",a:["tousse"],m:{pron:"je"}},
- {ch:"7",q:"Présent : « Vous ___ vos légumes au marché ? » (choisir)",a:["choisissez"],m:{pron:"vous"}},
- {ch:"8",q:"Modal au présent : « Tu ___ prendre ce médicament matin et soir. » (devoir)",a:["dois"],m:{pron:"tu",vg:"mod"}},
- {ch:"9",q:"Modal au présent : « Nous ___ venir à ta pendaison de crémaillère ! » (vouloir)",a:["voulons"],m:{pron:"nous",vg:"mod"}},
- {ch:"7",q:"Modal au présent : « Est-ce que je ___ régler par carte ? » (pouvoir)",a:["peux"],m:{pron:"je",vg:"mod"}},
- {ch:"8",q:"Modal au présent : « Elles ___ rester au lit — elles ont la grippe. » (devoir)",a:["doivent"],m:{pron:"ils",vg:"mod"}}
-];
-
-/* ===== quiz / exam engine ===== */
-var quizPick="6", testItems=[];
-document.getElementById("quizPick").addEventListener("change",function(){ quizPick=this.value; renderTestHist(); });
-
-function histKind(){ return quizPick==="exam" ? "Unit 2 exam" : ("Ch "+quizPick+" quiz"); }
-function renderTestHist(){
-  var h=document.getElementById("testHist");
-  var mine=state.tests.filter(function(t){ return (t.kind||"quiz")===histKind() || (!t.kind && quizPick!=="exam"); });
-  if(!mine.length){ h.textContent = quizPick==="exam"
-    ? "Modeled on your Test 2 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
-    : "10 randomized questions from the Chapter "+quizPick+" bank — a different draw every attempt."; return; }
-  var last=mine[mine.length-1];
-  var best=mine.reduce(function(m,t){return Math.max(m,Math.round(t.score/t.total*100));},0);
-  h.textContent=histKind()+" — attempts: "+mine.length+" · last "+last.score+"/"+last.total+" · best "+best+"%";
-}
-
-function mkFillQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q.replace("___","<span class='blank'>____</span>")));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-  row.appendChild(inp); q.appendChild(row); q._kind="fill"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-function mkMcQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q));
-  var opts=el("div","opts");
-  shuffleArr(t.o.slice()).forEach(function(o){
-    var op=el("label","opt"); op.innerHTML="<input type='radio' name='xq"+i+"' value='"+o.replace(/'/g,"&#39;")+"'> <span>"+o+"</span>";
-    op.querySelector("input").addEventListener("change",function(){
-      [].forEach.call(opts.children,function(c){c.classList.remove("sel");}); op.classList.add("sel");
-    });
-    opts.appendChild(op);
-  });
-  q.appendChild(opts); q._kind="mc"; q._opts=opts; q._t=t; q._tag=tag;
-  return q;
-}
-function mkSaQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+" · short answer, self-graded</span><br>"+t.q+" <span class='hist'>(answer in English)</span>"));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.spellcheck=false; row.appendChild(inp); q.appendChild(row);
-  var host=el("div"); q.appendChild(host);
-  var rv=el("button","ghost","Reveal model answer"); host.appendChild(rv);
-  rv.onclick=function(){
-    host.innerHTML="";
-    host.appendChild(el("div","model","<b>Model:</b> "+t.model));
-    var g=el("div","sagrade");
-    var yb=el("button","btn know","I had it ✓"), nb2=el("button","btn dunno","I missed it ✗");
-    yb.onclick=function(){ q._self=true; yb.disabled=true; nb2.disabled=true; nb2.style.opacity=".4"; inp.disabled=true; };
-    nb2.onclick=function(){ q._self=false; yb.disabled=true; nb2.disabled=true; yb.style.opacity=".4"; inp.disabled=true; };
-    g.appendChild(yb); g.appendChild(nb2); host.appendChild(g);
-  };
-  q._kind="sa"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-
-document.getElementById("startTest").onclick=function(){
-  document.getElementById("testIntro").style.display="none";
-  document.getElementById("testResult").style.display="none";
-  document.getElementById("testRun").style.display="block";
-  var host=document.getElementById("testQs"); host.innerHTML="";
-  var qi=0, qs=[];
-  if(quizPick==="exam"){
-    /* Section 1 — Compréhension */
-    host.appendChild(el("h2","sec","Compréhension"));
-    pick(EXAM_READ, CONFIG.EXAM.read).forEach(function(p){
-      var pv=el("div","passage","<div class='ptitle'>"+p.title+"</div>"+p.text);
-      host.appendChild(pv);
-      p.qs.forEach(function(t){
-        var q = t.type==="mc" ? mkMcQ(t,qi,"Compréhension") : mkSaQ(t,qi,"Compréhension");
-        host.appendChild(q); qs.push(q); qi++;
-      });
-    });
-    /* Section 2 — Vocabulaire */
-    host.appendChild(el("h2","sec","Vocabulaire"));
-    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 2 word list."));
-    pick(EXAM_VOCAB, CONFIG.EXAM.vocab).forEach(function(t){
-      var q=mkFillQ({q:"Translate: <b>"+t.q+"</b>",a:t.a,m:t.m,ch:t.ch},qi,"Vocabulaire");
-      host.appendChild(q); qs.push(q); qi++;
-    });
-    /* Section 3 — Grammaire */
-    host.appendChild(el("h2","sec","Grammaire"));
-    pick(EXAM_GRAM, CONFIG.EXAM.gram).forEach(function(t){
-      var q=mkFillQ(t,qi,"Grammaire"); host.appendChild(q); qs.push(q); qi++;
-    });
-  } else {
-    var poolQ=TEST.filter(function(t){return t.ch===quizPick;});
-    pick(poolQ, Math.min(CONFIG.QUIZ_SIZE, poolQ.length)).forEach(function(t){
-      var q = t.type==="mc" ? mkMcQ(t,qi,"Ch."+t.ch) : mkFillQ(t,qi,"Ch."+t.ch);
-      host.appendChild(q); qs.push(q); qi++;
-    });
-  }
-  testItems=qs;
-  document.getElementById("tProg").textContent=qs.length+" questions · "+(quizPick==="exam"?"Unit 2 practice exam":"Chapter "+quizPick+" quiz");
-  window.scrollTo({top:0,behavior:"smooth"});
-};
-document.getElementById("submitTest").onclick=scoreTest;
-
-function tallyMiss(tag, ok){
-  var t=state.missTally[tag]||(state.missTally[tag]={w:0,t:0});
-  t.t++; if(!ok) t.w++;
-}
-function scoreTest(){
-  var score=0;
-  testItems.forEach(function(q){
-    var t=q._t, ok=false;
-    if(q._kind==="mc"){
-      var ans=Array.isArray(t.a)?t.a:[t.a];
-      var sel=q._opts.querySelector("input:checked"), given=sel?sel.value:"";
-      ok=ans.some(function(a){return norm(a)===norm(given);});
-      [].forEach.call(q._opts.children,function(op){
-        var inpEl=op.querySelector("input"); inpEl.disabled=true;
-        var val=inpEl.value;
-        if(ans.some(function(a){return norm(a)===norm(val);})) op.classList.add("right");
-        else if(val===given && given) op.classList.add("wrong");
-      });
-    } else if(q._kind==="sa"){
-      ok = q._self===true;
-      q._inp.disabled=true;
-      if(q._self===undefined){
-        var v0=el("div","verdict no"); v0.textContent="✗ Not self-graded — counted as a miss. Model: "+t.model; q.appendChild(v0);
-      }
-    } else {
-      var ans2=Array.isArray(t.a)?t.a:[t.a];
-      var given2=q._inp.value;
-      ok=ans2.some(function(a){return norm(a)===norm(given2);});
-      var close=!ok && given2.trim() && ans2.some(function(a){return bare(a)===bare(given2);});
-      q._inp.disabled=true; q._inp.style.borderColor=ok?"var(--known)":"var(--accent)";
-      var v=el("div","verdict "+(ok?"ok":"no"));
-      v.textContent = ok?"✓ Correct":(close?"✗ Accents — "+ans2[0]:"✗ "+ans2[0]);
-      q.appendChild(v);
-      anaRecord(ok, !!close, withSrc(q._t.m,"quiz",null,(+q._t.ch||null)));   /* quiz/exam fill-ins feed Analyse */
-    }
-    if(q._kind==="mc"||q._kind==="sa"){ onGraded(ok); }
-    tallyMiss(q._tag, ok);
-    if(ok) score++;
-  });
-  var total=testItems.length;
-  state.tests.push({kind:histKind(),score:score,total:total,date:new Date().toISOString().slice(0,10)});
-  if(quizPick!=="exam" && score===total && total>=10){
-    state.life.pq=(state.life.pq||0)+1;
-    award("a_quiz100");
-    if(state.life.pq>=3) award("a_quiz3x");
-  }
-  saveState(); refreshDash(); renderTestHist();
-  document.getElementById("submitTest").style.display="none";
-  var res=document.getElementById("testResult"); res.style.display="block";
-  var pct=Math.round(score/total*100);
-  var msg = pct>=90?"Excellent — these mechanics are solid.":pct>=75?"Strong. Clean up the misses and re-run.":pct>=60?"Getting there — drill the weak chapters in Grammaire.":"Foundation work needed — slow down and use the Verbes + Grammaire tabs.";
-  res.innerHTML="<div class='card'><div class='scorebox'><div class='big' style='color:"+(pct>=75?"var(--known)":pct>=60?"var(--learn)":"var(--accent)")+"'>"+score+"/"+total+"</div><div class='lbl'>"+pct+"% · "+msg+"</div></div></div>";
-  var again=el("button","btn reveal"); again.style.cssText="flex:0 0 auto;padding:12px 26px;margin-top:12px"; again.textContent="New attempt";
-  again.onclick=function(){ document.getElementById("testRun").style.display="none"; res.style.display="none";
-    document.getElementById("submitTest").style.display=""; document.getElementById("testIntro").style.display="block"; renderTestHist(); window.scrollTo({top:0,behavior:"smooth"}); };
-  res.appendChild(again);
-  window.scrollTo({top:document.getElementById("testResult").offsetTop-20,behavior:"smooth"});
-}
 
 /* =============== DASHBOARD =============== */
 function refreshDash(){
@@ -4911,107 +4419,12 @@ function setupDash(){
   sel.value=String(state.currentCh);
   sel.onchange=function(){
     state.currentCh=+this.value; saveState();
-    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); renderTestHist(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
+    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
   };
   updateScopeNote();
   updateCountdown();
   refreshDash();
 }
-
-/* =============== ORAL — OPI PROMPT DECK (no audio, no grading: reps) =============== */
-var OPI=[
- {t:"Describe your home",d:"Type of housing, how many rooms, and three adjectives from the chapter.",
-  s:["J'habite dans un appartement / une maison…","Il y a … pièces : le salon, la cuisine…","Il est spacieux / lumineux / propre…"]},
- {t:"Tour of one room",d:"Pick a room. Name the furniture and place everything with prepositions.",
-  s:["Dans ma chambre, il y a un lit, une commode…","Le lit est contre le mur. · Le tapis est sous la table basse.","À côté de la fenêtre, il y a…"]},
- {t:"Your dream house",d:"Type, location, rooms, colors, materials. Use vouloir.",
-  s:["Je veux une maison de campagne / un chalet…","Je veux une grande cuisine et un jardin.","Les murs sont blancs, la table est en bois…"]},
- {t:"Calling about a rental",d:"Role-play: you call about an ad. Ask about rooms, rent, and charges.",
-  s:["Bonjour, je vous appelle pour l'annonce…","Il y a combien de pièces ? · C'est meublé ?","Le loyer est de combien ? Charges comprises ou hors charges ?"]},
- {t:"The exterior",d:"Describe the outside of a house: roof, gate, garage, garden.",
-  s:["Le toit est gris. · Il y a un portail devant la maison.","Le garage est derrière / à côté de la maison.","Dans le jardin, il y a…"]},
- {t:"What you did yesterday",d:"Household activities in the passé composé — chain at least five.",
-  s:["Hier, j'ai nettoyé la cuisine.","J'ai fait le lit, j'ai rangé le salon…","Le soir, j'ai regardé la télé."]},
- {t:"House rules",d:"Five obligations for your home or barracks, with il faut + infinitive.",
-  s:["Il faut nettoyer la salle de bain chaque semaine.","Il faut sortir la poubelle. · Il ne faut pas encombrer le couloir.","Il faut payer le loyer avant le 5."]},
- {t:"Rearranging the furniture",d:"Tell a friend where to put each piece. Use pouvoir/devoir + prepositions.",
-  s:["Tu peux mettre le canapé contre le mur ?","On doit mettre la table basse devant le canapé.","Accroche le tableau au-dessus de la commode."]},
- {t:"Compare two apartments",d:"You visited two places (passé composé). Compare rooms, light, price — pick one.",
-  s:["J'ai visité deux appartements.","Le premier est lumineux mais petit ; le deuxième est spacieux…","Je préfère… parce que…"]},
- {t:"Moving day",d:"Tell the story of a move: packing, the truck, assembling furniture — passé composé.",
-  s:["Nous avons emballé les verres.","Nous avons monté l'armoire dans la chambre.","Le soir, nous avons décoré le salon."]}
- ,
- /* ===== Ch 7 · Food ===== */
- {t:"Ch 7 · Ordering at a restaurant",d:"Role-play both sides: greet, order a starter and main, ask for water, get the check.",
-  s:["Je vais prendre le menu du jour / la formule.","Comme plat principal, je voudrais…","Une carafe d'eau, s'il vous plaît. · L'addition, s'il vous plaît."]},
- {t:"Ch 7 · Explain a recipe",d:"Pick a simple dish. Give 5–6 steps with cooking verbs and quantities.",
-  s:["D'abord, épluchez et coupez les légumes.","Ajoutez une cuillère à soupe d'huile, du sel et du poivre.","Laissez mijoter 30 minutes, puis servez chaud."]},
- {t:"Ch 7 · At the market",d:"Shop for a dinner: greet the vendor, ask for quantities, ask the price, pay.",
-  s:["Je voudrais un kilo de tomates et une livre de fraises.","Vous avez des champignons ? J'en prends 500 grammes.","Ça fait combien ? · Voilà, merci."]},
- {t:"Ch 7 · What you ate yesterday",d:"Meals in the passé composé — mix avoir and être verbs (je suis allé, j'ai mangé…).",
-  s:["Hier matin, j'ai pris du café et des céréales.","À midi, je suis allé au restaurant et j'ai commandé…","Le soir, j'ai cuisiné du poulet avec du riz."]},
- {t:"Ch 7 · Your food preferences",d:"Likes, dislikes, and quantities — use partitives and en.",
-  s:["J'aime le fromage — j'en mange beaucoup.","Je ne mange pas de viande rouge.","Je bois un peu de café le matin."]},
- {t:"Ch 7 · Plan a dinner for guests",d:"Three courses for guests with restrictions — entrée, plat, dessert, and why.",
-  s:["Comme entrée, je vais préparer une salade parce que…","Mon ami est végétarien, donc le plat principal est…","Comme dessert, une tarte aux pommes."]},
- /* ===== Ch 8 · Health ===== */
- {t:"Ch 8 · At the doctor's",d:"Describe symptoms, answer the doctor's questions, get instructions.",
-  s:["J'ai mal à la gorge depuis trois jours.","J'ai de la fièvre — ma température est 39.","Est-ce que je dois prendre des médicaments ?"]},
- {t:"Ch 8 · At the pharmacy",d:"Bring a prescription, ask when and how to take the medication, side effects.",
-  s:["J'ai une ordonnance du médecin.","Il faut prendre les comprimés après les repas ?","Est-ce qu'il y a des effets secondaires ?"]},
- {t:"Ch 8 · When you were younger",d:"Habits and descriptions in the imparfait — chain five sentences.",
-  s:["Quand j'étais au lycée, je faisais du sport.","Je vivais avec mes parents et j'aidais aux tâches ménagères.","Avant l'armée, je ne portais pas d'uniforme."]},
- {t:"Ch 8 · An ER story",d:"Tell an emergency-room story: what happened (PC) + the background (imparfait).",
-  s:["Je tranchais des légumes et je me suis coupé le doigt.","La blessure n'était pas grave, mais elle a saigné.","On m'a soigné aux urgences."]},
- {t:"Ch 8 · Healthy lifestyle",d:"Your routine: diet, exercise, sleep — with cause and consequence.",
-  s:["Je fais de l'exercice, donc je me sens mieux.","Grâce à une alimentation équilibrée…","Je bois deux litres d'eau parce que l'hydratation est primordiale."]},
- {t:"Ch 8 · First aid advice",d:"Pick an accident (burn, cut, sprain) and give instructions with il faut / vous devez.",
-  s:["Il faut d'abord nettoyer la blessure avec de l'eau propre.","Vous devez mettre un pansement.","Si la douleur est trop forte, allez chez le médecin."]},
- /* ===== Ch 9 · Social events ===== */
- {t:"Ch 9 · Invite a friend",d:"Invite someone to an event: occasion, time, place — informal phrasing.",
-  s:["Ça te dit de venir à mon anniversaire samedi ?","C'est chez moi, à 19 heures.","Tu peux apporter des boissons si tu veux."]},
- {t:"Ch 9 · Decline politely",d:"Turn down an invitation with a reason and a counter-offer.",
-  s:["C'est gentil, mais je ne suis pas libre ce jour-là.","Désolé, j'ai un empêchement — ma soeur se marie.","Je t'invite à prendre un verre le week-end prochain."]},
- {t:"Ch 9 · Give your opinion on a gift",d:"React to gift ideas with opinion expressions.",
-  s:["À mon avis, c'est un cadeau génial !","Je trouve que c'est une bonne idée parce que…","Je n'aime pas du tout — quelle horreur !"]},
- {t:"Ch 9 · Offer and receive a gift",d:"Role-play both sides of a gift exchange.",
-  s:["Tiens, c'est pour toi ! J'espère que tu vas l'aimer.","Oh, il ne fallait pas ! C'est très gentil de ta part.","Merci infiniment, je suis vraiment touché."]},
- {t:"Ch 9 · Describe an event you attended",d:"A past event — what (qui/que/où), when, who came, what you brought.",
-  s:["C'est une fête où on a dansé toute la nuit.","L'ami qui m'a invité habite à Paris.","J'ai apporté un cadeau que j'ai acheté au marché."]},
- {t:"Ch 9 · A French celebration",d:"Explain Mardi Gras or le 14 juillet: what happens, where, why.",
-  s:["Le 14 juillet, il y a un défilé militaire à Paris.","Le soir, on regarde le feu d'artifice.","Au carnaval, les gens portent des déguisements."]}
-];
-var opiIdx=0, opiTimer=null;
-function stopOpiTimer(){ if(opiTimer){ clearInterval(opiTimer); opiTimer=null; } }
-function renderOpi(){
-  stopOpiTimer();
-  var c=document.getElementById("opiCard"), p=OPI[opiIdx];
-  c.innerHTML="";
-  c.appendChild(el("h3",null,p.t));
-  c.appendChild(el("div","hist",p.d));
-  var ul=el("ul","scaf"); p.s.forEach(function(x){ ul.appendChild(el("li",null,x)); }); c.appendChild(ul);
-  var tm=el("div","opitimer","—"); c.appendChild(tm);
-  var row=el("div","vactions drill");
-  [45,30,15].forEach(function(secs){
-    var b=el("button","btn reveal",secs+" s");
-    b.onclick=function(){
-      stopOpiTimer(); var left=secs;
-      tm.classList.remove("hot"); tm.textContent="0:"+(left<10?"0":"")+left;
-      opiTimer=setInterval(function(){
-        left--; if(left<=5) tm.classList.add("hot");
-        tm.textContent = left>0 ? "0:"+(left<10?"0":"")+left : "Time — wrap it up!";
-        if(left<=0) stopOpiTimer();
-      },1000);
-    };
-    row.appendChild(b);
-  });
-  var stop=el("button","btn neutral","Stop"); stop.onclick=function(){ stopOpiTimer(); tm.textContent="—"; tm.classList.remove("hot"); };
-  row.appendChild(stop);
-  c.appendChild(row);
-  document.getElementById("opiPos").textContent=(opiIdx+1)+" / "+OPI.length;
-}
-document.getElementById("opiNext").onclick=function(){ opiIdx=(opiIdx+1)%OPI.length; renderOpi(); };
-document.getElementById("opiPrev").onclick=function(){ opiIdx=(opiIdx-1+OPI.length)%OPI.length; renderOpi(); };
 
 /* =============== INSIGHTS + ACHIEVEMENTS (v1.0.0-b1) ===============
    Bucket analytics come from GRADED DRILL + QUIZ answers only (D6: trainers are
@@ -5028,8 +4441,6 @@ var ACH=[
   {id:"a_s50", icon:"🏆", name:"Machine",             desc:"50 correct answers in a row."},
   {id:"a_v6",  icon:"📗", name:"Chapitre 6 maîtrisé", desc:"Every Chapter 6 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every conjugation in the Conjugaison tab is green (passé composé + imparfait)."},
-  {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
-  {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
   {id:"a_round",  icon:"🎯",name:"Round parfait",     desc:"A 10/10 grammar-drill round."},
   {id:"a_acc",    icon:"✍️",name:"Accent aigu",       desc:"20+ graded answers in a session, mostly correct, zero accent-only misses."},
   {id:"a_cb",     icon:"💪",name:"La revanche",       desc:"Master a word after missing it 3+ times in a row."},
@@ -5170,7 +4581,6 @@ function renderInsights(){
     var gp=gk.map(function(k,i){ return [GRAM_LBL[k]||k,S.gram[k].m||0,CY[i%CY.length]]; });
     if(!gp.length) gp=[["—",0,CY[0]]];
     drawDonut("dnGram","dnGramL",gp);
-    drawDonut("dnQuiz","dnQuizL",[["Accents",S.quiz.acc.m,"#c0392b"],["Gender",S.quiz.gen.m,"#b9772b"],["Spelling",S.quiz.sp.m,"#2a4a8f"]]);
   })();
   /* buckets ledger */
   var L=document.getElementById("insBuckets"); L.innerHTML="";
@@ -5246,7 +4656,7 @@ document.querySelector("nav.tabs").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b)return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-selected","false");});
   b.setAttribute("aria-selected","true");
-  ["dash","verbs","vocab","gram","test","insights","oral"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
+  ["dash","verbs","vocab","gram","prep","insights"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
   if(b.dataset.tab==="insights") renderInsights();
   window.scrollTo({top:0});
 });
@@ -5258,9 +4668,8 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
 [].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
-renderVerbTable(); renderVocTable(); renderOpi();
-document.getElementById("quizPick").value="6"; quizPick=document.getElementById("quizPick").value; renderTestHist();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderAnaSince();
+renderVerbTable(); renderVocTable();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
 

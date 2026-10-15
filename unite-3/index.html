@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 3 · Dossier Français — v2.0.0</title>
+<title>Unité 3 · Dossier Français — v2.0.0.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -63,8 +63,7 @@
   nav.tabs button[data-tab="vocab"]{--c:#c0574a}
   nav.tabs button[data-tab="gram"]{--c:#3f8a73}
   nav.tabs button[data-tab="verbs"]{--c:#7b64a8}
-  nav.tabs button[data-tab="test"]{--c:#b07d2e}
-  nav.tabs button[data-tab="oral"]{--c:#b25a7c}
+  nav.tabs button[data-tab="prep"]{--c:#b07d2e}
   nav.tabs button[data-tab="insights"]{--c:#3a8aa0}
   nav.tabs{display:flex; align-items:flex-end; gap:0; position:sticky; top:0; z-index:20; margin:0 -18px; padding:12px 18px 0 24px;
     background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
@@ -399,9 +398,9 @@
   /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
   :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
     --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
-  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="test"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
   :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
-  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="test"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
+  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
   .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
   .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
     transition:background .12s ease, border-color .12s ease}
@@ -420,7 +419,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v2.0.0</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v2.0.0.1</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -440,9 +439,8 @@
     <button role="tab" aria-selected="true" data-tab="dash">Tableau de bord</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
+    <button role="tab" aria-selected="false" data-tab="prep">Prépa examen</button>
     <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
-    <button role="tab" aria-selected="false" data-tab="test">Examen blanc</button>
-    <button role="tab" aria-selected="false" data-tab="oral">Pratique orale</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
   </nav>
 
@@ -624,49 +622,19 @@
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
-  <!-- ===================== TEST ===================== -->
-  <section class="panel" id="p-test" role="tabpanel">
-    <h2 class="sec">Quizzes &amp; Unit 3 exam</h2>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>10 random questions per chapter bank; the unit practice exam follows your study guide.</li>
-        <li>Accents strict.</li>
-        <li>Answers feed Analyse.</li>
-      </ul>
-    </details>
 
-    <div id="testIntro" class="card">
-      <div class="test-head">
-        <select class="filter" id="quizPick">
-          <option value="11">Chapter 11 quiz</option>
-          <option value="12">Chapter 12 quiz</option>
-          <option value="13">Chapter 13 quiz</option>
-          <option value="14">Chapter 14 quiz</option>
-          <option value="exam">Unit 3 practice exam</option>
-        </select>
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
-      </div>
-      <p class="hist" id="testHist"></p>
+  <!-- ===================== PRÉPA EXAMEN (à venir) ===================== -->
+  <section class="panel" id="p-prep" role="tabpanel">
+    <h2 class="sec">Prépa examen</h2>
+    <div class="card" style="text-align:center;padding:30px 20px">
+      <span class="pill" style="background:var(--learn-soft);color:var(--learn)">à venir</span>
     </div>
-
-    <div id="testRun" style="display:none">
-      <div class="test-head">
-        <span class="pill" id="tProg"></span>
-      </div>
-      <div id="testQs"></div>
-      <div class="drill-foot">
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 26px" id="submitTest">Submit &amp; score</button>
-      </div>
-    </div>
-
-    <div id="testResult" style="display:none"></div>
   </section>
 
   <!-- ===================== INSIGHTS ===================== -->
   <section class="panel" id="p-insights" role="tabpanel">
     <h2 class="sec">Analyse — how you miss</h2>
-    <p class="lead">Built from every graded answer — trainers, drills, quizzes. Training mode is never recorded. First grade per item counts.</p>
+    <p class="lead">Built from every graded answer — trainers and drills. Training mode is never recorded. First grade per item counts.</p>
     <div class="card" id="insWeak"><p class="hist">No graded answers yet — grade a few cards and come back.</p></div>
     <div class="card" id="insWeakCh" style="margin-top:12px;font-size:14px"><span class="hist">Weakest chapter: — (5+ graded answers per chapter required)</span></div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px">
@@ -678,7 +646,6 @@
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Vocabulaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnVoc" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnVocL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Conjugaison</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnConj" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnConjL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Grammaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnGram" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnGramL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
-      <div class="card"><div style="font-weight:700;margin-bottom:8px">Examen</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnQuiz" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnQuizL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
     </div>
     <h2 class="sec" style="margin-top:26px">Error types</h2>
     <div class="card"><div class="ledger" id="insBuckets"></div></div>
@@ -692,30 +659,12 @@
     <div class="trophygrid" id="insTrophy"></div>
   </section>
 
-  <!-- ===================== ORAL / OPI ===================== -->
-  <section class="panel" id="p-oral" role="tabpanel">
-    <h2 class="sec">Oral practice — OPI prompts</h2>
-    <p class="lead">Speaking trains out loud. Cards mirror the Unit 3 tasks.</p>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>Pick one, hit a timer, talk.</li>
-        <li>45 → 30 → 15 seconds.</li>
-        <li>No grading, just reps.</li>
-      </ul>
-    </details>
-    <div class="opicard" id="opiCard"><!-- filled by JS --></div>
-    <div class="vnav">
-      <button id="opiPrev">‹ Prev</button>
-      <span id="opiPos"></span>
-      <button id="opiNext">Next ›</button>
-    </div>
-  </section>
 
   <footer>
-    <strong>Dossier Unité 3 · v2.0.0</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v2.0.0.1</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
-    <span style="color:var(--mute)">v2.0.0 (15 Oct 2026): <strong>Unité 3 takes the new design from Unités 4 and 5.</strong> <strong>Look</strong>: flat, light folder tabs that lean and overlap, each with its own muted colour (an outline, plus a faint glow on the selected tab), spread across the full width of the page; a tricolore rule under the masthead; a French-flag icon in the browser tab; softer card shadows, press states on buttons and a visible keyboard focus ring. The tab order is now Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse, and the long introductions under the tabs are replaced by short <em>How to use</em> lists. <strong>Dark mode</strong> follows the device; a round masthead button forces light or dark (Alt-click returns to the device setting), and the choice is shared by every dossier in this browser. <strong>Vocabulaire</strong>: <em>Spelling</em> is the default mode and is typed on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row; one verdict line follows (correct · check the accents · article missing · wrong-gender article · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Accents always count and articles are required (un/une now count for le/la). <em>Recognize</em> (multiple choice, four options, keys 1–4) and <em>Recall</em> both run EN → FR or FR → EN, with the direction switch on the same row as the mode switch; <em>Training</em> sits to the left of the modes. The up-to-my-level toggle is replaced by one chapter drop-down that opens on your current chapter, on the same row as the topic filter. English notes in parentheses sit on their own line under the gloss. <strong>Mastery</strong> is three correct answers in a row and nothing else: a clean first answer no longer turns a card green, in the Vocabulaire and Conjugaison trainers alike (<em>Je connais déjà</em> still marks a card known at once). This applies from now on only: cards that are already green stay green until your next miss. <strong>Grammaire</strong>: the new drill engine. Typed answers use the same ruled field and verdicts; some items are inline drop-downs (keys 1–4); a <em>Format</em> switch (mixed, typing only, drop-down only) and a <em>From</em> switch (all questions or My misses) sit above the drills; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds record a best score. <strong>Content pass</strong>: 14 grammar drills (172 items) now open with a one-line instruction and an always-visible rule card; every one of the 172 items carries a one-line <em>why</em> shown after you answer; 61 items are drop-downs. Leak audit: 40 hints that named the answer or its rule were removed, and 44 items lost a trailing label that gave the answer away (the infinitive to conjugate stays as the cue); the 13 alternate answers that the drill data already listed but the old engine never read (for example “vus” after “on s’est”, “la lui” after “montre-”) are now accepted, and one more was added (“a apparu”). The four Vocab en contexte drills keep their original notes. Four comparative items still have two blanks in one sentence; the second is a plain line of text, and the cue says to answer with two words separated by a comma. <strong>Unchanged</strong>: every vocabulary card, the Conjugaison trainer with its futur simple and conditionnel tables, the Examen blanc and Pratique orale content (restyled only) and saved progress.<br></span>
+    <span style="color:var(--mute)">v2.0.0.1 (15 Oct 2026, hotfix): <strong>The old exam tabs are gone and Prépa examen takes their place (à venir).</strong> Examen blanc and Pratique orale are removed from Unité 3, as they were from Unités 4 and 5: the chapter quizzes, the Unité 3 practice exam, the oral prompt deck, the Analyse <em>Examen</em> donut and the Sans faute and Hat-trick achievements. Saved quiz history stays in your browser, unseen. A new <strong>Prépa examen</strong> tab sits after Grammaire and shows <em>à venir</em>. No vocabulary, grammar or progress data changed.<br></span>
+      <span style="color:var(--mute)">v2.0.0 (15 Oct 2026): <strong>Unité 3 takes the new design from Unités 4 and 5.</strong> <strong>Look</strong>: flat, light folder tabs that lean and overlap, each with its own muted colour (an outline, plus a faint glow on the selected tab), spread across the full width of the page; a tricolore rule under the masthead; a French-flag icon in the browser tab; softer card shadows, press states on buttons and a visible keyboard focus ring. The tab order is now Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse, and the long introductions under the tabs are replaced by short <em>How to use</em> lists. <strong>Dark mode</strong> follows the device; a round masthead button forces light or dark (Alt-click returns to the device setting), and the choice is shared by every dossier in this browser. <strong>Vocabulaire</strong>: <em>Spelling</em> is the default mode and is typed on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row; one verdict line follows (correct · check the accents · article missing · wrong-gender article · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Accents always count and articles are required (un/une now count for le/la). <em>Recognize</em> (multiple choice, four options, keys 1–4) and <em>Recall</em> both run EN → FR or FR → EN, with the direction switch on the same row as the mode switch; <em>Training</em> sits to the left of the modes. The up-to-my-level toggle is replaced by one chapter drop-down that opens on your current chapter, on the same row as the topic filter. English notes in parentheses sit on their own line under the gloss. <strong>Mastery</strong> is three correct answers in a row and nothing else: a clean first answer no longer turns a card green, in the Vocabulaire and Conjugaison trainers alike (<em>Je connais déjà</em> still marks a card known at once). This applies from now on only: cards that are already green stay green until your next miss. <strong>Grammaire</strong>: the new drill engine. Typed answers use the same ruled field and verdicts; some items are inline drop-downs (keys 1–4); a <em>Format</em> switch (mixed, typing only, drop-down only) and a <em>From</em> switch (all questions or My misses) sit above the drills; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds record a best score. <strong>Content pass</strong>: 14 grammar drills (172 items) now open with a one-line instruction and an always-visible rule card; every one of the 172 items carries a one-line <em>why</em> shown after you answer; 61 items are drop-downs. Leak audit: 40 hints that named the answer or its rule were removed, and 44 items lost a trailing label that gave the answer away (the infinitive to conjugate stays as the cue); the 13 alternate answers that the drill data already listed but the old engine never read (for example “vus” after “on s’est”, “la lui” after “montre-”) are now accepted, and one more was added (“a apparu”). The four Vocab en contexte drills keep their original notes. Four comparative items still have two blanks in one sentence; the second is a plain line of text, and the cue says to answer with two words separated by a comma. <strong>Unchanged</strong>: every vocabulary card, the Conjugaison trainer with its futur simple and conditionnel tables, the Examen blanc and Pratique orale content (restyled only) and saved progress.<br></span>
       <span style="color:var(--mute)">v1.6.1 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v1.6.0 (10 Oct 2026): <strong>Conjugaison — the progress bar now measures the futur simple and the conditionnel.</strong> The 33 Conjugaison verbs now carry 39 mastery rows (27 futur simple + 12 conditionnel — each verb counts for the tenses it has) in place of 33 présent rows; the trainer opens on the futur simple, and the Tableau de bord ledger, the Conjugations mastered stat, the progress table, the struggle list and the Conjugueur trophy all follow. Présent, passé composé, imparfait, futur proche and passé récent stay available as reps (not recorded). Progress is saved per tense; your earlier présent marks are kept untouched, but the Tableau de bord conjugation bar and the Conjugations mastered stat now count the two new tenses, so the bar starts from zero for anyone who had mastered présent. The "Conjugueur" trophy now requires every futur simple and conditionnel row to be green. No vocabulary or grammar data changed.<br></span>
     <span style="color:var(--mute)">v1.5.1 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
@@ -760,8 +709,6 @@ var CONFIG={
   UNIT:3,
   KEY:"fr_dossier_u3",          /* NEVER change within a unit — saved progress lives here (namespaced: no collision with Unit 1) */
   DEFAULT_CH:11,                 /* chapter a fresh install assumes */
-  QUIZ_SIZE:10,                 /* questions per chapter quiz */
-  EXAM:{read:3, vocab:12, gram:12}, /* unit-exam section quotas */
   MASTERY:["fs","cond"],          /* tenses whose rows carry mastery (the progress bar) */
   RUSTY_DAYS:14                 /* known + unseen this long = rusty */
 };
@@ -3617,441 +3564,9 @@ function renderGBar(){
   s.onchange=function(){ pk.src=s.value; saveState(); buildDrills(); };
 }
 
-/* =============== PRACTICE TEST =============== */
-var TEST=[
- /* ===== Chapter 11 (bank of 24, 10 drawn per quiz) ===== */
- {ch:"11",type:"fill",q:"Tu parles à tes cousins ce week-end ? — Oui, je ___ parle dimanche.",a:["leur"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Ce manteau te plaît ? — Oui, il me ___ beaucoup. (plaire)",a:["plaît"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Ces bottes lui ___ ___ tout de suite. (plaire)",a:["ont plu"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"C'est la boutique ___ chère du quartier — évite-la si tu économises. (most)",a:["la plus"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Marc est le ___ vendeur du magasin. (bon)",a:["meilleur"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"De nous trois, c'est elle qui s'habille le ___ . (bien)",a:["mieux"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Tu as donné la cravate à ton père ? — Oui, je ___ ___ ai donnée hier.",a:["la lui"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Il te reste des gants ? — Oui, il m'___ reste deux paires.",a:["en"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Offre ces fleurs à ta grand-mère ! → Offre-___ ces fleurs !",a:["lui"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Elle a acheté une ___ en soie pour aller avec sa robe — légère, élégante.",a:["écharpe", "foulard"],m:{cat:"gen"}},
- {ch:"11",type:"mc",q:"Pour un entretien d'embauche, il met…",o:["un maillot de bain", "un costume", "des pantoufles", "un treillis"],a:"un costume"},
- {ch:"11",type:"mc",q:"Elle a le teint ___ après deux semaines à la plage.",o:["bronzé", "ridé", "carré", "plissé"],a:"bronzé"},
- {ch:"11",type:"mc",q:"Ses cheveux ne sont ni raides ni frisés :",o:["chauves", "ondulés", "teints", "rasés"],a:"ondulés"},
- {ch:"11",type:"mc",q:"Un vêtement démodé est un vêtement…",o:["à la mode", "qui n'est plus à la mode", "très cher", "trop petit"],a:"qui n'est plus à la mode"},
- {ch:"11",type:"mc",q:"« Vous faites quelle taille ? » On répond :",o:["Du 40", "À 15 heures", "Deux kilos", "En coton"],a:"Du 40"},
- {ch:"11",type:"fill",q:"Ce pantalon est trop ___ — je ne peux pas respirer !",a:["serré"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Elle porte des lunettes ___ soleil.",a:["de"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Il a les yeux ___ , couleur châtaigne. (invariable)",a:["marron"],m:{cat:"gen"}},
- {ch:"11",type:"mc",q:"Le vêtement féminin assorti d'une veste et d'une jupe :",o:["le tailleur", "le costume", "le gilet", "le blouson"],a:"le tailleur"},
- {ch:"11",type:"fill",q:"J'adore cette robe : la couleur ___ va très bien avec tes yeux. (elle te…)",a:["te"],m:{cat:"gen"}},
- {ch:"11",type:"mc",q:"Quel mot désigne les sous-vêtements masculins ?",o:["le slip", "la culotte", "le soutien-gorge", "les collants"],a:"le slip"},
- {ch:"11",type:"fill",q:"Ces deux couleurs se ___ bien ensemble. (marier)",a:["marient"],m:{cat:"gen"}},
- {ch:"11",type:"fill",q:"Tu écris à ta tante ? — Non, je ne ___ écris jamais.",a:["lui"],m:{cat:"gen"}},
- {ch:"11",type:"mc",q:"Un tissu à carreaux est un tissu…",o:["à petits carrés", "à fleurs", "uni", "à rayures"],a:"à petits carrés"},
- /* ===== Chapter 12 (bank of 24, 10 drawn per quiz) ===== */
- {ch:"12",type:"fill",q:"Demain, il ___ beau sur toute la côte. (faire)",a:["fera"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"La semaine prochaine, nous ___ en vacances. (partir)",a:["partirons"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"S'il pleut, on ___ à la maison. (rester)",a:["restera"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Il ___ prendre un parapluie demain. (falloir)",a:["faudra"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Vous ___ le bulletin météo ce soir. (voir)",a:["verrez"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Je t'___ les photos de la tempête. (envoyer)",a:["enverrai"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Quand j'étais petit, il ___ tous les hivers. (neiger)",a:["neigeait"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Hier, il ___ toute la nuit. (pleuvoir)",a:["a plu"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"La loi ___ votée par les députés la semaine prochaine. (être)",a:["sera"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Les rues ont été ___ par la crue. (inonder)",a:["inondées"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Le village a été ___ par le glissement de terrain. (détruire)",a:["détruit"],m:{cat:"gen"}},
- {ch:"12",type:"mc",q:"De la pluie très fine et persistante, typique de la Bretagne :",o:["le crachin", "la grêle", "le tonnerre", "la canicule"],a:"le crachin"},
- {ch:"12",type:"mc",q:"Le ciel est couvert veut dire :",o:["il y a beaucoup de nuages", "il fait très chaud", "le ciel est dégagé", "il y a du soleil"],a:"il y a beaucoup de nuages"},
- {ch:"12",type:"mc",q:"« Il fait un froid de canard » signifie :",o:["il fait très froid", "il pleut un peu", "il fait doux", "il y a du vent"],a:"il fait très froid"},
- {ch:"12",type:"mc",q:"La glace transparente et dangereuse sur la route :",o:["le verglas", "la rosée", "la buée", "le flocon"],a:"le verglas"},
- {ch:"12",type:"mc",q:"L'éclair, on le voit ; le ___ , on l'entend.",o:["tonnerre", "brouillard", "nuage", "déluge"],a:"tonnerre"},
- {ch:"12",type:"fill",q:"Il y a du ___ : les avions ne peuvent pas décoller, on ne voit rien.",a:["brouillard"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"En été, une vague de ___ peut être mortelle pour les personnes âgées.",a:["chaleur"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Après l'orage, une belle ___ a traversé les nuages : dix minutes de soleil.",a:["éclaircie"],m:{cat:"gen"}},
- {ch:"12",type:"mc",q:"Une averse est…",o:["une pluie courte et forte", "une neige légère", "un vent chaud", "un ciel dégagé"],a:"une pluie courte et forte"},
- {ch:"12",type:"fill",q:"Attention : la mer sera très ___ cet après-midi — les vagues sont dangereuses.",a:["agitée"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Le dîner ___ préparé par le chef en personne ce soir. (être)",a:["sera"],m:{cat:"gen"}},
- {ch:"12",type:"fill",q:"Il gèle : les routes ___ glissantes demain matin. (être)",a:["seront"],m:{cat:"gen"}},
- {ch:"12",type:"mc",q:"« Il pleut des cordes » veut dire :",o:["il pleut très fort", "il neige", "il bruine", "le temps s'améliore"],a:"il pleut très fort"},
- /* ===== Chapter 13 (bank of 24, 10 drawn per quiz) ===== */
- {ch:"13",type:"fill",q:"Quand j'étais enfant, nous ___ chaque été au bord de la mer. (aller)",a:["allions"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Je lisais tranquillement quand le téléphone ___ . (sonner)",a:["a sonné"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Il ___ beau, les oiseaux chantaient, tout était calme. (faire)",a:["faisait"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Soudain, un homme ___ dans le wagon. (entrer)",a:["est entré"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Elle m'a dit qu'elle ___ déménager au printemps.",a:["allait"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Nous ___ partir quand l'orage a éclaté.",a:["allions"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"J'___ téléphoner à mon frère, mais j'ai oublié.",a:["allais"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Il est arrivé en retard ___ cause de la circulation.",a:["à"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"___ à son sang-froid, elle a réussi à s'échapper. (positive cause)",a:["grâce"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Il n'a pas dormi ; ___ conséquent, il est épuisé.",a:["par"],m:{cat:"gen"}},
- {ch:"13",type:"mc",q:"Celui qui entre dans les maisons pour voler :",o:["le cambrioleur", "le procureur", "le commissaire", "le témoin"],a:"le cambrioleur"},
- {ch:"13",type:"mc",q:"Un indice est…",o:["une piste pour l'enquête", "une arme", "une prison", "un juge"],a:"une piste pour l'enquête"},
- {ch:"13",type:"mc",q:"« Sous les verrous » signifie :",o:["en prison", "en vacances", "en retard", "en route"],a:"en prison"},
- {ch:"13",type:"mc",q:"Arsène Lupin voyage sous un nom d'emprunt, c'est-à-dire…",o:["une fausse identité", "un passeport volé", "un déguisement", "un titre de noblesse"],a:"une fausse identité"},
- {ch:"13",type:"mc",q:"La défaite est le contraire de…",o:["la victoire", "la bataille", "la guerre", "l'armée"],a:"la victoire"},
- {ch:"13",type:"fill",q:"Le paquebot a été fouillé de fond en ___ .",a:["comble"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"La nouvelle s'est ___ dans tout le navire en quelques minutes. (répandre)",a:["répandue"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Ganimard a mordu à l'___ : le billet était un piège.",a:["hameçon"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"À l'___ , il n'y avait ni GPS ni téléphone portable.",a:["époque"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Elle se ___ encore de son premier jour d'école. (souvenir)",a:["souvient"],m:{cat:"gen"}},
- {ch:"13",type:"mc",q:"Le trajet Paris–Tanger en voiture, avec la famille et les bagages, c'était…",o:["un long périple", "un saut de puce", "une escale", "une revue"],a:"un long périple"},
- {ch:"13",type:"fill",q:"La guerre a ___ en 1870 entre la France et la Prusse. (éclater)",a:["éclaté"],m:{cat:"gen"}},
- {ch:"13",type:"fill",q:"Le suspect a été jugé ___ contumace : il était déjà loin.",a:["par"],m:{cat:"gen"}},
- {ch:"13",type:"mc",q:"« C'est la galère ! » exprime…",o:["une situation pénible", "une bonne nouvelle", "une victoire", "un compliment"],a:"une situation pénible"},
- /* ===== Chapter 14 (bank of 24, 10 drawn per quiz) ===== */
- {ch:"14",type:"fill",q:"Je ___ ___ arriver à l'hôtel il y a deux minutes — la chambre est magnifique. (venir)",a:["viens d'", "viens de"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Nous ___ ___ visiter le château quand il a commencé à pleuvoir. (had just)",a:["venions de"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Ils ___ juste ___ atterrir ; ils récupèrent leurs valises.",a:["viennent de"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Je ___ réserver une table pour deux, s'il vous plaît. (vouloir, poliment)",a:["voudrais"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"___ -vous me montrer le chemin de la gare ? (pouvoir, poliment)",a:["pourriez"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Tu ___ vérifier la validité de ton passeport avant de partir. (devoir, conseil)",a:["devrais"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"J'___ visiter le Maroc un jour. (aimer, souhait)",a:["aimerais"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Cet hôtel est ___ cher que l'auberge, mais mieux situé. (more)",a:["plus"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Il y a ___ de touristes en novembre qu'en juillet. (fewer)",a:["moins"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"La cuisine de cette auberge est ___ que celle de l'hôtel. (bon)",a:["meilleure"],m:{cat:"gen"}},
- {ch:"14",type:"mc",q:"Un hors-la-loi est une personne qui…",o:["vit en dehors de la loi", "travaille pour la police", "est très riche", "vend des bijoux"],a:"vit en dehors de la loi"},
- {ch:"14",type:"mc",q:"Le sang-froid, c'est…",o:["rester calme sous la pression", "avoir peur facilement", "être malade", "être en colère"],a:"rester calme sous la pression"},
- {ch:"14",type:"mc",q:"Un(e) évadé(e) est quelqu'un qui…",o:["s'est échappé(e) de prison", "a gagné à la loterie", "est arrivé(e) en retard", "a déménagé récemment"],a:"s'est échappé(e) de prison"},
- {ch:"14",type:"mc",q:"« Être porté disparu » signifie…",o:["ne plus savoir où se trouve une personne", "porter un vêtement neuf", "être en retard à un rendez-vous", "être fatigué"],a:"ne plus savoir où se trouve une personne"},
- {ch:"14",type:"mc",q:"Un pays d'accueil est le pays…",o:["où un immigré s'installe", "d'où on est originaire", "qu'on visite en vacances", "qu'on ne visitera jamais"],a:"où un immigré s'installe"},
- {ch:"14",type:"mc",q:"« De fond en comble » veut dire…",o:["complètement, du début à la fin", "un peu, superficiellement", "jamais", "très rapidement"],a:"complètement, du début à la fin"},
- {ch:"14",type:"fill",q:"On a arrêté le ___ juste après le cambriolage de la banque.",a:["voleur"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Le détective a trouvé un ___ important sur les lieux du crime.",a:["indice"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"L'attentat a beaucoup ___ la population du pays.",a:["bouleversé"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Ce bijoutier est un ___ réputé dans toute la ville.",a:["joaillier"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Le témoin a accepté de ___ devant le tribunal. (verbe)",a:["témoigner"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Après vingt ans dans ce pays, elle sent qu'elle y ___ vraiment. (appartenir)",a:["appartient"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Les soldats ___ une attaque surprise pendant la nuit. (craindre, imparfait)",a:["craignaient"],m:{cat:"gen"}},
- {ch:"14",type:"fill",q:"Cette aventure restera gravée dans sa mémoire à ___.",a:["jamais"],m:{cat:"gen"}}
-];
+/* shuffle helpers (kept from the removed quiz engine) */
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
-
-
-/* ===== UNIT 3 EXAM BANK — built from the Test 3 study guide (Ch 11–14) ===== */
-var EXAM_READ=[
- {title:"E-mail — confirmation de commande",
-  text:"Objet : Confirmation de commande. Bonjour, merci pour votre achat sur notre site ! Vous avez commandé : un pull en laine bleu marine (taille M), une écharpe à rayures, et des chaussettes en coton. Votre colis sera livré sous 5 jours ouvrés à l'adresse indiquée. Si un article ne vous convient pas, vous avez 30 jours pour le retourner gratuitement. Merci de votre confiance ! L'équipe Mode Express.",
-  qs:[
-   {type:"mc",q:"What did the customer order?",o:["A sweater, a scarf, and socks","A jacket, a hat, and gloves","Shoes and a belt","A raincoat only"],a:"A sweater, a scarf, and socks"},
-   {type:"mc",q:"How long is the delivery window?",o:["5 business days","2 business days","10 business days","24 hours"],a:"5 business days"},
-   {type:"sa",q:"What is the return policy?",model:"Free returns within 30 days if an item doesn't fit/suit them."}
-  ]},
- {title:"Messages — un pique-nique annulé",
-  text:"« Tu es prêt pour le pique-nique ? » — « Je viens de regarder la météo, ce n'est pas bon signe. » — « Ah bon, pourquoi ? » — « Il y a des nuages partout et des rafales de vent annoncées cet après-midi. Ils disent aussi qu'il va pleuvoir des cordes vers 15 h. » — « Zut ! On reporte à demain alors ? » — « Oui, demain il fera beau et chaud, sans un nuage. » — « Parfait, à demain ! »",
-  qs:[
-   {type:"mc",q:"Why does the second person want to cancel?",o:["Bad weather is expected","He is sick","The park is closed","He has no time"],a:"Bad weather is expected"},
-   {type:"mc",q:"What is the weather forecast for tomorrow?",o:["Sunny and warm","Rainy all day","Snowy","Windy and cold"],a:"Sunny and warm"},
-   {type:"sa",q:"What specific weather is expected this afternoon?",model:"Clouds, wind gusts, and heavy/pouring rain around 3 p.m."}
-  ]},
- {title:"Annonce — auberge de jeunesse",
-  text:"AUBERGE DE JEUNESSE LES VOYAGEURS — Nouveau logement insolite au cœur de la ville ! Chambres partagées ou privées, trousse de premiers soins et gourde offertes à l'arrivée. Location de vélos disponible pour explorer la région hors des sentiers battus. Petit déjeuner compris dans le prix. Réservez votre séjour dès maintenant — à partir de 25 € la nuit. Ouvert toute l'année, sauf en cas d'intempéries exceptionnelles empêchant l'accès.",
-  qs:[
-   {type:"mc",q:"What is offered free to guests on arrival?",o:["A first-aid kit and a water bottle","A suitcase and a raincoat","A map and a scarf","Nothing"],a:"A first-aid kit and a water bottle"},
-   {type:"mc",q:"What is included in the price?",o:["Breakfast","Bike rental","Dinner","Laundry"],a:"Breakfast"},
-   {type:"sa",q:"When might the hostel be closed?",model:"Only in case of exceptional bad weather that blocks access."}
-  ]},
- {title:"Panneau — avis de la préfecture",
-  text:"AVIS DE LA PRÉFECTURE : une tempête approche de la côte ce soir. Attention aux fortes rafales de vent et au risque de verglas dans les zones montagneuses après minuit. Les habitants sont invités à rester chez eux et à éviter les déplacements non essentiels. Le tonnerre et les éclairs sont attendus à partir de 21 h. La situation devrait s'améliorer demain matin, avec des éclaircies dans l'après-midi.",
-  qs:[
-   {type:"mc",q:"What is expected after midnight in mountain areas?",o:["Black ice","Fog","A heat wave","Drought"],a:"Black ice"},
-   {type:"mc",q:"What are residents advised to do?",o:["Stay home and avoid unnecessary travel","Evacuate immediately","Go to the coast","Call the police"],a:"Stay home and avoid unnecessary travel"},
-   {type:"sa",q:"When should the weather improve?",model:"Tomorrow morning, with sunny spells in the afternoon."}
-  ]},
- {title:"Message vocal — une aventure de jeunesse",
-  text:"Salut, c'est Camille ! Je viens de retrouver de vieilles photos de mon voyage en Espagne avec ma grand-mère. Je m'en souviens encore très bien : nous avons traversé le pays en voiture, et une fois, nous avons été bloquées à la frontière à cause d'une tempête. Ma grand-mère a gardé son sang-froid, et finalement tout s'est bien passé. C'était une vraie aventure, à jamais gravée dans ma mémoire. Rappelle-moi, j'ai plein d'histoires à te raconter !",
-  qs:[
-   {type:"mc",q:"What did Camille just find?",o:["Old photos from a trip with her grandmother","A lost passport","A letter from a friend","A map of Spain"],a:"Old photos from a trip with her grandmother"},
-   {type:"mc",q:"What happened at the border?",o:["They were stuck because of a storm","They lost their luggage","They were robbed","Their car broke down"],a:"They were stuck because of a storm"},
-   {type:"sa",q:"How does Camille describe her grandmother's reaction?",model:"Her grandmother stayed calm/kept her cool (sang-froid), and everything worked out."}
-  ]},
- {title:"Article — une enquête criminelle",
-  text:"Un cambriolage a eu lieu la semaine dernière dans une bijouterie du centre-ville. Selon la police, le voleur a fouillé le magasin de fond en comble avant de s'enfuir avec plusieurs bijoux de valeur. Un enquêteur a trouvé un indice important près de la porte arrière : un morceau de tissu déchiré. Le procureur a confirmé que l'enquête se poursuit et qu'un suspect est déjà interrogé. La police demande à tout témoin de se manifester.",
-  qs:[
-   {type:"mc",q:"What happened at the jewelry store?",o:["A burglary","A fire","A car accident","A strike"],a:"A burglary"},
-   {type:"mc",q:"What clue did the investigator find?",o:["A torn piece of fabric","A phone","A shoe","A letter"],a:"A torn piece of fabric"},
-   {type:"sa",q:"What does the article say about the investigation?",model:"It's ongoing, and a suspect is already being questioned; witnesses are asked to come forward."}
-  ]}
-];
-/* Vocabulaire — the complete Test 3 word list, EN → FR. Articles required per the standing rule; accents strict. Draw: 12. */
-var EXAM_VOCAB=[
- {ch:"12",q:"the heat",a:["la chaleur"]},
- {ch:"12",q:"it's freezing! (informal)",a:["ça caille"]},
- {ch:"11",q:"on sale (discounted)",a:["en solde"]},
- {ch:"11",q:"the pants / the trousers",a:["le pantalon","un pantalon"]},
- {ch:"13",q:"breathtaking",a:["à couper le souffle"]},
- {ch:"13",q:"the cabin / the hut",a:["la cabane","une cabane"]},
- {ch:"13",q:"the layover",a:["l'escale","une escale"]},
- {ch:"14",q:"the host country",a:["le pays d'accueil","un pays d'accueil"]},
- {ch:"14",q:"forever",a:["à jamais"]},
- {ch:"13",q:"the countryside",a:["la campagne"]},
- {ch:"12",q:"summery",a:["estival","estivale"]},
- {ch:"12",q:"to rain heavily (idiom)",a:["il pleut des cordes","pleuvoir des cordes"]},
- {ch:"14",q:"back then",a:["à l'époque"]},
- {ch:"11",q:"the belt",a:["la ceinture","une ceinture"]},
- {ch:"13",q:"to be caught off guard",a:["être pris de court"]},
- {ch:"14",q:"the prosecutor",a:["le procureur","la procureure"]},
- {ch:"13",q:"abroad",a:["à l'étranger"]},
- {ch:"14",q:"a ceasefire",a:["le cessez-le-feu","un cessez-le-feu"]},
- {ch:"14",q:"to search",a:["fouiller"]},
- {ch:"11",q:"the sweater",a:["le pull","un pull"]},
- {ch:"13",q:"under the stars",a:["à la belle étoile"]},
- {ch:"11",q:"checked / checkered / plaid",a:["à carreaux"]},
- {ch:"11",q:"the scarf (fashion)",a:["le foulard","un foulard"]},
- {ch:"11",q:"around fifteen of",a:["une quinzaine de"]},
- {ch:"11",q:"striped",a:["à rayures"]},
- {ch:"11",q:"the socks",a:["les chaussettes","des chaussettes"]},
- {ch:"14",q:"a pain / a hassle (figurative)",a:["la galère","une galère"]},
- {ch:"14",q:"to tell (a story)",a:["raconter"]},
- {ch:"12",q:"snowy",a:["neigeux","neigeuse"]},
- {ch:"11",q:"the shoes",a:["les chaussures","des chaussures"]},
- {ch:"11",q:"the gloves",a:["les gants","des gants"]},
- {ch:"12",q:"gusts (of wind)",a:["les rafales","des rafales"]},
- {ch:"14",q:"welcoming / friendly",a:["accueillant","accueillante"]},
- {ch:"11",q:"straight hair",a:["les cheveux raides","des cheveux raides"]},
- {ch:"12",q:"to hail",a:["grêler"]},
- {ch:"14",q:"to recognize",a:["reconnaître"]},
- {ch:"14",q:"tireless / relentless",a:["acharné","acharnée"]},
- {ch:"12",q:"to fall sharply (temperature)",a:["chuter"]},
- {ch:"12",q:"wintry",a:["hivernal","hivernale"]},
- {ch:"11",q:"out of style / corny (informal)",a:["ringard","ringarde"]},
- {ch:"14",q:"to belong (to)",a:["appartenir"]},
- {ch:"14",q:"the trunk (car)",a:["le coffre"]},
- {ch:"13",q:"off the beaten path",a:["hors des sentiers battus"]},
- {ch:"13",q:"to get reimbursed",a:["se faire rembourser"]},
- {ch:"11",q:"to match (items)",a:["assortir"]},
- {ch:"13",q:"leave (work) / time off",a:["le congé"]},
- {ch:"14",q:"an outlaw",a:["le hors-la-loi","un hors-la-loi"]},
- {ch:"13",q:"to challenge oneself",a:["se mettre au défi"]},
- {ch:"13",q:"a youth hostel",a:["l'auberge de jeunesse","une auberge de jeunesse"]},
- {ch:"12",q:"coastal",a:["côtier","côtière"]},
- {ch:"11",q:"a raincoat",a:["l'imperméable","un imperméable"]},
- {ch:"13",q:"to inquire",a:["se renseigner"]},
- {ch:"12",q:"showers (rain)",a:["les averses","des averses"]},
- {ch:"14",q:"a stab in the back",a:["le coup de poignard","un coup de poignard"]},
- {ch:"13",q:"must-see / essential",a:["incontournable"]},
- {ch:"12",q:"droughts",a:["les sécheresses","des sécheresses"]},
- {ch:"13",q:"a ticket (train or plane)",a:["le billet","un billet"]},
- {ch:"13",q:"carpooling",a:["le covoiturage","du covoiturage"]},
- {ch:"14",q:"a clue",a:["l'indice","un indice"]},
- {ch:"12",q:"a storm",a:["la tempête","une tempête"]},
- {ch:"14",q:"homeland / hometown",a:["le bled"]},
- {ch:"14",q:"from top to bottom",a:["de fond en comble"]},
- {ch:"12",q:"bad weather",a:["les intempéries","des intempéries"]},
- {ch:"13",q:"unusual lodging",a:["le logement insolite","un logement insolite"]},
- {ch:"11",q:"combat fatigues",a:["le treillis"]},
- {ch:"11",q:"of average height",a:["de taille moyenne"]},
- {ch:"13",q:"rental / renting",a:["la location"]},
- {ch:"11",q:"a bomber jacket",a:["le blouson","un blouson"]},
- {ch:"11",q:"a coupon",a:["un bon"]},
- {ch:"14",q:"painful",a:["douloureux","douloureuse"]},
- {ch:"11",q:"outfit / attire",a:["la tenue"]},
- {ch:"13",q:"route",a:["le trajet","un trajet"]},
- {ch:"11",q:"a beanie",a:["le bonnet","un bonnet"]},
- {ch:"12",q:"mild / soft (weather)",a:["doux","douce"]},
- {ch:"11",q:"a brand",a:["la marque","une marque"]},
- {ch:"12",q:"thunder",a:["le tonnerre"]},
- {ch:"11",q:"boots",a:["les bottes","des bottes"]},
- {ch:"11",q:"a dozen",a:["une douzaine"]},
- {ch:"11",q:"to highlight",a:["mettre en valeur"]},
- {ch:"14",q:"misleading",a:["trompeur","trompeuse"]},
- {ch:"11",q:"earrings",a:["les boucles d'oreilles","des boucles d'oreilles"]},
- {ch:"11",q:"a scarf (warmth)",a:["l'écharpe","une écharpe"]},
- {ch:"11",q:"suspenders",a:["les bretelles","des bretelles"]},
- {ch:"13",q:"first aid kit",a:["la trousse de premiers soins","la trousse de premiers secours"]},
- {ch:"14",q:"devastated / overwhelmed",a:["bouleversé","bouleversée"]},
- {ch:"12",q:"a sunny spell",a:["l'éclaircie","une éclaircie"]},
- {ch:"13",q:"a subscription / membership",a:["un abonnement"]},
- {ch:"12",q:"black ice",a:["le verglas","du verglas"]},
- {ch:"11",q:"a pattern",a:["le motif","un motif"]},
- {ch:"11",q:"made of wool",a:["en laine"]},
- {ch:"11",q:"hazel-colored",a:["noisette"]},
- {ch:"11",q:"clothes",a:["les vêtements","des vêtements"]},
- {ch:"12",q:"to shine",a:["briller"]},
- {ch:"13",q:"on average",a:["en moyenne"]},
- {ch:"12",q:"cloudy",a:["nuageux","nuageuse"]},
- {ch:"11",q:"around twenty of",a:["une vingtaine de"]},
- {ch:"12",q:"fog",a:["le brouillard","du brouillard"]},
- {ch:"11",q:"made of silk",a:["en soie"]},
- {ch:"12",q:"a thunderstorm",a:["l'orage","un orage"]},
- {ch:"14",q:"a theft / a burglary",a:["le vol","un vol","le cambriolage","un cambriolage"]},
- {ch:"14",q:"to start/begin to (do something)",a:["se mettre à"]}
-];
-/* Grammaire — four items per structure named on the study guide. Draw: 12. */
-var EXAM_GRAM=[
- {ch:"11",q:"Ce pull est ___ cher que la veste. (more expensive than)",a:["plus"]},
- {ch:"11",q:"Cette écharpe est ___ chaude que ce foulard. (less warm than)",a:["moins"]},
- {ch:"11",q:"Ces bottes sont ___ confortables que ces chaussures. (as comfortable as)",a:["aussi"]},
- {ch:"11",q:"Le pantalon à carreaux est ___ élégant que le pantalon uni. (more elegant than)",a:["plus"]},
- {ch:"11",q:"Tu vas à la boutique ce soir ? — Oui, j'___ vais à 18 h. (le pronom y)",a:["y"]},
- {ch:"11",q:"Il pense à son rendez-vous chez le tailleur ? — Oui, il ___ pense souvent. (le pronom y)",a:["y"]},
- {ch:"11",q:"Vous répondez à cette question ? — Non, nous n'___ répondons pas. (le pronom y)",a:["y"]},
- {ch:"11",q:"Elle habite en France depuis longtemps ? — Oui, elle ___ habite depuis dix ans. (le pronom y)",a:["y"]},
- {ch:"14",q:"Je n'ai plus faim ; je ___ ___ manger. (venir de)",a:["viens de"]},
- {ch:"14",q:"Ils ___ ___ arriver ; ils cherchent leur chambre d'hôtel. (venir de)",a:["viennent de"]},
- {ch:"14",q:"Nous ___ ___ finir nos valises quand le taxi est arrivé. (venir de, imparfait — had just)",a:["venions de"]},
- {ch:"14",q:"Elle ___ juste ___ partir ; tu peux encore la rattraper. (venir de)",a:["vient de"]},
- {ch:"13",q:"Quand j'étais petit, nous ___ à la mer tous les étés. (aller, imparfait — habitude)",a:["allions"]},
- {ch:"13",q:"Hier, nous ___ à la mer pour la première fois. (aller, passé composé — événement précis)",a:["sommes allés"]},
- {ch:"13",q:"Il ___ la valise quand le téléphone a sonné. (faire, imparfait — action en cours)",a:["faisait"]},
- {ch:"13",q:"Elle ___ son passeport juste avant de partir. (perdre, passé composé — action ponctuelle)",a:["a perdu"]},
- {ch:"12",q:"Demain, il ___ beaucoup dans le nord. (pleuvoir, futur simple)",a:["pleuvra"]},
- {ch:"12",q:"L'année prochaine, nous ___ dans un nouvel appartement. (habiter, futur simple régulier)",a:["habiterons"]},
- {ch:"12",q:"Tu ___ ta valise avant de partir, n'est-ce pas ? (finir, futur simple régulier)",a:["finiras"]},
- {ch:"12",q:"Il ___ beau ce week-end. (faire, futur simple irrégulier)",a:["fera"]}
-];
-/* ===== quiz / exam engine ===== */
-var quizPick="11", testItems=[];
-document.getElementById("quizPick").addEventListener("change",function(){ quizPick=this.value; renderTestHist(); });
-
-function histKind(){ return quizPick==="exam" ? "Unit 3 exam" : ("Ch "+quizPick+" quiz"); }
-function renderTestHist(){
-  var h=document.getElementById("testHist");
-  var mine=state.tests.filter(function(t){ return (t.kind||"quiz")===histKind() || (!t.kind && quizPick!=="exam"); });
-  if(!mine.length){ h.textContent = quizPick==="exam"
-    ? "Modeled on your Test 3 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
-    : "10 randomized questions from the Chapter "+quizPick+" bank — a different draw every attempt."; return; }
-  var last=mine[mine.length-1];
-  var best=mine.reduce(function(m,t){return Math.max(m,Math.round(t.score/t.total*100));},0);
-  h.textContent=histKind()+" — attempts: "+mine.length+" · last "+last.score+"/"+last.total+" · best "+best+"%";
-}
-
-function mkFillQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q.replace("___","<span class='blank'>____</span>")));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-  row.appendChild(inp); q.appendChild(row); q._kind="fill"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-function mkMcQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q));
-  var opts=el("div","opts");
-  shuffleArr(t.o.slice()).forEach(function(o){
-    var op=el("label","opt"); op.innerHTML="<input type='radio' name='xq"+i+"' value='"+o.replace(/'/g,"&#39;")+"'> <span>"+o+"</span>";
-    op.querySelector("input").addEventListener("change",function(){
-      [].forEach.call(opts.children,function(c){c.classList.remove("sel");}); op.classList.add("sel");
-    });
-    opts.appendChild(op);
-  });
-  q.appendChild(opts); q._kind="mc"; q._opts=opts; q._t=t; q._tag=tag;
-  return q;
-}
-function mkSaQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+" · short answer, self-graded</span><br>"+t.q+" <span class='hist'>(answer in English)</span>"));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.spellcheck=false; row.appendChild(inp); q.appendChild(row);
-  var host=el("div"); q.appendChild(host);
-  var rv=el("button","ghost","Reveal model answer"); host.appendChild(rv);
-  rv.onclick=function(){
-    host.innerHTML="";
-    host.appendChild(el("div","model","<b>Model:</b> "+t.model));
-    var g=el("div","sagrade");
-    var yb=el("button","btn know","I had it ✓"), nb2=el("button","btn dunno","I missed it ✗");
-    yb.onclick=function(){ q._self=true; yb.disabled=true; nb2.disabled=true; nb2.style.opacity=".4"; inp.disabled=true; };
-    nb2.onclick=function(){ q._self=false; yb.disabled=true; nb2.disabled=true; yb.style.opacity=".4"; inp.disabled=true; };
-    g.appendChild(yb); g.appendChild(nb2); host.appendChild(g);
-  };
-  q._kind="sa"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-
-document.getElementById("startTest").onclick=function(){
-  document.getElementById("testIntro").style.display="none";
-  document.getElementById("testResult").style.display="none";
-  document.getElementById("testRun").style.display="block";
-  var host=document.getElementById("testQs"); host.innerHTML="";
-  var qi=0, qs=[];
-  if(quizPick==="exam"){
-    /* Section 1 — Compréhension */
-    host.appendChild(el("h2","sec","Compréhension"));
-    pick(EXAM_READ, CONFIG.EXAM.read).forEach(function(p){
-      var pv=el("div","passage","<div class='ptitle'>"+p.title+"</div>"+p.text);
-      host.appendChild(pv);
-      p.qs.forEach(function(t){
-        var q = t.type==="mc" ? mkMcQ(t,qi,"Compréhension") : mkSaQ(t,qi,"Compréhension");
-        host.appendChild(q); qs.push(q); qi++;
-      });
-    });
-    /* Section 2 — Vocabulaire */
-    host.appendChild(el("h2","sec","Vocabulaire"));
-    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 3 word list."));
-    pick(EXAM_VOCAB, CONFIG.EXAM.vocab).forEach(function(t){
-      var q=mkFillQ({q:"Translate: <b>"+t.q+"</b>",a:t.a,m:t.m,ch:t.ch},qi,"Vocabulaire");
-      host.appendChild(q); qs.push(q); qi++;
-    });
-    /* Section 3 — Grammaire */
-    host.appendChild(el("h2","sec","Grammaire"));
-    pick(EXAM_GRAM, CONFIG.EXAM.gram).forEach(function(t){
-      var q=mkFillQ(t,qi,"Grammaire"); host.appendChild(q); qs.push(q); qi++;
-    });
-  } else {
-    var poolQ=TEST.filter(function(t){return t.ch===quizPick;});
-    pick(poolQ, Math.min(CONFIG.QUIZ_SIZE, poolQ.length)).forEach(function(t){
-      var q = t.type==="mc" ? mkMcQ(t,qi,"Ch."+t.ch) : mkFillQ(t,qi,"Ch."+t.ch);
-      host.appendChild(q); qs.push(q); qi++;
-    });
-  }
-  testItems=qs;
-  document.getElementById("tProg").textContent=qs.length+" questions · "+(quizPick==="exam"?"Unit 3 practice exam":"Chapter "+quizPick+" quiz");
-  window.scrollTo({top:0,behavior:"smooth"});
-};
-document.getElementById("submitTest").onclick=scoreTest;
-
-function tallyMiss(tag, ok){
-  var t=state.missTally[tag]||(state.missTally[tag]={w:0,t:0});
-  t.t++; if(!ok) t.w++;
-}
-function scoreTest(){
-  var score=0;
-  testItems.forEach(function(q){
-    var t=q._t, ok=false;
-    if(q._kind==="mc"){
-      var ans=Array.isArray(t.a)?t.a:[t.a];
-      var sel=q._opts.querySelector("input:checked"), given=sel?sel.value:"";
-      ok=ans.some(function(a){return norm(a)===norm(given);});
-      [].forEach.call(q._opts.children,function(op){
-        var inpEl=op.querySelector("input"); inpEl.disabled=true;
-        var val=inpEl.value;
-        if(ans.some(function(a){return norm(a)===norm(val);})) op.classList.add("right");
-        else if(val===given && given) op.classList.add("wrong");
-      });
-    } else if(q._kind==="sa"){
-      ok = q._self===true;
-      q._inp.disabled=true;
-      if(q._self===undefined){
-        var v0=el("div","verdict no"); v0.textContent="✗ Not self-graded — counted as a miss. Model: "+t.model; q.appendChild(v0);
-      }
-    } else {
-      var ans2=Array.isArray(t.a)?t.a:[t.a];
-      var given2=q._inp.value;
-      ok=ans2.some(function(a){return norm(a)===norm(given2);});
-      var close=!ok && given2.trim() && ans2.some(function(a){return bare(a)===bare(given2);});
-      q._inp.disabled=true; q._inp.style.borderColor=ok?"var(--known)":"var(--accent)";
-      var v=el("div","verdict "+(ok?"ok":"no"));
-      v.textContent = ok?"✓ Correct":(close?"✗ Accents — "+ans2[0]:"✗ "+ans2[0]);
-      q.appendChild(v);
-      anaRecord(ok, !!close, withSrc(q._t.m,"quiz",null,(+q._t.ch||null)));   /* quiz/exam fill-ins feed Analyse */
-    }
-    if(q._kind==="mc"||q._kind==="sa"){ onGraded(ok); }
-    tallyMiss(q._tag, ok);
-    if(ok) score++;
-  });
-  var total=testItems.length;
-  state.tests.push({kind:histKind(),score:score,total:total,date:new Date().toISOString().slice(0,10)});
-  if(quizPick!=="exam" && score===total && total>=10){
-    state.life.pq=(state.life.pq||0)+1;
-    award("a_quiz100");
-    if(state.life.pq>=3) award("a_quiz3x");
-  }
-  saveState(); refreshDash(); renderTestHist();
-  document.getElementById("submitTest").style.display="none";
-  var res=document.getElementById("testResult"); res.style.display="block";
-  var pct=Math.round(score/total*100);
-  var msg = pct>=90?"Excellent — these mechanics are solid.":pct>=75?"Strong. Clean up the misses and re-run.":pct>=60?"Getting there — drill the weak chapters in Grammaire.":"Foundation work needed — slow down and use the Verbes + Grammaire tabs.";
-  res.innerHTML="<div class='card'><div class='scorebox'><div class='big' style='color:"+(pct>=75?"var(--known)":pct>=60?"var(--learn)":"var(--accent)")+"'>"+score+"/"+total+"</div><div class='lbl'>"+pct+"% · "+msg+"</div></div></div>";
-  var again=el("button","btn reveal"); again.style.cssText="flex:0 0 auto;padding:12px 26px;margin-top:12px"; again.textContent="New attempt";
-  again.onclick=function(){ document.getElementById("testRun").style.display="none"; res.style.display="none";
-    document.getElementById("submitTest").style.display=""; document.getElementById("testIntro").style.display="block"; renderTestHist(); window.scrollTo({top:0,behavior:"smooth"}); };
-  res.appendChild(again);
-  window.scrollTo({top:document.getElementById("testResult").offsetTop-20,behavior:"smooth"});
-}
 
 /* =============== DASHBOARD =============== */
 function refreshDash(){
@@ -4145,71 +3660,12 @@ function setupDash(){
   sel.value=String(state.currentCh);
   sel.onchange=function(){
     state.currentCh=+this.value; saveState();
-    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); renderTestHist(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
+    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
   };
   updateScopeNote();
   updateCountdown();
   refreshDash();
 }
-
-/* =============== ORAL — OPI PROMPT DECK (no audio, no grading: reps) =============== */
-var OPI=[
- {t:"Ch 11 · Head to toe",d:"Décrivez ce que vous portez aujourd'hui, des chaussures au chapeau. — Describe what you're wearing today, shoes to hat.",s:["Colors after the noun", "articles with each item", "un pantalon is singular."]},
- {t:"Ch 11 · Family portrait",d:"Décrivez physiquement un membre de votre famille : taille, cheveux, yeux, visage. — Physically describe a family member: build, hair, eyes, face.",s:["avoir les cheveux/les yeux + adjective", "marron and noisette never agree."]},
- {t:"Ch 11 · Work vs weekend",d:"Qu'est-ce que vous portez au travail ? Et le week-end ? Comparez les deux styles. — What do you wear to work? On weekends? Compare the two styles.",s:["décontracté vs formel", "plus/moins … que", "le week-end, je préfère…"]},
- {t:"Ch 11 · A recent gift",d:"Racontez un cadeau que vous avez offert récemment. À qui ? Ça lui a plu ? — Tell about a gift you gave recently. To whom? Did they like it?",s:["offrir à + COI → je lui ai offert", "plaire flipped: ça lui a plu."]},
- {t:"Ch 11 · In the boutique",d:"Vous êtes dans une boutique. Demandez votre taille, essayez, donnez votre avis au vendeur. — You're in a shop. Ask for your size, try on, give the clerk your opinion.",s:["Je fais du 42", "Est-ce que je peux l'essayer ?", "Il me va bien / Il est trop serré."]},
- {t:"Ch 11 · Wardrobe MVP",d:"Quel est le vêtement le plus important de votre garde-robe ? Pourquoi ? — What's the most important item in your wardrobe? Why?",s:["Superlative: le plus / le moins + adj", "parce que + reason."]},
- {t:"Ch 12 · Today's weather",d:"Quel temps fait-il aujourd'hui à Monterey ? Et quel temps fera-t-il demain, à votre avis ? — What's the weather today in Monterey? And tomorrow, in your opinion?",s:["il fait / il y a / il pleut", "switch to the futur: il fera, il y aura."]},
- {t:"Ch 12 · Home climate",d:"Décrivez le climat de votre région d'origine, saison par saison. — Describe your home region's climate, season by season.",s:["en été / en hiver / au printemps / en automne", "imparfait if you talk about growing up."]},
- {t:"Ch 12 · A storm you lived",d:"Racontez une tempête ou un événement météo extrême que vous avez vécu. — Tell about a storm or extreme weather event you experienced.",s:["Imparfait for the scene, PC for what happened", "il y a eu / il pleuvait."]},
- {t:"Ch 12 · Weather presenter",d:"Présentez le bulletin météo de demain pour la France, région par région. — Deliver tomorrow's forecast for France, region by region.",s:["Futur simple: il fera, il y aura, les températures baisseront", "dans le Nord / sur la côte."]},
- {t:"Ch 12 · Seasons",d:"Quelle saison préférez-vous et pourquoi ? Quelle saison détestez-vous ? — Which season do you prefer and why? Which do you hate?",s:["préférer + noun", "parce que", "comparatives: plus doux que, moins pluvieux que."]},
- {t:"Ch 12 · Fifty years on",d:"Le changement climatique : qu'est-ce qui se passera dans cinquante ans, à votre avis ? — Climate change: what will happen in fifty years, in your view?",s:["Futur simple throughout", "la fonte des glaces, la sécheresse, les inondations."]},
- {t:"Ch 13 · Childhood memory",d:"Racontez votre meilleur souvenir d'enfance. Où étiez-vous ? Que s'est-il passé ? — Tell your best childhood memory. Where were you? What happened?",s:["Imparfait for the backdrop, PC for events", "quand j'étais petit(e)…"]},
- {t:"Ch 13 · First day of class",d:"Décrivez votre premier jour de cours. Comment vous sentiez-vous ? Qu'est-ce qui s'est passé ? — Describe your first day of class. How did you feel? What happened?",s:["j'étais nerveux/nerveuse", "le sergent nous a dit que nous allions…"]},
- {t:"Ch 13 · Changed plans",d:"Racontez un moment où vos plans ont changé au dernier moment. — Tell about a time your plans changed at the last minute.",s:["J'allais + infinitif, mais…", "the interrupted-plan frame."]},
- {t:"Ch 13 · Crime plot",d:"Racontez l'intrigue d'un film policier ou d'un roman que vous aimez. — Summarize the plot of a crime film or novel you like.",s:["Present tense for plot summaries works", "d'abord, ensuite, à la fin."]},
- {t:"Ch 13 · Family journey",d:"Votre famille a-t-elle une histoire de voyage ou d'immigration ? Racontez. — Does your family have a travel or immigration story? Tell it.",s:["mes grands-parents sont venus de…", "à l'époque", "autrefois."]},
- {t:"Ch 13 · Travel nightmare",d:"Racontez une mésaventure de voyage — retard, panne, bagage perdu. — Tell a travel nightmare — delay, breakdown, lost luggage.",s:["Quelle catastrophe !", "d'abord, ensuite, finalement", "PC chain of events."]},
- {t:"Ch 14 · Memorable birthday",d:"Racontez une fête d'anniversaire mémorable. Qu'est-ce qui s'est passé ? — Tell about a memorable birthday party. What happened?",s:["PC for the sequence of events, imparfait for the mood/setting", "c'était une fête inoubliable."]},
- {t:"Ch 14 · An object full of memories",d:"Avez-vous un objet ou une photo qui évoque beaucoup de souvenirs pour vous ? Décrivez-le. — Do you have an object or photo that brings back a lot of memories? Describe it.",s:["ça me rappelle…", "je m'en souviens comme si c'était hier."]},
- {t:"Ch 14 · An unexpected reunion",d:"Avez-vous déjà retrouvé quelqu'un que vous n'aviez pas vu depuis longtemps ? Comment cela s'est-il passé ? — Have you ever run into someone you hadn't seen in a long time? How did it go?",s:["je l'ai tout de suite reconnu(e)", "ça m'a beaucoup ému(e)."]},
- {t:"Ch 14 · What you just did",d:"Qu'est-ce que vous venez de faire aujourd'hui, là, juste avant cette session ? — What did you just do today, right before this session?",s:["Je viens de + infinitif — chain three or four of them."]},
- {t:"Ch 14 · A mystery you solved",d:"Racontez une fois où vous avez dû résoudre un petit mystère ou retrouver quelque chose de perdu. — Tell about a time you had to solve a small mystery or find something you'd lost.",s:["un indice, chercher, retrouver", "j'ai gardé mon sang-froid."]},
- {t:"Ch 14 · A moment of fear",d:"Parlez d'un moment où vous avez eu peur pendant une aventure et comment vous avez géré la situation. — Talk about a time you were scared during an adventure and how you handled it.",s:["j'ai craint le pire", "garder son sang-froid."]}
-];
-var opiIdx=0, opiTimer=null;
-function stopOpiTimer(){ if(opiTimer){ clearInterval(opiTimer); opiTimer=null; } }
-function renderOpi(){
-  stopOpiTimer();
-  var c=document.getElementById("opiCard"), p=OPI[opiIdx];
-  c.innerHTML="";
-  c.appendChild(el("h3",null,p.t));
-  c.appendChild(el("div","hist",p.d));
-  var ul=el("ul","scaf"); p.s.forEach(function(x){ ul.appendChild(el("li",null,x)); }); c.appendChild(ul);
-  var tm=el("div","opitimer","—"); c.appendChild(tm);
-  var row=el("div","vactions drill");
-  [45,30,15].forEach(function(secs){
-    var b=el("button","btn reveal",secs+" s");
-    b.onclick=function(){
-      stopOpiTimer(); var left=secs;
-      tm.classList.remove("hot"); tm.textContent="0:"+(left<10?"0":"")+left;
-      opiTimer=setInterval(function(){
-        left--; if(left<=5) tm.classList.add("hot");
-        tm.textContent = left>0 ? "0:"+(left<10?"0":"")+left : "Time — wrap it up!";
-        if(left<=0) stopOpiTimer();
-      },1000);
-    };
-    row.appendChild(b);
-  });
-  var stop=el("button","btn neutral","Stop"); stop.onclick=function(){ stopOpiTimer(); tm.textContent="—"; tm.classList.remove("hot"); };
-  row.appendChild(stop);
-  c.appendChild(row);
-  document.getElementById("opiPos").textContent=(opiIdx+1)+" / "+OPI.length;
-}
-document.getElementById("opiNext").onclick=function(){ opiIdx=(opiIdx+1)%OPI.length; renderOpi(); };
-document.getElementById("opiPrev").onclick=function(){ opiIdx=(opiIdx-1+OPI.length)%OPI.length; renderOpi(); };
 
 /* =============== INSIGHTS + ACHIEVEMENTS (v1.0.0-b1) ===============
    Bucket analytics come from GRADED DRILL + QUIZ answers only (D6: trainers are
@@ -4226,8 +3682,6 @@ var ACH=[
   {id:"a_s50", icon:"🏆", name:"Machine",             desc:"50 correct answers in a row."},
   {id:"a_v6",  icon:"📗", name:"Chapitre 11 maîtrisé", desc:"Every Chapter 11 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every conjugation in the Conjugaison tab is green (futur simple + conditionnel)."},
-  {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
-  {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
   {id:"a_round",  icon:"🎯",name:"Round parfait",     desc:"A 10/10 grammar-drill round."},
   {id:"a_acc",    icon:"✍️",name:"Accent aigu",       desc:"20+ graded answers in a session, mostly correct, zero accent-only misses."},
   {id:"a_cb",     icon:"💪",name:"La revanche",       desc:"Master a word after missing it 3+ times in a row."},
@@ -4369,7 +3823,6 @@ function renderInsights(){
     var gp=gk.map(function(k,i){ return [GRAM_LBL[k]||k,S.gram[k].m||0,CY[i%CY.length]]; });
     if(!gp.length) gp=[["—",0,CY[0]]];
     drawDonut("dnGram","dnGramL",gp);
-    drawDonut("dnQuiz","dnQuizL",[["Accents",S.quiz.acc.m,"#c0392b"],["Gender",S.quiz.gen.m,"#b9772b"],["Spelling",S.quiz.sp.m,"#2a4a8f"]]);
   })();
   /* buckets ledger */
   var L=document.getElementById("insBuckets"); L.innerHTML="";
@@ -4630,7 +4083,7 @@ document.querySelector("nav.tabs").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b)return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-selected","false");});
   b.setAttribute("aria-selected","true");
-  ["dash","verbs","vocab","gram","test","insights","oral"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
+  ["dash","verbs","vocab","gram","prep","insights"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
   if(b.dataset.tab==="insights") renderInsights();
   window.scrollTo({top:0});
 });
@@ -4642,9 +4095,8 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
 [].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
-renderVerbTable(); renderVocTable(); renderOpi();
-document.getElementById("quizPick").value="11"; quizPick=document.getElementById("quizPick").value; renderTestHist();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderAnaSince();
+renderVerbTable(); renderVocTable();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
 
