@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v0.3.0</title>
+<title>Unité 5 · Dossier Français — v0.3.0.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -63,8 +63,7 @@
   nav.tabs button[data-tab="vocab"]{--c:#c0574a}
   nav.tabs button[data-tab="gram"]{--c:#3f8a73}
   nav.tabs button[data-tab="verbs"]{--c:#7b64a8}
-  nav.tabs button[data-tab="test"]{--c:#b07d2e}
-  nav.tabs button[data-tab="oral"]{--c:#b25a7c}
+  nav.tabs button[data-tab="prep"]{--c:#b07d2e}
   nav.tabs button[data-tab="insights"]{--c:#3a8aa0}
   nav.tabs{display:flex; align-items:flex-end; gap:0; position:sticky; top:0; z-index:20; margin:0 -18px; padding:12px 18px 0 24px;
     background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
@@ -401,9 +400,9 @@
   /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
   :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
     --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
-  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="test"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
   :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
-  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="test"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
+  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
   .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
   .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
     transition:background .12s ease, border-color .12s ease}
@@ -422,7 +421,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.0</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.0.1</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -442,9 +441,8 @@
     <button role="tab" aria-selected="true" data-tab="dash">Tableau de bord</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
+    <button role="tab" aria-selected="false" data-tab="prep">Prépa examen</button>
     <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
-    <button role="tab" aria-selected="false" data-tab="test">Examen blanc</button>
-    <button role="tab" aria-selected="false" data-tab="oral">Pratique orale</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
   </nav>
 
@@ -627,48 +625,20 @@
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
-  <!-- ===================== TEST ===================== -->
-  <section class="panel" id="p-test" role="tabpanel">
-    <h2 class="sec">Quizzes &amp; Unit 5 exam</h2>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>Accents strict.</li>
-        <li>Answers feed Analyse.</li>
-      </ul>
-    </details>
 
-    <div id="testIntro" class="card">
-      <div class="test-head">
-        <select class="filter" id="quizPick">
-          <option value="21">Chapter 21 quiz</option>
-          <option value="22">Chapter 22 quiz</option>
-          <option value="23">Chapter 23 quiz</option>
-          <option value="24">Chapter 24 quiz</option>
-          <option value="exam" disabled>Unit 5 practice exam (à venir)</option>
-        </select>
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 22px" id="startTest">Start</button>
-      </div>
-      <p class="hist" id="testHist"></p>
+  <!-- ===================== PRÉPA EXAMEN (à venir) ===================== -->
+  <section class="panel" id="p-prep" role="tabpanel">
+    <h2 class="sec">Prépa examen</h2>
+    <div class="card" style="text-align:center;padding:34px 20px">
+      <span class="pill" style="background:var(--learn-soft);color:var(--learn)">à venir</span>
+      <p style="margin:14px auto 0;max-width:460px;color:var(--ink-2)">The Unit 5 study guide has not been uploaded yet. When it is, this tab will train its vocabulary (spelling and recognition), its grammar topics and the oral script builder, as in Unité 4.</p>
     </div>
-
-    <div id="testRun" style="display:none">
-      <div class="test-head">
-        <span class="pill" id="tProg"></span>
-      </div>
-      <div id="testQs"></div>
-      <div class="drill-foot">
-        <button class="btn reveal" style="flex:0 0 auto;padding:12px 26px" id="submitTest">Submit &amp; score</button>
-      </div>
-    </div>
-
-    <div id="testResult" style="display:none"></div>
   </section>
 
   <!-- ===================== INSIGHTS ===================== -->
   <section class="panel" id="p-insights" role="tabpanel">
     <h2 class="sec">Analyse — how you miss</h2>
-    <p class="lead">Built from every graded answer — trainers, drills, quizzes. Training mode is never recorded. First grade per item counts.</p>
+    <p class="lead">Built from every graded answer — trainers and drills. Training mode is never recorded. First grade per item counts.</p>
     <div class="card" id="insWeak"><p class="hist">No graded answers yet — grade a few cards and come back.</p></div>
     <div class="card" id="insWeakCh" style="margin-top:12px;font-size:14px"><span class="hist">Weakest chapter: — (5+ graded answers per chapter required)</span></div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px">
@@ -680,7 +650,6 @@
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Vocabulaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnVoc" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnVocL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Conjugaison</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnConj" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnConjL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
       <div class="card"><div style="font-weight:700;margin-bottom:8px">Grammaire</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnGram" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnGramL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
-      <div class="card"><div style="font-weight:700;margin-bottom:8px">Examen</div><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg id="dnQuiz" width="120" height="120" viewBox="0 0 42 42"></svg><div id="dnQuizL" style="flex:1;min-width:130px;font-size:13px"></div></div></div>
     </div>
     <h2 class="sec" style="margin-top:26px">Error types</h2>
     <div class="card"><div class="ledger" id="insBuckets"></div></div>
@@ -694,29 +663,11 @@
     <div class="trophygrid" id="insTrophy"></div>
   </section>
 
-  <!-- ===================== ORAL / OPI ===================== -->
-  <section class="panel" id="p-oral" role="tabpanel">
-    <h2 class="sec">Oral practice — OPI prompts</h2>
-    <p class="lead">Speaking trains out loud. Cards mirror the Unit 5 tasks.</p>
-    <details class="changelog">
-      <summary>How to use</summary>
-      <ul class="lead-list">
-        <li>Pick one, hit a timer, talk.</li>
-        <li>45 → 30 → 15 seconds.</li>
-        <li>No grading, just reps.</li>
-      </ul>
-    </details>
-    <div class="opicard" id="opiCard"><!-- filled by JS --></div>
-    <div class="vnav">
-      <button id="opiPrev">‹ Prev</button>
-      <span id="opiPos"></span>
-      <button id="opiNext">Next ›</button>
-    </div>
-  </section>
 
   <footer>
-    <strong>Dossier Unité 5 · v0.3.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v0.3.0.1</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.3.0.1 (15 Oct 2026, hotfix): <strong>The old exam tabs are gone and Prépa examen takes their place (à venir).</strong> Examen blanc and Pratique orale, which Unité 4 retired in v0.9.0, are removed from Unité 5: the chapter quizzes (Ch. 21 to 24), the Unit 5 exam shell, the oral prompt deck, the Analyse <em>Examen</em> donut and the Sans faute and Hat-trick achievements. Saved quiz history stays in your browser, unseen. A new <strong>Prépa examen</strong> tab sits after Grammaire and shows <em>à venir</em> until the Unit 5 study guide is uploaded; then it takes the same three parts as Unité 4 (vocabulary spelling and recognition, grammar topics, oral script builder). No vocabulary, grammar or progress data changed.<br></span>
     <span style="color:var(--mute)">v0.3.0 (15 Oct 2026): <strong>Vocabulaire — Recognize runs both ways, Training moves left, and mastery needs three in a row.</strong> <strong>Recognize</strong> now follows the EN → FR / FR → EN switch like Recall: from English you pick the French word (four options, articles included), from French you pick the meaning. The direction switch now sits on the Comment row and is dimmed only in Spelling, which is always English to French. <strong>Training</strong> moved to the left of Spelling, Recognize and Recall. <strong>Mastery:</strong> a correct answer on the first pass no longer turns a card green by itself, in the Vocabulaire and Conjugaison trainers alike. Every card goes green only after three correct answers in a row (a miss still resets the run), and <em>Je connais déjà</em> still marks a card known at once. The rule applies going forward only: cards already green stay green (even if they got there on one clean answer) until your next miss, which resets them like any other. <strong>Recall</strong> loses the &quot;Marked: known / still learning&quot; strip under the card, which repeated what the tag above the card and the progress table already show. Nothing else changed (no card, grading or drill content).<br></span>
     <span style="color:var(--mute)">v0.2.2 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v0.2.1 (15 Oct 2026): <strong>Vocabulaire — shorter topic names.</strong> 21 topic names in the Vocabulaire filter and on the card tag were too long (especially the reading and listening extras, e.g. “attrition, online sources & school expressions”); they are now at most 44 characters, with “Reading & listening extras” shortened to “Extras”. Names only: no card, answer or saved progress changed.<br></span>
@@ -736,8 +687,6 @@ var CONFIG={
   UNIT:5,
   KEY:"fr_dossier_u5",          /* NEVER change within a unit — saved progress lives here (namespaced: no collision with other units) */
   DEFAULT_CH:21,                 /* chapter a fresh install assumes */
-  QUIZ_SIZE:10,                 /* questions per chapter quiz */
-  EXAM:{read:3, vocab:12, gram:12}, /* unit-exam section quotas */
   MASTERY:["subj","pqp"],          /* tenses whose rows carry mastery (the progress bar) */
   RUSTY_DAYS:14                 /* known + unseen this long = rusty */
 };
@@ -3182,293 +3131,9 @@ function renderGBar(){
   s.onchange=function(){ pk.src=s.value; saveState(); buildDrills(); };
 }
 
-/* =============== PRACTICE TEST =============== */
-var TEST=[];
-/* ===== Chapter 21 (bank of 26, 10 drawn per quiz) ===== */
-TEST.push.apply(TEST,[
- {ch:"21",type:"fill",q:"Si j'étais riche, j'___ (acheter) une grande maison.",a:["achèterais"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"S'il pleuvait, nous ___ (rester) à la maison.",a:["resterions"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Si tu ___ (étudier) plus, tu réussirais mieux.",a:["étudiais"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Si tu vas à Paris, tu ___ (visiter) le Louvre.",a:["visiteras"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Les élèves avec ___ il travaille sont sérieux.",a:["qui","lesquels"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"La salle dans ___ nous avons cours est bien équipée.",a:["laquelle"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Les règles ___ les élèves doivent obéir sont strictes.",a:["auxquelles"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Je veux que vous ___ (finir) ce travail avant jeudi.",a:["finissiez"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Il faut qu'elle ___ (être) à l'heure.",a:["soit"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Je trouve qu'il ___ (avoir) raison.",a:["a"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Je ne pense pas qu'il ___ (venir) demain.",a:["vienne"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Le conseiller d'orientation ___ les élèves vers la filière qui leur convient. (orienter)",a:["oriente"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Beaucoup de parents ___ du coût des frais de scolarité. (se plaindre)",a:["se plaignent"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"Un élève qui quitte l'école avant la fin des études est un ___.",a:["décrocheur"],m:{cat:"gen"}},
- {ch:"21",type:"fill",q:"J'espère que tu ___ (obtenir) ton diplôme.",a:["obtiendras"],m:{cat:"gen"}},
- {ch:"21",type:"mc",q:"« Sécher les cours » veut dire…",o:["ne pas aller en cours volontairement","assister à tous les cours","réviser pour un examen","changer de filière"],a:"ne pas aller en cours volontairement"},
- {ch:"21",type:"mc",q:"« Revoir sa copie » signifie…",o:["corriger ou repenser son travail","copier un camarade","passer un examen","quitter l'école"],a:"corriger ou repenser son travail"},
- {ch:"21",type:"mc",q:"« La gratuité de l'école » veut dire que l'école…",o:["ne coûte rien","est obligatoire","est privée","est mixte"],a:"ne coûte rien"},
- {ch:"21",type:"mc",q:"Une école laïque est une école…",o:["indépendante de toute religion","réservée aux filles","qui coûte très cher","où l'on vit toute la semaine"],a:"indépendante de toute religion"},
- {ch:"21",type:"mc",q:"« Avoir la tête dans les nuages » veut dire…",o:["être rêveur ou distrait","avoir de la fièvre","être très intelligent","avoir beaucoup de travail"],a:"être rêveur ou distrait"},
- {ch:"21",type:"mc",q:"Quelle phrase exprime une situation imaginaire ?",o:["Si j'avais le choix, j'irais étudier à l'étranger.","Si j'ai le choix, j'irai étudier à l'étranger.","Si j'aurais le choix, j'irais étudier à l'étranger.","Si j'avais le choix, j'irai étudier à l'étranger."],a:"Si j'avais le choix, j'irais étudier à l'étranger."},
- {ch:"21",type:"mc",q:"Quelle phrase est correcte ?",o:["Il faut que nous allions à la banque.","Il faut que nous allons à la banque.","Il faut que nous irons à la banque.","Il faut nous allions à la banque."],a:"Il faut que nous allions à la banque."},
- {ch:"21",type:"mc",q:"Le « décrochage scolaire » désigne…",o:["le fait d'abandonner l'école avant le diplôme","un diplôme du collège","un cours du soir","la rentrée des classes"],a:"le fait d'abandonner l'école avant le diplôme"},
- {ch:"21",type:"mc",q:"La « mixité » à l'école signifie…",o:["garçons et filles dans la même classe","une école privée","des cours en ligne","un enseignement religieux"],a:"garçons et filles dans la même classe"},
- {ch:"21",type:"mc",q:"Les « frais de scolarité » sont…",o:["l'argent qu'on paie pour étudier","les notes obtenues à l'examen","les matières du programme","l'emploi du temps"],a:"l'argent qu'on paie pour étudier"},
- {ch:"21",type:"mc",q:"Quelle phrase est correcte ?",o:["Je ne crois pas qu'il ait le temps.","Je ne crois pas qu'il a le temps.","Je ne crois pas qu'il aura le temps.","Je ne crois pas qu'il avait le temps."],a:"Je ne crois pas qu'il ait le temps."}
-]);
-/* ===== Chapter 22 (bank of 26, 10 drawn per quiz) ===== */
-TEST.push.apply(TEST,[
- {ch:"22",type:"fill",q:"Avant l'interview, le journaliste ___ (préparer) ses questions.",a:["avait préparé"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Quand nous sommes arrivés, le film ___ (déjà commencer).",a:["avait déjà commencé"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Elle n'a pas compris l'article parce qu'elle ___ (ne pas lire) le début.",a:["n'avait pas lu"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Ils étaient fatigués parce qu'ils ___ (se lever) à cinq heures.",a:["s'étaient levés"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"La loi ___ (voter) par les députés hier.",a:["a été votée"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Cette chaîne ___ (fermer) par la junte l'année dernière.",a:["a été fermée"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"La réunion ___ (organiser) par le directeur demain.",a:["sera organisée"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Mon sac ___ (voler) dans le train.",a:["a été volé"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Je ne bois ___ café ni thé.",a:["ni"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Vous pouvez payer soit en espèces, ___ par carte.",a:["soit"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"D'un côté, le journal est gratuit ; ___, il est plein de publicité.",a:["d'un autre côté","d'autre part"],m:{cat:"gen"}},
- {ch:"22",type:"fill",q:"Si seulement nous ___ (savoir) la vérité !",a:["avions su"],m:{cat:"gen"}},
- {ch:"22",type:"mc",q:"Une « infox » est…",o:["une fausse information diffusée comme une vraie","un journal du matin","un code de conduite","un sondage d'opinion"],a:"une fausse information diffusée comme une vraie"},
- {ch:"22",type:"mc",q:"Un « canular » est…",o:["une fausse nouvelle inventée pour tromper","un reportage de terrain","une revue scientifique","une loi d'urgence"],a:"une fausse nouvelle inventée pour tromper"},
- {ch:"22",type:"mc",q:"Un « hebdomadaire » paraît…",o:["une fois par semaine","tous les jours","une fois par mois","une fois par an"],a:"une fois par semaine"},
- {ch:"22",type:"mc",q:"« Se méfier de » veut dire…",o:["ne pas faire confiance à","faire confiance à","se souvenir de","parler de"],a:"ne pas faire confiance à"},
- {ch:"22",type:"mc",q:"« Prétendre que » signifie…",o:["affirmer, souvent sans preuve","faire semblant de","refuser de","promettre de"],a:"affirmer, souvent sans preuve"},
- {ch:"22",type:"mc",q:"Les « représailles » sont…",o:["des actes de vengeance en réponse à une action","des preuves","des sondages","des abonnements"],a:"des actes de vengeance en réponse à une action"},
- {ch:"22",type:"mc",q:"Un « porte-parole » est quelqu'un qui…",o:["parle officiellement au nom d'un groupe","écrit des romans","vérifie les faits","vend des journaux"],a:"parle officiellement au nom d'un groupe"},
- {ch:"22",type:"mc",q:"« Mettre en lumière » veut dire…",o:["faire apparaître, révéler","cacher","interdire","censurer"],a:"faire apparaître, révéler"},
- {ch:"22",type:"mc",q:"« Induire en erreur » veut dire…",o:["tromper, amener à se tromper","corriger une faute","citer une source","faire rire"],a:"tromper, amener à se tromper"},
- {ch:"22",type:"mc",q:"Quelle phrase est à la voix passive ?",o:["La loi a été votée par les députés.","Les députés ont voté la loi.","Les députés voteront la loi.","Les députés avaient voté la loi."],a:"La loi a été votée par les députés."},
- {ch:"22",type:"mc",q:"Quelle phrase est au plus-que-parfait ?",o:["Elle avait déjà lu l'article.","Elle a déjà lu l'article.","Elle lisait déjà l'article.","Elle lira déjà l'article."],a:"Elle avait déjà lu l'article."},
- {ch:"22",type:"mc",q:"« Il n'est ni grand ni fort » veut dire…",o:["He is neither tall nor strong.","He is either tall or strong.","He is tall but not strong.","He is both tall and strong."],a:"He is neither tall nor strong."},
- {ch:"22",type:"mc",q:"« Sans foi ni loi » décrit quelqu'un qui…",o:["ne respecte ni la religion ni la loi","est très religieux","est juge","aime les lois"],a:"ne respecte ni la religion ni la loi"},
- {ch:"22",type:"mc",q:"Le mot « numérique » correspond à l'anglais…",o:["digital","numeral","numerous","national"],a:"digital"}
-]);
-/* ===== Chapter 23 (bank of 28, 10 drawn per quiz) ===== */
-TEST.push.apply(TEST,[
- {ch:"23",type:"fill",q:"Les cours sont annulés ___ grève.",a:["à cause de la","en raison de la","à la suite de la"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"___ tu es déjà là, aide-moi à préparer le dîner.",a:["puisque","étant donné que","vu que","comme"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Nous avons gagné le match ___ l'aide de notre entraîneur.",a:["grâce à"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Il est resté chez lui ___ il était malade.",a:["parce qu'","car"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Il a tellement plu ___ la rivière a débordé.",a:["que"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Elle parle lentement de manière à ce que tout le monde la ___ (comprendre).",a:["comprenne"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Il parle lentement de manière à ___ (se faire) comprendre.",a:["se faire"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Il est si fatigué qu'il ne ___ (pouvoir) plus parler.",a:["peut"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"La ville ___ j'habite est très ancienne.",a:["où","dans laquelle"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Les droits ___ les citoyens ont accès sont garantis.",a:["auxquels"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Le pays ___ la capitale est Dakar est le Sénégal.",a:["dont"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"L'homme avec ___ je travaille est généreux.",a:["qui","lequel"],m:{cat:"gen"}},
- {ch:"23",type:"fill",q:"Voici les questions sur ___ nous sommes d'accord.",a:["lesquelles"],m:{cat:"gen"}},
- {ch:"23",type:"mc",q:"Quelle expression introduit une cause suivie d'un nom ?",o:["en raison de","puisque","étant donné que","sous prétexte que"],a:"en raison de"},
- {ch:"23",type:"mc",q:"Quelle phrase est correcte ?",o:["Je suis en retard à cause du trafic.","Je suis en retard à cause que le trafic est dense.","Je suis en retard à cause il y a du trafic.","Je suis en retard grâce du trafic."],a:"Je suis en retard à cause du trafic."},
- {ch:"23",type:"mc",q:"« Sous prétexte que » introduit…",o:["une raison douteuse, avancée comme excuse","une raison prouvée et certaine","une conséquence logique","un but à atteindre"],a:"une raison douteuse, avancée comme excuse"},
- {ch:"23",type:"mc",q:"Quelle phrase est correcte ?",o:["Il est si fatigué qu'il ne peut plus parler.","Il est si fatigué qu'il ne puisse plus parler.","Il est si fatigué qu'il ne pourrait plus de parler.","Il est si fatigué pour qu'il ne peut plus parler."],a:"Il est si fatigué qu'il ne peut plus parler."},
- {ch:"23",type:"mc",q:"Complétez : Le parti a perdu les élections ; ___, son chef a démissionné.",o:["par conséquent","parce que","grâce à","à cause de"],a:"par conséquent"},
- {ch:"23",type:"mc",q:"Quelle phrase exprime un but ?",o:["Il a modifié la loi de manière à ce que tous puissent voter.","Il a tellement modifié la loi que tous peuvent voter.","Il a modifié la loi, donc tous peuvent voter.","Il a modifié la loi si bien que tous peuvent voter."],a:"Il a modifié la loi de manière à ce que tous puissent voter."},
- {ch:"23",type:"mc",q:"Quelle phrase est correcte ?",o:["Le parti pour lequel j'ai voté a gagné.","Le parti que j'ai voté pour a gagné.","Le parti pour que j'ai voté a gagné.","Le parti pour dont j'ai voté a gagné."],a:"Le parti pour lequel j'ai voté a gagné."},
- {ch:"23",type:"mc",q:"Quelle phrase est correcte ?",o:["Les projets auxquels je pense sont ambitieux.","Les projets lesquels je pense sont ambitieux.","Les projets desquels je pense sont ambitieux.","Les projets à lesquels je pense sont ambitieux."],a:"Les projets auxquels je pense sont ambitieux."},
- {ch:"23",type:"mc",q:"Un coup d'État est…",o:["une prise de pouvoir soudaine et illégale","une élection anticipée","un traité de paix","un vote de confiance"],a:"une prise de pouvoir soudaine et illégale"},
- {ch:"23",type:"mc",q:"En France, la « cohabitation » désigne le cas où…",o:["le président et le gouvernement viennent de camps opposés","deux partis forment une coalition","le président dirige aussi le parlement","le roi partage le pouvoir avec le parlement"],a:"le président et le gouvernement viennent de camps opposés"},
- {ch:"23",type:"mc",q:"Que signifie « faire marche arrière » ?",o:["revenir sur une décision","accélérer un projet","prendre une décision rapide","voter contre une loi"],a:"revenir sur une décision"},
- {ch:"23",type:"mc",q:"Les « acquis démocratiques » sont…",o:["les droits et libertés déjà obtenus","les résultats d'une élection truquée","les partis d'opposition","les impôts payés par les citoyens"],a:"les droits et libertés déjà obtenus"},
- {ch:"23",type:"mc",q:"Une peine de « prison ferme » est une peine…",o:["qu'on doit vraiment purger","avec sursis","remplacée par une amende","réduite de moitié"],a:"qu'on doit vraiment purger"},
- {ch:"23",type:"mc",q:"La « séparation des pouvoirs » distingue…",o:["l'exécutif, le législatif et le judiciaire","la gauche et la droite","le roi et la reine","les partis et les syndicats"],a:"l'exécutif, le législatif et le judiciaire"},
- {ch:"23",type:"mc",q:"Qu'est-ce que l'abstention ?",o:["le fait de ne pas voter","un vote pour l'opposition","le comptage des votes","une élection anticipée"],a:"le fait de ne pas voter"}
-]);
-/* ===== Chapter 24 (bank of 28, 10 drawn per quiz) ===== */
-TEST.push.apply(TEST,[
- {ch:"24",type:"fill",q:"Bien que la peine ___ (être) lourde, il ne fera pas appel.",a:["soit"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Je resterai ici jusqu'à ce que vous ___ (finir).",a:["finissiez"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Le suspect s'est enfui sans que la police le ___ (voir).",a:["voie"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Les documents ___ (transmettre) au juge hier.",a:["ont été transmis"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"La victime ___ (retrouver) dans un parc ce matin.",a:["a été retrouvée"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Quand le cambrioleur est entré, je ___ (dormir).",a:["dormais"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Selon la police, le suspect ___ (quitter) le pays.",a:["aurait quitté"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Après que l'accusé ___ (avouer), le juge a levé l'audience.",a:["a avoué","avait avoué"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Elle a quitté la salle avant ___ (entendre) le verdict.",a:["d'entendre"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Il faut agir pour que les jeunes ne ___ (basculer) pas dans la violence.",a:["basculent"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Le jury a rendu son ___ après trois heures de délibération.",a:["verdict"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Le meurtrier est condamné à vingt ans de ___ criminelle.",a:["réclusion"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Une peine de prison avec ___ n'est pas exécutée si le condamné ne récidive pas.",a:["sursis"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Une personne qui est morte est appelée un ___ en langage juridique.",a:["défunt"],m:{cat:"gen"}},
- {ch:"24",type:"fill",q:"Il ___ (encourir) dix ans de prison s'il est reconnu coupable.",a:["encourt"],m:{cat:"gen"}},
- {ch:"24",type:"mc",q:"« Porter plainte » veut dire…",o:["déclarer une infraction pour qu'une enquête ait lieu","retirer une accusation","se défendre devant le juge","payer une amende"],a:"déclarer une infraction pour qu'une enquête ait lieu"},
- {ch:"24",type:"mc",q:"« La relaxe » désigne…",o:["la décision d'un tribunal qui déclare le prévenu non coupable","une peine de prison avec sursis","un moment de détente en prison","une peine de travail d'intérêt général"],a:"la décision d'un tribunal qui déclare le prévenu non coupable"},
- {ch:"24",type:"mc",q:"Un « hors-la-loi » est…",o:["une personne qui vit en dehors de la loi","un avocat de la défense","un policier en civil","un témoin de la scène"],a:"une personne qui vit en dehors de la loi"},
- {ch:"24",type:"mc",q:"« Purger une peine » signifie…",o:["passer en prison le temps fixé par le tribunal","payer une amende","faire appel de la décision","recevoir un dédommagement"],a:"passer en prison le temps fixé par le tribunal"},
- {ch:"24",type:"mc",q:"La « récidive » est le fait de…",o:["commettre une nouvelle infraction après une condamnation","faire appel d'un jugement","sortir de la délinquance","être reconnu innocent"],a:"commettre une nouvelle infraction après une condamnation"},
- {ch:"24",type:"mc",q:"Un « féminicide » est…",o:["le meurtre d'une femme parce qu'elle est une femme","un meurtre prémédité","un vol à main armée","un acte de harcèlement"],a:"le meurtre d'une femme parce qu'elle est une femme"},
- {ch:"24",type:"mc",q:"Une « bavure policière » est…",o:["une erreur grave commise par un représentant de l'autorité","un jugement rendu en appel","une preuve apportée par la défense","une peine avec sursis"],a:"une erreur grave commise par un représentant de l'autorité"},
- {ch:"24",type:"mc",q:"« Faute de mieux » veut dire…",o:["à défaut d'une meilleure solution","grâce à une meilleure solution","sans aucun doute","après beaucoup d'efforts"],a:"à défaut d'une meilleure solution"},
- {ch:"24",type:"mc",q:"Quelle phrase est correcte ?",o:["Bien qu'il soit innocent, il a été arrêté.","Bien qu'il est innocent, il a été arrêté.","Bien qu'il sera innocent, il a été arrêté.","Bien qu'il serait innocent, il a été arrêté."],a:"Bien qu'il soit innocent, il a été arrêté."},
- {ch:"24",type:"mc",q:"Quelle phrase est correcte ?",o:["Il est parti avant que nous arrivions.","Il est parti avant que nous arrivons.","Il est parti avant que nous arriverons.","Il est parti avant nous arrivions."],a:"Il est parti avant que nous arrivions."},
- {ch:"24",type:"mc",q:"Quelle phrase est à la voix passive ?",o:["Les voleurs ont été arrêtés par la police.","La police a arrêté les voleurs.","Les voleurs ont fui avec l'argent.","La police arrêtera les voleurs."],a:"Les voleurs ont été arrêtés par la police."},
- {ch:"24",type:"mc",q:"Le conditionnel passé dans « Le suspect aurait avoué » indique que…",o:["l'information n'est pas confirmée","l'action aura lieu demain","l'action est certaine","l'action est habituelle"],a:"l'information n'est pas confirmée"},
- {ch:"24",type:"mc",q:"Quelle phrase est correcte en français standard ?",o:["Après que la police a arrêté le suspect, le calme est revenu.","Après que la police ait arrêté le suspect, le calme est revenu.","Après que la police arrête le suspect, le calme est revenu.","Après que la police arrêtait le suspect, le calme est revenu."],a:"Après que la police a arrêté le suspect, le calme est revenu."}
-]);
+/* shuffle helpers (kept from the removed quiz engine) */
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
-
-
-/* ===== UNIT 5 EXAM BANK — à venir pending the Unit 5 study guide ===== */
-var EXAM_READ=[];
-var EXAM_VOCAB=[];
-var EXAM_GRAM=[];
-/* ===== quiz / exam engine ===== */
-var quizPick="21", testItems=[];
-document.getElementById("quizPick").addEventListener("change",function(){ quizPick=this.value; renderTestHist(); });
-
-function histKind(){ return quizPick==="exam" ? "Unit 5 exam" : ("Ch "+quizPick+" quiz"); }
-function renderTestHist(){
-  var h=document.getElementById("testHist");
-  var mine=state.tests.filter(function(t){ return (t.kind||"quiz")===histKind() || (!t.kind && quizPick!=="exam"); });
-  if(!mine.length){ h.textContent = quizPick==="exam"
-    ? "Modeled on your Test 5 study guide: Compréhension (3 passages) · Vocabulaire (12) · Grammaire (12). Fresh random draw every attempt."
-    : "10 randomized questions from the Chapter "+quizPick+" bank — a different draw every attempt."; return; }
-  var last=mine[mine.length-1];
-  var best=mine.reduce(function(m,t){return Math.max(m,Math.round(t.score/t.total*100));},0);
-  h.textContent=histKind()+" — attempts: "+mine.length+" · last "+last.score+"/"+last.total+" · best "+best+"%";
-}
-
-function mkFillQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q.replace("___","<span class='blank'>____</span>")));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-  row.appendChild(inp); q.appendChild(row); q._kind="fill"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-function mkMcQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+"</span><br>"+t.q));
-  var opts=el("div","opts");
-  shuffleArr(t.o.slice()).forEach(function(o){
-    var op=el("label","opt"); op.innerHTML="<input type='radio' name='xq"+i+"' value='"+o.replace(/'/g,"&#39;")+"'> <span>"+o+"</span>";
-    op.querySelector("input").addEventListener("change",function(){
-      [].forEach.call(opts.children,function(c){c.classList.remove("sel");}); op.classList.add("sel");
-    });
-    opts.appendChild(op);
-  });
-  q.appendChild(opts); q._kind="mc"; q._opts=opts; q._t=t; q._tag=tag;
-  return q;
-}
-function mkSaQ(t,i,tag){
-  var q=el("div","q");
-  q.appendChild(el("div","qt","<span style='color:var(--mute);font-family:var(--sans);font-size:12px;font-weight:700'>"+tag+" · Q"+(i+1)+" · short answer, self-graded</span><br>"+t.q+" <span class='hist'>(answer in English)</span>"));
-  var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.spellcheck=false; row.appendChild(inp); q.appendChild(row);
-  var host=el("div"); q.appendChild(host);
-  var rv=el("button","ghost","Reveal model answer"); host.appendChild(rv);
-  rv.onclick=function(){
-    host.innerHTML="";
-    host.appendChild(el("div","model","<b>Model:</b> "+t.model));
-    var g=el("div","sagrade");
-    var yb=el("button","btn know","I had it ✓"), nb2=el("button","btn dunno","I missed it ✗");
-    yb.onclick=function(){ q._self=true; yb.disabled=true; nb2.disabled=true; nb2.style.opacity=".4"; inp.disabled=true; };
-    nb2.onclick=function(){ q._self=false; yb.disabled=true; nb2.disabled=true; yb.style.opacity=".4"; inp.disabled=true; };
-    g.appendChild(yb); g.appendChild(nb2); host.appendChild(g);
-  };
-  q._kind="sa"; q._inp=inp; q._t=t; q._tag=tag;
-  return q;
-}
-
-document.getElementById("startTest").onclick=function(){
-  document.getElementById("testIntro").style.display="none";
-  document.getElementById("testResult").style.display="none";
-  document.getElementById("testRun").style.display="block";
-  var host=document.getElementById("testQs"); host.innerHTML="";
-  var qi=0, qs=[];
-  if(quizPick==="exam"){
-    /* Section 1 — Compréhension */
-    host.appendChild(el("h2","sec","Compréhension"));
-    pick(EXAM_READ, CONFIG.EXAM.read).forEach(function(p){
-      var pv=el("div","passage","<div class='ptitle'>"+p.title+"</div>"+p.text);
-      host.appendChild(pv);
-      p.qs.forEach(function(t){
-        var q = t.type==="mc" ? mkMcQ(t,qi,"Compréhension") : mkSaQ(t,qi,"Compréhension");
-        host.appendChild(q); qs.push(q); qi++;
-      });
-    });
-    /* Section 2 — Vocabulaire */
-    host.appendChild(el("h2","sec","Vocabulaire"));
-    host.appendChild(el("p","hist","Type the French — accents and articles count. Straight from the Test 5 word list."));
-    pick(EXAM_VOCAB, CONFIG.EXAM.vocab).forEach(function(t){
-      var q=mkFillQ({q:"Translate: <b>"+t.q+"</b>",a:t.a,m:t.m,ch:t.ch},qi,"Vocabulaire");
-      host.appendChild(q); qs.push(q); qi++;
-    });
-    /* Section 3 — Grammaire */
-    host.appendChild(el("h2","sec","Grammaire"));
-    host.appendChild(el("p","hist","Fill each blank. Where a verb is given in parentheses, conjugate it as the sentence requires."));
-    pick(EXAM_GRAM, CONFIG.EXAM.gram).forEach(function(t){
-      var q=mkFillQ(t,qi,"Grammaire"); host.appendChild(q); qs.push(q); qi++;
-    });
-  } else {
-    var poolQ=TEST.filter(function(t){return t.ch===quizPick;});
-    pick(poolQ, Math.min(CONFIG.QUIZ_SIZE, poolQ.length)).forEach(function(t){
-      var q = t.type==="mc" ? mkMcQ(t,qi,"Ch."+t.ch) : mkFillQ(t,qi,"Ch."+t.ch);
-      host.appendChild(q); qs.push(q); qi++;
-    });
-  }
-  testItems=qs;
-  document.getElementById("tProg").textContent=qs.length+" questions · "+(quizPick==="exam"?"Unit 5 practice exam":"Chapter "+quizPick+" quiz");
-  window.scrollTo({top:0,behavior:"smooth"});
-};
-document.getElementById("submitTest").onclick=scoreTest;
-
-function tallyMiss(tag, ok){
-  var t=state.missTally[tag]||(state.missTally[tag]={w:0,t:0});
-  t.t++; if(!ok) t.w++;
-}
-function scoreTest(){
-  var score=0;
-  testItems.forEach(function(q){
-    var t=q._t, ok=false;
-    if(q._kind==="mc"){
-      var ans=Array.isArray(t.a)?t.a:[t.a];
-      var sel=q._opts.querySelector("input:checked"), given=sel?sel.value:"";
-      ok=ans.some(function(a){return norm(a)===norm(given);});
-      [].forEach.call(q._opts.children,function(op){
-        var inpEl=op.querySelector("input"); inpEl.disabled=true;
-        var val=inpEl.value;
-        if(ans.some(function(a){return norm(a)===norm(val);})) op.classList.add("right");
-        else if(val===given && given) op.classList.add("wrong");
-      });
-    } else if(q._kind==="sa"){
-      ok = q._self===true;
-      q._inp.disabled=true;
-      if(q._self===undefined){
-        var v0=el("div","verdict no"); v0.textContent="✗ Not self-graded — counted as a miss. Model: "+t.model; q.appendChild(v0);
-      }
-    } else {
-      var ans2=Array.isArray(t.a)?t.a:[t.a];
-      var given2=q._inp.value;
-      ok=ans2.some(function(a){return norm(a)===norm(given2);});
-      var close=!ok && given2.trim() && ans2.some(function(a){return bare(a)===bare(given2);});
-      q._inp.disabled=true; q._inp.style.borderColor=ok?"var(--known)":"var(--accent)";
-      var v=el("div","verdict "+(ok?"ok":"no"));
-      v.textContent = ok?"✓ Correct":(close?"✗ Accents — "+ans2[0]:"✗ "+ans2[0]);
-      q.appendChild(v);
-      anaRecord(ok, !!close, withSrc(q._t.m,"quiz",null,(+q._t.ch||null)));   /* quiz/exam fill-ins feed Analyse */
-    }
-    if(q._kind==="mc"||q._kind==="sa"){ onGraded(ok); }
-    tallyMiss(q._tag, ok);
-    if(ok) score++;
-  });
-  var total=testItems.length;
-  state.tests.push({kind:histKind(),score:score,total:total,date:new Date().toISOString().slice(0,10)});
-  if(quizPick!=="exam" && score===total && total>=10){
-    state.life.pq=(state.life.pq||0)+1;
-    award("a_quiz100");
-    if(state.life.pq>=3) award("a_quiz3x");
-  }
-  saveState(); refreshDash(); renderTestHist();
-  document.getElementById("submitTest").style.display="none";
-  var res=document.getElementById("testResult"); res.style.display="block";
-  var pct=Math.round(score/total*100);
-  var msg = pct>=90?"Excellent — these mechanics are solid.":pct>=75?"Strong. Clean up the misses and re-run.":pct>=60?"Getting there — drill the weak chapters in Grammaire.":"Foundation work needed — slow down and use the Verbes + Grammaire tabs.";
-  res.innerHTML="<div class='card'><div class='scorebox'><div class='big' style='color:"+(pct>=75?"var(--known)":pct>=60?"var(--learn)":"var(--accent)")+"'>"+score+"/"+total+"</div><div class='lbl'>"+pct+"% · "+msg+"</div></div></div>";
-  var again=el("button","btn reveal"); again.style.cssText="flex:0 0 auto;padding:12px 26px;margin-top:12px"; again.textContent="New attempt";
-  again.onclick=function(){ document.getElementById("testRun").style.display="none"; res.style.display="none";
-    document.getElementById("submitTest").style.display=""; document.getElementById("testIntro").style.display="block"; renderTestHist(); window.scrollTo({top:0,behavior:"smooth"}); };
-  res.appendChild(again);
-  window.scrollTo({top:document.getElementById("testResult").offsetTop-20,behavior:"smooth"});
-}
 
 /* =============== DASHBOARD =============== */
 function refreshDash(){
@@ -3562,84 +3227,12 @@ function setupDash(){
   sel.value=String(state.currentCh);
   sel.onchange=function(){
     state.currentCh=+this.value; saveState();
-    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); renderTestHist(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
+    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
   };
   updateScopeNote();
   updateCountdown();
   refreshDash();
 }
-
-/* =============== ORAL — OPI PROMPT DECK (no audio, no grading: reps) =============== */
-var OPI=[];
-OPI.push.apply(OPI,[
- {t:"Ch 21 · School systems compared",d:"Comparez le système scolaire de votre pays à celui de la France, du Maroc ou du Québec : les cycles, les diplômes, la durée. — Compare your country's school system with that of France, Morocco or Quebec: stages, diplomas, length.",s:["le collège, le lycée, le baccalauréat, le brevet","par rapport à, en fonction de"]},
- {t:"Ch 21 · Public or private school",d:"Si vous aviez des enfants, les inscririez-vous dans une école publique ou privée ? Justifiez votre choix. — If you had children, would you enroll them in a public or private school? Justify your choice.",s:["si + imparfait + conditionnel","les effectifs, les frais de scolarité, la mixité, la laïcité"]},
- {t:"Ch 21 · Minister of Education",d:"Si vous étiez ministre de l'Éducation, que changeriez-vous dans les écoles de votre pays ? — If you were the Minister of Education, what would you change in your country's schools?",s:["si j'étais…, je ferais…","mettre en œuvre, remettre en question, accroître"]},
- {t:"Ch 21 · Enrolling a child",d:"Vous venez d'arriver en France et vous voulez inscrire votre enfant à l'école. Posez des questions au directeur : documents, dates, cantine, vaccins. — You have just arrived in France and want to enroll your child. Ask the principal about documents, dates, the cafeteria, vaccines.",s:["inscrire, les démarches, le certificat d'inscription","quel / lequel, le programme dans lequel…"]},
- {t:"Ch 21 · Why students drop out",d:"Pourquoi certains élèves abandonnent-ils l'école ? Proposez trois stratégies pour réduire le décrochage scolaire. — Why do some students leave school? Suggest three strategies to reduce dropout.",s:["le décrochage, le désengagement, le harcèlement, le manque de","il faut que + subjonctif, pour que + subjonctif"]},
- {t:"Ch 21 · Access to education",d:"Pourquoi des enfants n'ont-ils pas accès à l'école dans certains pays (pauvreté, guerre, éloignement) ? Que peut faire un gouvernement ? — Why do children lack access to school in some countries (poverty, war, remoteness)? What can a government do?",s:["avoir accès à, la scolarisation, un frein","je ne pense pas que + subjonctif"]},
- {t:"Ch 21 · School uniforms",d:"Êtes-vous pour ou contre l'uniforme scolaire ? Défendez votre avis et répondez aux arguments contraires. — Are you for or against school uniforms? Defend your view and answer the opposing arguments.",s:["l'égalité, l'individualité, la cohésion","il est possible que, je doute que + subjonctif"]}
-]);
-OPI.push.apply(OPI,[
- {t:"Ch 22 · Fact or opinion",d:"Donnez trois faits sur l'actualité de cette semaine, puis reformulez chacun en opinion. — Give three facts from this week's news, then rephrase each as an opinion.",s:["à mon avis, selon moi, il me semble que","je doute que + subjonctif, j'ai l'impression que"]},
- {t:"Ch 22 · Spot the fake news",d:"Comment reconnaît-on une fausse information sur les réseaux sociaux ? Donnez des conseils pour vérifier une source. — How do you spot false information on social media? Give tips for checking a source.",s:["vérifier, fiable, la preuve, la crédibilité","il faut se méfier de… · induire en erreur"]},
- {t:"Ch 22 · Freedom of the press",d:"La liberté de la presse est-elle menacée ? Parlez de la censure, des représailles et des régimes militaires. — Is press freedom under threat? Talk about censorship, reprisals and military regimes.",s:["la censure, la junte, les représailles","soit… soit, ni… ni, d'un côté… d'un autre côté"]},
- {t:"Ch 22 · Social media and journalism",d:"Les réseaux sociaux sont-ils des partenaires ou des adversaires du journalisme ? Défendez votre opinion. — Are social networks partners or adversaries of journalism? Defend your view.",s:["relayer, diffuser, propager","d'un côté… d'un autre côté"]},
- {t:"Ch 22 · Print or digital",d:"Préférez-vous lire le journal sur papier ou sur un site d'actualité ? Quel est l'avenir de la presse imprimée ? — Do you prefer reading the paper on paper or on a news website? What is the future of print?",s:["un quotidien, un hebdomadaire, un abonnement payant, numérique","si + imparfait + conditionnel"]},
- {t:"Ch 22 · A past news story",d:"Racontez un événement d'actualité passé : ce qui s'était passé avant, puis comment la situation a évolué. — Tell about a past news event: what had happened before, then how the situation developed.",s:["le plus-que-parfait : avait annoncé, étaient arrivés…","passé composé, imparfait, plus-que-parfait"]},
- {t:"Ch 22 · Present a newscast",d:"Présentez un court journal : un titre, une information, la météo, le sport. Utilisez la voix passive. — Present a short newscast: a headline, a news item, the weather, sports. Use the passive voice.",s:["le bulletin, le reportage, l'actualité","la voix passive : a été annoncé, sera diffusé"]}
-]);
-OPI.push.apply(OPI,[
- {t:"Ch 23 · Political systems compared",d:"Comparez le système politique des États-Unis à celui de la France : le rôle du président, du Premier ministre et du parlement. — Compare the political system of the United States with that of France: the role of the president, the prime minister and parliament.",s:["le régime présidentiel, le régime parlementaire, la séparation des pouvoirs","la cohabitation, l'Assemblée nationale, par rapport à"]},
- {t:"Ch 23 · Left and right",d:"Où vous placez-vous sur l'échiquier politique et pourquoi ? Comparez la gauche et la droite en France et dans votre pays. — Where do you place yourself on the political spectrum, and why? Compare the left and the right in France and in your country.",s:["le parti de gauche / de droite / de centre, le clivage","la redistribution des richesses, les impôts, la liberté économique"]},
- {t:"Ch 23 · Causes of extremism",d:"Quelles sont les causes de l'extrémisme et comment peut-on le prévenir ? Utilisez des expressions de cause et de conséquence. — What are the causes of extremism and how can it be prevented? Use expressions of cause and consequence.",s:["à cause de, en raison de, c'est pourquoi, si bien que","l'extrémisme violent, la fermeture d'esprit, l'intolérance, les inégalités"]},
- {t:"Ch 23 · Voting and abstention",d:"Pourquoi certaines personnes s'abstiennent-elles de voter ? Le vote devrait-il être obligatoire ? — Why do some people abstain from voting? Should voting be compulsory?",s:["l'abstention, les urnes, puisque + indicatif","afin que + subjonctif, de manière à ce que"]},
- {t:"Ch 23 · Colonial legacy",d:"Que pensez-vous de la restitution des œuvres d'art aux anciennes colonies et des réparations pour les victimes ? — What do you think of returning artworks to former colonies and of reparations for victims?",s:["la décolonisation, la restitution d'œuvres, le dédommagement","je suis pour / contre, à mon avis, au point de"]},
- {t:"Ch 23 · Running for mayor",d:"Vous êtes candidat à la mairie : présentez votre programme et vos promesses à un journaliste. — You are running for mayor: present your platform and your promises to a journalist.",s:["la politique inclusive, les dépenses publiques, la réforme","afin de + infinitif, dont / auquel / pour lequel"]},
- {t:"Ch 23 · Why democracy matters",d:"Un jeune dit que la démocratie n'est pas importante pour développer un pays. Répondez-lui en parlant des avantages de la démocratie. — A young person says democracy is not important for developing a country. Answer by describing the advantages of democracy.",s:["les acquis démocratiques, la liberté d'expression, la séparation des pouvoirs","grâce à, la dictature, le coup d'État"]},
- {t:"Ch 23 · A strike and its effects",d:"Les syndicats appellent à la grève pour une revalorisation des salaires. Expliquez les causes, les conséquences et les solutions possibles. — The unions call a strike for a pay raise. Explain the causes, the consequences and possible solutions.",s:["le syndicat, la grève, la revalorisation, négocier","tellement… que, à la suite de, par conséquent"]}
-]);
-OPI.push.apply(OPI,[
- {t:"Ch 24 · Witness statement",d:"Vous avez été témoin d'un vol à main armée dans la rue. Racontez à l'inspecteur ce que vous avez vu : où vous étiez, qui était là, ce qui s'est passé. — You witnessed an armed robbery on the street. Tell the inspector what you saw: where you were, who was there, what happened.",s:["imparfait pour décrire (il faisait nuit, il portait…), passé composé pour les actions","le suspect, la victime, prendre la fuite, un témoin"]},
- {t:"Ch 24 · The stages of a trial",d:"Expliquez les étapes d'une procédure pénale, du dépôt de plainte jusqu'à l'appel. — Explain the stages of a criminal proceeding, from the filing of a complaint to the appeal.",s:["le dépôt de plainte, l'enquête, l'instruction, le jugement, l'appel","avant que + subjonctif, après que + indicatif"]},
- {t:"Ch 24 · Mini-trial",d:"Vous êtes l'avocat de la défense d'un homme accusé de vol à main armée. Présentez votre plaidoirie en trois arguments. — You are the defense lawyer of a man accused of armed robbery. Present your closing argument in three points.",s:["plaider, la preuve, l'innocence, la culpabilité","bien que + subjonctif, à moins que + subjonctif"]},
- {t:"Ch 24 · Policing and mental illness",d:"Comment la police devrait-elle réagir face à une personne souffrant d'une maladie mentale qui refuse d'obtempérer ? — How should the police react to a person with a mental illness who refuses to comply?",s:["à mon avis, il faut que + subjonctif","encadrer, immobiliser, afin que + subjonctif"]},
- {t:"Ch 24 · Racial profiling",d:"Que pensez-vous du profilage racial par la police ? Quelles mesures pourraient le réduire ? — What do you think of racial profiling by the police? What measures could reduce it?",s:["je ne pense pas que + subjonctif, il est évident que + indicatif","l'interpellation, la bavure, à l'égard de"]},
- {t:"Ch 24 · Preventing youth delinquency",d:"Proposez trois actions concrètes pour prévenir la délinquance juvénile dans votre quartier. — Propose three concrete actions to prevent juvenile delinquency in your neighborhood.",s:["pour que + subjonctif, afin de + infinitif","encadrer, être livré à soi-même, la bouée de sauvetage"]},
- {t:"Ch 24 · Abuse of power",d:"Qu'est-ce qu'un abus de pouvoir ? Donnez un exemple réel et dites comment le limiter. — What is an abuse of power? Give a real example and say how to limit it.",s:["l'abus de pouvoir, l'abus de confiance, un pot-de-vin","l'homme aurait commis…, il a été inculpé de…"]},
- {t:"Ch 24 · Can people change?",d:"Croyez-vous à la rédemption des criminels ? Comment aider une personne qui sort de prison à se réinsérer ? — Do you believe criminals can be redeemed? How can you help a person leaving prison to reintegrate?",s:["la désistance, la récidive, purger une peine","je crois que + indicatif, je ne crois pas que + subjonctif"]}
-]);
-var opiIdx=0, opiTimer=null;
-function stopOpiTimer(){ if(opiTimer){ clearInterval(opiTimer); opiTimer=null; } }
-function renderOpi(){
-  stopOpiTimer();
-  var c=document.getElementById("opiCard"), p=OPI[opiIdx];
-  c.innerHTML="";
-  c.appendChild(el("h3",null,p.t));
-  c.appendChild(el("div","hist",p.d));
-  var ul=el("ul","scaf"); p.s.forEach(function(x){ ul.appendChild(el("li",null,x)); }); c.appendChild(ul);
-  var tm=el("div","opitimer","—"); c.appendChild(tm);
-  var row=el("div","vactions drill");
-  [45,30,15].forEach(function(secs){
-    var b=el("button","btn reveal",secs+" s");
-    b.onclick=function(){
-      stopOpiTimer(); var left=secs;
-      tm.classList.remove("hot"); tm.textContent="0:"+(left<10?"0":"")+left;
-      opiTimer=setInterval(function(){
-        left--; if(left<=5) tm.classList.add("hot");
-        tm.textContent = left>0 ? "0:"+(left<10?"0":"")+left : "Time — wrap it up!";
-        if(left<=0) stopOpiTimer();
-      },1000);
-    };
-    row.appendChild(b);
-  });
-  var stop=el("button","btn neutral","Stop"); stop.onclick=function(){ stopOpiTimer(); tm.textContent="—"; tm.classList.remove("hot"); };
-  row.appendChild(stop);
-  c.appendChild(row);
-  document.getElementById("opiPos").textContent=(opiIdx+1)+" / "+OPI.length;
-}
-document.getElementById("opiNext").onclick=function(){ opiIdx=(opiIdx+1)%OPI.length; renderOpi(); };
-document.getElementById("opiPrev").onclick=function(){ opiIdx=(opiIdx-1+OPI.length)%OPI.length; renderOpi(); };
 
 /* =============== INSIGHTS + ACHIEVEMENTS (v1.0.0-b1) ===============
    Bucket analytics come from GRADED DRILL + QUIZ answers only (D6: trainers are
@@ -3659,8 +3252,6 @@ var ACH=[
   {id:"a_v23", icon:"📙", name:"Chapitre 23 maîtrisé", desc:"Every Chapter 23 vocab card is green."},
   {id:"a_v24", icon:"📕", name:"Chapitre 24 maîtrisé", desc:"Every Chapter 24 vocab card is green."},
   {id:"a_conj",icon:"🔤", name:"Conjugueur",          desc:"Every conjugation in the Conjugaison tab is green (subjonctif + plus-que-parfait)."},
-  {id:"a_quiz100",icon:"💯",name:"Sans faute",        desc:"A perfect chapter quiz."},
-  {id:"a_quiz3x", icon:"🎩",name:"Hat-trick",         desc:"Three perfect chapter quizzes."},
   {id:"a_round",  icon:"🎯",name:"Round parfait",     desc:"A 10/10 grammar-drill round."},
   {id:"a_acc",    icon:"✍️",name:"Accent aigu",       desc:"20+ graded answers in a session, mostly correct, zero accent-only misses."},
   {id:"a_cb",     icon:"💪",name:"La revanche",       desc:"Master a word after missing it 3+ times in a row."},
@@ -3823,7 +3414,6 @@ function renderInsights(){
     var gp=gk.map(function(k,i){ return [GRAM_LBL[k]||k,S.gram[k].m||0,CY[i%CY.length]]; });
     if(!gp.length) gp=[["—",0,CY[0]]];
     drawDonut("dnGram","dnGramL",gp);
-    drawDonut("dnQuiz","dnQuizL",[["Accents",S.quiz.acc.m,"#c0392b"],["Gender",S.quiz.gen.m,"#b9772b"],["Spelling",S.quiz.sp.m,"#2a4a8f"]]);
   })();
   /* buckets ledger */
   var L=document.getElementById("insBuckets"); L.innerHTML="";
@@ -4104,7 +3694,7 @@ document.querySelector("nav.tabs").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b)return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-selected","false");});
   b.setAttribute("aria-selected","true");
-  ["dash","verbs","vocab","gram","test","insights","oral"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
+  ["dash","verbs","vocab","gram","prep","insights"].forEach(function(t){ document.getElementById("p-"+t).classList.toggle("on", t===b.dataset.tab); });
   if(b.dataset.tab==="insights") renderInsights();
   window.scrollTo({top:0});
 });
@@ -4116,9 +3706,8 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
 [].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
-renderVerbTable(); renderVocTable(); renderOpi();
-document.getElementById("quizPick").value="21"; quizPick=document.getElementById("quizPick").value; renderTestHist();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderAnaSince();
+renderVerbTable(); renderVocTable();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
 
