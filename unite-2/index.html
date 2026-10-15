@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 2 · Dossier Français — v1.5.1</title>
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<title>Unité 2 · Dossier Français — v2.0.0</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -42,27 +45,45 @@
   .brand h1{font-family:var(--serif); font-weight:600; font-size:30px; margin:2px 0 0; letter-spacing:-.01em}
   .brand h1 span{color:var(--accent)}
   .countchip{
-    display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff;
+    display:flex; align-items:center; gap:10px; background:var(--ink); color:var(--on-solid);
     border-radius:999px; padding:7px 14px 7px 8px; font-size:13px;
     cursor:pointer; border:none; font-family:inherit;
   }
   .countchip b{font-variant-numeric:tabular-nums; font-size:15px}
-  .countchip .dot{background:var(--accent); color:#fff; border-radius:999px; width:30px; height:30px;
+  .countchip .dot{background:var(--accent); color:var(--on-solid); border-radius:999px; width:30px; height:30px;
     display:grid; place-items:center; font-weight:800; font-size:13px}
   .dlptDateRow{display:none; align-items:center; gap:8px; margin-top:8px}
   .dlptDateRow.on{display:flex}
   .dlptDateRow input{font-family:inherit; font-size:13px; padding:4px 8px; border-radius:8px; border:1px solid var(--mute)}
   .dlptDateRow .hint{font-size:12px; color:var(--mute)}
 
-  /* ---- tabs ---- */
-  nav.tabs{display:flex; gap:2px; border-bottom:1px solid var(--line); position:sticky; top:0;
-    background:var(--paper); z-index:20; margin:0 -18px; padding:0 18px}
+  /* ---- tabs: flat leaning folder tabs, lightly overlapped; each tab has its own muted colour, shown as an outline and a faint glow (v0.2.0) ---- */
+  :root{ --tab:#e1e6ee; --tab-hover:#eaeef4; --tab-edge:#c3cddc; }
+  nav.tabs button{--c:#4f6fa8}
+  nav.tabs button[data-tab="vocab"]{--c:#c0574a}
+  nav.tabs button[data-tab="gram"]{--c:#3f8a73}
+  nav.tabs button[data-tab="verbs"]{--c:#7b64a8}
+  nav.tabs button[data-tab="test"]{--c:#b07d2e}
+  nav.tabs button[data-tab="oral"]{--c:#b25a7c}
+  nav.tabs button[data-tab="insights"]{--c:#3a8aa0}
+  nav.tabs{display:flex; align-items:flex-end; gap:0; position:sticky; top:0; z-index:20; margin:0 -18px; padding:12px 18px 0 24px;
+    background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  nav.tabs::-webkit-scrollbar{display:none}
   nav.tabs button{
-    appearance:none; border:0; background:none; font-family:var(--sans); font-size:14px; font-weight:600;
-    color:var(--ink-2); padding:14px 14px 12px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
-  }
-  nav.tabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+    appearance:none; flex:1 0 auto; text-align:center; position:relative; border:0; background:none; color:var(--ink-2);
+    font-family:var(--sans); font-size:13.5px; font-weight:600; white-space:nowrap;
+    padding:9px 15px 8px; margin:6px 0 0 -3px; cursor:pointer; transition:color .12s ease}
+  nav.tabs button::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--tab); border:1px solid color-mix(in srgb,var(--c) 62%,var(--tab-edge)); border-bottom:0;
+    border-radius:7px 7px 0 0; transform:skewX(-14deg); transition:background .12s ease, border-color .12s ease}
+  nav.tabs button:first-child{margin-left:0}
+  nav.tabs button:nth-child(1){z-index:7} nav.tabs button:nth-child(2){z-index:6} nav.tabs button:nth-child(3){z-index:5}
+  nav.tabs button:nth-child(4){z-index:4} nav.tabs button:nth-child(5){z-index:3} nav.tabs button:nth-child(6){z-index:2} nav.tabs button:nth-child(7){z-index:1}
   nav.tabs button:hover{color:var(--ink)}
+  nav.tabs button:hover::before{background:var(--tab-hover); border-color:color-mix(in srgb,var(--c) 70%,var(--tab-edge))}
+  nav.tabs button:focus-visible{outline:2px solid var(--bleu); outline-offset:-2px; border-radius:6px}
+  nav.tabs button[aria-selected="true"]{color:color-mix(in srgb,var(--c) 55%,var(--ink)); font-weight:700; margin-top:0; padding:12px 16px 9px; margin-bottom:-1px; z-index:9}
+  nav.tabs button[aria-selected="true"]::before{background:var(--paper); bottom:-1px; border-color:var(--c); border-width:1.5px 1.5px 0;
+    box-shadow:0 -2px 10px -2px color-mix(in srgb,var(--c) 30%,transparent)}
 
   .panel{display:none; padding-top:26px; animation:fade .25s ease}
   .panel.on{display:block}
@@ -87,7 +108,7 @@
   .ledrow{display:grid; grid-template-columns:128px 1fr 52px; align-items:center; gap:12px}
   .ledrow .name{font-size:13.5px; font-weight:600}
   .ledrow .name small{display:block; color:var(--mute); font-weight:500; font-size:11.5px}
-  .bar{height:9px; background:#ece6d8; border-radius:999px; overflow:hidden}
+  .bar{height:9px; background:var(--chip); border-radius:999px; overflow:hidden}
   .bar > i{display:block; height:100%; background:var(--known); border-radius:999px; transition:width .5s cubic-bezier(.4,0,.2,1)}
   .ledrow .pct{text-align:right; font-variant-numeric:tabular-nums; font-size:13px; font-weight:700; color:var(--ink-2)}
 
@@ -100,7 +121,7 @@
   .seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--card)}
   .seg button{appearance:none; border:0; background:none; padding:7px 13px; font-size:12.5px; font-weight:600;
     color:var(--ink-2); cursor:pointer}
-  .seg button[aria-pressed="true"]{background:var(--ink); color:#fff}
+  .seg button[aria-pressed="true"]{background:var(--ink); color:var(--on-solid)}
   select.filter{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card);
     border:1px solid var(--line); border-radius:999px; padding:7px 12px; cursor:pointer}
   .ghost{appearance:none; background:none; border:1px solid var(--line); border-radius:999px; padding:7px 13px;
@@ -118,7 +139,7 @@
   .prompt .big.fr{font-style:italic}
   .memo{background:var(--card); border:1px solid var(--line); border-top:3px solid var(--bleu); border-radius:var(--radius); padding:14px 18px 12px; margin-top:14px; animation:memopop .5s cubic-bezier(.2,.8,.2,1) both, memoglow 1.6s ease-out}
   @keyframes memopop{from{opacity:0; transform:translateY(14px) scale(.985)}to{opacity:1; transform:none}}
-  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:#e6ebf5}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
+  @keyframes memoglow{0%{box-shadow:0 0 0 0 rgba(42,74,143,.45), 0 8px 24px rgba(42,74,143,.18); background:var(--tint)}60%{box-shadow:0 0 0 8px rgba(42,74,143,0), 0 8px 24px rgba(42,74,143,.10); background:var(--card)}100%{box-shadow:0 0 0 0 rgba(42,74,143,0); background:var(--card)}}
   .memo-h{display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-family:var(--serif); font-size:20px; font-weight:600; margin-bottom:6px}
   .memo-h .vpos{margin-left:0}
   .memo-fr{font-style:italic; margin-right:4px}
@@ -140,17 +161,17 @@
   /* fill-in conjugation grid */
   .conjfill{display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,auto); grid-auto-flow:column; gap:10px 22px; margin-top:16px}
   .cfrow{display:flex; align-items:center; gap:8px}
-  .cfrow .pron{color:var(--mute); min-width:74px; font-family:var(--serif); font-size:15px}
-  input.cfin{flex:1; min-width:0; width:100%; font-family:var(--serif); font-size:15.5px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:#fff}
+  .cfrow .pron{color:var(--mute); min-width:96px; font-family:var(--serif); font-size:15px}
+  input.cfin{flex:1; min-width:0; width:100%; font-family:var(--serif); font-size:15.5px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:var(--surface)}
   input.cfin:focus{outline:2px solid var(--bleu); outline-offset:1px}
   input.cfin.ok{border-color:var(--known); background:var(--known-soft)}
   input.cfin.warn{border-color:var(--learn); background:var(--learn-soft)}
-  input.cfin.no{border-color:var(--accent); background:#fbe9e7}
+  input.cfin.no{border-color:var(--accent); background:var(--err-bg)}
   .cfverdict{font-family:var(--serif); font-size:13px; white-space:nowrap; min-width:14px}
   .cfverdict.ok{color:var(--known)} .cfverdict.warn{color:var(--learn)} .cfverdict.no{color:var(--accent)}
   .cfdash{color:var(--mute); font-family:var(--serif)}
   /* vocabulary progress table */
-  .voctable{border:1px solid var(--line); border-radius:14px; padding:16px; background:#fff}
+  .voctable{border:1px solid var(--line); border-radius:14px; padding:16px; background:var(--surface)}
   .vt-legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--mute); margin-bottom:6px; align-items:center}
   .vt-dot{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
   .vt-dot.k{background:var(--known)} .vt-dot.l{background:var(--learn)} .vt-dot.n{background:var(--accent)}
@@ -166,20 +187,20 @@
   .vt-ct{flex:0 0 auto; font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; letter-spacing:.2px}
   .vt-ct .ok{color:var(--known); font-weight:700} .vt-ct .no{color:var(--accent); font-weight:700}
   .vt-ct0{color:var(--line)}
-  .vt-known{background:var(--known-soft); border-color:#bfe3cf}
-  .vt-learn{background:var(--learn-soft); border-color:#f0dcaf}
-  .vt-new{background:#fbe9e7; border-color:#f3c9c2}
+  .vt-known{background:var(--known-soft); border-color:var(--ok-line)}
+  .vt-learn{background:var(--learn-soft); border-color:var(--warn-line)}
+  .vt-new{background:var(--err-bg); border-color:var(--err-line)}
   .ex{font-family:var(--serif); font-style:italic; margin-top:12px; font-size:15px; color:var(--ink-2)}
   .ex small{display:block; font-style:normal; font-family:var(--sans); color:var(--mute); font-size:12px; margin-top:1px}
   .vactions{margin-top:auto; display:flex; gap:10px; padding-top:18px}
   .btn{appearance:none; border:0; border-radius:10px; padding:12px 14px; font-size:14px; font-weight:700; cursor:pointer;
     font-family:var(--sans); flex:1}
-  .btn.reveal{background:var(--ink); color:#fff}
-  .btn.know{background:var(--known); color:#fff}
-  .btn.dunno{background:var(--learn); color:#fff}
-  .btn.go{background:var(--known); color:#fff}                 /* Check */
-  .btn.neutral{background:#e7e0d0; color:var(--ink-2)}         /* neutral Next */
-  .btn.neutral:hover{background:#ded6c4}
+  .btn.reveal{background:var(--ink); color:var(--on-solid)}
+  .btn.know{background:var(--known); color:var(--on-solid)}
+  .btn.dunno{background:var(--learn); color:var(--on-solid)}
+  .btn.go{background:var(--known); color:var(--on-solid)}                 /* Check */
+  .btn.neutral{background:var(--neutral); color:var(--ink-2)}         /* neutral Next */
+  .btn.neutral:hover{background:var(--neutral-h)}
   .btn:active{transform:translateY(1px)}
   /* drill button row: Reveal (left) · Check (centered) · Next (right) — equal width, as before */
   .vactions.drill{gap:10px}
@@ -205,7 +226,7 @@
   /* chapter-level collapsible group wrapping the per-drill accordions */
   .chgroup{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-bottom:16px; background:var(--card)}
   .chgroup > summary{list-style:none; cursor:pointer; padding:15px 18px; font-family:var(--serif); font-weight:800; font-size:16.5px;
-    display:flex; align-items:center; gap:12px; background:#eef2fa; color:var(--ink)}
+    display:flex; align-items:center; gap:12px; background:var(--tint); color:var(--ink)}
   .chgroup > summary::-webkit-details-marker{display:none}
   .chgroup > summary .chtitle{flex:1}
   .chgroup > summary .chmeta{font-size:12px; color:var(--mute); font-weight:600}
@@ -213,7 +234,7 @@
   .chgroup[open] > summary::after{content:"▴"}
   .chgroup[open] > summary{border-bottom:1px solid var(--line)}
   .chgroup .chbody{padding:14px 16px 2px}
-  .chgroup.ahead > summary{background:#f1eee7; color:var(--mute)}
+  .chgroup.ahead > summary{background:var(--ahead); color:var(--mute)}
   .q{padding:14px 0; border-bottom:1px dotted var(--line)}
   .q:last-child{border-bottom:0}
   .q .qt{font-family:var(--serif); font-size:16px; margin-bottom:9px}
@@ -228,19 +249,19 @@
   .wbank .wchip{display:inline-block; padding:2px 10px; border:1px solid var(--line); border-radius:999px; background:var(--card); font-size:13px; white-space:nowrap}
   .row-in{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
   input.txt{font-family:var(--serif); font-size:16px; padding:9px 12px; border:1px solid var(--line); border-radius:9px;
-    background:#fff; min-width:180px; color:var(--ink)}
+    background:var(--surface); min-width:180px; color:var(--ink)}
   input.txt:focus{outline:2px solid var(--bleu); outline-offset:1px}
   .opts{display:flex; flex-direction:column; gap:7px; margin-top:4px}
   .opt{display:flex; align-items:center; gap:9px; padding:9px 12px; border:1px solid var(--line); border-radius:9px;
-    cursor:pointer; font-size:14.5px; background:#fff}
+    cursor:pointer; font-size:14.5px; background:var(--surface)}
   .opt:hover{border-color:var(--ink)}
-  .opt.sel{border-color:var(--bleu); background:#eef2fa}
+  .opt.sel{border-color:var(--bleu); background:var(--tint)}
   .opt.right{border-color:var(--known); background:var(--known-soft)}
   .opt.wrong{border-color:var(--accent); background:var(--accent-soft)}
   .verdict{font-size:13px; font-weight:700; margin-top:7px}
   .verdict.ok{color:var(--known)} .verdict.no{color:var(--accent)} .verdict.warn{color:var(--learn)}
   .drill-foot{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
-  .pill{font-size:12px;font-weight:700;color:var(--ink-2);background:#ece6d8;border-radius:999px;padding:4px 11px}
+  .pill{font-size:12px;font-weight:700;color:var(--ink-2);background:var(--chip);border-radius:999px;padding:4px 11px}
 
   .test-head{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px}
   .timer{font-variant-numeric:tabular-nums; font-weight:800; font-size:18px}
@@ -294,7 +315,7 @@
   .trophy .tdesc{font-size:12px; color:var(--ink-2)}
   .trophy .tdate{font-size:11px; color:var(--known); font-weight:700; margin-top:4px}
   #toasts{position:fixed; right:16px; bottom:16px; z-index:99; display:flex; flex-direction:column; gap:8px}
-  .toast{background:var(--ink); color:#fff; border-radius:12px; padding:12px 16px; font-size:14px;
+  .toast{background:var(--ink); color:var(--on-solid); border-radius:12px; padding:12px 16px; font-size:14px;
     box-shadow:0 6px 24px rgba(22,36,61,.35); display:flex; gap:10px; align-items:center;
     animation:toastin .3s ease}
   .toast b{color:#ffd66e}
@@ -303,6 +324,94 @@
   .strugrow:last-child{border-bottom:0}
   .strugrow .miss{color:var(--accent); font-weight:700; font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+  /* ---- v0.2.0 drill components (from the Unité 4 reference drills, recoloured to the dossier's own tokens) ---- */
+  :root{ --seyes:rgba(42,74,143,.10); --seyes-strong:rgba(42,74,143,.22); --margin:rgba(192,57,43,.38); --near:#b9772b; --near-soft:#f6ecdb; }
+  .seyes{position:relative; display:block; width:100%; max-width:560px; border:1px solid var(--line); border-radius:9px;
+    background-color:var(--surface);
+    background-image:
+      linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 35.5px, transparent 35.5px),
+      repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+      repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
+  .seyes input{display:block; width:100%; min-width:0; border:0; background:transparent; color:var(--ink); font-family:var(--serif); font-size:22px; padding:10px 14px 10px 48px; outline:none}
+  .seyes:focus-within{border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
+  .seyes.ok{border-color:var(--known)} .seyes.bad{border-color:var(--accent)}
+  .akeys{display:none; flex-wrap:wrap; gap:6px; margin-top:8px}
+  .vcard .akeys, .q.kf .akeys{display:flex}
+  .akey{appearance:none; cursor:pointer; min-width:32px; height:32px; padding:0 6px; border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:16px}
+  .akey:hover{border-color:var(--bleu); color:var(--bleu)}
+  .akey:focus-visible{outline:2px solid var(--bleu); outline-offset:1px}
+  .fq{font-family:var(--serif); font-size:19px; line-height:1.6; margin-bottom:10px}
+  .fq .cue{color:var(--mute); font-size:.82em; white-space:nowrap}
+  .gap{display:inline-block; min-width:3em; border-bottom:2px solid var(--bleu); color:var(--bleu); text-align:center; line-height:1.15; padding:0 4px}
+  .gap.ok{border-color:var(--known); color:var(--known)} .gap.bad{border-color:var(--accent); color:var(--accent)}
+  select.gapsel{font-family:var(--serif); font-size:inherit; color:var(--bleu); background:var(--tint); border:0; border-bottom:2px solid var(--bleu); border-radius:6px 6px 0 0; padding:1px 4px; max-width:100%; cursor:pointer}
+  select.gapsel:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  select.gapsel.ok{color:var(--known); background:var(--known-soft); border-color:var(--known)}
+  select.gapsel.bad{color:var(--accent); background:var(--accent-soft); border-color:var(--accent)}
+  .fb{border-radius:9px; padding:11px 14px; margin-top:10px; display:flex; flex-direction:column; gap:7px; font-size:14px}
+  .fb.ok{background:var(--known-soft)} .fb.near{background:var(--near-soft)} .fb.bad{background:var(--accent-soft)}
+  .fb strong.fbv{font-size:14.5px}
+  .fb.ok strong.fbv{color:var(--known)} .fb.near strong.fbv{color:var(--near)} .fb.bad strong.fbv{color:var(--accent)}
+  .cmp{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:baseline}
+  .cmp .l{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); font-weight:700}
+  .cmp .w{font-family:var(--serif); font-size:19px; min-width:0; overflow-wrap:anywhere}
+  .fx{color:var(--accent); text-decoration:line-through; text-decoration-thickness:2px}
+  .fm{color:var(--accent); background:var(--surface); border-bottom:2px solid var(--accent); border-radius:2px}
+  .fb .full{font-family:var(--serif); font-size:16.5px}
+  .fb .why{font-size:13.5px; color:var(--ink)}
+  .fb .fnote{font-size:13px; color:var(--ink-2)}
+  .linkish{appearance:none; border:0; background:none; padding:0; cursor:pointer; font:inherit; font-size:13px; color:var(--bleu); text-decoration:underline; text-underline-offset:3px; align-self:flex-start}
+  .rulecard{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--bleu); border-radius:0 10px 10px 0; padding:12px 16px; margin:2px 0 12px; font-size:14px}
+  .rulecard h4{margin:0 0 6px; font-family:var(--serif); font-size:16px}
+  .rulecard ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:3px}
+  .rulecard b{color:var(--bleu)} .rulecard em{font-family:var(--serif)}
+  .gins{font-size:13.5px; color:var(--ink-2); margin:0 0 10px}
+  .gbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
+  .gbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
+  .gbar label{display:inline-flex; align-items:center; gap:6px}
+  .gbar input[type=checkbox]{accent-color:var(--bleu); width:16px; height:16px}
+  .gres{margin-top:14px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:var(--card); display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center}
+  .gres .big{font-family:var(--serif); font-size:26px; font-weight:600}
+  .gres .pct{color:var(--ink-2); font-size:14px}
+  .gempty{color:var(--mute); font-size:14px; padding:8px 0}
+  .qchk{margin-top:8px}
+  @media (max-width:480px){ .fq{font-size:17px} .seyes input{font-size:20px} }
+  .seyes input[readonly]{cursor:default}
+  /* English glosses: the explanatory parenthetical sits on its own line and never wraps on desktop */
+  .en-x{display:block; margin-top:3px; font-family:var(--sans); font-size:.5em; font-weight:400; line-height:1.3; color:var(--ink-2); white-space:nowrap}
+  .big.fr .en-x{font-style:normal}
+  @media (max-width:640px){ .en-x{white-space:normal} }
+
+  /* ---- general polish (v0.2.0) ---- */
+  ::selection{background:var(--accent-soft); color:var(--ink)}
+  header.top{border-bottom:0; padding-bottom:19px;
+    background:linear-gradient(to right,#002654 0 33.34%,#ffffff 33.34% 66.67%,#ce1126 66.67% 100%) left bottom/100% 4px no-repeat}
+  .vcard,.acc,.chgroup,.gres,.rulecard{box-shadow:0 1px 0 rgba(22,36,61,.04), 0 8px 20px -14px rgba(22,36,61,.28)}
+  .btn,.ghost,.countchip,.seg button{transition:transform .1s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, color .12s ease}
+  .btn:hover{transform:translateY(-1px); box-shadow:0 4px 10px -6px rgba(22,36,61,.45)}
+  .btn:active,.ghost:active{transform:translateY(0) scale(.98)}
+  .btn:focus-visible,.ghost:focus-visible,.seg button:focus-visible,.countchip:focus-visible,summary:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .acc > summary,.chgroup > summary{transition:background .12s ease}
+  .acc > summary:hover{background:var(--hover)}
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
+
+  /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
+  :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
+    --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); } :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="test"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
+  :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
+  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="test"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="oral"]{--c:#D98AA8} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
+  .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+  .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
+    transition:background .12s ease, border-color .12s ease}
+  .themebtn:hover{border-color:var(--bleu)}
+  .themebtn:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+
+  /* multiple-choice options (Recognize): readable when locked, parenthetical on the same line */
+  .opts .opt{color:var(--ink); text-align:left; font-family:inherit}
+  .opts .opt:disabled{color:var(--ink); opacity:1; cursor:default}
+  .opts .opt .en-x{display:inline; margin-left:6px; font-size:.85em; white-space:normal}
 </style>
 </head>
 <body>
@@ -311,10 +420,11 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v1.5.1</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v2.0.0</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
-    <div>
+    <div class="topright">
+      <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
       <button type="button" class="countchip" id="dlptChip" title="Click to set your test date">
         <span class="dot" id="dDays">—</span>
         <span>days to <b>DLPT / OPI</b></span>
@@ -328,9 +438,9 @@
 
   <nav class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="dash">Tableau de bord</button>
-    <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
+    <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="test">Examen blanc</button>
     <button role="tab" aria-selected="false" data-tab="oral">Pratique orale</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
@@ -369,15 +479,17 @@
   <!-- ===================== VERBS ===================== -->
   <section class="panel" id="p-verbs" role="tabpanel">
     <h2 class="sec">Conjugaison</h2>
-    <p class="lead">Unit 2 verbs — Chapter 6 modaux, glossaire -er and <b>peindre</b>, <b>être/avoir</b> (révision), plus <b>savoir/connaître</b> (Ch 8). Type all six forms. <b>Drill ciblé</b> below searches the cumulative U1–U2 pool for reps in any of the three tenses.</p>
-    <ul class="lead-list">
-      <li>Accents count; each card grades once.</li>
-      <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
-      <li><b>Hide known</b>, <b>New only</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
-      <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
-      <li><b>Passé composé</b> and <b>Imparfait</b> are the mastery tables — they fill the progress bars. Every other tense, <b>Présent</b> included, is reps only (nothing recorded).</li>
-      <li><b>Training</b> = feedback only, nothing recorded.</li>
-    </ul>
+    <details class="changelog">
+      <summary>How to use</summary>
+      <ul class="lead-list">
+        <li>Accents count; each card grades once.</li>
+        <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
+        <li><b>Hide known</b>, <b>New only</b>, <b>Rusty</b> (14+ days) filter the deck.</li>
+        <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
+        <li><b>Passé composé</b> and <b>Imparfait</b> are the mastery tables — they fill the progress bars. Every other tense, <b>Présent</b> included, is reps only (nothing recorded).</li>
+        <li><b>Training</b> = feedback only, nothing recorded.</li>
+      </ul>
+    </details>
 
     <div class="frow"><span class="flabel">Quoi</span>
       <div class="seg" id="scopeSegV">
@@ -386,10 +498,10 @@
       </div>
       <select class="filter" id="chapterFilterV">
         <option value="any">Any chapter</option>
-        <option value="6">Chapter 6 only</option>
-        <option value="7">Chapter 7 only</option>
-        <option value="8">Chapter 8 only</option>
-        <option value="9">Chapter 9 only</option>
+        <option value="6">Ch 6</option>
+        <option value="7">Ch 7</option>
+        <option value="8">Ch 8</option>
+        <option value="9">Ch 9</option>
       </select>
       <select class="filter" id="catFilter"><option value="all">All groups</option></select>
     </div>
@@ -438,45 +550,45 @@
   <!-- ===================== VOCABULAIRE ===================== -->
   <section class="panel" id="p-vocab" role="tabpanel">
     <h2 class="sec">Vocabulary trainer</h2>
-    <p class="lead">Every Unit 2 glossaire word (Ch 6–9), verbs as infinitive cards, plus the taught exterior and restaurant sets.</p>
-    <ul class="lead-list">
-      <li><b>Recall</b> flips EN↔FR; <b>Spelling</b> makes you type it — accents count, each card grades once.</li>
-      <li>Articles are part of the answer — <em>le/la</em> counts, wrong or missing article is a miss.</li>
-      <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
-      <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
-      <li><b>Training</b> = feedback only, nothing recorded — each card shows its <b>mémo étymologique</b>.</li>
-    </ul>
+    <details class="changelog">
+      <summary>How to use</summary>
+      <ul class="lead-list">
+        <li><b>Spelling</b> (the default) makes you type it on ruled paper — accents always count, each card grades once. After a miss, <b>You</b> shows what you typed and <b>Correct</b> what was missing.</li>
+        <li><b>Recognize</b> is multiple choice (four options, keys 1–4) and <b>Recall</b> flips a card and you say how you did; both run EN → FR or FR → EN.</li>
+        <li>Articles are part of the answer — <em>le/la</em> counts, wrong or missing article is a miss.</li>
+        <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
+        <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
+        <li><b>Training</b> = feedback only, nothing recorded.</li>
+      </ul>
+    </details>
 
     <div class="frow"><span class="flabel">Quoi</span>
-      <div class="seg" id="vocScopeSeg">
-        <button data-scope="level" aria-pressed="true">Up to my level</button>
-        <button data-scope="all" aria-pressed="false">All vocab</button>
-      </div>
       <select class="filter" id="chapterFilterVoc">
-        <option value="any">Any chapter</option>
-        <option value="6">Chapter 6 only</option>
-        <option value="7">Chapter 7 only</option>
-        <option value="8">Chapter 8 only</option>
-        <option value="9">Chapter 9 only</option>
+        <option value="any">All chapters</option>
+        <option value="6">Ch 6</option>
+        <option value="7">Ch 7</option>
+        <option value="8">Ch 8</option>
+        <option value="9">Ch 9</option>
       </select>
       <select class="filter" id="vocTopic"><option value="all">All topics</option></select>
     </div>
     <div class="frow"><span class="flabel">Comment</span>
-      <div class="seg" id="vocModeSeg">
-        <button data-mode="recall" aria-pressed="true">Recall</button>
-        <button data-mode="spell" aria-pressed="false">Spelling</button>
-      </div>
       <button class="ghost" id="vocTrainBtn">Training</button>
+      <div class="seg" id="vocModeSeg">
+        <button data-mode="spell" aria-pressed="true">Spelling</button>
+        <button data-mode="mc" aria-pressed="false">Recognize</button>
+        <button data-mode="recall" aria-pressed="false">Recall</button>
+      </div>
+      <div class="seg" id="vocDirSeg">
+        <button data-dir="en" aria-pressed="true">EN → FR</button>
+        <button data-dir="fr" aria-pressed="false">FR → EN</button>
+      </div>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
       <button class="ghost" id="newOnlyBtnVoc">New only</button>
     </div>
-      <div class="seg" id="vocDirSeg">
-        <button data-dir="en" aria-pressed="true">EN → FR</button>
-        <button data-dir="fr" aria-pressed="false">FR → EN</button>
-      </div>
 
     <div class="vprogress"><span id="vocCount">—</span><span id="vocKnown">—</span></div>
     <div class="vcard" id="voccard"><!-- filled by JS --></div>
@@ -496,14 +608,29 @@
   <!-- ===================== GRAMMAR ===================== -->
   <section class="panel" id="p-gram" role="tabpanel">
     <h2 class="sec">Grammar drills</h2>
-    <p class="lead">Unit 2 structures by chapter — passé composé (avoir & être), COD/COI, modaux, adjectifs & BANGS, partitifs, pronom en, adverbes, imparfait, durée, cause & conséquence, savoir/connaître, relatifs, questions. Rounds of 10 per bank — <b>New round 🎲</b> redraws. Best scores save; answers feed Analyse.</p>
+    <details class="changelog">
+      <summary>How to use</summary>
+      <ul class="lead-list">
+        <li>Rounds of 10 per bank — <b>New round 🎲</b> redraws. Drills that carry a rule card show it above the questions, and every answer is followed by a one-line why.</li>
+        <li>Some items are drop-downs (keys 1–4 pick an option); <b>Format</b> switches between mixed, typing only and drop-down only. Misses pile up under <b>From → My misses</b>, and <b>Retry the missed</b> replays them.</li>
+        <li>Best scores and couverture feed the dashboard.</li>
+      </ul>
+    </details>
+    <div class="gbar" id="gbar"><!-- filled by JS --></div>
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
   <!-- ===================== TEST ===================== -->
   <section class="panel" id="p-test" role="tabpanel">
     <h2 class="sec">Quizzes &amp; Unit 2 exam</h2>
-    <p class="lead">10 randomized questions per chapter bank (Ch 6–9), accents strict — plus the <b>Unit 2 practice exam</b>, modeled on your Test 2 study guide. Answers feed Analyse.</p>
+    <details class="changelog">
+      <summary>How to use</summary>
+      <ul class="lead-list">
+        <li>10 random questions per chapter bank; the unit practice exam follows your study guide.</li>
+        <li>Accents strict.</li>
+        <li>Answers feed Analyse.</li>
+      </ul>
+    </details>
 
     <div id="testIntro" class="card">
       <div class="test-head">
@@ -540,7 +667,7 @@
     <div class="card" id="insWeakCh" style="margin-top:12px;font-size:14px"><span class="hist">Weakest chapter: — (5+ graded answers per chapter required)</span></div>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px">
       <h2 class="sec" style="margin:0">Misses by source</h2>
-      <button id="anaReset" style="background:var(--accent);color:#fff;border:none;border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Reset stats</button>
+      <button id="anaReset" style="background:var(--accent);color:var(--on-solid);border:none;border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">Reset stats</button>
     </div>
     <p class="lead" id="anaSince"></p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px">
@@ -564,7 +691,15 @@
   <!-- ===================== ORAL / OPI ===================== -->
   <section class="panel" id="p-oral" role="tabpanel">
     <h2 class="sec">Oral practice — OPI prompts</h2>
-    <p class="lead">Speaking trains out loud. Cards mirror the Unit 2 tasks (Ch 6–9) — pick one, hit a timer, talk. 45 → 30 → 15 seconds. No grading, just reps.</p>
+    <p class="lead">Speaking trains out loud. Cards mirror the Unit 2 tasks.</p>
+    <details class="changelog">
+      <summary>How to use</summary>
+      <ul class="lead-list">
+        <li>Pick one, hit a timer, talk.</li>
+        <li>45 → 30 → 15 seconds.</li>
+        <li>No grading, just reps.</li>
+      </ul>
+    </details>
     <div class="opicard" id="opiCard"><!-- filled by JS --></div>
     <div class="vnav">
       <button id="opiPrev">‹ Prev</button>
@@ -574,9 +709,10 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 2 · v1.5.1</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v2.0.0</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
-    <span style="color:var(--mute)">v1.5.1 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
+    <span style="color:var(--mute)">v2.0.0 (15 Oct 2026): <strong>Unité 2 takes the new design from Unités 4 and 5.</strong> <strong>Look</strong>: flat, light folder tabs that lean and overlap, each with its own muted colour (an outline, plus a faint glow on the selected tab), spread across the full width of the page; a tricolore rule under the masthead; a French-flag icon in the browser tab; softer card shadows, press states on buttons and a visible keyboard focus ring. The tab order is now Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse, and the long introductions under the tabs are replaced by short <em>How to use</em> lists. <strong>Dark mode</strong> follows the device; a round masthead button forces light or dark (Alt-click returns to the device setting), and the choice is shared by every dossier in this browser. <strong>Vocabulaire</strong>: <em>Spelling</em> is the default mode and is typed on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row; one verdict line follows (correct · check the accents · article missing · wrong-gender article · close spelling · not quite), then a <em>You</em> row with wrong or extra letters struck through and a <em>Correct</em> row with the missed letters underlined; a skip shows the answer alone. Accents always count and articles are required (un/une now count for le/la). <em>Recognize</em> (multiple choice, four options, keys 1–4) and <em>Recall</em> both run EN → FR or FR → EN, with the direction switch on the same row as the mode switch; <em>Training</em> sits to the left of the modes. The up-to-my-level toggle is replaced by one chapter drop-down that opens on your current chapter, on the same row as the topic filter. English notes in parentheses sit on their own line under the gloss. <strong>Mastery</strong> is three correct answers in a row and nothing else: a clean first answer no longer turns a card green, in the Vocabulaire and Conjugaison trainers alike (<em>Je connais déjà</em> still marks a card known at once). This applies from now on only: cards that are already green stay green until your next miss. <strong>Grammaire</strong>: the new drill engine. Typed answers use the same ruled field and verdicts; some items are inline drop-downs (keys 1–4); a <em>Format</em> switch (mixed, typing only, drop-down only) and a <em>From</em> switch (all questions or My misses) sit above the drills; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds record a best score. <strong>Content pass</strong>: 24 grammar drills (478 items) now open with a one-line instruction and an always-visible rule card; every one of the 478 items carries a one-line <em>why</em> shown after you answer; 178 items are drop-downs. Leak audit: 66 hints that named the answer or its rule were removed, and 100 items lost a trailing label that gave the answer away (the infinitive to conjugate stays as the cue); 8 accepted answers were added where a second form is equally correct (for example “il y a” for “ça fait”, “car” for “parce que”, “en dessous de” for “sous”). The four Vocab en contexte drills keep their original notes. In the tense-review drill, 18 sentences gained a time word (for example “Hier, …”, “Autrefois, …”) where a tense label used to sit in the question. <strong>Unchanged</strong>: every vocabulary card, the Conjugaison trainer with its passé composé and imparfait tables, the Examen blanc and Pratique orale content (restyled only) and saved progress.<br></span>
+      <span style="color:var(--mute)">v1.5.1 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v1.5.0 (10 Oct 2026): <strong>Conjugaison progress now tracks the passé composé and the imparfait.</strong> Unit 2 introduced those two tenses, so they now carry the mastery: answers in the <strong>Passé composé</strong> and <strong>Imparfait</strong> tables are recorded (3 correct in a row turns a conjugation green, a miss resets it, <em>Je connais déjà ✓</em>, Hide known, New only and Rusty all work per tense), and the card header now defaults to the passé composé. <strong>Présent is now reps only</strong> — nothing is recorded there. The Tableau de bord stat <em>Verbs mastered</em> becomes <strong>Conjugations mastered</strong> and counts every verb × tense pair (24 verbs × 2 tenses = 48 conjugations); the Conjugaison ledger, the "known overall" counter, the progress table (with its Reset buttons), the Conjugueur achievement and the Analyse struggle list (now written like "aller (pc)") all follow the selected tense. <strong>Heads-up:</strong> if you had mastered verbs in présent, the Tableau conjugation bar will drop, because it now measures passé composé + imparfait instead — nothing is deleted; your old présent progress stays saved as history, and the two new tenses start from zero.<br></span>
     <span style="color:var(--mute)">v1.4.1 (7 Oct 2026): <strong>Vocabulaire progress table — long English cues no longer crush the French.</strong> In the word-bank status table, a long English cue used to squeeze the French word into an ellipsis so neither could be read. The French word now always gets its full width first, and the English cue is shortened on a single line to whatever room is left (hover it to see the full cue). Rows stay one line tall. The same fix applies to the Conjugaison verb table.<br></span>
     <span style="color:var(--mute)">v1.4.0 (7 Oct 2026): <strong>Memo cards for every Vocabulaire word.</strong> Once you answer, reveal, or mark a card known, a separate <strong>Mémo card</strong> opens under the trainer (above the progress table): <em>Meaning</em>, <em>Not to confuse with</em>, <em>Mnemonic</em>, <em>Forms</em> (participe passé with avoir or être for verbs; feminine and irregular forms), <em>Synonyms / opposites</em> and <em>Etymology</em>, with <em>Example</em>, <em>Construction</em> and <em>Word family</em> behind <strong>More</strong>. It slides in with a soft blue glow so it is easy to notice, and the page only scrolls as far as needed to show its top. All 458 cards have a meaning line and an example; 419 have a mnemonic, 183 have forms, 211 a not-to-confuse-with note, 54 synonyms or opposites, 360 a construction, 373 a word family and 458 an etymology. <strong>Faux ami</strong> tags on 19 cards (la cave, la chambre, l'entrée, le four, la commode, marron, ancien, propre, appliquer, disposer, le citron, le raisin, la casserole, onctueux, savoureux, le menu, retirer, l'exposition, assister à). <strong>Register</strong> tags on 6 informal, formal or technical cards. The old in-card notes ("vs …", "also taught …", feminine forms, faux ami warnings) moved into the Mémo card, so the reveal now shows only the gender of a noun. <strong>Review pass:</strong> every new card was re-read for factual and wording errors; etymologies that did not hold up were corrected (including some older ones, such as le toit, la buanderie, le lavabo, le coussin, agencer, le jardin), a few English cues were made clearer, and part-of-speech tags were fixed on cards wrongly tagged as verbs (à droite de, à gauche de). Etymology used to appear only in Training mode; it now shows on the Mémo card after every answer. Saved progress is untouched.<br></span>
@@ -634,7 +770,7 @@ var canSave = (function(){ try{ localStorage.setItem("__t","1"); localStorage.re
 
 /* ---------------- mastery model (v2.5.0: streaks) ----------------
    Mastery = THREE correct answers IN A ROW; any miss resets the streak to 0.
-   A clean first correct (never missed) still counts as known immediately.
+   A clean first correct no longer counts: a card needs three in a row. Greens earned under the old rule are left as they are until their first miss.
    Lifetime ✓/✗ counters are kept for history and to order the Drill-misses
    queue (worst accuracy first). Migration from the old lifetime-3 rule:
    old greens with ✓ > ✗ are grandfathered at streak 3; shaky greens
@@ -652,7 +788,7 @@ var canSave = (function(){ try{ localStorage.setItem("__t","1"); localStorage.re
 })();
 function deriveStatus(key, s){
   if(!s || (s.c===0 && s.w===0)) return null;          // not yet seen
-  var known = ((s.s||0)>=3) || (s.w===0 && s.c>=1);     // 3 in a row, or clean single correct
+  var known = (s.s||0)>=3;                              // three in a row; a first clean answer no longer counts
   return known ? "known" : "learn";
 }
 function recordAnswer(statsMap, statusMap, key, correct){
@@ -660,7 +796,8 @@ function recordAnswer(statsMap, statusMap, key, correct){
   if(correct){ s.c++; s.s=(s.s||0)+1; if((s.m||0)>=3) s.cb=1; s.m=0; }
   else { s.w++; s.s=0; s.m=(s.m||0)+1; }
   s.t=Date.now();
-  var st = deriveStatus(key, s);
+  var was = statusMap[key], st = deriveStatus(key, s);
+  if(correct && was==="known" && st==="learn") st = "known";   /* a green earned under the old rule stays green until a miss */
   if(st) statusMap[key] = st; else delete statusMap[key];
   onGraded(correct);                              /* streak + lifetime achievements */
   if(st==="known" && s.cb){ delete s.cb; award("a_cb"); }
@@ -693,6 +830,113 @@ function norm(s){ return (s||"").toLowerCase().replace(/[’´]/g,"'").replace(/
 function bare(s){ return norm(s).normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
 function el(tag,cls,html){ var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---------------- answer grading (v0.2.0) ----------------
+   Verdict ladder from the Unité 4 reference drills (design-reference/grading.js), inlined — the dossier is a single offline file.
+   Pure functions, no DOM. Namespaced as FG so it never collides with the engine's own norm/esc/bare helpers.
+   Ladder, first match wins: ok · accent · article · gender · pronoun · agreement · auxiliary · close · wrong.
+   Dossier change vs the reference: "auxiliary" fires only when the avoir/être family differs (a plus-que-parfait answer with the right
+   participle and the wrong tense of the auxiliary — a fini vs avait fini — is "close"/"wrong", never "wrong auxiliary"). */
+var FG=(function(){
+  var VOWEL=/^[aeiouyàâäéèêëîïôöûüùœh]/i;
+  function norm(s){
+    return (s||"").normalize("NFC").replace(/[’‘`´]/g,"'").toLowerCase()
+      .replace(/\s+/g," ").trim().replace(/\b(l|s|d|j|m|t|qu)' +/g,"$1'");
+  }
+  function fold(s){ return norm(s).normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/œ/g,"oe").replace(/æ/g,"ae"); }
+  function splitArt(s){ var m=s.match(/^(les|le|la|une|un|des|l')\s?(.+)$/); return m?{art:m[1],body:m[2]}:null; }
+  function articleForms(form,g){
+    var p=splitArt(form); if(!p) return [form];
+    var b=p.body, v=VOWEL.test(b);
+    var gen=(p.art==="le"||p.art==="un")?"m":(p.art==="la"||p.art==="une")?"f":(p.art==="les"||p.art==="des")?"pl":(g||"m").charAt(0)==="f"?"f":"m";
+    if(g && /p$/.test(g)) gen="pl";
+    if(gen==="pl") return ["les "+b,"des "+b];
+    if(gen==="m") return [(v?"l'":"le ")+b,"un "+b];
+    return [(v?"l'":"la ")+b,"une "+b];
+  }
+  /* item: {f, a:[alternates], type:"n"|"v"|"x"|"pc", g, articleOptional} */
+  function prepare(item){
+    var forms=[item.f].concat(item.a||[]).map(norm), acc=[];
+    forms.forEach(function(s){ acc.push(s); if(item.type==="n") articleForms(s,item.g).forEach(function(x){ acc.push(x); }); });
+    var bodies=[];
+    if(item.type==="n") forms.forEach(function(s){ var b=(splitArt(s)||{body:s}).body; if(bodies.indexOf(b)<0) bodies.push(b); });
+    if(item.articleOptional) bodies.forEach(function(b){ acc.push(b); });
+    var refl=item.type==="v" && /^(s'|se )/.test(norm(item.f)) ? norm(item.f).replace(/^(s'|se )/,"") : null;
+    var seen={}, uniq=acc.filter(function(x){ return seen[x]?false:(seen[x]=1); });
+    var o={}; for(var k in item) o[k]=item[k];
+    o.acc=uniq; o.bodies=bodies; o.refl=refl; return o;
+  }
+  function lev(a,b){
+    var m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+    var prev=[],cur=[],i,j; for(j=0;j<=n;j++) prev[j]=j;
+    for(i=1;i<=m;i++){ cur[0]=i;
+      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
+      var t=prev; prev=cur; cur=t; }
+    return prev[n];
+  }
+  function ppBase(w){ return w.replace(/(es|e|s)$/,""); }
+  var AVOIR=/^(ai|as|a|avons|avez|ont|avais|avait|avions|aviez|avaient|aurai|auras|aura|aurons|aurez|auront|aurais|aurait|aurions|auriez|auraient|aie|aies|ait|ayons|ayez|aient|eut|eus|eurent)$/;
+  var ETRE=/^(suis|es|est|sommes|êtes|sont|étais|était|étions|étiez|étaient|serai|seras|sera|serons|serez|seront|serais|serait|serions|seriez|seraient|sois|soit|soyons|soyez|soient|fus|fut|furent)$/;
+  function auxFamily(words){ var w=words[words.length-1]||""; return AVOIR.test(w)?"a":ETRE.test(w)?"e":""; }
+  function grade(input,it){
+    var n=norm(input), fd=fold(input);
+    if(it.acc.indexOf(n)>-1) return {v:"ok",target:n};
+    var accHit=null; it.acc.forEach(function(a){ if(!accHit && fold(a)===fd) accHit=a; });
+    if(accHit) return {v:"accent",target:accHit};
+    function withArt(b){ var r=null; it.acc.forEach(function(a){ if(!r && (a.slice(-(b.length+1))===" "+b || a==="l'"+b)) r=a; }); return r||it.acc[0]; }
+    if(it.type==="n"){
+      var bi=-1; it.bodies.forEach(function(b,i){ if(bi<0 && fold(b)===fd) bi=i; });
+      if(bi>-1) return {v:"article",target:withArt(it.bodies[bi])};
+      var p=splitArt(n);
+      if(p){ var gi=-1; it.bodies.forEach(function(b,i){ if(gi<0 && fold(b)===fold(p.body)) gi=i; });
+        if(gi>-1) return {v:"gender",target:withArt(it.bodies[gi])}; }
+    }
+    if(it.refl && fold(it.refl)===fd) return {v:"pronoun",target:norm(it.f)};
+    if(it.type==="pc"){
+      var iw=n.split(" ");
+      for(var k=0;k<it.acc.length;k++){
+        var a=it.acc[k], aw=a.split(" ");
+        if(iw.length!==aw.length) continue;
+        var last=iw.length-1;
+        if(ppBase(iw[last])!==ppBase(aw[last])) continue;
+        var ri=iw.slice(0,last), ra=aw.slice(0,last), restSame=ri.join(" ")===ra.join(" ");
+        if(restSame) return {v:"agreement",target:a};
+        var fi=auxFamily(ri), fa=auxFamily(ra);
+        if(fi && fa && fi!==fa) return {v:"auxiliary",target:a};
+      }
+    }
+    var best=it.acc[0], d=Infinity;
+    it.acc.forEach(function(a){ var kk=lev(n,a); if(kk<d){ d=kk; best=a; } });
+    if(lev(fd,fold(best))<=2 && fold(best).length>=5) return {v:"close",target:best};
+    return {v:"wrong",target:best};
+  }
+  /* character diff (LCS) → [youChars, correctChars], each [{c,bad}] */
+  function diff(a,b){
+    var m=a.length,n=b.length,L=[],i,j;
+    for(i=0;i<=m;i++){ L.push([]); for(j=0;j<=n;j++) L[i].push(0); }
+    for(i=m-1;i>=0;i--) for(j=n-1;j>=0;j--) L[i][j]=a.charAt(i)===b.charAt(j)?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+    var ua=[],tb=[]; i=0; j=0;
+    while(i<m && j<n){
+      if(a.charAt(i)===b.charAt(j)){ ua.push({c:a.charAt(i),bad:false}); tb.push({c:b.charAt(j),bad:false}); i++; j++; }
+      else if(L[i+1][j]>=L[i][j+1]){ ua.push({c:a.charAt(i),bad:true}); i++; }
+      else { tb.push({c:b.charAt(j),bad:true}); j++; }
+    }
+    while(i<m) ua.push({c:a.charAt(i++),bad:true});
+    while(j<n) tb.push({c:b.charAt(j++),bad:true});
+    return [ua,tb];
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  /* You row: marked(you,"fx") → struck through in red. Correct row: marked(correct,"fm") → underlined in red. A wrong space shows as "·". */
+  function marked(arr,cls){ return arr.map(function(o){ return o.bad ? "<span class=\""+cls+"\">"+esc(o.c===" "?"·":o.c)+"</span>" : esc(o.c); }).join(""); }
+  var VERDICTS={
+    ok:{title:"Correct",tone:"ok"}, accent:{title:"Check the accents",tone:"near"}, article:{title:"Article missing",tone:"near"},
+    gender:{title:"Wrong article: check the gender",tone:"near"}, pronoun:{title:"Reflexive pronoun missing",tone:"near"},
+    agreement:{title:"Check the agreement",tone:"near"}, auxiliary:{title:"Wrong auxiliary",tone:"bad"},
+    close:{title:"Close: check the spelling",tone:"near"}, wrong:{title:"Not quite",tone:"bad"}, skip:{title:"Here's the answer",tone:"bad"}
+  };
+  return {norm:norm,fold:fold,prepare:prepare,grade:grade,diff:diff,marked:marked,esc:esc,VERDICTS:VERDICTS,articleForms:articleForms,auxFamily:auxFamily};
+})();
+
 
 /* ---------------- articles ---------------- */
 function normArt(a){ return (a||"").toLowerCase().replace(/[’´]/g,"'"); }
@@ -777,6 +1021,8 @@ function memoShow(v){
 }
 /* part-of-speech tag shown beside the cue (card field p:) */
 var POSL={n:"noun",adj:"adjective",v:"verb",adv:"adverb",prep:"preposition",conj:"conjunction",expr:"expression",num:"number"};
+/* English gloss: a trailing explanatory parenthetical (two or more words) goes on its own line under the main gloss; short grammatical cues such as (someone) or (at) stay inline */
+function enHTML(e){ var m=String(e).match(/^(.*?)\s*(\([^()]*\s[^()]*\))$/); return m ? esc(m[1])+"<span class='en-x'>"+esc(m[2])+"</span>" : esc(e); }
 function genderOf(v){ return (v.n && /^(m\.\/f\.|m\. pl\.|f\. pl\.|m\.|f\.)$/.test(v.n.trim())) ? v.n.trim() : ""; }
 function posPill(v,withGender){ if(!(v.p && POSL[v.p])) return ""; var g=withGender?genderOf(v):""; return " <span class='vpos'>"+POSL[v.p]+(g?" · "+esc(g):"")+"</span>"; }
 /* after an answer a noun's gender joins the part-of-speech tag beside the cue (no extra line); other card notes keep their own line */
@@ -984,7 +1230,7 @@ function renderVerbTable(){
       "<span><span class='vt-dot n'></span>New (not seen)</span>"+
       "<span><span class='vt-dot l'></span>To rework</span>"+
       "<span><span class='vt-dot k'></span>Known</span>"+
-      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master (a clean first try counts)</span>"+
+      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master</span>"+
     "</div>"+
     "<div class='vt-scope'>Scope: "+scopeLabel+" · "+idxs.length+" verbs · "+tenseLbl(verbTense)+(V.length&&isMastery(V[0],verbTense)?"":" (reps only — not tracked)")+"</div>";
 
@@ -1035,7 +1281,7 @@ function renderVerb(){
   var vmeta=el("span","vcat",statMeta(state.verbStats[vk(v)])); vmeta.style.color="var(--ink-2)"; vmeta.style.background="var(--line)"; vmeta.style.marginLeft="6px"; card.appendChild(vmeta);
   if(chOf(v)>state.currentCh){
     var ah=el("span","vcat","À venir · "+CH_NAMES[chOf(v)]);
-    ah.style.color="#fff"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
+    ah.style.color="var(--on-solid)"; ah.style.background="var(--mute)"; ah.style.marginTop="6px";
     card.appendChild(ah);
   }
 
@@ -1178,7 +1424,7 @@ function pruneOrder(){ /* drop items that no longer match live filters; keep pos
 function next(){ pruneOrder(); if(!(hideKnownV||newOnlyMode)) idx=(idx+1)%Math.max(order.length,1); revealed=false; renderVerb(); }
 function prev(){ idx=(idx-1+order.length)%Math.max(order.length,1); revealed=false; renderVerb(); }
 
-document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"#fff":"";revealed=false;renderVerb();});
+document.getElementById("verbTrainBtn").addEventListener("click",function(){verbTrain=!verbTrain;this.style.background=verbTrain?"var(--accent)":"";this.style.color=verbTrain?"var(--on-solid)":"";revealed=false;renderVerb();});
 document.getElementById("verbTenseSeg").addEventListener("click",function(e){
   var b=e.target.closest("button"); if(!b) return;
   [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});
@@ -1202,15 +1448,15 @@ document.getElementById("chapterFilterV").addEventListener("change",function(){
   buildOrder(); renderVerb(); refreshVerbTableIfOpen();
 });
 document.getElementById("hideKnownBtnV").onclick=function(){
-  hideKnownV=!hideKnownV; this.style.background=hideKnownV?"var(--known)":""; this.style.color=hideKnownV?"#fff":"";
+  hideKnownV=!hideKnownV; this.style.background=hideKnownV?"var(--known)":""; this.style.color=hideKnownV?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("rustyBtnV").onclick=function(){
-  rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"#fff":"";
+  rustyV=!rustyV; this.style.background=rustyV?"var(--learn)":""; this.style.color=rustyV?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("newOnlyBtnV").onclick=function(){
-  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"#fff":"";
+  newOnlyMode=!newOnlyMode; this.style.background=newOnlyMode?"var(--accent)":""; this.style.color=newOnlyMode?"var(--on-solid)":"";
   buildOrder(); renderVerb();
 };
 document.getElementById("shufBtn").onclick=function(){
@@ -1762,7 +2008,7 @@ var VOCAB=[
   });
 })();
 
-var vocMode="recall", vocScope="level", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
+var vocMode="spell", vocScope="all", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
 /* self-heal: re-derive status from counters so any word (incl. bonjour) that has
@@ -1814,8 +2060,8 @@ var VOCAB_ALIASES=[
   });
   if(touched) saveState();
 })();
-Object.keys(state.vocabStats).forEach(function(f){ var st=deriveStatus(f,state.vocabStats[f]); if(st) state.vocab[f]=st; });
-Object.keys(state.verbStats).forEach(function(fr){ var st=deriveStatus(fr,state.verbStats[fr]); if(st) state.verbs[fr]=st; });
+Object.keys(state.vocabStats).forEach(function(f){ var st=deriveStatus(f,state.vocabStats[f]); if(st==="learn" && state.vocab[f]==="known") st="known"; /* greens earned under the old rule stay until a miss */ if(st) state.vocab[f]=st; });
+Object.keys(state.verbStats).forEach(function(fr){ var st=deriveStatus(fr,state.verbStats[fr]); if(st==="learn" && state.verbs[fr]==="known") st="known"; /* greens earned under the old rule stay until a miss */ if(st) state.verbs[fr]=st; });
 
 /* topic list follows the chapter scope: a specific chapter shows only its topics;
    "any chapter" shows topics up to your level (or all, if scope = all vocab) */
@@ -1833,6 +2079,9 @@ function rebuildVocTopics(){
   if(vocTopicSel!=="all" && !present[vocTopicSel]) vocTopicSel="all";
   sel.value=vocTopicSel;
 }
+/* the chapter drop-down opens on the current chapter (All chapters is the first option) and follows it when it changes */
+function syncVocChapter(){ var s=document.getElementById("chapterFilterVoc"), c=String(state.currentCh); vocChapterSel=[].some.call(s.options,function(o){ return o.value===c; })?c:"any"; s.value=vocChapterSel; }
+syncVocChapter();
 rebuildVocTopics();
 
 function vocPool(){
@@ -1870,7 +2119,7 @@ function renderVocTable(){
       "<span><span class='vt-dot n'></span>New (not seen)</span>"+
       "<span><span class='vt-dot l'></span>To rework</span>"+
       "<span><span class='vt-dot k'></span>Known</span>"+
-      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master (a clean first try counts)</span>"+
+      "<span style='margin-left:auto'>✓ correct · ✗ missed · 3 in a row to master</span>"+
     "</div>"+
     "<div class='vt-scope'>Scope: "+scopeLabel+" · "+idxs.length+" words</div>";
 
@@ -1906,6 +2155,36 @@ function updateVocToggle(){
 function refreshVocTableIfOpen(){ if(vocTableVisible()) renderVocTable(); }
 function vocKnownCount(){ return Object.keys(state.vocab).filter(function(k){return state.vocab[k]==="known";}).length; }
 
+/* ---------------- Recognize mode: French on the card, pick the English meaning (four options) ---------------- */
+var VOC_STOP={the:1,an:1,to:1,of:1,be:1,in:1,on:1,and:1,or:1,one:1,something:1,someone:1,oneself:1,with:1,for:1,from:1,by:1,at:1,is:1,it:1,that:1,who:1,which:1};
+function glossWords(e){ return String(e).replace(/\s*\([^)]*\)/g," ").toLowerCase().split(/[^a-z']+/).filter(function(w){ return w.length>2 && !VOC_STOP[w]; }); }
+function vocBare(f){ return f.replace(/^(le |la |les |l'|un |une |s'|se )/i,"").toLowerCase(); }
+/* wrong options: same part of speech, never a near-synonym (shared content word in the gloss, or listed in the other card's sy / vs), same topic first, then same chapter */
+function vocChoices(v){
+  var gw=glossWords(v.e), mine=((v.sy||"")+" "+(v.vs||"")).toLowerCase(), fv=vocBare(v.f);
+  function pool(samePos){
+    return VOCAB.filter(function(x){
+      if(x===v||x.f===v.f||x.e===v.e) return false;
+      if(samePos && x.p!==v.p) return false;
+      var xw=glossWords(x.e); if(gw.some(function(w){ return xw.indexOf(w)>-1; })) return false;
+      if(mine.indexOf(vocBare(x.f))>-1 || ((x.sy||"")+" "+(x.vs||"")).toLowerCase().indexOf(fv)>-1) return false;
+      return true; });
+  }
+  var tier=function(x){ return x.t===v.t?0:(x.c===v.c?1:2); }, out=[], seen={}; seen[v.e]=1;
+  [true,false].forEach(function(samePos){
+    if(out.length>=3) return;
+    var p=shuffleArr(pool(samePos)); p.sort(function(a,b){ return tier(a)-tier(b); });
+    p.forEach(function(x){ if(out.length<3&&!seen[x.e]){ seen[x.e]=1; out.push(x); } });
+  });
+  return shuffleArr(out.concat([v]));
+}
+var vocMc=null;
+document.addEventListener("keydown",function(e){
+  if(!vocMc||vocMode!=="mc") return; var pv=document.getElementById("p-vocab"); if(!pv||!pv.classList.contains("on")) return;
+  var t=e.target&&e.target.tagName; if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA") return;
+  if(/^[1-4]$/.test(e.key)&&!vocMc.done){ vocMc.pick(+e.key-1); }
+  else if(e.key==="Enter"&&vocMc.done&&!(e.target.closest&&e.target.closest("button"))){ e.preventDefault(); vocNext(); }
+});
 function renderVoc(){
   var card=document.getElementById("voccard"); card.innerHTML=""; memoHide();
   document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known";
@@ -1917,7 +2196,6 @@ function renderVoc(){
   var v=VOCAB[vocOrder[vocIdx]];
   document.getElementById("vocCount").textContent=vocOrder.length+" words in scope";
   document.getElementById("vocPos").textContent=(vocIdx+1)+" / "+vocOrder.length;
-  var mark=state.vocab[v.f];
   var tag=el("div","vcat"); tag.style.background=CATS.er.bg; tag.style.color=CATS.er.c;
   function vocTagText(){ return "Ch "+v.c+" · "+VTOPICS[v.t]+" · "+statMeta(state.vocabStats[v.f]); }
   tag.textContent=vocTagText();
@@ -1928,79 +2206,68 @@ function renderVoc(){
     var req = true; /* v1.0.0: articles always required */
     var sa = splitArticle(v.f);
     var hint = "Type the French"+(sa.hasArt?" — include the article":"")+" (accents count)";
-    var p=el("div","prompt","<div class='small'>"+hint+posPill(v)+"</div><div class='big'>"+esc(v.e)+"</div>");
+    var p=el("div","prompt","<div class='small'>"+hint+posPill(v)+"</div><div class='big'>"+enHTML(v.e)+"</div>");
     card.appendChild(p);
-    var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-    inp.setAttribute("aria-label","french spelling"); row.appendChild(inp); card.appendChild(row);
+    var row=el("div","row-in"); var field=el("div","seyes"); var inp=el("input"); inp.type="text"; inp.autocapitalize="none"; inp.autocomplete="off"; inp.spellcheck=false;
+    inp.setAttribute("aria-label","french spelling"); field.appendChild(inp); row.appendChild(field); card.appendChild(row); card.appendChild(gKeys(inp));
     var vd=el("div","verdict"); vd.style.display="none"; vd.style.marginTop="12px"; card.appendChild(vd);
     var pronHost=el("div"); card.appendChild(pronHost);
 
-    function showPron(){ pronHost.innerHTML=""; if(v.n && !genderOf(v)) pronHost.appendChild(el("div","note",esc(v.n))); revealPos(card,v); pronHost.appendChild(pronRow(v.f)); memoShow(v); }
+    function showPron(){ pronHost.innerHTML=""; if(v.n && !genderOf(v)) pronHost.appendChild(el("div","note",esc(v.n))); revealPos(card,v); if(v.y && !hasMemo(v)) pronHost.appendChild(el("div","note ety","Mémo · "+esc(v.y))); pronHost.appendChild(pronRow(v.f)); memoShow(v); }
     function fullLabel(){ return v.f + (sa.gender?(" ("+sa.gender+")"):""); }
     if(vocTrain){
       var model=el("div","note","Modèle : "+fullLabel()); model.style.fontSize="15px"; card.insertBefore(model,row);
       if(v.y && !hasMemo(v)){ card.insertBefore(el("div","note ety","Mémo · "+esc(v.y)),row); }
       showPron();
     }
-    function lockCard(){ inp.disabled=true; rb.disabled=true; cb.disabled=true; rb.style.opacity=".45"; cb.style.opacity=".45"; }
+    function lockCard(){ locked=true; inp.readOnly=true; rb.disabled=true; cb.disabled=true; rb.style.opacity=".45"; cb.style.opacity=".45"; }
 
+    var fbv=el("div"); card.appendChild(fbv);
+    var locked=false;
+    /* v0.2.0: grading runs through the shared verdict ladder (FG); vocCands() still supplies the accepted forms
+       (masculine / feminine shorthand, optional complements, alternates). Accents are always required. */
+    function vGrade(got){
+      var vc=vocCands(v), cands=vc.list.filter(function(c){ return c.indexOf("(")<0; }); if(!cands.length) cands=vc.list;
+      var isN=(v.p==="n"&&sa.hasArt), g=null, nn=v.n||"";
+      if(isN){ g=/\bf\./.test(nn)?"f":/\bm\./.test(nn)?"m":null; if(g&&/\bpl\./.test(nn)) g+="p"; }
+      var it=FG.prepare({f:norm(cands[0]),a:cands.slice(1).map(norm),type:isN?"n":(v.p==="v"?"v":"x"),g:g});
+      var r=FG.grade(norm(got),it);
+      var viaAlt=r.v==="ok" && vc.list.slice(0,vc.primary).map(norm).indexOf(norm(got))<0;
+      return {v:r.v,target:r.target,viaAlt:viaAlt,correct:r.v==="ok"};
+    }
+    /* feedback panel: one verdict line, then You / Correct (only on a miss); a skip shows the answer alone */
+    function vPanel(r,got,skip){
+      var V=FG.VERDICTS[skip?"skip":r.v], html="<strong class='fbv'>"+V.title+"</strong>";
+      if(skip){
+        html+="<div class='cmp'><span class='l'>Correct</span><span class='w'>"+esc(v.f)+"</span></div>";
+      } else if(r.v!=="ok"){
+        var df=FG.diff(FG.norm(got),FG.norm(r.target));
+        html+="<div class='cmp'><span class='l'>You</span><span class='w'>"+FG.marked(df[0],"fx")+"</span><span class='l'>Correct</span><span class='w'>"+FG.marked(df[1],"fm")+"</span></div>";
+      } else if(r.viaAlt){
+        html+="<div class='fnote'>Card form: "+esc(v.f)+"</div>";
+      }
+      vd.style.display="none"; fbv.innerHTML=""; fbv.appendChild(el("div","fb "+V.tone,html));
+    }
     function checkSpell(){
-      var got=inp.value; if(!got.trim())return;
-      if(vocTrain){
-        var tua=splitArticle(got), tc=vocCands(v).list, thit=false, tclose=false;
-        tc.forEach(function(t){ var ta=splitArticle(t);
-          if(norm(tua.bare)===norm(ta.bare)) thit=true;
-          else if(bare(tua.bare)===bare(ta.bare)) tclose=true; });
-        vd.style.display="block";
-        if(thit){ vd.className="verdict ok"; vd.textContent="\u2713 "+fullLabel()+" \u2014 training, not recorded. Encore !"; }
-        else if(tclose){ vd.className="verdict warn"; vd.textContent="Accents \u2014 "+fullLabel()+" \u00b7 not recorded"; }
-        else { vd.className="verdict no"; vd.textContent="\u2717 "+fullLabel()+" \u00b7 not recorded"; }
-        inp.select(); return;
-      }
-      var ua=splitArticle(got);
-      var vc=vocCands(v), cands=vc.list;        // primary (+ masc/fem forms) + accepted alternates
-      var nounExact=false, nounBareEq=false, fullExact=false, artOk=!sa.hasArt, viaAlt=false;
-      cands.forEach(function(t,ci){
-        var ta=splitArticle(t);
-        if(norm(ua.bare)===norm(ta.bare)){ nounExact=true; if(ci>=vc.primary) viaAlt=true; if(!ta.hasArt || (ua.hasArt && normArt(ua.art)===normArt(ta.art))) artOk=true; }
-        if(bare(ua.bare)===bare(ta.bare)) nounBareEq=true;
-        if(norm(got)===norm(t)){ fullExact=true; if(ci>=vc.primary) viaAlt=true; }
-      });
-      var gtag = sa.gender?(" ("+sa.gender+")"):"";
-      var correct, cls, msg;
-      if(req && sa.hasArt){
-        /* REQUIRED: the article is part of the answer — wrong/missing article fails */
-        if(fullExact){ correct=true; cls="ok"; }
-        else if(nounExact && !artOk){ correct=false; cls="no"; msg="✗ Article — "+v.f+gtag; }
-        else if(nounBareEq){ correct=false; cls="no"; msg="✗ Accents — "+v.f+gtag; }
-        else { correct=false; cls="no"; msg="✗ "+v.f+gtag; }
-      } else {
-        /* OFF (or the word has no article): grade the noun only, article ignored */
-        if(nounExact){ correct=true; cls="ok"; }
-        else if(nounBareEq){ correct=false; cls="no"; msg="✗ Accents — "+v.f+gtag; }
-        else { correct=false; cls="no"; msg="✗ "+v.f+gtag; }
-      }
-      /* v1.0.0-b2: graded spelling answers feed Analyse — accent-close and article-gender detected */
-      anaRecord(correct, (!correct && nounBareEq && !nounExact), (req && sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
-      recordAnswer(state.vocabStats, state.vocab, v.f, correct);
+      var got=inp.value; if(!got.trim()||locked)return;
+      var r=vGrade(got);
+      if(vocTrain){ vPanel(r,got); inp.select(); return; }
+      anaRecord(r.correct, (!r.correct && r.v==="accent"), (sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
+      recordAnswer(state.vocabStats, state.vocab, v.f, r.correct);
       tag.textContent=vocTagText();
-      var st=state.vocab[v.f], sc=state.vocabStats[v.f];
-      if(cls==="ok"){
-        var lead = viaAlt ? ("✓ accepted · card form: "+v.f+gtag) : ("✓ "+v.f+gtag);
-        msg = st==="known" ? (lead+" — mastered") : (lead+" — "+sc.s+"/3 in a row");
-      }
-      vd.style.display="block"; vd.className="verdict "+cls; vd.textContent=msg;
+      vPanel(r,got);
       lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
     function revealSpell(){
+      if(locked) return;
       recordAnswer(state.vocabStats, state.vocab, v.f, false);
       tag.textContent=vocTagText();
-      vd.style.display="block"; vd.className="verdict warn"; vd.textContent="Answer: "+fullLabel()+" — counts as a miss";
+      vPanel({v:"skip",target:v.f,correct:false},"",true);
       inp.value=v.f; lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
-    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ checkSpell(); } });
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(locked) vocNext(); else checkSpell(); } });
     var act=el("div","vactions drill");
     var rb=el("button","btn dunno","Reveal answer"); rb.onclick=revealSpell;
     var cb=el("button","btn go","Check"); cb.onclick=checkSpell;
@@ -2019,16 +2286,44 @@ function renderVoc(){
     return;
   }
 
+  if(vocMode==="mc"){
+    /* recognize mode: multiple choice in either direction (FR → EN: pick the meaning; EN → FR: pick the French word); counts toward mastery like Recall and Spelling (Training records nothing) */
+    var mcOpts=vocChoices(v), mcDone=false, mcEn=(vocDir==="en");
+    card.appendChild(el("div","prompt","<div class='small'>"+(mcEn?"Pick the French word":"Pick the meaning")+posPill(v)+"</div><div class='big"+(mcEn?"":" fr")+"'>"+(mcEn?enHTML(v.e):esc(v.f))+"</div>"));
+    var mcBox=el("div","opts");
+    mcOpts.forEach(function(o,k){ var b=el("button","opt","<b>"+(k+1)+"</b><span"+(mcEn?" class='fr'":"")+">"+(mcEn?esc(o.f):enHTML(o.e))+"</span>"); b.type="button"; b.onclick=function(){ mcPick(k); }; mcBox.appendChild(b); });
+    card.appendChild(mcBox);
+    var mcAct=el("div","vactions"), mcNext=el("button","btn neutral","Next ›"); mcNext.style.display="none"; mcNext.onclick=vocNext; mcAct.appendChild(mcNext); card.appendChild(mcAct);
+    var mcAns=el("div"); card.appendChild(mcAns);
+    var mcMark=el("button","ghost","Je connais déjà ✓"); mcMark.style.display="none"; mcMark.style.marginTop="10px"; card.appendChild(mcMark);
+    var mcApi={done:false,pick:function(k){ mcPick(k); }}; vocMc=mcApi;
+    function mcPick(k){
+      if(mcDone) return; mcDone=true; mcApi.done=true; var ok=(mcOpts[k]===v);
+      [].forEach.call(mcBox.children,function(b,i){ b.disabled=true; if(mcOpts[i]===v) b.classList.add("right"); else if(i===k) b.classList.add("wrong"); });
+      if(!vocTrain){
+        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText();
+        saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
+      }
+      if(v.n && !genderOf(v)) mcAns.appendChild(el("div","note",esc(v.n))); revealPos(card,v);
+      if(v.y && !hasMemo(v)) mcAns.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
+      memoShow(v);
+      mcNext.style.display=""; mcNext.focus();
+      if(!vocTrain && state.vocab[v.f]!=="known"){ mcMark.style.display="";
+        mcMark.onclick=function(){ markKnown(state.vocabStats, state.vocab, v.f); mcMark.disabled=true; tag.textContent=vocTagText(); saveState(); refreshDash(); refreshVocTableIfOpen(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; }; }
+    }
+    return;
+  }
+
   /* recall mode: flip EN<->FR */
-  var promptText = vocDir==="en" ? v.e : v.f;
-  var answerText = vocDir==="en" ? v.f : v.e;
+  var promptText = vocDir==="en" ? enHTML(v.e) : v.f;
+  var answerText = vocDir==="en" ? v.f : enHTML(v.e);
   var p=el("div","prompt","<div class='small'>"+(vocDir==="en"?"English → French":"French → English")+posPill(v)+"</div><div class='big "+(vocDir==="fr"?"fr":"")+"'>"+promptText+"</div>");
   card.appendChild(p);
   if(vocShown || vocTrain){
     var ans=el("div","answer");
     ans.innerHTML="<div class='prompt'><div class='big "+(vocDir==="en"?"fr":"")+"'>"+answerText+"</div></div>";
     if(v.n && !genderOf(v)) ans.appendChild(el("div","note",esc(v.n))); revealPos(card,v);
-    if(vocTrain && v.y && !hasMemo(v)) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
+    if(v.y && !hasMemo(v)) ans.appendChild(el("div","note ety","Mémo · "+esc(v.y)));
     memoShow(v);
     ans.appendChild(pronRow(v.f));
     card.appendChild(ans);
@@ -2050,7 +2345,6 @@ function renderVoc(){
     var rb=el("button","btn reveal","Reveal"); rb.onclick=function(){ vocShown=true; renderVoc(); };
     act.appendChild(rb); card.appendChild(act);
   }
-  if(mark){ var m=el("div","note"); m.style.marginTop="10px"; m.style.background=mark==="known"?"var(--known-soft)":"var(--learn-soft)"; m.style.color=mark==="known"?"var(--known)":"var(--learn)"; m.textContent=mark==="known"?"Marked: known":"Marked: still learning"; card.appendChild(m); }
 }
 function vocPrune(){
   if(!vocHideKnown && !vocNewOnly) return;
@@ -2068,24 +2362,23 @@ function vocPrev(){ if(!vocOrder.length)return; vocIdx=(vocIdx-1+vocOrder.length
 
 document.getElementById("vocModeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocMode=b.dataset.mode;document.getElementById("vocDirSeg").style.opacity=vocMode==="spell"?".4":"1";vocShown=false;renderVoc();});
 /* v1.0.0: vocArtSeg listener removed with the toggle */
-document.getElementById("vocScopeSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocScope=b.dataset.scope;rebuildVocTopics();vocBuild();renderVoc();refreshVocTableIfOpen();});
 document.getElementById("chapterFilterVoc").addEventListener("change",function(){
   vocChapterSel=this.value;
-  document.getElementById("vocScopeSeg").style.opacity=vocChapterSel==="any"?"1":".4";
   rebuildVocTopics(); vocBuild(); renderVoc(); refreshVocTableIfOpen();
 });
+document.getElementById("vocDirSeg").style.opacity=".4";   /* the EN/FR direction applies to Recognize and Recall; Spelling is always EN → FR */
 document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
-document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
+document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"var(--on-solid)":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
-  vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";
+  vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"var(--on-solid)":"";
   vocBuild(); renderVoc();
 };
 document.getElementById("rustyBtnVoc").onclick=function(){
-  vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"#fff":"";
+  vocRusty=!vocRusty; this.style.background=vocRusty?"var(--learn)":""; this.style.color=vocRusty?"var(--on-solid)":"";
   vocBuild(); renderVoc();
 };
-document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"#fff":"";vocBuild();renderVoc();});
+document.getElementById("newOnlyBtnVoc").addEventListener("click",function(){vocNewOnly=!vocNewOnly;this.style.background=vocNewOnly?"var(--accent)":"";this.style.color=vocNewOnly?"var(--on-solid)":"";vocBuild();renderVoc();});
 document.getElementById("resetVocab").onclick=function(){
   if(confirm("Clear all vocabulary marks?")){ state.vocab={}; state.vocabStats={}; saveState(); vocBuild(); renderVoc(); refreshDash(); refreshVocTableIfOpen(); }
 };
@@ -2744,6 +3037,910 @@ var DRILLS=[
  ]}
 ];
 
+/* ===== grammar content pass hook ===== one entry per drill id: {ins, rt, rule:[…], x:[[first accepted answer, why],…] in bank order, ch:{item index:[options, correct first]}, nohint:"all"|[idx], strip:true, S:{idx:[sentence,cue]}} */
+/* ===== Unité 2 grammar content pass, part A (12 drills; voc6-voc9 keep their original notes) =====
+   Per drill: ins · rt + rule · x: [first accepted answer, why line] per item · ch: {item index: options, correct first}
+   · nohint: indices whose hint named the answer / the rule · S: {item index: [sentence, cue]} where a trailing parenthetical labelled the answer. */
+var GPILOT2A={
+ pc1:{
+  ins:"Write the full verb form each subject needs: the auxiliary and the right participle.",
+  rt:"Le passé composé avec avoir",
+  rule:[
+   "<b>avoir</b> (présent) + past participle: <b>ai · as · a · avons · avez · ont</b> + participle.",
+   "Regular participles: <b>-er → -é · -ir → -i · -re → -u</b> (<em>ranger → rangé, choisir → choisi, vendre → vendu</em>).",
+   "Many common verbs have an irregular participle to memorize: <b>fait, mis, pris, vu, lu, eu, pu, voulu</b>.",
+   "With avoir the participle does not agree with the subject, and even <b>être</b> uses avoir: <em>elles ont été</em>."
+  ],
+  nohint:"all",
+  x:[
+   ["ai nettoyé","j' → <b>ai</b>; nettoyer → -er → <b>nettoyé</b>."],
+   ["as décoré","tu → <b>as</b>; décorer → -er → <b>décoré</b>."],
+   ["a peint","il → <b>a</b>; peindre has an irregular participle: <b>peint</b>."],
+   ["avons passé","<em>de bons moments</em> is an object, so passer takes avoir: nous → <b>avons passé</b>."],
+   ["avez oublié","vous → <b>avez</b>; oublier → -er → <b>oublié</b>."],
+   ["ont emménagé","emménager takes avoir: ils → <b>ont emménagé</b>."],
+   ["ai loué","j' → <b>ai</b>; louer → -er → <b>loué</b>."],
+   ["as fini","tu → <b>as</b>; finir → -ir → <b>fini</b>."],
+   ["a décidé","elle → <b>a</b>; décider → <b>décidé</b> (<em>elle a décidé de</em> + infinitive)."],
+   ["avons attendu","nous → <b>avons</b>; attendre → -re → <b>attendu</b>."],
+   ["avez répondu","vous → <b>avez</b>; répondre → -re → <b>répondu</b>."],
+   ["ont monté","<em>la commode</em> is a direct object, so monter takes avoir: <b>ont monté</b>."],
+   ["ai fait","j' → <b>ai</b>; faire → irregular <b>fait</b>."],
+   ["as mis","tu → <b>as</b>; mettre → irregular <b>mis</b>."],
+   ["a pris","il → <b>a</b>; prendre → irregular <b>pris</b>."],
+   ["avons vu","nous → <b>avons</b>; voir → <b>vu</b>."],
+   ["avez eu","vous → <b>avez</b>; avoir itself uses avoir, participle <b>eu</b>."],
+   ["ont été","être takes avoir in the passé composé, participle <b>été</b>: elles → <b>ont été</b>."],
+   ["ai voulu","j' → <b>ai</b>; vouloir → <b>voulu</b>."],
+   ["as pu","tu → <b>as</b>; pouvoir → <b>pu</b>."],
+   ["a lu","il → <b>a</b>; lire → <b>lu</b>."],
+   ["avons compris","nous → <b>avons</b>; comprendre follows prendre → <b>compris</b>."],
+   ["avez accroché","vous → <b>avez</b>; accrocher → -er → <b>accroché</b>."],
+   ["a neigé","il (impersonal) → <b>a</b>; neiger → -er → <b>neigé</b>."]
+  ],
+  ch:{2:["a peint","a peindu","a peinté","est peint"],7:["as fini","as finu","as finit","es fini"],9:["avons attendu","avons attendé","avons attendi","sommes attendu"],11:["ont monté","sont montés","ont montés","sont monté"],13:["as mis","as mit","as metté","es mis"],16:["avez eu","avez avu","avez été","êtes eu"],17:["ont été","ont étés","ont eu","sont été"],19:["as pu","as pouvu","as puvé","es pu"],23:["a neigé","a neigi","a neiger","est neigé"]}
+ },
+ pc2:{
+  ins:"Work out where the negation or the question marker sits around the auxiliary, then write the missing words.",
+  rt:"Le passé composé : négation et questions",
+  rule:[
+   "The negation wraps the <b>auxiliary</b>: <b>ne + avoir + pas + participle</b> (<em>je n'ai pas fini</em>). <b>jamais</b> and <b>rien</b> take the place of <b>pas</b>.",
+   "After a negation, <b>un / une / des</b> become <b>de</b>: <em>je n'ai pas acheté de lampe</em>.",
+   "Question with <b>est-ce que</b>: the statement keeps its order (<em>Est-ce que tu as fini ?</em>).",
+   "Inversion: the <b>auxiliary</b> goes before the subject and the participle stays after it (<em>As-tu fini ? Avez-vous réussi ?</em>).",
+   "A question word comes first in either pattern: <em>Où avez-vous mangé ? Qu'est-ce que tu as fait ?</em>"
+  ],
+  nohint:"all",
+  S:{6:["Tu as visité l'appartement. → « ___ tu as visité l'appartement ? »",""],7:["___-vous visité la maison ?","(visiter)"],8:["___-tu fini tes devoirs ?","(finir)"],9:["___-vous entendu le bruit ?","(entendre)"],17:["Où ___-vous acheté cette étagère ?","(acheter)"]},
+  x:[
+   ["n'ai pas fait","The negation wraps the auxiliary: je <b>n'ai pas</b> + <em>fait</em> (faire → fait)."],
+   ["n'as pas rangé","tu → <b>n'as pas</b> wrapped around the auxiliary, then <em>rangé</em>."],
+   ["n'a pas nettoyé","il → <b>n'a pas</b> around the auxiliary, then <em>nettoyé</em>."],
+   ["n'avons pas loué","nous → <b>n'avons pas</b> around the auxiliary, then <em>loué</em>."],
+   ["n'avez pas fermé","vous → <b>n'avez pas</b> around the auxiliary, then <em>fermé</em>."],
+   ["n'ont pas payé","ils → <b>n'ont pas</b> around the auxiliary, then <em>payé</em>."],
+   ["est-ce que","A yes/no question: <b>est-ce que</b> + the unchanged statement."],
+   ["avez","Inversion moves the auxiliary; visiter takes avoir, so <b>avez</b>-vous visité."],
+   ["as","The auxiliary, not the participle, goes before the subject: <b>as</b>-tu fini."],
+   ["avez","entendre takes avoir, so <b>avez</b>-vous entendu."],
+   ["est-ce que","<b>Est-ce que</b> turns the statement into a question without changing the word order."],
+   ["n'a jamais","<b>jamais</b> takes the place of <em>pas</em>, still wrapped around the auxiliary: il <b>n'a jamais</b> rangé."],
+   ["n'avons pas","ne … pas wraps the auxiliary: nous <b>n'avons pas</b> visité."],
+   ["n'ai pas","ne … pas wraps the auxiliary: je <b>n'ai pas</b> entendu."],
+   ["n'avez pas","ne … pas wraps the auxiliary, and <em>un canapé</em> became <em>de canapé</em> after the negation: <b>n'avez pas</b>."],
+   ["n'ont pas","ne … pas wraps the auxiliary: elles <b>n'ont pas</b> aimé."],
+   ["as fait","After <em>qu'est-ce que</em> the order stays tu + auxiliary; faire → <b>as fait</b>."],
+   ["avez","With a question word, the auxiliary is inverted; acheter takes avoir: où <b>avez</b>-vous acheté."],
+   ["ont emménagé","After <em>est-ce qu'</em> the order stays ils + auxiliary; emménager takes avoir: <b>ont emménagé</b>."],
+   ["n'a pas lavé","Statement order with a question word; ne … pas wraps the auxiliary: elle <b>n'a pas lavé</b>."]
+  ],
+  ch:{7:["avez","êtes"],8:["as","es"],9:["avez","êtes"],16:["as fait","es fait","as faite","as faire"],17:["avez","êtes"],18:["ont emménagé","sont emménagé","ont emménager","sont emménagés"],19:["n'a pas lavé","n'est pas lavé","n'a pas lavée","n'a pas laver"]}
+ },
+ cod:{
+  ins:"Find the noun being replaced in the first sentence, then write the pronoun (or the pronoun with its verb) that stands in for it.",
+  rt:"Les pronoms objets directs (COD)",
+  rule:[
+   "<b>le</b> (m.) · <b>la</b> (f.) · <b>les</b> (pl.) replace a thing or a person already named; <b>me · te · nous · vous</b> stand for the speakers.",
+   "The pronoun goes <b>before the verb</b>: <em>Je range la chambre → Je la range.</em>",
+   "<b>le / la → l'</b> before a vowel or a mute h: <em>Je l'ouvre.</em>",
+   "The negation wraps pronoun + verb: <em>Je ne le fais pas.</em>"
+  ],
+  nohint:"all",
+  S:{6:["J'ouvre la porte au facteur. → « Je ___ quand il arrive. »","(ouvrir)"],8:["Il écoute la chanson. → « Il ___. »","(écouter)"],10:["Nous achetons le canapé. → « Nous ___. »","(acheter)"],14:["Il appelle sa femme. → « Il ___. »","(appeler)"],23:["J'accroche le tableau. → « Je ___. »","(accrocher)"]},
+  x:[
+   ["la","<em>la cuisine</em> is feminine singular → <b>la</b>, before the verb."],
+   ["le","<em>ton lit</em> is masculine singular → <b>le</b>."],
+   ["la","<em>la salle de bain</em> is feminine singular → <b>la</b>."],
+   ["les","<em>les fenêtres</em> is plural → <b>les</b>."],
+   ["la","<em>la télé</em> is feminine singular → <b>la</b>."],
+   ["les","<em>les chambres</em> is plural → <b>les</b>."],
+   ["l'ouvre","<em>la porte</em> is replaced, and la elides before the vowel of ouvre → <b>l'ouvre</b>."],
+   ["le","<em>l'aspirateur</em> is masculine; the pronoun stays before the verb, inside ne … pas → <b>le</b>."],
+   ["l'écoute","<em>la chanson</em> is replaced, and la elides before écoute → <b>l'écoute</b>."],
+   ["la","<em>la robe bleue</em> is feminine singular → <b>la</b>."],
+   ["l'achetons","<em>le canapé</em> is replaced, and le elides before the vowel of achetons → <b>l'achetons</b>."],
+   ["la","<em>la table</em> is feminine singular → <b>la</b>."],
+   ["les","<em>les serviettes</em> is plural → <b>les</b>."],
+   ["le","<em>le miroir</em> is masculine singular → <b>le</b>."],
+   ["l'appelle","<em>sa femme</em> is a person and the direct object; la elides before appelle → <b>l'appelle</b>."],
+   ["te","Marie is looking for <em>you</em> (familiar), the direct object → <b>te</b>."],
+   ["vous","The owner is waiting for <em>you</em> (formal) → <b>vous</b>."],
+   ["nous","Our friends invite <em>us</em> → <b>nous</b>."],
+   ["la","ne … pas wraps pronoun + verb; <em>la télé</em> is feminine singular → <b>la</b>."],
+   ["les","<em>les clés</em> is plural; the pronoun stays inside the negation → <b>les</b>."],
+   ["le","<em>le four</em> is masculine singular → <b>le</b>."],
+   ["la","<em>la chambre</em> is feminine singular → <b>la</b>."],
+   ["les","<em>les verres</em> is plural → <b>les</b>."],
+   ["l'accroche","<em>le tableau</em> is replaced, and le elides before accroche → <b>l'accroche</b>."]
+  ],
+  ch:{0:["la","le","les","lui"],3:["les","le","la","leur"],7:["le","la","les","lui"],9:["la","le","les","lui"],13:["le","la","les","lui"],15:["te","me","nous","vous"],16:["vous","te","nous","me"],19:["les","le","la","leur"],22:["les","le","la","lui"]}
+ },
+ dpv:{
+  ins:"Match the modal to its subject, or choose the form the verb after the modal must take.",
+  rt:"Devoir, pouvoir, vouloir et il faut",
+  rule:[
+   "<b>devoir</b>: dois · dois · doit · devons · devez · doivent.",
+   "<b>pouvoir</b>: peux · peux · peut · pouvons · pouvez · peuvent.",
+   "<b>vouloir</b>: veux · veux · veut · voulons · voulez · veulent.",
+   "The verb that follows stays in the <b>infinitive</b>: <em>je dois ranger</em>.",
+   "<b>il faut</b> + infinitive is impersonal (“one must”) and only exists in the <b>il</b> form."
+  ],
+  nohint:"all",
+  S:{18:["___ payer les charges chaque mois.","(falloir)"],20:["Il faut ___ les murs avant d'emménager.","(peindre)"],21:["Elle doit ___ sa chambre avant de sortir.","(ranger)"],22:["Nous voulons ___ dans un quartier calme.","(habiter)"],23:["Vous pouvez ___ le miroir au-dessus du lavabo.","(accrocher)"]},
+  x:[
+   ["dois","je → <b>dois</b> (devoir)."],
+   ["devez","vous → <b>devez</b> (devoir)."],
+   ["peut","il → <b>peut</b> (pouvoir)."],
+   ["pouvez","<em>-vous</em> → <b>pouvez</b> (pouvoir), a polite request."],
+   ["veut","elle → <b>veut</b> (vouloir)."],
+   ["veulent","ils → <b>veulent</b> (vouloir)."],
+   ["dois","tu → <b>dois</b> (devoir)."],
+   ["devons","nous → <b>devons</b> (devoir)."],
+   ["doivent","ils → <b>doivent</b> (devoir)."],
+   ["peux","je → <b>peux</b> (pouvoir)."],
+   ["peux","tu → <b>peux</b> (pouvoir)."],
+   ["pouvons","nous → <b>pouvons</b> (pouvoir)."],
+   ["peuvent","elles → <b>peuvent</b> (pouvoir)."],
+   ["veux","je → <b>veux</b> (vouloir)."],
+   ["veux","tu → <b>veux</b> (vouloir)."],
+   ["voulons","nous → <b>voulons</b> (vouloir)."],
+   ["voulez","vous → <b>voulez</b> (vouloir)."],
+   ["faut","falloir exists only in the il form: il <b>faut</b> + infinitive."],
+   ["il faut","An obligation with no named subject → <b>il faut</b> + infinitive."],
+   ["faut","falloir exists only in the il form: il <b>faut</b> signer."],
+   ["peindre","After <em>il faut</em>, the next verb stays in the infinitive → <b>peindre</b>."],
+   ["ranger","After <em>doit</em>, the next verb stays in the infinitive → <b>ranger</b>."],
+   ["habiter","After <em>voulons</em>, the next verb stays in the infinitive → <b>habiter</b>."],
+   ["accrocher","After <em>pouvez</em>, the next verb stays in the infinitive → <b>accrocher</b>."]
+  ],
+  ch:{2:["peut","peux","peuve","pouvent"],5:["veulent","veuillent","voulent","veut"],7:["devons","doivons","dévons","devez"],8:["doivent","devent","doient","doit"],11:["pouvons","peuvons","pouvont","pouvez"],12:["peuvent","peuvont","pouvent","peut"],19:["faut","fait","faille","falle"],20:["peindre","peint","peignez","peignent"],22:["habiter","habitons","habité","habite"]}
+ },
+ adj2:{
+  ins:"Write the feminine form the new noun needs, and watch how the end of the word changes.",
+  rt:"Le féminin des adjectifs (suite)",
+  rule:[
+   "Default: masculine + <b>-e</b> (<em>vert → verte</em>). An adjective that already ends in <b>-e</b> does not change (<em>rouge, simple</em>).",
+   "<b>-er → -ère</b> (<em>étranger → étrangère</em>) · <b>-f → -ve</b> (<em>vif → vive</em>) · <b>-eux → -euse</b> (<em>heureux → heureuse</em>).",
+   "Doubling: <b>-el → -elle · -en → -enne · -on → -onne · -et → -ette</b> (<em>naturel → naturelle</em>); a few -et take <b>-ète</b> (<em>complet → complète</em>).",
+   "Irregulars are learned one by one: <em>sec → sèche · public → publique · doux → douce</em>."
+  ],
+  nohint:"all",
+  x:[
+   ["froide","froid + <b>-e</b> → <b>froide</b>."],
+   ["jolie","joli + <b>-e</b> → <b>jolie</b>."],
+   ["laide","laid + <b>-e</b> → <b>laide</b>."],
+   ["propre","propre already ends in -e, so it does not change: <b>propre</b>."],
+   ["sale","sale already ends in -e, so it does not change: <b>sale</b>."],
+   ["neuve","neuf → -f → -ve → <b>neuve</b>."],
+   ["active","actif → -f → -ve → <b>active</b>."],
+   ["chère","cher → -er → <b>-ère</b> (grave accent): <b>chère</b>."],
+   ["dernière","dernier → -er → <b>-ère</b>: <b>dernière</b>."],
+   ["légère","léger → -er → <b>-ère</b>; the acute accent becomes grave: <b>légère</b>."],
+   ["première","premier → -er → <b>-ère</b>: <b>première</b>."],
+   ["ancienne","ancien → -en doubles the n: <b>ancienne</b>."],
+   ["bonne","bon → -on doubles the n: <b>bonne</b>."],
+   ["violette","violet → -et doubles the t: <b>violette</b>."],
+   ["grosse","gros has an irregular feminine: <b>grosse</b>."],
+   ["traditionnelle","traditionnel → -el doubles the l: <b>traditionnelle</b>."],
+   ["chaleureuse","chaleureux → -eux → <b>-euse</b>: <b>chaleureuse</b>."],
+   ["lumineuse","lumineux → -eux → <b>-euse</b>: <b>lumineuse</b>."],
+   ["spacieuse","spacieux → -eux → <b>-euse</b>: <b>spacieuse</b>."],
+   ["blanche","blanc has an irregular feminine: <b>blanche</b>."],
+   ["longue","long has an irregular feminine: <b>longue</b> (the u keeps the g hard)."],
+   ["fraîche","frais has an irregular feminine, with a circumflex: <b>fraîche</b>."],
+   ["douillette","douillet → -et doubles the t: <b>douillette</b>."],
+   ["inquiète","inquiet is an exception: -et → <b>-ète</b>, with no doubling: <b>inquiète</b>."]
+  ],
+  ch:{3:["propre","proprée","propère","propres"],5:["neuve","neuf","neufe","neuvee"],7:["chère","chérre","chere","chèrre"],11:["ancienne","ancienn","ancienée","anciene"],13:["violette","violete","violète","violetté"],16:["chaleureuse","chaleureuze","chaleureue","chaleureve"],19:["blanche","blance","blanque","blanchée"],21:["fraîche","frêche","fraîsche","frasche"],23:["inquiète","inquiette","inquièt","inquiéte"]}
+ },
+ bangs:{
+  ins:"For each noun, decide whether the adjective goes before or after it, then write the pair with the right agreement.",
+  rt:"BANGS : place et accord des adjectifs",
+  rule:[
+   "<b>BANGS</b> adjectives go <b>before</b> the noun: Beauty, Age, Numbers, Goodness, Size (<em>petit, grand, joli, beau, bon, vieux, nouveau</em>).",
+   "All other adjectives follow the noun, including <b>colours</b> and <b>shapes</b> (<em>un mur jaune, une table ovale</em>).",
+   "Adjectives agree in gender and number: <em>un mauvais lit, une mauvaise odeur</em>.",
+   "Before a vowel: <b>beau → bel · nouveau → nouvel · vieux → vieil</b>; feminines <b>belle · nouvelle · vieille</b>.",
+   "A plural adjective before the noun turns <b>des</b> into <b>de</b>: <em>de mauvaises idées</em>."
+  ],
+  nohint:"all",
+  x:[
+   ["petite maison","<b>petit</b> is a Size adjective → before the noun, feminine: <b>petite maison</b>."],
+   ["grand jardin","<b>grand</b> is a Size adjective → before the noun: <b>grand jardin</b>."],
+   ["jolie chambre","<b>joli</b> is a Beauty adjective → before the noun, feminine: <b>jolie chambre</b>."],
+   ["beau salon","<b>beau</b> is Beauty → before the noun; <em>salon</em> starts with a consonant, so <b>beau</b>."],
+   ["bon prix","<b>bon</b> is a Goodness adjective → before the noun: <b>bon prix</b>."],
+   ["vieille ferme","<b>vieux</b> is Age → before the noun, feminine: <b>vieille ferme</b>."],
+   ["nouvel appartement","<b>nouveau</b> is Age → before the noun; <em>appartement</em> starts with a vowel → <b>nouvel</b>."],
+   ["mur blanc","A colour follows the noun: <b>mur blanc</b>."],
+   ["canapé bleu","A colour follows the noun: <b>canapé bleu</b>."],
+   ["cuisine spacieuse","<b>spacieux</b> is not a BANGS adjective, so it follows the noun, in the feminine: <b>cuisine spacieuse</b>."],
+   ["table ronde","A shape follows the noun, in the feminine: <b>table ronde</b>."],
+   ["salle de bain rénovée","<b>rénové</b> is not BANGS, so it follows the noun and agrees with <em>salle</em>: <b>rénovée</b>."],
+   ["grandes fenêtres","<b>grand</b> is Size → before the noun, feminine plural: <b>grandes fenêtres</b> (des becomes de)."],
+   ["petits coussins","<b>petit</b> is Size → before the noun, masculine plural: <b>petits coussins</b> (des becomes de)."],
+   ["belle étagère","<b>beau</b> is Beauty → before the noun; the feminine is <b>belle</b>, whatever the next letter."],
+   ["meubles modernes","<b>moderne</b> is not BANGS → after the noun, plural: <b>meubles modernes</b>."],
+   ["fauteuil rouge","A colour follows the noun: <b>fauteuil rouge</b>."],
+   ["bonne idée","<b>bon</b> is Goodness → before the noun, feminine: <b>bonne idée</b>."],
+   ["tapis rectangulaire","A shape follows the noun: <b>tapis rectangulaire</b>."],
+   ["grande armoire","<b>grand</b> is Size → before the noun, feminine: <b>grande armoire</b>."],
+   ["jolis rideaux","<b>joli</b> is Beauty → before the noun, masculine plural: <b>jolis rideaux</b> (des becomes de)."],
+   ["maison ancienne","In the sense of “old”, <b>ancien</b> follows the noun and agrees: <b>maison ancienne</b>."],
+   ["miroir carré","A shape follows the noun: <b>miroir carré</b>."],
+   ["entrée accueillante","<b>accueillant</b> is not BANGS → after the noun, feminine: <b>entrée accueillante</b>."]
+  ],
+  ch:{5:["vieille ferme","vieux ferme","vieil ferme","vielle ferme"],6:["nouvel appartement","nouveau appartement","nouvelle appartement","nouveaux appartement"],7:["mur blanc","blanc mur","mur blanche","blanche mur"],9:["cuisine spacieuse","spacieuse cuisine","cuisine spacieux","spacieux cuisine"],10:["table ronde","ronde table","table rond","rond table"],14:["belle étagère","bel étagère","beau étagère","belle étagères"],16:["fauteuil rouge","rouge fauteuil","fauteuil rouges","rouges fauteuil"],17:["bonne idée","bon idée","bonne idées","bonnes idée"],23:["entrée accueillante","accueillante entrée","entrée accueillant","accueillant entrée"]}
+ },
+ ppart:{
+  ins:"Write the past participle of each infinitive, with its exact spelling.",
+  rt:"Le participe passé",
+  rule:[
+   "Regular verbs: <b>-er → -é · -ir → -i · -re → -u</b> (<em>ranger → rangé, choisir → choisi, vendre → vendu</em>).",
+   "Many other verbs are irregular and memorized (<em>ouvrir → ouvert, écrire → écrit, boire → bu</em>).",
+   "Verbs built on the same base share the participle: <em>mettre → mis, permettre → permis · prendre → pris, surprendre → surpris</em>.",
+   "<b>-uire</b> verbs end in <b>-uit</b> (<em>produire → produit</em>). Accents and cedillas are part of the spelling."
+  ],
+  nohint:"all",
+  x:[
+   ["peint","peindre is irregular: the participle ends in <b>-int</b>, like <em>éteint</em> → <b>peint</b>."],
+   ["mis","mettre → irregular <b>mis</b>."],
+   ["pris","prendre → irregular <b>pris</b>."],
+   ["compris","comprendre is built on prendre → <b>compris</b>."],
+   ["appris","apprendre is built on prendre → <b>appris</b>."],
+   ["fait","faire → irregular <b>fait</b>."],
+   ["eu","avoir → irregular <b>eu</b>, pronounced like u."],
+   ["été","être → <b>été</b>, with two acute accents."],
+   ["voulu","vouloir → <b>voulu</b>."],
+   ["pu","pouvoir → <b>pu</b>, with no circumflex."],
+   ["dû","devoir → <b>dû</b>; the circumflex sets it apart from <em>du</em>."],
+   ["vu","voir → <b>vu</b>."],
+   ["lu","lire → <b>lu</b>."],
+   ["reçu","recevoir → <b>reçu</b>; the cedilla keeps the soft s before u."],
+   ["suivi","suivre → <b>suivi</b>, even though it ends in -re."],
+   ["fini","finir is regular: -ir → <b>fini</b>."],
+   ["attendu","attendre is regular: -re → <b>attendu</b>."],
+   ["répondu","répondre is regular: -re → <b>répondu</b>."],
+   ["construit","construire is an -uire verb → <b>construit</b>."],
+   ["détruit","détruire is an -uire verb → <b>détruit</b>."],
+   ["nettoyé","nettoyer is regular: -er → <b>nettoyé</b>."],
+   ["emménagé","emménager is regular: -er → <b>emménagé</b>."],
+   ["loué","louer is regular: -er → <b>loué</b>."],
+   ["satisfait","satisfaire is built on faire → <b>satisfait</b>."]
+  ],
+  ch:{0:["peint","peindu","peigni","peinté"],1:["mis","mit","mettu","metté"],2:["pris","prit","prendu","prené"],7:["été","eté","étu","êté"],10:["dû","du","devu","dut"],13:["reçu","recu","recevu","reçeu"],14:["suivi","suivu","suivit","suivé"],18:["construit","construi","construisu","construis"],23:["satisfait","satisfé","satisfaisu","satisfaite"]}
+ },
+ preps6:{
+  ins:"Translate the position into a French preposition, and decide whether it needs a de.",
+  rt:"Les prépositions de lieu",
+  rule:[
+   "Compound prepositions end in <b>de</b>: <b>à côté de · en face de · près de · au-dessus de · en dessous de · à droite de · à gauche de</b>.",
+   "Simple ones take nothing after them: <b>sur · sous · dans · devant · derrière · entre · contre</b>.",
+   "<b>de + le → du</b> and <b>de + les → des</b> in a sentence (<em>à côté du lit, près des fenêtres</em>).",
+   "In this drill, copy the preposition as it is, with its <b>de</b> where it has one."
+  ],
+  nohint:"all",
+  x:[
+   ["sous","under → <b>sous</b>, a simple preposition with no de."],
+   ["sur","on → <b>sur</b>, a simple preposition with no de."],
+   ["à côté de","next to → <b>à côté de</b>, a compound preposition ending in de."],
+   ["en face de","across from → <b>en face de</b>, a compound preposition ending in de."],
+   ["entre","between → <b>entre</b>, a simple preposition: <em>entre la lampe et l'étagère</em>."],
+   ["derrière","behind → <b>derrière</b>, a simple preposition with no de."],
+   ["devant","in front of → <b>devant</b>, a simple preposition with no de."],
+   ["près de","near → <b>près de</b>, a compound preposition ending in de."],
+   ["contre","against → <b>contre</b>, a simple preposition with no de."],
+   ["au fond de","at the back of → <b>au fond de</b>, a compound preposition ending in de."],
+   ["de chaque côté de","on each side of → <b>de chaque côté de</b>, a compound preposition ending in de."],
+   ["au coin de","in the corner of → <b>au coin de</b>, a compound preposition ending in de."],
+   ["en dessous de","underneath → <b>en dessous de</b>, compound (compare the simple <em>sous</em>)."],
+   ["au-dessus de","above → <b>au-dessus de</b>, a compound preposition ending in de."],
+   ["à droite de","to the right of → <b>à droite de</b>, a compound preposition ending in de."],
+   ["à gauche de","to the left of → <b>à gauche de</b>, a compound preposition ending in de."],
+   ["sous","under → <b>sous</b>, a simple preposition with no de."],
+   ["sur","on → <b>sur</b>, a simple preposition with no de."],
+   ["à côté de","next to → <b>à côté de</b>, a compound preposition ending in de."],
+   ["derrière","behind → <b>derrière</b>, a simple preposition with no de."]
+  ],
+  ch:{2:["à côté de","à côté"],3:["en face de","en face"],5:["derrière","derrière de"],7:["près de","près"],9:["au fond de","au fond"],12:["en dessous de","en dessous"],14:["à droite de","à droite"],17:["sur","sur de"]}
+ },
+ pce:{
+  ins:"Write the auxiliary and the participle, and make the participle agree with the subject shown.",
+  rt:"Le passé composé avec être",
+  rule:[
+   "<b>être</b> (présent) + participle: <b>suis · es · est · sommes · êtes · sont</b>.",
+   "The participle <b>agrees with the subject</b>: <b>-e</b> for feminine, <b>-s</b> for plural (<em>elle est entrée, elles sont entrées</em>).",
+   "Verbs of movement or change of state take être: <b>aller, venir, arriver, partir, entrer, sortir, monter, descendre, rester, tomber, naître, mourir, devenir, passer, rentrer, revenir</b>.",
+   "The negation wraps the auxiliary: <em>elle n'est pas arrivée</em>."
+  ],
+  nohint:[2,11,17,18],
+  x:[
+   ["est née","naître takes être; <em>ma sœur</em> is feminine → <b>est née</b>."],
+   ["sont revenus","revenir takes être; <em>les oiseaux</em> is masculine plural → <b>sont revenus</b>."],
+   ["sont montées","monter with no object takes être; <em>les filles</em> is feminine plural → <b>sont montées</b>."],
+   ["est venue","venir takes être; elle → <b>est venue</b>."],
+   ["est rentrée","rentrer takes être; <em>Madame Daumier</em> is feminine → <b>est rentrée</b>."],
+   ["sommes passés","passer (to drop by) takes être; nous (m.) → <b>sommes passés</b>."],
+   ["êtes venus","venir takes être; vous (m. pl.) → <b>êtes venus</b>."],
+   ["est tombée","tomber takes être; <em>Marie</em> is feminine → <b>est tombée</b>."],
+   ["suis sorti","sortir takes être; je (m.) → <b>suis sorti</b>, with no ending."],
+   ["es arrivée","arriver takes être; tu (f.) → <b>es arrivée</b>."],
+   ["sont allés","aller takes être; ils → <b>sont allés</b>."],
+   ["est pas tombée","The negation wraps the auxiliary (n'<b>est pas</b>), and the participle agrees with elle → <b>tombée</b>."],
+   ["est pas allé","The negation wraps the auxiliary (n'<b>est pas</b>); <em>Paul</em> is masculine singular → <b>allé</b>."],
+   ["sommes pas allés","The negation wraps the auxiliary (ne <b>sommes pas</b>); nous (m.) → <b>allés</b>."],
+   ["sont passées","passer (to drop by) takes être; elles → feminine plural: <b>sont passées</b>."],
+   ["est né","naître takes être; il → <b>est né</b>."],
+   ["êtes restées","rester takes être; vous (f. pl.) → <b>êtes restées</b>."],
+   ["est mort","mourir takes être and has an irregular participle: <b>est mort</b>."],
+   ["est devenue","devenir takes être; elle → <b>est devenue</b>."],
+   ["es descendu","descendre with no object takes être; tu (m.) → <b>es descendu</b>."]
+  ],
+  ch:{1:["sont revenus","sont revenu","ont revenus","sont revenues"],2:["sont montées","sont monté","sont montés","ont monté"],6:["êtes venus","êtes venu","avez venu","êtes venues"],8:["suis sorti","suis sortie","ai sorti","suis sortis"],9:["es arrivée","es arrivé","as arrivé","es arrivées"],10:["sont allés","sont allé","ont allé","sont allées"],16:["êtes restées","êtes restés","avez resté","êtes restée"],18:["est devenue","est devenu","a devenu","est devenus"]}
+ },
+ aux:{
+  ins:"Decide from the sentence which auxiliary the verb takes here, then write the auxiliary and the participle, with any agreement it needs.",
+  rt:"Être ou avoir : descendre, entrer, monter, passer, rentrer, retourner, sortir",
+  rule:[
+   "With no object (movement), these verbs take <b>être</b>, and the participle agrees with the subject: <em>Il est rentré tard. Elles sont rentrées.</em>",
+   "With a <b>direct object</b>, the same verbs take <b>avoir</b>: <em>Il a rentré les chaises.</em>",
+   "With avoir the participle does not agree with the subject: <em>elle a rentré les chaises</em>.",
+   "The meaning changes with the auxiliary: <em>descendre</em> = go down or bring down, <em>sortir</em> = go out or take out."
+  ],
+  nohint:[1,17],
+  S:{17:["Nous ne ___ beaucoup de temps là-bas.","(ne pas passer)"]},
+  x:[
+   ["suis descendu","descendre with no object (go down) takes être; je (m.) → <b>suis descendu</b>."],
+   ["ai descendu","<em>les escaliers</em> is a direct object → avoir: <b>ai descendu</b>."],
+   ["est entré","entrer with no object (go in) takes être; il → <b>est entré</b>."],
+   ["a entré","<em>le code</em> is a direct object (enter data) → avoir: <b>a entré</b>."],
+   ["sommes montés","monter with no object (go up) takes être; nous (m.) → <b>sommes montés</b>."],
+   ["avons monté","<em>la rue Franklin</em> is a direct object → avoir: <b>avons monté</b>."],
+   ["es passé","passer with no object (go by) takes être; tu (m.) → <b>es passé</b>."],
+   ["as passé","<em>un bon week-end</em> is a direct object → avoir: <b>as passé</b>."],
+   ["êtes rentrées","rentrer with no object takes être; vous (f. pl.) → <b>êtes rentrées</b>."],
+   ["avez rentré","<em>le chien</em> is a direct object (bring in) → avoir: <b>avez rentré</b>."],
+   ["est retourné","retourner with no object (go back) takes être; on → <b>est retourné</b>."],
+   ["a retourné","<em>le livre</em> is a direct object (give back) → avoir: <b>a retourné</b>."],
+   ["suis sorti","sortir with no object (go out) takes être; je (m.) → <b>suis sorti</b>."],
+   ["ai sorti","<em>la poubelle</em> is a direct object → avoir: <b>ai sorti</b>."],
+   ["ai sorti","<em>la liste de courses</em> is a direct object (take out) → avoir: <b>ai sorti</b>."],
+   ["est descendue","descendre with no object takes être; <em>ma sœur</em> is feminine → <b>est descendue</b>."],
+   ["avons sorti","<em>les légumes</em> is a direct object → avoir: <b>avons sorti</b>."],
+   ["avons pas passé","<em>beaucoup de temps</em> is a direct object → avoir, inside ne … pas: <b>avons pas passé</b>."]
+  ],
+  ch:{0:["suis descendu","ai descendu","suis descendue","ai descendue"],2:["est entré","a entré","est entrée","a entrée"],5:["avons monté","sommes montés","avons montés","sommes monté"],8:["êtes rentrées","avez rentré","êtes rentrés","avez rentrées"],9:["avez rentré","êtes rentrés","êtes rentrées","avez rentrés"],11:["a retourné","est retourné","a retournée","est retournée"],15:["est descendue","a descendu","est descendu","a descendue"]}
+ },
+ vpr:{
+  ins:"Write the pronoun, the auxiliary and the participle the sentence needs, and check whether the participle agrees with the subject.",
+  rt:"Le passé composé des verbes pronominaux",
+  rule:[
+   "Pronominal verbs take <b>être</b>: pronoun + être + participle (<em>elle s'est levée, ils se sont levés</em>).",
+   "Pronouns: <b>me / m' · te / t' · se / s' · nous · vous · se / s'</b>.",
+   "The participle <b>agrees with the subject</b> when the reflexive pronoun is the direct object.",
+   "<b>No agreement</b> when a direct object follows the verb: <em>elle s'est cassé la jambe</em> (the pronoun is then indirect).",
+   "The negation wraps pronoun + auxiliary: <em>je ne me suis pas levé</em>."
+  ],
+  nohint:[1,11,14],
+  S:{12:["Je ne ___ pas réveillé.","(se réveiller)"],15:["Elles ne ___ pas lavé les mains.","(se laver)"]},
+  x:[
+   ["s'est réveillée","se réveiller takes être; <em>Nadia</em> is feminine and no object follows → <b>s'est réveillée</b>."],
+   ["s'est brossé","<em>les dents</em> is the direct object, so the pronoun is indirect: no agreement → <b>s'est brossé</b>."],
+   ["s'est lavé","<em>le visage</em> is the direct object, so the pronoun is indirect: no agreement → <b>s'est lavé</b>."],
+   ["s'est maquillée","No object follows, so the participle agrees with elle → <b>s'est maquillée</b>."],
+   ["s'est habillée","No object follows, so the participle agrees with elle → <b>s'est habillée</b>."],
+   ["me suis couché","je (m.) → <b>me suis couché</b>, with no ending."],
+   ["vous êtes douchés","vous (m. pl.) → <b>vous êtes douchés</b>."],
+   ["nous sommes réveillés","nous (m.) → <b>nous sommes réveillés</b>."],
+   ["se sont douchés","ils → <b>se sont douchés</b>."],
+   ["se sont promenées","elles → feminine plural: <b>se sont promenées</b>."],
+   ["s'est précipitée","No object follows, so the participle agrees with elle → <b>s'est précipitée</b>."],
+   ["s'est assise","s'asseoir has the participle <em>assis</em>; with elle → <b>s'est assise</b>."],
+   ["me suis","je → <b>me suis</b>, inside ne … pas."],
+   ["t'es rasé","tu (m.) → <b>t'es rasé</b>; te elides to t' before es."],
+   ["se sont endormis","s'endormir has the participle <em>endormi</em>; plural → <b>se sont endormis</b>."],
+   ["se sont","<em>les mains</em> follows the verb; the blank is only pronoun + auxiliary: elles → <b>se sont</b>."],
+   ["nous sommes retrouvées","nous (f.) → <b>nous sommes retrouvées</b>."],
+   ["vous êtes préparées","vous (f. pl.) → <b>vous êtes préparées</b>."]
+  ],
+  ch:{0:["s'est réveillée","s'est réveillé","s'est réveillés","est réveillée"],1:["s'est brossé","s'est brossée","s'est brossés","s'est brossées"],2:["s'est lavé","s'est lavée","s'a lavé","s'est lavés"],6:["vous êtes douchés","vous êtes douché","vous avez douchés","vous êtes douchées"],9:["se sont promenées","se sont promenés","se sont promenée","s'est promenées"],11:["s'est assise","s'est assis","s'est assisée","s'est asseyée"],12:["me suis","m'ai"]}
+ },
+ part:{
+  ins:"Read each noun and its context (gender, first letter, quantity, negation), then write what belongs before it.",
+  rt:"Les partitifs et les quantités",
+  rule:[
+   "<b>du</b> (m.) · <b>de la</b> (f.) · <b>de l'</b> (vowel) · <b>des</b> (pl.) mean “some”; French never leaves them out.",
+   "A quantity word takes <b>de</b> alone: <b>beaucoup de, un peu de, trop de, assez de, peu de</b>; so do measures and containers: <b>un kilo de, une tasse de</b>.",
+   "Before a vowel, <b>de</b> becomes <b>d'</b>: <em>une boîte d'olives</em>.",
+   "After a negation, <b>du / de la / des / un / une</b> all become <b>de</b> (<b>d'</b> before a vowel): <em>elle ne boit pas de lait</em>."
+  ],
+  nohint:[12,13,18],
+  S:{10:["Achète une ___ pain à la boulangerie.","(a slice of)"],12:["J'achète une ___ oeufs.","(a dozen)"],13:["Elle met un ___ sucre dans son café.","(a small packet of)"],18:["Ma soeur ne mange pas ___ viande.",""],19:["Vous n'avez pas acheté ___ canapé.",""]},
+  x:[
+   ["du","<em>jus</em> is masculine → <b>du</b>."],
+   ["de la","<em>sauce</em> is feminine → <b>de la</b>."],
+   ["des","<em>framboises</em> is plural → <b>des</b>."],
+   ["de l'","<em>ail</em> starts with a vowel → <b>de l'</b>."],
+   ["du","<em>miel</em> is masculine → <b>du</b>."],
+   ["du","<em>café</em> is masculine → <b>du</b>."],
+   ["des / du","<em>céréales</em> is plural → <b>des</b>; <em>lait</em> is masculine → <b>du</b>."],
+   ["du / de la","<em>poulet</em> is masculine → <b>du</b>; <em>purée</em> is feminine → <b>de la</b>."],
+   ["de l'","<em>eau</em> starts with a vowel → <b>de l'</b>."],
+   ["verre de","A container word is followed by <b>de</b> alone: un <b>verre de</b> café."],
+   ["tranche de","A slice of bread: une <b>tranche de</b> pain, with <b>de</b> alone."],
+   ["kilo de","A measure is followed by <b>de</b> alone: un <b>kilo de</b> pommes."],
+   ["douzaine d'","A measure takes <b>de</b>, which elides before the vowel of oeufs: <b>douzaine d'</b>."],
+   ["sachet de","A container word is followed by <b>de</b> alone: un <b>sachet de</b> sucre."],
+   ["tablette de","A bar of chocolate: une <b>tablette de</b> chocolat, with <b>de</b> alone."],
+   ["trop de","A quantity word takes <b>de</b> alone: <b>trop de</b> sucre."],
+   ["peu de","A quantity word takes <b>de</b> alone: <b>peu de</b> légumes."],
+   ["assez de","A quantity word takes <b>de</b> alone: <b>assez de</b> pain."],
+   ["de","After <em>ne … pas</em>, the partitive becomes <b>de</b>: pas <b>de</b> viande."],
+   ["de","After <em>ne … pas</em>, un becomes <b>de</b>: pas <b>de</b> canapé."]
+  ],
+  ch:{0:["du","de la","des","de l'"],2:["des","du","de la","de l'"],3:["de l'","du","de la","des"],9:["verre de","verre du","verre des","verre"],11:["kilo de","kilo des","kilo du","kilo"],15:["trop de","trop du","trop des","trop"],18:["de","de la","du","des"],19:["de","du","un","le"]}
+ }
+};
+
+/* ===== Unité 2 grammar content pass, part B (12 grammar drills; the vocab-in-context drills keep their original notes) =====
+   Per drill: ins (one instruction line) · rt + rule (rule card, at most 5 bullets) · x: [first accepted answer (integrity check), why line] per item, in bank order
+   · ch: {item index: options, correct first} · nohint: item indices (or "all") whose hint named the answer or the rule · strip: remove the trailing parenthetical from every sentence
+   · S: {item index: [sentence, cue]} where one item needs its own wording (the cue keeps its parentheses; "" for none). */
+var GPILOT2B={
+ pen:{
+  ins:"Look at how the noun was introduced in the question, then choose the pronoun or finish the answer.",
+  rt:"Le pronom en",
+  rule:[
+   "<b>en</b> replaces <b>du / de la / de l' / des</b> + noun: <em>Vous voulez du thé ? — Oui, j'en veux.</em>",
+   "It also replaces a noun after a number or a quantity word, and that number or word stays after the verb: <em>J'en ai deux. · Je n'en bois pas beaucoup.</em>",
+   "It also replaces <b>de</b> + a place or a topic: <em>Elle en vient. · Elle n'en parle pas.</em>",
+   "Position: before the conjugated verb, before the infinitive, or before the auxiliary in the passé composé (no agreement): <em>Il va en acheter. · J'en ai mangé.</em>",
+   "A noun with <b>le / la / les</b> or a possessive is not replaced by en but by <b>le / la / les</b>: <em>Je vais le prendre.</em>"
+  ],
+  nohint:[14],
+  S:{
+   2:["Tu as trois frères ? — Non, j'___ ai deux.","(two words)"],
+   8:["Vous mangez du chocolat ? — Oui, j'en mange ___ .","(a lot)"],
+   10:["Tu as mangé combien de pommes ? — J'___ deux.","(three words)"],
+   13:["J'ai acheté deux cadeaux. → « J'___ acheté deux. »","(two words)"],
+   14:["Vous voulez le plat du jour ? — Oui, je vais ___ prendre.",""],
+   15:["Est-ce qu'elles aiment les pommes ? — Non, elles ne ___ aiment pas.",""],
+   16:["Je vais faire un gâteau. — Tu vas ___ faire toi-même ?",""]
+  },
+  x:[
+   ["en","<b>du thé</b> is introduced by <em>du</em>, so <b>en</b> replaces it before the verb."],
+   ["en","<em>d'eau</em> is replaced by <b>en</b>; <em>beaucoup</em> is a quantity and stays after the verb."],
+   ["en ai","<b>en</b> replaces <em>frères</em> and goes before <em>ai</em>; the number <em>deux</em> stays after the verb."],
+   ["en","<em>de Paris</em> (de + place) is replaced by <b>en</b>: elle en vient."],
+   ["en","<em>des légumes</em> → <b>en</b>, before the verb."],
+   ["en","<em>des pommes</em> → <b>en</b>; in the negative: il <b>n'en</b> veut pas."],
+   ["en","<b>en</b> goes before the infinitive; <em>une</em> stays after it: il va <b>en</b> acheter une."],
+   ["en","<em>de la salade</em> → <b>en</b>, before the auxiliary; the participle does not agree: j'<b>en</b> ai mangé."],
+   ["beaucoup","A quantity word stays after the verb: j'en mange <b>beaucoup</b>."],
+   ["en","<em>du pain</em> → <b>en</b>, which comes right after <em>y</em>: il y <b>en</b> a."],
+   ["en ai mangé","<b>en</b> replaces <em>de pommes</em> before the auxiliary; the number <em>deux</em> stays after the participle."],
+   ["en","<em>d'alcool</em> → <b>en</b>, between <em>ne</em> and the verb: je <b>n'en</b> bois jamais."],
+   ["deux","A number stays after the verb: j'en mange <b>deux</b>."],
+   ["en ai","<b>en</b> replaces <em>des cadeaux</em> before <em>ai</em>; <em>deux</em> stays after the participle."],
+   ["le","<em>le plat du jour</em> is a specific dish (definite article), so a direct object pronoun: <b>le</b>, not en."],
+   ["les","<em>les pommes</em> is definite (apples in general, as a liking): the direct object pronoun <b>les</b>."],
+   ["le","<em>le gâteau</em> just mentioned is a specific thing and the direct object of <em>faire</em> → <b>le</b>."],
+   ["en","<em>de son projet</em> (parler de) → <b>en</b>; <em>à son mari</em> stays out of the sentence."]
+  ],
+  ch:{0:["en","y"],3:["en","y","la","lui"],5:["en","y"],6:["en","y","le","lui"],14:["le","en","y","lui"],17:["en","y"]}
+ },
+ adv:{
+  ins:"Form the adverb of each adjective, checking how the adjective ends before you add -ment.",
+  rt:"Les adverbes en -ment",
+  rule:[
+   "Most adverbs = the <b>feminine</b> adjective + <b>-ment</b>: <em>certain → certaine → certainement</em>.",
+   "A masculine ending in a vowel just adds <b>-ment</b>: <em>absolu → absolument · joli → joliment</em>.",
+   "<b>-ant → -amment</b> and <b>-ent → -emment</b> (both sound like [amɑ̃]): <em>constant → constamment · évident → évidemment</em>. Exception: <b>lent → lentement</b>.",
+   "A mute <b>-e</b> becomes <b>-é</b>: <em>précis → précisément · énorme → énormément</em>."
+  ],
+  nohint:"all",
+  x:[
+   ["certainement","certain → feminine <em>certaine</em> + <b>-ment</b>."],
+   ["complètement","complet → feminine <em>complète</em> + <b>-ment</b>; the <b>è</b> stays."],
+   ["doucement","doux → feminine <em>douce</em> + <b>-ment</b>."],
+   ["facilement","facile already ends in <em>e</em>, so just add <b>-ment</b>."],
+   ["franchement","franc → feminine <em>franche</em> + <b>-ment</b>."],
+   ["sérieusement","sérieux → feminine <em>sérieuse</em> + <b>-ment</b>."],
+   ["lentement","lent is the exception to <em>-ent → -emment</em>: feminine <em>lente</em> + <b>-ment</b>."],
+   ["absolument","absolu ends in a vowel, so add <b>-ment</b> to the masculine."],
+   ["étonnamment","<b>-ant → -amment</b>."],
+   ["prudemment","<b>-ent → -emment</b>."],
+   ["précisément","précis → <em>précise</em>, and the mute <em>e</em> becomes <b>é</b> before <em>-ment</em>."],
+   ["constamment","<b>-ant → -amment</b>."],
+   ["couramment","<b>-ant → -amment</b>: courant → couramment."],
+   ["différemment","<b>-ent → -emment</b>."],
+   ["énormément","énorme → the mute <em>e</em> becomes <b>é</b>: énormément."],
+   ["évidemment","<b>-ent → -emment</b>."],
+   ["fréquemment","<b>-ent → -emment</b>."],
+   ["joliment","joli ends in a vowel, so add <b>-ment</b>."],
+   ["poliment","poli ends in a vowel, so add <b>-ment</b>."],
+   ["récemment","<b>-ent → -emment</b>."],
+   ["vraiment","vrai ends in a vowel, so add <b>-ment</b> to the masculine (no <em>e</em>)."],
+   ["profondément","profond → <em>profonde</em>, and the mute <em>e</em> becomes <b>é</b>: profondément."]
+  ],
+  ch:{1:["complètement","completement","complètment","compléttement"],4:["franchement","francement","franchment","francément"],8:["étonnamment","étonnantement","étonnemment","étonnament"],9:["prudemment","prudentement","prudement","prudamment"],10:["précisément","précisement","précissement","précisèment"],13:["différemment","différentement","différement","différamment"],15:["évidemment","évidentement","évidamment","évidément"],19:["récemment","récentement","récement","récamment"]}
+ },
+ imp1:{
+  ins:"Conjugate the verb in parentheses for a situation in the past, taking the stem from the verb itself and the ending from the subject.",
+  rt:"L'imparfait — formes et emplois",
+  rule:[
+   "Stem = the <b>nous</b> form of the présent minus <b>-ons</b>; endings <b>-ais · -ais · -ait · -ions · -iez · -aient</b>: <em>finir → finiss-</em>, <em>lire → lis-</em>.",
+   "Only <b>être</b> is irregular: stem <b>ét-</b> (<em>j'étais, ils étaient</em>).",
+   "<b>-cer / -ger</b> keep <b>ç / ge</b> before <em>a</em>: <em>je commençais, il mangeait</em>; nous / vous have a plain <em>c / g</em>.",
+   "Uses: description, habit, simultaneous or interrupted action: <em>Je lisais pendant qu'il dormait.</em>"
+  ],
+  nohint:"all",
+  S:{17:["Nous ___ manger quand le téléphone a sonné.","(aller)"]},
+  x:[
+   ["avait","avoir → nous avons → <b>av-</b> + <em>-ait</em>: a description of the clinic."],
+   ["était","être has the stem <b>ét-</b>: c'<b>était</b> (a description in the past)."],
+   ["faisait","faire → nous faisons → <b>fais-</b> + <em>-ait</em>."],
+   ["allais","aller → nous allons → <b>all-</b> + <em>-ais</em>."],
+   ["pouvions","pouvoir → nous pouvons → <b>pouv-</b> + <em>-ions</em>."],
+   ["commençais","commencer keeps the <b>ç</b> before <em>-ais</em> to keep the soft <em>s</em> sound."],
+   ["se réveillait","<em>on</em> takes the <em>il</em> ending, and the reflexive <b>se</b> stays before the verb."],
+   ["finissiez","finir → nous finissons → <b>finiss-</b> + <em>-iez</em>."],
+   ["avais","avoir → <b>av-</b> + <em>-ais</em>; the pronoun elides: j'<b>avais</b>."],
+   ["portiez","porter → <b>port-</b> + <em>-iez</em> for <em>vous</em>."],
+   ["étaient","être → <b>ét-</b> + <em>-aient</em> for a plural subject."],
+   ["avions","avoir → <b>av-</b> + <em>-ions</em> for <em>nous</em>."],
+   ["fumais","fumer → <b>fum-</b> + <em>-ais</em>; <em>il y a longtemps</em> sets a past habit."],
+   ["avait","<em>Enfant</em> sets the past; avoir → <b>av-</b> + <em>-ait</em>."],
+   ["étudiait","étudier → <b>étudi-</b> + <em>-ait</em>: a repeated habit."],
+   ["lisais","lire → nous lisons → <b>lis-</b> + <em>-ais</em>; the action runs alongside <em>il dormait</em>."],
+   ["pleuvait","pleuvoir → <b>pleuv-</b> + <em>-ait</em>: the weather as a description."],
+   ["allions","aller → <b>all-</b> + <em>-ions</em>: the action was in progress when the phone rang."],
+   ["courais","courir → nous courons → <b>cour-</b> + <em>-ais</em>: a habit (<em>chaque matin</em>)."],
+   ["décrivaient","décrire → nous décrivons → <b>décriv-</b> + <em>-aient</em>."]
+  ],
+  ch:{4:["pouvions","pouvaient","pouvais","pouvait"],5:["commençais","commencais","commençeais","commençait"],7:["finissiez","finisiez","finissaient","finissions"],9:["portiez","portions","portaient","portais"],11:["avions","aviez","avais","avait"],15:["lisais","lisait","lisions","lisiez"],19:["décrivaient","décrisaient","décrivait","décrivions"]}
+ },
+ dur:{
+  ins:"Read the tense of the verb to decide how the time expression connects to now, then fill the blank.",
+  rt:"Depuis, pendant, il y a, ça fait",
+  rule:[
+   "An action that began in the past and <b>still goes on</b> (verb in the présent): <b>depuis</b> + duration or date · <b>ça fait … que</b> · <b>il y a … que</b>.",
+   "<em>Je suis malade depuis une semaine. · Ça fait une semaine que je suis malade.</em>",
+   "<b>il y a</b> + duration with a past tense = <b>ago</b>: <em>Il y a une semaine, j'ai été malade.</em>",
+   "<b>pendant</b> = a completed stretch of time, usually in the past: <em>J'ai été malade pendant une semaine.</em>"
+  ],
+  strip:true,
+  x:[
+   ["depuis","The verb is in the présent and the phone call is still going on → <b>depuis</b> + duration."],
+   ["pendant","The running is finished and has a set length (passé composé) → <b>pendant</b> 4 heures."],
+   ["il y a","A past event placed back in time (<em>se sont mariés</em>) → <b>il y a</b> un an = a year ago."],
+   ["il y a","The pattern with <em>que</em> and a present verb: <b>il y a</b> or <b>ça fait</b> + duration + que."],
+   ["il y a","<em>Je suis arrivé</em> is a past event, dated from now → <b>il y a</b> un an."],
+   ["ça fait","The pattern with <em>que</em> and a present verb (<em>je cherche</em>) → <b>ça fait</b> + duration + que."],
+   ["depuis","The verb is in the présent and the habit continues → <b>depuis</b> quelques années."],
+   ["il y a","<em>J'ai commencé</em> is a past event, dated from now → <b>il y a</b> environ un an."],
+   ["pendant","<em>J'ai pris des cours</em> in the passé composé covers a set stretch of weeks → <b>pendant</b>."],
+   ["depuis","The verb is in the présent and the habit continues → <b>depuis</b> deux mois."],
+   ["que","<b>Ça fait</b> + duration + <b>que</b> + clause."],
+   ["que","<b>Il y a</b> + duration + <b>que</b> + clause, with a present verb."],
+   ["pendant","A stretch of one hour, repeated each day, with a set length → <b>pendant</b> une heure."],
+   ["depuis","A starting date and a verb in the présent → <b>depuis</b> le 1er janvier."],
+   ["ça fait","The pattern with <em>que</em> and a present verb (<em>il travaille</em>) → <b>ça fait</b> + duration + que."],
+   ["il y a","<em>J'ai commencé</em> is a past event, dated from now → <b>il y a</b> une semaine."]
+  ],
+  ch:{0:["depuis","pendant","il y a","pour"],2:["il y a","depuis","pendant","dans"],7:["Il y a","Depuis","Pendant","Dans"],9:["Depuis","Pendant","Il y a","En"],12:["pendant","depuis","il y a","en"],13:["depuis","pendant","il y a","en"]}
+ },
+ cc:{
+  ins:"Work out whether the blank introduces a cause or a consequence, and whether a noun or a whole clause follows it.",
+  rt:"La cause et la conséquence",
+  rule:[
+   "Cause + <b>noun</b>: <b>à cause de</b> for a negative effect · <b>grâce à</b> for a positive one: <em>Il est malade à cause d'un rhume. · Mon doigt a guéri grâce aux soins.</em>",
+   "Cause + <b>clause</b> (subject + verb): <b>parce que</b> (<b>parce qu'</b> before a vowel), <b>car</b>: <em>Il est resté parce qu'il était malade.</em>",
+   "Consequence + clause: <b>donc</b>, <b>alors</b>: <em>Il court tous les jours, donc il est en forme.</em>"
+  ],
+  strip:true,
+  x:[
+   ["parce qu'","A full clause follows and explains the injury → <b>parce qu'</b> (before <em>elle</em>)."],
+   ["grâce à","A noun follows (<em>une greffe</em>) and the effect is good → <b>grâce à</b>."],
+   ["alors","The second clause is the result of being tired → a consequence: <b>alors</b> or <b>donc</b>."],
+   ["à cause d'","A noun follows (<em>un rhume</em>) and the effect is bad → <b>à cause d'</b> (de elides before un)."],
+   ["grâce à","A noun follows (<em>la compresse</em>) and the effect is good → <b>grâce à</b>."],
+   ["car","A clause follows and explains the injury → <b>car</b> (or <b>parce que</b>)."],
+   ["donc","Never having met him leads to not knowing him → consequence: <b>donc</b> or <b>alors</b>."],
+   ["à cause de","A noun follows (<em>la tempête</em>) and the effect is bad (the trip was cancelled) → <b>à cause de</b>."],
+   ["grâce à","A noun follows (<em>son travail</em>) and the effect is good (she passed) → <b>grâce à</b>."],
+   ["parce qu'","A clause follows and explains why he did not come → <b>parce qu'</b> (before <em>il</em>)."],
+   ["alors","Running every day leads to being fit → consequence: <b>alors</b> or <b>donc</b>."],
+   ["à cause de","A noun follows (<em>la circulation</em>) and the effect is bad (being late) → <b>à cause de</b>."],
+   ["donc","Quitting smoking leads to better breathing → consequence: <b>donc</b> or <b>alors</b>."],
+   ["car","A clause follows and gives the reason for eating alone → <b>car</b> (or <b>parce que</b>)."],
+   ["parce que","A clause follows and explains the compress → <b>parce que</b> (or <b>car</b>)."],
+   ["donc","The storm leads to closed roads → consequence: <b>donc</b> or <b>alors</b>."]
+  ],
+  ch:{5:["car","donc","à cause de","grâce à"],7:["à cause de","parce que","donc","car"],11:["à cause de","grâce à","parce que","donc"],12:["donc","car","parce que","grâce à"],13:["car","donc","grâce à","à cause de"],15:["donc","car","parce que","à cause de"]}
+ },
+ savcon:{
+  ins:"Decide what the object calls for, a fact or skill, or someone or somewhere familiar, then write the form that fits the subject.",
+  rt:"Savoir et connaître",
+  rule:[
+   "<b>savoir</b> = know a fact or know how to do something. It takes an infinitive, <b>que</b> or a question word: <em>Je sais jouer de la guitare. · Tu sais où est la gare ?</em>",
+   "<b>connaître</b> = be familiar with a person, a place or a thing, always followed by a noun: <em>Je connais Marrakech.</em>",
+   "<b>sais · sais · sait · savons · savez · savent</b>",
+   "<b>connais · connais · connaît · connaissons · connaissez · connaissent</b> (the circumflex only in the il / elle form)."
+  ],
+  nohint:"all",
+  S:{3:["___ -vous compter jusqu'à dix ?",""]},
+  x:[
+   ["savent","<em>comment</em> + a verb is know-how → savoir; <em>ils</em> → <b>savent</b>."],
+   ["connais","<em>mon ami Aziz</em> is a person you are familiar with → connaître; <em>tu</em> → <b>connais</b>."],
+   ["connaissons","A person you have met (<em>notre enseignante</em>) → connaître; <em>nous</em> → <b>connaissons</b>."],
+   ["savez","Counting is a learned skill, followed by an infinitive → savoir; <b>savez</b>-vous."],
+   ["connaissent","US states are places you are familiar with → connaître; <em>elles</em> → <b>connaissent</b>."],
+   ["savons","Singing is a skill, followed by an infinitive → savoir; <em>nous</em> → <b>savons</b>."],
+   ["sais","<em>où se trouve la gare</em> is a fact (a question word follows) → savoir; <em>tu</em> → <b>sais</b>."],
+   ["connais","<em>la ville</em> is a place you are familiar with → connaître; <em>je</em> → <b>connais</b>."],
+   ["connaissez","<em>la femme de Gilbert</em> is a person → connaître; <em>vous</em> → <b>connaissez</b>."],
+   ["connaît","A person or place you are familiar with (<em>la</em>) → connaître; <em>ma femme</em> → <b>connaît</b>, with a circumflex."],
+   ["savent","Driving is a skill, followed by an infinitive → savoir; <em>vos parents</em> → <b>savent</b>."],
+   ["connaissent","<em>la région</em> is a place they are familiar with → connaître; <em>ils</em> → <b>connaissent</b>."],
+   ["savez","<b>que</b> + a clause is a fact → savoir; <em>vous</em> → <b>savez</b>."],
+   ["connais","<em>le directeur</em> is a person → connaître; <em>je</em> → <b>connais</b>."],
+   ["sais","<em>à quelle heure</em> asks for a fact → savoir; <em>tu</em> → <b>sais</b>."],
+   ["connaissons","<em>cette histoire</em> is something we are familiar with → connaître; <em>nous</em> → <b>connaissons</b>."],
+   ["sais","Playing an instrument is a skill, followed by an infinitive → savoir; <em>je</em> → <b>sais</b>."],
+   ["sait","Speaking languages is a skill, followed by an infinitive → savoir; <em>elle</em> → <b>sait</b>."]
+  ],
+  ch:{0:["savent","connaissent","sait","connaît"],1:["connais","sais","connaît","sait"],6:["sais","connais","sait","connaît"],7:["connais","sais","connaît","sait"],10:["savent","connaissent","sait","connaît"],12:["savez","connaissez","savons","connaissons"],16:["sais","connais","sait","connaît"]}
+ },
+ mal:{
+  ins:"Check the gender and number of the body part, then complete the expression.",
+  rt:"Avoir mal à + la partie du corps",
+  rule:[
+   "<b>avoir mal à</b> + the definite article + the body part: the article decides the form.",
+   "<b>à + le = au</b> · <b>à + les = aux</b>: <em>J'ai mal au dos. · Il a mal aux dents.</em>",
+   "<b>à la</b> before a feminine noun · <b>à l'</b> before a vowel or mute h: <em>Elle a mal à la tête. · J'ai mal à l'épaule.</em>",
+   "After a reflexive verb of injury there is no <b>à</b>: the body part takes just the article: <em>Il s'est foulé <b>la</b> cheville.</em>"
+  ],
+  strip:true,
+  nohint:[10],
+  S:{15:["Avec ce rhume, j'ai mal ___ gorge et ___ tête.","(two answers, separated by /)"]},
+  x:[
+   ["au","<em>le dos</em> is masculine singular: à + le = <b>au</b>."],
+   ["à la","<em>la tête</em> is feminine singular → <b>à la</b>."],
+   ["aux","<em>les dents</em> is plural: à + les = <b>aux</b>."],
+   ["au","<em>le ventre</em> is masculine singular: à + le = <b>au</b>."],
+   ["aux","<em>les pieds</em> is plural: à + les = <b>aux</b>."],
+   ["à la","<em>la gorge</em> is feminine singular → <b>à la</b>."],
+   ["aux","<em>les yeux</em> is plural: à + les = <b>aux</b>."],
+   ["aux","<em>les doigts</em> is plural: à + les = <b>aux</b>."],
+   ["aux","<em>les oreilles</em> is plural: à + les = <b>aux</b>."],
+   ["à la","<em>la jambe</em> is feminine singular → <b>à la</b>."],
+   ["la","With a reflexive verb of injury (<em>se fouler</em>) the body part takes only the article, no <em>à</em>: <b>la</b> cheville."],
+   ["à l'","<em>épaule</em> starts with a vowel, so the article elides → <b>à l'</b>."],
+   ["au","<em>le genou</em> is masculine singular: à + le = <b>au</b>."],
+   ["à l'","<em>estomac</em> starts with a vowel, so the article elides → <b>à l'</b>."],
+   ["aux","<em>les bras</em> is plural: à + les = <b>aux</b>."],
+   ["à la / à la","<em>la gorge</em> and <em>la tête</em> are both feminine → <b>à la</b> twice."]
+  ],
+  ch:{3:["au","à la"],5:["à la","au"],9:["à la","au"],10:["la","à la","sa","de la"],12:["au","à la"]}
+ },
+ rel:{
+  ins:"Find what the blank stands for in its own clause, a subject, an object, a place or a time, then choose.",
+  rt:"Les pronoms relatifs qui, que, où",
+  rule:[
+   "<b>qui</b> = subject of the verb that follows: <em>Le médecin qui me soigne…</em>",
+   "<b>que</b> (<b>qu'</b> before a vowel) = object, with a subject after it: <em>Le patient que j'ai vu…</em>; it can never be left out in French.",
+   "<b>où</b> = a place or a time: <em>L'hôpital où je vais… · La semaine où j'ai commencé…</em>"
+  ],
+  S:{10:["Il parle à la femme ___ il aime.",""]},
+  x:[
+   ["qui","The verb <em>m'a invité</em> follows directly, so the blank is its subject → <b>qui</b>."],
+   ["que","<em>le cadeau</em> is the object of <em>j'ai acheté</em>, and a subject (<em>j'</em>) follows → <b>que</b>."],
+   ["où","<em>la fête</em> is where we are going: a place → <b>où</b>."],
+   ["qui","<em>organise</em> follows directly, so the blank is its subject → <b>qui</b>."],
+   ["que","<em>le livre</em> is the object of <em>j'ai reçu</em>, and a subject follows → <b>que</b>."],
+   ["où","<em>le restaurant</em> is a place where we dine → <b>où</b>."],
+   ["qui","<em>m'a offert</em> follows directly, so the blank is its subject → <b>qui</b>."],
+   ["que","<em>le film</em> is the object of <em>nous regardons</em>, and a subject follows → <b>que</b>."],
+   ["où","<em>la maison</em> is the place where the party is → <b>où</b>."],
+   ["qui","<em>viennent</em> follows directly, so the blank is its subject → <b>qui</b>."],
+   ["qu'","<em>la femme</em> is the object of <em>aime</em>, with the subject <em>il</em> after it → <b>que</b>, which elides to <b>qu'</b> before a vowel."],
+   ["où","<em>l'année</em> is a time → <b>où</b>."],
+   ["où","<em>le moment</em> is a time → <b>où</b>."],
+   ["où","<em>un endroit</em> is a place → <b>où</b>."],
+   ["qui","<em>travaille</em> follows directly, so the blank is its subject → <b>qui</b>."],
+   ["que","<em>la voiture</em> is the object of <em>a achetée</em>, and a subject (<em>Simon</em>) follows → <b>que</b>."],
+   ["où","<em>la première fois</em> is a moment in time → <b>où</b>."],
+   ["que","<em>le traitement</em> is the object of <em>j'ai suivi</em>, and a subject follows → <b>que</b>."],
+   ["où","<em>la salle de gym</em> is the place where I train → <b>où</b>."],
+   ["qui","<em>améliore</em> follows directly, so the blank is its subject → <b>qui</b>."]
+  ],
+  ch:{1:["que","qui","où","dont"],2:["où","que","qui","dont"],4:["que","qui","où","dont"],9:["qui","que","où","dont"],13:["où","que","qui","dont"],15:["que","qui","où","dont"],18:["où","que","qui","dont"]}
+ },
+ coi:{
+  ins:"Find the à + person in the first sentence and decide whether it is one person or several, then fill the pronoun.",
+  rt:"Les pronoms COI — lui, leur",
+  rule:[
+   "The indirect object answers <b>à qui ?</b> and replaces <b>à</b> + a person: <b>me · te · lui · nous · vous · leur</b>.",
+   "<b>lui</b> = one person, masculine or feminine · <b>leur</b> = several people. Only for people or animals.",
+   "Verbs with <b>à</b>: <em>parler à, téléphoner à, écrire à, répondre à, offrir à, donner à, ressembler à, obéir à</em>.",
+   "Position: before the verb (<em>Je lui parle</em>), before the infinitive after <em>aller</em> (<em>Je vais leur parler</em>).",
+   "Imperative: affirmative after the verb with a hyphen (<em>Explique-leur la leçon !</em>); negative before it (<em>Ne lui fais pas de mal.</em>)."
+  ],
+  x:[
+   ["lui","ressembler <b>à</b> ta sœur: one person → <b>lui</b>."],
+   ["lui","appartenir <b>à</b> ma grand-mère: one person → <b>lui</b>."],
+   ["leur","envoyer à <em>nos correspondants</em>: several people → <b>leur</b>."],
+   ["lui","donner à <em>Marc</em>: one person → <b>lui</b>."],
+   ["lui","acheter à <em>ma mère</em>: one person → <b>lui</b>."],
+   ["lui","obéir <b>à</b> <em>leur supérieur</em>: one person → <b>lui</b>, after <em>ne</em>."],
+   ["leur","présenter à <em>les diplômés</em>: several people → <b>leur</b>."],
+   ["lui","montrer à <em>son père</em>: one person → <b>lui</b>."],
+   ["lui","téléphoner <b>à</b> <em>votre mère</em>: one person → <b>lui</b>."],
+   ["leur","écrire <b>à</b> <em>vos amis</em>: several people → <b>leur</b>, after <em>ne</em>."],
+   ["leur","répondre <b>à</b> <em>vos clients</em>: several people → <b>leur</b>."],
+   ["lui","dire bonjour <b>à</b> <em>votre voisin</em>: one person → <b>lui</b>."],
+   ["lui","Affirmative imperative: the pronoun follows the verb with a hyphen → <b>Offre-lui</b>."],
+   ["lui","Negative imperative: the pronoun stays before the verb; <b>lui</b> also works for an animal (<em>au chien</em>)."],
+   ["lui","<em>répondre à</em> + one person, affirmative imperative → <b>Réponds-lui</b>."],
+   ["leur","Negative imperative: the pronoun stays before the verb; <em>aux pompiers</em> is plural → <b>leur</b>."],
+   ["leur","With <em>aller</em> + infinitive, the pronoun goes before the infinitive: <b>leur</b> parler."],
+   ["leur","<em>à leurs parents</em> is plural → <b>leur</b>, before the conjugated verb."]
+  ],
+  ch:{0:["lui","la","leur","les"],2:["leur","lui"],5:["lui","leur"],8:["lui","la","leur","les"],10:["leur","les","lui","le"],12:["lui","la","leur","le"],15:["leur","les","lui","le"]}
+ },
+ codcoi:{
+  ins:"Check whether the person in the first sentence comes with à or without it, and whether it is one or several; then choose the pronoun.",
+  rt:"COD ou COI ?",
+  rule:[
+   "<b>COD</b> (no preposition; answers <b>qui ? / quoi ?</b>) → <b>le · la · l' · les</b>: <em>J'appelle Marc → Je l'appelle.</em>",
+   "<b>COI</b> (<b>à</b> + person; answers <b>à qui ?</b>) → <b>lui</b> (one) · <b>leur</b> (several): <em>Je parle à Marc → Je lui parle.</em>",
+   "Same slot before the verb either way, so it is the verb that decides: <em>écouter</em> but <em>répondre à</em>, <em>regarder</em> but <em>ressembler à</em>, <em>appeler</em> but <em>téléphoner à</em>."
+  ],
+  x:[
+   ["le","<em>connaître le maire</em> takes no preposition: direct object, masculine → <b>le</b>."],
+   ["le","<em>rencontrer le maire</em> takes no preposition: direct object → <b>le</b>."],
+   ["lui","<em>parler au maire</em> takes <b>à</b>: indirect object, one person → <b>lui</b>."],
+   ["lui","<em>poser des questions au maire</em>: the person comes with <b>à</b> → <b>lui</b>."],
+   ["les","<em>écouter les gens</em> takes no preposition: direct object, plural → <b>les</b>."],
+   ["leur","<em>répondre aux gens</em> takes <b>à</b>: indirect object, plural → <b>leur</b>."],
+   ["leur","<em>donner des conseils aux gens</em>: the people come with <b>à</b>, plural → <b>leur</b>."],
+   ["leur","<em>serrer la main aux gens</em>: the people come with <b>à</b>, plural → <b>leur</b>."],
+   ["les","<em>embrasser les petits enfants</em> takes no preposition: direct object, plural → <b>les</b>."],
+   ["l'","<em>aimer le maire</em> takes no preposition: direct object, and <em>le</em> elides before <em>aiment</em> → <b>l'</b>."],
+   ["l'","<em>adorer le maire</em> takes no preposition: direct object, elided before <em>adorent</em> → <b>l'</b>."],
+   ["les","<em>inviter mes amis</em> takes no preposition: direct object, plural → <b>les</b>."],
+   ["leur","<em>écrire à mes amis</em> takes <b>à</b>: indirect object, plural → <b>leur</b>."],
+   ["la","<em>regarder sa sœur</em> takes no preposition: direct object, feminine → <b>la</b>."],
+   ["lui","<em>ressembler à sa sœur</em> takes <b>à</b>: indirect object, one person → <b>lui</b>."],
+   ["l'","<em>appeler le serveur</em> takes no preposition: direct object, elided before <em>appelons</em> → <b>l'</b>."],
+   ["lui","<em>demander l'addition au serveur</em>: the person comes with <b>à</b> → <b>lui</b>."],
+   ["lui","<em>offrir un cadeau à ta tante</em>: the person comes with <b>à</b> → <b>lui</b>."]
+  ],
+  ch:{0:["le","lui","les","leur"],2:["lui","le","leur","les"],5:["leur","les","lui","le"],8:["les","leur","lui","l'"],10:["l'","lui","leur","les"],13:["la","lui","le","les"],16:["lui","le","leur","les"]}
+ },
+ revconj:{
+  ins:"Read the time words in the sentence, decide which tense fits among présent, futur proche, passé composé and imparfait, and write the verb in that tense.",
+  rt:"Révision — présent, futur proche, passé composé, imparfait",
+  rule:[
+   "<b>Présent</b>: now, general truths (<em>maintenant, aujourd'hui, en ce moment</em>) · <b>futur proche</b>: <b>aller</b> + infinitive (<em>bientôt, le mois prochain</em>).",
+   "<b>Passé composé</b>: <b>avoir / être</b> + participle for a completed event or a set duration (<em>hier, ce jour-là, pendant trois jours</em>).",
+   "<b>Imparfait</b>: <em>nous</em> stem + <b>-ais -ais -ait -ions -iez -aient</b> for a habit, a description or a background (<em>autrefois, avant, toujours, à cette époque</em>).",
+   "<em>Avant, nous écrivions des lettres. Maintenant, nous envoyons des textos. Demain, nous allons appeler.</em>"
+  ],
+  S:{
+   0:["Hier, elle ___ une idée de cadeau pendant une heure.","(chercher)"],
+   1:["Aujourd'hui, dimanche ___ une journée parfaite pour une sortie.","(être)"],
+   2:["Autrefois, je ___ toujours mon anniversaire avec ma famille.","(fêter)"],
+   3:["Bientôt, nos enfants ___ la maison pendant notre voyage.","(décorer)"],
+   4:["Le mois dernier, il ___ beau pendant trois jours de suite.","(faire)"],
+   5:["Quand nous sommes arrivés, il y ___ beaucoup de monde à la fête.","(avoir)"],
+   6:["En ce moment, elle ___ ses amis.","(inviter)"],
+   7:["Hier, nous ___ un pique-nique à la plage.","(faire)"],
+   8:["Ce jour-là, les enfants ___ trois châteaux de sable.","(construire)"],
+   9:["Pendant mon enfance, j'___ souvent chez ma grand-mère.","(aller)"],
+   10:["Autrefois, elle ___ toujours des gâteaux délicieux.","(faire)"],
+   11:["À cette époque, nous ___ heureux d'être ensemble.","(être)"],
+   12:["Aujourd'hui, la maison de ma grand-mère ___ au bord de la mer.","(se trouver)"],
+   13:["Le mois prochain, nous ___ leur anniversaire de mariage.","(célébrer)"],
+   14:["Bientôt, mon frère ___ le gâteau.","(commander)"],
+   15:["Bientôt, mes sœurs ___ de la décoration.","(s'occuper)"],
+   16:["Avant, nous ___ des lettres.","(écrire)"],
+   17:["Maintenant, nous ___ des textos.","(envoyer)"]
+  },
+  x:[
+   ["a cherché","<em>Hier … pendant une heure</em>: a completed event → passé composé, <b>a cherché</b>."],
+   ["est","<em>Aujourd'hui</em> → présent of être: <b>est</b>."],
+   ["fêtais","<em>Autrefois … toujours</em>: a past habit → imparfait, <b>fêtais</b>."],
+   ["vont décorer","<em>Bientôt</em> looks ahead → futur proche: <b>vont</b> + infinitive (plural subject)."],
+   ["a fait","A set duration (<em>pendant trois jours</em>) → passé composé: <b>a fait</b>."],
+   ["avait","<em>Quand nous sommes arrivés</em> sets the scene; the crowd is background → imparfait, il y <b>avait</b>."],
+   ["invite","<em>En ce moment</em> → présent: <b>invite</b>."],
+   ["avons fait","<em>Hier</em> + one finished event → passé composé: <b>avons fait</b>."],
+   ["ont construit","<em>Ce jour-là</em> + a counted result → passé composé: <b>ont construit</b> (participle <em>construit</em>)."],
+   ["allais","<em>Pendant mon enfance … souvent</em>: a past habit → imparfait, j'<b>allais</b>."],
+   ["faisait","<em>Autrefois … toujours</em>: a past habit → imparfait, <b>faisait</b> (stem fais-)."],
+   ["étions","<em>À cette époque</em>: a description of a past time → imparfait, <b>étions</b> (stem ét-)."],
+   ["se trouve","<em>Aujourd'hui</em> → présent of a pronominal verb: <b>se trouve</b>."],
+   ["allons célébrer","<em>Le mois prochain</em> → futur proche: <b>allons</b> + infinitive."],
+   ["va commander","<em>Bientôt</em> → futur proche: <b>va</b> + infinitive."],
+   ["vont s'occuper","<em>Bientôt</em> → futur proche; the reflexive pronoun stays before the infinitive: <b>vont s'occuper</b>."],
+   ["écrivions","<em>Avant</em>: a past habit → imparfait: nous écrivons → <b>écriv-</b> + ions."],
+   ["envoyons","<em>Maintenant</em> → présent: <b>envoyons</b>."]
+  ],
+  ch:{1:["est","était","a été","serait"],5:["avait","a","aura","va avoir"],7:["avons fait","faisons","allons faire","faisions"],11:["étions","sommes","avons été","serons"],14:["va commander","a commandé","commandait","avait commandé"],16:["écrivions","avons écrit","écrivons","allons écrire"]}
+ },
+ quest:{
+  ins:"Use the reply to work out what the question is asking (a yes or no, a thing, or a choice among nouns), then complete the question.",
+  rt:"Les questions — est-ce que, qu'est-ce que, quel",
+  rule:[
+   "<b>Est-ce que</b> + statement = a yes or no question: <em>Est-ce que tu aimes le chocolat ?</em>",
+   "<b>Qu'est-ce que</b> = what, for a thing or an action (<b>qu'est-ce qu'</b> before a vowel): <em>Qu'est-ce que tu fais ? · Qu'est-ce qu'il fait ?</em>",
+   "<b>quel · quelle · quels · quelles</b> = which or what + noun, agreeing with it: <em>Quelle heure est-il ? · Quels films avez-vous vus ?</em>",
+   "With <b>être</b>, quel still agrees with the noun that follows: <em>Quelle est votre nationalité ?</em>"
+  ],
+  nohint:[2],
+  S:{
+   0:["___ c'est ? — C'est un cadeau pour toi.",""],
+   1:["___ tu aimes le chocolat ? — Oui, beaucoup.",""],
+   2:["___ il fait ? — Il lit le journal.",""],
+   3:["___ vous faites ce soir ? — Nous allons au cinéma.",""],
+   4:["___ vous êtes disponible aujourd'hui ? — Oui, jusqu'à midi.",""],
+   7:["___ vous avez mangé hier ? — Des pâtes et une salade.",""],
+   11:["___ vous cherchez ? — Mes clés.",""],
+   12:["___ tu écoutes comme musique ? — Du jazz, surtout.",""],
+   16:["___ tu as visité l'appartement ? — Oui, hier.",""]
+  },
+  x:[
+   ["qu'est-ce que","The reply names a thing, so the question asks what it is → <b>qu'est-ce que</b> c'est."],
+   ["est-ce que","The reply starts with <em>Oui</em>: a yes or no question → <b>est-ce que</b>."],
+   ["qu'est-ce qu'","The reply names an action, so it asks what he does; <em>que</em> elides before <em>il</em> → <b>qu'est-ce qu'</b>."],
+   ["qu'est-ce que","The reply names an activity, so it asks what you are doing → <b>qu'est-ce que</b>."],
+   ["est-ce que","The reply starts with <em>Oui</em>: a yes or no question → <b>est-ce que</b>."],
+   ["quelle","<em>heure</em> is feminine singular → <b>quelle</b>."],
+   ["quels","<em>sports</em> is masculine plural (and <em>sont</em> is plural) → <b>quels</b>."],
+   ["qu'est-ce que","The reply names food, so it asks what you ate → <b>qu'est-ce que</b>."],
+   ["quels","<em>exercices</em> is masculine plural → <b>quels</b>."],
+   ["quelles","<em>langues</em> is feminine plural → <b>quelles</b>."],
+   ["quelle","<em>la couleur</em> is feminine singular → <b>quelle</b>, even with <em>est</em> between."],
+   ["qu'est-ce que","The reply names an object, so it asks what you are looking for → <b>qu'est-ce que</b>."],
+   ["qu'est-ce que","The reply names a kind of music, so it asks what → <b>qu'est-ce que</b>."],
+   ["quel","<em>jour</em> is masculine singular → <b>quel</b>."],
+   ["quel","<em>livre</em> is masculine singular → <b>quel</b>."],
+   ["quelle","<em>votre nationalité</em> is feminine singular → <b>quelle</b>, even with <em>est</em> between."],
+   ["est-ce que","The reply starts with <em>Oui</em>: a yes or no question → <b>est-ce que</b>."],
+   ["quels","<em>films</em> is masculine plural → <b>quels</b>."]
+  ],
+  ch:{1:["est-ce que","qu'est-ce que","quel","quels"],5:["quelle","quel","quels","quelles"],7:["qu'est-ce que","est-ce que","quel","quelle"],9:["quelles","quels","quelle","quel"],11:["qu'est-ce que","est-ce que","quel","quelle"],13:["quel","quelle","quels","quelles"],17:["quels","quelles","quel","quelle"]}
+ }
+};
+
+var GPILOT=Object.assign({},GPILOT2A,GPILOT2B);
+(function(F){ for(var k in F){ if(!GPILOT[k]) continue; for(var f in F[k]) GPILOT[k][f]=F[k][f]; } })({"dur":{"addA":{"5":["il y a"],"14":["il y a"]},"S":{"8":["___ plusieurs semaines, j'ai pris des cours de méditation.","(for)"]}},
+ "cc":{"addA":{"0":["car"],"9":["car"]}},
+ "rel":{"addA":{"16":["que"]}},
+ "preps6":{"addA":{"0":["en dessous de"],"16":["en dessous de"],"12":["sous"]}}}
+);
+(function applyPilot(){
+  DRILLS.forEach(function(d){
+    var p=GPILOT[d.id]; if(!p) return;
+    d.ins=p.ins; d.rt=p.rt; d.rule=p.rule;
+    var bank=d.bankItems||d.items||[];
+    if(bank.length!==p.x.length && window.console) console.warn("pilot content out of step (length): "+d.id);
+    bank.forEach(function(it,i){
+      var e=p.x[i], a0=Array.isArray(it.a)?it.a[0]:it.a;
+      if(!e || FG.norm(e[0])!==FG.norm(a0)){ if(window.console) console.warn("pilot content out of step: "+d.id+" #"+i); return; }
+      it.x=e[1];
+      if(p.rmA && p.rmA[i]){ var cur=(Array.isArray(it.a)?it.a:[it.a]).filter(function(z){ return p.rmA[i].indexOf(z)<0; }); it.a=cur; }
+      if(p.addA && p.addA[i]){ var cur2=(Array.isArray(it.a)?it.a:[it.a]).slice(); p.addA[i].forEach(function(z){ if(cur2.indexOf(z)<0) cur2.push(z); }); it.a=cur2; }
+      if(p.nohint==="all" || (p.nohint && p.nohint.indexOf(i)>=0)) it.hint="";
+      if(p.strip){ it.s=it.q.replace(/\s*\([^)]*\)\s*$/,""); it.cue=""; }
+      if(p.S && p.S[i]){ it.s=p.S[i][0]; it.cue=p.S[i][1]; }
+      var c=p.ch && p.ch[i];
+      if(c){ var all=(Array.isArray(it.a)?it.a:[it.a]).map(FG.norm); if(all.indexOf(FG.norm(c[0]))<0){ if(window.console) console.warn("drop-down answer not accepted: "+d.id+" #"+i); return; } it.ch=c; }
+    });
+  });
+})();
 /* ---- number → written French (0 to 1 000 000) ---- */
 function normLoose(x){ return norm(x).replace(/-/g," ").replace(/\s+/g," ").trim(); }
 function randInt(lo,hi){ return lo+Math.floor(Math.random()*(hi-lo+1)); }
@@ -2770,6 +3967,133 @@ function buildDrills(){
   });
 }
 /* build one drill's <details.acc> accordion (used inside a chapter group) */
+/* ---- v0.2.0 drill engine: ruled field, accent keys, verdict ladder + You/Correct diff, inline drop-downs, rule card, misses pile ----
+   Items stay {q,a,hint,m}; gAdapt() splits the infinitive cue out of q at load, so every existing drill runs in the new UI unchanged.
+   Optional per-item fields (all additive): s (sentence, replaces q) · cue · x (why line) · ch (drop-down options, correct first).
+   Optional per-drill fields: ins (one instruction line) · rt + rule (rule card, at most 5 bullets) — a drill without rule keeps its note. */
+var ACCENT_KEYS=["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+function gPrefs(){ var p=state.prefs; if(!p){ p=state.prefs={}; } if(!p.fmt) p.fmt="mix"; if(!p.src) p.src="all"; return p; }
+function gMissTotal(){ var n=0; Object.keys(state.gramMiss||{}).forEach(function(id){ n+=Object.keys(state.gramMiss[id]).length; }); return n; }
+function gMissOf(d){ return (state.gramMiss&&state.gramMiss[d.id])||{}; }
+function gMissLabel(){ var o=document.querySelector("#gSrc option[value=miss]"); if(o) o.textContent="My misses ("+gMissTotal()+")"; }
+function gMissBump(d,bi,ok){
+  state.gramMiss=state.gramMiss||{}; var m=state.gramMiss[d.id]=state.gramMiss[d.id]||{};
+  if(ok){ if(m[bi]){ m[bi]--; if(m[bi]<=0) delete m[bi]; } } else { m[bi]=(m[bi]||0)+1; }
+  if(!Object.keys(m).length) delete state.gramMiss[d.id];
+  saveState(); gMissLabel();
+}
+function gMissClear(d,bi){ var m=state.gramMiss&&state.gramMiss[d.id]; if(m&&m[bi]){ delete m[bi]; if(!Object.keys(m).length) delete state.gramMiss[d.id]; saveState(); gMissLabel(); } }
+function gAdapt(it){
+  if(it._g) return it._g;
+  var s=it.s, cue=it.cue||"";
+  if(s==null){
+    var q=it.q||"", m=q.match(/^([\s\S]*?___[^()]*?)\s*(\([^)]*\))([\s\S]*)$/);
+    if(m){ s=m[1]+m[3]; cue=m[2]; } else s=q;
+  }
+  var ans=Array.isArray(it.a)?it.a:[it.a], tk=FG.norm(ans[0]).split(" ");
+  var pc=tk.length>=2 && tk.length<=4 && !!FG.auxFamily([tk[tk.length-2]]);
+  return it._g={s:s,cue:cue,a:ans,ch:it.ch||null,x:it.x||"",hint:it.hint||"",loose:!!it.loose,pc:pc};
+}
+function gGradeTyped(A,got){
+  var pre=A.loose?normLoose:norm, keys=[], map={};
+  A.a.forEach(function(a){ var k=pre(a); if(!(k in map)){ map[k]=a; keys.push(k); } });
+  var res=FG.grade(pre(got),FG.prepare({f:keys[0],a:keys.slice(1),type:A.pc?"pc":"x"}));
+  var target=map[res.target]!==undefined?map[res.target]:A.a[0];
+  var others=A.a.filter(function(a){ return pre(a)!==pre(target); });
+  return {v:res.v,target:target,others:others};
+}
+function gInsertAt(inp,ch){
+  var a=inp.selectionStart, b=inp.selectionEnd; if(a==null){ a=b=inp.value.length; }
+  inp.value=inp.value.slice(0,a)+ch+inp.value.slice(b); inp.selectionStart=inp.selectionEnd=a+ch.length;
+  inp.dispatchEvent(new Event("input",{bubbles:true})); inp.focus();
+}
+function gKeys(inp){
+  var row=el("div","akeys");
+  ACCENT_KEYS.forEach(function(ch){
+    var b=el("button","akey",ch); b.type="button"; b.setAttribute("aria-label","insert "+ch);
+    b.addEventListener("mousedown",function(e){ e.preventDefault(); });
+    b.addEventListener("click",function(){ if(!inp.disabled) gInsertAt(inp,ch); });
+    row.appendChild(b);
+  });
+  return row;
+}
+/* one drill item: typed (ruled field) or drop-down; returns the .q element */
+function gBuildQ(d,it,det,onDone){
+  var A=gAdapt(it), pk=gPrefs(), bank=d.bankItems||d.items, bi=bank.indexOf(it);
+  var dd=!!(A.ch && pk.fmt!=="type");
+  var q=el("div","q");
+  var sent=el("div","fq"), parts=A.s.split("___"), gap, sel=null, inp=null, pickOrder=null;
+  var pre=el("span",null,parts[0]), post=el("span",null,parts.slice(1).join("___"));
+  if(dd){
+    pickOrder=A.ch.slice(); shuffleArr(pickOrder);
+    sel=el("select","gapsel"); sel.setAttribute("aria-label","choisir");
+    var ph=el("option",null,"choisir…"); ph.value=""; ph.disabled=true; ph.selected=true; sel.appendChild(ph);
+    pickOrder.forEach(function(o){ var op=el("option",null,esc(o)); op.value=o; sel.appendChild(op); });
+    gap=sel;
+  } else { gap=el("span","gap","&nbsp;"); }
+  sent.appendChild(pre); sent.appendChild(gap); sent.appendChild(post);
+  if(A.cue){ sent.appendChild(document.createTextNode(" ")); sent.appendChild(el("span","cue",esc(A.cue))); }
+  q.appendChild(sent);
+  var field=null, fbHost=el("div"), done=false, lockedPick=null;
+  if(!dd){
+    field=el("div","seyes"); inp=el("input"); inp.type="text"; inp.autocapitalize="none"; inp.autocomplete="off"; inp.spellcheck=false;
+    inp.setAttribute("aria-label","answer"); field.appendChild(inp); q.appendChild(field); q.appendChild(gKeys(inp));
+    inp.addEventListener("input",function(){ if(!done) gap.textContent=inp.value||" "; });
+    /* the accent keys stay with the last-focused item, so clicking Check or an override link never reflows the page under the cursor */
+    inp.addEventListener("focus",function(){ [].forEach.call(det.querySelectorAll(".q.kf"),function(x){ x.classList.remove("kf"); }); q.classList.add("kf"); });
+  }
+  var act=el("div","row-in qchk"), cb=el("button","ghost","Check"), sk=el("button","ghost","I don't know");
+  act.appendChild(cb); act.appendChild(sk); q.appendChild(act); q.appendChild(fbHost);
+  if(A.hint) q.appendChild(el("div","hint",esc(A.hint)));
+  q._inp=inp||sel;
+  if(sel) sel.addEventListener("change",function(){ if(done){ sel.value=lockedPick; } });   /* locked, but kept focusable so Enter can move on */
+  function mark(ok){
+    var c=ok?"ok":"bad"; gap.classList.remove("ok","bad"); gap.classList.add(c);
+    if(field){ field.classList.remove("ok","bad"); field.classList.add(c); }
+  }
+  function render(res,got,skipped,correct){
+    var V=FG.VERDICTS[skipped?"skip":res.v], tone=V.tone;
+    var html="<strong class='fbv'>"+V.title+"</strong>";
+    var target=dd?A.ch[0]:res.target;
+    if(skipped){ html+="<div class='cmp'><span class='l'>Correct</span><span class='w'>"+esc(target)+"</span></div>"; }
+    else if(res.v!=="ok"){
+      var you,cor;
+      if(dd){ you="<span class='fx'>"+esc(got)+"</span>"; cor=esc(target); }
+      else { var df=FG.diff(FG.norm(got),FG.norm(target)); you=FG.marked(df[0],"fx"); cor=FG.marked(df[1],"fm"); }
+      html+="<div class='cmp'><span class='l'>You</span><span class='w'>"+you+"</span><span class='l'>Correct</span><span class='w'>"+cor+"</span></div>";
+    }
+    if(A.x) html+="<div class='why'>"+A.x+"</div>";
+    var oth=dd?[]:res.others; if(oth.length) html+="<div class='fnote'>Also accepted: "+oth.map(esc).join(" · ")+"</div>";
+    var fb=el("div","fb "+tone,html);
+    fbHost.innerHTML=""; fbHost.appendChild(fb);
+  }
+  function lock(){ done=true; if(inp) inp.readOnly=true; if(sel) lockedPick=sel.value; cb.disabled=true; sk.disabled=true; cb.style.opacity=sk.style.opacity=".45"; }
+  function check(skipped){
+    if(done) return;
+    var got=dd?sel.value:inp.value;
+    if(!skipped && !String(got).trim()) return;
+    var res, correct, vdt;
+    if(skipped){ res={v:"skip",target:dd?A.ch[0]:A.a[0],others:[]}; correct=false; got=""; }
+    else if(dd){ var okp=FG.norm(got)===FG.norm(A.ch[0]); res={v:okp?"ok":"wrong",target:A.ch[0],others:[]}; correct=okp; }
+    else { res=gGradeTyped(A,got); correct=(res.v==="ok"); }
+    lock(); q._res=correct?"ok":"bad"; mark(correct);
+    if(dd && skipped) sel.value=A.ch[0];
+    if(!dd) gap.textContent=res.target;
+    if(!q._graded){ q._graded=true; anaRecord(correct,(!correct&&res.v==="accent"),withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }
+    if(correct && bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState(); }
+    if(bi>=0) gMissBump(d,bi,correct);
+    render(res,got,skipped,correct); onDone(q);
+  }
+  cb.onclick=function(){ check(false); }; sk.onclick=function(){ check(true); };
+  q._check=function(){ if(!done && String(q._inp.value||"").trim()) check(false); };
+  function nextField(){ var all=[].slice.call(det.querySelectorAll(".q")), i=all.indexOf(q); for(var k=i+1;k<all.length;k++){ if(!all[k]._res){ all[k]._inp.focus(); return; } } }
+  if(inp) inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(done) nextField(); else check(false); } });
+  if(sel) sel.addEventListener("keydown",function(e){
+    if(/^[1-9]$/.test(e.key) && !done){ var n=+e.key; if(n<=pickOrder.length){ sel.value=pickOrder[n-1]; e.preventDefault(); } }
+    else if(e.key==="Enter"){ e.preventDefault(); if(done) nextField(); else check(false); }
+  });
+  return q;
+}
 function pickRound(bank,n){
   var a=bank.slice();
   for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
@@ -2780,51 +4104,38 @@ function covOf(d){ var bank=d.bankItems||d.items||[]; var cv=state.gramCov[d.id]
   for(var k in cv) if(cv[k]) n++; return {n:Math.min(n,bank.length), t:bank.length}; }
 function drillMeta(d){ var best=state.drills[d.id]; var c=covOf(d);
   return d.ch+(c.t?" · couverture "+c.n+"/"+c.t:"")+(best?" · best "+best.correct+"/"+best.total:""); }
-function buildDrillAcc(d){
-  if(d.gen) d.items=d.gen();
-  else { d.bankItems=d.bankItems||d.items; d.items=pickRound(d.bankItems,10); }
-  var det=el("details","acc"); var best=state.drills[d.id];
+/* build one drill's <details.acc> accordion (used inside a chapter group). opts: {items, practice} for a retry/misses round */
+function buildDrillAcc(d,opts){
+  opts=opts||{}; var pk=gPrefs();
+  d.bankItems=d.bankItems||d.items;
+  var bank=d.bankItems, practice=!!opts.practice, empty="";
+  if(opts.items){ d.items=opts.items; }
+  else if(d.gen){ d.items=d.gen(); }
+  else {
+    var pool=bank;
+    if(pk.src==="miss"){ var ms=gMissOf(d); pool=bank.filter(function(x,i){ return ms[i]; }); practice=true; if(!pool.length) empty="No misses to retry in this drill."; }
+    if(pk.fmt==="pick"){ pool=pool.filter(function(x){ return x.ch; }); practice=true; if(!pool.length&&!empty) empty="No drop-down items in this drill yet."; }
+    d.items=pickRound(pool,10);
+  }
+  var det=el("details","acc");
   var sum=el("summary");
   sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
   var body=el("div","body");
-  if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }   /* v1.0.0: rule explainer at the top of each drill */
-  if(d.wb){ var bank=el("div","wbank"); bank.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" \u00b7 ").forEach(function(w){ bank.appendChild(el("span","wchip",esc(w))); }); body.appendChild(bank); }
-  d.items.forEach(function(it,qi){
-    var q=el("div","q");
-    q.appendChild(el("div","qt",it.q.replace("___","<span class='blank'>____</span>")));
-    var row=el("div","row-in");
-    var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-    inp.setAttribute("aria-label","answer"); row.appendChild(inp);
-    var v=el("div","verdict"); v.style.display="none";
-    function check(){
-      if(!inp.value.trim()) return;                     /* v1.0.0-b6: empty check — nothing to grade */
-      var ans=Array.isArray(it.a)?it.a:[it.a];
-      var cmp = it.loose ? normLoose : norm;
-      var got=inp.value, ok=ans.some(function(a){return cmp(a)===cmp(got);});
-      var close=ans.some(function(a){return bare(a).replace(/-/g," ")===bare(got).replace(/-/g," ");});
-      v.style.display="block";
-      if(ok){ v.className="verdict ok"; v.textContent="✓ Correct"; }
-      else if(d.strict && close && got.trim()){ v.className="verdict no"; v.textContent="✗ Spelling — exact accents required: "+ans[0]; }
-      else if(close && got.trim()){ v.className="verdict warn"; v.textContent="≈ Right word — mind the accents: "+ans[0]; }
-      else { v.className="verdict no"; v.textContent="✗ "+ans[0]; }
-      if(!q._graded){ q._graded=true; anaRecord(ok, (!ok && close && !!got.trim()), withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }  /* first grade per item counts */
-      if(ok){ var bank=d.bankItems||d.items, bi=bank.indexOf(it);   /* v1.2.4: mark this bank item covered */
-        if(bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState();
-          var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); } }
-      scoreDrill(d);
-    }
-    inp.addEventListener("keydown",function(e){ if(e.key==="Enter") check(); });
-    q._check=check; q._inp=inp;
-    q.appendChild(row); q.appendChild(v);
-    if(it.hint) q.appendChild(el("div","hint",it.hint));
-    body.appendChild(q);
-  });
+  if(d.rule){
+    if(d.ins) body.appendChild(el("p","gins","<b>Instructions :</b> "+d.ins));
+    body.appendChild(el("div","rulecard","<h4>"+(d.rt||"La règle")+"</h4><ul>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>"));
+  } else if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }
+  if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
+  det._d=d; det._body=body; det._practice=practice;
+  if(empty) body.appendChild(el("div","gempty",empty));
+  d.items.forEach(function(it){ body.appendChild(gBuildQ(d,it,det,function(){
+    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); })); });
   var foot=el("div","drill-foot");
   var cbtn=el("button","ghost","Check all");
-  cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ if(qq._inp.value.trim()) qq._check(); }); };
+  cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._check(); }); };
   var rbtn=el("button","ghost","Clear");
-  rbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._inp.value=""; qq.querySelector(".verdict").style.display="none"; }); };
+  rbtn.onclick=function(){ var f=buildDrillAcc(d,{items:d.items,practice:det._practice}); f.open=true; det.parentNode.replaceChild(f,det); };
   foot.appendChild(cbtn); foot.appendChild(rbtn);
   if(d.gen || d.bankItems){
     var gbtn=el("button","ghost","New round 🎲");
@@ -2832,25 +4143,42 @@ function buildDrillAcc(d){
     foot.appendChild(gbtn);
   }
   body.appendChild(foot);
+  var resHost=el("div"); resHost.className="gresHost"; body.appendChild(resHost);
   det.appendChild(body);
-  det._d=d; det._body=body;
   return det;
 }
 function scoreDrill(d){
   var det=[].slice.call(document.querySelectorAll(".acc")).find(function(x){return x._d===d;});
   if(!det) return;
   var qs=det._body.querySelectorAll(".q"), correct=0, answered=0;
-  [].forEach.call(qs,function(qq){
-    var vd=qq.querySelector(".verdict");
-    if(vd.style.display!=="none" && qq._inp.value.trim()){ answered++; if(vd.classList.contains("ok")) correct++; }
-  });
-  if(answered===d.items.length){
-    if(correct===d.items.length && d.items.length>=10) award("a_round");
-    var prev=state.drills[d.id];
-    if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
-      det.querySelector(".meta").innerHTML=drillMeta(d);
+  [].forEach.call(qs,function(qq){ if(qq._res){ answered++; if(qq._res==="ok") correct++; } });
+  var host=det._body.querySelector(".gresHost"); host.innerHTML="";
+  if(answered && answered===d.items.length){
+    var miss=[]; [].forEach.call(qs,function(qq,i){ if(qq._res!=="ok") miss.push(d.items[i]); });
+    var r=el("div","gres","<span class='big'>"+correct+" / "+d.items.length+"</span><span class='pct'>"+Math.round(correct/d.items.length*100)+" %</span>");
+    if(miss.length){ var rb=el("button","ghost","Retry the "+miss.length+" missed");
+      rb.onclick=function(){ var f=buildDrillAcc(d,{items:miss,practice:true}); f.open=true; det.parentNode.replaceChild(f,det); };
+      r.appendChild(rb); }
+    host.appendChild(r);
+    if(!det._practice && d.items.length>=Math.min(10,(d.bankItems||d.items).length)){   /* best scores come from full rounds only */
+      if(correct===d.items.length && d.items.length>=10) award("a_round");
+      var prev=state.drills[d.id];
+      if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
+        det.querySelector(".meta").innerHTML=drillMeta(d);
+      }
     }
   }
+}
+/* settings strip above the drills: format · source */
+function renderGBar(){
+  var host=document.getElementById("gbar"); if(!host) return; var pk=gPrefs();
+  host.innerHTML="<label>Format <select id='gFmt'><option value='mix'>Mixed</option><option value='type'>Typing only</option><option value='pick'>Drop-down only</option></select></label>"+
+    "<label>From <select id='gSrc'><option value='all'>All questions</option><option value='miss'>My misses ("+gMissTotal()+")</option></select></label>"+
+    "";
+  var f=document.getElementById("gFmt"), s=document.getElementById("gSrc");
+  f.value=pk.fmt; s.value=pk.src;
+  f.onchange=function(){ pk.fmt=f.value; saveState(); buildDrills(); };
+  s.onchange=function(){ pk.src=s.value; saveState(); buildDrills(); };
 }
 
 /* =============== v1.2.4 — DRILL CIBLÉ (reps only, searchable U1+U2 pool) =============== */
@@ -3583,7 +4911,7 @@ function setupDash(){
   sel.value=String(state.currentCh);
   sel.onchange=function(){
     state.currentCh=+this.value; saveState();
-    updateScopeNote(); buildOrder(); renderVerb(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); renderTestHist(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
+    updateScopeNote(); buildOrder(); renderVerb(); syncVocChapter(); rebuildVocTopics(); vocBuild(); renderVoc(); buildDrills(); refreshDash(); renderTestHist(); refreshVocTableIfOpen(); refreshVerbTableIfOpen();
   };
   updateScopeNote();
   updateCountdown();
@@ -3930,11 +5258,31 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
 [].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
 renderVerbTable(); renderVocTable(); renderOpi();
 document.getElementById("quizPick").value="6"; quizPick=document.getElementById("quizPick").value; renderTestHist();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
+
+/* =============== THEME (device by default; masthead button forces light or dark) =============== */
+(function(){
+  var KEY="frTheme", btn=document.getElementById("themeBtn"), root=document.documentElement, mq=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)");
+  function saved(){ try{ var t=localStorage.getItem(KEY); return t==="light"||t==="dark"?t:null; }catch(e){ return null; } }
+  function effective(){ return saved()||((mq&&mq.matches)?"dark":"light"); }
+  function paint(){
+    var s=saved(), e=effective();
+    if(s) root.setAttribute("data-theme",s); else root.removeAttribute("data-theme");
+    btn.textContent=e==="dark"?"\u263E":"\u2600";
+    var lbl=(e==="dark"?"Dark":"Light")+(s?"":" (device setting)")+" — click for "+(e==="dark"?"light":"dark")+(s?", Alt-click to follow the device":"");
+    btn.title=lbl; btn.setAttribute("aria-label",lbl);
+  }
+  btn.addEventListener("click",function(ev){
+    try{ if(ev.altKey) localStorage.removeItem(KEY); else localStorage.setItem(KEY,effective()==="dark"?"light":"dark"); }catch(e){}
+    paint();
+  });
+  if(mq&&mq.addEventListener) mq.addEventListener("change",paint);
+  paint();
+})();
 </script>
 </body>
 </html>
