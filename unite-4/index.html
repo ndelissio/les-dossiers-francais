@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 4 · Dossier Français — v0.9.0</title>
+<title>Unité 4 · Dossier Français — v0.9.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -57,15 +57,32 @@
   .dlptDateRow input{font-family:inherit; font-size:13px; padding:4px 8px; border-radius:8px; border:1px solid var(--mute)}
   .dlptDateRow .hint{font-size:12px; color:var(--mute)}
 
-  /* ---- tabs ---- */
-  nav.tabs{display:flex; gap:2px; border-bottom:1px solid var(--line); position:sticky; top:0;
-    background:var(--paper); z-index:20; margin:0 -18px; padding:0 18px}
+  /* ---- tabs: flat leaning folder tabs, lightly overlapped; each tab has its own muted colour, shown as an outline and a faint glow (v0.2.0) ---- */
+  :root{ --tab:#e1e6ee; --tab-hover:#eaeef4; --tab-edge:#c3cddc; }
+  nav.tabs button{--c:#4f6fa8}
+  nav.tabs button[data-tab="vocab"]{--c:#c0574a}
+  nav.tabs button[data-tab="gram"]{--c:#3f8a73}
+  nav.tabs button[data-tab="verbs"]{--c:#7b64a8}
+  nav.tabs button[data-tab="prep"]{--c:#b07d2e}
+  nav.tabs button[data-tab="insights"]{--c:#3a8aa0}
+  nav.tabs{display:flex; align-items:flex-end; gap:0; position:sticky; top:0; z-index:20; margin:0 -18px; padding:12px 18px 0 24px;
+    background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  nav.tabs::-webkit-scrollbar{display:none}
   nav.tabs button{
-    appearance:none; border:0; background:none; font-family:var(--sans); font-size:14px; font-weight:600;
-    color:var(--ink-2); padding:14px 14px 12px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
-  }
-  nav.tabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+    appearance:none; flex:0 0 auto; position:relative; border:0; background:none; color:var(--ink-2);
+    font-family:var(--sans); font-size:13.5px; font-weight:600; white-space:nowrap;
+    padding:9px 15px 8px; margin:6px 0 0 -3px; cursor:pointer; transition:color .12s ease}
+  nav.tabs button::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--tab); border:1px solid color-mix(in srgb,var(--c) 62%,var(--tab-edge)); border-bottom:0;
+    border-radius:7px 7px 0 0; transform:skewX(-14deg); transition:background .12s ease, border-color .12s ease}
+  nav.tabs button:first-child{margin-left:0}
+  nav.tabs button:nth-child(1){z-index:7} nav.tabs button:nth-child(2){z-index:6} nav.tabs button:nth-child(3){z-index:5}
+  nav.tabs button:nth-child(4){z-index:4} nav.tabs button:nth-child(5){z-index:3} nav.tabs button:nth-child(6){z-index:2} nav.tabs button:nth-child(7){z-index:1}
   nav.tabs button:hover{color:var(--ink)}
+  nav.tabs button:hover::before{background:var(--tab-hover); border-color:color-mix(in srgb,var(--c) 70%,var(--tab-edge))}
+  nav.tabs button:focus-visible{outline:2px solid var(--bleu); outline-offset:-2px; border-radius:6px}
+  nav.tabs button[aria-selected="true"]{color:color-mix(in srgb,var(--c) 55%,var(--ink)); font-weight:700; margin-top:0; padding:12px 16px 9px; margin-bottom:-1px; z-index:9}
+  nav.tabs button[aria-selected="true"]::before{background:var(--paper); bottom:-1px; border-color:var(--c); border-width:1.5px 1.5px 0;
+    box-shadow:0 -2px 10px -2px color-mix(in srgb,var(--c) 30%,transparent)}
 
   .panel{display:none; padding-top:26px; animation:fade .25s ease}
   .panel.on{display:block}
@@ -456,12 +473,27 @@
   .obank span.used{border-color:var(--known); background:var(--known-soft); color:var(--known)}
   @media (max-width:640px){ .opanes{grid-template-columns:minmax(0,1fr)} .otopics{grid-template-columns:repeat(2,minmax(0,1fr))} .pprompt{font-size:24px} .psent{font-size:20px} .phint{display:none} .obar{top:48px} }
 
+  /* ---- general polish (v0.2.0) ---- */
+  ::selection{background:var(--accent-soft); color:var(--ink)}
+  header.top{border-bottom:0; padding-bottom:19px;
+    background:linear-gradient(to right,#002654 0 33.34%,#ffffff 33.34% 66.67%,#ce1126 66.67% 100%) left bottom/100% 4px no-repeat}
+  .vcard,.acc,.chgroup,.gres,.rulecard{box-shadow:0 1px 0 rgba(22,36,61,.04), 0 8px 20px -14px rgba(22,36,61,.28)}
+  .btn,.ghost,.countchip,.seg button{transition:transform .1s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, color .12s ease}
+  .btn:hover{transform:translateY(-1px); box-shadow:0 4px 10px -6px rgba(22,36,61,.45)}
+  .btn:active,.ghost:active{transform:translateY(0) scale(.98)}
+  .btn:focus-visible,.ghost:focus-visible,.seg button:focus-visible,.countchip:focus-visible,summary:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .acc > summary,.chgroup > summary{transition:background .12s ease}
+  .acc > summary:hover{background:var(--hover)}
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
+
   /* ---- dark mode: follows the device; the masthead button forces light or dark (Alt-click returns to the device setting) ---- */
   :root{ color-scheme:light; --surface:#fff; --tint:#eef2fa; --hover:#f3efe4; --chip:#ece6d8; --neutral:#e7e0d0; --neutral-h:#ded6c4; --ahead:#f1eee7;
     --err-bg:#fbe9e7; --err-line:#f3c9c2; --ok-line:#bfe3cf; --warn-line:#f0dcaf; --on-solid:#fff; }
   @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }  }
   :root[data-theme="dark"]{ color-scheme:dark; --ink:#ECEAF5; --ink-2:#BDBAD0; --mute:#8F8CA6; --paper:#13121B; --card:#1C1A27; --line:#312E42; --accent:#FF8279; --accent-soft:#3A1F22; --bleu:#A797FF; --known:#6ED69C; --known-soft:#17321F; --learn:#F2B45C; --learn-soft:#36290F; --surface:#201D2D; --tint:#2A2445; --hover:#26233A; --chip:#2B2840; --neutral:#2E2A44; --neutral-h:#38344F; --ahead:#181722; --err-bg:#3A1F22; --err-line:#5A2E33; --ok-line:#2C5A44; --warn-line:#5A4620; --on-solid:#13121B; --near:#F2B45C; --near-soft:#36290F; --seyes:rgba(167,151,255,.07); --seyes-strong:rgba(167,151,255,.17); --margin:rgba(255,130,121,.35); }
   
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) nav.tabs button{--c:#8FA8DD} :root:not([data-theme="light"]) nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root:not([data-theme="light"]) nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root:not([data-theme="light"]) nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root:not([data-theme="light"]) nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root:not([data-theme="light"]) nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root:not([data-theme="light"]){--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756} }
+  :root[data-theme="dark"] nav.tabs button{--c:#8FA8DD} :root[data-theme="dark"] nav.tabs button[data-tab="vocab"]{--c:#E08A7E} :root[data-theme="dark"] nav.tabs button[data-tab="gram"]{--c:#6CC4A5} :root[data-theme="dark"] nav.tabs button[data-tab="prep"]{--c:#D2A65A} :root[data-theme="dark"] nav.tabs button[data-tab="verbs"]{--c:#AB97D9} :root[data-theme="dark"] nav.tabs button[data-tab="insights"]{--c:#6BB8CC} :root[data-theme="dark"]{--tab:#262238; --tab-hover:#2E2A44; --tab-edge:#3C3756}
   .topright{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
   .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
     transition:background .12s ease, border-color .12s ease}
@@ -480,7 +512,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v0.9.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v0.9.1</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -498,10 +530,10 @@
 
   <nav class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="dash">Tableau de bord</button>
-    <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
     <button role="tab" aria-selected="false" data-tab="prep">Prépa examen</button>
+    <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
   </nav>
 
@@ -538,7 +570,6 @@
   <!-- ===================== VERBS ===================== -->
   <section class="panel" id="p-verbs" role="tabpanel">
     <h2 class="sec">Conjugaison</h2>
-    <p class="lead">10 vedettes swept across every tense, plus Chapter 16's own irregular verbs (croître, acquérir, reprendre, se reconnaître, se mettre à, subvenir, séduire), plus Chapter 17's (valoir, recourir à, soutenir, éteindre, provenir de, comparaître), and Chapter 19's (survenir, parvenir, intervenir, revenir, prévenir, prévoir), in présent and passé composé. Type all six forms.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -596,7 +627,6 @@
     <div class="voctable" id="verbTable"><!-- filled by JS --></div>
 
     <h2 class="sec" style="margin-top:30px">Drill ciblé</h2>
-    <p class="lead">Search any verb from Units 1–3 and drill any tense — reps only, nothing recorded. The full cumulative pool, U1 regulars to U3 irregulars.</p>
     <div class="card">
       <div class="frow"><span class="flabel">Verbe</span>
         <input class="txt" id="cibSearch" list="cibList" placeholder="tapez un infinitif… (ex. se lever, boire, envoyer)" style="max-width:340px" autocapitalize="none" spellcheck="false">
@@ -613,7 +643,6 @@
   <!-- ===================== VOCABULAIRE ===================== -->
   <section class="panel" id="p-vocab" role="tabpanel">
     <h2 class="sec">Vocabulary trainer</h2>
-    <p class="lead">The Chapter 16 glossaire (family structures, aging, daily life), the Chapter 17 glossaire (urban life, healthcare, transport &amp; energy, street art), the Chapter 18 glossaire (health, sports, nutrition, and medicine) and the Chapter 19 glossaire (natural disasters, accidents, rescue), plus mini-glossaire words folded in from reading &amp; listening activities.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -677,7 +706,6 @@
   <!-- ===================== GRAMMAR ===================== -->
   <section class="panel" id="p-gram" role="tabpanel">
     <h2 class="sec">Grammar drills</h2>
-    <p class="lead">Chapter 16 structures — le pronom relatif dont (+ qui, que, où), les pronoms possessifs, quel &amp; lequel, les adjectifs indéfinis tout/toute/tous/toutes — Chapter 17 structures — la négation (ne … personne, rien, aucun), la mise en relief (c'est … qui/que/dont/où), le gérondif — Chapter 18 structures — l'hypothèse sur le futur (si + présent...), les pronoms démonstratifs, les pronoms relatifs composés (ce qui, ce que, ce dont) — and Chapter 19 structures — la nominalisation, l'inclusion, l'exception et la restriction, le mode infinitif — plus vocab en contexte for each chapter.</p>
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
@@ -769,8 +797,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v0.9.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v0.9.1</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.9.1 (15 Oct 2026): <strong>Unité 5's look comes to Unité 4.</strong> The tabs are now flat, light, leaning folder tabs that overlap slightly, each with its own muted colour (an outline, plus a faint glow on the selected one; lightened for dark mode), in the order Tableau de bord · Vocabulaire · Grammaire · Prépa examen · Conjugaison · Analyse. A tricolore rule runs under the masthead, cards get softer shadows, buttons get press states and every control gets a visible keyboard focus ring. The long introductions on the Conjugaison, Vocabulaire and Grammaire tabs are gone. Appearance only: no data, grading or progress changed. The Vocabulaire and Grammaire drills are still the earlier design; their backport is a separate change.<br></span>
     <span style="color:var(--mute)">v0.9.0 (15 Oct 2026): <strong>Prépa examen — one tab trains the skills the exam needs.</strong> It replaces Examen blanc and Pratique orale, whose exam-shaped quizzes and prompt timer are retired (99 chapter-quiz questions, the 121 question exam bank and 24 prompt cards removed; the Analyse tab loses its Examen donut; saved quiz history stays in your browser but is no longer shown, and the two quiz achievements, Sans faute and Hat-trick, are gone). <strong>Vocabulaire</strong>: the 80 Test 4 study-guide words — spell them (English to French) on a Seyès-ruled field with an accent key row, recognise them (French to English, keys 1–4), or browse the filterable list; sets of 10, 20, 40 or all, a misses pile (<em>From → My misses</em>) and <em>Retry the missed</em>. <strong>Grammaire</strong>: 106 study-guide items (58 typed, 48 drop-downs) in 5 topics (Pronoms relatifs 20 · Si + présent → futur 20 · Nominalisation 28 · Pronoms démonstratifs 18 · Passé composé : avoir ou être 20); the rule card for the current topic stays on screen, every answer is followed by a one-line why, and a mixed set is balanced across topics. <strong>Oral</strong>: a script builder for the 6 oral prompts (29 sections plus 8 examiner questions) — English notes beside French on the ruled page, the tense each section needs, and offline checks for length against a two-minute answer, linking words, study-guide words used and rough passé composé / imparfait counts; scripts save in this browser. Accents always count. Nothing in Prépa examen feeds Analyse or the mastery bars. Also in this version: the French-flag tab icon, and the feedback card, grading ladder (verdicts, You / Correct diff) and English-gloss layout from the Unité 5 pilot, used inside the new tab only. The Vocabulaire and Grammaire tabs are unchanged. <strong>Dark mode</strong>: the dossier follows your device's light or dark setting; the round button in the masthead forces light or dark (Alt-click returns to the device setting), and the choice is shared by every unit in this browser. The dark theme is a violet-tinted near-black with a soft violet accent; light mode is unchanged. <strong>Vocabulaire modes</strong>: Spelling is now the default, <em>Recognize</em> (French on the card, pick the meaning from four options, keys 1–4) is new, and Recall is third; the EN/FR direction applies to Recall only. Wrong options are the same part of speech, never a shared word of the gloss or a listed synonym, and same-topic first; Recognize answers count toward mastery like the other modes (Training records nothing).<br></span>
     <span style="color:var(--mute)">v0.8.3 (10 Oct 2026): <strong>Chapter 19 vocabulary — Mémo card corrections.</strong> A line-by-line check of the Chapter 19 Mémo cards against Wiktionary, WordReference and Larousse found wrong or doubtful etymologies, false English relatives, wrong faux-ami notes and mnemonics that followed a sound-alike instead of the real root. 71 of the 166 Chapter 19 cards were edited (101 field changes). <strong>Etymologies:</strong> 34 corrected or softened where the sources disagree (one card, chamboulé(e), gained an etymology it lacked). <strong>False relatives removed:</strong> 9 cards (l’éboulement and boule; se renverser and verser; prévoir and preview; la toiture and architect; le flanc and link; à pleine allure and the English allure; un avertisseur and avert; affluer and couler; demeurer and demure). <strong>Faux amis:</strong> 4 fixed (prévenir does also mean to prevent a harm; un avertisseur and advertise are the same word; le bilan is not about a bank balance; allouer added: it is not “to allow”). <strong>Mnemonics:</strong> 10 circular ones deleted (“X is X” with nothing added) and 17 rewritten to follow the real root. Also: sharper meanings for heurter, disparu(e), révolté(e), signifier, une pente, la tôle, un avertisseur, un passage à niveau and au large de; replacement examples for pétrolier(-ière), entrechoqué(e) and le vide; synonym and register fixes. Some of these words also appear in Chapters 17, 18 and AOL 220 under the same key; only the Chapter 19 copy changed here. No cards were added, removed or re-keyed, so saved progress is untouched.<br></span>
     <span style="color:var(--mute)">v0.8.2 (8 Oct 2026): <strong>Vocabulaire — the topic filter no longer jumps when you change chapter.</strong> The "All topics" pill sized itself to the longest topic name of whichever chapter was selected, so its width changed from chapter to chapter and, on a wide screen, it could hop between the chapter filter’s row and the next row. It now sits on its own row at a fixed width (full width on a phone), so it stays put. Long topic names are cut off with an ellipsis in the closed pill; the full name still shows in the list. No other changes.<br></span>
