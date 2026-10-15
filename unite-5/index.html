@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v0.3.0.1</title>
+<title>Unité 5 · Dossier Français — v0.3.0.2</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -69,7 +69,7 @@
     background:var(--paper); border-bottom:1px solid var(--tab-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
   nav.tabs::-webkit-scrollbar{display:none}
   nav.tabs button{
-    appearance:none; flex:0 0 auto; position:relative; border:0; background:none; color:var(--ink-2);
+    appearance:none; flex:1 0 auto; text-align:center; position:relative; border:0; background:none; color:var(--ink-2);
     font-family:var(--sans); font-size:13.5px; font-weight:600; white-space:nowrap;
     padding:9px 15px 8px; margin:6px 0 0 -3px; cursor:pointer; transition:color .12s ease}
   nav.tabs button::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--tab); border:1px solid color-mix(in srgb,var(--c) 62%,var(--tab-edge)); border-bottom:0;
@@ -421,7 +421,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.0.1</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.0.2</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -665,8 +665,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v0.3.0.1</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v0.3.0.2</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.3.0.2 (15 Oct 2026, hotfix): <strong>The folder tabs now stretch across the whole page.</strong> They used to bunch up on the left two-thirds; they now share the full width, ending at the right edge of the content. On a phone they still scroll sideways. Appearance only: no data, grading or progress changed.<br></span>
     <span style="color:var(--mute)">v0.3.0.1 (15 Oct 2026, hotfix): <strong>The old exam tabs are gone and Prépa examen takes their place (à venir).</strong> Examen blanc and Pratique orale, which Unité 4 retired in v0.9.0, are removed from Unité 5: the chapter quizzes (Ch. 21 to 24), the Unit 5 exam shell, the oral prompt deck, the Analyse <em>Examen</em> donut and the Sans faute and Hat-trick achievements. Saved quiz history stays in your browser, unseen. A new <strong>Prépa examen</strong> tab sits after Grammaire and shows <em>à venir</em> until the Unit 5 study guide is uploaded; then it takes the same three parts as Unité 4 (vocabulary spelling and recognition, grammar topics, oral script builder). No vocabulary, grammar or progress data changed.<br></span>
     <span style="color:var(--mute)">v0.3.0 (15 Oct 2026): <strong>Vocabulaire — Recognize runs both ways, Training moves left, and mastery needs three in a row.</strong> <strong>Recognize</strong> now follows the EN → FR / FR → EN switch like Recall: from English you pick the French word (four options, articles included), from French you pick the meaning. The direction switch now sits on the Comment row and is dimmed only in Spelling, which is always English to French. <strong>Training</strong> moved to the left of Spelling, Recognize and Recall. <strong>Mastery:</strong> a correct answer on the first pass no longer turns a card green by itself, in the Vocabulaire and Conjugaison trainers alike. Every card goes green only after three correct answers in a row (a miss still resets the run), and <em>Je connais déjà</em> still marks a card known at once. The rule applies going forward only: cards already green stay green (even if they got there on one clean answer) until your next miss, which resets them like any other. <strong>Recall</strong> loses the &quot;Marked: known / still learning&quot; strip under the card, which repeated what the tag above the card and the progress table already show. Nothing else changed (no card, grading or drill content).<br></span>
     <span style="color:var(--mute)">v0.2.2 (15 Oct 2026): <strong>Vocabulaire — a noun's gender no longer takes a bar across the card.</strong> After you answer, the gender (m., f., m./f., m. pl., f. pl.) now joins the part-of-speech tag beside the cue (for example NOUN · F.) and the same tag in the Mémo card, instead of a full-width line of its own. Other card notes keep their own line. Appearance only: no card, answer or progress changed.<br></span>
