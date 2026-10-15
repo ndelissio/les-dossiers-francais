@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unité 5 · Dossier Français — v0.1.0</title>
+<title>Unité 5 · Dossier Français — v0.2.0</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
     --ink:#16243d;          /* deep navy: text + structure */
@@ -54,15 +55,25 @@
   .dlptDateRow input{font-family:inherit; font-size:13px; padding:4px 8px; border-radius:8px; border:1px solid var(--mute)}
   .dlptDateRow .hint{font-size:12px; color:var(--mute)}
 
-  /* ---- tabs ---- */
-  nav.tabs{display:flex; gap:2px; border-bottom:1px solid var(--line); position:sticky; top:0;
-    background:var(--paper); z-index:20; margin:0 -18px; padding:0 18px}
+  /* ---- tabs: manila folder tabs (v0.2.0) ---- */
+  :root{ --manila:#e9d08f; --manila-hi:#f6e6b4; --manila-lo:#dcbb6c; --manila-edge:#c4a352; }
+  nav.tabs{display:flex; align-items:flex-end; gap:4px; position:sticky; top:0; z-index:20; margin:0 -18px; padding:12px 18px 0;
+    background:var(--paper); border-bottom:3px solid var(--manila-edge); overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  nav.tabs::-webkit-scrollbar{display:none}
   nav.tabs button{
-    appearance:none; border:0; background:none; font-family:var(--sans); font-size:14px; font-weight:600;
-    color:var(--ink-2); padding:14px 14px 12px; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
-  }
-  nav.tabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
-  nav.tabs button:hover{color:var(--ink)}
+    appearance:none; flex:0 0 auto; position:relative; border:1px solid var(--manila-edge); border-bottom:0; border-radius:12px 12px 0 0;
+    background:linear-gradient(to bottom,var(--manila) 0%,var(--manila-lo) 100%); color:var(--ink-2);
+    font-family:var(--sans); font-size:13.5px; font-weight:700; letter-spacing:.01em; white-space:nowrap;
+    padding:9px 17px 8px; margin-top:7px; margin-bottom:0; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 -1px 2px rgba(120,90,20,.12);
+    transition:margin-top .12s ease, padding .12s ease, background .12s ease, color .12s ease, transform .12s ease}
+  nav.tabs button:hover{color:var(--ink); background:linear-gradient(to bottom,var(--manila-hi) 0%,var(--manila) 100%); margin-top:3px; padding-top:11px}
+  nav.tabs button:focus-visible{outline:2px solid var(--bleu); outline-offset:-3px}
+  nav.tabs button[aria-selected="true"]{
+    color:var(--ink); margin-top:0; padding:12px 20px 11px; margin-bottom:-3px; z-index:2;
+    background:linear-gradient(to bottom,var(--manila-hi) 0%,#f9edc6 100%);
+    box-shadow:inset 0 3px 0 var(--accent), 0 -3px 8px rgba(120,90,20,.18)}
+  nav.tabs button[aria-selected="true"]::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:4px; background:#f9edc6}
 
   .panel{display:none; padding-top:26px; animation:fade .25s ease}
   .panel.on{display:block}
@@ -305,6 +316,73 @@
   .strugrow:last-child{border-bottom:0}
   .strugrow .miss{color:var(--accent); font-weight:700; font-variant-numeric:tabular-nums}
   @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+  /* ---- v0.2.0 drill components (from the Unité 4 reference drills, recoloured to the dossier's own tokens) ---- */
+  :root{ --seyes:rgba(42,74,143,.10); --seyes-strong:rgba(42,74,143,.22); --margin:rgba(192,57,43,.38); --near:#b9772b; --near-soft:#f6ecdb; }
+  .seyes{position:relative; display:block; width:100%; max-width:560px; border:1px solid var(--line); border-radius:9px;
+    background-color:#fff;
+    background-image:
+      linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 35.5px, transparent 35.5px),
+      repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+      repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
+  .seyes input{display:block; width:100%; min-width:0; border:0; background:transparent; color:var(--ink); font-family:var(--serif); font-size:22px; padding:10px 14px 10px 48px; outline:none}
+  .seyes:focus-within{border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
+  .seyes.ok{border-color:var(--known)} .seyes.bad{border-color:var(--accent)}
+  .akeys{display:none; flex-wrap:wrap; gap:6px; margin-top:8px}
+  .vcard .akeys, .q.kf .akeys{display:flex}
+  .akey{appearance:none; cursor:pointer; min-width:32px; height:32px; padding:0 6px; border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:16px}
+  .akey:hover{border-color:var(--bleu); color:var(--bleu)}
+  .akey:focus-visible{outline:2px solid var(--bleu); outline-offset:1px}
+  .fq{font-family:var(--serif); font-size:19px; line-height:1.6; margin-bottom:10px}
+  .fq .cue{color:var(--mute); font-size:.82em; white-space:nowrap}
+  .gap{display:inline-block; min-width:3em; border-bottom:2px solid var(--bleu); color:var(--bleu); text-align:center; line-height:1.15; padding:0 4px}
+  .gap.ok{border-color:var(--known); color:var(--known)} .gap.bad{border-color:var(--accent); color:var(--accent)}
+  select.gapsel{font-family:var(--serif); font-size:inherit; color:var(--bleu); background:#eef2fa; border:0; border-bottom:2px solid var(--bleu); border-radius:6px 6px 0 0; padding:1px 4px; max-width:100%; cursor:pointer}
+  select.gapsel:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  select.gapsel.ok{color:var(--known); background:var(--known-soft); border-color:var(--known)}
+  select.gapsel.bad{color:var(--accent); background:var(--accent-soft); border-color:var(--accent)}
+  .fb{border-radius:9px; padding:11px 14px; margin-top:10px; display:flex; flex-direction:column; gap:7px; font-size:14px}
+  .fb.ok{background:var(--known-soft)} .fb.near{background:var(--near-soft)} .fb.bad{background:var(--accent-soft)}
+  .fb strong.fbv{font-size:14.5px}
+  .fb.ok strong.fbv{color:var(--known)} .fb.near strong.fbv{color:var(--near)} .fb.bad strong.fbv{color:var(--accent)}
+  .cmp{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:baseline}
+  .cmp .l{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); font-weight:700}
+  .cmp .w{font-family:var(--serif); font-size:19px; min-width:0; overflow-wrap:anywhere}
+  .fx{color:var(--accent); text-decoration:line-through; text-decoration-thickness:2px}
+  .fm{color:var(--accent); background:#fff; border-bottom:2px solid var(--accent); border-radius:2px}
+  .fb .full{font-family:var(--serif); font-size:16.5px}
+  .fb .why{font-size:13.5px; color:var(--ink)}
+  .fb .fnote{font-size:13px; color:var(--ink-2)}
+  .linkish{appearance:none; border:0; background:none; padding:0; cursor:pointer; font:inherit; font-size:13px; color:var(--bleu); text-decoration:underline; text-underline-offset:3px; align-self:flex-start}
+  .rulecard{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--bleu); border-radius:0 10px 10px 0; padding:12px 16px; margin:2px 0 12px; font-size:14px}
+  .rulecard h4{margin:0 0 6px; font-family:var(--serif); font-size:16px}
+  .rulecard ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:3px}
+  .rulecard b{color:var(--bleu)} .rulecard em{font-family:var(--serif)}
+  .gins{font-size:13.5px; color:var(--ink-2); margin:0 0 10px}
+  .gbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
+  .gbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
+  .gbar label{display:inline-flex; align-items:center; gap:6px}
+  .gbar input[type=checkbox]{accent-color:var(--bleu); width:16px; height:16px}
+  .gres{margin-top:14px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:var(--card); display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center}
+  .gres .big{font-family:var(--serif); font-size:26px; font-weight:600}
+  .gres .pct{color:var(--ink-2); font-size:14px}
+  .gempty{color:var(--mute); font-size:14px; padding:8px 0}
+  .qchk{margin-top:8px}
+  @media (max-width:480px){ .fq{font-size:17px} .seyes input{font-size:20px} }
+  .seyes input[readonly]{cursor:default}
+
+  /* ---- general polish (v0.2.0) ---- */
+  ::selection{background:var(--accent-soft); color:var(--ink)}
+  header.top{border-bottom:0; padding-bottom:19px;
+    background:linear-gradient(to right,#002654 0 33.34%,#ffffff 33.34% 66.67%,#ce1126 66.67% 100%) left bottom/100% 4px no-repeat}
+  .vcard,.acc,.chgroup,.gres,.rulecard{box-shadow:0 1px 0 rgba(22,36,61,.04), 0 8px 20px -14px rgba(22,36,61,.28)}
+  .btn,.ghost,.countchip,.seg button{transition:transform .1s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, color .12s ease}
+  .btn:hover{transform:translateY(-1px); box-shadow:0 4px 10px -6px rgba(22,36,61,.45)}
+  .btn:active,.ghost:active{transform:translateY(0) scale(.98)}
+  .btn:focus-visible,.ghost:focus-visible,.seg button:focus-visible,.countchip:focus-visible,summary:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .acc > summary,.chgroup > summary{transition:background .12s ease}
+  .acc > summary:hover{background:#f3efe4}
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important; transition:none !important} }
 </style>
 </head>
 <body>
@@ -313,7 +391,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v0.1.0</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v0.2.0</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div>
@@ -330,9 +408,9 @@
 
   <nav class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="dash">Tableau de bord</button>
-    <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="vocab">Vocabulaire</button>
     <button role="tab" aria-selected="false" data-tab="gram">Grammaire</button>
+    <button role="tab" aria-selected="false" data-tab="verbs">Conjugaison</button>
     <button role="tab" aria-selected="false" data-tab="test">Examen blanc</button>
     <button role="tab" aria-selected="false" data-tab="oral">Pratique orale</button>
     <button role="tab" aria-selected="false" data-tab="insights">Analyse</button>
@@ -453,7 +531,7 @@
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
-        <li><b>Recall</b> flips EN↔FR; <b>Spelling</b> makes you type it — accents count, each card grades once.</li>
+        <li><b>Recall</b> flips EN↔FR; <b>Spelling</b> makes you type it on ruled paper — accents count (turn <b>Strict accents</b> off to forgive them), each card grades once. After a miss, <b>You</b> shows what you typed and <b>Correct</b> what was missing; <b>My answer was right, count it</b> overrules the grader.</li>
         <li>Articles are part of the answer — <em>le/la</em> counts, wrong or missing article is a miss.</li>
         <li><b style="color:var(--known)">Green</b> = 3 correct in a row; a miss resets.</li>
         <li><b>Je connais déjà ✓</b> skips what you know; one miss puts it back.</li>
@@ -481,6 +559,7 @@
         <button data-mode="spell" aria-pressed="false">Spelling</button>
       </div>
       <button class="ghost" id="vocTrainBtn">Training</button>
+      <button class="ghost" id="vocStrictBtn" aria-pressed="true">Strict accents ✓</button>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
@@ -514,10 +593,12 @@
     <details class="changelog">
       <summary>How to use</summary>
       <ul class="lead-list">
-        <li>Rounds of 10 per bank — <b>New round 🎲</b> redraws.</li>
+        <li>Rounds of 10 per bank — <b>New round 🎲</b> redraws. Drills that carry a rule card show it above the questions, and every answer is followed by a one-line why.</li>
+        <li>Some items are drop-downs (keys 1–4 pick an option); <b>Format</b> switches between mixed, typing only and drop-down only. Misses pile up under <b>From → My misses</b>, and <b>Retry the missed</b> replays them.</li>
         <li>Best scores and couverture feed the dashboard.</li>
       </ul>
     </details>
+    <div class="gbar" id="gbar"><!-- filled by JS --></div>
     <div id="drills"><!-- filled by JS --></div>
   </section>
 
@@ -610,8 +691,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 5 · v0.1.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v0.2.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.2.0 (15 Oct 2026): <strong>New drill design — piloted in Unité 5.</strong> <strong>Typed answers</strong> now sit on a Seyès-ruled field (French copybook paper with a red margin) with an accent key row under it, in Vocabulaire spelling and in every Grammaire drill. <strong>Feedback after Check</strong>: a verdict line, a <em>You</em> row with wrong or extra letters struck through in red, a <em>Correct</em> row with the missed letters underlined, the full correct form, a one-line why (where written), and <em>My answer was right, count it</em>. Verdict ladder: correct · accents · article missing · wrong gender article · reflexive pronoun missing · agreement · wrong auxiliary · close spelling · not quite. <strong>Grading changes you may notice</strong>: in Vocabulaire spelling, un/une now count for le/la on a noun (articles are still required); <em>Strict accents</em> (on by default, one switch shared by Vocabulaire and Grammaire) can be turned off to count accent slips as correct; and the override on a missed Vocabulaire card restores that card's previous progress and records a correct answer, but the Analyse miss for that answer is not removed. <strong>Grammaire</strong>: a settings strip (Format: mixed, typing only or drop-down only · From: all questions or My misses · Strict accents); drop-down items sit inline in the sentence (keys 1–4 pick an option); each drill can carry an always-visible rule card (at most 5 bullets) above its questions; misses are tallied per item, <em>Retry the missed</em> replays them, and only full rounds count toward best scores. Existing drills run unchanged through an adapter that splits the infinitive cue out of each sentence. <strong>Pilot content — Chapter 21</strong>: rule card, instruction line and a why line on every item for 3 drills — hyp21 16 items / 6 drop-downs · relc21 20 items / 6 drop-downs · subj21 23 items / 7 drop-downs — 59 why lines and 19 drop-downs in all. Vocab en contexte (Ch. 21) and the Chapter 22–24 drills keep their original instruction notes and gain the same treatment chapter by chapter. No vocabulary, verb or mastery data changed; saved progress is untouched. <strong>Layout</strong>: the tabs are now manila folder tabs, in the order Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; a French-flag tab icon; a tricolore rule under the masthead; softer card shadows, button press states and visible keyboard focus rings.<br></span>
     <span style="color:var(--mute)">v0.1.0 (10 Oct 2026): <strong>Unité 5 launch — Chapters 21–24.</strong> Forked from the Unité 4 v0.8.2 engine; Unité 5 progress saves under its own key. <strong>Chapter 21 — Schooling</strong>: 134 vocabulaire cards (102 glossaire + 32 mini-glossaire) in 9 topic groups; 12 irregular verbs in Conjugaison; 4 grammar drills (74 items: L'hypothèse sur le présent (si + imparfait) · Les pronoms relatifs composés (lequel, auquel, duquel…) · Le subjonctif présent · Vocab en contexte — Ch. 21); a 26-question quiz bank; 7 oral prompts. <strong>Chapter 22 — Press & Media</strong>: 166 vocabulaire cards (144 glossaire + 22 mini-glossaire, including 3 repeats: fiable (also in Chapter 21), remettre en question (also in Chapter 21), s'engager (à) (also in Chapter 21)) in 10 topic groups; 11 irregular verbs in Conjugaison; 4 grammar drills (66 items: Le plus-que-parfait · La voix passive · Les connecteurs de l'alternative · Vocab en contexte — Ch. 22); a 26-question quiz bank; 7 oral prompts. <strong>Chapter 23 — Political Systems & Extremism</strong>: 181 vocabulaire cards (137 glossaire + 44 mini-glossaire, including 8 repeats: la junte (also in Chapter 22), la laïcité (also in Chapter 21), soutenir (also in Chapter 22), s'appuyer (sur) (also in Chapter 21), avoir accès (à) (also in Chapter 21), renforcer (also in Chapter 22), l'ouvrier(-ière) (also in Chapter 21), remettre en question (also in Chapter 21)) in 11 topic groups; 6 irregular verbs in Conjugaison; 4 grammar drills (78 items: Les expressions de la cause (partie 2) · Les expressions de la conséquence · Les pronoms relatifs simples et composés · Vocab en contexte — Ch. 23); a 28-question quiz bank; 8 oral prompts. <strong>Chapter 24 — Crime & Justice</strong>: 150 vocabulaire cards (129 glossaire + 21 mini-glossaire, including 10 repeats: le dédommagement (also in Chapter 23), l'attentat (also in Chapter 23), le harcèlement (also in Chapter 21), nier (also in Chapter 22), poursuivre (also in Chapter 23), soupçonner (also in Chapter 23), agresser (also in Chapter 22), mettre en lumière (also in Chapter 22), susciter (also in Chapter 22), la prison ferme (also in Chapter 23)) in 13 topic groups; 8 irregular verbs in Conjugaison; 6 grammar drills (113 items: Le subjonctif après certaines conjonctions · Renforcement de la voix passive · Renforcement des temps du passé · Le conditionnel passé de l'incertitude · Opinions, avant que / avant de, après que · Vocab en contexte — Ch. 24); a 28-question quiz bank; 8 oral prompts. Conjugaison also gains two new tenses for every verb, as reps only: <strong>plus-que-parfait</strong> and <strong>subjonctif présent</strong> (the subjunctive rows are labelled que je / que tu / qu'il…, and the answer is accepted with or without que + pronoun); the passé composé and plus-que-parfait now keep a masculine plural participle ending in s or x unchanged (nous étions mis, not miss). Every Mémo card was audited against dictionary and etymology sources before release (fr./en. Wiktionary, WordReference, Larousse, Service-Public and Légifrance for the legal terms); 231 of the 631 cards carry a mnemonic, kept only where it follows from the etymology or cognate it cites. Total: 631 vocabulaire cards. Cross-chapter repeats share one progress entry (same French key). The Unit 5 practice exam is à venir pending the study guide; the Chapter 25 review chapter has no new content and is not built.<br></span>
     </details><br>
     Progress is stored in this browser only — open the same downloaded file in the same browser to keep it. Clearing site data or using private mode resets it.
@@ -641,6 +723,8 @@ state.verbs = state.verbs || {};      // fr -> "known" | "learn"
 state.drills = state.drills || {};    // drillId -> best {correct,total}
 ["spell1","spell2","spell3","spell4"].forEach(function(k){ delete state.drills[k]; }); // v3.1.0: Spelling watch retired
 state.gramCov = state.gramCov || {};   /* v1.0.0 U3: per-item drill coverage */
+state.gramMiss = state.gramMiss || {}; /* v0.2.0: drillId -> {item index: miss count} — feeds "My misses" and "Retry the missed" */
+state.prefs = state.prefs || {};       /* v0.2.0: strict accents · grammar format · grammar source */
 state.tests = state.tests || [];      // [{kind,score,total,date}]
 state.missTally = state.missTally || {}; // tag -> {w,t} from quiz/exam scoring
 state.verbStats = state.verbStats || {};   // fr -> {c:correct, w:wrong}
@@ -720,6 +804,113 @@ function norm(s){ return (s||"").toLowerCase().replace(/[’´]/g,"'").replace(/
 function bare(s){ return norm(s).normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
 function el(tag,cls,html){ var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---------------- answer grading (v0.2.0) ----------------
+   Verdict ladder from the Unité 4 reference drills (design-reference/grading.js), inlined — the dossier is a single offline file.
+   Pure functions, no DOM. Namespaced as FG so it never collides with the engine's own norm/esc/bare helpers.
+   Ladder, first match wins: ok · accent · article · gender · pronoun · agreement · auxiliary · close · wrong.
+   Dossier change vs the reference: "auxiliary" fires only when the avoir/être family differs (a plus-que-parfait answer with the right
+   participle and the wrong tense of the auxiliary — a fini vs avait fini — is "close"/"wrong", never "wrong auxiliary"). */
+var FG=(function(){
+  var VOWEL=/^[aeiouyàâäéèêëîïôöûüùœh]/i;
+  function norm(s){
+    return (s||"").normalize("NFC").replace(/[’‘`´]/g,"'").toLowerCase()
+      .replace(/\s+/g," ").trim().replace(/\b(l|s|d|j|m|t|qu)' +/g,"$1'");
+  }
+  function fold(s){ return norm(s).normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/œ/g,"oe").replace(/æ/g,"ae"); }
+  function splitArt(s){ var m=s.match(/^(les|le|la|une|un|des|l')\s?(.+)$/); return m?{art:m[1],body:m[2]}:null; }
+  function articleForms(form,g){
+    var p=splitArt(form); if(!p) return [form];
+    var b=p.body, v=VOWEL.test(b);
+    var gen=(p.art==="le"||p.art==="un")?"m":(p.art==="la"||p.art==="une")?"f":(p.art==="les"||p.art==="des")?"pl":(g||"m").charAt(0)==="f"?"f":"m";
+    if(g && /p$/.test(g)) gen="pl";
+    if(gen==="pl") return ["les "+b,"des "+b];
+    if(gen==="m") return [(v?"l'":"le ")+b,"un "+b];
+    return [(v?"l'":"la ")+b,"une "+b];
+  }
+  /* item: {f, a:[alternates], type:"n"|"v"|"x"|"pc", g, articleOptional} */
+  function prepare(item){
+    var forms=[item.f].concat(item.a||[]).map(norm), acc=[];
+    forms.forEach(function(s){ acc.push(s); if(item.type==="n") articleForms(s,item.g).forEach(function(x){ acc.push(x); }); });
+    var bodies=[];
+    if(item.type==="n") forms.forEach(function(s){ var b=(splitArt(s)||{body:s}).body; if(bodies.indexOf(b)<0) bodies.push(b); });
+    if(item.articleOptional) bodies.forEach(function(b){ acc.push(b); });
+    var refl=item.type==="v" && /^(s'|se )/.test(norm(item.f)) ? norm(item.f).replace(/^(s'|se )/,"") : null;
+    var seen={}, uniq=acc.filter(function(x){ return seen[x]?false:(seen[x]=1); });
+    var o={}; for(var k in item) o[k]=item[k];
+    o.acc=uniq; o.bodies=bodies; o.refl=refl; return o;
+  }
+  function lev(a,b){
+    var m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+    var prev=[],cur=[],i,j; for(j=0;j<=n;j++) prev[j]=j;
+    for(i=1;i<=m;i++){ cur[0]=i;
+      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
+      var t=prev; prev=cur; cur=t; }
+    return prev[n];
+  }
+  function ppBase(w){ return w.replace(/(es|e|s)$/,""); }
+  var AVOIR=/^(ai|as|a|avons|avez|ont|avais|avait|avions|aviez|avaient|aurai|auras|aura|aurons|aurez|auront|aurais|aurait|aurions|auriez|auraient|aie|aies|ait|ayons|ayez|aient|eut|eus|eurent)$/;
+  var ETRE=/^(suis|es|est|sommes|êtes|sont|étais|était|étions|étiez|étaient|serai|seras|sera|serons|serez|seront|serais|serait|serions|seriez|seraient|sois|soit|soyons|soyez|soient|fus|fut|furent)$/;
+  function auxFamily(words){ var w=words[words.length-1]||""; return AVOIR.test(w)?"a":ETRE.test(w)?"e":""; }
+  function grade(input,it){
+    var n=norm(input), fd=fold(input);
+    if(it.acc.indexOf(n)>-1) return {v:"ok",target:n};
+    var accHit=null; it.acc.forEach(function(a){ if(!accHit && fold(a)===fd) accHit=a; });
+    if(accHit) return {v:"accent",target:accHit};
+    function withArt(b){ var r=null; it.acc.forEach(function(a){ if(!r && (a.slice(-(b.length+1))===" "+b || a==="l'"+b)) r=a; }); return r||it.acc[0]; }
+    if(it.type==="n"){
+      var bi=-1; it.bodies.forEach(function(b,i){ if(bi<0 && fold(b)===fd) bi=i; });
+      if(bi>-1) return {v:"article",target:withArt(it.bodies[bi])};
+      var p=splitArt(n);
+      if(p){ var gi=-1; it.bodies.forEach(function(b,i){ if(gi<0 && fold(b)===fold(p.body)) gi=i; });
+        if(gi>-1) return {v:"gender",target:withArt(it.bodies[gi])}; }
+    }
+    if(it.refl && fold(it.refl)===fd) return {v:"pronoun",target:norm(it.f)};
+    if(it.type==="pc"){
+      var iw=n.split(" ");
+      for(var k=0;k<it.acc.length;k++){
+        var a=it.acc[k], aw=a.split(" ");
+        if(iw.length!==aw.length) continue;
+        var last=iw.length-1;
+        if(ppBase(iw[last])!==ppBase(aw[last])) continue;
+        var ri=iw.slice(0,last), ra=aw.slice(0,last), restSame=ri.join(" ")===ra.join(" ");
+        if(restSame) return {v:"agreement",target:a};
+        var fi=auxFamily(ri), fa=auxFamily(ra);
+        if(fi && fa && fi!==fa) return {v:"auxiliary",target:a};
+      }
+    }
+    var best=it.acc[0], d=Infinity;
+    it.acc.forEach(function(a){ var kk=lev(n,a); if(kk<d){ d=kk; best=a; } });
+    if(lev(fd,fold(best))<=2 && fold(best).length>=5) return {v:"close",target:best};
+    return {v:"wrong",target:best};
+  }
+  /* character diff (LCS) → [youChars, correctChars], each [{c,bad}] */
+  function diff(a,b){
+    var m=a.length,n=b.length,L=[],i,j;
+    for(i=0;i<=m;i++){ L.push([]); for(j=0;j<=n;j++) L[i].push(0); }
+    for(i=m-1;i>=0;i--) for(j=n-1;j>=0;j--) L[i][j]=a.charAt(i)===b.charAt(j)?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+    var ua=[],tb=[]; i=0; j=0;
+    while(i<m && j<n){
+      if(a.charAt(i)===b.charAt(j)){ ua.push({c:a.charAt(i),bad:false}); tb.push({c:b.charAt(j),bad:false}); i++; j++; }
+      else if(L[i+1][j]>=L[i][j+1]){ ua.push({c:a.charAt(i),bad:true}); i++; }
+      else { tb.push({c:b.charAt(j),bad:true}); j++; }
+    }
+    while(i<m) ua.push({c:a.charAt(i++),bad:true});
+    while(j<n) tb.push({c:b.charAt(j++),bad:true});
+    return [ua,tb];
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  /* You row: marked(you,"fx") → struck through in red. Correct row: marked(correct,"fm") → underlined in red. A wrong space shows as "·". */
+  function marked(arr,cls){ return arr.map(function(o){ return o.bad ? "<span class=\""+cls+"\">"+esc(o.c===" "?"·":o.c)+"</span>" : esc(o.c); }).join(""); }
+  var VERDICTS={
+    ok:{title:"Correct",tone:"ok"}, accent:{title:"Check the accents",tone:"near"}, article:{title:"Article missing",tone:"near"},
+    gender:{title:"Wrong article: check the gender",tone:"near"}, pronoun:{title:"Reflexive pronoun missing",tone:"near"},
+    agreement:{title:"Check the agreement",tone:"near"}, auxiliary:{title:"Wrong auxiliary",tone:"bad"},
+    close:{title:"Close: check the spelling",tone:"near"}, wrong:{title:"Not quite",tone:"bad"}, skip:{title:"Here's the answer",tone:"bad"}
+  };
+  return {norm:norm,fold:fold,prepare:prepare,grade:grade,diff:diff,marked:marked,esc:esc,VERDICTS:VERDICTS,articleForms:articleForms,auxFamily:auxFamily};
+})();
+
 
 /* ---------------- articles ---------------- */
 function normArt(a){ return (a||"").toLowerCase().replace(/[’´]/g,"'"); }
@@ -2322,8 +2513,8 @@ function renderVoc(){
     var hint = "Type the French"+(sa.hasArt?" — include the article":"")+" (accents count)";
     var p=el("div","prompt","<div class='small'>"+hint+posPill(v)+"</div><div class='big'>"+esc(v.e)+"</div>");
     card.appendChild(p);
-    var row=el("div","row-in"); var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-    inp.setAttribute("aria-label","french spelling"); row.appendChild(inp); card.appendChild(row);
+    var row=el("div","row-in"); var field=el("div","seyes"); var inp=el("input"); inp.type="text"; inp.autocapitalize="none"; inp.autocomplete="off"; inp.spellcheck=false;
+    inp.setAttribute("aria-label","french spelling"); field.appendChild(inp); row.appendChild(field); card.appendChild(row); card.appendChild(gKeys(inp));
     var vd=el("div","verdict"); vd.style.display="none"; vd.style.marginTop="12px"; card.appendChild(vd);
     var pronHost=el("div"); card.appendChild(pronHost);
 
@@ -2333,65 +2524,75 @@ function renderVoc(){
       var model=el("div","note","Modèle : "+fullLabel()); model.style.fontSize="15px"; card.insertBefore(model,row);
       showPron();
     }
-    function lockCard(){ inp.disabled=true; rb.disabled=true; cb.disabled=true; rb.style.opacity=".45"; cb.style.opacity=".45"; }
+    function lockCard(){ locked=true; inp.readOnly=true; rb.disabled=true; cb.disabled=true; rb.style.opacity=".45"; cb.style.opacity=".45"; }
 
-    function checkSpell(){
-      var got=inp.value; if(!got.trim())return;
-      if(vocTrain){
-        var tua=splitArticle(got), tc=vocCands(v).list, thit=false, tclose=false;
-        tc.forEach(function(t){ var ta=splitArticle(t);
-          if(norm(tua.bare)===norm(ta.bare)) thit=true;
-          else if(bare(tua.bare)===bare(ta.bare)) tclose=true; });
-        vd.style.display="block";
-        if(thit){ vd.className="verdict ok"; vd.textContent="\u2713 "+fullLabel()+" \u2014 training, not recorded. Encore !"; }
-        else if(tclose){ vd.className="verdict warn"; vd.textContent="Accents \u2014 "+fullLabel()+" \u00b7 not recorded"; }
-        else { vd.className="verdict no"; vd.textContent="\u2717 "+fullLabel()+" \u00b7 not recorded"; }
-        inp.select(); return;
+    var fbv=el("div"); card.appendChild(fbv);
+    var locked=false, strictOn=!!gPrefs().strict;
+    /* v0.2.0: grading runs through the shared verdict ladder (FG); vocCands() still supplies the accepted forms
+       (masculine / feminine shorthand, optional complements, alternates). */
+    function vGrade(got){
+      var vc=vocCands(v), cands=vc.list.filter(function(c){ return c.indexOf("(")<0; }); if(!cands.length) cands=vc.list;
+      var isN=(v.p==="n"&&sa.hasArt), g=null, nn=v.n||"";
+      if(isN){ g=/\bf\./.test(nn)?"f":/\bm\./.test(nn)?"m":null; if(g&&/\bpl\./.test(nn)) g+="p"; }
+      var it=FG.prepare({f:norm(cands[0]),a:cands.slice(1).map(norm),type:isN?"n":(v.p==="v"?"v":"x"),g:g});
+      var r=FG.grade(norm(got),it);
+      var viaAlt=r.v==="ok" && vc.list.slice(0,vc.primary).map(norm).indexOf(norm(got))<0;
+      return {v:r.v,target:r.target,viaAlt:viaAlt,correct:(r.v==="ok")||(r.v==="accent"&&!strictOn)};
+    }
+    /* feedback panel: verdict · You / Correct diff · full form · progress note · override (misses only) */
+    function vPanel(r,got,opts){
+      opts=opts||{}; var V=FG.VERDICTS[opts.skip?"skip":r.v], tone=(r.correct&&V.tone!=="ok")?"near":V.tone;
+      var html="<strong class='fbv'>"+V.title+"</strong>";
+      if(!opts.skip && r.v!=="ok"){
+        var df=FG.diff(FG.norm(got),FG.norm(r.target));
+        html+="<div class='cmp'><span class='l'>You</span><span class='w'>"+FG.marked(df[0],"fx")+"</span><span class='l'>Correct</span><span class='w'>"+FG.marked(df[1],"fm")+"</span></div>";
       }
-      var ua=splitArticle(got);
-      var vc=vocCands(v), cands=vc.list;        // primary (+ masc/fem forms) + accepted alternates
-      var nounExact=false, nounBareEq=false, fullExact=false, artOk=!sa.hasArt, viaAlt=false;
-      cands.forEach(function(t,ci){
-        var ta=splitArticle(t);
-        if(norm(ua.bare)===norm(ta.bare)){ nounExact=true; if(ci>=vc.primary) viaAlt=true; if(!ta.hasArt || (ua.hasArt && normArt(ua.art)===normArt(ta.art))) artOk=true; }
-        if(bare(ua.bare)===bare(ta.bare)) nounBareEq=true;
-        if(norm(got)===norm(t)){ fullExact=true; if(ci>=vc.primary) viaAlt=true; }
-      });
-      var gtag = sa.gender?(" ("+sa.gender+")"):"";
-      var correct, cls, msg;
-      if(req && sa.hasArt){
-        /* REQUIRED: the article is part of the answer — wrong/missing article fails */
-        if(fullExact){ correct=true; cls="ok"; }
-        else if(nounExact && !artOk){ correct=false; cls="no"; msg="✗ Article — "+v.f+gtag; }
-        else if(nounBareEq){ correct=false; cls="no"; msg="✗ Accents — "+v.f+gtag; }
-        else { correct=false; cls="no"; msg="✗ "+v.f+gtag; }
-      } else {
-        /* OFF (or the word has no article): grade the noun only, article ignored */
-        if(nounExact){ correct=true; cls="ok"; }
-        else if(nounBareEq){ correct=false; cls="no"; msg="✗ Accents — "+v.f+gtag; }
-        else { correct=false; cls="no"; msg="✗ "+v.f+gtag; }
-      }
-      /* v1.0.0-b2: graded spelling answers feed Analyse — accent-close and article-gender detected */
-      anaRecord(correct, (!correct && nounBareEq && !nounExact), (req && sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
-      recordAnswer(state.vocabStats, state.vocab, v.f, correct);
-      tag.textContent=vocTagText();
+      html+="<div class='full'>"+esc(v.f)+(sa.gender?" ("+sa.gender+")":"")+"</div>";
+      if(opts.note) html+="<div class='fnote'>"+opts.note+"</div>";
+      vd.style.display="none"; fbv.innerHTML=""; var fb=el("div","fb "+tone,html); fbv.appendChild(fb);
+      return fb;
+    }
+    function streakNote(r){
       var st=state.vocab[v.f], sc=state.vocabStats[v.f];
-      if(cls==="ok"){
-        var lead = viaAlt ? ("✓ accepted · card form: "+v.f+gtag) : ("✓ "+v.f+gtag);
-        msg = st==="known" ? (lead+" — mastered") : (lead+" — "+sc.s+"/3 in a row");
+      return (r.viaAlt?"Accepted · card form: "+esc(v.f)+" — ":"")+(st==="known"?"mastered":(sc.s+"/3 in a row"));
+    }
+    function checkSpell(){
+      var got=inp.value; if(!got.trim()||locked)return;
+      var r=vGrade(got);
+      if(vocTrain){
+        vPanel(r,got,{note:"training — not recorded. Encore !"}); inp.select(); return;
       }
-      vd.style.display="block"; vd.className="verdict "+cls; vd.textContent=msg;
+      var snap=JSON.stringify(state.vocabStats[v.f]||null), snapSt=state.vocab[v.f];
+      var accentClose=(!r.correct && r.v==="accent");
+      anaRecord(r.correct, accentClose, (sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
+      recordAnswer(state.vocabStats, state.vocab, v.f, r.correct);
+      tag.textContent=vocTagText();
+      var fb=vPanel(r,got,{note:r.correct?streakNote(r):"counts as a miss"});
+      if(!r.correct){
+        var ov=el("button","linkish","My answer was right, count it");
+        ov.onclick=function(){
+          if(snap==="null") delete state.vocabStats[v.f]; else state.vocabStats[v.f]=JSON.parse(snap);
+          if(snapSt) state.vocab[v.f]=snapSt; else delete state.vocab[v.f];
+          recordAnswer(state.vocabStats, state.vocab, v.f, true);
+          tag.textContent=vocTagText(); r.correct=true;
+          fb.className="fb ok"; fb.querySelector(".fbv").textContent="Counted as correct"; ov.remove();
+          var nt=fb.querySelector(".fnote"); if(nt) nt.textContent=streakNote(r);
+          saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
+        };
+        fb.appendChild(ov);
+      }
       lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
     function revealSpell(){
+      if(locked) return;
       recordAnswer(state.vocabStats, state.vocab, v.f, false);
       tag.textContent=vocTagText();
-      vd.style.display="block"; vd.className="verdict warn"; vd.textContent="Answer: "+fullLabel()+" — counts as a miss";
+      vPanel({v:"skip",target:v.f,correct:false},"",{skip:true,note:"counts as a miss"});
       inp.value=v.f; lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
-    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ checkSpell(); } });
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(locked) vocNext(); else checkSpell(); } });
     var act=el("div","vactions drill");
     var rb=el("button","btn dunno","Reveal answer"); rb.onclick=revealSpell;
     var cb=el("button","btn go","Check"); cb.onclick=checkSpell;
@@ -2466,6 +2667,7 @@ document.getElementById("chapterFilterVoc").addEventListener("change",function()
 });
 document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
+document.getElementById("vocStrictBtn").addEventListener("click",function(){ var pk=gPrefs(); pk.strict=!pk.strict; saveState(); syncStrict(); });
 document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"#fff":"";vocShown=false;renderVoc();});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
   vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"#fff":"";
@@ -2529,6 +2731,149 @@ DRILLS.push.apply(DRILLS,[
  {id:"mood24",minCh:24,ch:"Ch. 24",title:"Opinions, avant que / avant de, après que",note:"<b>Instructions :</b> Look at the expression before the blank — an opinion, a certainty, a doubt, a time conjunction — and decide whether the verb in parentheses needs the indicatif, the subjonctif or an infinitive; then write the form.<br><b>The rule :</b> certainty and plain opinion (<i>je pense que, il est évident que, il me semble que</i>) take the <b>indicatif</b>; negated opinion, doubt, possibility, necessity and feeling (<i>je ne pense pas que, je doute que, il est possible que, il faut que, il est dommage que</i>) take the <b>subjonctif</b>. <b>Avant que</b> takes the subjonctif, <b>avant de</b> + infinitif is used when the subject is the same; <b>après que</b> takes the indicatif, and <b>après</b> + infinitif passé is used when the subject is the same.",items:[{q:"Je pense que la prison ___ (être) utile pour certains criminels.",a:"est",m:{vg:"mood24"}},{q:"Je ne pense pas que la prison ___ (être) la seule solution.",a:"soit",m:{vg:"mood24"}},{q:"Il est évident que le témoin ___ (mentir).",a:"ment",m:{vg:"mood24"}},{q:"Il est possible que le jury ___ (rendre) son verdict demain.",a:"rende",m:{vg:"mood24"}},{q:"Il me semble que l'accusé ___ (avoir) peur.",a:"a",m:{vg:"mood24"}},{q:"Il se peut que la défense ___ (faire) appel.",a:"fasse",m:{vg:"mood24"}},{q:"À mon avis, il faut que les policiers ___ (suivre) une formation sur le profilage.",a:"suivent",m:{vg:"mood24"}},{q:"Je crois que ce jeune ___ (pouvoir) changer de vie.",a:"peut",m:{vg:"mood24"}},{q:"Je ne crois pas que ce jeune ___ (vouloir) changer de vie.",a:"veuille",m:{vg:"mood24"}},{q:"Il est clair que l'erreur ___ (venir) de la police.",a:"vient",m:{vg:"mood24"}},{q:"Je doute que le suspect ___ (dire) la vérité.",a:"dise",m:{vg:"mood24"}},{q:"Avant que la police ne ___ (arriver), les témoins s'étaient dispersés.",a:"arrive",m:{vg:"mood24"}},{q:"Le voleur a pris le temps de tout ranger avant ___ (partir).",a:"de partir",m:{vg:"mood24"},hint:"The blank covers the preposition too."},{q:"Après que le juge ___ (lever) l'audience, les journalistes ont interrogé les avocats.",a:["a levé","avait levé"],m:{vg:"mood24"}},{q:"Après ___ (lire) le verdict, le juge a quitté la salle.",a:"avoir lu",m:{vg:"mood24"}},{q:"Elle a téléphoné à son avocat avant que le policier ne lui ___ (demander) de signer.",a:"demande",m:{vg:"mood24"}},{q:"Je suis certain que cette loi ___ (réduire) la criminalité dans les années à venir.",a:["réduira","va réduire"],m:{vg:"mood24"}},{q:"Il est dommage que tant de jeunes ___ (tomber) dans la délinquance.",a:"tombent",m:{vg:"mood24"}},{q:"Je trouve que le système judiciaire ___ (fonctionner) bien.",a:"fonctionne",m:{vg:"mood24"}},{q:"Il vaut mieux que nous ___ (attendre) le verdict avant de réagir.",a:"attendions",m:{vg:"mood24"}}]},
  {id:"voc24",minCh:24,ch:"Ch. 24",title:"Vocab en contexte — Ch. 24",note:"<b>Instructions :</b> Write the single glossaire word or phrase that completes the sentence — conjugate or agree it as the sentence needs.<br><b>Word bank :</b> the Chapter 24 glossaire — crime, procedure, courts and penalties. Accents count.",items:[{q:"Après le vol, la victime a décidé de ___ plainte contre son voisin.",a:["porter","déposer"],m:{vg:"vocctx"}},{q:"L'avocat a décidé de faire ___ de la décision du tribunal.",a:["appel"],m:{vg:"vocctx"}},{q:"Le suspect a été placé en ___ à vue pendant vingt-quatre heures.",a:["garde"],m:{vg:"vocctx"}},{q:"Il a été condamné à six mois de prison avec ___.",a:["sursis"],m:{vg:"vocctx"}},{q:"Le jury doit décider de la ___ ou de l'innocence de l'accusé.",a:["culpabilité"],m:{vg:"vocctx"}},{q:"Le chauffard a dû payer une ___ de cinq cents euros.",a:["amende","contravention"],m:{vg:"vocctx"}},{q:"Le ministère public a requis une ___ de dix ans de prison.",a:["peine"],m:{vg:"vocctx"}},{q:"Le prévenu a été reconnu ___ de vol.",a:["coupable"],m:{vg:"vocctx"}},{q:"Le meurtrier court toujours : il est ___ par toute la police.",a:["recherché"],m:{vg:"vocctx"},hint:"wanted."},{q:"Le journaliste a échappé à une ___ d'assassinat.",a:["tentative"],m:{vg:"vocctx"}},{q:"Le suspect ___ les faits : il dit qu'il n'a rien fait.",a:["nie","conteste"],m:{vg:"vocctx"}},{q:"La famille de la victime a reçu un ___ de cinquante mille euros.",a:["dédommagement"],m:{vg:"vocctx"}},{q:"Le policier a ___ en l'air pour disperser la foule.",a:["tiré"],m:{vg:"vocctx"}},{q:"Le prisonnier doit ___ sa peine de cinq ans.",a:["purger"],m:{vg:"vocctx"}},{q:"L'accusé doit ___ devant le tribunal le 12 mars.",a:["comparaître"],m:{vg:"vocctx"}},{q:"Le tribunal a prononcé sa ___ : il n'y avait pas assez de preuves.",a:["relaxe"],m:{vg:"vocctx"}},{q:"Le journal a dénoncé une ___ policière : l'agent a tiré sur un homme désarmé.",a:["bavure"],m:{vg:"vocctx"}},{q:"Le juge a rendu une ordonnance de ___ : il n'y aura pas de procès.",a:["non-lieu"],m:{vg:"vocctx"}}]}
 ]);
+/* ===== v0.2.0 pilot — Chapter 21 drills converted to the new design =====
+   hyp21 · relc21 · subj21: instruction line, rule card, a why line for every item, and drop-downs on some items.
+   x: [first accepted answer (integrity check), why line] per item, in bank order.  ch: {item index: options, correct first}.
+   The remaining drills (voc21 and Chapters 22–24) run through the adapter with their original instruction notes and gain the same
+   treatment chapter by chapter. */
+var GPILOT={
+ hyp21:{
+  ins:"Decide whether the situation is likely or only imagined, then conjugate the verb in parentheses.",
+  rt:"Si + présent → futur · si + imparfait → conditionnel",
+  rule:[
+   "<b>si + présent</b> for a real or likely condition; the result takes the <b>futur simple</b> (or the présent, or the impératif) — <em>Si tu étudies, tu auras le bac.</em>",
+   "<b>si + imparfait</b> for an imagined or unlikely condition; the result takes the <b>conditionnel présent</b> — <em>Si les effectifs étaient réduits, les élèves apprendraient mieux.</em>",
+   "The imparfait after <b>si</b> is not about the past. Never put a futur or a conditionnel right after <b>si</b>.",
+   "Imparfait endings <b>-ais -ais -ait -ions -iez -aient</b> on the nous stem; the conditionnel is the futur stem + the same endings (<em>fer-, aur-, ir-</em>).",
+   "<b>si + il / ils</b> → <b>s'il / s'ils</b>; <b>si + elle / on</b> keeps <b>si</b>."
+  ],
+  x:[
+   ["avais","An imagined situation (the result is <b>lirais</b>) → si + imparfait: <b>avais</b>."],
+   ["réussiraient","This is the result clause of an imagined condition → conditionnel: <b>réussir-</b> + <b>-aient</b> → <b>réussiraient</b>."],
+   ["viens","A likely situation (the result is <b>rencontreras</b>) → si + présent: <b>viens</b>."],
+   ["irait","The si-clause is in the imparfait, so the result is conditionnel; the stem of aller is <b>ir-</b> → <b>irait</b>."],
+   ["construirait","Result of an imagined condition → conditionnel: <b>construir-</b> + <b>-ait</b> → <b>construirait</b>."],
+   ["pouvions","The result is <b>irions</b> (conditionnel), so the si-clause takes the imparfait: nous stem <b>pouv-</b> + <b>-ions</b> → <b>pouvions</b>."],
+   ["gagnais","The result is <b>ferais</b> (conditionnel) → si + imparfait: <b>gagnais</b>."],
+   ["se perdrait","Result of an imagined condition → conditionnel. Perdre drops its e (<b>perdr-</b>) and keeps <b>se</b>: <b>se perdrait</b>."],
+   ["déposerait","The si-clause (<b>avait</b>) is imparfait, so the result is conditionnel: <b>déposer-</b> + <b>-ait</b> → <b>déposerait</b>."],
+   ["rendait","The result is <b>iraient</b> (conditionnel) → the si-clause takes the imparfait: nous stem <b>rend-</b> + <b>-ait</b> → <b>rendait</b>."],
+   ["étudies","The result is <b>auras</b> (futur), so the condition is likely → si + présent: <b>étudies</b>."],
+   ["feriez","The si-clause is imparfait (<b>étiez</b>), so the result is conditionnel; faire has the irregular stem <b>fer-</b> → <b>feriez</b>."],
+   ["auraient","Result of an imagined condition → conditionnel; avoir has the irregular stem <b>aur-</b> → <b>auraient</b>."],
+   ["avait","The result is <b>éduqueriez</b> (conditionnel) → si + imparfait; il y a becomes <b>il y avait</b>."],
+   ["s'investiraient","The si-clause (<b>comprenaient</b>) is imparfait, so the result is conditionnel: <b>s'investir-</b> + <b>-aient</b> → <b>s'investiraient</b>."],
+   ["était","The result is <b>obtiendrait</b> (conditionnel) → si + imparfait: <b>était</b>."]
+  ],
+  ch:{
+   0:["avais","aurais","ai","aurai"],
+   2:["viens","viendrais","viendras","venais"],
+   6:["gagnais","gagnerais","gagnerai","gagne"],
+   9:["rendait","rendrait","rendra","rend"],
+   10:["étudies","étudierais","étudieras","étudiais"],
+   15:["était","serait","sera","est"]
+  }
+ },
+ relc21:{
+  ins:"Find the preposition (or the verb that demands one), then match the pronoun to the noun it replaces.",
+  rt:"Les pronoms relatifs composés",
+  rule:[
+   "After a preposition, <b>lequel · laquelle · lesquels · lesquelles</b> agree with the noun they replace — <em>la bibliothèque dans <b>laquelle</b> je travaille.</em>",
+   "<b>à</b> and <b>de</b> contract with lequel, lesquels, lesquelles: <b>auquel · auxquels · auxquelles</b> and <b>duquel · desquels · desquelles</b>. <b>laquelle</b> never contracts: <em>à laquelle, de laquelle.</em>",
+   "For people, <b>qui</b> is usually preferred after a preposition — <em>les élèves avec <b>qui</b> je révise.</em>",
+   "Prepositional phrases ending in <b>de</b> (<em>à côté de, le long de, près de</em>) take the contracted <b>de</b> forms.",
+   "After <b>entre</b> and <b>parmi</b>, only the compound forms are possible. A place can also take <b>où</b>."
+  ],
+  x:[
+   ["lequel","<b>dans</b> + <em>le programme</em> (masculine singular) → <b>lequel</b>."],
+   ["auxquels","<b>assister à</b> + <em>les cours</em> (masculine plural): à + lesquels → <b>auxquels</b>."],
+   ["lesquels","<b>pour</b> + <em>les examens</em> (masculine plural) → <b>lesquels</b>."],
+   ["laquelle","<b>dans</b> + <em>la bibliothèque</em> (feminine singular) → <b>laquelle</b>."],
+   ["qui","<b>avec</b> + people (<em>les dames</em>, feminine plural) → <b>qui</b>, or <b>lesquelles</b>."],
+   ["lesquels","<b>sur</b> + <em>les sujets</em> (masculine plural) → <b>lesquels</b>."],
+   ["auxquelles","<b>participer à</b> + <em>les conférences</em> (feminine plural): à + lesquelles → <b>auxquelles</b>."],
+   ["lesquelles","<b>sur</b> + <em>les notes</em> (feminine plural) → <b>lesquelles</b>."],
+   ["auquel","<b>faire allusion à</b> + <em>le film</em> (masculine singular): à + lequel → <b>auquel</b>."],
+   ["à laquelle","<b>penser à</b> + <em>la voiture</em> (feminine singular); laquelle does not contract → <b>à laquelle</b>."],
+   ["le long desquels","<b>le long de</b> + <em>les remparts</em> (masculine plural): de + lesquels → <b>desquels</b>, so <b>le long desquels</b>."],
+   ["lesquels","<b>entre</b> + <em>les camarades</em> (masculine plural): only the compound form works → <b>lesquels</b>."],
+   ["où","A place: <b>où</b>, or <b>aller à</b> + <em>l'école</em> (feminine) → <b>à laquelle</b>."],
+   ["duquel","<b>à côté de</b> + <em>le patron</em> (masculine singular): de + lequel → <b>duquel</b>; <b>de qui</b> works for a person."],
+   ["auquel","<b>avoir accès à</b> + <em>le laboratoire</em> (masculine singular): à + lequel → <b>auquel</b>."],
+   ["lequel","<b>avec</b> + <em>l'ordinateur</em> (masculine singular, a thing, so not <em>qui</em>) → <b>lequel</b>."],
+   ["lesquels","<b>parmi</b> + <em>les étudiants</em> (masculine plural): only the compound form works → <b>lesquels</b>."],
+   ["à laquelle","<b>participer à</b> + <em>la formation</em> (feminine singular) → <b>à laquelle</b>."],
+   ["à laquelle","<b>répondre à</b> + <em>l'invitation</em> (feminine singular) → <b>à laquelle</b>."],
+   ["duquel","<b>le long de</b> + <em>le canal</em> (masculine singular): de + lequel → <b>duquel</b>."]
+  ],
+  ch:{
+   0:["lequel","laquelle","lesquels","lesquelles"],
+   1:["auxquels","auxquelles","lesquels","duquel"],
+   3:["laquelle","lequel","lesquelles","lesquels"],
+   9:["à laquelle","auquel","à lequel","de laquelle"],
+   10:["le long desquels","le long duquel","le long lesquels","le long de lesquels"],
+   14:["auquel","à laquelle","auxquels","duquel"]
+  }
+ },
+ subj21:{
+  ins:"Look at the main clause and at who the subjects are, then write the form of the verb in parentheses.",
+  rt:"Le subjonctif présent",
+  rule:[
+   "The subjonctif follows <b>que</b> when the two clauses have <b>different subjects</b> and the main clause expresses a wish, an emotion, an order, a doubt, a necessity or a possibility; a superlative, or a relative clause describing someone or something you are still looking for, also triggers it.",
+   "Stem: the <b>ils</b> form minus -ent, plus <b>-e · -es · -e · -ions · -iez · -ent</b> — <em>ils finissent → que je finisse.</em>",
+   "Stem-changing verbs keep their <b>nous / vous</b> stem — <em>que nous appelions, qu'ils appellent.</em>",
+   "Irregular: <b>être</b> sois · <b>avoir</b> aie · <b>aller</b> aille · <b>faire</b> fasse · <b>pouvoir</b> puisse · <b>savoir</b> sache · <b>vouloir</b> veuille.",
+   "Same subject → the <b>infinitif</b> (<em>Je veux partir</em>). <b>penser / croire / trouver / espérer que</b> take the indicatif, and the subjonctif only when negative or questioned."
+  ],
+  x:[
+   ["viennes","<b>il faut que</b> (necessity) + a new subject → subjonctif: ils viennent → <b>viennes</b>."],
+   ["fasses","<b>vouloir que</b> with two subjects → subjonctif; faire is irregular → <b>fasses</b>."],
+   ["preniez","<b>il est important que</b> → subjonctif; vous keeps the nous stem (prenons) → <b>preniez</b>."],
+   ["est","<b>penser que</b>, affirmative → indicatif présent: <b>est</b>."],
+   ["soit","<b>penser que</b> in a question → subjonctif; être is irregular → <b>soit</b>."],
+   ["puissiez","<b>content que</b> (emotion) → subjonctif; pouvoir is irregular → <b>puissiez</b>."],
+   ["fassions","<b>aimer que</b> (wish) with two subjects → subjonctif; faire → <b>fassions</b>."],
+   ["apprenne","<b>il est impossible que</b> → subjonctif: ils apprennent → <b>apprenne</b>."],
+   ["aille","<b>il faut que</b> + <b>j'</b> → subjonctif; aller is irregular → <b>aille</b>."],
+   ["ait","<b>ne pas croire que</b> → subjonctif; avoir is irregular → <b>ait</b>."],
+   ["deviendront","<b>espérer que</b> takes the indicatif, and <b>un jour</b> points to the future → <b>deviendront</b>."],
+   ["s'informer","<b>afin de</b> + the same subject → infinitif: <b>s'informer</b>."],
+   ["sachiez","<b>pour que</b> + a new subject → subjonctif; savoir is irregular, and vous gives <b>sachiez</b>."],
+   ["venir","The same subject throughout (elle … de) → infinitif: <b>venir</b>."],
+   ["aient","<b>ne pas vouloir que</b> → subjonctif; avoir is irregular → <b>aient</b>."],
+   ["achetions","<b>il faut que</b> → subjonctif; nous keeps the nous stem (achetons) → <b>achetions</b>."],
+   ["buvions","<b>il vaut mieux que</b> → subjonctif; nous keeps the nous stem (buvons) → <b>buvions</b>."],
+   ["fait","<b>remarquer que</b> states a fact → indicatif présent: <b>fait</b>."],
+   ["couches","<b>il est temps que</b> → subjonctif: ils couchent → <b>couches</b>."],
+   ["réussissent","<b>souhaiter que</b> (wish) → subjonctif: ils réussissent → <b>réussissent</b>."],
+   ["sache","A relative clause describing someone you are still looking for → subjonctif; savoir → <b>sache</b>."],
+   ["connaisse","After a superlative (<b>le meilleur</b>) → subjonctif: connaître → <b>connaisse</b>."],
+   ["veuille","<b>douter que</b> → subjonctif; vouloir is irregular → <b>veuille</b>."]
+  ],
+  ch:{
+   3:["est","soit","sera","serait"],
+   4:["soit","est","sera","serait"],
+   9:["ait","a","aura","aie"],
+   12:["sachiez","savez","saurez","sachez"],
+   14:["aient","ont","auront","ayent"],
+   15:["achetions","achetons","achèterons","achètions"],
+   21:["connaisse","connais","connaîtrai","connaissait"]
+  }
+ }
+};
+(function applyPilot(){
+  DRILLS.forEach(function(d){
+    var p=GPILOT[d.id]; if(!p) return;
+    d.ins=p.ins; d.rt=p.rt; d.rule=p.rule;
+    (d.items||[]).forEach(function(it,i){
+      var e=p.x[i], a0=Array.isArray(it.a)?it.a[0]:it.a;
+      if(!e || FG.norm(e[0])!==FG.norm(a0)){ if(window.console) console.warn("pilot content out of step: "+d.id+" #"+i); return; }
+      it.x=e[1];
+      var c=p.ch[i];
+      if(c){ var all=(Array.isArray(it.a)?it.a:[it.a]).map(FG.norm); if(all.indexOf(FG.norm(c[0]))<0){ if(window.console) console.warn("drop-down answer not accepted: "+d.id+" #"+i); return; } it.ch=c; }
+    });
+  });
+})();
 /* ---- number → written French (0 to 1 000 000) ---- */
 function normLoose(x){ return norm(x).replace(/-/g," ").replace(/\s+/g," ").trim(); }
 function randInt(lo,hi){ return lo+Math.floor(Math.random()*(hi-lo+1)); }
@@ -2555,6 +2900,142 @@ function buildDrills(){
   });
 }
 /* build one drill's <details.acc> accordion (used inside a chapter group) */
+/* ---- v0.2.0 drill engine: ruled field, accent keys, verdict ladder + You/Correct diff, inline drop-downs, rule card, misses pile ----
+   Items stay {q,a,hint,m}; gAdapt() splits the infinitive cue out of q at load, so every existing drill runs in the new UI unchanged.
+   Optional per-item fields (all additive): s (sentence, replaces q) · cue · x (why line) · ch (drop-down options, correct first).
+   Optional per-drill fields: ins (one instruction line) · rt + rule (rule card, at most 5 bullets) — a drill without rule keeps its note. */
+var ACCENT_KEYS=["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+function gPrefs(){ var p=state.prefs; if(!p){ p=state.prefs={}; } if(p.strict===undefined) p.strict=true; if(!p.fmt) p.fmt="mix"; if(!p.src) p.src="all"; return p; }
+function gMissTotal(){ var n=0; Object.keys(state.gramMiss||{}).forEach(function(id){ n+=Object.keys(state.gramMiss[id]).length; }); return n; }
+function gMissOf(d){ return (state.gramMiss&&state.gramMiss[d.id])||{}; }
+function gMissLabel(){ var o=document.querySelector("#gSrc option[value=miss]"); if(o) o.textContent="My misses ("+gMissTotal()+")"; }
+function gMissBump(d,bi,ok){
+  state.gramMiss=state.gramMiss||{}; var m=state.gramMiss[d.id]=state.gramMiss[d.id]||{};
+  if(ok){ if(m[bi]){ m[bi]--; if(m[bi]<=0) delete m[bi]; } } else { m[bi]=(m[bi]||0)+1; }
+  if(!Object.keys(m).length) delete state.gramMiss[d.id];
+  saveState(); gMissLabel();
+}
+function gMissClear(d,bi){ var m=state.gramMiss&&state.gramMiss[d.id]; if(m&&m[bi]){ delete m[bi]; if(!Object.keys(m).length) delete state.gramMiss[d.id]; saveState(); gMissLabel(); } }
+function gAdapt(it){
+  if(it._g) return it._g;
+  var s=it.s, cue=it.cue||"";
+  if(s==null){
+    var q=it.q||"", m=q.match(/^([\s\S]*?___[^()]*?)\s*(\([^)]*\))([\s\S]*)$/);
+    if(m){ s=m[1]+m[3]; cue=m[2]; } else s=q;
+  }
+  var ans=Array.isArray(it.a)?it.a:[it.a], tk=FG.norm(ans[0]).split(" ");
+  var pc=tk.length>=2 && tk.length<=4 && !!FG.auxFamily([tk[tk.length-2]]);
+  return it._g={s:s,cue:cue,a:ans,ch:it.ch||null,x:it.x||"",hint:it.hint||"",loose:!!it.loose,pc:pc};
+}
+function gGradeTyped(A,got){
+  var pre=A.loose?normLoose:norm, keys=[], map={};
+  A.a.forEach(function(a){ var k=pre(a); if(!(k in map)){ map[k]=a; keys.push(k); } });
+  var res=FG.grade(pre(got),FG.prepare({f:keys[0],a:keys.slice(1),type:A.pc?"pc":"x"}));
+  var target=map[res.target]!==undefined?map[res.target]:A.a[0];
+  var others=A.a.filter(function(a){ return pre(a)!==pre(target); });
+  return {v:res.v,target:target,others:others};
+}
+function gInsertAt(inp,ch){
+  var a=inp.selectionStart, b=inp.selectionEnd; if(a==null){ a=b=inp.value.length; }
+  inp.value=inp.value.slice(0,a)+ch+inp.value.slice(b); inp.selectionStart=inp.selectionEnd=a+ch.length;
+  inp.dispatchEvent(new Event("input",{bubbles:true})); inp.focus();
+}
+function gKeys(inp){
+  var row=el("div","akeys");
+  ACCENT_KEYS.forEach(function(ch){
+    var b=el("button","akey",ch); b.type="button"; b.setAttribute("aria-label","insert "+ch);
+    b.addEventListener("mousedown",function(e){ e.preventDefault(); });
+    b.addEventListener("click",function(){ if(!inp.disabled) gInsertAt(inp,ch); });
+    row.appendChild(b);
+  });
+  return row;
+}
+/* one drill item: typed (ruled field) or drop-down; returns the .q element */
+function gBuildQ(d,it,det,onDone){
+  var A=gAdapt(it), pk=gPrefs(), bank=d.bankItems||d.items, bi=bank.indexOf(it);
+  var dd=!!(A.ch && pk.fmt!=="type");
+  var q=el("div","q");
+  var sent=el("div","fq"), parts=A.s.split("___"), gap, sel=null, inp=null, pickOrder=null;
+  var pre=el("span",null,parts[0]), post=el("span",null,parts.slice(1).join("___"));
+  if(dd){
+    pickOrder=A.ch.slice(); shuffleArr(pickOrder);
+    sel=el("select","gapsel"); sel.setAttribute("aria-label","choisir");
+    var ph=el("option",null,"choisir…"); ph.value=""; ph.disabled=true; ph.selected=true; sel.appendChild(ph);
+    pickOrder.forEach(function(o){ var op=el("option",null,esc(o)); op.value=o; sel.appendChild(op); });
+    gap=sel;
+  } else { gap=el("span","gap","&nbsp;"); }
+  sent.appendChild(pre); sent.appendChild(gap); sent.appendChild(post);
+  if(A.cue){ sent.appendChild(document.createTextNode(" ")); sent.appendChild(el("span","cue",esc(A.cue))); }
+  q.appendChild(sent);
+  var field=null, fbHost=el("div"), done=false, lockedPick=null;
+  if(!dd){
+    field=el("div","seyes"); inp=el("input"); inp.type="text"; inp.autocapitalize="none"; inp.autocomplete="off"; inp.spellcheck=false;
+    inp.setAttribute("aria-label","answer"); field.appendChild(inp); q.appendChild(field); q.appendChild(gKeys(inp));
+    inp.addEventListener("input",function(){ if(!done) gap.textContent=inp.value||" "; });
+    /* the accent keys stay with the last-focused item, so clicking Check or an override link never reflows the page under the cursor */
+    inp.addEventListener("focus",function(){ [].forEach.call(det.querySelectorAll(".q.kf"),function(x){ x.classList.remove("kf"); }); q.classList.add("kf"); });
+  }
+  var act=el("div","row-in qchk"), cb=el("button","ghost","Check"), sk=el("button","ghost","I don't know");
+  act.appendChild(cb); act.appendChild(sk); q.appendChild(act); q.appendChild(fbHost);
+  if(A.hint) q.appendChild(el("div","hint",esc(A.hint)));
+  q._inp=inp||sel;
+  if(sel) sel.addEventListener("change",function(){ if(done){ sel.value=lockedPick; } });   /* locked, but kept focusable so Enter can move on */
+  function mark(ok){
+    var c=ok?"ok":"bad"; gap.classList.remove("ok","bad"); gap.classList.add(c);
+    if(field){ field.classList.remove("ok","bad"); field.classList.add(c); }
+  }
+  function render(res,got,skipped,correct){
+    var V=FG.VERDICTS[skipped?"skip":res.v], tone=correct&&V.tone!=="ok"?"near":V.tone;
+    var html="<strong class='fbv'>"+V.title+"</strong>";
+    var target=dd?A.ch[0]:res.target;
+    if(!skipped && res.v!=="ok"){
+      var you,cor;
+      if(dd){ you="<span class='fx'>"+esc(got)+"</span>"; cor=esc(target); }
+      else { var df=FG.diff(FG.norm(got),FG.norm(target)); you=FG.marked(df[0],"fx"); cor=FG.marked(df[1],"fm"); }
+      html+="<div class='cmp'><span class='l'>You</span><span class='w'>"+you+"</span><span class='l'>Correct</span><span class='w'>"+cor+"</span></div>";
+    }
+    html+="<div class='full'>"+esc(parts[0])+"<b>"+esc(target)+"</b>"+esc(parts.slice(1).join("___"))+(A.cue?" <span class='cue'>"+esc(A.cue)+"</span>":"")+"</div>";
+    if(A.x) html+="<div class='why'>"+A.x+"</div>";
+    var oth=dd?[]:res.others; if(oth.length) html+="<div class='fnote'>Also accepted: "+oth.map(esc).join(" · ")+"</div>";
+    var fb=el("div","fb "+tone,html);
+    if(!correct && !skipped){
+      var ov=el("button","linkish","My answer was right, count it");
+      ov.onclick=function(){
+        q._res="ok"; mark(true); fb.className="fb ok"; ov.remove(); fb.querySelector(".fbv").textContent="Counted as correct";
+        var cv=state.gramCov[d.id]=state.gramCov[d.id]||{}; if(bi>=0){ cv[bi]=1; gMissClear(d,bi); }
+        saveState(); onDone(q);
+      };
+      fb.appendChild(ov);
+    }
+    fbHost.innerHTML=""; fbHost.appendChild(fb);
+  }
+  function lock(){ done=true; if(inp) inp.readOnly=true; if(sel) lockedPick=sel.value; cb.disabled=true; sk.disabled=true; cb.style.opacity=sk.style.opacity=".45"; }
+  function check(skipped){
+    if(done) return;
+    var got=dd?sel.value:inp.value;
+    if(!skipped && !String(got).trim()) return;
+    var res, correct, vdt;
+    if(skipped){ res={v:"skip",target:dd?A.ch[0]:A.a[0],others:[]}; correct=false; got=""; }
+    else if(dd){ var okp=FG.norm(got)===FG.norm(A.ch[0]); res={v:okp?"ok":"wrong",target:A.ch[0],others:[]}; correct=okp; }
+    else { res=gGradeTyped(A,got); correct=(res.v==="ok")||(res.v==="accent"&&!pk.strict); }
+    lock(); q._res=correct?"ok":"bad"; mark(correct);
+    if(dd && skipped) sel.value=A.ch[0];
+    if(!dd) gap.textContent=res.target;
+    if(!q._graded){ q._graded=true; anaRecord(correct,(!correct&&res.v==="accent"),withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }
+    if(correct && bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState(); }
+    if(bi>=0) gMissBump(d,bi,correct);
+    render(res,got,skipped,correct); onDone(q);
+  }
+  cb.onclick=function(){ check(false); }; sk.onclick=function(){ check(true); };
+  q._check=function(){ if(!done && String(q._inp.value||"").trim()) check(false); };
+  function nextField(){ var all=[].slice.call(det.querySelectorAll(".q")), i=all.indexOf(q); for(var k=i+1;k<all.length;k++){ if(!all[k]._res){ all[k]._inp.focus(); return; } } }
+  if(inp) inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(done) nextField(); else check(false); } });
+  if(sel) sel.addEventListener("keydown",function(e){
+    if(/^[1-9]$/.test(e.key) && !done){ var n=+e.key; if(n<=pickOrder.length){ sel.value=pickOrder[n-1]; e.preventDefault(); } }
+    else if(e.key==="Enter"){ e.preventDefault(); if(done) nextField(); else check(false); }
+  });
+  return q;
+}
 function pickRound(bank,n){
   var a=bank.slice();
   for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
@@ -2564,51 +3045,38 @@ function covOf(d){ var bank=d.bankItems||d.items||[]; var cv=state.gramCov[d.id]
   for(var k in cv) if(cv[k]) n++; return {n:Math.min(n,bank.length), t:bank.length}; }
 function drillMeta(d){ var best=state.drills[d.id]; var c=covOf(d);
   return d.ch+(c.t?" · couverture "+c.n+"/"+c.t:"")+(best?" · best "+best.correct+"/"+best.total:""); }
-function buildDrillAcc(d){
-  if(d.gen) d.items=d.gen();
-  else { d.bankItems=d.bankItems||d.items; d.items=pickRound(d.bankItems,10); }
-  var det=el("details","acc"); var best=state.drills[d.id];
+/* build one drill's <details.acc> accordion (used inside a chapter group). opts: {items, practice} for a retry/misses round */
+function buildDrillAcc(d,opts){
+  opts=opts||{}; var pk=gPrefs();
+  d.bankItems=d.bankItems||d.items;
+  var bank=d.bankItems, practice=!!opts.practice, empty="";
+  if(opts.items){ d.items=opts.items; }
+  else if(d.gen){ d.items=d.gen(); }
+  else {
+    var pool=bank;
+    if(pk.src==="miss"){ var ms=gMissOf(d); pool=bank.filter(function(x,i){ return ms[i]; }); practice=true; if(!pool.length) empty="No misses to retry in this drill."; }
+    if(pk.fmt==="pick"){ pool=pool.filter(function(x){ return x.ch; }); practice=true; if(!pool.length&&!empty) empty="No drop-down items in this drill yet."; }
+    d.items=pickRound(pool,10);
+  }
+  var det=el("details","acc");
   var sum=el("summary");
   sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
   var body=el("div","body");
-  if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }   /* v1.0.0: rule explainer at the top of each drill */
-  if(d.wb){ var bank=el("div","wbank"); bank.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" \u00b7 ").forEach(function(w){ bank.appendChild(el("span","wchip",esc(w))); }); body.appendChild(bank); }
-  d.items.forEach(function(it,qi){
-    var q=el("div","q");
-    q.appendChild(el("div","qt",it.q.replace("___","<span class='blank'>____</span>")));
-    var row=el("div","row-in");
-    var inp=el("input","txt"); inp.type="text"; inp.autocapitalize="none"; inp.spellcheck=false;
-    inp.setAttribute("aria-label","answer"); row.appendChild(inp);
-    var v=el("div","verdict"); v.style.display="none";
-    function check(){
-      if(!inp.value.trim()) return;                     /* v1.0.0-b6: empty check — nothing to grade */
-      var ans=Array.isArray(it.a)?it.a:[it.a];
-      var cmp = it.loose ? normLoose : norm;
-      var got=inp.value, ok=ans.some(function(a){return cmp(a)===cmp(got);});
-      var close=ans.some(function(a){return bare(a).replace(/-/g," ")===bare(got).replace(/-/g," ");});
-      v.style.display="block";
-      if(ok){ v.className="verdict ok"; v.textContent="✓ Correct"; }
-      else if(d.strict && close && got.trim()){ v.className="verdict no"; v.textContent="✗ Spelling — exact accents required: "+ans[0]; }
-      else if(close && got.trim()){ v.className="verdict warn"; v.textContent="≈ Right word — mind the accents: "+ans[0]; }
-      else { v.className="verdict no"; v.textContent="✗ "+ans[0]; }
-      if(!q._graded){ q._graded=true; anaRecord(ok, (!ok && close && !!got.trim()), withSrc(it.m,"gram",GRAM_SK[d.id]||d.id,d.minCh)); }  /* first grade per item counts */
-      if(ok){ var bank=d.bankItems||d.items, bi=bank.indexOf(it);
-        if(bi>=0){ (state.gramCov[d.id]=state.gramCov[d.id]||{})[bi]=1; saveState();
-          var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); } }
-      scoreDrill(d);
-    }
-    inp.addEventListener("keydown",function(e){ if(e.key==="Enter") check(); });
-    q._check=check; q._inp=inp;
-    q.appendChild(row); q.appendChild(v);
-    if(it.hint) q.appendChild(el("div","hint",it.hint));
-    body.appendChild(q);
-  });
+  if(d.rule){
+    if(d.ins) body.appendChild(el("p","gins","<b>Instructions :</b> "+d.ins));
+    body.appendChild(el("div","rulecard","<h4>"+(d.rt||"La règle")+"</h4><ul>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>"));
+  } else if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }
+  if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
+  det._d=d; det._body=body; det._practice=practice;
+  if(empty) body.appendChild(el("div","gempty",empty));
+  d.items.forEach(function(it){ body.appendChild(gBuildQ(d,it,det,function(){
+    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); })); });
   var foot=el("div","drill-foot");
   var cbtn=el("button","ghost","Check all");
-  cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ if(qq._inp.value.trim()) qq._check(); }); };
+  cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._check(); }); };
   var rbtn=el("button","ghost","Clear");
-  rbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._inp.value=""; qq.querySelector(".verdict").style.display="none"; }); };
+  rbtn.onclick=function(){ var f=buildDrillAcc(d,{items:d.items,practice:det._practice}); f.open=true; det.parentNode.replaceChild(f,det); };
   foot.appendChild(cbtn); foot.appendChild(rbtn);
   if(d.gen || d.bankItems){
     var gbtn=el("button","ghost","New round 🎲");
@@ -2616,25 +3084,48 @@ function buildDrillAcc(d){
     foot.appendChild(gbtn);
   }
   body.appendChild(foot);
+  var resHost=el("div"); resHost.className="gresHost"; body.appendChild(resHost);
   det.appendChild(body);
-  det._d=d; det._body=body;
   return det;
 }
 function scoreDrill(d){
   var det=[].slice.call(document.querySelectorAll(".acc")).find(function(x){return x._d===d;});
   if(!det) return;
   var qs=det._body.querySelectorAll(".q"), correct=0, answered=0;
-  [].forEach.call(qs,function(qq){
-    var vd=qq.querySelector(".verdict");
-    if(vd.style.display!=="none" && qq._inp.value.trim()){ answered++; if(vd.classList.contains("ok")) correct++; }
-  });
-  if(answered===d.items.length){
-    if(correct===d.items.length && d.items.length>=10) award("a_round");
-    var prev=state.drills[d.id];
-    if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
-      det.querySelector(".meta").innerHTML=drillMeta(d);
+  [].forEach.call(qs,function(qq){ if(qq._res){ answered++; if(qq._res==="ok") correct++; } });
+  var host=det._body.querySelector(".gresHost"); host.innerHTML="";
+  if(answered && answered===d.items.length){
+    var miss=[]; [].forEach.call(qs,function(qq,i){ if(qq._res!=="ok") miss.push(d.items[i]); });
+    var r=el("div","gres","<span class='big'>"+correct+" / "+d.items.length+"</span><span class='pct'>"+Math.round(correct/d.items.length*100)+" %</span>");
+    if(miss.length){ var rb=el("button","ghost","Retry the "+miss.length+" missed");
+      rb.onclick=function(){ var f=buildDrillAcc(d,{items:miss,practice:true}); f.open=true; det.parentNode.replaceChild(f,det); };
+      r.appendChild(rb); }
+    host.appendChild(r);
+    if(!det._practice && d.items.length>=Math.min(10,(d.bankItems||d.items).length)){   /* best scores come from full rounds only */
+      if(correct===d.items.length && d.items.length>=10) award("a_round");
+      var prev=state.drills[d.id];
+      if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
+        det.querySelector(".meta").innerHTML=drillMeta(d);
+      }
     }
   }
+}
+/* settings strip above the drills: format · source · strict accents (strict is shared with the Vocabulaire trainer) */
+function renderGBar(){
+  var host=document.getElementById("gbar"); if(!host) return; var pk=gPrefs();
+  host.innerHTML="<label>Format <select id='gFmt'><option value='mix'>Mixed</option><option value='type'>Typing only</option><option value='pick'>Drop-down only</option></select></label>"+
+    "<label>From <select id='gSrc'><option value='all'>All questions</option><option value='miss'>My misses ("+gMissTotal()+")</option></select></label>"+
+    "<label><input type='checkbox' id='gStrict'> Strict accents</label>";
+  var f=document.getElementById("gFmt"), s=document.getElementById("gSrc"), c=document.getElementById("gStrict");
+  f.value=pk.fmt; s.value=pk.src; c.checked=!!pk.strict;
+  f.onchange=function(){ pk.fmt=f.value; saveState(); buildDrills(); };
+  s.onchange=function(){ pk.src=s.value; saveState(); buildDrills(); };
+  c.onchange=function(){ pk.strict=c.checked; saveState(); syncStrict(); };
+}
+function syncStrict(){
+  var pk=gPrefs(), g=document.getElementById("gStrict"), v=document.getElementById("vocStrictBtn");
+  if(g) g.checked=!!pk.strict;
+  if(v){ v.setAttribute("aria-pressed",pk.strict?"true":"false"); v.textContent=pk.strict?"Strict accents ✓":"Strict accents ✗"; }
 }
 
 /* =============== PRACTICE TEST =============== */
@@ -3571,7 +4062,7 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 /* v1.0.0: article-mode reflection removed — articles are always required */
 
 [].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
-buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
+buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); syncStrict(); setupDash(); setupDlptChip(); renderTestHist(); renderAnaSince();
 renderVerbTable(); renderVocTable(); renderOpi();
 document.getElementById("quizPick").value="21"; quizPick=document.getElementById("quizPick").value; renderTestHist();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });

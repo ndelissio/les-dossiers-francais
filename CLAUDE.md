@@ -403,3 +403,41 @@ of git. To prevent this:
 ## Model preference
 - Default to Sonnet for dossier builds.
 - Reserve Opus-tier reasoning for isolated edge-case judgment calls only.
+
+## Drill design standard (from the Unité 4 reference drills)
+
+`design-reference/` holds the two working drills Nicholas built outside the repo, plus the grading module and its probes. `design-reference/README.md` has the full component inventory, grading ladder, item schemas, authoring lessons and rule-card guideline.
+
+### Direction (decided 15 Oct 2026)
+- Scope: drill components inside the current shell, not a visual redesign and not a build-step engine. The module is inlined into each unit file (`FG` in Unit 5), duplicated per unit like the rest of the engine.
+- Identity: keep the dossier's navy palette; the Seyès ruling and red-pen marks use the existing tokens. Violet ink and Literata are not adopted.
+- Data: existing `{q,a,hint,m}` drill items keep working through `gAdapt()`, which splits the infinitive cue out of `q` at load. Per chapter, the content pass adds `ins`, `rt` + `rule` (rule card), `x` (why line) and `ch` (drop-down options, correct first) per drill/item.
+- Rollout: Unit 5 first (v0.2.0 pilot: Ch. 21 `hyp21`, `relc21`, `subj21` converted), then backport Units 4 → 3 → 2 → 1 one at a time under the worktree and ship rules. Unit 5 is still 0.x, so its pilot is a MINOR bump; a backport onto a shipped unit is a MAJOR bump. Convert the remaining Unit 5 drills (voc21 and Ch. 22–24) chapter by chapter.
+- The misses pile (`state.gramMiss`) stays separate from Analyse.
+- `design-reference/unit-grading.test.js` runs the reference probes plus the dossier additions against a unit's inlined `FG`. Run it when you carry the module into another unit.
+- Dossier changes to the reference module: "auxiliary" fires only when the avoir/être family differs, so a wrong tense of the right auxiliary is never labelled "wrong auxiliary" (it would leak the tense); `auxFamily` is exported.
+
+### Settled (apply to new drill builds)
+- **Typed answers sit on a Seyès-ruled field** (French copybook paper with a red margin line), with an accent key row underneath. Grammar drills keep the keys with the last-focused item only, so clicking Check never reflows the page.
+- **Feedback after Check:**
+  - A verdict line.
+  - A **You** row with wrong or extra characters struck through in red.
+  - A **Correct** row with missed characters underlined in red.
+  - The full correct sentence.
+  - A one-line why.
+  - A "My answer was right, count it" override.
+- **Grading uses the verdict ladder:** ok, accent, article, gender, pronoun, agreement, auxiliary, close, wrong.
+  - Normalize before comparing.
+  - Generate article variants (le↔un, la↔une, les↔des, l' by gender).
+  - Strict accents is on by default and can be toggled (one switch shared by Vocabulaire and Grammaire).
+  - Vocabulaire still builds its accepted forms with `vocCands()`; `FG` only grades.
+  - The override on a missed Vocabulaire card restores the card's earlier progress and records a correct answer; the Analyse miss is not removed.
+- **Grammar drills mix typed items with inline drop-downs** of 2 or 4 options. The `<select>` sits in the sentence at the blank. The correct option is stored first and shuffled at render.
+- **Each grammar topic has an always-visible rule card:** at most 5 bullets, forms in bold, examples using the unit's vocabulary. A drill without `rule` keeps its original instruction note.
+- **Every converted grammar item carries an `x` why line,** shown after answering whether right or wrong.
+- **Leak audit for drop-downs:**
+  - Read each option placed in the sentence (elision, agreement, the article before the blank).
+  - Put the article inside the option when gender would give the answer away.
+  - Don't test nominalisation with gender-only choices.
+- **Misses:** a per-item misses tally feeds "From → My misses" and "Retry the N missed". Only full rounds record a best score.
+- **Layout (Unit 5 v0.2.0):** manila folder tabs, ordered Tableau de bord · Vocabulaire · Grammaire · Conjugaison · Examen blanc · Pratique orale · Analyse; French-flag tab icon (inline SVG); tricolore rule under the masthead. A unit still in build shows an amber "In build" tag on the landing page.
