@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v0.3.0.4</title>
+<title>Unité 5 · Dossier Français — v0.3.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -335,6 +335,8 @@
       repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
       repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
   .seyes input{display:block; width:100%; min-width:0; border:0; background:transparent; color:var(--ink); font-family:var(--serif); font-size:22px; padding:10px 14px 10px 48px; outline:none}
+  .seyes .ghostw{position:absolute; left:0; right:0; top:0; bottom:0; padding:10px 14px 10px 48px; font-family:var(--serif); font-size:22px; line-height:normal; color:var(--ink); opacity:.3; white-space:pre; overflow:hidden; pointer-events:none}
+  .seyes .ghostw + input{position:relative}
   .seyes:focus-within{border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
   .seyes.ok{border-color:var(--known)} .seyes.bad{border-color:var(--accent)}
   .akeys{display:none; flex-wrap:wrap; gap:6px; margin-top:8px}
@@ -377,7 +379,7 @@
   .gres .pct{color:var(--ink-2); font-size:14px}
   .gempty{color:var(--mute); font-size:14px; padding:8px 0}
   .qchk{margin-top:8px}
-  @media (max-width:480px){ .fq{font-size:17px} .seyes input{font-size:20px} }
+  @media (max-width:480px){ .fq{font-size:17px} .seyes input,.seyes .ghostw{font-size:20px} }
   .seyes input[readonly]{cursor:default}
   /* English glosses: the explanatory parenthetical sits on its own line and never wraps on desktop */
   .en-x{display:block; margin-top:3px; font-family:var(--sans); font-size:.5em; font-weight:400; line-height:1.3; color:var(--ink-2); white-space:nowrap}
@@ -421,7 +423,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.0.4</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.1</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -664,8 +666,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v0.3.0.4</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v0.3.1</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.3.1 (15 Oct 2026): <strong>Vocabulaire Training — the word to type appears as a ghost on the ruled line.</strong> In Spelling mode with Training on, the French word now shows faintly in the notebook field, so you can trace over it as you type, instead of in an amber note above it. Appearance only: nothing is recorded in Training, and no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v0.3.0.4 (15 Oct 2026, hotfix): <strong>Grammar drills corrected after an audit.</strong> 44 items in 13 drills fixed (2 drills also had a rule card, note or instruction corrected): 15 sentences rewritten so that only one answer fits, 29 items now accept a valid answer that was marked wrong, and 1 no longer accepts an answer that is not correct French. Examples: <em>de l'autre côté</em> and <em>c'est-à-dire</em> are accepted where they are correct; the plus-que-parfait drill's sentences now carry a time anchor so that the passé composé or imparfait no longer fits; the Chapter 23–24 vocabulary-in-context drills accept the valid synonyms (préconise / propose / suggère…); the subjonctif note no longer says <em>de façon que</em> always takes the subjonctif; <em>laïc</em> is no longer accepted for <em>une école</em>. No vocabulary, progress or mastery data changed.<br></span>
     <span style="color:var(--mute)">v0.3.0.3 (15 Oct 2026, hotfix): <strong>Prépa examen now just says à venir.</strong> The note about the study guide is gone. Text only.<br></span>
     <span style="color:var(--mute)">v0.3.0.2 (15 Oct 2026, hotfix): <strong>The folder tabs now stretch across the whole page.</strong> They used to bunch up on the left two-thirds; they now share the full width, ending at the right edge of the content. On a phone they still scroll sideways. Appearance only: no data, grading or progress changed.<br></span>
@@ -2535,9 +2538,10 @@ function renderVoc(){
     var pronHost=el("div"); card.appendChild(pronHost);
 
     function showPron(){ pronHost.innerHTML=""; if(v.n && !genderOf(v)) pronHost.appendChild(el("div","note",esc(v.n))); revealPos(card,v); if(v.y && !hasMemo(v)) pronHost.appendChild(el("div","note ety","Mémo · "+esc(v.y))); memoShow(v); }
-    function fullLabel(){ return v.f + (sa.gender?(" ("+sa.gender+")"):""); }
     if(vocTrain){
-      var model=el("div","note","Modèle : "+fullLabel()); model.style.fontSize="15px"; card.insertBefore(model,row);
+      /* Training: the word to type shows as a faint "ghost" on the ruled line, to trace over (the typed form, without any (e) shorthand) */
+      var gc=vocCands(v).list.filter(function(c){ return c.indexOf("(")<0; });
+      var gh=el("span","ghostw"); gh.setAttribute("aria-hidden","true"); gh.textContent=gc[0]||v.f; field.insertBefore(gh,inp);
       showPron();
     }
     function lockCard(){ locked=true; inp.readOnly=true; rb.disabled=true; cb.disabled=true; rb.style.opacity=".45"; cb.style.opacity=".45"; }
