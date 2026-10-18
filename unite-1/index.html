@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 1 · Dossier Français — v4.1.1</title>
+<title>Unité 1 · Dossier Français — v4.1.2</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -330,7 +330,11 @@
       repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
   .seyes input{display:block; width:100%; min-width:0; border:0; background:transparent; color:var(--ink); font-family:var(--serif); font-size:22px; padding:10px 14px 10px 48px; outline:none}
   .seyes .ghostw{position:absolute; left:0; right:0; top:0; bottom:0; padding:10px 14px 10px 48px; font-family:var(--serif); font-size:22px; line-height:normal; color:var(--ink); opacity:.3; white-space:pre; overflow:hidden; pointer-events:none}
-  .seyes .ghostw + input{position:relative}
+  .seyes .typedw{position:absolute; left:0; right:0; top:0; bottom:0; padding:10px 14px 10px 48px; font-family:var(--serif); font-size:22px; line-height:normal; color:var(--ink); white-space:pre; overflow:hidden; pointer-events:none}
+  .seyes .typedw .tt{display:inline-block}
+  .seyes .typedw b{font-weight:inherit; color:var(--accent)}
+  .seyes .ghostw ~ input{position:relative; color:transparent; caret-color:var(--ink)}
+  .seyes .ghostw ~ input::selection{background:rgba(42,74,143,.2)}
   .seyes:focus-within{border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
   .seyes.ok{border-color:var(--known)} .seyes.bad{border-color:var(--accent)}
   .akeys{display:none; flex-wrap:wrap; gap:6px; margin-top:8px}
@@ -373,7 +377,7 @@
   .gres .pct{color:var(--ink-2); font-size:14px}
   .gempty{color:var(--mute); font-size:14px; padding:8px 0}
   .qchk{margin-top:8px}
-  @media (max-width:480px){ .fq{font-size:17px} .seyes input,.seyes .ghostw{font-size:20px} }
+  @media (max-width:480px){ .fq{font-size:17px} .seyes input,.seyes .ghostw,.seyes .typedw{font-size:20px} }
   .seyes input[readonly]{cursor:default}
   /* English glosses: the explanatory parenthetical sits on its own line and never wraps on desktop */
   .en-x{display:block; margin-top:3px; font-family:var(--sans); font-size:.5em; font-weight:400; line-height:1.3; color:var(--ink-2); white-space:nowrap}
@@ -506,7 +510,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 1 · v4.1.1</div>
+      <div class="eyebrow">French Basic Course · Unit 1 · v4.1.2</div>
       <h1><b>Unité&nbsp;1</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -770,8 +774,9 @@
 
 
   <footer>
-    <strong>Dossier v4.1.1</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
+    <strong>Dossier v4.1.2</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v4.1.2 (18 Oct 2026): <strong>Vocabulaire Training — Enter checks, Enter again goes to the next word; wrong letters turn red.</strong> In Spelling mode with Training on, a letter you type that does not match the ghost word turns red (the ghost letter stays visible behind it), and the first Enter (or Check) grades what you typed and the second moves to the next word, as it already did outside Training. Typing again after a check re-opens it, so you can still fix a miss and re-check before moving on. Nothing is recorded in Training; no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v4.1.1 (15 Oct 2026): <strong>Vocabulaire Training — the word to type appears as a ghost on the ruled line.</strong> In Spelling mode with Training on, the French word now shows faintly in the notebook field, so you can trace over it as you type, instead of in an amber note above it. Appearance only: nothing is recorded in Training, and no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v4.1.0.1 (15 Oct 2026, hotfix): <strong>Grammar drills corrected after an audit.</strong> 6 items in 3 drills fixed: 2 sentences rewritten so that only one answer fits, 4 items now accept a valid answer that was marked wrong, and 1 no longer accepts an answer that is not correct French. Examples: <em>britannique</em> and <em>canadienne</em> are accepted for the London and Québec items; <em>me gare</em> is no longer accepted for <em>Je ___ ma voiture</em>; the <em>ils / elles sont soldats</em> item has a masculine antecedent. No vocabulary, progress or mastery data changed.<br></span>
     <span style="color:var(--mute)">v4.1.0 (15 Oct 2026): <strong>Prépa examen is built from the Test 1 study guide.</strong> The tab that said <em>à venir</em> now has three parts. <strong>Vocabulaire</strong>: the guide's 133 words, spelled (English → French), recognised (French → English) or browsed, with size and source filters and a <em>From → My misses</em> pile. <strong>Grammaire</strong>: 8 topics, one per grammar point in the guide (Adjectifs de nationalité et de personnalité · Adjectifs possessifs · Mots interrogatifs · Le verbe faire + du / de la / de l' / des · Les contractions : au, aux, du, des · Le présent : être, avoir, venir, aller, apprendre… · Les verbes pronominaux : se réveiller, s'appeler… · Le futur proche), each with its rule card always on screen and 150 items in all (81 typed, 69 inline drop-downs), with a why line after every answer. <strong>Oral</strong>: 6 prompts from the guide's topics, each with a script builder (English notes first, then French on the ruled page) and offline checks for length against two minutes, linking words and guide words used. Accents always count. Prépa is a training space: it does not feed Analyse, the mastery bars or achievements. No vocabulary, grammar or progress data changed.<br></span>
@@ -2464,12 +2469,20 @@ function renderVoc(){
       /* Training: the word to type shows as a faint "ghost" on the ruled line, to trace over (the typed form, without any (e) shorthand) */
       var gc=vocCands(v).list.filter(function(c){ return c.indexOf("(")<0; });
       var gh=el("span","ghostw"); gh.setAttribute("aria-hidden","true"); gh.textContent=gc[0]||v.f; field.insertBefore(gh,inp);
+      /* typed letters sit in an overlay so a wrong letter can turn red (the input text itself is transparent); a letter is wrong when no accepted form has that character at that position */
+      var tw=el("span","typedw"); tw.setAttribute("aria-hidden","true"); field.insertBefore(tw,inp);
+      var twFold=function(s){ return s.toLowerCase().replace(/[\u2018\u2019]/g,"'"); }, twC=(gc.length?gc:[v.f]).map(twFold);
+      var paintTyped=function(){ var raw=inp.value, t=twFold(raw), h="";
+        for(var i=0;i<raw.length;i++){ var ok=twC.some(function(c){ return c.charAt(i)===t.charAt(i); }); h+=ok?esc(raw.charAt(i)):"<b>"+esc(raw.charAt(i))+"</b>"; }
+        tw.innerHTML="<span class='tt'>"+h+"</span>"; tw.firstChild.style.transform="translateX("+(-inp.scrollLeft)+"px)"; };
+      ["input","keyup","click","select"].forEach(function(ev){ inp.addEventListener(ev,paintTyped); });
+      inp.addEventListener("scroll",paintTyped);
       showPron();
     }
     function lockCard(){ locked=true; inp.readOnly=true; rb.disabled=true; cb.disabled=true; rb.style.opacity=".45"; cb.style.opacity=".45"; }
 
     var fbv=el("div"); card.appendChild(fbv);
-    var locked=false;
+    var locked=false, trChecked=false;   /* Training: Enter checks, Enter again goes to the next word; typing again re-opens the check */
     /* v0.2.0: grading runs through the shared verdict ladder (FG); vocCands() still supplies the accepted forms
        (masculine / feminine shorthand, optional complements, alternates). Accents are always required. */
     function vGrade(got){
@@ -2497,7 +2510,7 @@ function renderVoc(){
     function checkSpell(){
       var got=inp.value; if(!got.trim()||locked)return;
       var r=vGrade(got);
-      if(vocTrain){ vPanel(r,got); inp.select(); return; }
+      if(vocTrain){ vPanel(r,got); trChecked=true; inp.select(); return; }
       anaRecord(r.correct, (!r.correct && r.v==="accent"), (sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
       recordAnswer(state.vocabStats, state.vocab, v.f, r.correct);
       tag.textContent=vocTagText();
@@ -2513,10 +2526,11 @@ function renderVoc(){
       inp.value=v.f; lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
-    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(locked) vocNext(); else checkSpell(); } });
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); if(locked||trChecked) vocNext(); else checkSpell(); } });
+    inp.addEventListener("input",function(){ trChecked=false; });
     var act=el("div","vactions drill");
     var rb=el("button","btn dunno","Reveal answer"); rb.onclick=revealSpell;
-    var cb=el("button","btn go","Check"); cb.onclick=checkSpell;
+    var cb=el("button","btn go","Check"); cb.onclick=function(){ if(trChecked) vocNext(); else checkSpell(); };
     var nb=el("button","btn neutral","Next ›"); nb.onclick=vocNext;
     if(vocTrain) rb.style.display="none";
     act.appendChild(rb); act.appendChild(cb); act.appendChild(nb); card.appendChild(act);
