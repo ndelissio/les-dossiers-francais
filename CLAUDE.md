@@ -248,7 +248,7 @@ of git. To prevent this:
   (renommé / réputé), so keep both cards. Perfect synonyms that differ only in
   form are separated by a form hint ("one-word verb" vs "the phrase with au
   four"). Put the contrast on the reveal as a "vs X (difference)" note on both
-  cards. Cross-unit collisions don't matter — each unit has its own progress.
+  cards. Cross-unit collisions don't matter for the cues (each unit has its own progress), but the memo lines follow the citation rule below.
 - Plurals: if the book gives a plural noun that is NOT typically plural in
   French, convert to the singular so gender can be trained (les dents → la
   dent). Keep it plural only if it is typically plural (les ciseaux, les
@@ -301,6 +301,11 @@ of git. To prevent this:
     a headless screenshot (desktop + phone width) of one noun, one verb and one
     faux-ami card. Changelog counts (cards with mnemonic, forms, vs, etc.) are
     computed from the data, not estimated.
+- Memo synonyms and “not to confuse with” (`sy`, `vs`) — citation rule (decided 19 Oct 2026, applied to all five units: U1 v4.1.3, U2 v2.1.3, U3 v2.1.3, U4 v1.1.4, U5 v0.3.3):
+  - A card may name only words from its own unit (any chapter, pointing forward within the unit is fine) or from EARLIER units. Never name a word taught only in a later unit: the later card carries the link back. Words from the same unit carry no tag or their own chapter; a word from an earlier unit carries its chapter, for example `principalement (Ch 17)`; extras sections without a chapter number use the unit, `(Unité 3, extras)`. Where a word is taught in several earlier chapters, tag the earliest. Words that are not cards anywhere may stay as plain text.
+  - Within a unit, a pair that is worth listing is listed on both cards (contrast on both). Across units the link lives only on the later card, so a new vocab build must check the earlier units for words its cards could be confused with, and must remove or never write pointers to later-unit words.
+  - Entries must be sourced (WordReference, Larousse, Le Robert, OQLF, fr.wiktionary or the official sites above); an unconfirmed pair is left out, not hedged. `sy` = true synonym in at least one sense (state a sense restriction) or true antonym (`contr.`); `vs` = a confusable pair with the real difference stated; limits: 4 synonyms, 2 antonyms, 4 `vs` segments per card.
+  - Method that worked: dump each unit’s cards and an index of all earlier units; draft per chunk of about 105 cards in parallel (quality over coverage: roughly 10–20% of cards get a change); merge the proposals with a script that enforces the rule, caps and reciprocity; run a web verification pass on every proposal not rated high; apply by card (`f` plus chapter) to the `sy`/`vs` fields only; compare every other field before and after. Pointers to later-unit words found in existing text were removed unit by unit (74 pointers on 69 cards in Units 1–4).
 - Memo-card sourcing and audit (every vocab/memo build, any unit): do not
   write or accept translations, definitions, examples or etymologies from
   memory alone. Cross-check against real sources and name the source in the
