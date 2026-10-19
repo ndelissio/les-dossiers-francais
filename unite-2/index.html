@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 2 · Dossier Français — v2.1.3</title>
+<title>Unité 2 · Dossier Français — v2.1.4</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -357,6 +357,15 @@
   .fb{border-radius:9px; padding:11px 14px; margin-top:10px; display:flex; flex-direction:column; gap:7px; font-size:14px}
   .fb.ok{background:var(--known-soft)} .fb.near{background:var(--near-soft)} .fb.bad{background:var(--accent-soft)}
   .fb strong.fbv{font-size:14.5px}
+  .fbtop{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .streakrow{display:flex; margin-top:10px}
+  .streak{display:inline-flex; align-items:center; gap:7px; font-family:var(--sans); font-size:12.5px; font-weight:700; letter-spacing:.02em; padding:3px 10px 3px 9px; border-radius:999px; background:var(--surface); border:1px solid currentColor; white-space:nowrap; animation:streakpop .35s cubic-bezier(.2,1.4,.4,1)}
+  .streak .pips{display:inline-flex; gap:4px}
+  .streak i{width:9px; height:9px; border-radius:50%; border:1.5px solid currentColor; opacity:.4}
+  .streak i.on{background:currentColor; opacity:1}
+  .streak.ok{color:var(--known)} .streak.miss{color:var(--accent)}
+  .streak.done{background:var(--known); border-color:var(--known); color:var(--on-solid)}
+  @keyframes streakpop{0%{transform:scale(.6); opacity:0} 100%{transform:scale(1); opacity:1}}
   .fb.ok strong.fbv{color:var(--known)} .fb.near strong.fbv{color:var(--near)} .fb.bad strong.fbv{color:var(--accent)}
   .cmp{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:baseline}
   .cmp .l{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); font-weight:700}
@@ -514,7 +523,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v2.1.3</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v2.1.4</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -796,8 +805,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 2 · v2.1.3</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v2.1.4</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v2.1.4 (19 Oct 2026): <strong>Memo cards — more synonym and “not to confuse with” pairs.</strong> After a review of the pairs left out for lack of a firm source, 4 cards gained 3 further links (see the lines on each memo card). Only the synonym and “not to confuse with” lines changed there. <strong>Vocabulaire — streak chip.</strong> After you answer in Spelling or Recognize, a small chip shows where the card stands: ✓ 1/3, ✓ 2/3, then ✓ 3/3 · mastered (green); a miss shows ✗ 0/3. It sits on the verdict line in Spelling and under the options in Recognize; Training records nothing and shows none.<br></span>
     <span style="color:var(--mute)">v2.1.3 (18 Oct 2026): <strong>Memo cards — synonyms and “not to confuse with” now reach back to earlier units.</strong> 66 cards gained or corrected entries (52 new links, and 11 pointers to words taught in later units removed), written to the rule that a card may name words from its own unit and from earlier units only. A word from an earlier unit carries its chapter, for example <em>principalement (Ch 17)</em>. Only the synonym and “not to confuse with” lines of the memo changed: no card, answer, cue or progress did.<br></span>
     <span style="color:var(--mute)">v2.1.2 (18 Oct 2026): <strong>Vocabulaire Training — Enter checks, Enter again goes to the next word; wrong letters turn red.</strong> In Spelling mode with Training on, a letter you type that does not match the ghost word turns red (the ghost letter stays visible behind it), and the first Enter (or Check) grades what you typed and the second moves to the next word, as it already did outside Training. Typing again after a check re-opens it, so you can still fix a miss and re-check before moving on. Nothing is recorded in Training; no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v2.1.1 (15 Oct 2026): <strong>Vocabulaire Training — the word to type appears as a ghost on the ruled line.</strong> In Spelling mode with Training on, the French word now shows faintly in the notebook field, so you can trace over it as you type, instead of in an amber note above it. Appearance only: nothing is recorded in Training, and no card, answer or progress changed.<br></span>
@@ -898,6 +908,13 @@ function recordAnswer(statsMap, statusMap, key, correct){
 }
 /* card meta line: lifetime tally + current streak */
 function statMeta(sc){ sc=sc||{}; return "\u2713"+(sc.c||0)+" \u2717"+(sc.w||0)+" \u00b7 "+(sc.s||0)+"/3"; }
+/* in-card streak chip shown after a graded vocabulary answer: correct answers in a row out of 3 (a green card shows 3/3 · mastered; a miss resets to 0/3) */
+function streakChip(key, ok){
+  var s=state.vocabStats[key]||{}, known=state.vocab[key]==="known", n=known?3:Math.min(s.s||0,3), p="";
+  for(var i=0;i<3;i++) p+="<i"+(i<n?" class='on'":"")+"></i>";
+  var t=!ok ? "\u2717 0/3" : (known ? "\u2713 3/3 \u00b7 mastered" : "\u2713 "+n+"/3");
+  return "<span class='streak "+(!ok?"miss":known?"done":"ok")+"' title='Correct answers in a row: "+(ok?n:0)+" of 3'><span class='pips'>"+p+"</span>"+t+"</span>";
+}
 /* honor-system instant mastery — one later miss resets it like any other green */
 function markKnown(statsMap, statusMap, key){
   var s = statsMap[key] || (statsMap[key] = {c:0, w:0, s:0});
@@ -1717,14 +1734,14 @@ var VOCAB=[
  {f:"percer",e:"to drill, to pierce",c:6,t:"verb",y:"→ English pierce; percer ≈ pierce.",p:"v",d:"To make a hole in something, for example with a drill.",mn:"Percer is pierce.",fm:"participe passé percé (avoir) · nous perçons",ex:"Il perce un trou dans le mur. (He is drilling a hole in the wall.)",cs:"percer un trou = to drill a hole",fam:"la perceuse (power drill), percé (pierced)"},
  {f:"rénover",e:"to renovate",c:6,t:"verb",y:"Straight cognate: renovate.",p:"v",d:"To restore an old building or room to good condition and update it.",mn:"Rénover is renovate: Latin novus, new, makes it new again.",fm:"participe passé rénové (avoir)",sy:"syn. remettre à neuf",vs:"aménager — to fit out or convert a space for a use; rénover renews what already exists",ex:"Ils ont rénové la maison de campagne. (They renovated the country house.)",fam:"la rénovation, nouveau (new), rénové (renovated)"},
  /* --- Prépositions --- */
- {f:"à côté de",e:"next to",c:6,t:"prep",y:"côté = side (Latin costa, rib → English coast); circumflex hides the s: coste.",p:"prep",d:"Right beside; at the side of.",vs:"près de — near, but not necessarily beside (Ch 6) · en face de — across from (Ch 6)",mn:"Côté is side and kin to coast, the side of the land: next to the side.",ex:"La banque est à côté de la poste. (The bank is next to the post office.)",cs:"à côté de + noun · à côté = nearby, next door",fam:"le côté (side), la côte (coast; rib)"},
+ {f:"à côté de",e:"next to",c:6,t:"prep",y:"côté = side (Latin costa, rib → English coast); circumflex hides the s: coste.",p:"prep",d:"Right beside; at the side of.",vs:"près de — near, but not necessarily beside (Ch 6) · en face de — across from (Ch 6) · de chaque côté de — on both sides of something; à côté de is next to one side",mn:"Côté is side and kin to coast, the side of the land: next to the side.",ex:"La banque est à côté de la poste. (The bank is next to the post office.)",cs:"à côté de + noun · à côté = nearby, next door",fam:"le côté (side), la côte (coast; rib)"},
  {f:"à droite de",e:"to the right of",c:6,t:"prep",y:"droite = the 'direct' hand (Latin directus → direct).",p:"prep",d:"On the right-hand side of something.",vs:"à gauche de — to the left of (Ch 6)",mn:"Droite is the direct hand: the one that goes straight, like direct.",sy:"contr. à gauche de",ex:"Le canapé est à droite de la fenêtre. (The couch is to the right of the window.)",cs:"à droite de + noun · à droite = to the right · tout droit = straight ahead",fam:"la droite (right), droit (straight)"},
  {f:"à gauche de",e:"to the left of",c:6,t:"prep",y:"English gauche = awkward — literally left-handed.",p:"prep",d:"On the left-hand side of something.",vs:"à droite de — to the right of (Ch 6)",mn:"English gauche means awkward: the left hand is the awkward one.",sy:"contr. à droite de",ex:"La lampe est à gauche du lit. (The lamp is to the left of the bed.)",cs:"à gauche de + noun · à gauche = to the left",fam:"la gauche (left), gaucher (left-handed)"},
  {f:"au coin de",e:"at the corner of, in the corner of",c:6,t:"prep",y:"coin = wedge (Latin cuneus); coins were struck with a wedge die — hence English coin.",p:"prep",d:"At the corner of a street or room.",vs:"au fond de — at the far end or back of a space (Ch 6)",mn:"Coin means corner and wedge: the wedge-shaped die that struck a coin also gave English coin.",ex:"La boulangerie est au coin de la rue. (The bakery is at the corner of the street.)",cs:"au coin de la rue = at the street corner · au coin du feu = by the fireside",fam:"le coin (corner), coincer (to jam)"},
  {f:"au-dessus de",e:"above, over (higher than)",a:["au dessus de"],c:6,t:"prep",y:"sus = up (Latin sursum); pair it: dessUs Up, dessOus dOwn.",p:"prep",d:"Higher than something, not touching it.",vs:"sur — on top, touching (Ch 6) · en dessous de — lower than (Ch 6)",mn:"Dessus has Up: dessUs Up; dessOus dOwn.",sy:"contr. en dessous de",ex:"Il y a une lampe au-dessus de la table. (There is a lamp above the table.)",cs:"au-dessus de + noun",fam:"dessus (on top), dessous (underneath)"},
  {f:"au fond de",e:"at the end / back of",c:6,t:"prep",y:"fond = bottom (Latin fundus → foundation, profound); at the depths of.",p:"prep",d:"At the far end or the bottom of something.",vs:"derrière — behind something (Ch 6) · au coin de — in the corner (Ch 6)",mn:"Fond is bottom, as in foundation and profound: at the depths of.",ex:"Le jardin est au fond de la cour. (The garden is at the back of the yard.)",cs:"au fond de la salle = at the back of the room · au fond de la mer = at the bottom of the sea",fam:"le fond (bottom, back), profond (deep)"},
  {f:"contre",e:"against",c:6,t:"prep",y:"Latin contra → English contrary, counter.",p:"prep",d:"Touching or leaning on something; also opposed to it.",vs:"sur — resting on top of (Ch 6)",mn:"Contre is contra: contrary and counter.",ex:"Le vélo est contre le mur. (The bike is against the wall.)",cs:"contre + noun · par contre = on the other hand",fam:"le contraire (opposite), contrer (to counter)"},
- {f:"de chaque côté de",e:"on each side of",c:6,t:"prep",y:"On each side — côté/coast again, one per flank.",p:"prep",d:"On both sides of something, one on each flank.",vs:"entre — in between two things (Ch 6)",mn:"Côté is side, kin to coast: one on each side.",ex:"Il y a un arbre de chaque côté de la porte. (There is a tree on each side of the door.)",cs:"de chaque côté de + noun · des deux côtés = on both sides",fam:"le côté (side), chaque (each)"},
+ {f:"de chaque côté de",e:"on each side of",c:6,t:"prep",y:"On each side — côté/coast again, one per flank.",p:"prep",d:"On both sides of something, one on each flank.",vs:"entre — in between two things (Ch 6) · à côté de — next to one thing; de chaque côté de means on both sides of it",mn:"Côté is side, kin to coast: one on each side.",ex:"Il y a un arbre de chaque côté de la porte. (There is a tree on each side of the door.)",cs:"de chaque côté de + noun · des deux côtés = on both sides",fam:"le côté (side), chaque (each)"},
  {f:"derrière",e:"behind",c:6,t:"prep",y:"Latin de retro, 'from behind' → English retro and derrière itself.",p:"prep",d:"At the back of something; hidden by it.",vs:"devant — in front of, the opposite (Ch 6) · au fond de — at the far end of a space (Ch 6)",mn:"Derrière comes from Latin de retro, from behind: retro means back.",sy:"contr. devant",ex:"Le chat est derrière le canapé. (The cat is behind the couch.)",cs:"derrière + noun · le derrière = the back part, also the backside"},
  {f:"devant",e:"in front of",c:6,t:"prep",y:"de + avant (Latin ab ante → advance); out in front.",p:"prep",d:"In the front of something; facing it.",vs:"avant (Ch 4) — before in time · derrière — behind (Ch 6) · en face de — across from, on the opposite side; devant is on the same side",mn:"Devant is de + avant: out in front, which gives advance.",sy:"contr. derrière",ex:"La voiture est devant la maison. (The car is in front of the house.)",cs:"devant + noun",fam:"avant (before), l'avant (the front)"},
  {f:"en dessous de",e:"underneath, below (lower than)",c:6,t:"prep",y:"sous = under (Latin subtus → sub-); sous-marin = submarine.",p:"prep",d:"Lower than something, not necessarily directly beneath.",vs:"sous — directly beneath (Ch 6) · au-dessus de — above (Ch 6)",mn:"Dessous sounds like sous: below, under.",sy:"contr. au-dessus de",ex:"Le miroir est en dessous de l'étagère. (The mirror is below the shelf.)",cs:"en dessous de + noun",fam:"dessous (underneath), sous (under)"},
@@ -2001,13 +2018,13 @@ var VOCAB=[
  {f:"se porter",e:"to be doing (well or badly) in terms of health",c:8,t:"verb",y:"'To carry oneself' — how you're carrying is how you feel: Comment vous portez-vous ?",p:"v",d:"To be in a given state of health.",vs:"se sentir (Ch 8) — how you feel, in body or mood; se porter — health only",fm:"participe passé s'est porté (être)",ex:"Mon grand-père se porte très bien. (My grandfather is in very good health.)",cs:"se porter bien / mal · Comment vous portez-vous ?",fam:"porter (to carry, to wear)",rg:"slightly formal"},
  {f:"poursuivre",e:"to continue",c:8,t:"verbg",y:"pour + suivre (Latin sequi → sue, suit) → English pursue.",p:"v",d:"To keep going with something; also to chase.",vs:"continuer (Ch 4) — the everyday word; poursuivre is a little more formal and suits goals or studies",fm:"participe passé poursuivi (avoir) · je poursuis, nous poursuivons",sy:"syn. continuer (Ch 4)",ex:"Elle poursuit ses études de médecine. (She is continuing her medical studies.)",cs:"poursuivre + noun · poursuivre ses études = to continue one's studies",fam:"suivre (to follow), la poursuite (chase, pursuit)"},
  {f:"préconiser",e:"to recommend",c:8,t:"verbg",y:"Latin praeco, the herald — to herald something = recommend it officially.",p:"v",d:"To recommend something strongly, as an expert or an authority does.",vs:"recommander (not a card) — the everyday word for recommend",mn:"Picture a town crier loudly proclaiming the advice.",fm:"participe passé préconisé (avoir)",ex:"Les médecins préconisent de dormir huit heures. (Doctors recommend sleeping eight hours.)",cs:"préconiser + noun · préconiser de + infinitive",rg:"formal"},
- {f:"prendre en charge",e:"to admit (a patient)",c:8,t:"verbg",y:"Take into one's charge — to admit; English 'take charge of.'",p:"v",d:"To take responsibility for someone, as when a hospital admits a patient; also to pay for something.",fm:"participe passé pris en charge (avoir) · je prends, nous prenons",ex:"L'hôpital prend le blessé en charge. (The hospital admits the injured man.)",cs:"prendre quelqu'un en charge · l'assurance prend les frais en charge = insurance covers the costs",fam:"la prise en charge (admission, Ch 8), la charge (burden)"},
+ {f:"prendre en charge",e:"to admit (a patient)",c:8,t:"verbg",y:"Take into one's charge — to admit; English 'take charge of.'",p:"v",d:"To take responsibility for someone, as when a hospital admits a patient; also to pay for something.",fm:"participe passé pris en charge (avoir) · je prends, nous prenons",vs:"soigner — to treat or care for; prendre en charge is to take a patient on and manage their care",ex:"L'hôpital prend le blessé en charge. (The hospital admits the injured man.)",cs:"prendre quelqu'un en charge · l'assurance prend les frais en charge = insurance covers the costs",fam:"la prise en charge (admission, Ch 8), la charge (burden)"},
  {f:"privilégier",e:"to prioritize",c:8,t:"verbg",y:"Cognate privilege → to give priority to.",p:"v",d:"To give priority or an advantage to something.",fm:"participe passé privilégié (avoir)",ex:"Ce médecin privilégie la prévention. (This doctor prioritizes prevention.)",cs:"privilégier + noun",fam:"le privilège (privilege), privilégié (privileged)"},
  {f:"récupérer",e:"to recover, to get back (strength, an object)",c:8,t:"verb",y:"Cognate recuperate — to recover.",p:"v",d:"To get something back, or to regain strength after tiredness or illness.",vs:"guérir (Ch 8) — to get well from an illness; récupérer — to regain strength or recover an object",fm:"participe passé récupéré (avoir) · je récupère, nous récupérons",ex:"Je dois récupérer mon sac à la gare. (I have to get my bag back at the station.)",cs:"récupérer des forces = to regain strength · récupérer quelqu'un = to pick someone up",fam:"la récupération (recovery)"},
  {f:"respirer",e:"to breathe",c:8,t:"verb",y:"Latin respirare → English respire, respiratory — to re-breathe.",p:"v",d:"To take air into the lungs and let it out.",fm:"participe passé respiré (avoir)",ex:"Respirez profondément, s'il vous plaît. (Breathe deeply, please.)",cs:"respirer profondément",fam:"la respiration (breathing), respiratoire (les voies respiratoires, Ch 8)"},
  {f:"retirer",e:"to pull out",c:8,t:"verb",y:"re + tirer (pull) — English retire is literally 'pull back.'",p:"v",d:"To pull something out or take it away; also to withdraw money.",fm:"participe passé retiré (avoir)",ex:"Le dentiste retire la dent. (The dentist pulls out the tooth.)",cs:"retirer de l'argent = to withdraw money · retirer + noun",fam:"tirer (to pull), se retirer (to withdraw)",fa:"Retirer does not mean to retire from work; that is prendre sa retraite."},
  {f:"se sentir",e:"to feel (tired, well, sad… — a state of being)",c:8,t:"verb",y:"Latin sentire → English sense, sentiment; to feel.",p:"v",d:"To be aware of one's own physical or emotional state.",vs:"se porter (Ch 8) — health only · sentir (not a card) — to smell something, or to feel something else",fm:"participe passé s'est senti (être) · je me sens, nous nous sentons",ex:"Je me sens fatigué depuis lundi. (I have felt tired since Monday.)",cs:"se sentir + adjective: se sentir mal / bien / fatigué",fam:"le sentiment (feeling), le sens (sense, meaning)"},
- {f:"soigner",e:"to treat, to care for (a patient or an illness)",c:8,t:"verb",y:"From soin (care); English soigné = impeccably cared-for.",p:"v",d:"To give medical care to someone or something; also to take care over a task.",vs:"guérir (Ch 8) — to cure or get well; soigner — to treat or care for, whether or not it works",fm:"participe passé soigné (avoir)",ex:"On soigne la grippe avec du repos. (You treat the flu with rest.)",cs:"se faire soigner = to get treated · se soigner = to treat oneself",fam:"le soin (care), les soins médicaux (medical care, Ch 8), soigné (neat, well kept)"},
+ {f:"soigner",e:"to treat, to care for (a patient or an illness)",c:8,t:"verb",y:"From soin (care); English soigné = impeccably cared-for.",p:"v",d:"To give medical care to someone or something; also to take care over a task.",vs:"guérir (Ch 8) — to cure or get well; soigner — to treat or care for, whether or not it works · prendre en charge — to admit a patient and manage their care; soigner is to treat or look after them",fm:"participe passé soigné (avoir)",ex:"On soigne la grippe avec du repos. (You treat the flu with rest.)",cs:"se faire soigner = to get treated · se soigner = to treat oneself",fam:"le soin (care), les soins médicaux (medical care, Ch 8), soigné (neat, well kept)"},
  {f:"tousser",e:"to cough",c:8,t:"verb",y:"Latin tussire → medical English tussis; pertussis = whooping cough.",p:"v",d:"To push air out of the throat with a sudden noise, as with a cold.",fm:"participe passé toussé (avoir)",ex:"Il tousse depuis deux jours. (He has been coughing for two days.)",fam:"la toux (cough)"},
  {f:"tuer",e:"to kill",c:8,t:"verbg",y:"Originally 'to snuff out a flame' — to kill is to extinguish.",p:"v",d:"To cause someone or something to die.",vs:"mourir (Ch 8) — to die · assassiner (not a card) — to murder",fm:"participe passé tué (avoir)",sy:"contr. sauver",ex:"Le froid a tué les plantes. (The cold killed the plants.)",cs:"se faire tuer = to get killed · se tuer = to die in an accident, or to kill oneself",fam:"le tueur (killer)"},
  {f:"vaincre",e:"to conquer",c:8,t:"verbg",y:"Latin vincere → English victory, vanquish; what you can't vaincre is invincible.",p:"v",d:"To defeat an opponent or overcome a difficulty.",fm:"participe passé vaincu (avoir) · je vaincs, il vainc, nous vainquons (c becomes qu before a vowel)",sy:"syn. battre, l'emporter sur · contr. perdre (Ch 4)",vs:"combattre — to fight, with no promise of winning; vaincre means to win",ex:"Les médecins ont vaincu cette maladie. (Doctors have defeated this disease.)",cs:"vaincre + noun: vaincre la peur",fam:"la victoire (victory), le vainqueur (winner), convaincre (to convince)"},
@@ -2336,8 +2353,8 @@ function renderVoc(){
       return {v:r.v,target:r.target,viaAlt:viaAlt,correct:r.v==="ok"};
     }
     /* feedback panel: one verdict line, then You / Correct (only on a miss); a skip shows the answer alone */
-    function vPanel(r,got,skip){
-      var V=FG.VERDICTS[skip?"skip":r.v], html="<strong class='fbv'>"+V.title+"</strong>";
+    function vPanel(r,got,skip,chip){
+      var V=FG.VERDICTS[skip?"skip":r.v], html=chip ? "<div class='fbtop'><strong class='fbv'>"+V.title+"</strong>"+chip+"</div>" : "<strong class='fbv'>"+V.title+"</strong>";
       if(skip){
         html+="<div class='cmp'><span class='l'>Correct</span><span class='w'>"+esc(v.f)+"</span></div>";
       } else if(r.v!=="ok"){
@@ -2355,7 +2372,7 @@ function renderVoc(){
       anaRecord(r.correct, (!r.correct && r.v==="accent"), (sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
       recordAnswer(state.vocabStats, state.vocab, v.f, r.correct);
       tag.textContent=vocTagText();
-      vPanel(r,got);
+      vPanel(r,got,false,streakChip(v.f,r.correct));
       lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
@@ -2363,7 +2380,7 @@ function renderVoc(){
       if(locked) return;
       recordAnswer(state.vocabStats, state.vocab, v.f, false);
       tag.textContent=vocTagText();
-      vPanel({v:"skip",target:v.f,correct:false},"",true);
+      vPanel({v:"skip",target:v.f,correct:false},"",true,streakChip(v.f,false));
       inp.value=v.f; lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
@@ -2402,7 +2419,7 @@ function renderVoc(){
       if(mcDone) return; mcDone=true; mcApi.done=true; var ok=(mcOpts[k]===v);
       [].forEach.call(mcBox.children,function(b,i){ b.disabled=true; if(mcOpts[i]===v) b.classList.add("right"); else if(i===k) b.classList.add("wrong"); });
       if(!vocTrain){
-        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText();
+        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText(); mcAns.appendChild(el("div","streakrow",streakChip(v.f,ok)));
         saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
       }
       if(v.n && !genderOf(v)) mcAns.appendChild(el("div","note",esc(v.n))); revealPos(card,v);

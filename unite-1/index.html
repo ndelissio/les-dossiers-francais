@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 1 · Dossier Français — v4.1.3</title>
+<title>Unité 1 · Dossier Français — v4.1.4</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -353,6 +353,15 @@
   .fb{border-radius:9px; padding:11px 14px; margin-top:10px; display:flex; flex-direction:column; gap:7px; font-size:14px}
   .fb.ok{background:var(--known-soft)} .fb.near{background:var(--near-soft)} .fb.bad{background:var(--accent-soft)}
   .fb strong.fbv{font-size:14.5px}
+  .fbtop{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .streakrow{display:flex; margin-top:10px}
+  .streak{display:inline-flex; align-items:center; gap:7px; font-family:var(--sans); font-size:12.5px; font-weight:700; letter-spacing:.02em; padding:3px 10px 3px 9px; border-radius:999px; background:var(--surface); border:1px solid currentColor; white-space:nowrap; animation:streakpop .35s cubic-bezier(.2,1.4,.4,1)}
+  .streak .pips{display:inline-flex; gap:4px}
+  .streak i{width:9px; height:9px; border-radius:50%; border:1.5px solid currentColor; opacity:.4}
+  .streak i.on{background:currentColor; opacity:1}
+  .streak.ok{color:var(--known)} .streak.miss{color:var(--accent)}
+  .streak.done{background:var(--known); border-color:var(--known); color:var(--on-solid)}
+  @keyframes streakpop{0%{transform:scale(.6); opacity:0} 100%{transform:scale(1); opacity:1}}
   .fb.ok strong.fbv{color:var(--known)} .fb.near strong.fbv{color:var(--near)} .fb.bad strong.fbv{color:var(--accent)}
   .cmp{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; align-items:baseline}
   .cmp .l{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); font-weight:700}
@@ -510,7 +519,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 1 · v4.1.3</div>
+      <div class="eyebrow">French Basic Course · Unit 1 · v4.1.4</div>
       <h1><b>Unité&nbsp;1</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -774,8 +783,9 @@
 
 
   <footer>
-    <strong>Dossier v4.1.3</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
+    <strong>Dossier v4.1.4</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v4.1.4 (19 Oct 2026): <strong>Vocabulaire — streak chip.</strong> After you answer in Spelling or Recognize, a small chip shows where the card stands: ✓ 1/3, ✓ 2/3, then ✓ 3/3 · mastered (green); a miss shows ✗ 0/3. It sits on the verdict line in Spelling and under the options in Recognize; Training records nothing and shows none.<br></span>
     <span style="color:var(--mute)">v4.1.3 (18 Oct 2026): <strong>Memo cards — synonym and “not to confuse with” lines no longer name words from later units.</strong> 18 pointers on 17 cards to words taught in later units are removed (a card may name words from its own unit and from earlier units only; the later card carries the link back, with the chapter). Only those memo lines changed: no card, answer, cue or progress did.<br></span>
     <span style="color:var(--mute)">v4.1.2 (18 Oct 2026): <strong>Vocabulaire Training — Enter checks, Enter again goes to the next word; wrong letters turn red.</strong> In Spelling mode with Training on, a letter you type that does not match the ghost word turns red (the ghost letter stays visible behind it), and the first Enter (or Check) grades what you typed and the second moves to the next word, as it already did outside Training. Typing again after a check re-opens it, so you can still fix a miss and re-check before moving on. Nothing is recorded in Training; no card, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v4.1.1 (15 Oct 2026): <strong>Vocabulaire Training — the word to type appears as a ghost on the ruled line.</strong> In Spelling mode with Training on, the French word now shows faintly in the notebook field, so you can trace over it as you type, instead of in an amber note above it. Appearance only: nothing is recorded in Training, and no card, answer or progress changed.<br></span>
@@ -878,6 +888,13 @@ function recordAnswer(statsMap, statusMap, key, correct){
 }
 /* card meta line: lifetime tally + current streak */
 function statMeta(sc){ sc=sc||{}; return "\u2713"+(sc.c||0)+" \u2717"+(sc.w||0)+" \u00b7 "+(sc.s||0)+"/3"; }
+/* in-card streak chip shown after a graded vocabulary answer: correct answers in a row out of 3 (a green card shows 3/3 · mastered; a miss resets to 0/3) */
+function streakChip(key, ok){
+  var s=state.vocabStats[key]||{}, known=state.vocab[key]==="known", n=known?3:Math.min(s.s||0,3), p="";
+  for(var i=0;i<3;i++) p+="<i"+(i<n?" class='on'":"")+"></i>";
+  var t=!ok ? "\u2717 0/3" : (known ? "\u2713 3/3 \u00b7 mastered" : "\u2713 "+n+"/3");
+  return "<span class='streak "+(!ok?"miss":known?"done":"ok")+"' title='Correct answers in a row: "+(ok?n:0)+" of 3'><span class='pips'>"+p+"</span>"+t+"</span>";
+}
 /* honor-system instant mastery — one later miss resets it like any other green */
 function markKnown(statsMap, statusMap, key){
   var s = statsMap[key] || (statsMap[key] = {c:0, w:0, s:0});
@@ -2496,8 +2513,8 @@ function renderVoc(){
       return {v:r.v,target:r.target,viaAlt:viaAlt,correct:r.v==="ok"};
     }
     /* feedback panel: one verdict line, then You / Correct (only on a miss); a skip shows the answer alone */
-    function vPanel(r,got,skip){
-      var V=FG.VERDICTS[skip?"skip":r.v], html="<strong class='fbv'>"+V.title+"</strong>";
+    function vPanel(r,got,skip,chip){
+      var V=FG.VERDICTS[skip?"skip":r.v], html=chip ? "<div class='fbtop'><strong class='fbv'>"+V.title+"</strong>"+chip+"</div>" : "<strong class='fbv'>"+V.title+"</strong>";
       if(skip){
         html+="<div class='cmp'><span class='l'>Correct</span><span class='w'>"+esc(v.f)+"</span></div>";
       } else if(r.v!=="ok"){
@@ -2515,7 +2532,7 @@ function renderVoc(){
       anaRecord(r.correct, (!r.correct && r.v==="accent"), (sa.hasArt ? {cat:"gen",src:"voc",ch:v.c} : {src:"voc",ch:v.c}), true);
       recordAnswer(state.vocabStats, state.vocab, v.f, r.correct);
       tag.textContent=vocTagText();
-      vPanel(r,got);
+      vPanel(r,got,false,streakChip(v.f,r.correct));
       lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
@@ -2523,7 +2540,7 @@ function renderVoc(){
       if(locked) return;
       recordAnswer(state.vocabStats, state.vocab, v.f, false);
       tag.textContent=vocTagText();
-      vPanel({v:"skip",target:v.f,correct:false},"",true);
+      vPanel({v:"skip",target:v.f,correct:false},"",true,streakChip(v.f,false));
       inp.value=v.f; lockCard(); showPron();
       saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
     }
@@ -2562,7 +2579,7 @@ function renderVoc(){
       if(mcDone) return; mcDone=true; mcApi.done=true; var ok=(mcOpts[k]===v);
       [].forEach.call(mcBox.children,function(b,i){ b.disabled=true; if(mcOpts[i]===v) b.classList.add("right"); else if(i===k) b.classList.add("wrong"); });
       if(!vocTrain){
-        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText();
+        recordAnswer(state.vocabStats, state.vocab, v.f, ok); tag.textContent=vocTagText(); mcAns.appendChild(el("div","streakrow",streakChip(v.f,ok)));
         saveState(); refreshDash(); document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known"; refreshVocTableIfOpen();
       }
       if(v.n && !genderOf(v)) mcAns.appendChild(el("div","note",esc(v.n))); revealPos(card,v);
