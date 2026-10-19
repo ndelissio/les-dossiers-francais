@@ -323,7 +323,10 @@ of git. To prevent this:
     definitions — service-public.fr, legifrance.gouv.fr, vie-publique.fr —
     and the English equivalent must match what they say.
   - The mnemonic (`mn`) must follow from the etymology or cognate it cites;
-    drop it when there is no real hook.
+    drop it when there is no real hook. A mnemonic is a hook, never a restatement of the gloss
+    ("sinon: si + non, if not") or of the etymology; an English cognate that is a
+    common word needs none, only a rare one (effervescent) earns a hook. Unit 5
+    audit, 19 Oct 2026: 150 of 231 removed, 7 rewritten (v0.3.5).
   - Spot-check plain words, verify every unusual, idiomatic, technical or
     textbook-divergent one. Log each English gloss changed from the textbook
     ("textbook said X, now Y") with its source.
