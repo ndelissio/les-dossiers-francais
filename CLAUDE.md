@@ -427,7 +427,7 @@ of git. To prevent this:
 ### Settled (apply to new drill builds)
 - **Typed answers sit on a Seyès-ruled field** (French copybook paper with a red margin line), with an accent key row underneath. Grammar drills keep the keys with the last-focused item only, so clicking Check never reflows the page.
 - **Feedback after Check is compact:**
-  - One verdict line at the top, and no other status text ("counts as a miss", streak notes).
+  - One verdict line at the top, and no other status text ("counts as a miss", streak notes). The one exception is the streak chip (19 Oct 2026): a small pill on the verdict line in Spelling (and under the options in Recognize) showing ✓ 1/3, ✓ 2/3, ✓ 3/3 · mastered or ✗ 0/3. Training records nothing and shows none; `streakChip()` builds it.
   - On a miss, a **You** row with wrong or extra characters struck through in red, and a **Correct** row with missed characters underlined in red. The correct answer appears once; no repeated full-answer line under the rows.
   - A skip shows the **Correct** row alone.
   - Grammaire adds a one-line why after the rows. There is no "count it" override.
