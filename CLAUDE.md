@@ -326,7 +326,9 @@ of git. To prevent this:
     drop it when there is no real hook. A mnemonic is a hook, never a restatement of the gloss
     ("sinon: si + non, if not") or of the etymology; an English cognate that is a
     common word needs none, only a rare one (effervescent) earns a hook. Unit 5
-    audit, 19 Oct 2026: 150 of 231 removed, 7 rewritten (v0.3.5).
+    audit, 19 Oct 2026: 150 of 231 removed, 7 rewritten (v0.3.5); Units 1–4 the
+    same way on 22 Oct 2026: 1,716 of 2,280 removed, 11 rewritten (U1 v4.1.5, U2
+    v2.1.5, U3 v2.1.5, U4 v1.1.6).
   - Spot-check plain words, verify every unusual, idiomatic, technical or
     textbook-divergent one. Log each English gloss changed from the textbook
     ("textbook said X, now Y") with its source.
