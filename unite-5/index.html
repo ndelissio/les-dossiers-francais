@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v0.3.5</title>
+<title>Unité 5 · Dossier Français — v0.4.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -399,6 +399,95 @@
   .big.fr .en-x{font-style:normal}
   @media (max-width:640px){ .en-x{white-space:normal} }
 
+  /* ---- Prépa examen (v0.9.0) ---- */
+  #p-prep [hidden]{display:none !important}
+  .psub{margin:4px 0 14px}
+  .pbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
+  .pbar label{display:inline-flex; align-items:center; gap:6px}
+  .pbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
+  .pcard{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 1px 0 rgba(22,36,61,.04), 0 8px 20px -14px rgba(22,36,61,.28)}
+  .pprog{height:4px; background:var(--line)} .pprog i{display:block; height:100%; background:var(--bleu); width:0; transition:width .25s ease}
+  .pmeta{display:flex; justify-content:space-between; gap:12px; padding:12px 20px 0; font-size:13px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .pbody{padding:14px 20px 20px; display:flex; flex-direction:column; gap:14px}
+  .ptag{align-self:flex-start; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--bleu); background:var(--tint); padding:3px 9px; border-radius:5px}
+  .pins{font-size:13.5px; color:var(--ink-2); margin:0}
+  .pprompt{font-family:var(--serif); font-size:28px; line-height:1.25; margin:0}
+  .pprompt.fr{font-style:italic}
+  .psent{font-family:var(--serif); font-size:23px; line-height:1.55; margin:0}
+  .psent .cue{color:var(--mute); font-size:.8em; white-space:nowrap}
+  .pkeys{display:flex !important; margin-top:-6px}
+  .prow{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .phint{margin-left:auto; font-size:12.5px; color:var(--mute)}
+  .pbtn{appearance:none; cursor:pointer; padding:9px 16px; border-radius:9px; font-weight:700; font-size:14px; font-family:var(--sans); border:1px solid var(--line); color:var(--ink); background:var(--card)}
+  .pbtn.primary{background:var(--ink); border-color:var(--ink); color:var(--on-solid)}
+  .pbtn:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .pscore{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .pscore .big{font-family:var(--serif); font-size:44px; font-weight:600; line-height:1}
+  .pscore .pct{color:var(--ink-2); font-size:15px}
+  .pempty{color:var(--ink-2); font-size:14px; margin:0}
+  .pnote{color:var(--ink-2); font-size:13px; margin:0}
+  .pchip{display:inline-block; margin-left:6px; font-size:11px; letter-spacing:.05em; text-transform:uppercase; font-weight:700; color:var(--bleu); background:var(--tint); padding:1px 7px; border-radius:4px; white-space:nowrap}
+  .misslist{display:flex; flex-direction:column; border-top:1px solid var(--line)}
+  .misslist > div{display:flex; flex-direction:column; gap:2px; padding:9px 0; border-bottom:1px solid var(--line)}
+  .misslist .fr{font-family:var(--serif); font-size:16.5px}
+  .misslist .en .en-x{display:inline; margin-left:4px; font-size:.85em}
+  .misslist .yours{font-size:12.5px; color:var(--accent)}
+  .misslist .pt{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700}
+  .bytopic{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; font-size:14px; font-variant-numeric:tabular-nums}
+  .bytopic span:nth-child(even){text-align:right; color:var(--ink-2)}
+  #prepGRule small{font-family:var(--sans); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700; margin-left:8px}
+  .psearch{font:inherit; font-size:14px; padding:8px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink); width:100%}
+  .ptbl{max-height:520px; overflow:auto; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
+  .ptbl table{width:100%; border-collapse:collapse; font-size:14px}
+  .ptbl td{padding:7px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  .ptbl td.fr{font-family:var(--serif); font-size:16px; white-space:nowrap} .ptbl td.en{color:var(--ink-2)}
+  .ptbl .en-x{display:inline; margin-left:5px; font-size:.85em}
+  #p-prep .opt b{min-width:18px; color:var(--mute)}
+  #p-prep .opt .en-x{display:inline; margin-left:6px; font-size:.82em}
+  /* oral script builder */
+  .otopics{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin:0 0 12px}
+  .otopic{appearance:none; cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:2px; padding:9px 12px; border:1px solid var(--line); border-radius:10px; background:var(--card); min-width:0; font-family:var(--sans); color:var(--ink)}
+  .otopic b{font-family:var(--serif); font-size:15px; font-weight:600; line-height:1.25}
+  .otopic span{font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .otopic .on{font-size:11px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--mute)}
+  .otopic[aria-current="true"]{border-color:var(--bleu); background:var(--tint)}
+  .otopic:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .obar{position:sticky; top:52px; z-index:15; background:var(--paper); padding:8px 0; margin:0 0 6px}
+  .ochecks{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:4px 22px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:13px; font-variant-numeric:tabular-nums}
+  .ochk{display:flex; justify-content:space-between; gap:10px} .ochk b{white-space:nowrap} .ochk .y{color:var(--known)} .ochk .n2{color:var(--learn)}
+  .ometer{grid-column:1/-1; height:8px; border-radius:4px; background:var(--line); position:relative; overflow:hidden}
+  .ometer i{position:absolute; left:0; top:0; bottom:0; background:var(--bleu); border-radius:4px}
+  .ometer::after{content:""; position:absolute; top:0; bottom:0; left:calc(100% * 120 / 150); width:2px; background:var(--ink); opacity:.5}
+  .otophead{display:flex; flex-direction:column; gap:6px; margin:6px 0 10px}
+  .otophead h3{font-family:var(--serif); font-size:24px; font-weight:600; margin:0}
+  .oprompt{font-family:var(--serif); font-style:italic; color:var(--ink-2); margin:0}
+  .ochoice{display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-size:13.5px; color:var(--ink-2)}
+  .ochoice select,.ochoice input{font:inherit; font-size:14px; padding:6px 9px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink)}
+  .osec{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:0 0 12px; display:flex; flex-direction:column; gap:10px}
+  .osechead{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:baseline}
+  .osechead h4{margin:0; font-family:var(--serif); font-size:18px; font-weight:600}
+  .oqa{font-family:var(--serif); font-size:17px; margin:0}
+  .oqs{margin:0; padding-left:18px; color:var(--ink-2); font-size:13.5px; display:flex; flex-direction:column; gap:2px}
+  .opanes{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:12px}
+  .opane{display:flex; flex-direction:column; gap:5px; min-width:0}
+  .opane label{font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--mute)}
+  .opane textarea{font:inherit; width:100%; resize:vertical; border:1px solid var(--line); border-radius:8px; color:var(--ink); background:var(--surface)}
+  .opane textarea:focus{outline:none; border-color:var(--bleu); box-shadow:0 0 0 3px rgba(42,74,143,.14)}
+  .oen{font-size:14.5px; line-height:1.5; padding:9px 11px; min-height:128px; background:var(--paper) !important}
+  textarea.ofr{font-family:var(--serif); font-size:18px; line-height:32px; padding:4px 12px 0 44px; min-height:136px; background-color:var(--surface); background-attachment:local;
+    background-image:
+      linear-gradient(to right, transparent 32px, var(--margin) 32px, var(--margin) 33.5px, transparent 33.5px),
+      repeating-linear-gradient(to bottom, transparent 0 7px, var(--seyes) 7px 8px, transparent 8px 15px, var(--seyes) 15px 16px, transparent 16px 23px, var(--seyes) 23px 24px, transparent 24px 31px, var(--seyes-strong) 31px 32px),
+      repeating-linear-gradient(to right, transparent 0 63px, var(--seyes) 63px 64px)}
+  .owc{font-size:12.5px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .obox{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:0 0 12px; font-size:13.5px}
+  .obox h4{margin:0 0 6px; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--mute)}
+  .obox ul{margin:0; padding-left:16px; display:flex; flex-direction:column; gap:3px}
+  .obank{display:flex; flex-wrap:wrap; gap:5px}
+  .obank span{font-family:var(--serif); font-size:14px; padding:2px 8px; border-radius:6px; border:1px solid var(--line); background:var(--paper)}
+  .obank span.used{border-color:var(--known); background:var(--known-soft); color:var(--known)}
+  @media (max-width:640px){ .opanes{grid-template-columns:minmax(0,1fr)} .otopics{grid-template-columns:repeat(2,minmax(0,1fr))} .pprompt{font-size:24px} .psent{font-size:20px} .phint{display:none} .obar{top:48px} }
+
   /* ---- general polish (v0.2.0) ---- */
   ::selection{background:var(--accent-soft); color:var(--ink)}
   header.top{border-bottom:0; padding-bottom:19px;
@@ -436,7 +525,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v0.3.5</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v0.4.0</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -641,11 +730,55 @@
   </section>
 
 
-  <!-- ===================== PRÉPA EXAMEN (à venir) ===================== -->
+  <!-- ===================== PRÉPA EXAMEN ===================== -->
   <section class="panel" id="p-prep" role="tabpanel">
     <h2 class="sec">Prépa examen</h2>
-    <div class="card" style="text-align:center;padding:30px 20px">
-      <span class="pill" style="background:var(--learn-soft);color:var(--learn)">à venir</span>
+    <details class="changelog">
+      <summary>How to use</summary>
+      <ul class="lead-list">
+        <li><b>Vocabulaire</b> — the study-guide words: spell them, recognise them, or browse the list.</li>
+        <li><b>Grammaire</b> — one topic per study-guide grammar point; the rule stays on screen.</li>
+        <li><b>Oral</b> — interpreting practice, as on the test: each topic is a conversation between an English speaker and a French speaker. Write every line in the other language, in the first person.</li>
+        <li>Accents always count. Misses pile up under <b>From → My misses</b>. Nothing here is graded into Analyse.</li>
+      </ul>
+    </details>
+    <div class="seg psub" id="prepSub">
+      <button type="button" data-sub="vocab" aria-pressed="true">Vocabulaire</button>
+      <button type="button" data-sub="gram" aria-pressed="false">Grammaire</button>
+      <button type="button" data-sub="oral" aria-pressed="false">Oral</button>
+    </div>
+
+    <div id="prep-vocab">
+      <div class="pbar">
+        <div class="seg" id="prepVMode">
+          <button type="button" data-mode="write" aria-pressed="true">Spell (EN → FR)</button>
+          <button type="button" data-mode="mcq" aria-pressed="false">Recognize (FR → EN)</button>
+          <button type="button" data-mode="list" aria-pressed="false">Word list</button>
+        </div>
+        <label id="prepVSizeCtl">Words <select id="prepVSize"><option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="72">All 72</option></select></label>
+        <label id="prepVSrcCtl">From <select id="prepVSrc"><option value="all">All words</option><option value="miss">My misses</option></select></label>
+        <button type="button" class="ghost" id="prepVNew">New set</button>
+      </div>
+      <section class="pcard" id="prepVCard" aria-live="polite"></section>
+    </div>
+
+    <div id="prep-gram" hidden>
+      <div class="pbar">
+        <label>Topic <select id="prepGTopic"><option value="all">All five, mixed</option></select></label>
+        <label>Questions <select id="prepGSize"><option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="999">All</option></select></label>
+        <label>Format <select id="prepGFmt"><option value="mix">Mixed</option><option value="type">Typing only</option><option value="pick">Drop-down only</option></select></label>
+        <label>From <select id="prepGSrc"><option value="all">All questions</option><option value="miss">My misses</option></select></label>
+        <button type="button" class="ghost" id="prepGNew">New set</button>
+      </div>
+      <section class="rulecard" id="prepGRule" aria-label="Rule summary"></section>
+      <section class="pcard" id="prepGCard" aria-live="polite"></section>
+    </div>
+
+    <div id="prep-oral" hidden>
+      <nav class="otopics" id="prepOTopics" aria-label="Oral prompts"></nav>
+      <div class="obar" id="prepOBar"></div>
+      <div id="prepOMain"></div>
+      <div id="prepOBanks"></div>
     </div>
   </section>
 
@@ -679,8 +812,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v0.3.5</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v0.4.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v0.4.0 (12 Nov 2026): <strong>Prépa examen is live — built from the Unité 5 test study guide (Assessment Outline).</strong> Same tab as Units 1–4. <strong>Vocabulaire:</strong> the guide’s 72 words, spelled (English → French), recognised (French → English) or browsed. <strong>Grammaire:</strong> the guide’s five topics — subjunctive conjugation, plus-que-parfait, passive voice, hypothesis (si + imparfait → conditionnel) and relative pronouns — each with an always-visible rule card and 22 items (110 in all: 60 typed, 50 drop-downs, each with a why line). <strong>Oral:</strong> the guide’s speaking part is interpreting, so the four topics are interpreter scenarios (school, press, politics, justice) of 8 lines each, alternating English and French; you write each line in the other language. A small addition to the oral engine labels the lines and the two boxes for interpreting. Prépa is a training space: it does not feed Analyse, the mastery bars or achievements. Study-guide English glosses are used as written, with five changes (guide said X, now Y): <em>la moyenne</em> “GPA” → “the grade point average”; <em>le plaidoyer</em> “a petition, speech in defense of something” → “a plea, a petition, a speech in defense of something”; <em>le tribunal</em> “courthouse” → “the court, the courthouse”; <em>la preuve</em> “proof” → “the proof, the evidence”; <em>par rapport à</em> “with regards to” → “with regard to”. Nouns carry their article.<br></span>
     <span style="color:var(--mute)">v0.3.5 (19 Oct 2026): <strong>Memo cards — mnemonics that only restated the definition are removed.</strong> Of 231 mnemonics, 150 were removed (96 repeated the English gloss in other words; 54 only named an English cognate that is common enough not to need a hook) and 7 were rewritten into a real hook (<em>enseignant</em> and <em>l’enseignement</em> via <em>une enseigne</em>, the <em>junte</em> spelling on both cards, <em>l’hebdomadaire</em>, <em>la récidive</em>, <em>les sentiments mitigés</em>); 74 were kept. 81 mnemonics remain. Only the mnemonic line of the memo changed: no card, answer, cue or progress did.<br></span>
     <span style="color:var(--mute)">v0.3.4 (19 Oct 2026): <strong>Memo cards — more synonym and “not to confuse with” pairs.</strong> After a review of the pairs left out for lack of a firm source, 8 cards gained 8 further links (see the lines on each memo card). Only the synonym and “not to confuse with” lines changed there. <strong>Vocabulaire — streak chip.</strong> After you answer in Spelling or Recognize, a small chip shows where the card stands: ✓ 1/3, ✓ 2/3, then ✓ 3/3 · mastered (green); a miss shows ✗ 0/3. It sits on the verdict line in Spelling and under the options in Recognize; Training records nothing and shows none. <strong>Shorter English cues.</strong> 8 glosses that could wrap the card on a narrower screen were tightened (déposer une requête, intégrer, se mettre à dos, se laisser faire, la rentrée, procéder (à), revoir sa copie, scolariser); the French, answers and progress are unchanged.<br></span>
     <span style="color:var(--mute)">v0.3.3 (18 Oct 2026): <strong>Memo cards — synonyms and “not to confuse with” now reach back to earlier units.</strong> 159 cards gained or corrected entries (121 new links, written to the rule that a card may name words from its own unit and from earlier units only). A word from an earlier unit carries its chapter, for example <em>principalement (Ch 17)</em>; a Unit 5 card now names the earlier-unit words it is easily confused with. Only the synonym and “not to confuse with” lines of the memo changed: no card, answer, cue or progress did.<br></span>
@@ -3205,6 +3339,328 @@ function renderGBar(){
 function shuffleArr(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
 function pick(arr,n){ return shuffleArr(arr.slice()).slice(0,n); }
 
+/* =============== PRÉPA EXAMEN (v0.9.0) ===============
+   Replaces Examen blanc and Pratique orale. Trains the skills the exam needs, not the exam format:
+   Vocabulaire (the study-guide word list, spelled and recognised) · Grammaire (one topic per study-guide grammar point,
+   typed items and drop-downs, rule card always visible) · Oral (a script builder: English notes beside a ruled French page,
+   with offline length / linking-word / unit-word / tense checks).
+   Content is the Test 4 study guide. It is a training space: nothing here feeds Analyse or the mastery bars; misses
+   are kept per item for "My misses" and "Retry the missed". Accents always count. Saved in state.prep. */
+var PREP=(function(){
+  var DATA={"RAW":[["aboutir","to succeed, to come to a successful conclusion","v"],["abroger","to repeal","v"],["s'abstenir","to abstain from","v"],["l'apprentissage","the learning","n","m"],["avertir","to warn","v"],["avoir la tête dans les nuages","to daydream, to have one's head in the clouds","x"],["bafouer","to flout, to ridicule","v"],["la boue","the mud","n","f"],["un braquage","a robbery, a hold-up","n","m"],["la censure","the censorship","n","f"],["un citoyen","a citizen","n","m",["une citoyenne"]],["le collège","the middle school","n","m"],["constater","to notice","v"],["coupable","guilty","a"],["un débutant","a beginner","n","m",["une débutante"]],["un défi","a challenge","n","m"],["la désinformation","the disinformation","n","f"],["la dictature","the dictatorship","n","f"],["diffuser","to broadcast","v"],["se dissimuler","to hide","v"],["éducatif","educational","a",null,["éducative"]],["l'effectif","the staffing, the workforce","n","m"],["élire","to elect","v"],["une enquête","an investigation","n","f"],["enrichi","enriched","a",null,["enrichie"]],["faire marche arrière","to reverse, to back-pedal","x"],["farfelu","harebrained, eccentric","a",null,["farfelue"]],["fiable","reliable","a"],["un fonds","a fund, funds","n","m"],["fréquenter","to patronize, to visit","v"],["le genre","the gender","n","m"],["un impôt","a tax","n","m"],["imprimer","to print","v"],["un inculpé","a defendant, the accused","n","m",["une inculpée"]],["indemne","unharmed","a"],["inédit","unprecedented","a",null,["inédite"]],["l'infox","the fake news","n","f"],["infirmer","to deny, to disprove","v"],["s'inscrire","to sign up for","v"],["interdire","to prohibit","v"],["interpeller","to apprehend, to stop for questioning","v"],["un journal","a newspaper","n","m"],["le lycée","the high school","n","m"],["un mandat","a term (time in political office)","n","m"],["la moyenne","the grade point average","n","f"],["obligatoire","mandatory","a"],["par rapport à","compared to, with regard to","x"],["un partiel","a midterm exam","n","m"],["le plaidoyer","a plea, a petition, a speech in defense of something","n","m"],["un porte-parole","a spokesperson","n","m",["une porte-parole"]],["la preuve","the proof, the evidence","n","f"],["privilégier","to favor, to opt for","v"],["un procès","a trial, proceedings","n","m"],["prometteur","promising","a",null,["prometteuse"]],["un quotidien","a daily newspaper","n","m"],["la rentrée","the back-to-school period","n","f"],["renaître de ses cendres","to be reborn from one's ashes","x"],["un reportage","a news report","n","m"],["sceptique","skeptical","a"],["un sondage","a survey","n","m"],["une sonnette","a doorbell","n","f"],["sous-effectif","understaffed","a"],["supposé","alleged, supposed","a",null,["supposée"]],["sur mesure","tailored, custom-made","x"],["le sursis","the suspended sentence","n","m"],["le taux de réussite","the success rate, the graduation rate","n","m"],["teinté","tinted","a",null,["teintée"]],["un témoin","a witness","n","m"],["une théorie de complot","a conspiracy theory","n","f"],["le tribunal","the court, the courthouse","n","m"],["un verdict","a verdict","n","m"],["la victime","the victim","n","f"]],"TOPICS":{"subj":{"name":"Le subjonctif présent","en":"Subjunctive conjugation","rule":"<ul>\n    <li>After <b>que</b>, when the two clauses have <b>different subjects</b> and the first expresses necessity, a wish, a feeling, doubt or a purpose: <em>Il faut que le gouvernement abroge cette loi.</em> Same subject → infinitive: <em>Je veux voter.</em></li>\n    <li>Stem = the <b>ils</b> form of the présent minus <b>-ent</b>; endings <b>-e -es -e -ions -iez -ent</b>: <em>qu'ils élisent → que j'élise</em>. <b>nous</b> and <b>vous</b> look like the imparfait: <em>que nous finissions</em>.</li>\n    <li>Irregular: être <b>sois</b>, avoir <b>aie</b>, aller <b>aille</b>, faire <b>fasse</b>, pouvoir <b>puisse</b>, savoir <b>sache</b>, vouloir <b>veuille</b>; nous/vous: <b>soyons, ayons, sachions</b>.</li>\n    <li>Triggers: <b>il faut que, vouloir que, douter que, regretter que, bien que, pour que, avant que, à condition que, sans que</b>.</li>\n    <li>Certainty stays in the indicative: <em>Je pense qu'il est coupable</em> (but: <em>Je ne pense pas qu'il soit coupable</em>).</li></ul>"},"pqp":{"name":"Le plus-que-parfait","en":"Pluperfect","rule":"<ul>\n    <li><b>Imparfait</b> of avoir or être + <b>participe passé</b>: <em>j'avais lu, elle était partie, ils s'étaient inscrits</em>.</li>\n    <li>Same auxiliary as the passé composé: <b>être</b> for aller, venir, arriver, partir, naître… and every pronominal verb (agree with the subject); <b>avoir</b> verbs agree with a direct object placed <b>before</b> the verb: <em>la loi qu'ils avaient abrogée</em>.</li>\n    <li>Use it for an action finished <b>before</b> another past action: <em>Quand je suis arrivé, le verdict avait déjà été rendu.</em></li>\n    <li>Often found with <b>déjà, ne… pas encore, quand, parce que, comme, après que</b>.</li>\n    <li>Negation wraps the auxiliary: <em>Il n'avait pas vu l'article.</em></li></ul>"},"pass":{"name":"La voix passive","en":"Passive voice","rule":"<ul>\n    <li><b>être</b> + <b>participe passé</b>; the participle <b>agrees with the subject</b>: <em>La loi a été abrogée. Les victimes ont été interpellées.</em></li>\n    <li><b>être</b> carries the tense of the active verb: <em>est élu, a été élu, était élu, sera élu, avait été élu, serait élu</em>.</li>\n    <li>The agent (the doer) comes after <b>par</b>; after <b>de</b> with feelings or states: <em>interpellé par la police, respecté de tous</em>.</li>\n    <li>Only verbs with a <b>direct object</b> can be made passive: <em>La police interpelle le suspect → Le suspect est interpellé.</em> Not <em>répondre à, obéir à, parler à</em>.</li>\n    <li>French often avoids the passive: <b>on</b> + active verb, <b>se faire</b> + infinitive, or a reflexive: <em>Ce journal se vend partout.</em></li></ul>"},"hyp":{"name":"Si + imparfait → conditionnel","en":"Hypothesis","rule":"<ul>\n    <li><b>Si + imparfait</b>, then the <b>conditionnel présent</b>: an imagined or unlikely situation. <em>Si j'étais citoyen, je voterais.</em></li>\n    <li>Never a conditionnel right after <b>si</b>; never an imparfait in the result clause.</li>\n    <li>Conditionnel = <b>futur stem + imparfait endings</b> <b>-ais -ais -ait -ions -iez -aient</b>: <em>élire → j'élirais, tu élirais</em>.</li>\n    <li>Irregular stems: être <b>ser-</b>, avoir <b>aur-</b>, aller <b>ir-</b>, faire <b>fer-</b>, pouvoir <b>pourr-</b>, voir <b>verr-</b>, devoir <b>devr-</b>, vouloir <b>voudr-</b>, savoir <b>saur-</b>, venir <b>viendr-</b>.</li>\n    <li>A real or likely condition keeps <b>si + présent</b> → futur: <em>Si on diffuse le reportage, il y aura un débat.</em> <b>si + il(s)</b> → <b>s'il(s)</b>.</li></ul>"},"rel":{"name":"Les pronoms relatifs","en":"Relative pronouns","rule":"<ul>\n    <li><b>qui</b> = subject (a verb follows); <b>que / qu'</b> = direct object (a subject follows); <b>où</b> = place or time. <em>Le témoin qui a appelé… / La loi qu'ils ont abrogée… / Le jour où…</em></li>\n    <li><b>dont</b> replaces <b>de</b> + noun: <em>le journaliste dont je parle</em> (parler de), <em>le procès dont on parle</em>; also “whose”: <em>le maire dont le mandat finit…</em></li>\n    <li>After a preposition (not de): <b>lequel / laquelle / lesquels / lesquelles</b>, agreeing with the noun: <em>la raison pour laquelle, le tribunal devant lequel</em>. For people, <b>qui</b>: <em>l'avocat avec qui…</em></li>\n    <li><b>à + lequel → auquel, auxquels, auxquelles</b>; <b>de + lequel → duquel, desquels, desquelles</b>; no change for laquelle (à laquelle, de laquelle).</li>\n    <li><b>ce qui / ce que / ce dont / ce à quoi</b> = “what”, when no noun comes before: <em>Je ne sais pas ce qui s'est passé. Voilà ce dont on a besoin.</em></li></ul>"}},"ITEMS":[{"id":"subj-1","t":"subj","k":"pick","s":"Il est certain que cette infox ___ la confiance du public dans les médias.","ch":["détruit","détruise"],"x":"il est certain que expresses certainty, so the indicative → <b>détruit</b>."},{"id":"subj-2","t":"subj","k":"type","s":"Il est possible que les résultats du sondage ne ___ pas fiables.","a":["soient"],"cue":"(être)","ins":"Type the correct form.","x":"il est possible que expresses uncertainty, and être is irregular in the subjunctive → <b>soient</b>."},{"id":"subj-3","t":"subj","k":"pick","s":"Je ne pense pas que ce quotidien ___ une source fiable.","ch":["soit","est","sera","serait"],"x":"a negated penser que expresses doubt, so the subjunctive of être → <b>soit</b>."},{"id":"subj-4","t":"subj","k":"type","s":"Nous regrettons que l'inculpé n'___ pas d'avocat pour sa défense.","a":["ait"],"cue":"(avoir)","ins":"Type the correct form.","x":"regretter que + a different subject takes the subjunctive, and avoir is irregular → <b>ait</b>."},{"id":"subj-5","t":"subj","k":"pick","s":"Je préfère ___ mon partiel en janvier plutôt qu'en juin.","ch":["passer","que je passe"],"x":"the same person prefers and takes the exam, so one subject → infinitive: <b>passer</b>."},{"id":"subj-6","t":"subj","k":"type","s":"Je voudrais que tu ___ voter dimanche, même s'il pleut.","a":["ailles"],"cue":"(aller)","ins":"Type the correct form.","x":"vouloir que + a different subject takes the subjunctive, and aller has the stem aill- → <b>ailles</b>."},{"id":"subj-7","t":"subj","k":"pick","s":"J'espère que le jury ___ un verdict juste demain.","ch":["rendra","rende","rendait","rendrait"],"x":"espérer que stays in the indicative, and demain points to the future → <b>rendra</b>."},{"id":"subj-8","t":"subj","k":"type","s":"Les journalistes demandent que le gouvernement ___ toute la lumière sur cette affaire.","a":["fasse"],"cue":"(faire)","ins":"Type the correct form.","x":"demander que + a different subject takes the subjunctive, and faire has the irregular stem fass- → <b>fasse</b>."},{"id":"subj-9","t":"subj","k":"pick","s":"Nous sommes heureux que le gouvernement ___ cette décision rapidement.","ch":["prenne","prend"],"x":"a feeling about someone else's action takes the subjunctive; prendre has the stem prenn- → <b>prenne</b>."},{"id":"subj-10","t":"subj","k":"type","s":"Le ministère ouvre de nouvelles écoles pour que chaque enfant ___ étudier près de chez lui.","a":["puisse"],"cue":"(pouvoir)","ins":"Type the correct form.","x":"pour que expresses a purpose, and pouvoir has the irregular stem puiss- → <b>puisse</b>."},{"id":"subj-11","t":"subj","k":"pick","s":"Nous voulons ___ la vérité sur cette enquête.","ch":["connaître","que nous connaissions","que nous connaîtrons","de connaître"],"x":"the same subject wants and knows, so vouloir takes an infinitive, not que → <b>connaître</b>."},{"id":"subj-12","t":"subj","k":"type","s":"Il se peut que nous ne ___ jamais qui a diffusé cette infox.","a":["sachions"],"cue":"(savoir)","ins":"Type the correct form.","x":"il se peut que expresses possibility, and savoir has the irregular stem sach- → <b>sachions</b>."},{"id":"subj-13","t":"subj","k":"pick","s":"Le ministre souhaite ___ les élèves restent scolarisés jusqu'à seize ans.","ch":["que","de","à","pour"],"x":"two different subjects (the minister, the pupils) after souhaiter → <b>que</b> + subjunctive."},{"id":"subj-14","t":"subj","k":"type","s":"Le professeur exige que nous ___ le dossier avant la fin du trimestre.","a":["finissions"],"cue":"(finir)","ins":"Type the correct form.","x":"exiger que takes the subjunctive; for -ir verbs the nous form keeps the -iss- stem → <b>finissions</b>."},{"id":"subj-15","t":"subj","k":"pick","s":"Le journal a retiré l'article bien que l'enquête ___ exacte.","ch":["soit","est","était","sera"],"x":"bien que always takes the subjunctive, and être is irregular → <b>soit</b>."},{"id":"subj-16","t":"subj","k":"type","s":"Je doute que les responsables ___ vraiment réformer le système éducatif.","a":["veuillent"],"cue":"(vouloir)","ins":"Type the correct form.","x":"douter que takes the subjunctive, and the ils form of vouloir is irregular → <b>veuillent</b>."},{"id":"subj-17","t":"subj","k":"type","s":"Il est essentiel que vous ___ en toute connaissance de cause avant de voter.","a":["choisissiez"],"cue":"(choisir)","ins":"Type the correct form.","x":"il est essentiel que takes the subjunctive, and the vous form of an -ir verb keeps -iss- → <b>choisissiez</b>."},{"id":"subj-18","t":"subj","k":"pick","s":"Le parti accepte le débat à condition que chaque candidat ___ le même temps de parole.","ch":["ait","a","aura","aurait"],"x":"à condition que takes the subjunctive, and avoir is irregular → <b>ait</b>."},{"id":"subj-19","t":"subj","k":"type","s":"Il faut que j'___ mon délégué de classe avant midi.","a":["élise"],"cue":"(élire)","ins":"Type the correct form.","x":"il faut que takes the subjunctive; the stem comes from ils élisent → <b>élise</b>."},{"id":"subj-20","t":"subj","k":"pick","s":"La rédaction a publié l'enquête après que le ministre ___ sa démission.","ch":["a annoncé","ait annoncé"],"x":"après que describes a fact that already happened and takes the indicative → <b>a annoncé</b>."},{"id":"subj-21","t":"subj","k":"type","s":"Avant que le tribunal ___ son verdict, l'avocat reprend la parole.","a":["rende"],"cue":"(rendre)","ins":"Type the correct form.","x":"avant que takes the subjunctive; rendre is regular, with endings -e -es -e → <b>rende</b>."},{"id":"subj-22","t":"subj","k":"type","s":"Le quotidien a modifié l'article en ligne sans que personne le ___.","a":["voie"],"cue":"(voir)","ins":"Type the correct form.","x":"sans que takes the subjunctive; the je/il form of voir ends in -oie → <b>voie</b>."},{"id":"pqp-1","t":"pqp","k":"type","s":"Le juge a avoué qu'il ___ la vidéo de surveillance avant l'audience.","a":["avait vu"],"cue":"(voir)","ins":"Type the correct form.","x":"an action completed before the admission → avoir in the imparfait + irregular participe of voir → <b>avait vu</b>."},{"id":"pqp-2","t":"pqp","k":"type","s":"Le quotidien a reconnu qu'il ___ une photo retouchée en première page la veille.","a":["avait mis"],"cue":"(mettre)","ins":"Type the correct form.","x":"an action finished the day before → avoir in the imparfait + irregular participe of mettre → <b>avait mis</b>."},{"id":"pqp-3","t":"pqp","k":"type","s":"Quand le surveillant est entré dans la salle, un élève avait déjà ___ la fenêtre.","a":["ouvert"],"cue":"(ouvrir)","ins":"Type the missing word.","x":"ouvrir has an irregular participe, and la fenêtre follows the verb, so no agreement → <b>ouvert</b>."},{"id":"pqp-4","t":"pqp","k":"type","s":"Le prévenu a expliqué qu'il ___ une erreur de jugement, sans jamais vouloir nuire à personne.","a":["avait fait"],"cue":"(faire)","ins":"Type the correct form.","x":"the mistake came before the explanation → avoir in the imparfait + participe of faire → <b>avait fait</b>."},{"id":"pqp-5","t":"pqp","k":"pick","s":"Avant l'arrivée de la police, les voleurs ___ les bijoux et l'argent liquide.","ch":["avaient pris","avaient prit","avaient prendu","avaient prenu"],"x":"prendre has an irregular participe: pris (not the passé simple prit, nor invented prendu or prenu) → <b>avaient pris</b>."},{"id":"pqp-6","t":"pqp","k":"type","s":"La prévenue a affirmé qu'elle ___ de chez elle à vingt heures, bien avant le braquage.","a":["était partie"],"cue":"(partir)","ins":"Type the correct form.","x":"partir takes être, and the participe agrees with elle (la prévenue, feminine) → <b>était partie</b>."},{"id":"pqp-7","t":"pqp","k":"type","s":"Les enquêteurs ont découvert que les voleurs ___ dans l'immeuble par le toit avant l'arrivée des gardiens.","a":["étaient entrés"],"cue":"(entrer)","ins":"Type the correct form.","x":"entrer takes être and agrees with les voleurs (masculine plural) → <b>étaient entrés</b>."},{"id":"pqp-8","t":"pqp","k":"pick","s":"Quand les journalistes sont arrivés devant le tribunal, les deux inculpées ___ du bâtiment.","ch":["étaient déjà sorties","étaient déjà sortis","étaient déjà sortie","étaient déjà sorti"],"x":"sortir (intransitive) takes être and agrees with les deux inculpées (feminine plural) → <b>étaient déjà sorties</b>."},{"id":"pqp-9","t":"pqp","k":"type","s":"Ma sœur m'a dit qu'elle ___ à l'université de Lyon avant la fin de l'été.","a":["s'était inscrite"],"cue":"(s'inscrire)","ins":"Type the correct form.","x":"a pronominal verb takes être, and the participe agrees with elle (ma sœur, feminine) → <b>s'était inscrite</b>."},{"id":"pqp-10","t":"pqp","k":"type","s":"Les deux candidats ont raconté qu'ils ___ plusieurs fois avant le débat télévisé.","a":["s'étaient rencontrés"],"cue":"(se rencontrer)","ins":"Type the correct form.","x":"a pronominal verb takes être, and the participe agrees with ils (masculine plural) → <b>s'étaient rencontrés</b>."},{"id":"pqp-11","t":"pqp","k":"pick","s":"Les deux candidates ___ à l'élection présidentielle bien avant l'annonce des résultats.","ch":["s'étaient présentées","s'étaient présentés","s'étaient présentée","avaient présentées"],"x":"se présenter is pronominal → être, and the participe agrees with les deux candidates (feminine plural) → <b>s'étaient présentées</b>."},{"id":"pqp-12","t":"pqp","k":"type","s":"Le quotidien a rappelé la loi que le Parlement avait ___ deux ans plus tôt.","a":["abrogée"],"cue":"(abroger)","ins":"Type the missing word.","x":"la loi is the direct object and comes before avait (que), so the participe agrees (feminine singular) → <b>abrogée</b>."},{"id":"pqp-13","t":"pqp","k":"type","s":"Les lettres que le prévenu avait ___ à son ancien patron ont été lues au procès.","a":["écrites"],"cue":"(écrire)","ins":"Type the missing word.","x":"les lettres (feminine plural) is the direct object placed before the verb, so the irregular participe écrit agrees → <b>écrites</b>."},{"id":"pqp-14","t":"pqp","k":"pick","s":"Le procureur a cité les documents que l'inculpé ___ avant son arrestation.","ch":["avait cachés","avait caché","avait cachées","avait cachée"],"x":"que stands for les documents (masculine plural), a direct object placed before the verb → the participe agrees → <b>avait cachés</b>."},{"id":"pqp-15","t":"pqp","k":"pick","s":"La défense a présenté la preuve qu'elle ___ grâce à un témoin anonyme.","ch":["avait obtenue","avait obtenu"],"x":"que stands for la preuve (feminine), a direct object placed before the verb → the participe agrees → <b>avait obtenue</b>."},{"id":"pqp-16","t":"pqp","k":"pick","s":"Pendant que le porte-parole ___ de la réforme, un journaliste l'a interrompu.","ch":["parlait","avait parlé","a parlé","parlera"],"x":"an action in progress when another one cut in → imparfait; the plus-que-parfait would mean it was already over → <b>parlait</b>."},{"id":"pqp-17","t":"pqp","k":"type","s":"Quand le juge a annoncé la suspension, l'avocat ___ sa plaidoirie.","a":["n'avait pas encore terminé"],"cue":"(ne pas encore terminer)","ins":"Type the correct form.","x":"the plea was still unfinished before the judge spoke; negation wraps the auxiliary → <b>n'avait pas encore terminé</b>."},{"id":"pqp-18","t":"pqp","k":"pick","s":"Je ne comprenais pas la colère du maire : le journal ___ pourtant un article très élogieux la veille.","ch":["avait publié","publiait"],"x":"la veille marks one finished action before the moment described → plus-que-parfait; the imparfait would suggest a habit → <b>avait publié</b>."},{"id":"pqp-19","t":"pqp","k":"pick","s":"Le suspect a juré qu'il ___ cet homme avant le soir du braquage.","ch":["n'avait jamais rencontré","n'avait rencontré jamais","ne jamais avait rencontré","n'avait pas jamais rencontré"],"x":"negation wraps the auxiliary, and jamais sits between it and the participe (no double negation) → <b>n'avait jamais rencontré</b>."},{"id":"pqp-20","t":"pqp","k":"pick","s":"Les députés ont expliqué qu'ils ___ la loi attentivement avant le vote.","ch":["avaient lu","avaient lue"],"x":"la loi comes after the verb, so the participe does not agree → <b>avaient lu</b>."},{"id":"pqp-21","t":"pqp","k":"pick","s":"La rédaction a corrigé l'article parce qu'elle ___ sur le nom de l'accusé.","ch":["s'était trompée","avait trompé"],"x":"se tromper is pronominal → être, and the participe agrees with elle (la rédaction, feminine) → <b>s'était trompée</b>."},{"id":"pqp-22","t":"pqp","k":"type","s":"Le ministre a expliqué qu'il avait toujours ___ protéger la liberté de la presse.","a":["voulu"],"cue":"(vouloir)","ins":"Type the missing word.","x":"vouloir has an irregular participe → <b>voulu</b>."},{"id":"pass-1","t":"pass","k":"type","s":"Les nouvelles conseillères d'orientation ont été ___ par le rectorat en septembre.","a":["recrutées"],"cue":"(recruter)","ins":"Type the correct form.","x":"the participle after être agrees with the feminine plural subject → <b>recrutées</b>."},{"id":"pass-2","t":"pass","k":"pick","s":"Le cambriolage du lycée a été commis ___ deux anciens élèves.","ch":["par","de"],"x":"the doer of an action is introduced by par; de is kept for feelings and states → <b>par</b>."},{"id":"pass-3","t":"pass","k":"type","s":"Hier à seize heures, le braqueur ___ pour vol à main armée.","a":["a été inculpé"],"cue":"(inculper)","ins":"Type the whole verb phrase.","x":"the robber undergoes the action, once, in the past: être takes the tense of the active verb → <b>a été inculpé</b>."},{"id":"pass-4","t":"pass","k":"pick","s":"Après le braquage, les policiers ___ trois témoins pendant des heures.","ch":["ont interrogé","ont été interrogés","sont interrogés","ont été interrogé"],"x":"the police do the action and a direct object (trois témoins) follows, so the verb is active → <b>ont interrogé</b>."},{"id":"pass-5","t":"pass","k":"type","s":"Quand l'avocat est arrivé, les deux victimes avaient déjà été ___ par les enquêteurs.","a":["entendues"],"cue":"(entendre)","ins":"Type the correct form.","x":"avaient été marks an action already done; the participle agrees with the feminine plural les victimes → <b>entendues</b>."},{"id":"pass-6","t":"pass","k":"pick","s":"Après la manifestation, les murs du tribunal étaient couverts ___ graffitis.","ch":["de","par"],"x":"couverts de describes a state, with no one doing an action; par needs a doer → <b>de</b>."},{"id":"pass-7","t":"pass","k":"type","s":"Si ce candidat arrivait au pouvoir, les journaux indépendants ___ dès la première semaine.","a":["seraient censurés"],"cue":"(censurer)","ins":"Type the correct form.","x":"the imagined result takes être in the conditionnel, and the participle agrees with the masculine plural → <b>seraient censurés</b>."},{"id":"pass-8","t":"pass","k":"pick","s":"Aux dernières élections, les deux députées ___ dès le premier tour.","ch":["ont été élues","ont été élus","ont élu","ont été élue"],"x":"the deputies receive the action, in the past, and the participle agrees with the feminine plural; ont élu would need an object → <b>ont été élues</b>."},{"id":"pass-9","t":"pass","k":"type","s":"Cette réforme est vivement ___ par les syndicats d'enseignants.","a":["critiquée"],"cue":"(critiquer)","ins":"Type the correct form.","x":"the participle agrees with the feminine singular subject la réforme → <b>critiquée</b>."},{"id":"pass-10","t":"pass","k":"pick","s":"Ce matin, les nouveaux élèves ___ au lycée à huit heures.","ch":["sont arrivés","ont arrivé","sont arrivées","ont été arrivés"],"x":"arriver is an être verb, not a passive (nothing is done to the subject); the masculine plural agrees → <b>sont arrivés</b>."},{"id":"pass-11","t":"pass","k":"type","s":"Les deux avocates sont ___ du tribunal juste après la lecture du verdict.","a":["parties"],"cue":"(partir)","ins":"Type the correct form.","x":"partir is an être verb with no direct object, so this is not a passive; the participle agrees with the feminine plural → <b>parties</b>."},{"id":"pass-12","t":"pass","k":"pick","s":"Le verdict ___ hier soir, après trois jours de procès.","ch":["a été rendu","a été rendue","est rendu","a rendu"],"x":"the verdict is what is delivered, once, in the past, and it is masculine; an active form would need an object → <b>a été rendu</b>."},{"id":"pass-13","t":"pass","k":"type","s":"Les nouvelles règles de l'examen seront ___ dès la rentrée.","a":["appliquées"],"cue":"(appliquer)","ins":"Type the correct form.","x":"être in the future, and the participle agrees with the feminine plural les règles → <b>appliquées</b>."},{"id":"pass-14","t":"pass","k":"pick","s":"Ça ne ___ pas de couper la parole à la juge pendant l'audience.","ch":["se fait","est fait","fait","se font"],"x":"the fixed reflexive expression ça ne se fait pas means “that is not done”; the passive est fait would not carry this meaning → <b>se fait</b>."},{"id":"pass-15","t":"pass","k":"type","s":"Avant 1990, les élections n'avaient jamais été ___ librement dans ce pays.","a":["organisées"],"cue":"(organiser)","ins":"Type the correct form.","x":"negation wraps the auxiliary (n'avaient jamais été), and the participle agrees with the feminine plural → <b>organisées</b>."},{"id":"pass-16","t":"pass","k":"pick","s":"Après trois semaines d'enquête, le suspect ___ à Marseille.","ch":["a été arrêté","a arrêté"],"x":"no object follows and the suspect is the one stopped, so the verb must be passive → <b>a été arrêté</b>."},{"id":"pass-17","t":"pass","k":"type","s":"À l'époque, les émissions de radio étaient ___ chaque semaine par un censeur.","a":["contrôlées"],"cue":"(contrôler)","ins":"Type the correct form.","x":"être in the imparfait for a past habit, and the participle agrees with the feminine plural → <b>contrôlées</b>."},{"id":"pass-18","t":"pass","k":"pick","s":"Dans ce pays, ___ les journalistes critiques sans procès.","ch":["on arrête","on est arrêté","il est arrêté","ils sont arrêtés"],"x":"with an unnamed doer and a direct object (les journalistes) following, French uses on + an active verb → <b>on arrête</b>."},{"id":"pass-19","t":"pass","k":"type","s":"Le candidat s'est fait ___ par un journaliste pendant le débat télévisé.","a":["interrompre"],"cue":"(interrompre)","ins":"Type the correct form.","x":"se faire is followed by an infinitive, never a participle → <b>interrompre</b>."},{"id":"pass-20","t":"pass","k":"pick","s":"Les deux lycéennes ont été ___ pour avoir publié l'article dans le journal du lycée.","ch":["exclues","exclus"],"x":"the participle agrees with the feminine plural subject → <b>exclues</b>."},{"id":"pass-21","t":"pass","k":"type","s":"L'infox a été ___ par des milliers d'internautes avant d'être démentie.","a":["partagée"],"cue":"(partager)","ins":"Type the correct form.","x":"the participle agrees with the feminine singular subject l'infox → <b>partagée</b>."},{"id":"pass-22","t":"pass","k":"type","s":"Demain, au tribunal, plusieurs témoins ___ par la défense.","a":["seront interrogés","vont être interrogés"],"cue":"(interroger)","ins":"Type the whole verb phrase.","x":"the witnesses undergo the action tomorrow: être in the future + a masculine plural participle → <b>seront interrogés</b>."},{"id":"hyp-1","t":"hyp","k":"type","s":"Si j'étais maire de cette ville, je ___ construire un nouveau lycée.","a":["ferais"],"cue":"(faire)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; faire has the irregular stem fer- → <b>ferais</b>."},{"id":"hyp-2","t":"hyp","k":"pick","s":"Si les lycéens ___ moins de devoirs, ils seraient moins stressés.","ch":["avaient","auraient","auront","ont"],"x":"an imagined situation takes si + imparfait; si is never followed by a conditionnel → <b>avaient</b>."},{"id":"hyp-3","t":"hyp","k":"type","s":"Si nous avions plus de temps, nous ___ au tribunal pour suivre le procès.","a":["irions"],"cue":"(aller)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; aller has the irregular stem ir- → <b>irions</b>."},{"id":"hyp-4","t":"hyp","k":"pick","s":"Si le tribunal acceptait enfin ce plaidoyer, l'inculpé ___ libéré.","ch":["serait","sera"],"x":"si + imparfait → conditionnel in the result clause, not the futur → <b>serait</b>."},{"id":"hyp-5","t":"hyp","k":"type","s":"Si tu étais élu député, tu ___ plus de responsabilités.","a":["aurais"],"cue":"(avoir)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; avoir has the irregular stem aur- → <b>aurais</b>."},{"id":"hyp-6","t":"hyp","k":"pick","s":"Si le tribunal rend son verdict demain, les avocats ___ une conférence de presse.","ch":["organiseront","organiseraient"],"x":"a likely, real condition (si + présent) → futur, not conditionnel → <b>organiseront</b>."},{"id":"hyp-7","t":"hyp","k":"type","s":"Si les citoyens connaissaient mieux la loi, ils ___ mieux se défendre.","a":["pourraient"],"cue":"(pouvoir)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; pouvoir has the irregular stem pourr- → <b>pourraient</b>."},{"id":"hyp-8","t":"hyp","k":"pick","s":"Si tu ___ ministre de l'Éducation, tu imposerais une deuxième langue à tous les lycéens.","ch":["étais","serais","es","seras"],"x":"an imagined situation: the si clause takes the imparfait, and the conditionnel stays in the result clause → <b>étais</b>."},{"id":"hyp-9","t":"hyp","k":"type","s":"Si vous lisiez la presse régionale, vous ___ à quel point l'enquête est sérieuse.","a":["verriez"],"cue":"(voir)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; voir has the irregular stem verr- → <b>verriez</b>."},{"id":"hyp-10","t":"hyp","k":"pick","s":"S'il y a un procès l'an prochain, le principal témoin ___ à la barre.","ch":["viendra","viendrait","venait","est venu"],"x":"a likely, real condition (si + présent) → futur → <b>viendra</b>."},{"id":"hyp-11","t":"hyp","k":"type","s":"Si ce journaliste inventait des faits, il ___ s'excuser auprès des lecteurs.","a":["devrait"],"cue":"(devoir)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; devoir has the irregular stem devr- → <b>devrait</b>."},{"id":"hyp-12","t":"hyp","k":"pick","s":"S'il ___ du soutien du public, le candidat gagnerait l'élection.","ch":["bénéficiait","bénéficierait","bénéficie","bénéficiera"],"x":"the result clause (gagnerait) is a conditionnel, so the si clause takes the imparfait → <b>bénéficiait</b>."},{"id":"hyp-13","t":"hyp","k":"type","s":"Si le gouvernement écoutait les citoyens, il ne ___ pas les journaux.","a":["censurerait"],"cue":"(censurer)","ins":"Type the correct form.","x":"si + imparfait → conditionnel: infinitive + -ait for il → <b>censurerait</b>."},{"id":"hyp-14","t":"hyp","k":"pick","s":"Je ne ___ jamais cette loi si j'étais député.","ch":["voterais","voterai","vote","voterait"],"x":"si + imparfait (j'étais) → conditionnel, first person singular → <b>voterais</b>."},{"id":"hyp-15","t":"hyp","k":"type","s":"Si elle lisait la presse chaque matin, elle ___ ce qui se passe dans le monde.","a":["saurait"],"cue":"(savoir)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; savoir has the irregular stem saur- → <b>saurait</b>."},{"id":"hyp-16","t":"hyp","k":"pick","s":"Si on ___ voir le documentaire sur la censure ce soir ?","ch":["allait","irait"],"x":"a suggestion uses si + imparfait on its own; a conditionnel never follows si → <b>allait</b>."},{"id":"hyp-17","t":"hyp","k":"type","s":"Si les étudiants étaient mieux informés, ils ___ plus nombreux aux réunions.","a":["viendraient"],"cue":"(venir)","ins":"Type the correct form.","x":"si + imparfait → conditionnel; venir has the irregular stem viendr- → <b>viendraient</b>."},{"id":"hyp-18","t":"hyp","k":"pick","s":"Le tribunal serait plus sévère si le braqueur ne ___ rien.","ch":["regrettait","regretterait","regrette","regrettera"],"x":"after a conditionnel in the main clause, the si clause takes the imparfait, never the conditionnel → <b>regrettait</b>."},{"id":"hyp-19","t":"hyp","k":"type","s":"Si les citoyens pouvaient choisir directement, ils ___ un autre président.","a":["éliraient"],"cue":"(élire)","ins":"Type the correct form.","x":"si + imparfait → conditionnel: infinitive élire (drop -e) + -aient → <b>éliraient</b>."},{"id":"hyp-20","t":"hyp","k":"pick","s":"Si tu ___ au kiosque ce matin, tu pourras acheter le quotidien pour tout le monde.","ch":["passes","passais"],"x":"a likely, real condition: si + présent, with a futur in the result clause → <b>passes</b>."},{"id":"hyp-21","t":"hyp","k":"type","s":"S'ils ___ leurs études plus tôt, ils chercheraient un emploi.","a":["finissaient"],"cue":"(finir)","ins":"Type the correct form.","x":"the result clause is a conditionnel, so the si clause takes the imparfait (ils → -aient) → <b>finissaient</b>."},{"id":"hyp-22","t":"hyp","k":"type","s":"Si elle ___ son diplôme, elle trouverait facilement un poste.","a":["obtenait"],"cue":"(obtenir)","ins":"Type the correct form.","x":"the result clause is a conditionnel, so the si clause takes the imparfait (elle → -ait) → <b>obtenait</b>."},{"id":"rel-1","t":"rel","k":"type","s":"Voici le tribunal devant ___ le prévenu doit comparaître demain.","a":["lequel"],"ins":"Type the missing word(s).","x":"preposition (devant) + masculine singular noun (le tribunal) → <b>lequel</b>."},{"id":"rel-2","t":"rel","k":"pick","s":"Le journaliste ___ a signé l'enquête sur la corruption a reçu des menaces.","ch":["qui","que"],"x":"a verb follows, so the pronoun is the subject → <b>qui</b>."},{"id":"rel-3","t":"rel","k":"type","s":"Les sondages ___ les médias accordent trop d'importance sont souvent trompeurs.","a":["auxquels"],"ins":"Type the missing word(s).","x":"accorder de l'importance à + masculine plural noun: à + lesquels contracts → <b>auxquels</b>."},{"id":"rel-4","t":"rel","k":"pick","s":"Le jour ___ le verdict a été rendu, la salle d'audience était pleine.","ch":["où","dont"],"x":"a time expression as antecedent → <b>où</b>."},{"id":"rel-5","t":"rel","k":"type","s":"Voilà ___ les étudiants s'attendaient : une hausse des frais d'inscription.","a":["ce à quoi"],"ins":"Type the missing word(s).","x":"no noun before, and s'attendre à takes à → <b>ce à quoi</b>."},{"id":"rel-6","t":"rel","k":"pick","s":"Le député ___ le fils a été inculpé a démissionné hier.","ch":["dont","que","qui","où"],"x":"“whose son” (le fils du député) → <b>dont</b>."},{"id":"rel-7","t":"rel","k":"type","s":"Les erreurs à cause ___ le procès a été annulé n'ont jamais été corrigées.","a":["desquelles"],"ins":"Type the missing word(s).","x":"à cause de + feminine plural noun: de + lesquelles contracts → <b>desquelles</b>."},{"id":"rel-8","t":"rel","k":"pick","s":"L'enquête grâce ___ la police a retrouvé le suspect a duré six mois.","ch":["à laquelle","à qui","à quoi","auquel"],"x":"grâce à + feminine singular thing (not a person) → <b>à laquelle</b>."},{"id":"rel-9","t":"rel","k":"type","s":"Le quotidien ___ il lit chaque matin appartient à un grand groupe de presse.","a":["qu'"],"ins":"Type the missing word(s).","x":"direct object, and que elides before a vowel → <b>qu'</b>."},{"id":"rel-10","t":"rel","k":"pick","s":"Le sujet ___ le professeur a parlé hier sera au partiel.","ch":["dont","que"],"x":"parler de → the pronoun replaces de + noun → <b>dont</b>."},{"id":"rel-11","t":"rel","k":"type","s":"Je ne comprends pas ___ s'est passé pendant le procès.","a":["ce qui"],"ins":"Type the missing word(s).","x":"no noun before, and the pronoun is the subject of s'est passé → <b>ce qui</b>."},{"id":"rel-12","t":"rel","k":"pick","s":"Le collège ___ Sophie enseigne depuis dix ans va fermer à la rentrée.","ch":["où","qui"],"x":"a place as antecedent, and a subject (Sophie) follows → <b>où</b>."},{"id":"rel-13","t":"rel","k":"type","s":"Le ministre a nié ___ les journaux avaient écrit sur lui.","a":["ce que"],"ins":"Type the missing word(s).","x":"no noun before, and the pronoun is the direct object of avaient écrit → <b>ce que</b>."},{"id":"rel-14","t":"rel","k":"pick","s":"Les témoins ___ le tribunal a entendus hier ont confirmé l'alibi.","ch":["que","qui","dont","où"],"x":"direct object of a entendus (hence the plural agreement) → <b>que</b>."},{"id":"rel-15","t":"rel","k":"type","s":"Les électeurs savent exactement ___ ils ont besoin : plus de transparence.","a":["ce dont"],"ins":"Type the missing word(s).","x":"no noun before, and avoir besoin de → <b>ce dont</b>."},{"id":"rel-16","t":"rel","k":"pick","s":"La censure est la menace ___ les journalistes ont le plus peur.","ch":["dont","que","à laquelle","où"],"x":"avoir peur de → de + noun is replaced by <b>dont</b>."},{"id":"rel-17","t":"rel","k":"type","s":"Le journaliste pour ___ elle travaille a reçu un prix.","a":["qui","lequel"],"ins":"Type the missing word(s).","x":"preposition + person → <b>qui</b> (lequel is also possible)."},{"id":"rel-18","t":"rel","k":"pick","s":"Les candidats parmi ___ les électeurs doivent choisir sont peu connus.","ch":["lesquels","lesquelles","lequel","qui"],"x":"parmi + masculine plural noun → <b>lesquels</b>."},{"id":"rel-19","t":"rel","k":"type","s":"Les réformes ___ les étudiants s'opposent ont été votées hier.","a":["auxquelles"],"ins":"Type the missing word(s).","x":"s'opposer à + feminine plural noun: à + lesquelles contracts → <b>auxquelles</b>."},{"id":"rel-20","t":"rel","k":"pick","s":"Le témoin ___ l'avocat a posé la question a hésité avant de répondre.","ch":["à qui","que","dont","où"],"x":"poser une question à + person → <b>à qui</b>."},{"id":"rel-21","t":"rel","k":"type","s":"Le parc en face ___ se trouve le lycée est fermé la nuit.","a":["duquel"],"ins":"Type the missing word(s).","x":"en face de + masculine singular noun: de + lequel contracts → <b>duquel</b>."},{"id":"rel-22","t":"rel","k":"type","s":"La raison pour ___ le journal a retiré l'article reste inconnue.","a":["laquelle"],"ins":"Type the missing word(s).","x":"preposition (pour) + feminine singular noun → <b>laquelle</b>."}],"ORAL":[{"id":"t1","n":1,"title":"L'inscription au lycée","short":"École","prompt":"Vous êtes l'interprète entre une mère anglophone et la secrétaire d'un lycée, avant la rentrée. Interprétez chaque réplique dans l'autre langue.","goal":["Render each line faithfully in the other language","Keep numbers, names and key facts","Use the school vocabulary of the unit"],"focus":"Présent and passé composé; school vocabulary","sections":[{"k":"notes","label":"Avant de commencer","tense":"Anglais (notes)","q":["Interpret in the first person, as the speaker would: “I would like…”, not “She says she would like…”.","Keep every number, name, place and time. If a word escapes you, say it another way in simple French or ask: Pouvez-vous répéter, s'il vous plaît ?","Useful frames: s'inscrire à, apporter, remplir un formulaire, obligatoire."]},{"k":"l1","qa":1,"lang":"en","label":"I'd like to sign my daughter up for the lycée before the start of the school year."},{"k":"l2","qa":1,"lang":"fr","label":"Bien sûr. Elle vient de quel collège, et quelle était sa moyenne l'an dernier ?"},{"k":"l3","qa":1,"lang":"en","label":"Her average was fifteen. Are the midterm exams mandatory?"},{"k":"l4","qa":1,"lang":"fr","label":"Oui, les partiels sont obligatoires, mais le taux de réussite de notre lycée est très bon."},{"k":"l5","qa":1,"lang":"en","label":"That's reassuring. I read that the school is understaffed."},{"k":"l6","qa":1,"lang":"fr","label":"C'est vrai, nous sommes en sous-effectif cette année, mais nous recrutons de nouveaux enseignants."},{"k":"l7","qa":1,"lang":"en","label":"Can I print the registration form at home?"},{"k":"l8","qa":1,"lang":"fr","label":"Oui, vous pouvez l'imprimer sur notre site et nous la rapporter à la rentrée."}],"conn":["Pouvez-vous répéter, s'il vous plaît ?","Autrement dit…","C'est-à-dire…","Elle voudrait savoir si…","Il faut que vous…","Pardon, l'interprète :"],"words":["s'inscrire","le lycée","le collège","la moyenne","un partiel","obligatoire","le taux de réussite","sous-effectif","imprimer","la rentrée"],"qonly":1,"terp":1},{"id":"t2","n":2,"title":"Une interview sur l'infox","short":"Presse","prompt":"Vous êtes l'interprète entre une journaliste anglophone et un porte-parole français. Elle prépare un reportage sur l'infox. Interprétez chaque réplique dans l'autre langue.","goal":["Render each line faithfully in the other language","Handle press and media vocabulary","Stay neutral: no opinions of your own"],"focus":"Présent and passé composé; press vocabulary","sections":[{"k":"notes","label":"Avant de commencer","tense":"Anglais (notes)","q":["Interpret in the first person, as the speaker would: “I would like…”, not “She says she would like…”.","Keep every number, name, place and time. If a word escapes you, say it another way in simple French or ask: Pouvez-vous répéter, s'il vous plaît ?","Useful frames: diffuser, un quotidien, un reportage, un sondage, avertir."]},{"k":"l1","qa":1,"lang":"en","label":"Good morning. I'm preparing a news report on fake news and I'd like to ask you a few questions."},{"k":"l2","qa":1,"lang":"fr","label":"Bonjour. Avec plaisir, mais je vous avertis : il faut rester prudent avec les informations non vérifiées."},{"k":"l3","qa":1,"lang":"en","label":"Which newspapers broadcast false information this month?"},{"k":"l4","qa":1,"lang":"fr","label":"Plusieurs quotidiens ont diffusé une théorie de complot sans aucune preuve."},{"k":"l5","qa":1,"lang":"en","label":"Are you skeptical about the survey that was published on Monday?"},{"k":"l6","qa":1,"lang":"fr","label":"Oui, l'enquête a été menée sans contrôle, donc elle n'est pas fiable."},{"k":"l7","qa":1,"lang":"en","label":"What should readers do to avoid being misled?"},{"k":"l8","qa":1,"lang":"fr","label":"Ils doivent vérifier les preuves, comparer plusieurs journaux et se méfier des titres trop beaux pour être vrais."}],"conn":["Pouvez-vous répéter, s'il vous plaît ?","Autrement dit…","C'est-à-dire…","Elle voudrait savoir si…","Il explique que…","Pardon, l'interprète :"],"words":["l'infox","la désinformation","diffuser","un quotidien","un reportage","un sondage","une enquête","fiable","sceptique","une théorie de complot"],"qonly":1,"terp":1},{"id":"t3","n":3,"title":"Les élections municipales","short":"Politique","prompt":"Vous êtes l'interprète entre un observateur américain et une citoyenne française, le jour d'une élection locale. Interprétez chaque réplique dans l'autre langue.","goal":["Render each line faithfully in the other language","Use the vocabulary of elections and political systems","Keep a neutral, polite register"],"focus":"Présent; political vocabulary","sections":[{"k":"notes","label":"Avant de commencer","tense":"Anglais (notes)","q":["Interpret in the first person, as the speaker would: “I would like…”, not “She says she would like…”.","Keep every number, name, place and time. If a word escapes you, say it another way in simple French or ask: Pouvez-vous répéter, s'il vous plaît ?","Useful frames: élire, un mandat, un citoyen, la dictature, la censure."]},{"k":"l1","qa":1,"lang":"en","label":"Excuse me, how long is a mayor's term in France, and who elects him or her?"},{"k":"l2","qa":1,"lang":"fr","label":"Le mandat d'un maire dure six ans, et ce sont les conseillers municipaux, élus par les citoyens, qui l'élisent."},{"k":"l3","qa":1,"lang":"en","label":"In my country some people abstain from voting. Is voting mandatory here?"},{"k":"l4","qa":1,"lang":"fr","label":"Non, voter n'est pas obligatoire, mais beaucoup de citoyens s'abstiennent quand ils sont sceptiques."},{"k":"l5","qa":1,"lang":"en","label":"What happens when a government flouts the law or censors the press?"},{"k":"l6","qa":1,"lang":"fr","label":"Dans une dictature, personne ne peut critiquer le pouvoir ; dans une démocratie, le parlement peut abroger une loi injuste."},{"k":"l7","qa":1,"lang":"en","label":"So a law can be repealed if citizens protest?"},{"k":"l8","qa":1,"lang":"fr","label":"Oui, mais il faut un plaidoyer solide et beaucoup de monde dans la rue."}],"conn":["Pouvez-vous répéter, s'il vous plaît ?","Autrement dit…","C'est-à-dire…","Elle dit que…","Il voudrait savoir si…","Pardon, l'interprète :"],"words":["élire","un mandat","un citoyen","s'abstenir","obligatoire","la dictature","la censure","bafouer","abroger","le plaidoyer"],"qonly":1,"terp":1},{"id":"t4","n":4,"title":"Au commissariat","short":"Justice","prompt":"Vous êtes l'interprète entre une touriste anglophone, victime d'un braquage, et un policier français. Interprétez chaque réplique dans l'autre langue.","goal":["Render each line faithfully in the other language","Use crime and justice vocabulary precisely","Keep the register of an official setting"],"focus":"Présent, passé composé and futur; justice vocabulary","sections":[{"k":"notes","label":"Avant de commencer","tense":"Anglais (notes)","q":["Interpret in the first person, as the speaker would: “I would like…”, not “She says she would like…”.","Keep every number, name, place and time. If a word escapes you, say it another way in simple French or ask: Pouvez-vous répéter, s'il vous plaît ?","Useful frames: être victime de, un témoin, interpeller, un procès, coupable."]},{"k":"l1","qa":1,"lang":"en","label":"Hello, I was the victim of a hold-up this morning and I would like to file a complaint."},{"k":"l2","qa":1,"lang":"fr","label":"Je suis désolé. Étiez-vous seule, et y a-t-il un témoin qui a vu la scène ?"},{"k":"l3","qa":1,"lang":"en","label":"A woman saw everything. I was unharmed, nobody was hurt."},{"k":"l4","qa":1,"lang":"fr","label":"Heureusement vous êtes indemne. La police a interpellé un suspect près de la gare."},{"k":"l5","qa":1,"lang":"en","label":"Will he be put on trial? Is there enough proof?"},{"k":"l6","qa":1,"lang":"fr","label":"Il sera inculpé, et le procès aura lieu au tribunal dans quelques mois si les preuves sont suffisantes."},{"k":"l7","qa":1,"lang":"en","label":"What happens if he is found guilty?"},{"k":"l8","qa":1,"lang":"fr","label":"Si le verdict est « coupable », il risque la prison, ou une peine avec sursis s'il n'a jamais été condamné."}],"conn":["Pouvez-vous répéter, s'il vous plaît ?","Autrement dit…","C'est-à-dire…","Elle voudrait savoir si…","Il explique que…","Pardon, l'interprète :"],"words":["un braquage","la victime","un témoin","indemne","interpeller","un inculpé","la preuve","un procès","le tribunal","coupable"],"qonly":1,"terp":1}],"PAST":{}};
+  var P=state.prep=state.prep||{};
+  var pref=function(k,d){ return P[k]===undefined?d:P[k]; };
+  var $=function(id){ return document.getElementById(id); };
+  var esc2=FG.esc, norm2=FG.norm, fold2=FG.fold;
+  function shuf(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  var KEYS=["é","è","ê","ë","à","â","ç","î","ï","ô","û","ù","œ","'"];
+  function keysHTML(){ return KEYS.map(function(k){ return "<button type=\"button\" class=\"akey\" data-k=\""+esc2(k)+"\" tabindex=\"-1\">"+esc2(k)+"</button>"; }).join(""); }
+  function wireKeys(root,inp,onChange){
+    [].forEach.call(root.querySelectorAll(".akey"),function(b){
+      b.addEventListener("mousedown",function(e){ e.preventDefault(); });
+      b.addEventListener("click",function(){ if(inp.readOnly||inp.disabled) return; var k=b.dataset.k, s=inp.selectionStart==null?inp.value.length:inp.selectionStart, en=inp.selectionEnd==null?s:inp.selectionEnd;
+        inp.value=inp.value.slice(0,s)+k+inp.value.slice(en); inp.setSelectionRange(s+k.length,s+k.length); inp.focus(); if(onChange) onChange(); });
+    });
+  }
+  function save(){ saveState(); }
+  /* one verdict line, then You / Correct on a miss (a skip shows the answer alone), then the why */
+  function fbHTML(verdict,val,target,why){
+    var V=FG.VERDICTS[verdict], h="<div class=\"fb "+V.tone+"\"><strong class=\"fbv\">"+V.title+"</strong>";
+    if(verdict==="skip") h+="<div class=\"cmp\"><span class=\"l\">Correct</span><span class=\"w\">"+esc2(target)+"</span></div>";
+    else if(verdict!=="ok"){ var df=FG.diff(norm2(val),norm2(target));
+      h+="<div class=\"cmp\"><span class=\"l\">You</span><span class=\"w\">"+FG.marked(df[0],"fx")+"</span><span class=\"l\">Correct</span><span class=\"w\">"+FG.marked(df[1],"fm")+"</span></div>"; }
+    if(why) h+="<div class=\"why\">"+why+"</div>";
+    return h+"</div>";
+  }
+  function progHead(S,label){
+    var right=S.res.filter(function(r){ return r.ok; }).length;
+    return "<div class=\"pprog\"><i style=\"width:"+(S.queue.length?S.i/S.queue.length*100:0)+"%\"></i></div><div class=\"pmeta\"><span>"+label+" "+(S.i+1)+" of "+S.queue.length+"</span><span>"+right+" correct so far</span></div>";
+  }
+
+  /* ---------------- Vocabulaire ---------------- */
+  var TYPE={n:"noun",v:"verb",a:"adjective",x:"expression"};
+  var W=DATA.RAW.map(function(r,i){
+    var t=r[2], g=r[3]||null, alts=r[4]||[];
+    return {id:i,f:r[0],e:r[1],t:t,g:g,alts:alts,it:FG.prepare({f:r[0],a:alts,type:t==="n"?"n":(t==="v"?"v":"x"),g:g})};
+  });
+  var typeLabel=function(w){ return w.t==="n"&&w.g&&/p$/.test(w.g)?"noun · plural":TYPE[w.t]; };
+  var vm_=function(){ return P.vmiss=P.vmiss||{}; };
+  function vMiss(w,ok){ var m=vm_(); if(ok){ if(m[w.f]){ m[w.f]--; if(m[w.f]<=0) delete m[w.f]; } } else m[w.f]=(m[w.f]||0)+1; save(); }
+  var V={mode:pref("vmode","write"),size:pref("vsize","20"),src:"all",queue:[],i:0,res:[],answered:false,cur:null};
+  function vCard(){ return $("prepVCard"); }
+  function vSync(){
+    [].forEach.call(document.querySelectorAll("#prepVMode button"),function(b){ b.setAttribute("aria-pressed",String(b.dataset.mode===V.mode)); });
+    $("prepVSize").value=V.size; var s=$("prepVSrc"); s.options[1].textContent="My misses ("+Object.keys(vm_()).length+")"; s.value=V.src;
+    var quiz=V.mode!=="list"; $("prepVSizeCtl").hidden=!quiz; $("prepVSrcCtl").hidden=!quiz; $("prepVNew").hidden=!quiz;
+  }
+  function vNew(list){
+    if(list) V.queue=shuf(list);
+    else { var pool=W; if(V.src==="miss"){ pool=W.filter(function(w){ return vm_()[w.f]; }); if(!pool.length){ V.src="all"; pool=W; } }
+      V.queue=shuf(pool).slice(0,V.size==="72"?pool.length:Math.min(pool.length,+V.size)); }
+    V.i=0; V.res=[]; V.answered=false; vSync(); vRender();
+  }
+  function vRender(){
+    if(V.mode==="list") return vList();
+    if(V.i>=V.queue.length) return vResults();
+    V.answered=false; V.cur=V.queue[V.i]; V.mode==="write"?vWrite():vMCQ();
+  }
+  function vWrite(){
+    var w=V.cur, c=vCard();
+    c.innerHTML=progHead(V,"Word")+"<div class=\"pbody\"><span class=\"ptag\">"+typeLabel(w)+"</span><p class=\"pprompt\">"+enHTML(w.e)+"</p>"+
+      "<div class=\"seyes\"><input id=\"prepVAns\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" lang=\"fr\" aria-label=\"Your French answer\" placeholder=\""+(w.t==="n"?"article + noun":"en français")+"\"></div>"+
+      "<div class=\"akeys pkeys\">"+keysHTML()+"</div>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepVCheck\">Check</button><button type=\"button\" class=\"pbtn\" id=\"prepVSkip\">I don't know</button><span class=\"phint\">Enter to check · Enter again for next</span></div><div id=\"prepVFb\"></div></div>";
+    var inp=$("prepVAns"); inp.focus({preventScroll:true});
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); V.answered?vNext():vCheck(); } });
+    wireKeys(c,inp);
+    $("prepVCheck").onclick=function(){ V.answered?vNext():vCheck(); };
+    $("prepVSkip").onclick=function(){ if(!V.answered) vCheck(true); };
+  }
+  function vCheck(skip){
+    var w=V.cur, inp=$("prepVAns"), val=inp.value;
+    if(!skip && !norm2(val)){ inp.focus(); return; }
+    V.answered=true; inp.readOnly=true;
+    var g=skip?{v:"skip",target:w.f}:FG.grade(val,w.it), ok=g.v==="ok";
+    V.res.push({w:w,input:skip?"":val,v:g.v,ok:ok}); vMiss(w,ok);
+    inp.parentNode.classList.add(ok?"ok":"bad");
+    $("prepVFb").innerHTML=fbHTML(g.v,val,g.target);
+    $("prepVCheck").textContent=V.i+1<V.queue.length?"Next word":"See results"; $("prepVSkip").hidden=true; $("prepVCheck").focus({preventScroll:true});
+  }
+  function vNext(){ V.i++; vRender(); }
+  function vMCQ(){
+    var w=V.cur, c=vCard();
+    var same=shuf(W.filter(function(x){ return x.id!==w.id&&x.t===w.t; })), other=shuf(W.filter(function(x){ return x.id!==w.id&&x.t!==w.t; }));
+    var opts=shuf([w].concat(same.concat(other).slice(0,3)));
+    c.innerHTML=progHead(V,"Word")+"<div class=\"pbody\"><span class=\"ptag\">Pick the meaning</span><p class=\"pprompt\" lang=\"fr\">"+esc2(w.f)+"</p>"+
+      "<div class=\"opts\">"+opts.map(function(o,k){ return "<button type=\"button\" class=\"opt\" data-id=\""+o.id+"\"><b>"+(k+1)+"</b><span>"+enHTML(o.e)+"</span></button>"; }).join("")+"</div>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepVNext\" hidden>Next word</button><span class=\"phint\">Keys 1–4 · Enter for next</span></div></div>";
+    [].forEach.call(c.querySelectorAll(".opt"),function(b){ b.onclick=function(){ vPick(+b.dataset.id); }; });
+  }
+  function vPick(id){
+    if(V.answered) return; V.answered=true;
+    var w=V.cur, ok=id===w.id; V.res.push({w:w,input:ok?"":W[id].e,v:ok?"ok":"wrong",ok:ok}); vMiss(w,ok);
+    [].forEach.call(vCard().querySelectorAll(".opt"),function(b){ var bid=+b.dataset.id; b.disabled=true; if(bid===w.id) b.classList.add("right"); else if(bid===id) b.classList.add("wrong"); });
+    var nb=$("prepVNext"); nb.hidden=false; nb.textContent=V.i+1<V.queue.length?"Next word":"See results"; nb.onclick=vNext; nb.focus({preventScroll:true});
+  }
+  function vResults(){
+    var total=V.res.length, right=V.res.filter(function(r){ return r.ok; }).length, wrong=V.res.filter(function(r){ return !r.ok; });
+    var lbl={accent:"accents",article:"article missing",gender:"gender",pronoun:"pronoun missing",close:"spelling",wrong:"",skip:"skipped"};
+    vCard().innerHTML="<div class=\"pprog\"><i style=\"width:100%\"></i></div><div class=\"pbody\"><span class=\"ptag\">Results</span>"+
+      "<div class=\"pscore\"><span class=\"big\">"+right+" / "+total+"</span><span class=\"pct\">"+(total?Math.round(right/total*100):0)+"% · "+Object.keys(vm_()).length+" word"+(Object.keys(vm_()).length===1?"":"s")+" in your misses pile</span></div>"+
+      (wrong.length?"<div class=\"misslist\">"+wrong.map(function(r){ return "<div><span class=\"fr\" lang=\"fr\">"+esc2(r.w.f)+"</span><span class=\"en\">"+enHTML(r.w.e)+"</span>"+(r.input||r.v==="skip"?"<span class=\"yours\">"+(r.v==="skip"?"skipped":"You: "+esc2(r.input))+(lbl[r.v]?" · "+lbl[r.v]:"")+"</span>":"")+"</div>"; }).join("")+"</div>":"<p class=\"pempty\">Clean sweep. No misses this round.</p>")+
+      "<div class=\"prow\">"+(wrong.length?"<button type=\"button\" class=\"pbtn primary\" id=\"prepVRetry\">Retry the "+wrong.length+" missed</button>":"")+"<button type=\"button\" class=\"pbtn\" id=\"prepVAgain\">New set</button></div></div>";
+    var r=$("prepVRetry"); if(r) r.onclick=function(){ vNew(wrong.map(function(x){ return x.w; })); };
+    $("prepVAgain").onclick=function(){ vNew(); }; vSync();
+  }
+  function vList(){
+    vCard().innerHTML="<div class=\"pbody\"><input class=\"psearch\" id=\"prepVQ\" type=\"search\" placeholder=\"Filter French or English\" aria-label=\"Filter words\" autocomplete=\"off\"><div class=\"ptbl\"><table><tbody id=\"prepVRows\"></tbody></table></div></div>";
+    function draw(){
+      var q=fold2($("prepVQ").value), rows=W.filter(function(w){ return !q||fold2(w.f).indexOf(q)>-1||w.e.toLowerCase().indexOf(q)>-1; });
+      $("prepVRows").innerHTML=rows.map(function(w){ return "<tr><td class=\"fr\" lang=\"fr\">"+esc2(w.f)+(w.alts.length?"<span class=\"pnote\"> · "+w.alts.map(esc2).join(", ")+"</span>":"")+(vm_()[w.f]?"<span class=\"pchip\">missed ×"+vm_()[w.f]+"</span>":"")+"</td><td class=\"en\">"+enHTML(w.e)+"</td></tr>"; }).join("")||"<tr><td class=\"en\">No match.</td></tr>";
+    }
+    $("prepVQ").addEventListener("input",draw); draw();
+  }
+  document.addEventListener("keydown",function(e){
+    if(!$("p-prep").classList.contains("on")||pref("sub","vocab")!=="vocab") return;
+    if(V.mode!=="mcq"||V.i>=V.queue.length||(e.target.tagName==="SELECT")) return;
+    if(/^[1-4]$/.test(e.key)&&!V.answered){ var b=vCard().querySelectorAll(".opt")[+e.key-1]; if(b) vPick(+b.dataset.id); }
+    else if(e.key==="Enter"&&V.answered&&e.target.id!=="prepVNext"){ e.preventDefault(); vNext(); }
+  });
+
+  /* ---------------- Grammaire ---------------- */
+  var TOPICS=DATA.TOPICS, I=DATA.ITEMS.map(function(it){
+    if(it.k==="type") it._p=FG.prepare({f:it.a[0],a:it.a.slice(1),type:it.t==="pc"?"pc":(it.noun?"n":"x"),g:it.g,articleOptional:!!it.noun});
+    return it; });
+  var gm_=function(){ return P.gmiss=P.gmiss||{}; };
+  function gMiss(it,ok){ var m=gm_(); if(ok){ if(m[it.id]){ m[it.id]--; if(m[it.id]<=0) delete m[it.id]; } } else m[it.id]=(m[it.id]||0)+1; save(); }
+  var G={topic:pref("gtopic","all"),size:pref("gsize","20"),fmt:pref("gfmt","mix"),src:"all",queue:[],i:0,res:[],answered:false,cur:null,order:null};
+  var fullSentence=function(it,ans){ return it.s.replace("___",ans); };
+  var cueHTML=function(it){ return it.cue?" <span class=\"cue\">"+esc2(it.cue)+"</span>":""; };
+  function gSync(){
+    $("prepGTopic").value=G.topic; $("prepGSize").value=G.size; $("prepGFmt").value=G.fmt;
+    var s=$("prepGSrc"); s.options[1].textContent="My misses ("+Object.keys(gm_()).length+")"; s.value=G.src;
+  }
+  function gRule(t){ var T0=TOPICS[t]; $("prepGRule").innerHTML="<h4>"+esc2(T0.name)+" <small>"+esc2(T0.en)+"</small></h4>"+T0.rule; }
+  function gNew(list){
+    if(list) G.queue=shuf(list);
+    else {
+      var pool=I.filter(function(it){ return (G.topic==="all"||it.t===G.topic)&&(G.fmt==="mix"||it.k===G.fmt); });
+      if(G.src==="miss"){ var m=pool.filter(function(it){ return gm_()[it.id]; }); if(m.length) pool=m; else G.src="all"; }
+      var n=Math.min(pool.length,+G.size);
+      if(G.topic==="all"){   /* round-robin across topics so a mixed set stays balanced */
+        var by={}; shuf(pool).forEach(function(it){ (by[it.t]=by[it.t]||[]).push(it); });
+        var keys=shuf(Object.keys(by)), out=[];
+        while(out.length<n){ var added=false; keys.forEach(function(k){ if(out.length<n&&by[k].length){ out.push(by[k].shift()); added=true; } }); if(!added) break; }
+        G.queue=shuf(out);
+      } else G.queue=shuf(pool).slice(0,n);
+    }
+    G.i=0; G.res=[]; gSync(); gRender();
+  }
+  function gRender(){
+    if(G.i>=G.queue.length) return gResults();
+    G.answered=false; G.cur=G.queue[G.i]; gRule(G.cur.t); G.cur.k==="type"?gType():gPick();
+  }
+  function gBtns(){ var c=$("prepGCheck"); c.textContent=G.i+1<G.queue.length?"Next question":"See results"; var sk=$("prepGSkip"); if(sk) sk.hidden=true; c.focus({preventScroll:true}); }
+  function gType(){
+    var it=G.cur, parts=it.s.split("___"), c=$("prepGCard");
+    c.innerHTML=progHead(G,"Question")+"<div class=\"pbody\"><span class=\"ptag\">"+esc2(TOPICS[it.t].name)+"</span><p class=\"pins\">"+esc2(it.ins||"Type the missing word(s).")+"</p>"+
+      "<p class=\"psent\" lang=\"fr\">"+esc2(parts[0])+"<span class=\"gap\" id=\"prepGap\">&nbsp;</span>"+esc2(parts[1])+cueHTML(it)+"</p>"+
+      "<div class=\"seyes\"><input id=\"prepGAns\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" lang=\"fr\" aria-label=\"Your answer\"></div>"+
+      "<div class=\"akeys pkeys\">"+keysHTML()+"</div>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepGCheck\">Check</button><button type=\"button\" class=\"pbtn\" id=\"prepGSkip\">I don't know</button><span class=\"phint\">Enter to check · Enter again for next</span></div><div id=\"prepGFb\"></div></div>";
+    var inp=$("prepGAns"); inp.focus({preventScroll:true});
+    inp.addEventListener("input",function(){ $("prepGap").textContent=inp.value||" "; });
+    inp.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); G.answered?gNext():gCheckType(); } });
+    wireKeys(c,inp,function(){ $("prepGap").textContent=inp.value; });
+    $("prepGCheck").onclick=function(){ G.answered?gNext():gCheckType(); };
+    $("prepGSkip").onclick=function(){ if(!G.answered) gCheckType(true); };
+  }
+  function gCheckType(skip){
+    var it=G.cur, inp=$("prepGAns"), val=inp.value;
+    if(!skip && !norm2(val)){ inp.focus(); return; }
+    G.answered=true; inp.readOnly=true;
+    var g=skip?{v:"skip",target:it.a[0]}:FG.grade(val,it._p), ok=g.v==="ok";
+    G.res.push({it:it,input:skip?"":val,v:g.v,ok:ok}); gMiss(it,ok);
+    inp.parentNode.classList.add(ok?"ok":"bad");
+    var gap=$("prepGap"); gap.textContent=ok?val.trim():it.a[0]; gap.classList.add(ok?"ok":"bad");
+    $("prepGFb").innerHTML=fbHTML(g.v,val,g.target,it.x); gBtns();
+  }
+  function gPick(){
+    var it=G.cur, parts=it.s.split("___"), c=$("prepGCard"); G.order=shuf(it.ch);
+    c.innerHTML=progHead(G,"Question")+"<div class=\"pbody\"><span class=\"ptag\">"+esc2(TOPICS[it.t].name)+"</span><p class=\"pins\">Choose the right form"+(it.ch.length===2?" (2 options)":"")+".</p>"+
+      "<p class=\"psent\" lang=\"fr\">"+esc2(parts[0])+"<select class=\"gapsel\" id=\"prepGPick\" aria-label=\"Choose the missing word\"><option value=\"\" selected disabled>choisir…</option>"+G.order.map(function(o,k){ return "<option value=\""+k+"\">"+esc2(o)+"</option>"; }).join("")+"</select>"+esc2(parts[1])+cueHTML(it)+"</p>"+
+      "<div class=\"prow\"><button type=\"button\" class=\"pbtn primary\" id=\"prepGCheck\">Check</button><span class=\"phint\">Keys 1–"+G.order.length+" pick · Enter to check</span></div><div id=\"prepGFb\"></div></div>";
+    var sel=$("prepGPick"); sel.addEventListener("change",function(){ $("prepGCheck").focus({preventScroll:true}); });
+    $("prepGCheck").onclick=function(){ G.answered?gNext():gCheckPick(); }; sel.focus({preventScroll:true});
+  }
+  function gCheckPick(){
+    var it=G.cur, sel=$("prepGPick"); if(sel.value===""){ sel.focus(); return; }
+    G.answered=true; var chosen=G.order[+sel.value], ok=chosen===it.ch[0];
+    G.res.push({it:it,input:ok?"":chosen,v:ok?"ok":"wrong",ok:ok}); gMiss(it,ok);
+    sel.disabled=true; sel.classList.add(ok?"ok":"bad");
+    $("prepGFb").innerHTML=fbHTML(ok?"ok":"wrong",chosen,it.ch[0],it.x); gBtns();
+  }
+  document.addEventListener("keydown",function(e){
+    if(!$("p-prep").classList.contains("on")||pref("sub","vocab")!=="gram") return;
+    if(!G.cur||G.i>=G.queue.length||G.cur.k!=="pick"||e.target.tagName==="SELECT"&&e.target.id!=="prepGPick") return;
+    var sel=$("prepGPick"); if(!sel) return;
+    if(/^[1-4]$/.test(e.key)&&!G.answered&&+e.key<=G.order.length){ e.preventDefault(); sel.value=String(+e.key-1); }
+    else if(e.key==="Enter"&&e.target.id!=="prepGCheck"){ e.preventDefault(); G.answered?gNext():gCheckPick(); }
+  });
+  function gNext(){ G.i++; gRender(); }
+  function gResults(){
+    var total=G.res.length, right=G.res.filter(function(r){ return r.ok; }).length, wrong=G.res.filter(function(r){ return !r.ok; });
+    var per={}; G.res.forEach(function(r){ var p=per[r.it.t]=per[r.it.t]||[0,0]; p[1]++; if(r.ok) p[0]++; });
+    $("prepGRule").innerHTML="<h4>Results by topic</h4><div class=\"bytopic\">"+Object.keys(TOPICS).filter(function(t){ return per[t]; }).map(function(t){ return "<span>"+esc2(TOPICS[t].name)+"</span><span>"+per[t][0]+" / "+per[t][1]+"</span>"; }).join("")+"</div>";
+    var canon=function(it){ return it.k==="pick"?it.ch[0]:it.a[0]; };
+    $("prepGCard").innerHTML="<div class=\"pprog\"><i style=\"width:100%\"></i></div><div class=\"pbody\"><span class=\"ptag\">Results</span>"+
+      "<div class=\"pscore\"><span class=\"big\">"+right+" / "+total+"</span><span class=\"pct\">"+(total?Math.round(right/total*100):0)+"% · "+Object.keys(gm_()).length+" question"+(Object.keys(gm_()).length===1?"":"s")+" in your misses pile</span></div>"+
+      (wrong.length?"<div class=\"misslist\">"+wrong.map(function(r){ return "<div><span class=\"pt\">"+esc2(TOPICS[r.it.t].name)+"</span><span class=\"fr\" lang=\"fr\">"+esc2(fullSentence(r.it,canon(r.it)))+"</span><span class=\"yours\">"+(r.v==="skip"?"skipped":"You: "+esc2(r.input)+(FG.VERDICTS[r.v]&&r.v!=="wrong"?" · "+FG.VERDICTS[r.v].title.toLowerCase():""))+"</span></div>"; }).join("")+"</div>":"<p class=\"pempty\">Clean sweep. No misses this round.</p>")+
+      "<div class=\"prow\">"+(wrong.length?"<button type=\"button\" class=\"pbtn primary\" id=\"prepGRetry\">Retry the "+wrong.length+" missed</button>":"")+"<button type=\"button\" class=\"pbtn\" id=\"prepGAgain\">New set</button></div></div>";
+    var r=$("prepGRetry"); if(r) r.onclick=function(){ gNew(wrong.map(function(x){ return x.it; })); };
+    $("prepGAgain").onclick=function(){ gNew(); }; gSync();
+  }
+
+  /* ---------------- Oral: script builder ---------------- */
+  var OT=DATA.ORAL, OBY={}; OT.forEach(function(t){ OBY[t.id]=t; });
+  var PAST=DATA.PAST||{t3:1,t5:1,t6:1}, WPM=120;
+  var words=function(s){ return (s||"").match(/[A-Za-zÀ-ÖØ-öø-ÿœŒ]+(?:['’-][A-Za-zÀ-ÖØ-öø-ÿœŒ]+)*/g)||[]; };
+  var wc=function(s){ return words(s).length; };
+  var fmtTime=function(sec){ return Math.floor(sec/60)+":"+String(Math.round(sec%60)).padStart(2,"0"); };
+  function stemOf(w){ var s=fold2(w).replace(/^(le |la |les |un |une |l'|s'|se )/,""); if(s.indexOf(" ")<0&&/(er|ir|re|oir)$/.test(s)&&s.length>5){ var st=s.replace(/(oir|er|ir|re)$/,""); if(st.length>=4) s=st; } return s; }
+  function hasStem(text,stem){ return new RegExp("(^|[^a-z])"+stem.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).test(text); }
+  var UNIT_STEMS=W.map(function(w){ return {w:w.f,s:stemOf(w.f)}; });
+  var NOT_IMPF={}; "mais jamais francais anglais frais palais desormais japonais marocain vrais mauvais epais biais relais marais quebecois lait fait trait souhait portrait attrait bienfait forfait sujet avions millions questions nations raisons maisons saisons reunions opinions stations emotions informations attentions vacances".split(" ").forEach(function(x){ NOT_IMPF[x]=1; });
+  function tenseSignals(t){
+    var f=fold2(t);
+    var pc=(f.match(/\b(ai|as|a|avons|avez|ont|suis|es|est|sommes|etes|sont)\s+(\w+(e|ee|es|ees|i|ie|is|ies|u|ue|us|ues|it|ite|ert|erte|ort|orte))\b/g)||[]).length;
+    var impf=(f.match(/\b[a-z]+(ais|ait|ions|iez|aient)\b/g)||[]).filter(function(w){ return !NOT_IMPF[w]; }).length;
+    return {pc:pc,impf:impf};
+  }
+  var O=P.oral=P.oral||{}, oCur=OBY[pref("otopic","t1")]?pref("otopic","t1"):"t1";
+  var oSec=function(tid,k){ var t=O[tid]=O[tid]||{choice:"",other:"",sections:{}}; return t.sections[k]=t.sections[k]||{en:"",fr:""}; };
+  var oSaveT=null; function oSave(){ clearTimeout(oSaveT); oSaveT=setTimeout(save,400); }
+  function oWords(t,qa){ return t.sections.filter(function(s){ return !!s.qa===!!qa; }).reduce(function(n,s){ return n+wc(oSec(t.id,s.k).fr); },0); }
+  function oTopics(){
+    $("prepOTopics").innerHTML=OT.map(function(t){ var w=oWords(t,false);
+      return "<button type=\"button\" class=\"otopic\" data-t=\""+t.id+"\" aria-current=\""+(t.id===oCur)+"\"><span class=\"on\">Sujet "+t.n+"</span><b>"+esc2(t.title)+"</b><span>"+(w?w+" words · ≈ "+fmtTime(w/WPM*60):esc2(t.short))+"</span></button>"; }).join("");
+    [].forEach.call(document.querySelectorAll(".otopic"),function(b){ b.onclick=function(){ oSwitch(b.dataset.t); }; });
+  }
+  function oSwitch(id){ oCur=id; P.otopic=id; save(); oTopics(); oMain(); oBar(); }
+  function oMain(){
+    var t=OBY[oCur], st=O[t.id]=O[t.id]||{choice:"",other:"",sections:{}};
+    var h="<div class=\"otophead\"><h3>"+t.n+". "+esc2(t.title)+"</h3><p class=\"oprompt\" lang=\"fr\">"+esc2(t.prompt)+"</p>";
+    if(t.choice) h+="<div class=\"ochoice\"><label for=\"oChoice\">"+esc2(t.choice.label)+"</label><select id=\"oChoice\"><option value=\"\">Choose…</option>"+t.choice.opts.map(function(o){ return "<option"+(st.choice===o?" selected":"")+">"+esc2(o)+"</option>"; }).join("")+"</select><input id=\"oOther\" type=\"text\" placeholder=\"Describe your choice\" value=\""+esc2(st.other||"")+"\""+(st.choice==="Autre"?"":" hidden")+"></div>";
+    h+="</div>";
+    var qaHead=false;
+    t.sections.forEach(function(s){
+      if(s.qa&&!qaHead){ qaHead=true; h+="<div class=\"otophead\" style=\"margin-top:6px\"><h3>"+(t.terp?"Les répliques à interpréter":"Questions de l'examinateur")+"</h3><p class=\"pnote\">"+(t.terp?"Each line is spoken by one of the two people. Say it in the other language, in the first person: English lines go into French, French lines into English.":"Likely follow-ups. Prepare a short, direct answer to each.")+"</p></div>"; }
+      var v=oSec(t.id,s.k), id=t.id+"-"+s.k;
+      h+="<section class=\"osec\"><div class=\"osechead\">"+(s.qa?"<p class=\"oqa\" lang=\""+(s.lang||"fr")+"\">"+esc2(s.label)+"</p>"+(t.terp?"<span class=\"pchip\">"+(s.lang==="en"?"Say it in French":"Say it in English")+"</span>":""):"<h4>"+esc2(s.label)+"</h4><span class=\"pchip\">"+esc2(s.tense)+"</span>")+"</div>"+
+        (s.q?"<ul class=\"oqs\">"+s.q.map(function(q){ return "<li>"+esc2(q)+"</li>"; }).join("")+"</ul>":"")+
+        "<div class=\"opanes\"><div class=\"opane\"><label for=\"en-"+id+"\">"+(t.terp&&s.qa?"In English":"Notes (English)")+"</label><textarea class=\"oen\" id=\"en-"+id+"\" data-k=\""+s.k+"\" data-f=\"en\" placeholder=\""+(t.terp&&s.qa?"English version":"What you want to say")+"\">"+esc2(v.en)+"</textarea></div>"+
+        "<div class=\"opane\"><label for=\"fr-"+id+"\">"+(t.terp&&s.qa?"En français":"Mon français")+"</label><textarea class=\"ofr\" id=\"fr-"+id+"\" data-k=\""+s.k+"\" data-f=\"fr\" lang=\"fr\" spellcheck=\"false\" autocapitalize=\"sentences\" placeholder=\""+(t.terp&&s.qa?"Version française":"Votre texte…")+"\">"+esc2(v.fr)+"</textarea></div></div>"+
+        "<div class=\"owc\" id=\"wc-"+id+"\"></div></section>";
+    });
+    $("prepOMain").innerHTML=h;
+    t.sections.forEach(function(s){ oWc(t.id,s.k); });
+    if(t.choice){ var sel=$("oChoice"), oth=$("oOther"); sel.onchange=function(){ st.choice=sel.value; oth.hidden=sel.value!=="Autre"; oSave(); }; oth.oninput=function(){ st.other=oth.value; oSave(); }; }
+    [].forEach.call($("prepOMain").querySelectorAll("textarea"),function(ta){ ta.addEventListener("input",function(){
+      var k=ta.dataset.k; oSec(t.id,k)[ta.dataset.f]=ta.value; if(ta.dataset.f==="fr"||t.terp) oWc(t.id,k); oSave(); oBarSoon(); oTopicsSoon(); }); });
+  }
+  function oWc(tid,k){ var el=$("wc-"+tid+"-"+k); if(!el) return; var t=OBY[tid], s=t&&t.sections.filter(function(x){ return x.k===k; })[0], toEn=!!(t&&t.terp&&s&&s.qa&&s.lang==="fr"), v=oSec(tid,k), n=wc(toEn?v.en:v.fr); el.textContent=n?n+" words"+(toEn?"":" · ≈ "+fmtTime(n/WPM*60)):(toEn?"No English yet":"No French yet"); }
+  var oBarT=null, oTopT=null; function oBarSoon(){ clearTimeout(oBarT); oBarT=setTimeout(oBar,250); } function oTopicsSoon(){ clearTimeout(oTopT); oTopT=setTimeout(oTopics,500); }
+  function oBar(){
+    var t=OBY[oCur];
+    var main=t.sections.filter(function(s){ return !s.qa; }).map(function(s){ return oSec(t.id,s.k).fr||""; }).join("\n");
+    var qa=t.sections.filter(function(s){ return s.qa; }).map(function(s){ return oSec(t.id,s.k).fr||""; }).join("\n");
+    var f=fold2(main+"\n"+qa), n=wc(main), secs=n/WPM*60, pct=Math.min(100,secs/150*100);
+    var connUsed=t.conn.filter(function(c){ return hasStem(f,fold2(c)); });
+    var anyConn=["d'abord","ensuite","puis","enfin","finalement","pourtant","cependant","donc","alors","parce que","car","puisque","comme","de plus","en plus","par contre","en revanche","tout a coup","soudain","pendant que","au moment ou","quand","lorsque","bref","c'est pourquoi","grace a","a cause de","par exemple","d'un cote","au debut","a la fin","malgre"].filter(function(c){ return hasStem(f,c); }).length;
+    var unit=UNIT_STEMS.filter(function(o){ return o.s.length>=3&&hasStem(f,o.s); }).map(function(o){ return o.w; });
+    var bankUsed={}; t.words.forEach(function(w){ if(hasStem(f,stemOf(w))) bankUsed[w]=1; });
+    var cls=function(ok){ return ok?"y":"n2"; };
+    var chk="<div class=\"ochk\"><span>Length</span><b class=\""+cls(secs>=105&&secs<=150)+"\">"+n+" words · ≈ "+fmtTime(secs)+"</b></div><div class=\"ometer\" aria-hidden=\"true\"><i style=\"width:"+pct+"%\"></i></div>"+
+      "<div class=\"ochk\"><span>Linking words</span><b class=\""+cls(anyConn>=5)+"\">"+anyConn+(anyConn>=5?"":" (aim for 5+)")+"</b></div>"+
+      "<div class=\"ochk\"><span>Unité 5 words</span><b class=\""+cls(unit.length>=3)+"\">"+unit.length+(unit.length>=3?"":" (aim for 3+)")+"</b></div>";
+    if(t.qonly) chk="";
+    if(PAST[t.id]){ var ts=tenseSignals(main+"\n"+qa); chk+="<div class=\"ochk\"><span>Passé composé ≈</span><b class=\""+cls(ts.pc)+"\">"+ts.pc+"</b></div><div class=\"ochk\"><span>Imparfait ≈</span><b class=\""+cls(ts.impf)+"\">"+ts.impf+"</b></div>"; }
+    if(t.id==="t6"||t.qonly){ var q=t.sections.filter(function(s){ return s.qa; }), done=q.filter(function(s){ var v=oSec(t.id,s.k); return wc(v.fr)+(t.qonly?wc(v.en):0)>0; }).length; chk+="<div class=\"ochk\"><span>Questions answered</span><b class=\""+cls(done===q.length)+"\">"+done+" / "+q.length+"</b></div>"; }
+    $("prepOBar").innerHTML="<div class=\"ochecks\">"+chk+"</div>";
+    $("prepOBanks").innerHTML="<div class=\"obox\"><h4>Objectives</h4><ul>"+t.goal.map(function(g){ return "<li>"+esc2(g)+"</li>"; }).join("")+"</ul><p class=\"pnote\">Tense focus: "+esc2(t.focus)+"</p></div>"+
+      "<div class=\"obox\"><h4>Linking words to try</h4><div class=\"obank\">"+t.conn.map(function(c){ return "<span lang=\"fr\" class=\""+(connUsed.indexOf(c)>-1?"used":"")+"\">"+esc2(c)+"</span>"; }).join("")+"</div>"+
+      "<h4 style=\"margin-top:10px\">Unité 5 words that fit</h4><div class=\"obank\">"+t.words.map(function(w){ return "<span lang=\"fr\" class=\""+(bankUsed[w]?"used":"")+"\">"+esc2(w)+"</span>"; }).join("")+"</div>"+
+      (unit.length?"<h4 style=\"margin-top:10px\">Study-guide words you used</h4><div class=\"obank\">"+unit.map(function(w){ return "<span lang=\"fr\" class=\"used\">"+esc2(w)+"</span>"; }).join("")+"</div>":"")+"</div>";
+  }
+
+  /* ---------------- shell ---------------- */
+  function show(sub){
+    P.sub=sub; save();
+    [].forEach.call(document.querySelectorAll("#prepSub button"),function(b){ b.setAttribute("aria-pressed",String(b.dataset.sub===sub)); });
+    ["vocab","gram","oral"].forEach(function(s){ $("prep-"+s).hidden=s!==sub; });
+    if(sub==="oral"){ oTopics(); oMain(); oBar(); }
+  }
+  function init(){
+    var tp=$("prepGTopic"); Object.keys(TOPICS).forEach(function(k){ var o=document.createElement("option"); o.value=k; o.textContent=TOPICS[k].name; tp.appendChild(o); });
+    [].forEach.call(document.querySelectorAll("#prepSub button"),function(b){ b.onclick=function(){ show(b.dataset.sub); }; });
+    [].forEach.call(document.querySelectorAll("#prepVMode button"),function(b){ b.onclick=function(){ var was=V.mode; V.mode=b.dataset.mode; P.vmode=V.mode; save();
+      if(V.mode==="list"){ vSync(); vList(); } else if(was==="list"&&V.queue.length&&V.i<V.queue.length&&V.mode===V.qmode){ vSync(); vRender(); } else { V.qmode=V.mode; vNew(); } }; });
+    $("prepVSize").onchange=function(e){ V.size=e.target.value; P.vsize=V.size; save(); vNew(); };
+    $("prepVSrc").onchange=function(e){ V.src=e.target.value; vNew(); };
+    $("prepVNew").onclick=function(){ vNew(); };
+    $("prepGTopic").onchange=function(e){ G.topic=e.target.value; P.gtopic=G.topic; save(); gNew(); };
+    $("prepGSize").onchange=function(e){ G.size=e.target.value; P.gsize=G.size; save(); gNew(); };
+    $("prepGFmt").onchange=function(e){ G.fmt=e.target.value; P.gfmt=G.fmt; save(); gNew(); };
+    $("prepGSrc").onchange=function(e){ G.src=e.target.value; gNew(); };
+    $("prepGNew").onclick=function(){ gNew(); };
+    V.qmode=V.mode==="list"?"write":V.mode;
+    if(V.mode==="list"){ vSync(); vList(); } else vNew();
+    gNew();
+    show(pref("sub","vocab"));
+  }
+  return {init:init,show:show,_W:W,_I:I,_V:V,_G:G,_vNew:vNew,_gNew:gNew};
+})();
+
 /* =============== DASHBOARD =============== */
 function refreshDash(){
   updateCountdown();
@@ -3777,7 +4233,7 @@ else { sc.className="savechip off"; sc.textContent="not saving (sandbox/private 
 
 [].forEach.call(document.querySelectorAll("#verbTenseSeg button"),function(b){ b.setAttribute("aria-pressed", b.dataset.tense===verbTense?"true":"false"); });
 buildOrder(); renderVerb(); vocBuild(); renderVoc(); buildDrills(); renderGBar(); setupDash(); setupDlptChip(); renderAnaSince();
-renderVerbTable(); renderVocTable();
+renderVerbTable(); renderVocTable(); PREP.init();
 document.addEventListener("visibilitychange",function(){ if(!document.hidden) updateCountdown(); });
 setInterval(updateCountdown,36e5);
 
