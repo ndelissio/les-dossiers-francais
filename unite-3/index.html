@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 3 · Dossier Français — v2.1.5</title>
+<title>Unité 3 · Dossier Français — v2.2.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -381,6 +381,93 @@
   .rulecard ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:3px}
   .rulecard b{color:var(--bleu)} .rulecard em{font-family:var(--serif)}
   .gins{font-size:13.5px; color:var(--ink-2); margin:0 0 10px}
+  /* ---- grammar drills: task box · grammar notes · numbered exercises ---- */
+  .acc .body.dz{padding:0}
+  .acc,.chgroup{overflow:clip}   /* clip, not hidden: the sticky notes bar must stick to the page scroll */
+  .dz{--dz-bs:color-mix(in srgb,var(--bleu) 9%,var(--card)); --dz-be:color-mix(in srgb,var(--bleu) 30%,var(--card)); --dz-le:color-mix(in srgb,var(--learn) 35%,var(--card))}
+  .dz-label{display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:800; letter-spacing:.09em; text-transform:uppercase}
+  .dz-task{background:var(--learn-soft); border-left:6px solid var(--learn); border-bottom:1px solid var(--dz-le); padding:16px 22px}
+  .dz-task .dz-label{color:var(--learn)}
+  .dz-task p.dz-do{margin:6px 0 10px; font-size:18px; font-weight:600; line-height:1.4; max-width:860px; color:var(--ink)}
+  .dz-task p.dz-sub{margin:0 0 10px; font-size:14px; color:var(--ink-2)}
+  .dz-legend{display:flex; gap:18px; flex-wrap:wrap; font-size:14px; color:var(--ink-2)}
+  .dz-legend span{display:inline-flex; align-items:center; gap:7px}
+  .dz-legend i{font-style:normal; display:inline-grid; place-items:center; min-width:26px; height:22px; padding:0 6px; border-radius:6px; background:var(--card); border:1px solid var(--dz-le); font-size:12px; color:var(--ink)}
+  .dz-notes{background:var(--dz-bs); border-bottom:1px solid var(--dz-be); padding:0 22px 18px; scroll-margin-top:64px}
+  .dz-bar{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin:0 -22px 14px; padding:10px 22px; background:var(--bleu); color:var(--card)}
+  .dz-bar .dz-label{color:var(--card)}
+  .dz-title{font-family:var(--serif); font-size:17px; font-weight:600}
+  .dz-pair{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:2px}
+  .dz-pair.three{grid-template-columns:1fr 1fr 1fr}
+  @media (max-width:680px){ .dz-pair,.dz-pair.three{grid-template-columns:1fr} }
+  .dz-case{background:var(--card); border:1px solid var(--dz-be); border-top:4px solid var(--bleu); border-radius:10px; padding:12px 14px; color:var(--ink)}
+  .dz-case.alt{border-top-color:var(--learn)}
+  .dz-case h3{margin:0 0 4px; font-family:var(--sans); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--bleu)}
+  .dz-case.alt h3{color:var(--learn)}
+  .dz-case p.say{margin:4px 0 8px; font-size:15px; color:var(--ink-2)}
+  .dz-case ul.li{margin:6px 0 8px; padding-left:18px; font-size:15px}
+  .dz-case ul.li li{margin:3px 0}
+  .dz-formula{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:6px 0 10px; font-weight:700; font-size:15px}
+  .dz-chip{padding:3px 9px; border-radius:999px; background:var(--dz-bs); border:1px solid var(--dz-be); color:var(--bleu)}
+  .dz-case.alt .dz-chip{background:var(--learn-soft); border-color:var(--dz-le); color:var(--learn)}
+  .dz-arrow{color:var(--mute)}
+  .dz-ex{margin:0 0 6px; padding:8px 10px; border-radius:8px; background:var(--paper); font-family:var(--serif); font-size:17px; line-height:1.45; color:var(--ink)}
+  .dz-ex mark{background:none; color:var(--bleu); font-weight:700; border-bottom:2px solid currentColor}
+  .dz-ex mark.d{color:var(--learn)}
+  .dz-case.alt .dz-ex mark{color:var(--learn)}
+  .dz-ex small{display:block; font-family:var(--sans); font-size:13px; color:var(--mute); margin-top:2px}
+  .dz-row{display:grid; grid-template-columns:132px 1fr; gap:12px; margin-top:14px; align-items:start}
+  .dz-row>div{font-size:15px; color:var(--ink)}
+  .dz-row>div p{margin:0 0 6px}
+  @media (max-width:560px){ .dz-row{grid-template-columns:1fr} }
+  .dz-tag{padding:3px 10px; border-radius:7px; font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; white-space:normal; line-height:1.25; text-align:center; border:1px solid currentColor}
+  .dz-tag.form{background:var(--known-soft); color:var(--known)}
+  .dz-tag.use{background:var(--dz-bs); color:var(--bleu); border-color:var(--bleu)}
+  .dz-tag.alt{background:var(--learn-soft); color:var(--learn)}
+  .dz-chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px}
+  .dz-chips b,.dz-chips span{padding:2px 10px; border-radius:7px; background:var(--card); border:1px solid var(--known); color:var(--known); font-family:var(--serif); font-size:16px}
+  .dz-chips span em{font-style:normal; color:var(--mute); font-family:var(--sans); font-size:12px; margin-right:6px}
+  .dz-chips span b{border:0; padding:0; background:none; font-weight:700}
+  .dz-chips.blue b,.dz-chips.blue span{border-color:var(--bleu); color:var(--bleu)}
+  .dz-chips.amber b,.dz-chips.amber span{border-color:var(--learn); color:var(--learn)}
+  .dz-warn,.dz-also{margin-top:14px; border-radius:10px; padding:10px 14px; color:var(--ink)}
+  .dz-warn{background:var(--accent-soft); border:1px solid var(--accent)}
+  .dz-warn .dz-label{color:var(--accent)}
+  .dz-also{background:var(--card); border:1px solid var(--dz-be); border-left:5px solid var(--bleu)}
+  .dz-also .dz-label{color:var(--bleu)}
+  .dz-warn ul,.dz-also ul{margin:6px 0 0; padding-left:20px; font-size:15px}
+  .dz-warn li,.dz-also li{margin:3px 0}
+  table.dz-t{border-collapse:collapse; width:100%; background:var(--card); border:1px solid var(--dz-be); font-size:15px; color:var(--ink)}
+  table.dz-t th{background:var(--bleu); color:var(--card); text-align:left; font-size:12px; letter-spacing:.07em; text-transform:uppercase; padding:7px 12px}
+  table.dz-t td{padding:7px 12px; border-top:1px solid var(--dz-be); vertical-align:top}
+  table.dz-t td.k{font-family:var(--serif); font-size:17px; font-weight:700; color:var(--bleu); white-space:nowrap}
+  table.dz-t td.f{font-family:var(--serif); font-size:16px; color:var(--known); font-weight:700}
+  .dz-tw{margin-top:14px; overflow-x:auto}
+  .dz-rules{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px; font-size:15px; color:var(--ink)}
+  .dz-rules b{color:var(--bleu)} .dz-rules em{font-family:var(--serif); font-size:16px}
+  .dz-p{margin:12px 0 0; font-size:15px; color:var(--ink)}
+  .dz-pn{border:1px solid var(--dz-be); border-radius:12px; overflow:clip; margin:8px 0 14px; padding-top:0}
+  .dz-xhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; padding:14px 22px; border-bottom:1px solid var(--line); background:var(--card)}
+  .dz-xhead .dz-label{color:var(--ink)}
+  .dz-prog{flex:1; min-width:120px; max-width:300px; height:8px; border-radius:99px; background:var(--line); overflow:hidden}
+  .dz-prog i{display:block; height:100%; width:0; background:var(--bleu); transition:width .25s ease}
+  .dz-count{font-size:13px; color:var(--mute)}
+  .dz-sticky{position:sticky; top:var(--dz-top,48px); z-index:3; display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:8px 22px; background:var(--dz-bs); border-bottom:1px solid var(--dz-be); font-size:14px; color:var(--ink-2)}
+  .dz-sticky b{color:var(--bleu)}
+  .dz-sticky button{margin-left:auto; font:inherit; font-weight:700; font-size:13px; color:var(--bleu); background:var(--card); border:1px solid var(--dz-be); border-radius:999px; padding:3px 12px; cursor:pointer}
+  .dz .q{position:relative; padding:16px 22px 16px 72px; border-bottom:1px solid var(--line)}
+  .dz .q:last-of-type{border-bottom:0}
+  .dz-num{position:absolute; left:22px; top:16px; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:var(--dz-bs); border:1px solid var(--dz-be); color:var(--bleu); font-weight:800; font-size:14px}
+  .dz .q.dz-ok .dz-num{background:var(--known); border-color:var(--known); color:var(--card)}
+  .dz .q.dz-bad .dz-num{background:var(--accent); border-color:var(--accent); color:var(--card)}
+  .dz-kind{font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin-bottom:2px}
+  .dz .q .hint{display:inline-block; color:var(--learn); background:var(--learn-soft); border:1px solid var(--dz-le); padding:0 8px; border-radius:999px; font-size:12px; margin-top:6px}
+  .dz .wbank{padding:12px 22px 0; margin:0}
+  .dz .gempty{padding:14px 22px}
+  .dz .drill-foot{padding:14px 22px 6px; margin-top:0}
+  .dz .gresHost{padding:0 22px 18px}
+  .dz .cue{display:inline-block; font-family:var(--sans); font-size:13px; font-weight:700; padding:1px 9px; border-radius:999px; background:var(--known-soft); color:var(--known); border:1px solid var(--known); vertical-align:2px}
+  @media (max-width:560px){ .dz .q{padding:14px 14px 14px 56px} .dz-num{left:14px} .dz-task,.dz-xhead,.dz-sticky{padding-left:14px; padding-right:14px} .dz-notes{padding:0 14px 16px} .dz-bar{margin:0 -14px 12px; padding:10px 14px} }
   .gbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
   .gbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
   .gbar label{display:inline-flex; align-items:center; gap:6px}
@@ -433,7 +520,7 @@
   .misslist .pt{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700}
   .bytopic{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; font-size:14px; font-variant-numeric:tabular-nums}
   .bytopic span:nth-child(even){text-align:right; color:var(--ink-2)}
-  #prepGRule small{font-family:var(--sans); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700; margin-left:8px}
+  #prepGRule h4 small{font-family:var(--sans); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700; margin-left:8px}
   .psearch{font:inherit; font-size:14px; padding:8px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink); width:100%}
   .ptbl{max-height:520px; overflow:auto; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
   .ptbl table{width:100%; border-collapse:collapse; font-size:14px}
@@ -523,7 +610,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 3 · v2.1.5</div>
+      <div class="eyebrow">French Basic Course · Unit 3 · v2.2.0</div>
       <h1><b>Unité&nbsp;3</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -809,8 +896,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 3 · v2.1.5</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 3 · v2.2.0</strong> — built from the <em>French Basic Course, Textbook 3</em>, Chapters 11–14 (Clothing · Weather · Vacations · Grammar review), plus AOL 120 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v2.2.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 13 of the 14 grammar drills the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms and pronoun order, a green Forms strip, a red Watch out box, a blue Good to know box); <em>Renforcement des verbes pronominaux</em> keeps its rule bullets in the new style, and the 4 Vocab en contexte drills show the task only. The five Prépa examen grammar topics (comparatif, pronom y, passé récent, passé composé ou imparfait, futur simple) use the same notes. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
     <span style="color:var(--mute)">v2.1.5 (22 Oct 2026): <strong>Memo cards — mnemonics that only restated the definition are removed.</strong> Of 504 mnemonics, 379 were removed (they repeated the English gloss in other words, or only named an English cognate common enough not to need a hook); 125 were kept. 125 mnemonics remain. Only the mnemonic line of the memo changed: no card, answer, cue or progress did.<br></span>
     <span style="color:var(--mute)">v2.1.4 (19 Oct 2026): <strong>Vocabulaire — streak chip.</strong> After you answer in Spelling or Recognize, a small chip shows where the card stands: ✓ 1/3, ✓ 2/3, then ✓ 3/3 · mastered (green); a miss shows ✗ 0/3. It sits on the verdict line in Spelling and under the options in Recognize; Training records nothing and shows none.<br></span>
     <span style="color:var(--mute)">v2.1.3 (18 Oct 2026): <strong>Memo cards — synonyms and “not to confuse with” now reach back to earlier units.</strong> 116 cards gained or corrected entries (78 new links, and 23 pointers to words taught in later units removed), written to the rule that a card may name words from its own unit and from earlier units only. A word from an earlier unit carries its chapter, for example <em>principalement (Ch 17)</em>. Only the synonym and “not to confuse with” lines of the memo changed: no card, answer, cue or progress did.<br></span>
@@ -3533,8 +3621,130 @@ var GFIX={"pcimp":{"items":{"7":{"g":"allais","s":"D'habitude, j'___ à l'école
     });
   });
 })();
+/* ---------------- grammar drill layout: task box · grammar notes · numbered exercises ----------------
+   Per drill (all additive, keyed by drill id in DZN): ins (the task) · rt (notes title) · nh (the notes, built with the dz* helpers).
+   A drill with no nh but with a rule card gets its bullets restyled; a drill whose note is one blob ("Instructions … The rule …") is split. */
+var DZN={};
+function dzEx(fr,en){ return "<p class='dz-ex'>"+fr+(en?"<small>"+en+"</small>":"")+"</p>"; }
+function dzFormula(a){ return "<div class='dz-formula'>"+a.map(function(x){ return x==="+"||x==="→"?"<span class='dz-arrow'>"+x+"</span>":"<span class='dz-chip'>"+x+"</span>"; }).join("")+"</div>"; }
+function dzChips(a,cls){ return "<div class='dz-chips"+(cls?" "+cls:"")+"'>"+a.map(function(x){ return "<b>"+x+"</b>"; }).join("")+"</div>"; }
+function dzIrr(a){ return "<div class='dz-chips'>"+a.map(function(x){ return "<span><em>"+x[0]+"</em><b>"+x[1]+"</b></span>"; }).join("")+"</div>"; }
+function dzCase(o,alt){
+  var h="<div class='dz-case"+(alt?" alt":"")+"'><h3>"+o.h+"</h3>";
+  if(o.f) h+=dzFormula(o.f);
+  if(o.p) h+="<p class='say'>"+o.p+"</p>";
+  if(o.li) h+="<ul class='li'>"+o.li.map(function(x){ return "<li>"+x+"</li>"; }).join("")+"</ul>";
+  if(o.chips) h+=dzChips(o.chips,alt?"amber":"blue");
+  if(o.ex){ (typeof o.ex[0]==="string"?[o.ex]:o.ex).forEach(function(e){ h+=dzEx(e[0],e[1]); }); }
+  return h+"</div>";
+}
+function dzPair(a,b,c){ return "<div class='dz-pair"+(c?" three":"")+"'>"+dzCase(a,false)+dzCase(b,true)+(c?dzCase(c,false):"")+"</div>"; }
+function dzRow(l,h,cls){ return "<div class='dz-row'><span class='dz-tag "+(cls||"form")+"'>"+l+"</span><div>"+h+"</div></div>"; }
+function dzTable(cols,rows,fc){
+  fc=fc||[];
+  return "<div class='dz-tw'><table class='dz-t'>"+(cols?"<thead><tr>"+cols.map(function(c){ return "<th>"+c+"</th>"; }).join("")+"</tr></thead>":"")+"<tbody>"+
+    rows.map(function(r){ return "<tr>"+r.map(function(c,i){ return "<td class='"+(i===0?"k":(fc.indexOf(i)>-1?"f":""))+"'>"+c+"</td>"; }).join("")+"</tr>"; }).join("")+"</tbody></table></div>";
+}
+function dzWarn(l,li){ return "<div class='dz-warn'><span class='dz-label'>⚠ "+l+"</span><ul>"+li.map(function(x){ return "<li>"+x+"</li>"; }).join("")+"</ul></div>"; }
+function dzAlso(l,li){ return "<div class='dz-also'><span class='dz-label'>＋ "+l+"</span><ul>"+li.map(function(x){ return "<li>"+x+"</li>"; }).join("")+"</ul></div>"; }
+function dzP(h){ return "<p class='dz-p'>"+h+"</p>"; }
+/* a legacy note blob "<b>Instructions :</b> task<br><b>The rule :</b> rule" -> {task, rest} */
+function dzSplit(note){
+  var n=String(note||"").replace(/^\s*<b>\s*Instructions?\s*:?\s*<\/b>\s*:?\s*/i,""), m=n.split(/<br\s*\/?>/i);
+  return {task:(m[0]||"").trim(), rest:m.slice(1).join("<br>").replace(/^\s*<b>\s*The rule\s*:?\s*<\/b>\s*:?\s*/i,"").trim()};
+}
+function dzFor(d){
+  var z=DZN[d.id]||{}, sp=dzSplit(d.note), notes="";
+  if(z.nh) notes=z.nh.join("");
+  else if(d.rule) notes="<ul class='dz-rules'>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>";
+  else if(d.note && /<b>\s*The rule/i.test(d.note)) notes=dzP(sp.rest);
+  var sub=(!notes&&sp.rest)?sp.rest:"";
+  return {task:z.ins||d.ins||sp.task||"", sub:sub, notes:notes, title:z.rt||d.rt||d.title};
+}
+function dzTop(){ var n=document.querySelector("nav.tabs"); document.documentElement.style.setProperty("--dz-top",(n?n.offsetHeight:48)+"px"); }
+function dzTaskEl(z,items){
+  var typed=items.some(function(x){ return !x.ch; }), picks=items.some(function(x){ return x.ch; }), lg="";
+  if(typed) lg+="<span><i>✎</i> type the answer on the line</span>";
+  if(picks) lg+="<span><i>▾</i> pick from the list (keys 1–4)</span>";
+  return el("div","dz-task","<span class='dz-label'>✎ Your task</span><p class='dz-do'>"+z.task+"</p>"+(z.sub?"<p class='dz-sub'>"+z.sub+"</p>":"")+"<div class='dz-legend'>"+lg+"</div>");
+}
+function dzDecorate(q,i){
+  var kind=q.querySelector("select.gapsel")?"Pick from the list":"Type the answer";
+  q.insertBefore(el("div","dz-kind",kind),q.firstChild); q.appendChild(el("div","dz-num",String(i+1)));
+}
+function dzDone(det,q){
+  q.classList.add(q._res==="ok"?"dz-ok":"dz-bad"); var n=q.querySelector(".dz-num"); if(n) n.textContent=q._res==="ok"?"✓":"✗";
+  var qs=det._body.querySelectorAll(".q"), a=0; [].forEach.call(qs,function(x){ if(x._res) a++; });
+  var xh=det._body.querySelector(".dz-xhead"); if(xh&&qs.length){ xh.querySelector(".dz-prog i").style.width=Math.round(a/qs.length*100)+"%"; xh.querySelector(".dz-count").textContent=a+" of "+qs.length; }
+}
+
+/* grammar notes, structured (Unité 3). Drills not listed (pron, the vocab drills) keep their rule bullets (restyled) or their note. */
+DZN.py={rt:"Le pronom y",nh:[
+  dzPair({h:"y replaces",f:["à / dans / chez / sur / sous / devant","+","a place"],li:["<b>à</b> + a thing — <i>penser à, répondre à, réfléchir à, s'intéresser à, participer à, assister à</i>"],ex:["Tu vas à la plage ? Oui, j'<mark>y</mark> vais.","Are you going to the beach? Yes, I'm going there."]},
+         {h:"Never y for a person",li:["<b>lui / leur</b> — <i>obéir à, répondre à</i>","<b>à + eux / elle</b> — <i>penser à, songer à, se joindre à</i>"],ex:["Je pense à mon frère → je pense à <mark>lui</mark>.","I think of my brother → I think of him."]}),
+  dzTable(["Where y goes","Example"],[["before the verb","j'<b>y</b> vais · je n'<b>y</b> vais pas"],["before the auxiliary","j'<b>y</b> suis allé"],["before the infinitive","il va <b>y</b> rester"],["affirmative command","vas<b>-y</b> · penses<b>-y</b> (the tu form of -er verbs and of aller takes an -s)"],["negative command","n'<b>y</b> va pas"]],[1])]};
+DZN.dpr1={rt:"Les doubles pronoms",nh:[
+  dzP("Two pronouns together keep a fixed order before the verb."),
+  dzTable(["1","2","3","4","5"],[["me · te · se · nous · vous","le · la · les","lui · leur","y","en"]],[0,1,2,3,4]),
+  dzPair({h:"Examples",ex:[["Je <mark>le lui</mark> donne.","I give it to him."],["Il <mark>m'en</mark> donne.","He gives me some."],["Tu <mark>lui en</mark> donnes.","You give him some."]]},
+         {h:"Position",li:["before the auxiliary — <i>je les lui ai donnés</i>","before the infinitive — <i>tu veux le lui montrer</i>"]}),
+  dzRow("Commands","<p><b>Affirmative:</b> verb + COD + COI, with hyphens — <span class='fr'><i>envoyez-la-moi</i></span>. <b>me / te</b> become <b>moi / toi</b>, except before en or y — <span class='fr'><i>parle-m'en</i></span>.</p><p><b>Negative:</b> the normal order again, before the verb — <span class='fr'><i>ne me le dis pas</i></span>.</p>","use"),
+  dzAlso("Good to know",["<b>me, te, se, le, la</b> elide before a vowel and before <b>y / en</b>: <span class='fr'><i>elle s'en occupe, il m'y emmène</i></span>."])]};
+DZN.sup1={rt:"Le superlatif — adjectifs et adverbes",nh:[
+  dzPair({h:"Adjective",f:["le / la / les","+","plus / moins","+","adjective"],p:"Article and adjective both agree with the noun.",ex:["la <mark>plus belle</mark> plage · les <mark>moins chers</mark>",""]},
+         {h:"Adverb",f:["le","+","plus / moins","+","adverb"],p:"Always <b>le</b>; it never agrees.",ex:["Elle voyage <mark>le plus souvent</mark>.","She travels the most often."]}),
+  dzRow("Position","<p>The superlative goes where the adjective normally goes, and the article is repeated after the noun: <span class='fr'><i>les hôtels <b>les plus</b> confortables</i></span>.</p>","use"),
+  dzRow("Possessive","<p>A possessive can replace the article: <span class='fr'><i>mon meilleur guide</i></span>.</p>","use"),
+  dzRow("In what group","<p><b>de</b> names the group the comparison is made in: <span class='fr'><i>de la région, du monde</i></span>.</p>","use"),
+  dzWarn("Watch out",["<b>bon → meilleur</b>, never <i>plus bon</i> (see the next superlative drill)."])]};
+DZN.plr={rt:"Plaire et les verbes d'opinion",nh:[
+  dzPair({h:"plaire flips the sentence",p:"The thing liked is the <b>subject</b>; the person who likes it is an <b>indirect object</b>.",f:["thing","+","indirect pronoun","+","plaire"],ex:["Marie aime ce sac → Ce sac <mark>lui plaît</mark>.","Marie likes this bag."]},
+         {h:"Indirect pronouns",chips:["me","te","lui","nous","vous","leur"],p:"The verb agrees with the thing liked.",ex:["Les chaussures <mark>vous plaisent</mark>.","You like the shoes."]}),
+  dzRow("Forms",dzIrr([["présent","plaît · plaisent"],["imparfait","plaisait · plaisaient"],["passé composé","a plu · ont plu"],["infinitive","plaire"]])+"<p>The circumflex is only in <b>il plaît</b>. <b>plu</b> never agrees. Use the infinitive after <i>aller</i>.</p>"),
+  dzRow("Opinions","<p><b>trouver que, croire que, penser que</b> + clause: <span class='fr'><i>je trouve que c'est joli</i></span>; <i>nous croyons</i>.</p><p>To ask: <span class='fr'><i>Qu'est-ce que tu penses de… ?</i></span></p>","use")]};
+DZN.fs1={rt:"Le futur simple",nh:[
+  dzCase({h:"Building it",f:["infinitive","+","-ai · -as · -a · -ons · -ez · -ont"],p:"-re verbs drop the final <b>e</b>.",ex:[["je <mark>prendrai</mark> · elle <mark>réservera</mark>",""]]}),
+  dzRow("Irregular stems",dzChips(["ser- (être)","aur-","ir-","fer-","pourr-","devr-","voudr-","saur-","viendr-","tiendr-","verr-","enverr-","recevr-","courr-","mourr-","faudr-","pleuvr-"],"blue")+"<p>Same endings. The stem always ends in <b>-r</b>.</p>"),
+  dzRow("After si","<p><b>si</b> + présent → the result takes the futur; the si-clause itself never does: <span class='fr'><i>Si j'ai le temps, je ferai les courses.</i></span></p>","use")]};
+DZN.met={rt:"La météo — il fait, il y a, les verbes impersonnels",nh:[
+  dzPair({h:"Weather verbs",p:"Impersonal: only <b>il</b> + the 3rd person singular.",chips:["il pleut","il neige","il gèle","il grêle","il bruine","il vente"],ex:["Il <mark>pleut</mark> depuis hier.","It has been raining since yesterday."]},
+         {h:"Two other patterns",li:["<b>il fait</b> + adjective — <i>il fait chaud, froid, beau</i>","<b>il y a</b> + noun — <i>il y a du vent, un orage</i>"],ex:["Il y a <mark>un orage</mark>.","There is a storm."]}),
+  dzRow("Any tense","<p>Same <b>il</b>: <span class='fr'><i>il a plu</i></span> (avoir; the participle never changes) · <span class='fr'><i>il neigeait</i></span> · <span class='fr'><i>il fera froid</i></span> · <span class='fr'><i>il y a eu un orage</i></span>.</p>","use"),
+  dzWarn("Watch out — spelling",["<b>il gèle, il gèlera</b> (grave accent), but <i>il gelait</i>.","<b>il neigeait</b> keeps its e; <b>il grêle</b> has a circumflex."])]};
+DZN.compirr={rt:"Les comparatifs irréguliers",nh:[
+  dzTable(["","Adjective — agrees","Adverb — never changes"],[["good / well","bon → <b>meilleur(e)(s)</b>","bien → <b>mieux</b>"],["bad / badly","mauvais → <b>pire(s)</b> (or plus mauvais)","mal → <b>plus mal</b>"]],[1,2]),
+  dzPair({h:"Adjective — describes a noun",ex:["Ce vol est <mark>meilleur</mark>.","This flight is better."]},
+         {h:"Adverb — describes a verb",ex:["Elle nage <mark>mieux</mark>.","She swims better."]}),
+  dzWarn("Watch out",["Never <i>plus bon</i>.","Only the superiority forms are irregular: <b>moins bon, aussi bien, moins mal</b> stay regular."])]};
+DZN.pcimp={rt:"Passé composé et imparfait",nh:[
+  dzPair({h:"Imparfait — sets the scene",p:"What was going on: descriptions, habits, a state.",chips:["tous les jours","d'habitude","autrefois","à l'époque","chaque matin"],ex:["Il <mark>faisait</mark> beau.","The weather was nice."]},
+         {h:"Passé composé — moves the story",p:"What happened.",chips:["un jour","soudain","tout à coup","d'abord","puis","enfin"],ex:["Soudain, il <mark>a plu</mark>.","Suddenly it rained."]}),
+  dzRow("Bounded","<p>A start and an end point, or a number of times, make an action bounded → passé composé: <span class='fr'><i>j'ai habité à Lyon de 2010 à 2015</i></span>.</p>","use"),
+  dzRow("State or change","<p><b>être, avoir, vouloir, pouvoir, savoir</b>: imparfait for a state, passé composé for a change — <span class='fr'><i>j'ai eu peur</i></span> = I got scared.</p>","use"),
+  dzAlso("Good to know",["Être verbs take <b>être</b> in the passé composé: <span class='fr'><i>je suis allé</i></span>."])]};
+DZN.pcimp2={rt:"Passé composé et imparfait dans une même phrase",nh:[
+  dzPair({h:"Imparfait — the frame",p:"Background and descriptions. Imparfait verbs can swap places without changing the story.",chips:["d'habitude","à cette époque-là","pendant que"],ex:["Je <mark>travaillais</mark> à Paris…","I was working in Paris…"]},
+         {h:"Passé composé — the interruption",p:"It interrupts the frame or moves the story on. Passé composé verbs follow one another in order.",chips:["soudain","tout à coup","un jour","alors"],ex:["…quand je l'<mark>ai rencontré</mark>.","…when I met him."]}),
+  dzRow("States","<p>États and descriptions (<b>être, avoir, savoir, pouvoir</b>) are usually imparfait; they take the passé composé for a change or a bounded stretch.</p>","use"),
+  dzAlso("Good to know",["Pronominal verbs take <b>être</b> and agree: <span class='fr'><i>elle s'est levée</i></span>."])]};
+DZN.prec={rt:"Le passé récent",nh:[
+  dzPair({h:"Just happened",f:["venir (présent)","+","de","+","infinitive"],ex:["Je <mark>viens de</mark> partir.","I have just left."]},
+         {h:"Had just happened",f:["venir (imparfait)","+","de","+","infinitive"],ex:["Ils <mark>venaient de</mark> sortir.","They had just gone out."]}),
+  dzAlso("Good to know",["<b>de</b> elides before a vowel: <span class='fr'><i>elle vient d'entrer</i></span>.","Emphasis: <b>juste</b> or <b>tout juste</b> goes between venir and de — <span class='fr'><i>il vient juste de sortir</i></span>.","<b>à peine</b> (barely) can sit before <i>de</i>: <span class='fr'><i>il venait à peine d'arriver</i></span>."])]};
+DZN.cond={rt:"Le conditionnel présent",nh:[
+  dzCase({h:"Building it",f:["futur stem","+","-ais · -ais · -ait · -ions · -iez · -aient"],ex:[["elle <mark>aurait</mark> · nous <mark>irions</mark>",""]]}),
+  dzRow("Irregular stems",dzChips(["ser-","aur-","ir-","fer-","pourr-","devr-","voudr-","vaudr-","viendr-"],"blue")+"<p>The same stems as the futur.</p>"),
+  dzTable(["Use","Example"],[["a request","<i>Pourriez-vous m'aider ?</i>"],["a wish","<i>J'aimerais voyager.</i>"],["advice","<i>Tu devrais te reposer.</i>"],["a suggestion","<i>On pourrait y aller.</i>"]],[1]),
+  dzWarn("Watch out",["Mind the last sound: <span class='fr'><i>je ferai</i></span> (futur) vs <span class='fr'><i>je ferais</i></span> (conditionnel)."])]};
+DZN.comp={rt:"Les comparatifs réguliers",nh:[
+  dzTable(["Compared","Superiority · inferiority · equality","Example"],[["adjective or adverb","<b>plus / moins / aussi</b> + adj. or adv. + <b>que</b>","plus grand que · aussi vite que"],["noun","<b>plus de / moins de / autant de</b> + noun + <b>que</b>","plus de randonneurs que"],["verb","verb + <b>plus / moins / autant</b> + <b>que</b>","il marche plus que moi · autant que moi"]],[1]),
+  dzRow("Equality","<p><b>aussi</b> goes with an adjective or an adverb; <b>autant</b> goes with a noun or a verb.</p>","use"),
+  dzAlso("Good to know",["<b>que</b> elides before a vowel: <span class='fr'><i>qu'en hiver</i></span>.","<b>bon, bien, mauvais, mal</b> have irregular forms (separate drill)."])]};
+DZN.sup2={rt:"Le superlatif — bon, mauvais, noms et verbes",nh:[
+  dzTable(["Ranked","Form","Example"],[["bon","<b>le / la / les meilleur(e)(s)</b> — never <i>le plus bon</i>","les meilleurs sentiers"],["mauvais","<b>le pire</b> (or <b>le plus mauvais</b>)","le pire hôtel"],["bien · mal","<b>le mieux</b> · <b>le plus mal</b> — adverbs never agree","elle chante le mieux"],["a noun","<b>le plus de / le moins de</b> + noun — invariable, never <i>des</i>","le plus de sentiers"],["a verb","verb + <b>le plus / le moins</b>","elle voyage le plus"]],[1])]};
+
 function buildDrills(){
-  var host=document.getElementById("drills"); host.innerHTML="";
+  dzTop(); var host=document.getElementById("drills"); host.innerHTML="";
   var sorted=DRILLS.slice().sort(function(a,b){return a.minCh-b.minCh;});
   var groups={}; sorted.forEach(function(d){ (groups[d.minCh]=groups[d.minCh]||[]).push(d); });
   Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(ch){
@@ -3707,16 +3917,16 @@ function buildDrillAcc(d,opts){
   var sum=el("summary");
   sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
-  var body=el("div","body");
-  if(d.rule){
-    if(d.ins) body.appendChild(el("p","gins","<b>Instructions :</b> "+d.ins));
-    body.appendChild(el("div","rulecard","<h4>"+(d.rt||"La règle")+"</h4><ul>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>"));
-  } else if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }
+  var body=el("div","body dz"), z=dzFor(d), nz=null;
+  if(z.task) body.appendChild(dzTaskEl(z,d.items));
+  if(z.notes){ nz=el("div","dz-notes","<div class='dz-bar'><span class='dz-label'>📘 Grammar notes</span><span class='dz-title'>"+z.title+"</span></div>"+z.notes); body.appendChild(nz); }
   if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
   det._d=d; det._body=body; det._practice=practice;
   if(empty) body.appendChild(el("div","gempty",empty));
-  d.items.forEach(function(it){ body.appendChild(gBuildQ(d,it,det,function(){
-    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); })); });
+  body.appendChild(el("div","dz-xhead","<span class='dz-label'>✍ Exercises</span><div class='dz-prog'><i></i></div><span class='dz-count'>0 of "+d.items.length+"</span>"));
+  if(nz){ var st=el("div","dz-sticky","📘 <span>Notes: <b>"+z.title+"</b></span>"), sb=el("button",null,"Back to notes ↑"); sb.type="button"; sb.onclick=function(){ nz.scrollIntoView({behavior:"smooth",block:"start"}); }; st.appendChild(sb); body.appendChild(st); }
+  d.items.forEach(function(it,i){ var qq=gBuildQ(d,it,det,function(q){
+    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); dzDone(det,q); }); dzDecorate(qq,i); body.appendChild(qq); });
   var foot=el("div","drill-foot");
   var cbtn=el("button","ghost","Check all");
   cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._check(); }); };
@@ -3912,7 +4122,10 @@ var PREP=(function(){
     $("prepGTopic").value=G.topic; $("prepGSize").value=G.size; $("prepGFmt").value=G.fmt;
     var s=$("prepGSrc"); s.options[1].textContent="My misses ("+Object.keys(gm_()).length+")"; s.value=G.src;
   }
-  function gRule(t){ var T0=TOPICS[t]; $("prepGRule").innerHTML="<h4>"+esc2(T0.name)+" <small>"+esc2(T0.en)+"</small></h4>"+T0.rule; }
+  var PM={"comp":"comp","y":"py","rec":"prec","pci":"pcimp","fut":"fs1"};   /* Prépa topic -> structured grammar notes (DZN) */
+  function gRule(t){ var T0=TOPICS[t], z=PM[t]&&DZN[PM[t]], r0=$("prepGRule");
+    if(z&&z.nh){ r0.className="dz dz-notes dz-pn"; r0.innerHTML="<div class=\"dz-bar\"><span class=\"dz-label\">📘 Grammar notes</span><span class=\"dz-title\">"+esc2(T0.name)+"</span></div>"+z.nh.join(""); }
+    else { r0.className="rulecard"; r0.innerHTML="<h4>"+esc2(T0.name)+" <small>"+esc2(T0.en)+"</small></h4>"+T0.rule; } }
   function gNew(list){
     if(list) G.queue=shuf(list);
     else {
@@ -3983,7 +4196,7 @@ var PREP=(function(){
   function gResults(){
     var total=G.res.length, right=G.res.filter(function(r){ return r.ok; }).length, wrong=G.res.filter(function(r){ return !r.ok; });
     var per={}; G.res.forEach(function(r){ var p=per[r.it.t]=per[r.it.t]||[0,0]; p[1]++; if(r.ok) p[0]++; });
-    $("prepGRule").innerHTML="<h4>Results by topic</h4><div class=\"bytopic\">"+Object.keys(TOPICS).filter(function(t){ return per[t]; }).map(function(t){ return "<span>"+esc2(TOPICS[t].name)+"</span><span>"+per[t][0]+" / "+per[t][1]+"</span>"; }).join("")+"</div>";
+    $("prepGRule").className="rulecard"; $("prepGRule").innerHTML="<h4>Results by topic</h4><div class=\"bytopic\">"+Object.keys(TOPICS).filter(function(t){ return per[t]; }).map(function(t){ return "<span>"+esc2(TOPICS[t].name)+"</span><span>"+per[t][0]+" / "+per[t][1]+"</span>"; }).join("")+"</div>";
     var canon=function(it){ return it.k==="pick"?it.ch[0]:it.a[0]; };
     $("prepGCard").innerHTML="<div class=\"pprog\"><i style=\"width:100%\"></i></div><div class=\"pbody\"><span class=\"ptag\">Results</span>"+
       "<div class=\"pscore\"><span class=\"big\">"+right+" / "+total+"</span><span class=\"pct\">"+(total?Math.round(right/total*100):0)+"% · "+Object.keys(gm_()).length+" question"+(Object.keys(gm_()).length===1?"":"s")+" in your misses pile</span></div>"+
