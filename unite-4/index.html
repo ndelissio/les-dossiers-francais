@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 4 · Dossier Français — v1.2.3</title>
+<title>Unité 4 · Dossier Français — v1.3.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -183,6 +183,22 @@
   .vt-sub{font-size:12px; color:var(--mute); margin:1px 0 9px}
   .vt-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px}
   .vt-item{display:flex; align-items:baseline; gap:9px; padding:6px 10px; border-radius:8px; border:1px solid transparent; font-size:13.5px; min-width:0}
+  :root{--star:#C48A12}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){--star:#F2C14E} }
+  :root[data-theme="dark"]{--star:#F2C14E}
+  .vcard{position:relative}
+  .favbtn{position:absolute; top:12px; right:14px; appearance:none; border:1px solid var(--line); background:var(--card); color:var(--mute); width:38px; height:38px; border-radius:50%; font-size:20px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0; transition:color .12s ease, border-color .12s ease, background .12s ease, transform .12s ease}
+  .favbtn:hover{border-color:var(--star); color:var(--star)}
+  .favbtn:focus-visible,.vt-star:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
+  .favbtn.on,.vt-star.on{color:var(--star)}
+  .favbtn.on{border-color:var(--star); background:color-mix(in srgb,var(--star) 14%,var(--card))}
+  .favbtn.pop{transform:scale(1.18)}
+  #voccard .vcat{max-width:calc(100% - 52px)}   /* keeps the category tag clear of the star */
+  .vt-star{appearance:none; border:0; background:none; cursor:pointer; padding:0 2px; font-size:16px; line-height:1; color:var(--mute); opacity:.55; flex:0 0 auto}
+  .vt-star:hover{opacity:1; color:var(--star)}
+  .vt-star.on{opacity:1}
+  #favBtnVoc.on{background:color-mix(in srgb,var(--star) 20%,var(--card)); border-color:var(--star); color:var(--ink)}
+  #favBtnVoc .st{color:var(--star)}
   .vt-item .vt-fr{font-family:var(--serif); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:0 1 auto}
   .vt-item .vt-en{color:var(--mute); font-size:11.5px; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1 1 0; min-width:0}
   .vt-ct{flex:0 0 auto; font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; letter-spacing:.2px}
@@ -617,7 +633,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v1.2.3</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v1.3.0</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -785,6 +801,7 @@
       </div>
     </div>
     <div class="frow"><span class="flabel">Filtres</span>
+      <button class="ghost" id="favBtnVoc" aria-pressed="false"><span class="st">☆</span> Favorites</button>
       <button class="ghost" id="hideKnownBtnVoc">Hide known</button>
       <button class="ghost" id="rustyBtnVoc">Rusty</button>
       <button class="ghost" id="newOnlyBtnVoc">New only</button>
@@ -901,8 +918,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v1.2.3</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v1.3.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.3.0 (15 Nov 2026): <strong>Favorites in Vocabulaire.</strong> A ☆ button at the top-right of every vocabulary card stars the word (click again to remove it). A <strong>☆ Favorites</strong> filter, first in the Filtres row with a live count, shows only starred words in every mode (Spelling, Recognize, Recall); it switches the chapter drop-down to All chapters, since favorites span chapters, and you can pick a chapter to narrow them. In the progress table every word has its own ☆ / ★, and with the filter on the table lists only your favorites. Favorites are saved in this browser by the word's French spelling, so a word that appears in several chapters shares one star, and they follow a word whose spelling is corrected in a later version. Reset marks does not clear them. Prépa examen is unchanged. No vocabulary, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.2.3 (15 Nov 2026): <strong>Vocab en contexte drills now mix drop-downs and typed answers.</strong> In the 4 Vocab en contexte drills, 15 items are now drop-downs (four options, the three wrong ones from the same topic), and 26 typed items carry a one- or two-word English gloss beside the sentence. Items that already had a gloss or a hint keep it. The accepted answers, scoring, best scores and progress are unchanged.<br></span>
     <span style="color:var(--mute)">v1.2.2 (15 Nov 2026): <strong>Grammar coverage reaches 100 % in a few rounds.</strong> A round now shows the questions you have not yet answered correctly first, then fills up with ones you have already covered, so a drill with 20 questions is fully covered in 2 rounds, 25 or 30 in 3 (before, rounds were random and it took about 6 to 11). A question you miss comes back first in the next round until you get it right. A small <em>N new</em> pill in the Exercises header shows how many of the round are new. Nothing else changed: same questions, answers, scoring, best scores and progress.<br></span>
     <span style="color:var(--mute)">v1.2.1 (15 Nov 2026): <strong>Less clutter in the exercises.</strong> The grey <em>Type the answer</em> / <em>Pick from the list</em> label above each grammar exercise is gone (the numbered circle and the Your task key already say it). The accent keys under typed answers are now off by default: a round <strong>é</strong> button in the masthead, next to the light/dark button, switches them on or off for every typed field (grammar drills, vocabulary, Prépa examen) and remembers your choice. No drill item, answer, accepted form or progress changed.<br></span>
@@ -2841,9 +2859,15 @@ VOCAB.push.apply(VOCAB,[
   W.forEach(function(w){ VOCAB.push(w); });
 })();
 
+var vocFav=false;
+function isFav(f){ return !!state.fav[f]; }
+function favCount(){ return Object.keys(state.fav).filter(function(f){ return VOCAB.some(function(v){ return v.f===f; }); }).length; }
+function toggleFav(f){ if(state.fav[f]) delete state.fav[f]; else state.fav[f]=1; saveState(); updateFavBtn(); return !!state.fav[f]; }
+function updateFavBtn(){ var b=document.getElementById("favBtnVoc"); if(!b) return; var n=favCount(); b.classList.toggle("on",vocFav); b.setAttribute("aria-pressed",vocFav?"true":"false"); b.innerHTML="<span class='st'>"+(vocFav?"★":"☆")+"</span> Favorites"+(n?" · "+n:""); }
 var vocMode="spell", vocScope="all", vocDir="en", vocTopicSel="all", vocNewOnly=false, vocHideKnown=false, vocRusty=false, vocChapterSel="any", vocTrain=false;
 var vocOrder=[], vocIdx=0, vocShown=false;
 state.vocab = state.vocab || {};   // fr -> "known" | "learn"
+state.fav = state.fav || {};       // fr -> 1 (starred word, any chapter; keyed by f like progress)
 /* Progress is keyed by the French string. When a card's French changes (plural → singular, a merged
    masculine/feminine card, a removed fragment), its saved progress moves to the new key: [old, new|null].
    Merged cards stay cautious — known only if every card that fed it was known. */
@@ -2885,6 +2909,7 @@ var VOCAB_ALIASES=[
   var touched=false;
   VOCAB_ALIASES.forEach(function(p){
     var o=p[0], n=p[1], so=state.vocabStats[o], vo=state.vocab[o];
+    if(state.fav[o]){ if(n) state.fav[n]=1; delete state.fav[o]; touched=true; }   /* a starred word follows its card when its f: changes */
     if(so===undefined && vo===undefined) return;
     touched=true;
     if(n){
@@ -2952,6 +2977,7 @@ function vocPool(){
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
+  if(vocFav) arr=arr.filter(function(i){return isFav(VOCAB[i].f);});
   if(vocNewOnly) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]===undefined;});
   if(vocHideKnown) arr=arr.filter(function(i){return state.vocab[VOCAB[i].f]!=="known";});
   if(vocRusty) arr=arr.filter(function(i){return isRusty(state.vocab, state.vocabStats, VOCAB[i].f);});
@@ -2966,6 +2992,7 @@ function vocChapterScope(){
   if(vocChapterSel!=="any"){ arr=arr.filter(function(i){return VOCAB[i].c===+vocChapterSel;}); }
   else if(vocScope==="level"){ arr=arr.filter(function(i){return VOCAB[i].c<=state.currentCh;}); }
   if(vocTopicSel!=="all") arr=arr.filter(function(i){return VOCAB[i].t===vocTopicSel;});
+  if(vocFav) arr=arr.filter(function(i){return isFav(VOCAB[i].f);});
   return arr;
 }
 function vocStatus(f){ var s=state.vocab[f]; return s==="known"?"known":(s==="learn"?"learn":"new"); }
@@ -3002,7 +3029,7 @@ function renderVocTable(){
       var v=VOCAB[i], s=vocStatus(v.f);
       var cls = s==="known"?"vt-known":(s==="learn"?"vt-learn":"vt-new");
       html+="<div class='vt-item "+cls+"'><span class='vt-fr'>"+v.f+"</span><span class='vt-en' title='"+v.e.replace(/'/g,"&#39;")+"'>"+v.e+"</span>"+ctBadge(state.vocabStats[v.f])+
-        "</div>";
+        "<button type='button' class='vt-star"+(isFav(v.f)?" on":"")+"' data-i='"+i+"' aria-label='Favorite' title='"+(isFav(v.f)?"Remove from favorites":"Add to favorites")+"'>"+(isFav(v.f)?"★":"☆")+"</button></div>";
     });
     html+="</div></div>";
   });
@@ -3015,7 +3042,7 @@ function updateVocToggle(){
   var open=vocTableVisible();
   document.getElementById("vocTableToggle").textContent=(open?"Hide":"Show")+" progress table — "+k+"/"+idxs.length+" known "+(open?"▴":"▾");
 }
-function refreshVocTableIfOpen(){ if(vocTableVisible()) renderVocTable(); }
+function refreshVocTableIfOpen(keepList){ if(vocTableVisible()){ if(keepList) { [].forEach.call(document.querySelectorAll('#vocTable .vt-star'),function(b){ var v=VOCAB[+b.getAttribute('data-i')], on=isFav(v.f); b.classList.toggle('on',on); b.textContent=on?'★':'☆'; }); } else renderVocTable(); } }
 function vocKnownCount(){ return Object.keys(state.vocab).filter(function(k){return state.vocab[k]==="known";}).length; }
 
 /* ---------------- Recognize mode: French on the card, pick the English meaning (four options) ---------------- */
@@ -3068,7 +3095,7 @@ function renderVoc(){
   var card=document.getElementById("voccard"); card.innerHTML=""; memoHide();
   document.getElementById("vocKnown").textContent=vocKnownCount()+" marked known";
   if(!vocOrder.length){
-    card.appendChild(el("div","prompt","<div class='small'>No words match these filters.</div>"));
+    card.appendChild(el("div","prompt","<div class='small'>"+(vocFav?"No favorites here yet — tap the ☆ on a card, or in the progress table below, to star a word.":"No words match these filters.")+"</div>"));
     document.getElementById("vocCount").textContent="0 words"; document.getElementById("vocPos").textContent="";
     return;
   }
@@ -3079,6 +3106,11 @@ function renderVoc(){
   function vocTagText(){ return (v.c===900?CH_NAMES[900]:"Ch "+v.c)+" · "+VTOPICS[v.t]+" · "+statMeta(state.vocabStats[v.f]); }
   tag.textContent=vocTagText();
   card.appendChild(tag);
+  var fb=el("button","favbtn"); fb.type="button";
+  function paintFav(){ var on=isFav(v.f); fb.classList.toggle("on",on); fb.textContent=on?"★":"☆"; fb.title=on?"Favorite — click to remove":"Add to favorites"; fb.setAttribute("aria-label",fb.title); fb.setAttribute("aria-pressed",on?"true":"false"); }
+  fb.addEventListener("mousedown",function(e){ e.preventDefault(); });
+  fb.addEventListener("click",function(){ toggleFav(v.f); paintFav(); fb.classList.add("pop"); setTimeout(function(){ fb.classList.remove("pop"); },140); refreshVocTableIfOpen(true); });
+  paintFav(); card.appendChild(fb);
 
   if(vocMode==="spell"){
     /* spelling mode: prompt with English, type the French exactly */
@@ -3257,6 +3289,17 @@ document.getElementById("vocDirSeg").style.opacity=".4";   /* the EN/FR directio
 document.getElementById("vocDirSeg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(vocMode==="spell")return;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");vocDir=b.dataset.dir;vocShown=false;renderVoc();});
 document.getElementById("vocTopic").addEventListener("change",function(){vocTopicSel=this.value;vocBuild();renderVoc();refreshVocTableIfOpen();});
 document.getElementById("vocTrainBtn").addEventListener("click",function(){vocTrain=!vocTrain;this.style.background=vocTrain?"var(--accent)":"";this.style.color=vocTrain?"var(--on-solid)":"";vocShown=false;renderVoc();});
+document.getElementById("favBtnVoc").addEventListener("click",function(){
+  vocFav=!vocFav;
+  if(vocFav){ vocChapterSel="any"; document.getElementById("chapterFilterVoc").value="any"; }   /* favorites span every chapter; pick a chapter again to narrow them */
+  updateFavBtn(); vocBuild(); renderVoc(); refreshVocTableIfOpen();
+});
+document.getElementById("vocTable").addEventListener("click",function(e){
+  var b=e.target.closest(".vt-star"); if(!b) return;
+  var v=VOCAB[+b.getAttribute("data-i")]; var on=toggleFav(v.f);
+  b.classList.toggle("on",on); b.textContent=on?"★":"☆"; b.title=on?"Remove from favorites":"Add to favorites";
+  var cur=VOCAB[vocOrder[vocIdx]]; if(cur&&cur.f===v.f){ var cb=document.querySelector("#voccard .favbtn"); if(cb){ cb.classList.toggle("on",on); cb.textContent=on?"★":"☆"; } }
+});
 document.getElementById("hideKnownBtnVoc").onclick=function(){
   vocHideKnown=!vocHideKnown; this.style.background=vocHideKnown?"var(--known)":""; this.style.color=vocHideKnown?"var(--on-solid)":"";
   vocBuild(); renderVoc();
