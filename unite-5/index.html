@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v1.0.1</title>
+<title>Unité 5 · Dossier Français — v1.1.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -383,6 +383,93 @@
   .rulecard ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:3px}
   .rulecard b{color:var(--bleu)} .rulecard em{font-family:var(--serif)}
   .gins{font-size:13.5px; color:var(--ink-2); margin:0 0 10px}
+  /* ---- grammar drills: task box · grammar notes · numbered exercises ---- */
+  .acc .body.dz{padding:0}
+  .acc,.chgroup{overflow:clip}   /* clip, not hidden: the sticky notes bar must stick to the page scroll */
+  .dz{--dz-bs:color-mix(in srgb,var(--bleu) 9%,var(--card)); --dz-be:color-mix(in srgb,var(--bleu) 30%,var(--card)); --dz-le:color-mix(in srgb,var(--learn) 35%,var(--card))}
+  .dz-label{display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:800; letter-spacing:.09em; text-transform:uppercase}
+  .dz-task{background:var(--learn-soft); border-left:6px solid var(--learn); border-bottom:1px solid var(--dz-le); padding:16px 22px}
+  .dz-task .dz-label{color:var(--learn)}
+  .dz-task p.dz-do{margin:6px 0 10px; font-size:18px; font-weight:600; line-height:1.4; max-width:860px; color:var(--ink)}
+  .dz-task p.dz-sub{margin:0 0 10px; font-size:14px; color:var(--ink-2)}
+  .dz-legend{display:flex; gap:18px; flex-wrap:wrap; font-size:14px; color:var(--ink-2)}
+  .dz-legend span{display:inline-flex; align-items:center; gap:7px}
+  .dz-legend i{font-style:normal; display:inline-grid; place-items:center; min-width:26px; height:22px; padding:0 6px; border-radius:6px; background:var(--card); border:1px solid var(--dz-le); font-size:12px; color:var(--ink)}
+  .dz-notes{background:var(--dz-bs); border-bottom:1px solid var(--dz-be); padding:0 22px 18px; scroll-margin-top:64px}
+  .dz-bar{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin:0 -22px 14px; padding:10px 22px; background:var(--bleu); color:var(--card)}
+  .dz-bar .dz-label{color:var(--card)}
+  .dz-title{font-family:var(--serif); font-size:17px; font-weight:600}
+  .dz-pair{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:2px}
+  .dz-pair.three{grid-template-columns:1fr 1fr 1fr}
+  @media (max-width:680px){ .dz-pair,.dz-pair.three{grid-template-columns:1fr} }
+  .dz-case{background:var(--card); border:1px solid var(--dz-be); border-top:4px solid var(--bleu); border-radius:10px; padding:12px 14px; color:var(--ink)}
+  .dz-case.alt{border-top-color:var(--learn)}
+  .dz-case h3{margin:0 0 4px; font-family:var(--sans); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--bleu)}
+  .dz-case.alt h3{color:var(--learn)}
+  .dz-case p.say{margin:4px 0 8px; font-size:15px; color:var(--ink-2)}
+  .dz-case ul.li{margin:6px 0 8px; padding-left:18px; font-size:15px}
+  .dz-case ul.li li{margin:3px 0}
+  .dz-formula{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:6px 0 10px; font-weight:700; font-size:15px}
+  .dz-chip{padding:3px 9px; border-radius:999px; background:var(--dz-bs); border:1px solid var(--dz-be); color:var(--bleu)}
+  .dz-case.alt .dz-chip{background:var(--learn-soft); border-color:var(--dz-le); color:var(--learn)}
+  .dz-arrow{color:var(--mute)}
+  .dz-ex{margin:0 0 6px; padding:8px 10px; border-radius:8px; background:var(--paper); font-family:var(--serif); font-size:17px; line-height:1.45; color:var(--ink)}
+  .dz-ex mark{background:none; color:var(--bleu); font-weight:700; border-bottom:2px solid currentColor}
+  .dz-ex mark.d{color:var(--learn)}
+  .dz-case.alt .dz-ex mark{color:var(--learn)}
+  .dz-ex small{display:block; font-family:var(--sans); font-size:13px; color:var(--mute); margin-top:2px}
+  .dz-row{display:grid; grid-template-columns:132px 1fr; gap:12px; margin-top:14px; align-items:start}
+  .dz-row>div{font-size:15px; color:var(--ink)}
+  .dz-row>div p{margin:0 0 6px}
+  @media (max-width:560px){ .dz-row{grid-template-columns:1fr} }
+  .dz-tag{padding:3px 10px; border-radius:7px; font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; white-space:normal; line-height:1.25; text-align:center; border:1px solid currentColor}
+  .dz-tag.form{background:var(--known-soft); color:var(--known)}
+  .dz-tag.use{background:var(--dz-bs); color:var(--bleu); border-color:var(--bleu)}
+  .dz-tag.alt{background:var(--learn-soft); color:var(--learn)}
+  .dz-chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px}
+  .dz-chips b,.dz-chips span{padding:2px 10px; border-radius:7px; background:var(--card); border:1px solid var(--known); color:var(--known); font-family:var(--serif); font-size:16px}
+  .dz-chips span em{font-style:normal; color:var(--mute); font-family:var(--sans); font-size:12px; margin-right:6px}
+  .dz-chips span b{border:0; padding:0; background:none; font-weight:700}
+  .dz-chips.blue b,.dz-chips.blue span{border-color:var(--bleu); color:var(--bleu)}
+  .dz-chips.amber b,.dz-chips.amber span{border-color:var(--learn); color:var(--learn)}
+  .dz-warn,.dz-also{margin-top:14px; border-radius:10px; padding:10px 14px; color:var(--ink)}
+  .dz-warn{background:var(--accent-soft); border:1px solid var(--accent)}
+  .dz-warn .dz-label{color:var(--accent)}
+  .dz-also{background:var(--card); border:1px solid var(--dz-be); border-left:5px solid var(--bleu)}
+  .dz-also .dz-label{color:var(--bleu)}
+  .dz-warn ul,.dz-also ul{margin:6px 0 0; padding-left:20px; font-size:15px}
+  .dz-warn li,.dz-also li{margin:3px 0}
+  table.dz-t{border-collapse:collapse; width:100%; background:var(--card); border:1px solid var(--dz-be); font-size:15px; color:var(--ink)}
+  table.dz-t th{background:var(--bleu); color:var(--card); text-align:left; font-size:12px; letter-spacing:.07em; text-transform:uppercase; padding:7px 12px}
+  table.dz-t td{padding:7px 12px; border-top:1px solid var(--dz-be); vertical-align:top}
+  table.dz-t td.k{font-family:var(--serif); font-size:17px; font-weight:700; color:var(--bleu); white-space:nowrap}
+  table.dz-t td.f{font-family:var(--serif); font-size:16px; color:var(--known); font-weight:700}
+  .dz-tw{margin-top:14px; overflow-x:auto}
+  .dz-rules{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px; font-size:15px; color:var(--ink)}
+  .dz-rules b{color:var(--bleu)} .dz-rules em{font-family:var(--serif); font-size:16px}
+  .dz-p{margin:12px 0 0; font-size:15px; color:var(--ink)}
+  .dz-pn{border:1px solid var(--dz-be); border-radius:12px; overflow:clip; margin:8px 0 14px; padding-top:0}
+  .dz-xhead{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; padding:14px 22px; border-bottom:1px solid var(--line); background:var(--card)}
+  .dz-xhead .dz-label{color:var(--ink)}
+  .dz-prog{flex:1; min-width:120px; max-width:300px; height:8px; border-radius:99px; background:var(--line); overflow:hidden}
+  .dz-prog i{display:block; height:100%; width:0; background:var(--bleu); transition:width .25s ease}
+  .dz-count{font-size:13px; color:var(--mute)}
+  .dz-sticky{position:sticky; top:var(--dz-top,48px); z-index:3; display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:8px 22px; background:var(--dz-bs); border-bottom:1px solid var(--dz-be); font-size:14px; color:var(--ink-2)}
+  .dz-sticky b{color:var(--bleu)}
+  .dz-sticky button{margin-left:auto; font:inherit; font-weight:700; font-size:13px; color:var(--bleu); background:var(--card); border:1px solid var(--dz-be); border-radius:999px; padding:3px 12px; cursor:pointer}
+  .dz .q{position:relative; padding:16px 22px 16px 72px; border-bottom:1px solid var(--line)}
+  .dz .q:last-of-type{border-bottom:0}
+  .dz-num{position:absolute; left:22px; top:16px; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:var(--dz-bs); border:1px solid var(--dz-be); color:var(--bleu); font-weight:800; font-size:14px}
+  .dz .q.dz-ok .dz-num{background:var(--known); border-color:var(--known); color:var(--card)}
+  .dz .q.dz-bad .dz-num{background:var(--accent); border-color:var(--accent); color:var(--card)}
+  .dz-kind{font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin-bottom:2px}
+  .dz .q .hint{display:inline-block; color:var(--learn); background:var(--learn-soft); border:1px solid var(--dz-le); padding:0 8px; border-radius:999px; font-size:12px; margin-top:6px}
+  .dz .wbank{padding:12px 22px 0; margin:0}
+  .dz .gempty{padding:14px 22px}
+  .dz .drill-foot{padding:14px 22px 6px; margin-top:0}
+  .dz .gresHost{padding:0 22px 18px}
+  .dz .cue{display:inline-block; font-family:var(--sans); font-size:13px; font-weight:700; padding:1px 9px; border-radius:999px; background:var(--known-soft); color:var(--known); border:1px solid var(--known); vertical-align:2px}
+  @media (max-width:560px){ .dz .q{padding:14px 14px 14px 56px} .dz-num{left:14px} .dz-task,.dz-xhead,.dz-sticky{padding-left:14px; padding-right:14px} .dz-notes{padding:0 14px 16px} .dz-bar{margin:0 -14px 12px; padding:10px 14px} }
   .gbar{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:0 0 14px; font-size:13px; color:var(--ink-2)}
   .gbar select{font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:5px 8px}
   .gbar label{display:inline-flex; align-items:center; gap:6px}
@@ -435,7 +522,7 @@
   .misslist .pt{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700}
   .bytopic{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; font-size:14px; font-variant-numeric:tabular-nums}
   .bytopic span:nth-child(even){text-align:right; color:var(--ink-2)}
-  #prepGRule small{font-family:var(--sans); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700; margin-left:8px}
+  #prepGRule h4 small{font-family:var(--sans); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); font-weight:700; margin-left:8px}
   .psearch{font:inherit; font-size:14px; padding:8px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface); color:var(--ink); width:100%}
   .ptbl{max-height:520px; overflow:auto; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
   .ptbl table{width:100%; border-collapse:collapse; font-size:14px}
@@ -525,7 +612,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v1.0.1</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v1.1.0</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -812,8 +899,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v1.0.1</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v1.1.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.1.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 14 of the 18 drills the instruction and the rule used to run together in one paragraph; they are now separate, and the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms, a green Forms strip, a red Watch out box, a blue Good to know box). The 4 Vocab en contexte drills show the task only. The Prépa examen grammar topics (subjonctif, plus-que-parfait, voix passive, hypothèse, pronoms relatifs) use the same notes. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
     <span style="color:var(--mute)">v1.0.1 (15 Nov 2026): <strong>Prépa examen vocabulary — each English cue now points to one French word.</strong> Several guide glosses fitted more than one word you know (<em>to deny</em> → nier or infirmer, <em>the accused</em> → l’accusé or l’inculpé, <em>to warn</em> → prévenir or avertir, and others), so a correct answer could be marked wrong. 20 cues were annotated the way the main Vocabulaire list does it (guide said X, now Y): <em>aboutir</em> “to succeed, to come to a successful conclusion” → “to come to a successful conclusion (of an effort)”; <em>avertir</em> “to warn” → “to warn (formal notice of a risk)”; <em>avoir la tête dans les nuages</em> “to daydream, to have one's head in the clouds” → “to have one's head in the clouds (to daydream)”; <em>constater</em> “to notice” → “to note, to observe (to establish as a fact)”; <em>un défi</em> “a challenge” → “a challenge (a difficulty to take on)”; <em>la désinformation</em> “the disinformation” → “the disinformation (false on purpose)”; <em>diffuser</em> “to broadcast” → “to broadcast (on air or online)”; <em>l'effectif</em> “the staffing, the workforce” → “the staffing, the workforce (the number of people)”; <em>fiable</em> “reliable” → “reliable, trustworthy (of a source or data)”; <em>fréquenter</em> “to patronize, to visit” → “to patronize, to visit often (as a regular)”; <em>un inculpé</em> “a defendant, the accused” → “a defendant, the accused (formally charged, pre-trial)”; <em>inédit</em> “unprecedented” → “unprecedented, never seen before (also: unpublished)”; <em>infirmer</em> “to deny, to disprove” → “to disprove, to invalidate (a claim or a theory)”; <em>interdire</em> “to prohibit” → “to prohibit (officially, by rule)”; <em>un journal</em> “a newspaper” → “a newspaper (the general word)”; <em>la moyenne</em> “the grade point average” → “the grade point average, the average”; <em>le plaidoyer</em> “a plea, a petition, a speech in defense of something” → “a plea, a petition, a speech for a cause (not in court)”; <em>privilégier</em> “to favor, to opt for” → “to opt for, to give priority to (to choose over others)”; <em>un quotidien</em> “a daily newspaper” → “a daily newspaper (published every day)”; <em>supposé</em> “alleged, supposed” → “supposed, alleged (taken as true without proof)”. 26 words also show a “vs …” note after you answer (spelling and recognise modes and the browse list), taken from the main Vocabulaire memo notes where the word is there. <em>une théorie de complot</em> now also accepts <em>une théorie du complot</em>. Nothing else changed: no other word, answer, item or progress.<br></span>
     <span style="color:var(--mute)">v1.0.0 (12 Nov 2026): <strong>Unité 5 is now Active.</strong> Version number and landing-page status only: all four chapters (21–24), the Prépa examen built from the study guide and the Conjugaison, Vocabulaire and Grammaire trainers are as in v0.4.0. No card, answer, cue or progress changed.<br></span>
     <span style="color:var(--mute)">v0.4.0 (12 Nov 2026): <strong>Prépa examen is live — built from the Unité 5 test study guide (Assessment Outline).</strong> Same tab as Units 1–4. <strong>Vocabulaire:</strong> the guide’s 72 words, spelled (English → French), recognised (French → English) or browsed. <strong>Grammaire:</strong> the guide’s five topics — subjunctive conjugation, plus-que-parfait, passive voice, hypothesis (si + imparfait → conditionnel) and relative pronouns — each with an always-visible rule card and 22 items (110 in all: 60 typed, 50 drop-downs, each with a why line). <strong>Oral:</strong> the guide’s speaking part is interpreting, so the four topics are interpreter scenarios (school, press, politics, justice) of 8 lines each, alternating English and French; you write each line in the other language. A small addition to the oral engine labels the lines and the two boxes for interpreting. Prépa is a training space: it does not feed Analyse, the mastery bars or achievements. Study-guide English glosses are used as written, with five changes (guide said X, now Y): <em>la moyenne</em> “GPA” → “the grade point average”; <em>le plaidoyer</em> “a petition, speech in defense of something” → “a plea, a petition, a speech in defense of something”; <em>le tribunal</em> “courthouse” → “the court, the courthouse”; <em>la preuve</em> “proof” → “the proof, the evidence”; <em>par rapport à</em> “with regards to” → “with regard to”. Nouns carry their article.<br></span>
@@ -3103,8 +3191,127 @@ var GFIX={"relc21":{"items":{"10":{"g":"le long desquels","s":"Les montagnes ___
     });
   });
 })();
+/* ---------------- grammar drill layout: task box · grammar notes · numbered exercises ----------------
+   Per drill (all additive, keyed by drill id in DZN): ins (the task) · rt (notes title) · nh (the notes, built with the dz* helpers).
+   A drill with no nh but with a rule card gets its bullets restyled; a drill whose note is one blob ("Instructions … The rule …") is split. */
+var DZN={};
+function dzEx(fr,en){ return "<p class='dz-ex'>"+fr+(en?"<small>"+en+"</small>":"")+"</p>"; }
+function dzFormula(a){ return "<div class='dz-formula'>"+a.map(function(x){ return x==="+"||x==="→"?"<span class='dz-arrow'>"+x+"</span>":"<span class='dz-chip'>"+x+"</span>"; }).join("")+"</div>"; }
+function dzChips(a,cls){ return "<div class='dz-chips"+(cls?" "+cls:"")+"'>"+a.map(function(x){ return "<b>"+x+"</b>"; }).join("")+"</div>"; }
+function dzIrr(a){ return "<div class='dz-chips'>"+a.map(function(x){ return "<span><em>"+x[0]+"</em><b>"+x[1]+"</b></span>"; }).join("")+"</div>"; }
+function dzCase(o,alt){
+  var h="<div class='dz-case"+(alt?" alt":"")+"'><h3>"+o.h+"</h3>";
+  if(o.f) h+=dzFormula(o.f);
+  if(o.p) h+="<p class='say'>"+o.p+"</p>";
+  if(o.li) h+="<ul class='li'>"+o.li.map(function(x){ return "<li>"+x+"</li>"; }).join("")+"</ul>";
+  if(o.chips) h+=dzChips(o.chips,alt?"amber":"blue");
+  if(o.ex){ (typeof o.ex[0]==="string"?[o.ex]:o.ex).forEach(function(e){ h+=dzEx(e[0],e[1]); }); }
+  return h+"</div>";
+}
+function dzPair(a,b,c){ return "<div class='dz-pair"+(c?" three":"")+"'>"+dzCase(a,false)+dzCase(b,true)+(c?dzCase(c,false):"")+"</div>"; }
+function dzRow(l,h,cls){ return "<div class='dz-row'><span class='dz-tag "+(cls||"form")+"'>"+l+"</span><div>"+h+"</div></div>"; }
+function dzTable(cols,rows,fc){
+  fc=fc||[];
+  return "<div class='dz-tw'><table class='dz-t'>"+(cols?"<thead><tr>"+cols.map(function(c){ return "<th>"+c+"</th>"; }).join("")+"</tr></thead>":"")+"<tbody>"+
+    rows.map(function(r){ return "<tr>"+r.map(function(c,i){ return "<td class='"+(i===0?"k":(fc.indexOf(i)>-1?"f":""))+"'>"+c+"</td>"; }).join("")+"</tr>"; }).join("")+"</tbody></table></div>";
+}
+function dzWarn(l,li){ return "<div class='dz-warn'><span class='dz-label'>⚠ "+l+"</span><ul>"+li.map(function(x){ return "<li>"+x+"</li>"; }).join("")+"</ul></div>"; }
+function dzAlso(l,li){ return "<div class='dz-also'><span class='dz-label'>＋ "+l+"</span><ul>"+li.map(function(x){ return "<li>"+x+"</li>"; }).join("")+"</ul></div>"; }
+function dzP(h){ return "<p class='dz-p'>"+h+"</p>"; }
+/* a legacy note blob "<b>Instructions :</b> task<br><b>The rule :</b> rule" -> {task, rest} */
+function dzSplit(note){
+  var n=String(note||"").replace(/^\s*<b>\s*Instructions?\s*:?\s*<\/b>\s*:?\s*/i,""), m=n.split(/<br\s*\/?>/i);
+  return {task:(m[0]||"").trim(), rest:m.slice(1).join("<br>").replace(/^\s*<b>\s*The rule\s*:?\s*<\/b>\s*:?\s*/i,"").trim()};
+}
+function dzFor(d){
+  var z=DZN[d.id]||{}, sp=dzSplit(d.note), notes="";
+  if(z.nh) notes=z.nh.join("");
+  else if(d.rule) notes="<ul class='dz-rules'>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>";
+  else if(d.note && /<b>\s*The rule/i.test(d.note)) notes=dzP(sp.rest);
+  var sub=(!notes&&sp.rest)?sp.rest:"";
+  return {task:z.ins||d.ins||sp.task||"", sub:sub, notes:notes, title:z.rt||d.rt||d.title};
+}
+function dzTop(){ var n=document.querySelector("nav.tabs"); document.documentElement.style.setProperty("--dz-top",(n?n.offsetHeight:48)+"px"); }
+function dzTaskEl(z,items){
+  var typed=items.some(function(x){ return !x.ch; }), picks=items.some(function(x){ return x.ch; }), lg="";
+  if(typed) lg+="<span><i>✎</i> type the answer on the line</span>";
+  if(picks) lg+="<span><i>▾</i> pick from the list (keys 1–4)</span>";
+  return el("div","dz-task","<span class='dz-label'>✎ Your task</span><p class='dz-do'>"+z.task+"</p>"+(z.sub?"<p class='dz-sub'>"+z.sub+"</p>":"")+"<div class='dz-legend'>"+lg+"</div>");
+}
+function dzDecorate(q,i){
+  var kind=q.querySelector("select.gapsel")?"Pick from the list":"Type the answer";
+  q.insertBefore(el("div","dz-kind",kind),q.firstChild); q.appendChild(el("div","dz-num",String(i+1)));
+}
+function dzDone(det,q){
+  q.classList.add(q._res==="ok"?"dz-ok":"dz-bad"); var n=q.querySelector(".dz-num"); if(n) n.textContent=q._res==="ok"?"✓":"✗";
+  var qs=det._body.querySelectorAll(".q"), a=0; [].forEach.call(qs,function(x){ if(x._res) a++; });
+  var xh=det._body.querySelector(".dz-xhead"); if(xh&&qs.length){ xh.querySelector(".dz-prog i").style.width=Math.round(a/qs.length*100)+"%"; xh.querySelector(".dz-count").textContent=a+" of "+qs.length; }
+}
+
+/* grammar notes, structured (Unité 5): ins = the task, rt = notes title, nh = the notes. Drills not listed keep their rule bullets (restyled) or their note. */
+DZN.hyp21={rt:"Si + présent → futur · si + imparfait → conditionnel",nh:[
+  dzPair({h:"Real or likely",f:["si + présent","→","futur simple"],p:"The result can also be the présent or the impératif.",ex:["Si tu <mark>étudies</mark>, tu <mark>auras</mark> le bac.","If you study, you will pass the bac."]},
+         {h:"Imagined or unlikely",f:["si + imparfait","→","conditionnel présent"],ex:["Si les effectifs <mark>étaient</mark> réduits, les élèves <mark>apprendraient</mark> mieux.","If class sizes were reduced, students would learn better."]}),
+  dzRow("Forms",dzChips(["-ais","-ais","-ait","-ions","-iez","-aient"])+"<p>Imparfait: the <b>nous</b> stem + these endings. Conditionnel: the <b>futur stem</b> + the same endings (<span class='fr'>fer-, aur-, ir-</span>).</p>"),
+  dzWarn("Watch out",["The imparfait after <b>si</b> is <b>not</b> about the past.","Never put a futur or a conditionnel right after <b>si</b>.","<b>si + il / ils → s'il / s'ils</b>; <b>si + elle / on</b> keeps <b>si</b>."])]};
+DZN.relc21={rt:"Les pronoms relatifs composés",nh:[
+  dzPair({h:"After a preposition",chips:["lequel","laquelle","lesquels","lesquelles"],p:"Agrees with the noun it replaces.",ex:["La bibliothèque dans <mark>laquelle</mark> je travaille.","The library in which I work."]},
+         {h:"People",f:["preposition","+","qui"],p:"For people, <b>qui</b> is usually preferred.",ex:["Les élèves avec <mark>qui</mark> je révise.","The students I study with."]}),
+  dzRow("Contracts",dzTable(["With","lequel","laquelle","lesquels","lesquelles"],[["à","auquel","à laquelle","auxquels","auxquelles"],["de","duquel","de laquelle","desquels","desquelles"]],[1,2,3,4])+"<p style='margin-top:8px'><b>laquelle</b> never contracts. Phrases ending in <b>de</b> (<span class='fr'>à côté de, le long de, près de</span>) take the contracted <b>de</b> forms.</p>"),
+  dzWarn("Watch out",["After <span class='fr'><b>entre</b></span> and <span class='fr'><b>parmi</b></span>, only the compound forms are possible.","A place can also take <b>où</b>."])]};
+DZN.subj21={rt:"Le subjonctif présent",nh:[
+  dzPair({h:"Use the subjonctif",f:["main clause","+","que","+","new subject"],p:"Two different subjects, and the first clause expresses a wish, an emotion, an order, a doubt, a necessity or a possibility.",ex:["Je veux qu'elle <mark>parte</mark> demain.","I want her to leave tomorrow."]},
+         {h:"Don't use it",f:["same subject","→","infinitif"],p:"<b>penser, croire, trouver, espérer que</b> take the indicatif; the subjonctif only if negative or a question.",ex:["Je veux <mark>partir</mark>. · Je crois qu'elle <mark>part</mark> demain.","I want to leave. · I think she leaves tomorrow."]}),
+  dzRow("Regular",dzChips(["-e","-es","-e","-ions","-iez","-ent"])+"<p>Stem = the <b>ils</b> form minus <span class='fr'>-ent</span>: <span class='fr'><i>ils finissent → que je finisse</i></span>. Stem-changing verbs keep their <b>nous / vous</b> stem: <span class='fr'><i>que nous appelions, qu'ils appellent</i></span>.</p>"),
+  dzRow("Irregular",dzIrr([["être","sois"],["avoir","aie"],["aller","aille"],["faire","fasse"],["pouvoir","puisse"],["savoir","sache"],["vouloir","veuille"]])),
+  dzAlso("Also takes the subjonctif",["A relative clause describing someone or something you are still looking for, or that may not exist.","After a superlative: common, but not required."])]};
+DZN.pqp22={ins:"Read the whole sentence first and decide which action came first, which one is the main event, and which one is background. Then conjugate the verb in parentheses in the tense each clause needs, choosing the right auxiliary and agreement.",rt:"Le plus-que-parfait",nh:[
+  dzCase({h:"The past of the past",f:["imparfait of avoir / être","+","past participle"],ex:[["<mark>j'avais</mark> mangé · <mark>elle était</mark> partie · <mark>ils s'étaient</mark> rencontrés",""]]}),
+  dzPair({h:"Earlier than the story",p:"It puts an action <b>behind</b> the passé composé or the imparfait of the story.",ex:["Quand je suis arrivé, le film <mark>avait</mark> déjà <mark>commencé</mark>.","When I arrived, the film had already started."]},
+         {h:"Regret",p:"Also used after <b>si seulement</b>.",ex:["Si seulement j'<mark>avais étudié</mark> !","If only I had studied!"]}),
+  dzWarn("Watch out",["The negation surrounds the auxiliary: <span class='fr'><b>je n'avais pas regardé</b></span>.","Check the auxiliary (avoir or être) and the agreement of the participle."])]};
+DZN.pass22={ins:"Each item gives an active sentence (or a passive one) and asks you to rebuild the other voice. Find the object that becomes the subject, keep the tense of the original verb, and make the participle agree with the new subject.",rt:"La voix passive",nh:[
+  dzCase({h:"Active → passive",ex:[["<span class='fr'><mark class='d'>Les députés</mark> <b>votent</b> <mark>la loi</mark>.</span><small>ACTIVE · doer first, object second</small>",""],["<span class='fr'><mark>La loi</mark> <b>est votée</b> par <mark class='d'>les députés</mark>.</span><small>PASSIVE · the object becomes the subject, the doer follows <b>par</b></small>",""]]}),
+  dzRow("Formula",dzFormula(["être","+","past participle"])+"<p><b>être</b> takes the <b>tense of the active verb</b>; the participle agrees with the <b>new subject</b>.</p>"+dzTable(["Tense of the active verb","Passive"],[["présent","la loi est votée"],["passé composé","la loi a été votée"],["imparfait","la loi était votée"],["plus-que-parfait","la loi avait été votée"],["futur proche","la loi va être votée"],["futur simple","la loi sera votée"]],[1])),
+  dzWarn("Watch out",["Only verbs with a <b>direct object</b> can go passive.","The doer, if you keep it, is introduced by <b>par</b>.","A feminine or plural subject needs a feminine or plural participle: <span class='fr'>les bouteilles sont ouvert<b>es</b></span>."])]};
+DZN.alt22={rt:"Les connecteurs de l'alternative",nh:[
+  dzTable(["Connector","Meaning","Example"],[["soit… soit","either… or (a choice)","Soit tu viens, soit tu restes."],["ni… ni","neither… nor (rules both out; <b>ne</b> before the verb)","Je ne mange ni viande ni poisson."],["d'un côté… d'un autre côté<br>d'une part… d'autre part","on one hand… on the other","D'un côté, il est gentil ; d'un autre côté, il est têtu."]]),
+  dzAlso("Good to know",["<b>Soit</b> alone can also be the subjonctif of <i>être</i>, or mean <i>that is to say</i>."])]};
+DZN.cause23={rt:"Les expressions de la cause",nh:[
+  dzPair({h:"Before a noun",li:["<b>à cause de</b> — a bad effect","<b>grâce à</b> — a good effect","<b>en raison de</b> — neutral","<b>à la suite de</b> — an event that came first"],ex:["Le vol est annulé <mark>à cause du</mark> brouillard.","The flight is cancelled because of the fog."]},
+         {h:"Before a clause",li:["<b>parce que</b>, <b>car</b> — new information","<b>puisque</b>, <b>étant donné que</b>, <b>vu que</b>, <b>comme</b> — a cause everyone already accepts","<b>sous prétexte que</b> — a doubtful excuse"],ex:["<mark>Puisque</mark> tu es là, aide-moi.","Since you are here, help me."]}),
+  dzAlso("Contraction",["<b>de + le / les</b> becomes <b>du / des</b>: <span class='fr'>à cause <b>du</b> retard, en raison <b>des</b> travaux</span>."])]};
+DZN.conseq23={rt:"Les expressions de la conséquence",nh:[
+  dzPair({h:"A result stated as a fact → indicatif",chips:["si bien que","à tel point que","tellement / si / tant … que"],ex:["Il a tellement plu <mark>que</mark> la route est fermée.","It rained so much that the road is closed."]},
+         {h:"An aim → subjonctif or infinitif",li:["<b>de manière à ce que, de façon à ce que, afin que</b> + subjonctif","same subject: <b>de manière à, de façon à, afin de, au point de</b> + infinitif"],ex:[["Parle fort <mark>afin que</mark> tout le monde <mark>entende</mark>.",""],["Il parle fort <mark>afin d'</mark>être entendu.",""]]}),
+  dzRow("Connectors",dzChips(["donc","alors","ainsi","par conséquent","c'est pourquoi"],"blue")+"<p>These are followed by an ordinary clause.</p>","use")]};
+DZN.rel23={ins:"Find the verb or the preposition that governs the blank, then decide between a simple pronoun (qui, que, où, dont) and a compound one (lequel and its forms). When it is lequel, make it agree with the noun it replaces and contract it with à or de where needed.",rt:"Les pronoms relatifs simples et composés",nh:[
+  dzPair({h:"Simple · no preposition",li:["<b>qui</b> — subject","<b>que</b> — direct object","<b>où</b> — place or time","<b>dont</b> — replaces <span class='fr'>de</span> + noun"]},
+         {h:"Compound · after a preposition",chips:["lequel","laquelle","lesquels","lesquelles"],p:"Agrees with the noun it replaces. For <b>people</b>, <b>qui</b> also works — except after <span class='fr'>entre</span> and <span class='fr'>parmi</span>.",ex:["La raison pour <mark>laquelle</mark> il part.","The reason why he is leaving."]}),
+  dzRow("Contracts",dzTable(["With","lequel","laquelle","lesquels","lesquelles"],[["à","auquel","à laquelle","auxquels","auxquelles"],["de","duquel","de laquelle","desquels","desquelles"]],[1,2,3,4])+"<p style='margin-top:8px'><b>laquelle</b> never contracts.</p>")]};
+DZN.subj24={rt:"Le subjonctif après certaines conjonctions",nh:[
+  dzPair({h:"Always the subjonctif",chips:["avant que","jusqu'à ce que","en attendant que","afin que","pour que","à condition que","pourvu que","à moins que","bien que","quoique","encore que","sans que","de peur que","de crainte que"],ex:["Reste <mark>jusqu'à ce que</mark> je <mark>revienne</mark>.","Stay until I come back."]},
+         {h:"Indicatif",chips:["après que","puisque","parce que"],p:"These take the indicatif.",ex:["Je sors <mark>sans qu'</mark>il me <mark>voie</mark>.","I go out without him seeing me."]}),
+  dzRow("Same subject",dzChips(["avant de","afin de","pour","sans"],"blue")+"<p>When the subject stays the same, use a preposition + <b>infinitif</b>.</p>","use"),
+  dzAlso("Good to know",["<b>De façon que</b> and <b>de sorte que</b>: subjonctif for an aim, indicatif for a result.","After <i>à moins que, avant que, de peur que, de crainte que</i>, a <b>ne</b> with no negative meaning (ne explétif) may appear."])]};
+DZN.pass24={rt:"La voix passive (révision)",nh:[
+  dzPair({h:"The subject receives the action",f:["être","+","past participle"],p:"<b>être</b> is in the tense the sentence needs.",ex:[["Le maire <mark>a été élu</mark> en mars.",""],["Le maire <mark>sera élu</mark> en mars.",""]]},
+         {h:"The subject does the action",f:["active verb"],p:"Use the ordinary active verb.",ex:["Les députés <mark>ont voté</mark> la loi.","The deputies voted the law."]}),
+  dzWarn("Watch out",["The participle agrees with the subject.","The doer, if named, follows <b>par</b>.","Read the time marker: it gives the tense of <i>être</i> (<i>est élu, a été élu, sera élu, était élu</i>)."])]};
+DZN.tps24={rt:"Les temps du passé",nh:[
+  dzTable(["Tense","What it does","Example"],[["passé composé","narrates completed actions that move the story along","Je suis sorti à huit heures."],["imparfait","describes the scene, habits and actions in progress","Il pleuvait quand je suis sorti."],["plus-que-parfait","places an action <b>before</b> another past action","J'avais déjà mangé quand elle est arrivée."]]),
+  dzAlso("Good to know",["<b>Après que</b> takes the indicatif, not the subjonctif.","The plus-que-parfait is <b>avoir or être in the imparfait + participe passé</b>."])]};
+DZN.cond24={rt:"Le conditionnel passé de l'incertitude",nh:[
+  dzPair({h:"Established fact",f:["passé composé"],p:"The source presents the fact as certain.",ex:["Le suspect <mark>a avoué</mark>.","The suspect confessed."]},
+         {h:"Reported, unconfirmed",f:["conditionnel passé"],p:"The conditionnel of <b>avoir / être</b> + participe passé, typical of the news.",ex:["Le suspect <mark>aurait avoué</mark>.","The suspect reportedly confessed."]}),
+  dzAlso("Good to know",["The conditionnel does not say the fact is false, only that the writer does not vouch for it.","Check the auxiliary and the agreement of the participle."])]};
+DZN.mood24={rt:"Opinions, avant que / avant de, après que",nh:[
+  dzPair({h:"Indicatif",p:"Certainty and plain opinion: <b>je pense que, il est évident que, il me semble que</b>.",ex:["Je pense qu'il <mark>viendra</mark>.","I think he will come."]},
+         {h:"Subjonctif",p:"Negated opinion, doubt, possibility, necessity, feeling: <b>je ne pense pas que, je doute que, il est possible que, il faut que, il est dommage que</b>.",ex:["Je ne pense pas qu'il <mark>vienne</mark>.","I don't think he will come."]}),
+  dzRow("Time",dzTable(["Different subjects","Same subject"],[["<b>avant que</b> + subjonctif","<b>avant de</b> + infinitif"],["<b>après que</b> + indicatif","<b>après</b> + infinitif passé"]]),"use")]};
+
 function buildDrills(){
-  var host=document.getElementById("drills"); host.innerHTML="";
+  dzTop(); var host=document.getElementById("drills"); host.innerHTML="";
   var sorted=DRILLS.slice().sort(function(a,b){return a.minCh-b.minCh;});
   var groups={}; sorted.forEach(function(d){ (groups[d.minCh]=groups[d.minCh]||[]).push(d); });
   Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(ch){
@@ -3277,16 +3484,16 @@ function buildDrillAcc(d,opts){
   var sum=el("summary");
   sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
-  var body=el("div","body");
-  if(d.rule){
-    if(d.ins) body.appendChild(el("p","gins","<b>Instructions :</b> "+d.ins));
-    body.appendChild(el("div","rulecard","<h4>"+(d.rt||"La règle")+"</h4><ul>"+d.rule.map(function(r){ return "<li>"+r+"</li>"; }).join("")+"</ul>"));
-  } else if(d.note){ var gn=el("div","gnote"); gn.innerHTML=d.note; body.appendChild(gn); }
+  var body=el("div","body dz"), z=dzFor(d), nz=null;
+  if(z.task) body.appendChild(dzTaskEl(z,d.items));
+  if(z.notes){ nz=el("div","dz-notes","<div class='dz-bar'><span class='dz-label'>📘 Grammar notes</span><span class='dz-title'>"+z.title+"</span></div>"+z.notes); body.appendChild(nz); }
   if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
   det._d=d; det._body=body; det._practice=practice;
   if(empty) body.appendChild(el("div","gempty",empty));
-  d.items.forEach(function(it){ body.appendChild(gBuildQ(d,it,det,function(){
-    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); })); });
+  body.appendChild(el("div","dz-xhead","<span class='dz-label'>✍ Exercises</span><div class='dz-prog'><i></i></div><span class='dz-count'>0 of "+d.items.length+"</span>"));
+  if(nz){ var st=el("div","dz-sticky","📘 <span>Notes: <b>"+z.title+"</b></span>"), sb=el("button",null,"Back to notes ↑"); sb.type="button"; sb.onclick=function(){ nz.scrollIntoView({behavior:"smooth",block:"start"}); }; st.appendChild(sb); body.appendChild(st); }
+  d.items.forEach(function(it,i){ var qq=gBuildQ(d,it,det,function(q){
+    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); dzDone(det,q); }); dzDecorate(qq,i); body.appendChild(qq); });
   var foot=el("div","drill-foot");
   var cbtn=el("button","ghost","Check all");
   cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._check(); }); };
@@ -3483,7 +3690,10 @@ var PREP=(function(){
     $("prepGTopic").value=G.topic; $("prepGSize").value=G.size; $("prepGFmt").value=G.fmt;
     var s=$("prepGSrc"); s.options[1].textContent="My misses ("+Object.keys(gm_()).length+")"; s.value=G.src;
   }
-  function gRule(t){ var T0=TOPICS[t]; $("prepGRule").innerHTML="<h4>"+esc2(T0.name)+" <small>"+esc2(T0.en)+"</small></h4>"+T0.rule; }
+  var PM={subj:"subj21",pqp:"pqp22",pass:"pass22",hyp:"hyp21",rel:"rel23"};   /* Prépa topic -> structured grammar notes (DZN) */
+  function gRule(t){ var T0=TOPICS[t], z=PM[t]&&DZN[PM[t]], r0=$("prepGRule");
+    if(z&&z.nh){ r0.className="dz dz-notes dz-pn"; r0.innerHTML="<div class=\"dz-bar\"><span class=\"dz-label\">📘 Grammar notes</span><span class=\"dz-title\">"+esc2(T0.name)+"</span></div>"+z.nh.join(""); }
+    else { r0.className="rulecard"; r0.innerHTML="<h4>"+esc2(T0.name)+" <small>"+esc2(T0.en)+"</small></h4>"+T0.rule; } }
   function gNew(list){
     if(list) G.queue=shuf(list);
     else {
@@ -3554,7 +3764,7 @@ var PREP=(function(){
   function gResults(){
     var total=G.res.length, right=G.res.filter(function(r){ return r.ok; }).length, wrong=G.res.filter(function(r){ return !r.ok; });
     var per={}; G.res.forEach(function(r){ var p=per[r.it.t]=per[r.it.t]||[0,0]; p[1]++; if(r.ok) p[0]++; });
-    $("prepGRule").innerHTML="<h4>Results by topic</h4><div class=\"bytopic\">"+Object.keys(TOPICS).filter(function(t){ return per[t]; }).map(function(t){ return "<span>"+esc2(TOPICS[t].name)+"</span><span>"+per[t][0]+" / "+per[t][1]+"</span>"; }).join("")+"</div>";
+    $("prepGRule").className="rulecard"; $("prepGRule").innerHTML="<h4>Results by topic</h4><div class=\"bytopic\">"+Object.keys(TOPICS).filter(function(t){ return per[t]; }).map(function(t){ return "<span>"+esc2(TOPICS[t].name)+"</span><span>"+per[t][0]+" / "+per[t][1]+"</span>"; }).join("")+"</div>";
     var canon=function(it){ return it.k==="pick"?it.ch[0]:it.a[0]; };
     $("prepGCard").innerHTML="<div class=\"pprog\"><i style=\"width:100%\"></i></div><div class=\"pbody\"><span class=\"ptag\">Results</span>"+
       "<div class=\"pscore\"><span class=\"big\">"+right+" / "+total+"</span><span class=\"pct\">"+(total?Math.round(right/total*100):0)+"% · "+Object.keys(gm_()).length+" question"+(Object.keys(gm_()).length===1?"":"s")+" in your misses pile</span></div>"+
