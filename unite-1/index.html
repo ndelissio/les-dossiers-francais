@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 1 · Dossier Français — v4.4.0</title>
+<title>Unité 1 · Dossier Français — v4.4.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -258,7 +258,7 @@
   .chdots{display:flex; align-items:center; gap:7px; flex:0 1 auto; flex-wrap:wrap; justify-content:flex-end}
   .chdot{width:22px; height:22px; border-radius:50%; background:currentColor; display:grid; place-items:center; font:800 12px/1 var(--sans); cursor:default}
   .chdot b{color:var(--on-solid); font-weight:800}
-  .chdot.none{color:var(--accent)}
+  .chdot.none{background:transparent; box-shadow:inset 0 0 0 2px var(--bleu)}   /* not started: an empty blue ring */
   .chdot.part{color:var(--learn)}
   .chdot.full{color:var(--known)}
   .chdot.soon{color:var(--mute); background:transparent; box-shadow:0 0 0 1.5px var(--line); opacity:.7}
@@ -668,7 +668,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 1 · v4.4.0</div>
+      <div class="eyebrow">French Basic Course · Unit 1 · v4.4.1</div>
       <h1><b>Unité&nbsp;1</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -934,8 +934,9 @@
 
 
   <footer>
-    <strong>Dossier v4.4.0</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
+    <strong>Dossier v4.4.1</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v4.4.1 (15 Nov 2026): <strong>Calmer not-started dot.</strong> On the Grammaire chapter banners a drill you have not started is now an empty blue ring instead of a red <strong>!</strong>. In progress (amber half-filled) and covered (green ✓) are unchanged, and chapters you have not reached still show faint rings. No drill, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v4.4.0 (15 Nov 2026): <strong>Grammar progress at a glance.</strong> Each chapter banner in Grammaire now shows one status dot per drill, in list order: a red <strong>!</strong> for not started, an amber half-filled dot for in progress, a green <strong>✓</strong> for fully covered (every question answered correctly at least once). Hover a dot for the drill's name and score. The banner also says how many drills are covered, in progress and not started, and how many questions you have answered correctly, and it has a coloured left stripe and a status pill (Not started, In progress, Complete ✓; chapters you have not reached show hollow dots and à venir). Each drill row has a status circle, a coverage bar (10/17) and a best-score chip that turns green at full marks. Everything updates as you answer. No drill, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v4.3.0 (15 Nov 2026): <strong>Favorites in Vocabulaire.</strong> A ☆ button at the top-right of every vocabulary card stars the word (click again to remove it). A <strong>☆ Favorites</strong> filter, first in the Filtres row with a live count, shows only starred words in every mode (Spelling, Recognize, Recall); it switches the chapter drop-down to All chapters, since favorites span chapters, and you can pick a chapter to narrow them. In the progress table every word has its own ☆ / ★, and with the filter on the table lists only your favorites. Favorites are saved in this browser by the word's French spelling, so a word that appears in several chapters shares one star, and they follow a word whose spelling is corrected in a later version. Reset marks does not clear them. Prépa examen is unchanged. No vocabulary, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v4.2.3 (15 Nov 2026): <strong>Vocab en contexte drills now mix drop-downs and typed answers.</strong> In the 4 Vocab en contexte drills, 30 items are now drop-downs (four options, the three wrong ones from the same topic), and 22 typed items carry a one- or two-word English gloss beside the sentence. Items that already had a gloss or a hint keep it. The accepted answers, scoring, best scores and progress are unchanged.<br></span>
@@ -4426,7 +4427,7 @@ function buildDrills(){
       chDet.setAttribute("data-state",st); chSum.style.setProperty("--p",(ahead?0:p)+"%");
       var np=0,nn=0,dots="";
       list.forEach(function(d){ var c=covOf(d); if(!c.t) return; var k=ahead?"soon":(c.t&&c.n>=c.t?"full":(c.n>0?"part":"none")); if(k==="part")np++; if(k==="none")nn++;
-        dots+="<span class='chdot "+k+"' title='"+d.title.replace(/'/g,"&#39;")+" — "+c.n+"/"+c.t+"'>"+(k==="full"?"<b>✓</b>":(k==="part"?"<i class='half'></i>":(k==="none"?"<b>!</b>":"")))+"</span>"; });
+        dots+="<span class='chdot "+k+"' title='"+d.title.replace(/'/g,"&#39;")+" — "+c.n+"/"+c.t+"'>"+(k==="full"?"<b>✓</b>":(k==="part"?"<i class='half'></i>":""))+"</span>"; });
       chSum.innerHTML="<span class='chtitle'>"+(CH_NAMES[ch]||("Chapitre "+ch))+"<small>"+(ahead?list.length+" drills · à venir":full+" covered · "+np+" in progress · "+nn+" not started · "+n+"/"+t+" questions")+"</small></span>"+
         "<span class='chdots'>"+dots+"</span>"+
         "<span class='chstat "+st+"'>"+({soon:"à venir",full:"Complete ✓",part:"In progress",none:"Not started"})[st]+"</span>";
