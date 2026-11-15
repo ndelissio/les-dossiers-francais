@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v1.2.1</title>
+<title>Unité 5 · Dossier Français — v1.3.0</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -252,6 +252,49 @@
   .chgroup[open] > summary{border-bottom:1px solid var(--line)}
   .chgroup .chbody{padding:14px 16px 2px}
   .chgroup.ahead > summary{background:var(--ahead); color:var(--mute)}
+  /* ---- progress at a glance: chapter header + drill rows ---- */
+  .chgroup > summary{border-left:6px solid var(--line); flex-wrap:wrap; row-gap:8px}
+  .chgroup[data-state="part"] > summary{border-left-color:var(--bleu); background:color-mix(in srgb,var(--bleu) 9%,var(--tint))}
+  .chgroup[data-state="full"] > summary{border-left-color:var(--known); background:color-mix(in srgb,var(--known) 14%,var(--card))}
+  .chgroup.ahead > summary{background:var(--ahead)}
+  .chgroup > summary .chtitle{flex:1 1 220px; min-width:0}
+  .chgroup > summary .chtitle small{display:block; font-family:var(--sans); font-size:12px; font-weight:600; color:var(--ink-2); margin-top:2px}
+  .chdots{display:flex; align-items:center; gap:7px; flex:0 1 auto; flex-wrap:wrap; justify-content:flex-end}
+  .chdot{width:22px; height:22px; border-radius:50%; background:currentColor; display:grid; place-items:center; font:800 12px/1 var(--sans); cursor:default}
+  .chdot b{color:var(--on-solid); font-weight:800}
+  .chdot.none{color:var(--accent)}
+  .chdot.part{color:var(--learn)}
+  .chdot.full{color:var(--known)}
+  .chdot.soon{color:var(--mute); background:transparent; box-shadow:0 0 0 1.5px var(--line); opacity:.7}
+  .chdot .half{width:11px; height:11px; border-radius:50%; border:1.8px solid var(--on-solid); background:linear-gradient(90deg,var(--on-solid) 50%,transparent 50%)}
+  .chprog{display:flex; align-items:center; gap:9px; flex:0 1 250px; min-width:170px}
+  .chbar{flex:1; height:11px; border-radius:99px; background:color-mix(in srgb,var(--ink) 11%,transparent); overflow:hidden}
+  .chbar i{display:block; height:100%; border-radius:99px; background:var(--bleu); transition:width .3s ease}
+  .chgroup[data-state="full"] .chbar i{background:var(--known)}
+  .chpct{font-family:var(--sans); font-size:14px; font-weight:800; min-width:40px; text-align:right; color:var(--ink)}
+  .chstat{font-family:var(--sans); font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; padding:3px 10px; border-radius:999px; border:1px solid currentColor; white-space:nowrap}
+  .chstat.none{color:var(--mute); background:var(--card)}
+  .chstat.part{color:var(--bleu); background:color-mix(in srgb,var(--bleu) 10%,var(--card))}
+  .chstat.full{color:var(--known); background:var(--known-soft)}
+  .chstat.soon{color:var(--mute); background:transparent; border-style:dashed}
+  .acc{border-left:5px solid var(--line)}
+  .acc[data-cov="part"]{border-left-color:var(--bleu)}
+  .acc[data-cov="full"]{border-left-color:var(--known)}
+  .acc > summary{gap:12px}
+  .acc > summary .ttl{display:flex; align-items:center; gap:11px; min-width:0}
+  .cvmark{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid var(--line); display:grid; place-items:center; font-size:12px; line-height:1; color:transparent; font-weight:800}
+  .acc[data-cov="part"] .cvmark{border-color:var(--bleu)}
+  .acc[data-cov="part"] .cvmark::after{content:""; width:8px; height:8px; border-radius:50%; background:var(--bleu)}
+  .acc[data-cov="full"] .cvmark{background:var(--known); border-color:var(--known); color:var(--on-solid)}
+  .acc > summary .meta{display:flex; align-items:center; gap:10px; flex:0 0 auto}
+  .cv{display:flex; align-items:center; gap:8px}
+  .cvbar{width:110px; height:8px; border-radius:99px; background:color-mix(in srgb,var(--ink) 11%,transparent); overflow:hidden}
+  .cvbar i{display:block; height:100%; border-radius:99px; background:var(--bleu)}
+  .acc[data-cov="full"] .cvbar i{background:var(--known)}
+  .cvn{font-size:12.5px; font-weight:700; color:var(--ink-2); min-width:44px}
+  .bestchip{font-size:11.5px; font-weight:800; padding:2px 9px; border-radius:999px; background:var(--neutral); color:var(--ink-2); white-space:nowrap}
+  .bestchip.top{background:var(--known-soft); color:var(--known)}
+  @media (max-width:640px){ .acc > summary{flex-wrap:wrap} .acc > summary .meta{width:100%} .cv{flex:1} .cvbar{flex:1; width:auto} .chprog{flex-basis:100%} }
   .q{padding:14px 0; border-bottom:1px dotted var(--line)}
   .q:last-child{border-bottom:0}
   .q .qt{font-family:var(--serif); font-size:16px; margin-bottom:9px}
@@ -631,7 +674,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v1.2.1</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v1.3.0</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -920,8 +963,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v1.2.1</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v1.3.0</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.3.0 (15 Nov 2026): <strong>Grammar progress at a glance.</strong> Each chapter banner in Grammaire now shows one status dot per drill, in list order: a red <strong>!</strong> for not started, an amber half-filled dot for in progress, a green <strong>✓</strong> for fully covered (every question answered correctly at least once). Hover a dot for the drill's name and score. The banner also says how many drills are covered, in progress and not started, and how many questions you have answered correctly, and it has a coloured left stripe and a status pill (Not started, In progress, Complete ✓; chapters you have not reached show hollow dots and à venir). Each drill row has a status circle, a coverage bar (10/17) and a best-score chip that turns green at full marks. Everything updates as you answer. No drill, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.2.1 (15 Nov 2026): <strong>Chapters 22–24 grammar drills get the full content pass.</strong> The 11 grammar drills of Chapters 22, 23 and 24 (plus-que-parfait, voix passive, connecteurs de l'alternative, cause, conséquence, pronoms relatifs, subjonctif, voix passive, temps du passé, conditionnel d'information, indicatif ou subjonctif) now have a one-line why after every answer (204 items in all) and 69 of them are drop-downs (four options, none of the wrong ones an accepted answer), the same as the Chapter 21 drills. The Vocab en contexte drills are unchanged. Accepted answers, scoring, best scores and progress are unchanged.<br></span>
     <span style="color:var(--mute)">v1.2.0 (15 Nov 2026): <strong>Favorites in Vocabulaire.</strong> A ☆ button at the top-right of every vocabulary card stars the word (click again to remove it). A <strong>☆ Favorites</strong> filter, first in the Filtres row with a live count, shows only starred words in every mode (Spelling, Recognize, Recall); it switches the chapter drop-down to All chapters, since favorites span chapters, and you can pick a chapter to narrow them. In the progress table every word has its own ☆ / ★, and with the filter on the table lists only your favorites. Favorites are saved in this browser by the word's French spelling, so a word that appears in several chapters shares one star, and they follow a word whose spelling is corrected in a later version. Reset marks does not clear them. Prépa examen is unchanged. No vocabulary, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.1.3 (15 Nov 2026): <strong>Vocab en contexte drills now mix drop-downs and typed answers.</strong> In the 4 Vocab en contexte drills, 25 items are now drop-downs (four options, the three wrong ones from the same topic), and 42 typed items carry a one- or two-word English gloss beside the sentence. Items that already had a gloss or a hint keep it. The accepted answers, scoring, best scores and progress are unchanged.<br></span>
@@ -3415,12 +3459,20 @@ function buildDrills(){
     var list=groups[ch];
     var chDet=el("details","chgroup"); if(ch===state.currentCh) chDet.open=true;
     var ahead=ch>state.currentCh; if(ahead) chDet.classList.add("ahead");
-    var doneCount=list.filter(function(d){return state.drills[d.id];}).length;
     var chSum=el("summary");
-    chSum.innerHTML="<span class='chtitle'>"+(CH_NAMES[ch]||("Chapitre "+ch))+"</span>"+
-      "<span class='chmeta'>"+list.length+" drill"+(list.length>1?"s":"")+
-      (ahead?" · à venir":(doneCount?" · "+doneCount+"/"+list.length+" done":""))+"</span>";
     chDet.appendChild(chSum);
+    chDet._paint=function(){
+      var n=0,t=0,full=0,done=0; list.forEach(function(d){ var c=covOf(d); if(!c.t) return; n+=c.n; t+=c.t; if(c.t&&c.n>=c.t) full++; if(state.drills[d.id]) done++; });
+      var p=t?Math.round(n/t*100):0, st=ahead?"soon":(t&&n>=t?"full":(n>0?"part":"none"));
+      chDet.setAttribute("data-state",st); chSum.style.setProperty("--p",(ahead?0:p)+"%");
+      var np=0,nn=0,dots="";
+      list.forEach(function(d){ var c=covOf(d); if(!c.t) return; var k=ahead?"soon":(c.t&&c.n>=c.t?"full":(c.n>0?"part":"none")); if(k==="part")np++; if(k==="none")nn++;
+        dots+="<span class='chdot "+k+"' title='"+d.title.replace(/'/g,"&#39;")+" — "+c.n+"/"+c.t+"'>"+(k==="full"?"<b>✓</b>":(k==="part"?"<i class='half'></i>":(k==="none"?"<b>!</b>":"")))+"</span>"; });
+      chSum.innerHTML="<span class='chtitle'>"+(CH_NAMES[ch]||("Chapitre "+ch))+"<small>"+(ahead?list.length+" drills · à venir":full+" covered · "+np+" in progress · "+nn+" not started · "+n+"/"+t+" questions")+"</small></span>"+
+        "<span class='chdots'>"+dots+"</span>"+
+        "<span class='chstat "+st+"'>"+({soon:"à venir",full:"Complete ✓",part:"In progress",none:"Not started"})[st]+"</span>";
+    };
+    chDet._paint();
     var chBody=el("div","chbody");
     list.forEach(function(d){ chBody.appendChild(buildDrillAcc(d)); });
     chDet.appendChild(chBody);
@@ -3567,8 +3619,11 @@ function pickRound(bank,n,d){
 function newCount(d,items){ var all=d.bankItems||d.items||[], cv=state.gramCov[d.id]||{}, k=0; items.forEach(function(x){ if(!cv[all.indexOf(x)]) k++; }); return k; }
 function covOf(d){ var bank=d.bankItems||d.items||[]; var cv=state.gramCov[d.id]||{}; var n=0;
   for(var k in cv) if(cv[k]) n++; return {n:Math.min(n,bank.length), t:bank.length}; }
-function drillMeta(d){ var best=state.drills[d.id]; var c=covOf(d);
-  return d.ch+(c.t?" · couverture "+c.n+"/"+c.t:"")+(best?" · best "+best.correct+"/"+best.total:""); }
+function drillMeta(d){ var best=state.drills[d.id]; var c=covOf(d), p=c.t?Math.round(c.n/c.t*100):0;
+  return (c.t?"<span class='cv' title='Questions answered correctly at least once'><span class='cvbar'><i style='width:"+p+"%'></i></span><span class='cvn'>"+c.n+"/"+c.t+"</span></span>":"")+
+    (best?"<span class='bestchip"+(best.correct===best.total?" top":"")+"' title='Best full round'>best "+best.correct+"/"+best.total+"</span>":""); }
+function accState(det,d){ var c=covOf(d); det.setAttribute("data-cov",c.t&&c.n>=c.t?"full":(c.n>0?"part":"none")); }
+function accRefresh(det,d){ var m=det.querySelector(".meta"); if(m) m.innerHTML=drillMeta(d); accState(det,d); var g=det.closest&&det.closest(".chgroup"); if(g&&g._paint) g._paint(); }
 /* build one drill's <details.acc> accordion (used inside a chapter group). opts: {items, practice} for a retry/misses round */
 function buildDrillAcc(d,opts){
   opts=opts||{}; var pk=gPrefs();
@@ -3584,18 +3639,18 @@ function buildDrillAcc(d,opts){
   }
   var det=el("details","acc");
   var sum=el("summary");
-  sum.innerHTML="<span>"+d.title+"</span><span class='meta'>"+drillMeta(d)+"</span>";
+  sum.innerHTML="<span class='ttl'><span class='cvmark'>✓</span><span>"+d.title+"</span></span><span class='meta'>"+drillMeta(d)+"</span>";
   det.appendChild(sum);
   var body=el("div","body dz"), z=dzFor(d), nz=null;
   if(z.task) body.appendChild(dzTaskEl(z,d.items));
   if(z.notes){ nz=el("div","dz-notes","<div class='dz-bar'><span class='dz-label'>📘 Grammar notes</span><span class='dz-title'>"+z.title+"</span></div>"+z.notes); body.appendChild(nz); }
   if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
-  det._d=d; det._body=body; det._practice=practice;
+  det._d=d; det._body=body; det._practice=practice; accState(det,d);
   if(empty) body.appendChild(el("div","gempty",empty));
   body.appendChild(el("div","dz-xhead","<span class='dz-label'>✍ Exercises</span><div class='dz-prog'><i></i></div>"+((function(k){ return k&&!d.gen?"<span class='dz-new' title='Questions you have not answered correctly yet — they count toward the coverage bar'>"+k+" new</span>":""; })(newCount(d,d.items)))+"<span class='dz-count'>0 of "+d.items.length+"</span>"));
   if(nz){ var st=el("div","dz-sticky","📘 <span>Notes: <b>"+z.title+"</b></span>"), sb=el("button",null,"Back to notes ↑"); sb.type="button"; sb.onclick=function(){ nz.scrollIntoView({behavior:"smooth",block:"start"}); }; st.appendChild(sb); body.appendChild(st); }
   d.items.forEach(function(it,i){ var qq=gBuildQ(d,it,det,function(q){
-    var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); dzDone(det,q); }); dzDecorate(qq,i); body.appendChild(qq); });
+    accRefresh(det,d); scoreDrill(d); dzDone(det,q); }); dzDecorate(qq,i); body.appendChild(qq); });
   var foot=el("div","drill-foot");
   var cbtn=el("button","ghost","Check all");
   cbtn.onclick=function(){ [].forEach.call(body.querySelectorAll(".q"),function(qq){ qq._check(); }); };
@@ -3629,7 +3684,7 @@ function scoreDrill(d){
       if(correct===d.items.length && d.items.length>=10) award("a_round");
       var prev=state.drills[d.id];
       if(!prev || correct>prev.correct){ state.drills[d.id]={correct:correct,total:d.items.length}; saveState(); refreshDash();
-        det.querySelector(".meta").innerHTML=drillMeta(d);
+        accRefresh(det,d);
       }
     }
   }
