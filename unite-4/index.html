@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<title>Unité 4 · Dossier Français — v1.2.0</title>
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
+<title>Unité 4 · Dossier Français — v1.2.1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -462,7 +462,6 @@
   .dz-num{position:absolute; left:22px; top:16px; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:var(--dz-bs); border:1px solid var(--dz-be); color:var(--bleu); font-weight:800; font-size:14px}
   .dz .q.dz-ok .dz-num{background:var(--known); border-color:var(--known); color:var(--card)}
   .dz .q.dz-bad .dz-num{background:var(--accent); border-color:var(--accent); color:var(--card)}
-  .dz-kind{font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin-bottom:2px}
   .dz .q .hint{display:inline-block; color:var(--learn); background:var(--learn-soft); border:1px solid var(--dz-le); padding:0 8px; border-radius:999px; font-size:12px; margin-top:6px}
   .dz .wbank{padding:12px 22px 0; margin:0}
   .dz .gempty{padding:14px 22px}
@@ -600,6 +599,9 @@
   .themebtn{appearance:none; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:17px; line-height:1; cursor:pointer; display:grid; place-items:center; padding:0;
     transition:background .12s ease, border-color .12s ease}
   .themebtn:hover{border-color:var(--bleu)}
+  .accbtn{font-family:var(--serif); font-size:17px; font-weight:600}
+  .accbtn[aria-pressed="true"]{border-color:var(--bleu); color:var(--bleu); background:color-mix(in srgb,var(--bleu) 14%,var(--card))}
+  html:not(.acc-on) .akeys{display:none !important}   /* accent keys are opt-in: the é button in the masthead */
   .themebtn:focus-visible{outline:2px solid var(--bleu); outline-offset:2px}
 
   /* multiple-choice options (Recognize): readable when locked, parenthetical on the same line */
@@ -614,11 +616,12 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 4 · v1.2.0</div>
+      <div class="eyebrow">French Basic Course · Unit 4 · v1.2.1</div>
       <h1><b>Unité&nbsp;4</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
       <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
+      <button type="button" class="themebtn accbtn" id="accBtn" aria-pressed="false">é</button>
       <button type="button" class="countchip" id="dlptChip" title="Click to set your test date">
         <span class="dot" id="dDays">—</span>
         <span>days to <b>DLPT / OPI</b></span>
@@ -897,8 +900,9 @@
   </section>
 
   <footer>
-    <strong>Dossier Unité 4 · v1.2.0</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
+    <strong>Dossier Unité 4 · v1.2.1</strong> — built from the <em>French Basic Course, Textbook 4</em>, Chapters 16 (Family Through Generations), 17 (Urban Dynamics), 18 (Health, Sports, and Medicine) and 19 (Emergencies and Disasters), plus AOL 220 vocabulary. Conjugations are present indicative; the passé composé is drilled in Grammaire. Engine forked from the Unité 3 Dossier v1.3.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.2.1 (15 Nov 2026): <strong>Less clutter in the exercises.</strong> The grey <em>Type the answer</em> / <em>Pick from the list</em> label above each grammar exercise is gone (the numbered circle and the Your task key already say it). The accent keys under typed answers are now off by default: a round <strong>é</strong> button in the masthead, next to the light/dark button, switches them on or off for every typed field (grammar drills, vocabulary, Prépa examen) and remembers your choice. No drill item, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.2.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 12 of the 17 drills the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms, a green Forms strip, a red Watch out box, a blue Good to know box); <em>Le mode infinitif</em> keeps its rule bullets in the new style, and the 4 Vocab en contexte drills show the task only. Four Prépa examen grammar topics (pronoms relatifs, hypothèse, nominalisation, pronoms démonstratifs) use the same notes; the fifth keeps its rule card. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
     <span style="color:var(--mute)">v1.1.6 (22 Oct 2026): <strong>Memo cards — mnemonics that only restated the definition are removed.</strong> Of 829 mnemonics, 663 were removed (they repeated the English gloss in other words, or only named an English cognate common enough not to need a hook) and 6 were rewritten into a real hook (<em>l’huile de colza</em>, <em>une étape</em>, <em>abîmé(e)</em>, <em>se heurter à</em>, <em>le trou</em> and <em>éventuel(le)</em>); 160 were kept. 166 mnemonics remain. Only the mnemonic line of the memo changed: no card, answer, cue or progress did.<br></span>
     <span style="color:var(--mute)">v1.1.5 (19 Oct 2026): <strong>Memo cards — more synonym and “not to confuse with” pairs.</strong> After a review of the pairs left out for lack of a firm source, 9 cards gained 7 further links (see the lines on each memo card). Only the synonym and “not to confuse with” lines changed there. <strong>Vocabulaire — streak chip.</strong> After you answer in Spelling or Recognize, a small chip shows where the card stands: ✓ 1/3, ✓ 2/3, then ✓ 3/3 · mastered (green); a miss shows ✗ 0/3. It sits on the verdict line in Spelling and under the options in Recognize; Training records nothing and shows none. <strong>Shorter English cues.</strong> 8 glosses that could wrap the card on a narrower screen were tightened (le riverain, éclairer, se dire solidaire de, tomber des nues, un passage à niveau, la patientèle, étendre sa présence sur, digéré(e)); the French, answers and progress are unchanged.<br></span>
@@ -4012,8 +4016,7 @@ function dzTaskEl(z,items){
   return el("div","dz-task","<span class='dz-label'>✎ Your task</span><p class='dz-do'>"+z.task+"</p>"+(z.sub?"<p class='dz-sub'>"+z.sub+"</p>":"")+"<div class='dz-legend'>"+lg+"</div>");
 }
 function dzDecorate(q,i){
-  var kind=q.querySelector("select.gapsel")?"Pick from the list":"Type the answer";
-  q.insertBefore(el("div","dz-kind",kind),q.firstChild); q.appendChild(el("div","dz-num",String(i+1)));
+  q.appendChild(el("div","dz-num",String(i+1)));
 }
 function dzDone(det,q){
   q.classList.add(q._res==="ok"?"dz-ok":"dz-bad"); var n=q.querySelector(".dz-num"); if(n) n.textContent=q._res==="ok"?"✓":"✗";
@@ -5200,6 +5203,22 @@ setInterval(updateCountdown,36e5);
     paint();
   });
   if(mq&&mq.addEventListener) mq.addEventListener("change",paint);
+  paint();
+})();
+/* =============== ACCENT KEYS (off by default; the é button in the masthead shows them under every typed field) =============== */
+(function(){
+  var KEY="frAccents", btn=document.getElementById("accBtn"), root=document.documentElement;
+  function on(){ return root.classList.contains("acc-on"); }
+  function paint(){
+    btn.setAttribute("aria-pressed",on()?"true":"false");
+    var t=on()?"Accent keys shown — click to hide them":"Accent keys hidden — click to show them under typed answers";
+    btn.title=t; btn.setAttribute("aria-label",t);
+  }
+  btn.addEventListener("click",function(){
+    root.classList.toggle("acc-on");
+    try{ localStorage.setItem(KEY,on()?"1":"0"); }catch(e){}
+    paint();
+  });
   paint();
 })();
 </script>
