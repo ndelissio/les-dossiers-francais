@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 1 · Dossier Français — v4.2.1</title>
+<title>Unité 1 · Dossier Français — v4.2.2</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -448,6 +448,7 @@
   .dz-prog{flex:1; min-width:120px; max-width:300px; height:8px; border-radius:99px; background:var(--line); overflow:hidden}
   .dz-prog i{display:block; height:100%; width:0; background:var(--bleu); transition:width .25s ease}
   .dz-count{font-size:13px; color:var(--mute)}
+  .dz-new{font-size:12px; font-weight:700; color:var(--bleu); background:color-mix(in srgb,var(--bleu) 12%,var(--card)); border:1px solid color-mix(in srgb,var(--bleu) 30%,var(--card)); border-radius:999px; padding:1px 9px}
   .dz-sticky{position:sticky; top:var(--dz-top,48px); z-index:3; display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:8px 22px; background:var(--dz-bs); border-bottom:1px solid var(--dz-be); font-size:14px; color:var(--ink-2)}
   .dz-sticky b{color:var(--bleu)}
   .dz-sticky button{margin-left:auto; font:inherit; font-weight:700; font-size:13px; color:var(--bleu); background:var(--card); border:1px solid var(--dz-be); border-radius:999px; padding:3px 12px; cursor:pointer}
@@ -608,7 +609,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 1 · v4.2.1</div>
+      <div class="eyebrow">French Basic Course · Unit 1 · v4.2.2</div>
       <h1><b>Unité&nbsp;1</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -873,8 +874,9 @@
 
 
   <footer>
-    <strong>Dossier v4.2.1</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
+    <strong>Dossier v4.2.2</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v4.2.2 (15 Nov 2026): <strong>Grammar coverage reaches 100 % in a few rounds.</strong> A round now shows the questions you have not yet answered correctly first, then fills up with ones you have already covered, so a drill with 20 questions is fully covered in 2 rounds, 25 or 30 in 3 (before, rounds were random and it took about 6 to 11). A question you miss comes back first in the next round until you get it right. A small <em>N new</em> pill in the Exercises header shows how many of the round are new. Nothing else changed: same questions, answers, scoring, best scores and progress.<br></span>
     <span style="color:var(--mute)">v4.2.1 (15 Nov 2026): <strong>Less clutter in the exercises.</strong> The grey <em>Type the answer</em> / <em>Pick from the list</em> label above each grammar exercise is gone (the numbered circle and the Your task key already say it). The accent keys under typed answers are now off by default: a round <strong>é</strong> button in the masthead, next to the light/dark button, switches them on or off for every typed field (grammar drills, vocabulary, Prépa examen) and remembers your choice. No drill item, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v4.2.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill with an instruction now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 16 of the 17 grammar drills the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms, a green Forms strip, a red Watch out box, a blue Good to know box); <em>Places in town</em> keeps its rule bullets in the new style. The 4 Vocab in context drills and the 3 generated Numbers and Clock drills have no instruction text, so they show the numbered exercises only. Five Prépa examen grammar topics (adjectifs possessifs, mots interrogatifs, faire, verbes pronominaux, futur proche) use the same notes; the other three keep their rule cards. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
     <span style="color:var(--mute)">v4.1.5 (22 Oct 2026): <strong>Memo cards — mnemonics that only restated the definition are removed.</strong> Of 528 mnemonics, 404 were removed (they repeated the English gloss in other words, or only named an English cognate common enough not to need a hook) and 2 were rewritten into a real hook (<em>mardi</em> and <em>la librairie</em>); 122 were kept. 124 mnemonics remain. Only the mnemonic line of the memo changed: no card, answer, cue or progress did.<br></span>
@@ -4444,11 +4446,16 @@ function gBuildQ(d,it,det,onDone){
   });
   return q;
 }
-function pickRound(bank,n){
-  var a=bank.slice();
-  for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
-  return a.slice(0, Math.min(n, a.length));
+/* a round shows the items NOT yet answered correctly first (random order), then covered ones to fill up, so the coverage bar can reach 100 % in
+   ceil(bank/10) rounds instead of waiting for chance; the chosen items are shuffled so their order says nothing */
+function pickRound(bank,n,d){
+  function shuf(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  var all=d&&(d.bankItems||d.items), cv=(d&&state.gramCov&&state.gramCov[d.id])||{}, fresh=[], seen=[];
+  bank.forEach(function(x){ (all&&cv[all.indexOf(x)]?seen:fresh).push(x); });
+  return shuf(shuf(fresh).concat(shuf(seen)).slice(0,Math.min(n,bank.length)));
 }
+/* how many of these items have never been answered correctly */
+function newCount(d,items){ var all=d.bankItems||d.items||[], cv=state.gramCov[d.id]||{}, k=0; items.forEach(function(x){ if(!cv[all.indexOf(x)]) k++; }); return k; }
 /* v3.2.0: coverage — how many distinct bank items you've answered right at least once */
 function covOf(d){ var bank=d.bankItems||d.items||[]; var cv=state.gramCov[d.id]||{}; var n=0;
   for(var k in cv) if(cv[k]) n++; return {n:Math.min(n,bank.length), t:bank.length}; }
@@ -4465,7 +4472,7 @@ function buildDrillAcc(d,opts){
     var pool=bank;
     if(pk.src==="miss"){ var ms=gMissOf(d); pool=bank.filter(function(x,i){ return ms[i]; }); practice=true; if(!pool.length) empty="No misses to retry in this drill."; }
     if(pk.fmt==="pick"){ pool=pool.filter(function(x){ return x.ch; }); practice=true; if(!pool.length&&!empty) empty="No drop-down items in this drill yet."; }
-    d.items=pickRound(pool,10);
+    d.items=pickRound(pool,10,d);
   }
   var det=el("details","acc");
   var sum=el("summary");
@@ -4477,7 +4484,7 @@ function buildDrillAcc(d,opts){
   if(d.wb){ var wbk=el("div","wbank"); wbk.appendChild(el("span","wblabel","Banque de mots :")); d.wb.split(" · ").forEach(function(w){ wbk.appendChild(el("span","wchip",esc(w))); }); body.appendChild(wbk); }
   det._d=d; det._body=body; det._practice=practice;
   if(empty) body.appendChild(el("div","gempty",empty));
-  body.appendChild(el("div","dz-xhead","<span class='dz-label'>✍ Exercises</span><div class='dz-prog'><i></i></div><span class='dz-count'>0 of "+d.items.length+"</span>"));
+  body.appendChild(el("div","dz-xhead","<span class='dz-label'>✍ Exercises</span><div class='dz-prog'><i></i></div>"+((function(k){ return k&&!d.gen?"<span class='dz-new' title='Questions you have not answered correctly yet — they count toward the coverage bar'>"+k+" new</span>":""; })(newCount(d,d.items)))+"<span class='dz-count'>0 of "+d.items.length+"</span>"));
   if(nz){ var st=el("div","dz-sticky","📘 <span>Notes: <b>"+z.title+"</b></span>"), sb=el("button",null,"Back to notes ↑"); sb.type="button"; sb.onclick=function(){ nz.scrollIntoView({behavior:"smooth",block:"start"}); }; st.appendChild(sb); body.appendChild(st); }
   d.items.forEach(function(it,i){ var qq=gBuildQ(d,it,det,function(q){
     var mEl=det.querySelector(".meta"); if(mEl) mEl.innerHTML=drillMeta(d); scoreDrill(d); dzDone(det,q); }); dzDecorate(qq,i); body.appendChild(qq); });
