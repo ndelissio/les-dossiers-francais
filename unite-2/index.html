@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 2 · Dossier Français — v2.2.2</title>
+<title>Unité 2 · Dossier Français — v2.2.3</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -613,7 +613,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 2 · v2.2.2</div>
+      <div class="eyebrow">French Basic Course · Unit 2 · v2.2.3</div>
       <h1><b>Unité&nbsp;2</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -896,8 +896,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 2 · v2.2.2</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
+    <strong>Dossier Unité 2 · v2.2.3</strong> — built from the <em>French Basic Course, Textbook 2 (Sept 2025)</em>, Chapters 6–9 (Housing · Food · Health · Social events). The Conjugaison progress bar tracks the passé composé and the imparfait; présent is reps only. Engine forked from the Unité 1 Dossier v3.1.0.1.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v2.2.3 (15 Nov 2026): <strong>Vocab en contexte drills now mix drop-downs and typed answers.</strong> In the 4 Vocab en contexte drills, 40 items are now drop-downs (four options, the three wrong ones from the same topic), and 43 typed items carry a one- or two-word English gloss beside the sentence. Items that already had a gloss or a hint keep it. The accepted answers, scoring, best scores and progress are unchanged.<br></span>
     <span style="color:var(--mute)">v2.2.2 (15 Nov 2026): <strong>Grammar coverage reaches 100 % in a few rounds.</strong> A round now shows the questions you have not yet answered correctly first, then fills up with ones you have already covered, so a drill with 20 questions is fully covered in 2 rounds, 25 or 30 in 3 (before, rounds were random and it took about 6 to 11). A question you miss comes back first in the next round until you get it right. A small <em>N new</em> pill in the Exercises header shows how many of the round are new. Nothing else changed: same questions, answers, scoring, best scores and progress.<br></span>
     <span style="color:var(--mute)">v2.2.1 (15 Nov 2026): <strong>Less clutter in the exercises.</strong> The grey <em>Type the answer</em> / <em>Pick from the list</em> label above each grammar exercise is gone (the numbered circle and the Your task key already say it). The accent keys under typed answers are now off by default: a round <strong>é</strong> button in the masthead, next to the light/dark button, switches them on or off for every typed field (grammar drills, vocabulary, Prépa examen) and remembers your choice. No drill item, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v2.2.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 20 of the 24 grammar drills the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms, a green Forms strip, a red Watch out box, a blue Good to know box); the other 4 (<em>avoir</em> forms, <em>COD</em>, <em>participes passés</em>, <em>prépositions de lieu</em>) keep their rule bullets in the new style, and the 4 Vocab in context drills show the task only. Four Prépa examen grammar topics (passé composé avec être, imparfait, savoir et connaître, devoir pouvoir vouloir) use the same notes; the other three keep their rule cards. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
@@ -4186,6 +4187,30 @@ var GFIX={"aux":{"items":{"10":{"g":"est retourné","addA":["est retournés","es
       if(e.hint!==undefined) it.hint=e.hint;
       if(e.x!==undefined) it.x=e.x;
       if(e.ch!==undefined){ if(e.ch) it.ch=e.ch; else delete it.ch; }
+      delete it._g;
+    });
+  });
+})();
+/* ---- Vocab en contexte mix (15 Nov 2026): some items become drop-downs, typed items get a 1-2 word English gloss ----
+   VICX[drillId] = [[index, guard (the item's current first answer), gloss "(…)" for a typed item | null, options for a drop-down (correct first)]]
+   Each row checks that the bank item still has the answer it was written against, so a shifted bank is reported, never silently patched. */
+var VICX={"voc6":[[0,"le four","(the oven)"],[1,"le réfrigérateur",null,["le réfrigérateur","le four","le placard","la cuisinière"]],[2,"la baignoire","(the bathtub)"],[3,"le lavabo",null,["le lavabo","la douche","la baignoire","le miroir"]],[4,"le grenier","(the attic)"],[5,"la cave",null,["la cave","le grenier","le toit","la chambre"]],[6,"le canapé","(the sofa)"],[7,"le lit",null,["le lit","le miroir","le tapis","l'armoire"]],[8,"l'armoire","(the wardrobe)"],[9,"le placard",null,["le placard","la commode","l'armoire","la cave"]],[10,"le tapis","(the rug)"],[11,"le miroir",null,["le miroir","la fenêtre","le rideau","le lavabo"]],[12,"la fenêtre","(the window)"],[13,"le toit",null,["le toit","la cave","le garage","le jardin"]],[14,"le jardin","(the garden)"],[15,"le garage",null,["le garage","le lavabo","le placard","le salon"]],[16,"la cuisinière","(the stove)"],[17,"le lave-vaisselle",null,["le lave-vaisselle","le réfrigérateur","le four","la cuisinière"]],[18,"la douche","(the shower)"],[19,"le savon",null,["le savon","la serviette","le miroir","le tapis"]],[20,"la serviette","(the towel)"],[21,"le fauteuil",null,["le fauteuil","le lit","le tapis","le miroir"]],[22,"le rideau de douche","(shower curtain)"],[23,"la commode",null,["la commode","l'armoire","le placard","le lit"]]],"voc7":[[0,"le couteau","(the knife)"],[1,"la casserole",null,["la casserole","la poêle","le saladier","la passoire"]],[2,"la poêle","(frying pan)"],[3,"le fouet",null,["le fouet","le couteau","la passoire","la casserole"]],[4,"le saladier","(salad bowl)"],[5,"la passoire",null,["la passoire","le fouet","la poêle","le saladier"]],[6,"la farine","(the flour)"],[7,"le beurre",null,["le beurre","la farine","le sel","l'ail"]],[8,"le lait","(the milk)"],[9,"le fromage",null,["le fromage","le beurre","le saumon","le poulet"]],[10,"la baguette","(the baguette)"],[11,"le poulet",null,["le poulet","le saumon","le pain","les fraises"]],[12,"le saumon","(the salmon)"],[13,"les fraises",null,["les fraises","le poulet","l'ail","le sel"]],[14,"l'ail","(garlic)"],[15,"le sel",null,["le sel","l'ail","la farine","le beurre"]],[16,"la fourchette","(the fork)"],[17,"le four",null,["le four","la casserole","la poêle","le saladier"]],[18,"l'addition","(the bill)"],[19,"le plat du jour",null,["le plat du jour","la carte","l'addition","le pourboire"]],[20,"la carte","(the menu)"],[21,"le pourboire",null,["le pourboire","l'addition","la carte","le plat du jour"]]],"voc8":[[0,"les yeux","(the eyes)"],[1,"les oreilles",null,["les oreilles","les yeux","les mains","les pieds"]],[4,"le ventre","(the belly)"],[6,"le coeur",null,["le coeur","les poumons","le ventre","la gorge"]],[7,"les poumons","(the lungs)"],[8,"les dents",null,["les dents","les yeux","les oreilles","les pieds"]],[9,"la main","(the hand)"],[11,"la fièvre",null,["la fièvre","la brûlure","la piqûre","la seringue"]],[12,"la grippe","(the flu)"],[13,"l'ordonnance",null,["l'ordonnance","le médicament","le vaccin","le pansement"]],[15,"la piqûre","(the shot)"],[16,"les urgences",null,["les urgences","les premiers soins","la fièvre","la grippe"]],[17,"la brûlure","(the burn)"],[18,"le pansement",null,["le pansement","la seringue","le savon","le vaccin"]],[19,"le vaccin","(vaccine)"],[20,"les premiers soins",null,["les premiers soins","les urgences","l'ordonnance","la brûlure"]],[21,"la seringue","(the syringe)"]],"voc9":[[0,"le cadeau","(the gift)"],[1,"l'hôte",null,["l'hôte","l'invité","le convive","le traiteur"]],[2,"l'invité","(the guest)"],[3,"le faire-part","(announcement)"],[4,"le carton d'invitation","(the invitation)"],[5,"les félicitations",null,["les félicitations","la croisière","l'apéritif","le vernissage"]],[6,"le feu d'artifice",null,["le feu d'artifice","le vernissage","la montre","le cadeau"]],[7,"la pendaison de crémaillère","(housewarming)"],[8,"le vernissage",null,["le vernissage","l'apéritif","la dégustation de vin","la croisière"]],[9,"la journée portes ouvertes","(open house)"],[10,"le traiteur",null,["le traiteur","le convive","l'hôte","l'invité"]],[11,"le chèque-cadeau","(gift card)"],[12,"le coffret",null,["le coffret","le panier","la montre","la croisière"]],[13,"la dégustation de vin","(wine tasting)"],[14,"la croisière",null,["la croisière","la comédie musicale","la dégustation de vin","le vernissage"]],[15,"l'apéritif","(aperitif)"],[16,"le convive","(table guest)"],[17,"la montre",null,["la montre","le coffret","le panier","le cadeau"]],[18,"le panier","(the basket)"],[19,"la comédie musicale",null,["la comédie musicale","la croisière","le vernissage","le feu d'artifice"]]]};
+(function applyVicx(){
+  DRILLS.forEach(function(d){
+    var rows=VICX[d.id]; if(!rows) return;
+    var bank=d.bankItems||d.items||[];
+    rows.forEach(function(r){
+      var it=bank[r[0]];
+      if(!it){ if(window.console) console.warn("vicx: no item "+d.id+" #"+r[0]); return; }
+      var cur=Array.isArray(it.a)?it.a:[it.a], A=gAdapt(it);
+      if(FG.norm(r[1])!==FG.norm(cur[0])){ if(window.console) console.warn("vicx out of step: "+d.id+" #"+r[0]); return; }
+      if(r[3]){
+        var acc=cur.map(FG.norm);
+        if(acc.indexOf(FG.norm(r[3][0]))<0 || r[3].slice(1).some(function(o){ return acc.indexOf(FG.norm(o))>=0; })){ if(window.console) console.warn("vicx drop-down not valid: "+d.id+" #"+r[0]); return; }
+        it.ch=r[3];
+      } else if(r[2] && !A.cue){
+        it.s=A.s; it.cue=r[2]; it.q=A.s.replace("___","___ "+r[2]);
+      }
       delete it._g;
     });
   });

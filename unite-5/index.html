@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v1.1.2</title>
+<title>Unité 5 · Dossier Français — v1.1.3</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -615,7 +615,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v1.1.2</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v1.1.3</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -903,8 +903,9 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v1.1.2</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v1.1.3</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v1.1.3 (15 Nov 2026): <strong>Vocab en contexte drills now mix drop-downs and typed answers.</strong> In the 4 Vocab en contexte drills, 25 items are now drop-downs (four options, the three wrong ones from the same topic), and 42 typed items carry a one- or two-word English gloss beside the sentence. Items that already had a gloss or a hint keep it. The accepted answers, scoring, best scores and progress are unchanged.<br></span>
     <span style="color:var(--mute)">v1.1.2 (15 Nov 2026): <strong>Grammar coverage reaches 100 % in a few rounds.</strong> A round now shows the questions you have not yet answered correctly first, then fills up with ones you have already covered, so a drill with 20 questions is fully covered in 2 rounds, 25 or 30 in 3 (before, rounds were random and it took about 6 to 11). A question you miss comes back first in the next round until you get it right. A small <em>N new</em> pill in the Exercises header shows how many of the round are new. Nothing else changed: same questions, answers, scoring, best scores and progress.<br></span>
     <span style="color:var(--mute)">v1.1.1 (15 Nov 2026): <strong>Less clutter in the exercises.</strong> The grey <em>Type the answer</em> / <em>Pick from the list</em> label above each grammar exercise is gone (the numbered circle and the Your task key already say it). The accent keys under typed answers are now off by default: a round <strong>é</strong> button in the masthead, next to the light/dark button, switches them on or off for every typed field (grammar drills, vocabulary, Prépa examen) and remembers your choice. No drill item, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.1.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 14 of the 18 drills the instruction and the rule used to run together in one paragraph; they are now separate, and the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms, a green Forms strip, a red Watch out box, a blue Good to know box). The 4 Vocab en contexte drills show the task only. The Prépa examen grammar topics (subjonctif, plus-que-parfait, voix passive, hypothèse, pronoms relatifs) use the same notes. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
@@ -3193,6 +3194,30 @@ var GFIX={"relc21":{"items":{"10":{"g":"le long desquels","s":"Les montagnes ___
       if(e.hint!==undefined) it.hint=e.hint;
       if(e.x!==undefined) it.x=e.x;
       if(e.ch!==undefined){ if(e.ch) it.ch=e.ch; else delete it.ch; }
+      delete it._g;
+    });
+  });
+})();
+/* ---- Vocab en contexte mix (15 Nov 2026): some items become drop-downs, typed items get a 1-2 word English gloss ----
+   VICX[drillId] = [[index, guard (the item's current first answer), gloss "(…)" for a typed item | null, options for a drop-down (correct first)]]
+   Each row checks that the bank item still has the answer it was written against, so a shifted bank is reported, never silently patched. */
+var VICX={"voc21":[[0,"baccalauréat",null,["baccalauréat","brevet","permis","certificat"]],[1,"brevet","(certificate)"],[2,"effectifs","(class sizes)"],[3,"laïque",null,["laïque","privée","publique","gratuite"]],[4,"décrochage","(dropout)"],[6,"coût",null,["coût","niveau","prix","taux"]],[7,"sur mesure","(tailored)"],[8,"d'occasion",null,["d'occasion","neufs","chers","modernes"]],[9,"se plaignent",null,["se plaignent","se servent","se fient","s'occupent"]],[10,"oriente",null,["oriente","oublie","punit","redouble"]],[11,"redoubler","(double)"],[12,"bénéficient","(benefit)"],[13,"ludique",null,["ludique","obligatoire","coûteuse","inquiète"]],[14,"avoir",null,["avoir","être","faire","donner"]]],"voc22":[[0,"réguler","(regulate)"],[1,"canular",null,["canular","reportage","quotidien","article"]],[2,"quotidien",null,["quotidien","hebdomadaire","mensuel","magazine"]],[3,"hebdomadaire","(weekly)"],[4,"preuve",null,["preuve","hypothèse","légende","rumeur"]],[5,"décrété","(declared)"],[6,"représailles","(reprisals)"],[7,"ondes","(airwaves)"],[8,"peine","(penalty)"],[9,"vérifier","(check)"],[10,"floue","(blurry)"],[11,"cite","(quotes)"],[12,"fier",null,["fier","fiez","fie","fié"]],[13,"mitigés","(mixed)"],[14,"déontologie","(ethics)"]],"voc23":[[0,"monarchie",null,["monarchie","république","dictature","cohabitation"]],[1,"cohabitation",null,["cohabitation","abstention","grève","coalition"]],[2,"coup d'État",null,["coup d'État","grève","référendum","scrutin"]],[3,"grève","(strike)"],[4,"abstention","(non-voting)"],[5,"citoyen","(citizen)"],[6,"impôts","(taxes)"],[7,"séparation","(separation)"],[8,"militent",null,["militent","hésitent","renoncent","s'abstiennent"]],[9,"préconise","(recommends)"],[10,"tranché",null,["tranché","hésité","voté","protesté"]],[11,"cendres","(ashes)"],[12,"intolérance",null,["intolérance","insécurité","abstention","indifférence"]],[13,"violation","(breach)"],[14,"gouvernement",null,["gouvernement","parlement","sénat","tribunal"]],[15,"redynamiser","(revitalize)"],[16,"procédé","(carried out)"],[17,"urne",null,["urne","isoloir","assemblée","élection"]],[18,"pillage","(looting)"],[19,"aborder","(tackle)"]],"voc24":[[0,"porter",null,["porter","faire","donner","mettre"]],[1,"appel",null,["appel","recours","opposition","révision"]],[2,"garde","(custody)"],[3,"sursis","(suspended)"],[4,"culpabilité",null,["culpabilité","peine","amende","preuve"]],[5,"amende","(fine)"],[6,"peine",null,["peine","amende","relaxe","plainte"]],[7,"coupable","(guilty)"],[8,"recherché","(wanted)"],[9,"tentative","(attempt)"],[10,"nie","(denies)"],[11,"dédommagement","(compensation)"],[12,"tiré",null,["tiré","jeté","volé","frappé"]],[13,"purger","(serve)"],[14,"comparaître","(appear)"],[15,"relaxe","(acquittal)"],[16,"bavure","(blunder)"],[17,"non-lieu","(dismissal)"]]};
+(function applyVicx(){
+  DRILLS.forEach(function(d){
+    var rows=VICX[d.id]; if(!rows) return;
+    var bank=d.bankItems||d.items||[];
+    rows.forEach(function(r){
+      var it=bank[r[0]];
+      if(!it){ if(window.console) console.warn("vicx: no item "+d.id+" #"+r[0]); return; }
+      var cur=Array.isArray(it.a)?it.a:[it.a], A=gAdapt(it);
+      if(FG.norm(r[1])!==FG.norm(cur[0])){ if(window.console) console.warn("vicx out of step: "+d.id+" #"+r[0]); return; }
+      if(r[3]){
+        var acc=cur.map(FG.norm);
+        if(acc.indexOf(FG.norm(r[3][0]))<0 || r[3].slice(1).some(function(o){ return acc.indexOf(FG.norm(o))>=0; })){ if(window.console) console.warn("vicx drop-down not valid: "+d.id+" #"+r[0]); return; }
+        it.ch=r[3];
+      } else if(r[2] && !A.cue){
+        it.s=A.s; it.cue=r[2]; it.q=A.s.replace("___","___ "+r[2]);
+      }
       delete it._g;
     });
   });
