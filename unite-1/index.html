@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 1 · Dossier Français — v4.2.2</title>
+<title>Unité 1 · Dossier Français — v4.2.3</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -609,7 +609,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 1 · v4.2.2</div>
+      <div class="eyebrow">French Basic Course · Unit 1 · v4.2.3</div>
       <h1><b>Unité&nbsp;1</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -874,8 +874,9 @@
 
 
   <footer>
-    <strong>Dossier v4.2.2</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
+    <strong>Dossier v4.2.3</strong> — built from the <em>French Basic Course, Textbook 1 (Aug 2025)</em>, Unit 1, Chapters 1–4. Conjugations are present indicative.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span style="color:var(--mute)">v4.2.3 (15 Nov 2026): <strong>Vocab en contexte drills now mix drop-downs and typed answers.</strong> In the 4 Vocab en contexte drills, 30 items are now drop-downs (four options, the three wrong ones from the same topic), and 22 typed items carry a one- or two-word English gloss beside the sentence. Items that already had a gloss or a hint keep it. The accepted answers, scoring, best scores and progress are unchanged.<br></span>
     <span style="color:var(--mute)">v4.2.2 (15 Nov 2026): <strong>Grammar coverage reaches 100 % in a few rounds.</strong> A round now shows the questions you have not yet answered correctly first, then fills up with ones you have already covered, so a drill with 20 questions is fully covered in 2 rounds, 25 or 30 in 3 (before, rounds were random and it took about 6 to 11). A question you miss comes back first in the next round until you get it right. A small <em>N new</em> pill in the Exercises header shows how many of the round are new. Nothing else changed: same questions, answers, scoring, best scores and progress.<br></span>
     <span style="color:var(--mute)">v4.2.1 (15 Nov 2026): <strong>Less clutter in the exercises.</strong> The grey <em>Type the answer</em> / <em>Pick from the list</em> label above each grammar exercise is gone (the numbered circle and the Your task key already say it). The accent keys under typed answers are now off by default: a round <strong>é</strong> button in the masthead, next to the light/dark button, switches them on or off for every typed field (grammar drills, vocabulary, Prépa examen) and remembers your choice. No drill item, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v4.2.0 (15 Nov 2026): <strong>New grammar drill layout.</strong> Every drill with an instruction now has three clearly labelled zones: an amber <strong>Your task</strong> box (the instruction, large, with a key to the two answer types), a blue <strong>Grammar notes</strong> box, and numbered <strong>Exercises</strong> (a Type or Pick label on each, a progress bar, a number that turns ✓ or ✗). A slim bar under the tabs keeps the notes one tap away while you scroll the exercises. In 16 of the 17 grammar drills the notes are rebuilt by kind of information (side-by-side cards for the contrasts, tables for the forms, a green Forms strip, a red Watch out box, a blue Good to know box); <em>Places in town</em> keeps its rule bullets in the new style. The 4 Vocab in context drills and the 3 generated Numbers and Clock drills have no instruction text, so they show the numbered exercises only. Five Prépa examen grammar topics (adjectifs possessifs, mots interrogatifs, faire, verbes pronominaux, futur proche) use the same notes; the other three keep their rule cards. Only the layout and the wording of the notes changed: no drill item, answer, accepted form or progress did.<br></span>
@@ -4165,6 +4166,30 @@ var GFIX={"nat":{"items":{"13":{"g":"québécoise","addA":["canadienne"],"x":"Fe
       if(e.hint!==undefined) it.hint=e.hint;
       if(e.x!==undefined) it.x=e.x;
       if(e.ch!==undefined){ if(e.ch) it.ch=e.ch; else delete it.ch; }
+      delete it._g;
+    });
+  });
+})();
+/* ---- Vocab en contexte mix (15 Nov 2026): some items become drop-downs, typed items get a 1-2 word English gloss ----
+   VICX[drillId] = [[index, guard (the item's current first answer), gloss "(…)" for a typed item | null, options for a drop-down (correct first)]]
+   Each row checks that the bank item still has the answer it was written against, so a shifted bank is reported, never silently patched. */
+var VICX={"vic1":[[0,"bonjour",null,["bonjour","bonsoir","bonne nuit","au revoir"]],[1,"nuit",null,["nuit","soirée","journée","matinée"]],[2,"rien","(nothing)"],[3,"enchanté",null,["enchanté","désolé","d'accord","pardon"]],[4,"va",null,["va","vas","vais","vont"]],[5,"s'écrit","(spelled)"],[6,"lisez",null,["lisez","écrivez","parlez","ouvrez"]],[7,"écrivez","(write)"],[8,"travaillez","(work)"],[9,"comprends",null,["comprends","prends","apprends","comprenez"]],[10,"répéter","(repeat)"],[11,"sais",null,["sais","peux","veux","dois"]],[12,"dit","(say)"],[13,"non",null,["non","peut-être","merci","bon"]],[16,"mercredi",null,["mercredi","lundi","vendredi","samedi"]],[17,"dimanche",null,["dimanche","vendredi","lundi","jeudi"]],[23,"numéro",null,["numéro","adresse","nom","prénom"]]],"vic2":[[6,"unique","(only)"],[7,"grand-mère",null,["grand-mère","tante","belle-mère","cousine"]],[8,"oncle",null,["oncle","cousin","neveu","grand-père"]],[9,"cousine",null,["cousine","nièce","tante","sœur"]],[10,"neveu",null,["neveu","cousin","oncle","petit-fils"]],[13,"célibataire","(single)"],[14,"secrétaire",null,["secrétaire","infirmière","coiffeuse","boulangère"]],[16,"coiffeur",null,["coiffeur","boulanger","médecin","pâtissier"]],[17,"boulanger","(baker)"],[21,"chauve","(bald)"]],"vic3":[[0,"fait",null,["fait","est","y a","va"]],[1,"neige",null,["neige","pleut","gèle","grêle"]],[2,"petit-déjeuner",null,["petit-déjeuner","déjeuner","dîner","goûter"]],[5,"soleil","(sun)"],[6,"vent","(wind)"],[7,"neige",null,["neige","pluie","chaleur","saison"]],[8,"pluie","(rain)"],[15,"octobre",null,["octobre","août","décembre","janvier"]],[16,"juillet",null,["juillet","juin","août","mai"]],[17,"Quelle","(which)"],[18,"trente","(thirty)"],[19,"quart","(quarter)"],[20,"demie","(half)"]],"vic4":[[1,"bateau","(boat)"],[2,"tout",null,["tout","tous","toute","toutes"]],[6,"Où",null,["Où","Quand","Comment","Pourquoi"]],[8,"train",null,["train","bateau","métro","vélo"]],[9,"pont",null,["pont","feu","coin","trottoir"]],[11,"commun","(shared)"],[13,"passage","(crossing)"],[16,"sens",null,["sens","côté","rue","bout"]],[17,"ville","(city)"],[28,"atterrir","(land)"],[29,"gare",null,["gare","pharmacie","poste","banque"]],[30,"aéroport",null,["aéroport","hôpital","église","épicerie"]]]};
+(function applyVicx(){
+  DRILLS.forEach(function(d){
+    var rows=VICX[d.id]; if(!rows) return;
+    var bank=d.bankItems||d.items||[];
+    rows.forEach(function(r){
+      var it=bank[r[0]];
+      if(!it){ if(window.console) console.warn("vicx: no item "+d.id+" #"+r[0]); return; }
+      var cur=Array.isArray(it.a)?it.a:[it.a], A=gAdapt(it);
+      if(FG.norm(r[1])!==FG.norm(cur[0])){ if(window.console) console.warn("vicx out of step: "+d.id+" #"+r[0]); return; }
+      if(r[3]){
+        var acc=cur.map(FG.norm);
+        if(acc.indexOf(FG.norm(r[3][0]))<0 || r[3].slice(1).some(function(o){ return acc.indexOf(FG.norm(o))>=0; })){ if(window.console) console.warn("vicx drop-down not valid: "+d.id+" #"+r[0]); return; }
+        it.ch=r[3];
+      } else if(r[2] && !A.cue){
+        it.s=A.s; it.cue=r[2]; it.q=A.s.replace("___","___ "+r[2]);
+      }
       delete it._g;
     });
   });
