@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pronoms relatifs · Mastery Lesson — v1.1.0</title>
+<title>Relative pronouns, part 2: Dont et lequel · Mastery Lesson — v1.2.0</title>
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
 /* Layout: a French school cahier. Block list on the left, one lesson card or one question at a time on the right. French is set in a serif, English coaching in a sans. */
@@ -161,6 +161,7 @@ td{padding:.4rem .8rem .4rem 0;border-top:1px solid var(--line);vertical-align:b
   .card{padding:1.1rem}
 }
 @media (prefers-reduced-motion:no-preference){ .bar i{transition:width .25s} }
+.note a,.app>footer a{color:var(--accent)}
 /* dossier masthead, footer and theme button */
 .top .brand{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem}
 .backlink{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);text-decoration:none;margin:0 0 .35rem;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
@@ -180,10 +181,10 @@ td{padding:.4rem .8rem .4rem 0;border-top:1px solid var(--line);vertical-align:b
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/mastery/">‹ Mastery lessons</a>
-      <div class="eyebrow">Mastery lesson · v1.1.0</div>
-      <h1>Pronoms relatifs</h1>
+      <div class="eyebrow">Mastery lesson · v1.2.0</div>
+      <h1>Relative pronouns, part 2: Dont et lequel</h1>
     </div>
-    <span class="sub">dont, lequel, and the prepositions behind them</span>
+    <span class="sub">relative pronouns after a preposition: dont, the lequel family, and the verbs behind them</span>
     <span class="tools">
       <button class="tool" id="navbtn" type="button">Blocks</button>
       <button class="tool" id="refbtn" type="button">Reference</button>
@@ -193,8 +194,9 @@ td{padding:.4rem .8rem .4rem 0;border-top:1px solid var(--line);vertical-align:b
   <nav id="nav" aria-label="Lesson blocks"></nav>
   <main id="stage"></main>
   <footer>
-    <strong>Mastery lesson · Pronoms relatifs · v1.1.0</strong> — relative pronouns from the ground up: qui, que, où, dont, the lequel family and the prepositions verbs take. 15 blocks, 258 questions. Each block unlocks when you pass the check before it (80% on the first try). Progress is saved in this browser.<br>
+    <strong>Mastery lesson · Relative pronouns, part 2: Dont et lequel · v1.2.0</strong> — relative pronouns after a preposition, from the ground up: dont, preposition + qui, the lequel family, où and its limits, and the prepositions verbs take. 15 blocks, 264 questions. Each block unlocks when you pass the check before it (80% on the first try). Progress is saved in this browser. For qui, que and où themselves, see the <a href="/mastery/qui-que-ou/">Relative pronouns, part 1: Qui, que, où</a> lesson.<br>
     <details class="changelog"><summary>Changelog</summary>
+    <span>v1.2.0 (16 Nov 2026): <strong>Renamed Relative pronouns, part 2: Dont et lequel, and two dont topics added.</strong> The lesson was called Pronoms relatifs; the new name says what it teaches, now that Relative pronouns, part 1: Qui, que, où is a lesson of its own. Block 4 gains a note on <em>la façon dont</em> / <em>la manière dont</em> with 4 questions. Block 9 gains a note on <em>d'où</em> against dont (the place something comes from) with 2 questions, and d'où joins the choices of 3 others. Your progress is unchanged.</span>
     <span>v1.1.0 (16 Nov 2026): <strong>First release in Les Dossiers Français.</strong> 15 lesson blocks with a check after each, a Reference sheet, light and dark mode. Accents always count in typed answers.</span>
     </details>
   </footer>
@@ -257,7 +259,7 @@ const B=[
  rule:'Rebuild the clause with the noun put back. Subject: qui. Direct object: que. After de: dont. After another preposition: preposition + qui or lequel.',
  cards:[
  {h:'A relative pronoun replaces a repeated noun',b:p('Two sentences share a noun. French joins them and swaps the second mention for a relative pronoun.')+fr("J'ai __un voisin__. __Ce voisin__ parle trop.")+fr("J'ai __un voisin__ {{qui}} parle trop.")+key('The shared noun is the <b>antecedent</b>. The pronoun sits right after it.')},
- {h:"The noun's job picks the pronoun",b:p('Look at the second sentence only. What job does the repeated noun have there?')+tbl(['Job','Second sentence','Pronoun'],[['does the verb',f('Ce voisin parle.'),'{{qui}}'],['receives the verb directly',f('Je connais ce voisin.'),'{{que}}'],['comes after de',f('Je parle [[de]] ce voisin.'),'{{dont}}'],['comes after another preposition',f('Je travaille [[avec]] ce voisin.'),'preposition + {{qui}} or {{lequel}}']])+p('You already use the first two. This course is about the last two.')},
+ {h:"The noun's job picks the pronoun",b:p('Look at the second sentence only. What job does the repeated noun have there?')+tbl(['Job','Second sentence','Pronoun'],[['does the verb',f('Ce voisin parle.'),'{{qui}}'],['receives the verb directly',f('Je connais ce voisin.'),'{{que}}'],['comes after de',f('Je parle [[de]] ce voisin.'),'{{dont}}'],['comes after another preposition',f('Je travaille [[avec]] ce voisin.'),'preposition + {{qui}} or {{lequel}}']])+p('You already use the first two. This lesson is about the last two.')+note('If qui and que are not solid yet, do the <a href="/mastery/qui-que-ou/">Relative pronouns, part 1: Qui, que, où</a> lesson first.')},
  {h:'The method: rebuild the clause',b:p('In an exercise you only see the joined sentence. Undo the join.')+work(['Clause: '+f("le stylo <span class=\"slot\">&nbsp;</span> j'écris"),'Put the noun back: '+f("j'écris [[avec]] ce stylo"),'Read the small word before the noun: [[avec]]'])+key('If the rebuilt sentence needs a small word before the noun, the pronoun must carry that word. English can drop it or leave it at the end. French never can.')}],
  items:[
  Q(JQ,"__Le film__ ___ nous regardons est long.",JOBS,JOBS[1],'Rebuild: '+f('nous regardons ce film')+'. Nothing stands between the verb and the noun.',1),
@@ -320,9 +322,14 @@ const B=[
  {h:'de also links two nouns',b:p('<b>De</b> shows belonging: '+f('la couleur [[de]] ce sac')+', the color of this bag.')+work([f("J'aime ce sac. La couleur [[de]] ce sac me plaît."),'Swap '+f('de ce sac')+' for {{dont}}.',f('le sac {{dont}} la couleur me plaît')])+p('English says “the bag <b>whose</b> color I like”.')},
  {h:'Keep the article after dont',b:p('English: whose + noun. French: {{dont}} + <b>le, la, les</b> + noun.')+ok('la voisine {{dont}} le fils joue du piano')+no('la voisine dont fils joue du piano')+note('Signal in an exercise: the blank is followed directly by an article and a noun that belongs to the antecedent.')},
  {h:'Adjectives with de',b:p('Some adjectives take <b>de</b> too, so they also give {{dont}}.')+bank([['être fier de','proud of'],['être content de','happy with'],['être sûr de','sure of'],['être responsable de','in charge of'],['être amoureux de','in love with']])+fr('le résultat {{dont}} elle est fière')},
+ {h:'la façon dont: the way',b:p('“The way” someone does something is {{dont}}, because the rebuilt clause needs <b>de</b>: '+f('il parle [[de]] cette façon')+'.')+fr('la façon {{dont}} il parle','the way he talks')+fr('la manière {{dont}} elle travaille','the way she works')+no('la façon que il parle')+no('la façon comment il parle')+tn('La façon dont and la manière dont are frequent in news writing and are easy to place in an OPI answer.')},
  {h:'dont can mean “including”',b:p('After a number or a group, {{dont}} means “of which” or “including”.')+fr('Elle a trois chats, {{dont}} deux sont noirs.')+tn('News texts use this constantly: '+f('vingt pays, {{dont}} la France')+'.')}],
  items:[
  P("Le sac ___ la couleur me plaît est à Marie.","dont","la couleur [[de]] ce sac me plaît","ms",O4,{wh:1}),
+ P("La façon ___ il conduit me fait peur.","dont","il conduit [[de]] cette façon","fs",O4),
+ P("Je n'aime pas la manière ___ elle répond aux clients.","dont","elle répond aux clients [[de]] cette manière","fs",O4),
+ P("La façon ___ tu expliques les choses est très claire.","dont","tu expliques les choses [[de]] cette façon","fs",O4),
+ P("La méthode ___ il utilise est très efficace.","que","il utilise cette méthode","fs",O4),
  P("L'écrivain ___ le dernier roman a gagné un prix habite ici.","dont","le dernier roman [[de]] cet écrivain","msp",O4,{wh:1}),
  P("La voisine ___ le fils joue du piano est professeure.","dont","le fils [[de]] cette voisine","fsp",O4,{wh:1}),
  P("Le résultat ___ Léa est fière est excellent.","dont","Léa est fière [[de]] ce résultat","ms",O4,{n:'Adjectives count too: fier de, content de, sûr de.'}),
@@ -427,19 +434,22 @@ const B=[
  {h:'où: a place or a time',b:fr("la ville {{où}} j'habite")+fr('le jour {{où}} je suis arrivé')+note('For a time, French uses {{où}}, never '+f('quand')+': '+f('le jour où')+', not '+f('le jour quand')+'.')},
  {h:'où is a shortcut',b:p('For a place, {{où}} stands for <b>dans, sur</b> or <b>à</b> + lequel. Both are correct.')+fr("la maison {{où}} j'ai grandi")+fr("la maison [[dans]] {{laquelle}} j'ai grandi")+p("When the position is more precise, {{où}} can't say it. Keep the preposition and use lequel.")+fr('le pont [[sous]] {{lequel}} passe le bateau')},
  {h:'Never for a person',b:p('{{Où}} cannot refer to a person, even with a verb like '+f('habiter')+'.')+ok('la personne [[avec]] {{qui}} il habite')+ok('les amis [[chez]] {{qui}} je dîne')+no('la personne où il habite')},
+ {h:"From a place: d'où, not dont",b:p('When something comes from a place, the rebuilt clause has <b>de</b>. French keeps it with où.')+fr("je viens [[de]] cette ville → la ville {{d'où}} je viens")+fr("ce thé vient [[de]] ce pays → le pays {{d'où}} vient ce thé")+no('la ville dont je viens')+key("{{Dont}} is for a de that hangs on a verb, a noun or an adjective. For the place something comes from, use {{d'où}}.")},
  {h:'A place is not always où',b:key('Check the job first. If the verb takes the place directly, it is {{que}}. If the verb takes <b>de</b>, it is {{dont}}.')+fr("la ville {{où}} j'habite",'habiter dans')+fr('la ville {{que}} je visite','visiter + noun')+fr('la ville {{dont}} je rêve','rêver de')}],
  items:[
- P("Le quartier ___ j'ai grandi a beaucoup changé.","où","j'ai grandi [[dans]] ce quartier","ms",['où','que','dont','chez qui']),
+ P("Le quartier ___ j'ai grandi a beaucoup changé.","où","j'ai grandi [[dans]] ce quartier","ms",['où','que','dont',"d'où"]),
  P("Les cousins ___ je passe l'été vivent en Bretagne.","chez qui","je passe l'été [[chez]] ces cousins","mpp",['où','chez qui','que','dont']),
  P("L'année ___ elle est née, il a neigé en mai.","où","elle est née cette année-là","fs",['où','que','quand','dont']),
  P("La personne ___ il habite travaille de nuit.","avec qui","il habite [[avec]] cette personne","fsp",['où','avec qui','que','dont']),
- P("La maison ___ j'ai grandi est à vendre.","où","j'ai grandi [[dans]] cette maison","fs",['où','que','dont','chez qui'],{n:'Dans laquelle is also correct here.'}),
+ P("La maison ___ j'ai grandi est à vendre.","où","j'ai grandi [[dans]] cette maison","fs",['où','que','dont',"d'où"],{n:'Dans laquelle is also correct here.'}),
  P("L'arbre ___ nous avons garé la voiture est un chêne.","sous lequel","nous avons garé la voiture [[sous]] cet arbre","ms",['sous lequel','sous laquelle','que','dont']),
  P("Le moment ___ je l'ai vu, j'ai compris.","où","je l'ai vu à ce moment-là","ms",['où','que','quand','dont']),
  P("Le médecin ___ je vais demain est très occupé.","chez qui","je vais [[chez]] ce médecin","msp",['où','chez qui','que','à laquelle']),
  P("La région ___ nous visitons est célèbre pour ses vins.","que","nous visitons cette région","fs",['où','que','dont','dans laquelle']),
- P("Le pays ___ je rêve a un climat doux.","dont","je rêve [[de]] ce pays","ms",['où','que','dont','auquel']),
+ P("Le pays ___ je rêve a un climat doux.","dont","je rêve [[de]] ce pays","ms",['où','que','dont',"d'où"]),
  P("Le jour ___ nous attendons arrive enfin.","que","nous attendons ce jour","ms",['où','que','dont','auquel']),
+ P("La ville ___ je viens est toute petite.","d'où","je viens [[de]] cette ville","fs",['où',"d'où",'dont','que']),
+ P("Le pays ___ vient ce thé est la Chine.","d'où","ce thé vient [[de]] ce pays","ms",['où',"d'où",'dont','que']),
  P("Le village ___ vivent mes grands-parents est minuscule.","où","mes grands-parents vivent [[dans]] ce village","ms",['où','qui','que','dont'])]},
 
 {id:'va',part:2,title:'Verbs that take à',goal:'Learn the à verbs as fixed units, then use them in relative clauses.',n:8,
@@ -646,6 +656,7 @@ const B=[
 /* ---------- grammar engine: classify an answer, explain right and wrong ---------- */
 function parse(x){const s=norm(x);
   if(['qui','que','où','dont','quand'].includes(s))return{k:s};
+  if(s==="d'où")return{k:'pou'};
   const c={auquel:['à','ms'],auxquels:['à','mp'],auxquelles:['à','fp'],duquel:['de','ms'],desquels:['de','mp'],desquelles:['de','fp']}[s];
   if(c)return{k:'l',prep:c[0],g:c[1]};
   let m=s.match(/^(.+) qui$/);if(m)return{k:'pq',prep:m[1]};
@@ -664,6 +675,7 @@ function because(it){const r=parse(it.a),A=`<b>${it.a}</b>`;
     case'qui':return`The noun does the verb and no preposition is involved: ${A}.`;
     case'que':return`Nothing stands between the verb and the noun: ${A}.`;
     case'où':return`A place or a time, with no precise preposition to keep: ${A}.`;
+    case'pou':return`The place something comes from: de + où = ${A}.`;
     case'dont':return it.wh?`<i>de</i> links two nouns (“whose”): ${A}, then the article and the noun.`:`A bare <i>de</i> before the noun: de + noun = ${A}.`;
     case'pq':return it.cp?`Compound preposition ending in <i>de</i> + a person: ${A}.`:`<i>${r.prep}</i> + a person: ${A}.`;
     case'l':{const gn=GN[r.g];
@@ -674,6 +686,8 @@ function because(it){const r=parse(it.a),A=`<b>${it.a}</b>`;
 function whyNot(ch,it){const c=parse(ch),r=parse(it.a),C=`<b>${esc(ch)}</b>`;
   const needs=it.cp?'The compound preposition ends in <i>de</i>.':r.prep?`This clause needs <i>${r.prep}</i>.`:r.k==='dont'?'This clause needs <i>de</i>.':'';
   const plain=['que','qui','où'].includes(r.k);
+  if(r.k==='pou')return c.k==='où'?`${C} alone has no <i>de</i>. Something comes from this place: <b>d'où</b>.`:c.k==='dont'?`For the place something comes from, French uses <b>d'où</b>, not ${C}.`:c.k==='que'?`${C} can't carry a preposition. This verb needs <i>de</i>.`:`This verb needs <i>de</i> with a place: <b>d'où</b>.`;
+  if(c.k==='pou')return`${C} means “from where”. Nothing comes from a place here.`;
   switch(c.k){
     case'que':return r.k==='qui'?`${C} is a direct object. Here the noun does the verb itself.`:r.k==='où'?`${C} needs a verb that takes the noun directly. This one doesn't.`:`${C} only works when nothing stands between the verb and the noun. ${needs}`;
     case'qui':return`Bare ${C} makes the noun the subject. Here something else does the verb.`;
