@@ -490,3 +490,28 @@ of git. To prevent this:
 
 ### Vocabulary topic names
 - Done: Units 1–3 already sit at 34 characters or fewer; Unit 4's 21 long names were shortened in v1.1.1 (15 Oct 2026, "Extras — …" for the reading and listening sets); Unit 5 since v0.2.1. Every unit now meets the rule above.
+
+## Mastery lessons (`/mastery/`, launched 16 Nov 2026)
+
+"Mastery lesson" is Nicholas's name for a format. "Build a mastery lesson for X" means:
+- One grammar concept taught from the ground up, in lesson blocks. Each block is a few short lesson notes stepped through one at a time, then a check.
+- The next block stays locked until the check is passed (80% on the first try). Missed questions come back until answered correctly and are carried into the next round.
+- Feedback on the spot for right and wrong answers, with the reasoning.
+- Answer choices drawn from the full range of options, so nothing can be guessed from a narrow pool. No clue leakage in prompts or distractors (same rule as the drills).
+- Enough questions that retakes rarely repeat.
+- Each kind of information visually distinct: coloured, labelled boxes for examples, correct and wrong French, key points, notes, test notes, worked steps and feedback rows.
+- No military-themed examples (everyday sentences only), explanations short and direct, test notes framed for the DLPT and the OPI.
+
+Where they live:
+- Home page tile "Mastery Lessons" → `/mastery/` (the menu, in the landing page's look) → one folder per lesson, each a single self-contained file: `mastery/pronoms-relatifs/` (15 blocks, 258 questions), `mastery/subjonctif/` (12 blocks, about 1,000 questions). They are unit-agnostic: not part of any unit file.
+- Each lesson is versioned on its own, in the usual three places (`<title>`, the masthead `.eyebrow`, the footer `<strong>`), with a changelog in the footer. The menu card for the lesson carries the version and block count as hardcoded text: update it in the same commit as a bump. The home tile shows the number of lessons, not a version.
+- Adding a lesson: copy an existing lesson file (the engine is duplicated per lesson, like the unit engine), give it its own folder, add a card to `mastery/index.html`, and update the "N lessons" label on the home tile.
+
+Engine and design rules:
+- Progress key: `fr_dossier_mastery_<id>` (`_pr`, `_subj`). The `fr_dossier_` prefix is what puts it in the home-page backup. Never change a key once shipped. (The two first lessons move progress once from their pre-release keys `atelier-pr-v1` / `atelier-subj-v1`.)
+- Look: the lesson's notebook layout with the dossier's tokens (navy ink, warm paper, France-blue actions, red margin; the violet-tinted dark palette) and system font stacks (`--display` sans, `--french` serif). No web fonts, no outside requests. Theme follows `frTheme` like every other page (head script before paint + masthead button).
+- Accents always count in typed answers (dossier standard): an accent slip is a miss, named "Check the accents".
+- Lesson content lives in `B` (blocks: `id`, `part`, `title`, `goal`, `rule`, `cards`, questions). Never rename a block `id`: cleared blocks are saved by id.
+- The French in the two first lessons has not been reviewed by a native speaker. Treat any sentence Nicholas flags as a content fix (PATCH bump).
+- Verify before shipping: headless play-through of every block (wrong-answer paths, two rounds), no script errors, no outside requests; an accent-stripped typed answer is rejected; screenshots at desktop and phone width, light and dark.
+- Both lessons launched at v1.1.0 (Nicholas's decision). Unit 5 links to them since v1.3.2: `dzMastery()` appends a "Mastery lesson" link to the Grammar notes (`DZN[id].nh`) of `relc21`, `rel23` (Pronoms relatifs) and `subj21`, `subj24`, `mood24` (Subjonctif présent); the Prépa grammar topics show it too through `PM`. A new lesson that matches a unit's drill gets the same link (a PATCH bump of that unit).

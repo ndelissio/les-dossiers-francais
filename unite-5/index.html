@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);if(localStorage.getItem("frAccents")==="1")document.documentElement.classList.add("acc-on")}catch(e){}</script>
-<title>Unité 5 · Dossier Français — v1.3.2</title>
+<title>Unité 5 · Dossier Français — v1.3.3</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect x='2' y='6' width='28' height='20' rx='3'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect x='2' y='6' width='10' height='20' fill='%23002654'/%3E%3Crect x='12' y='6' width='9' height='20' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='9' height='20' fill='%23ce1126'/%3E%3C/g%3E%3Crect x='2' y='6' width='28' height='20' rx='3' fill='none' stroke='%2316243d' stroke-opacity='.35'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -496,6 +496,11 @@
   .dz-warn .dz-label{color:var(--accent)}
   .dz-also{background:var(--card); border:1px solid var(--dz-be); border-left:5px solid var(--bleu)}
   .dz-also .dz-label{color:var(--bleu)}
+  .dz-mastery{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; margin-top:14px; border-radius:10px; padding:10px 14px; background:var(--card); border:1px solid var(--dz-be); border-left:5px solid var(--known); color:var(--ink); text-decoration:none}
+  .dz-mastery .dz-label{color:var(--known)}
+  .dz-mastery b{font-family:var(--serif); font-size:16px}
+  .dz-mastery span:last-child{margin-left:auto; font-size:14px; color:var(--bleu); font-weight:600}
+  .dz-mastery:hover{border-color:var(--known)}
   .dz-warn ul,.dz-also ul{margin:6px 0 0; padding-left:20px; font-size:15px}
   .dz-warn li,.dz-also li{margin:3px 0}
   table.dz-t{border-collapse:collapse; width:100%; background:var(--card); border:1px solid var(--dz-be); font-size:15px; color:var(--ink)}
@@ -674,7 +679,7 @@
   <header class="top">
     <div class="brand">
       <a class="backlink" href="/">‹ Tous les dossiers</a>
-      <div class="eyebrow">French Basic Course · Unit 5 · v1.3.2</div>
+      <div class="eyebrow">French Basic Course · Unit 5 · v1.3.3</div>
       <h1><b>Unité&nbsp;5</b> · Le Dossier&nbsp;<span>Français</span></h1>
     </div>
     <div class="topright">
@@ -963,9 +968,10 @@
 
 
   <footer>
-    <strong>Dossier Unité 5 · v1.3.2</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
+    <strong>Dossier Unité 5 · v1.3.3</strong> — built from the <em>French Basic Course, Textbook 5</em>, Chapters 21 (Schooling), 22 (Press &amp; Media), 23 (Political Systems &amp; Extremism) and 24 (Crime &amp; Justice). Conjugaison: subjonctif présent and plus-que-parfait are the mastery tables (they fill the progress bars); présent, passé composé and the other tenses are reps. The grammar of Units 4 and 5 is drilled in Grammaire. Engine forked from the Unité 4 Dossier v0.8.2.<br>
     <details class="changelog"><summary>Changelog</summary>
-    <span style="color:var(--mute)">v1.3.2 (16 Nov 2026, hotfix): <strong>Two cause drill items no longer repeat the article.</strong> In <em>Les expressions de la cause (partie 2)</em>, <em>… la crise économique…</em> accepted <em>à cause de la</em> and <em>…  le résultat des élections…</em> accepted <em>à la suite du</em> although the sentence already had the article, so the answer read “à cause de la la crise” and “à la suite du le résultat”. The first now takes <em>à cause de / en raison de / à la suite de</em>; in the second the article is removed from the sentence so the contraction <em>du</em> is still tested. All Unit 1–5 drills and Prépa items were scanned for the same pattern: no other case. No progress changed.<br></span>
+    <span style="color:var(--mute)">v1.3.3 (16 Nov 2026, hotfix): <strong>Two cause drill items no longer repeat the article.</strong> In <em>Les expressions de la cause (partie 2)</em>, <em>… la crise économique…</em> accepted <em>à cause de la</em> and <em>…  le résultat des élections…</em> accepted <em>à la suite du</em> although the sentence already had the article, so the answer read “à cause de la la crise” and “à la suite du le résultat”. The first now takes <em>à cause de / en raison de / à la suite de</em>; in the second the article is removed from the sentence so the contraction <em>du</em> is still tested. All Unit 1–5 drills and Prépa items were scanned for the same pattern: no other case. No progress changed.<br></span>
+    <span style="color:var(--mute)">v1.3.2 (16 Nov 2026): <strong>Links to the mastery lessons.</strong> The Grammar notes of five drills now end with a link to the matching mastery lesson, a separate page that teaches the concept from the ground up: <em>Les pronoms relatifs composés</em> (Ch. 21) and <em>Les pronoms relatifs simples et composés</em> (Ch. 23) link to Pronoms relatifs; <em>Le subjonctif présent</em> (Ch. 21), <em>Le subjonctif après certaines conjonctions</em> and <em>Opinions, avant que / avant de, après que</em> (Ch. 24) link to Subjonctif présent. The same link shows under the Subjunctive and Relative pronouns topics in Prépa examen → Grammaire. No drill, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.3.1 (15 Nov 2026): <strong>Calmer not-started dot.</strong> On the Grammaire chapter banners a drill you have not started is now an empty blue ring instead of a red <strong>!</strong>. In progress (amber half-filled) and covered (green ✓) are unchanged, and chapters you have not reached still show faint rings. No drill, answer or progress changed.<br></span>
     <span style="color:var(--mute)">v1.3.0 (15 Nov 2026): <strong>Grammar progress at a glance.</strong> Each chapter banner in Grammaire now shows one status dot per drill, in list order: a red <strong>!</strong> for not started, an amber half-filled dot for in progress, a green <strong>✓</strong> for fully covered (every question answered correctly at least once). Hover a dot for the drill's name and score. The banner also says how many drills are covered, in progress and not started, and how many questions you have answered correctly, and it has a coloured left stripe and a status pill (Not started, In progress, Complete ✓; chapters you have not reached show hollow dots and à venir). Each drill row has a status circle, a coverage bar (10/17) and a best-score chip that turns green at full marks. Everything updates as you answer. No drill, answer, accepted form or progress changed.<br></span>
     <span style="color:var(--mute)">v1.2.1 (15 Nov 2026): <strong>Chapters 22–24 grammar drills get the full content pass.</strong> The 11 grammar drills of Chapters 22, 23 and 24 (plus-que-parfait, voix passive, connecteurs de l'alternative, cause, conséquence, pronoms relatifs, subjonctif, voix passive, temps du passé, conditionnel d'information, indicatif ou subjonctif) now have a one-line why after every answer (204 items in all) and 69 of them are drop-downs (four options, none of the wrong ones an accepted answer), the same as the Chapter 21 drills. The Vocab en contexte drills are unchanged. Accepted answers, scoring, best scores and progress are unchanged.<br></span>
@@ -3452,6 +3458,10 @@ DZN.mood24={rt:"Opinions, avant que / avant de, après que",nh:[
   dzPair({h:"Indicatif",p:"Certainty and plain opinion: <b>je pense que, il est évident que, il me semble que</b>.",ex:["Je pense qu'il <mark>viendra</mark>.","I think he will come."]},
          {h:"Subjonctif",p:"Negated opinion, doubt, possibility, necessity, feeling: <b>je ne pense pas que, je doute que, il est possible que, il faut que, il est dommage que</b>.",ex:["Je ne pense pas qu'il <mark>vienne</mark>.","I don't think he will come."]}),
   dzRow("Time",dzTable(["Different subjects","Same subject"],[["<b>avant que</b> + subjonctif","<b>avant de</b> + infinitif"],["<b>après que</b> + indicatif","<b>après</b> + infinitif passé"]]),"use")]};
+
+/* links from the grammar notes to the mastery lessons (/mastery/); the Prépa grammar topics reuse these notes through PM */
+function dzMastery(href,name){ return "<a class='dz-mastery' href='"+href+"'><span class='dz-label'>🎓 Mastery lesson</span><b>"+name+"</b><span>Learn it from the ground up →</span></a>"; }
+[["relc21","/mastery/pronoms-relatifs/","Pronoms relatifs"],["rel23","/mastery/pronoms-relatifs/","Pronoms relatifs"],["subj21","/mastery/subjonctif/","Subjonctif présent"],["subj24","/mastery/subjonctif/","Subjonctif présent"],["mood24","/mastery/subjonctif/","Subjonctif présent"]].forEach(function(m){ var z=DZN[m[0]]; if(z&&z.nh) z.nh.push(dzMastery(m[1],m[2])); else console.warn("mastery link: no notes for "+m[0]); });
 
 function buildDrills(){
   dzTop(); var host=document.getElementById("drills"); host.innerHTML="";

@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Subjonctif présent · Mastery Lesson — v1.1.0</title>
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<style>
+/* Layout: a French school cahier. Block list on the left, one lesson card or one question at a time on the right. French is set in a serif, English coaching in a sans. */
+:root{
+  --paper:#f4f1e9; --surface:#fffdf8; --ink:#16243d; --muted:#4e5a72; --line:#e4ddcd;
+  --rule:rgba(42,74,143,.18); --margin:#c0392b; --accent:#2a4a8f; --accent-ink:#ffffff;
+  --prep-bg:#fbe3a6; --prep-ink:#4a3500; --ex-bg:#eef2fa; --note-bg:#f6ecdb; --note-ink:#7a4f08; --key-bg:#efe8fa; --key-ink:#5a2fa8; --test-bg:#dff0ee; --test-ink:#0d6259; --good:#1f6e3c; --good-bg:#e2efe7; --bad:#a93226; --bad-bg:#fbe9e7;
+  --display:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --french:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#B0ADC6; --line:#312E42;
+  --rule:rgba(167,151,255,.20); --margin:#FF8279; --accent:#A797FF; --accent-ink:#13121B;
+  --prep-bg:#5c4a10; --prep-ink:#ffe9ad; --ex-bg:#222A47; --note-bg:#36290F; --note-ink:#F2B45C; --key-bg:#30235A; --key-ink:#C9B3FF; --test-bg:#10363b; --test-ink:#7fd6df; --good:#6ED69C; --good-bg:#17321F; --bad:#FF8F87; --bad-bg:#3A1F22; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#B0ADC6; --line:#312E42;
+  --rule:rgba(167,151,255,.20); --margin:#FF8279; --accent:#A797FF; --accent-ink:#13121B;
+  --prep-bg:#5c4a10; --prep-ink:#ffe9ad; --ex-bg:#222A47; --note-bg:#36290F; --note-ink:#F2B45C; --key-bg:#30235A; --key-ink:#C9B3FF; --test-bg:#10363b; --test-ink:#7fd6df; --good:#6ED69C; --good-bg:#17321F; --bad:#FF8F87; --bad-bg:#3A1F22; color-scheme:dark }
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{max-width:66rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:1.1rem 3rem;display:grid;grid-template-columns:17rem minmax(0,1fr);gap:1.5rem 2.5rem}
+.top{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;border-bottom:1px solid var(--line);padding-bottom:.8rem}
+.top h1{font-size:1.15rem;margin:0;font-weight:700;letter-spacing:-.01em}
+.top .sub{color:var(--muted);font-size:.9rem;flex:1 1 12rem;min-width:0}
+.top .tools{display:flex;gap:.5rem}
+.tool{background:none;border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font-size:.9rem}
+.tool:hover{border-color:var(--accent)}
+#navbtn{display:none}
+nav h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:1.1rem 0 .35rem;font-weight:600}
+nav h4:first-child{margin-top:0}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.nb{display:grid;grid-template-columns:1.6rem minmax(0,1fr) auto;gap:.4rem;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-radius:6px;padding:.38rem .5rem;font-size:.93rem}
+.nb .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.8rem}
+.nb .st{font-size:.75rem;color:var(--muted)}
+.nb.done .st{color:var(--good);font-weight:700}
+.nb.cur{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-weight:600}
+.nb.lock{color:var(--muted);cursor:not-allowed;opacity:.65}
+.nb:not(.lock):hover{background:var(--surface)}
+.navfoot{margin-top:1.4rem;display:flex;flex-direction:column;gap:.3rem;align-items:flex-start}
+.navfoot button{background:none;border:0;padding:0;color:var(--muted);font-size:.8rem;text-decoration:underline}
+.navfoot small{color:var(--muted);font-size:.75rem}
+#navclose{display:none}
+main{min-width:0;max-width:42rem}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 .2rem;font-weight:600}
+h2{font-size:1.7rem;line-height:1.15;margin:0 0 .4rem;letter-spacing:-.02em;text-wrap:balance}
+.goal{color:var(--muted);margin:0 0 1.2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.75rem}
+.card h3{font-size:1.35rem;margin:0;letter-spacing:-.01em;text-wrap:balance;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.6rem}
+.cardno{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:-.45rem!important}
+.card p,.rule p{margin:0}
+.fr{font-family:var(--french);font-size:1.2rem;line-height:1.45}
+span.fr{font-size:1.12em}
+.fr.big{font-size:1.45rem;line-height:1.5;margin:.2rem 0 1rem;background:var(--surface);border:1px solid var(--line);padding:.9rem 1rem}
+.gl{font-family:var(--display);font-size:.85rem;color:var(--muted)}
+mark.prep{background:var(--prep-bg);color:var(--prep-ink);padding:0 .22em;border-radius:3px}
+b.pron{color:var(--accent);font-weight:600}
+u.ante{text-decoration:underline;text-decoration-color:var(--margin);text-decoration-thickness:2px;text-underline-offset:3px}
+.card p.ex::before,.fr.ok::before,.fr.no::before,.note::before,.key::before,.tn b:first-child,.wk h4,.bk h4,.fbrow h4,.ask::before{display:block;font-family:var(--display);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:0 0 .25rem;line-height:1.4}
+.card p.ex{background:var(--ex-bg);padding:.6rem .9rem}
+.card p.ex::before{content:"Example";color:var(--accent)}
+.card p.ex + p.ex{margin-top:-.75rem;padding-top:0}
+.card p.ex + p.ex::before{content:none}
+.fr.ok{background:var(--good-bg);padding:.6rem .9rem}
+.fr.ok::before{content:"✓ Correct French";color:var(--good)}
+.fr.no{background:var(--bad-bg);padding:.6rem .9rem}
+.fr.no::before{content:"✗ Wrong";color:var(--bad)}
+.note{background:var(--note-bg);padding:.6rem .9rem;font-size:.95rem}
+.note::before{content:"Note";color:var(--note-ink)}
+.key{background:var(--key-bg);padding:.6rem .9rem;font-weight:600}
+.key::before{content:"Key point";color:var(--key-ink)}
+.tn{background:var(--test-bg);padding:.6rem .9rem;font-size:.95rem}
+.tn b:first-child{color:var(--test-ink)}
+.wk,.bk{border:1px solid var(--line);padding:.7rem .9rem .8rem}
+.wk h4{color:var(--margin)}
+.bk h4{color:var(--accent)}
+#ref .bk{border:0;padding:0}
+#ref .bk h4{display:none}
+.ask::before{content:"Your task";color:var(--accent)}
+ol.work{list-style:none;counter-reset:w;margin:0;padding:0 0 0 1rem;border-left:2px solid var(--margin);background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% 2.2rem;background-position:0 2.15rem}
+ol.work li{counter-increment:w;line-height:2.2rem;padding-left:1.6rem;position:relative}
+ol.work li::before{content:counter(w);position:absolute;left:0;font-size:.8rem;color:var(--muted);font-weight:600}
+ol.path{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:.45rem}
+ul.bank{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.1rem 1.5rem}
+ul.bank li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.2rem .6rem;border-bottom:1px solid var(--rule);padding:.3rem 0}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding:.3rem .8rem .3rem 0}
+td{padding:.4rem .8rem .4rem 0;border-top:1px solid var(--line);vertical-align:baseline}
+.pips{display:flex;gap:.35rem;margin:1rem 0}
+.pips i{height:4px;flex:1;max-width:3rem;background:var(--line);border-radius:2px}
+.pips i.seen{background:var(--muted)}
+.pips i.on{background:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.btn{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:.6rem 1.2rem;font-weight:600}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.btn.link{background:none;border-color:transparent;color:var(--muted);font-weight:400;text-decoration:underline;padding-inline:.4rem}
+.rule{padding:.7rem .9rem;font-size:.95rem;margin-bottom:1.1rem;background:var(--key-bg)}
+.rule b:first-child{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--key-ink);margin-bottom:.2rem}
+.prog{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--muted);margin-bottom:1rem;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.ask{margin:0 0 .3rem;font-weight:600}
+.hint{color:var(--muted);font-size:.9rem;margin:0 0 .4rem}
+.slot{display:inline-block;min-width:5.5em;border-bottom:2px solid var(--accent);text-align:center;font-weight:600;padding:0 .3em}
+.slot.good{color:var(--good);border-color:var(--good)}
+.opts{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1rem}
+.opt{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:.5rem .95rem;font-size:1.15rem}
+.opt.ui{font-family:var(--display);font-size:.95rem}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.right{border-color:var(--good);background:var(--good-bg);color:var(--good);opacity:1;font-weight:600}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad);opacity:1;text-decoration:line-through}
+.typed{display:flex;flex-wrap:wrap;gap:.6rem;align-items:flex-end;margin-bottom:1rem}
+#ans{flex:1 1 12rem;min-width:0;font-family:var(--french);font-size:1.4rem;color:var(--ink);background-color:var(--surface);background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% .8rem;border:0;border-left:2px solid var(--margin);border-bottom:2px solid var(--accent);padding:.55rem .8rem;border-radius:0}
+.acc{display:flex;gap:.3rem}
+.chipk{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.4rem .7rem;font-family:var(--french);font-size:1.1rem}
+.fb{border:2px solid var(--line);background:var(--surface);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1rem}
+.fb.isgood{border-color:var(--good)}
+.fb.isbad{border-color:var(--bad)}
+.fb p{margin:0}
+.fbrow{padding:.55rem .8rem}
+.fbrow.yours{background:var(--bad-bg)}
+.fbrow.yours h4{color:var(--bad)}
+.fbrow.rb{background:var(--ex-bg)}
+.fbrow.rb h4{color:var(--accent)}
+.fbrow.so{background:var(--key-bg)}
+.fbrow.so h4{color:var(--key-ink)}
+.fbrow.info{background:var(--note-bg)}
+.fbrow.info h4{color:var(--note-ink)}
+.v{font-weight:700;font-size:1.25rem}
+.v.good{color:var(--good)} .v.bad{color:var(--bad)}
+.yours s{color:var(--bad);font-family:var(--french);font-size:1.1em}
+.lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-right:.4rem}
+.result h3{font-size:1.4rem;margin:0}
+.score{font-size:2.6rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.score small{font-size:1rem;color:var(--muted);font-weight:400}
+#ref{position:fixed;inset:0;z-index:30;background:var(--paper);overflow:auto;padding:max(1rem,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(2rem,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#ref .in{max-width:46rem;margin:0 auto;display:flex;flex-direction:column;gap:1.4rem}
+#ref header{display:flex;justify-content:space-between;align-items:center}
+#ref h2{margin:0}
+#ref h3{font-size:1.05rem;margin:0 0 .5rem}
+#ref section{display:flex;flex-direction:column;gap:.6rem}
+@media (max-width:56rem){
+  .app{grid-template-columns:minmax(0,1fr)}
+  #navbtn{display:inline-block}
+  nav{display:none}
+  nav.open{display:block;position:fixed;inset:0;z-index:20;background:var(--paper);overflow:auto;padding:max(1rem,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(2rem,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  nav.open #navclose{display:inline-block;margin-bottom:1rem}
+  h2{font-size:1.45rem}
+  .fr.big{font-size:1.3rem}
+  .card{padding:1.1rem}
+}
+@media (prefers-reduced-motion:no-preference){ .bar i{transition:width .25s} }
+.ctw{border:1px solid var(--line);padding:.7rem .9rem .8rem}
+.ctw h4{font-family:var(--display);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:0 0 .35rem;line-height:1.4;color:var(--accent)}
+.ct{display:grid;grid-template-rows:repeat(3,auto);grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:.2rem 1.5rem}
+.ct div{display:flex;gap:.5rem;align-items:baseline;border-bottom:1px solid var(--rule);padding:.15rem 0;min-width:0}
+.ct .gl{flex:0 0 4.4rem}
+.ct .nv .fr{color:var(--key-ink);font-weight:600}
+.ct .hit .fr{background:var(--prep-bg);color:var(--prep-ink);padding:0 .3em;border-radius:3px;font-weight:600}
+.fbrow .ctw{border:0;padding:0}
+.fbrow .ctw h4{display:none}
+.typed .acc{flex:1 1 100%;flex-wrap:wrap}
+.fr s{color:var(--bad)}
+/* dossier masthead, footer and theme button */
+.top .brand{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem}
+.backlink{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);text-decoration:none;margin:0 0 .35rem;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.backlink:hover{color:var(--accent);border-color:var(--accent)}
+.top .eyebrow{margin:0}
+.top .tools{align-items:center}
+.themebtn{appearance:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:17px;line-height:1;display:grid;place-items:center;padding:0}
+.themebtn:hover{border-color:var(--accent)}
+.app>footer{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem;font-size:.8rem;color:var(--muted);line-height:1.55}
+.app>footer strong{color:var(--ink)}
+.changelog summary{cursor:pointer;margin-top:.4rem}
+.changelog span{display:block;margin-top:.35rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <a class="backlink" href="/mastery/">‹ Mastery lessons</a>
+      <div class="eyebrow">Mastery lesson · v1.1.0</div>
+      <h1>Subjonctif présent</h1>
+    </div>
+    <span class="sub">the present subjunctive: forms, irregulars and triggers</span>
+    <span class="tools">
+      <button class="tool" id="navbtn" type="button">Blocks</button>
+      <button class="tool" id="refbtn" type="button">Reference</button>
+      <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
+    </span>
+  </header>
+  <nav id="nav" aria-label="Lesson blocks"></nav>
+  <main id="stage"></main>
+  <footer>
+    <strong>Mastery lesson · Subjonctif présent · v1.1.0</strong> — the present subjunctive from the ground up: forms, two-stem and irregular verbs, the WEIRDOS triggers, conjunctions, and when the indicative stays. 12 blocks, about 1,000 questions. Each block unlocks when you pass the check before it (80% on the first try). Progress is saved in this browser.<br>
+    <details class="changelog"><summary>Changelog</summary>
+    <span>v1.1.0 (16 Nov 2026): <strong>First release in Les Dossiers Français.</strong> 12 lesson blocks with a check after each, a Reference sheet, light and dark mode. Accents always count in typed answers.</span>
+    </details>
+  </footer>
+</div>
+<div id="ref" hidden></div>
+
+<script>
+/* ---------- small helpers ---------- */
+const $=(s,e=document)=>e.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[’`´]/g,"'").replace(/\s+/g,' ').trim();
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'');
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const fx=s=>s.replace(/\[\[(.+?)\]\]/g,'<mark class="prep">$1</mark>').replace(/\{\{(.+?)\}\}/g,'<b class="pron">$1</b>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+const sent=(s,fill,cls)=>fx(s.replace('___','\u0001')).replace('\u0001',`<span class="slot ${cls||''}" id="slot">${fill||'&nbsp;'}</span>`);
+const p=s=>`<p>${s}</p>`, f=s=>`<span class="fr">${s}</span>`, key=s=>`<p class="key">${s}</p>`,
+  fr=(s,g)=>`<p class="fr ex">${s}${g?` <span class="gl">${g}</span>`:''}</p>`,
+  ok=s=>`<p class="fr ok">${s}</p>`, no=s=>`<p class="fr no">${s}</p>`,
+  note=s=>`<p class="note">${s}</p>`, tn=s=>`<p class="tn"><b>DLPT and OPI</b>${s}</p>`,
+  work=a=>`<div class="wk"><h4>Step by step</h4><ol class="work">${a.map(x=>`<li>${x}</li>`).join('')}</ol></div>`,
+  bank=(a,h)=>`<div class="bk"><h4>${h||'Learn these'}</h4><ul class="bank">${a.map(([v,g])=>`<li><span class="fr">${v}</span><span class="gl">${g}</span></li>`).join('')}</ul></div>`,
+  tbl=(h,r)=>`<div class="tw"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${r.map(x=>`<tr>${x.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+/* ---------- verbs: every bare-form drill is generated from these tables ---------- */
+const END=['e','es','e','ions','iez','ent'];
+const PN=['je','tu','il / elle / on','nous','vous','ils / elles'];
+const VOW=/^[aeiouyhéèêâ]/;
+const VB={};
+const r1=(inf,st,irr)=>VB[inf]={inf,f:END.map(e=>st+e),ex:irr?`Irregular stem <b>${st}-</b> for all six forms. The endings are regular.`:`ils ${st}ent → <b>${st}-</b> + the endings.`};
+const r2=(inf,a,b,irr)=>VB[inf]={inf,f:END.map((e,i)=>(i===3||i===4?b:a)+e),ex:irr?`Irregular stem <b>${a}-</b> for je, tu, il, ils. Nous and vous keep <b>${b}-</b>.`:`je, tu, il, ils: ils ${a}ent → <b>${a}-</b>. Nous, vous: nous ${b}ons → <b>${b}-</b>.`};
+const rx=(inf,fm,ex)=>VB[inf]={inf,f:fm,ex};
+const L1='parler:parl aimer:aim regarder:regard travailler:travaill écouter:écout étudier:étudi manger:mang commencer:commenc finir:finiss choisir:choisiss réussir:réussiss réfléchir:réfléchiss attendre:attend vendre:vend répondre:répond perdre:perd entendre:entend descendre:descend rendre:rend partir:part sortir:sort dormir:dorm sentir:sent servir:serv mentir:ment lire:lis écrire:écriv décrire:décriv dire:dis mettre:mett permettre:permett promettre:promett connaître:connaiss suivre:suiv vivre:viv conduire:conduis traduire:traduis construire:construis ouvrir:ouvr offrir:offr courir:cour rire:ri plaire:plais craindre:craign peindre:peign rejoindre:rejoign battre:batt'.split(' ').map(x=>{const[a,b]=x.split(':');return r1(a,b)});
+const L2='prendre:prenn:pren comprendre:comprenn:compren apprendre:apprenn:appren venir:vienn:ven devenir:devienn:deven revenir:revienn:reven tenir:tienn:ten obtenir:obtienn:obten boire:boiv:buv devoir:doiv:dev recevoir:reçoiv:recev voir:voi:voy croire:croi:croy envoyer:envoi:envoy mourir:meur:mour appeler:appell:appel acheter:achèt:achet préférer:préfèr:préfér jeter:jett:jet'.split(' ').map(x=>{const[a,b,c]=x.split(':');return r2(a,b,c)});
+const L4=[rx('être',['sois','sois','soit','soyons','soyez','soient'],'Fully irregular. Memorize all six.'),rx('avoir',['aie','aies','ait','ayons','ayez','aient'],'Fully irregular. Memorize all six.')];
+const L5=[r1('faire','fass',1),r1('pouvoir','puiss',1),r1('savoir','sach',1),r2('aller','aill','all',1),r2('vouloir','veuill','voul',1),
+  rx('pleuvoir',[null,null,'pleuve',null,null,null],'Impersonal verb. The only form is <b>il pleuve</b>.'),
+  rx('falloir',[null,null,'faille',null,null,null],'Impersonal verb. The only form is <b>il faille</b>.'),
+  rx('valoir',[null,null,'vaille',null,null,null],'You will meet it as <b>il vaille</b>, from il vaut mieux.')];
+const cpool=L=>L.flatMap(v=>v.f.map((x,i)=>x?{v:v.inf,p:i}:null).filter(Boolean));
+const lead=(pi,form,imp)=>pi===0?(VOW.test(form)?"que j'":'que je '):pi===1?'que tu ':pi===2?(imp?"qu'il ":pick(["qu'il ","qu'elle ","qu'on "])):pi===3?'que nous ':pi===4?'que vous ':pick(["qu'ils ","qu'elles "]);
+const ct=(inf,hit)=>{const v=VB[inf],L=['que je','que tu',"qu'il",'que nous','que vous',"qu'ils"];
+  return`<div class="ctw"><h4>${inf}</h4><div class="ct">${v.f.map((x,i)=>x?`<div class="${i===3||i===4?'nv':''} ${i===hit?'hit':''}"><span class="gl">${i===0&&VOW.test(x)?"que j'":L[i]}</span><span class="fr">${x}</span></div>`:'').join('')}</div></div>`};
+
+/* ---------- triggers: [family, mood, meaning, note, pattern label] ---------- */
+const CAT={W:'Wishes',E:'Emotions',I:'Impersonal expressions',R:'Relative clauses',D:'Doubts',O:'Orders',S:'Superlatives',C:'Conjunction, outside WEIRDOS',N:'No trigger'};
+const CNOTE={W:'Someone wants it. It is not a fact yet.',E:'The clause is seen through a feeling.',I:'A judgment about the action, not a statement of fact.',R:'The person or thing is wanted or missing, not known to exist.',D:'The speaker does not vouch for it.',O:'It is demanded, allowed or forbidden, not stated.',S:'An opinion about an extreme, not a measured fact.',C:'This conjunction always takes the subjunctive.',N:'It presents the clause as a fact.'};
+const TR={
+ 'vouloir que':['W','s','to want'],'désirer que':['W','s','to wish'],'souhaiter que':['W','s','to wish'],'aimer que':['W','s','to like, would like'],'aimer mieux que':['W','s','to prefer'],'préférer que':['W','s','to prefer'],'avoir envie que':['W','s','to want someone to'],'tenir à ce que':['W','s','to insist that'],'attendre que':['W','s','to wait until'],"s'attendre à ce que":['W','s','to expect'],'avoir hâte que':['W','s','to look forward to'],'avoir besoin que':['W','s','to need someone to'],
+ 'espérer que':['Nw','i','to hope','Hoping counts as expecting a fact. Indicative, often the future.'],
+ 'être content que':['E','s','to be glad'],'être heureux que':['E','s','to be happy'],'être ravi que':['E','s','to be delighted'],'être triste que':['E','s','to be sad'],'être désolé que':['E','s','to be sorry'],'être surpris que':['E','s','to be surprised'],'être étonné que':['E','s','to be astonished'],'être fâché que':['E','s','to be angry'],'être furieux que':['E','s','to be furious'],'être déçu que':['E','s','to be disappointed'],'être fier que':['E','s','to be proud'],'être soulagé que':['E','s','to be relieved'],'avoir peur que':['E','s','to be afraid'],'craindre que':['E','s','to fear'],'regretter que':['E','s','to regret'],"s'étonner que":['E','s','to be amazed'],"ça m'étonne que":['E','s','it surprises me'],'ça me plaît que':['E','s','I like it that'],"c'est dommage que":['E','s',"it's a pity"],'avoir honte que':['E','s','to be ashamed'],
+ 'il faut que':['I','s','it is necessary, must'],'il est nécessaire que':['I','s','it is necessary'],'il est important que':['I','s','it is important'],'il est essentiel que':['I','s','it is essential'],'il est indispensable que':['I','s','it is essential'],'il est possible que':['I','s','it is possible'],'il est impossible que':['I','s','it is impossible'],'il est normal que':['I','s','it is normal'],'il est bizarre que':['I','s','it is strange'],'il est étonnant que':['I','s','it is surprising'],'il est temps que':['I','s','it is time'],'il est préférable que':['I','s','it is preferable'],'il est rare que':['I','s','it is rare'],'il est utile que':['I','s','it is useful'],'il est urgent que':['I','s','it is urgent'],'il est juste que':['I','s','it is fair'],'il vaut mieux que':['I','s','it is better'],'il se peut que':['I','s','it may be'],'il semble que':['I','s','it seems','Appearance, without the speaker committing to it.'],'il suffit que':['I','s','it is enough'],'il est peu probable que':['I','s','it is unlikely','Less likely than not, so no fact is claimed.'],
+ 'il est certain que':['Ni','i','it is certain'],'il est sûr que':['Ni','i','it is sure'],'il est évident que':['Ni','i','it is obvious'],'il est vrai que':['Ni','i','it is true'],'il est clair que':['Ni','i','it is clear'],'il est probable que':['Ni','i','it is likely','More likely than not counts as a fact.'],'il me semble que':['Ni','i','it seems to me','It means “I think that”: a belief, so indicative.'],'il paraît que':['Ni','i','apparently, I hear that','Reported as information.'],
+ 'douter que':['D','s','to doubt'],'ne pas croire que':['D','s','not to believe','A negated belief is a doubt.'],'ne pas penser que':['D','s','not to think','A negated belief is a doubt.'],'ne pas être sûr que':['D','s','not to be sure','Negated certainty is a doubt.'],'ne pas être certain que':['D','s','not to be certain','Negated certainty is a doubt.'],'ne pas trouver que':['D','s','not to find, not to think','A negated opinion is a doubt.'],'il est douteux que':['D','s','it is doubtful'],"il n'est pas vrai que":['D','s','it is not true','Negated certainty is a doubt.'],"il n'est pas certain que":['D','s','it is not certain','Negated certainty is a doubt.'],"il n'est pas sûr que":['D','s','it is not sure','Negated certainty is a doubt.'],'nier que':['D','s','to deny'],
+ 'croire que':['Nd','i','to believe','An affirmed belief is a fact for the speaker.'],'penser que':['Nd','i','to think','An affirmed belief is a fact for the speaker.'],'être sûr que':['Nd','i','to be sure'],'être certain que':['Nd','i','to be certain'],'trouver que':['Nd','i','to find, to think','An affirmed opinion is a fact for the speaker.'],'savoir que':['Nd','i','to know'],'se douter que':['Nd','i','to suspect','Se douter means to suspect, to be fairly sure. It is not douter.'],'dire que':['Nd','i','to say','It reports information.'],
+ 'ordonner que':['O','s','to order'],'exiger que':['O','s','to demand'],'demander que':['O','s','to ask'],'interdire que':['O','s','to forbid'],'défendre que':['O','s','to forbid'],'permettre que':['O','s','to allow'],'empêcher que':['O','s','to prevent'],'proposer que':['O','s','to propose'],'suggérer que':['O','s','to suggest'],'recommander que':['O','s','to recommend'],'insister pour que':['O','s','to insist'],'accepter que':['O','s','to accept, to allow'],'refuser que':['O','s','to refuse to let'],"s'opposer à ce que":['O','s','to object to'],
+ 'Que … !':['O','s','let him, let them','A command aimed at a third person.','Que + subject + verb !'],
+ 'pour que':['C','s','so that'],'afin que':['C','s','so that'],'bien que':['C','s','although'],'quoique':['C','s','although'],'avant que':['C','s','before','It has not happened yet.'],"jusqu'à ce que":['C','s','until'],'à moins que':['C','s','unless'],'sans que':['C','s','without'],'à condition que':['C','s','provided that'],'pourvu que':['C','s',"provided that, let's hope"],'en attendant que':['C','s','while waiting for'],'de peur que':['C','s','for fear that'],'de crainte que':['C','s','for fear that'],'où que':['C','s','wherever'],'quoi que':['C','s','whatever'],
+ 'parce que':['Nc','i','because'],'puisque':['Nc','i','since, as'],'pendant que':['Nc','i','while'],'tandis que':['Nc','i','whereas, while'],'alors que':['Nc','i','while, whereas'],'dès que':['Nc','i','as soon as'],'aussitôt que':['Nc','i','as soon as'],'depuis que':['Nc','i','since (time)'],'après que':['Nc','i','after','It already happened, so it is a fact.'],'vu que':['Nc','i','given that'],'étant donné que':['Nc','i','given that'],
+ 'R?':['R','s','','You are looking for it. You do not know that it exists.','someone or something you are looking for'],
+ 'R-':['R','s','','It does not exist, so the clause cannot state a fact.','nobody or nothing: personne, rien'],
+ 'Rk':['Nr','i','','It exists and you know it, so the clause states a fact.','a real, known person or thing'],
+ 'S':['S','s','','It softens the claim: the best, the only one, as far as I know.','a superlative, or le seul, le premier, le dernier']
+};
+const fam=k=>TR[k][0][0];
+const famBank=(c,h)=>bank(Object.entries(TR).filter(([k,v])=>v[0]===c&&!v[4]).map(([k,v])=>[k,v[2]]),h);
+const tpool=cs=>Object.keys(TR).filter(k=>cs.includes(TR[k][0])&&!TR[k][4]);
+const FAMOPT=['W · Wishes','E · Emotions','I · Impersonal','R · Relative clause','D · Doubt','O · Orders','S · Superlative','Conjunction'];
+const famLabel=k=>FAMOPT['WEIRDOSC'.indexOf(fam(k))];
+
+/* ---------- item builders ---------- */
+const S=(s,inf,sub,ind,tr,m,alt)=>({s,inf,sub,ind,tr,m:m||'s',alt});
+const Q=(pr,s,o,a,why)=>({pr,s,o,a,why});
+const IF='il faut que',VQ='vouloir que',PQ='pour que',BQ='bien que';
+const WHICH='Which verb is in the subjunctive?', STRUCT='One subject or two? Pick the structure that works.';
+
+/* ---------- shared reference pieces ---------- */
+const T_END=tbl(['je','tu','il','nous','vous','ils'],[['-e','-es','-e','-ions','-iez','-ent']]);
+const T_WEIRDOS=tbl(['','Family','Typical trigger'],[['W','Wishes',f('je veux que')],['E','Emotions',f('je suis content que')],['I','Impersonal expressions',f('il faut que')],['R','Relative clauses',f("je cherche quelqu'un qui")],['D','Doubts',f('je doute que')],['O','Orders',f("j'exige que")],['S','Superlatives',f('le meilleur … que')]]);
+const T_IRR=tbl(['Verb','je','nous'],[['être','{{sois}}','{{soyons}}'],['avoir','{{aie}}','{{ayons}}'],['faire','{{fasse}}','{{fassions}}'],['pouvoir','{{puisse}}','{{puissions}}'],['savoir','{{sache}}','{{sachions}}'],['aller','{{aille}}','{{allions}}'],['vouloir','{{veuille}}','{{voulions}}'],['falloir','il {{faille}}',''],['pleuvoir','il {{pleuve}}','']]);
+const BK_TWO=bank([['prendre','prenne / prenions'],['venir','vienne / venions'],['tenir','tienne / tenions'],['boire','boive / buvions'],['devoir','doive / devions'],['recevoir','reçoive / recevions'],['voir','voie / voyions'],['croire','croie / croyions'],['envoyer','envoie / envoyions'],['mourir','meure / mourions']],'je form / nous form');
+const BK_SPELL=bank([['appeler','appelle / appelions'],['acheter','achète / achetions'],['préférer','préfère / préférions'],['jeter','jette / jetions']],'je form / nous form');
+const T_FLIP=tbl(['Affirmed: indicative','Negated: subjunctive'],[[f('je pense que'),f('je ne pense pas que')],[f('je crois que'),f('je ne crois pas que')],[f('je suis sûr que'),f('je ne suis pas sûr que')],[f('je trouve que'),f('je ne trouve pas que')],[f('il est vrai que'),f("il n'est pas vrai que")],[f('il est certain que'),f("il n'est pas certain que")]]);
+const T_INF=tbl(['Two subjects','Same subject'],[[f('pour que')+' + subjunctive',f('pour')+' + infinitive'],[f('afin que'),f('afin de')],[f('avant que'),f('avant de')],[f('sans que'),f('sans')],[f('à condition que'),f('à condition de')],[f('à moins que'),f('à moins de')],[f('de peur que'),f('de peur de')]]);
+const PATH=`<ol class="path"><li><b>Is there a que clause with its own subject?</b> If both verbs share a subject, use the infinitive.</li><li><b>Find what introduces the clause.</b> A main-clause expression, or a conjunction.</li><li><b>Is it a trigger?</b> WEIRDOS or a subjunctive conjunction: subjunctive. Certainty, affirmed belief, espérer, parce que and the like: indicative.</li><li><b>Build the form.</b> Irregular? Two stems? Otherwise the ils-stem + -e, -es, -e, -ions, -iez, -ent.</li></ol>`;
+
+const PARTS=['Foundations','Building the forms','The triggers','Mastery'];
+
+/* ---------- the course ---------- */
+const B=[
+{id:'what',part:0,title:'What the subjunctive is',goal:'See where the subjunctive lives in a sentence, and when French uses the infinitive instead.',
+ rule:'Trigger + que + a different subject: subjunctive. Same subject on both sides: infinitive.',
+ mix:[['q1',2],['q2',4]],
+ cards:[
+ {h:'A mood, not a tense',b:p('The indicative states facts. The subjunctive shows that the action is filtered through an attitude: a wish, a feeling, a doubt, a need.')+fr('Tu {{viens}}.','a fact: indicative')+fr('Je veux que tu {{viennes}}.','a wish about it: subjunctive')+key('The subjunctive almost never stands alone. It lives in a second clause, after <b>que</b>.')},
+ {h:'The three ingredients',b:work(['A trigger: '+f('[[je veux]]'),'The word '+f('que'),'A different subject and its verb in the subjunctive: '+f('tu {{viennes}}')])+fr('[[Je veux]] que tu {{viennes}}.')+key('No trigger, no subjunctive. Most of this course is learning which expressions are triggers.')},
+ {h:'Same subject? Use the infinitive',b:p('When both verbs have the same subject, French drops <b>que</b> and uses the infinitive.')+ok('Je veux partir.')+no('Je veux que je parte.')+ok('Je veux que tu partes.')+note('After adjectives and some expressions, the infinitive takes <b>de</b>: '+f('content de partir')+', '+f('avoir peur de tomber')+'.')},
+ {h:'English still has traces of it',b:p('English mostly lost its subjunctive, but you still hear it after demands and judgments.')+fr('I insist that he <b>be</b> on time. → J\'insiste pour qu\'il {{soit}} à l\'heure.')+fr('It is important that she <b>come</b>. → Il est important qu\'elle {{vienne}}.')+tn('In reading, a subjunctive tells you the clause is a wish, a doubt or a feeling, not a reported fact. In speaking, a correct subjunctive after '+f('il faut que')+' or '+f('bien que')+' is one of the clearest signs of higher-level control.')},
+ {h:'Four triggers to start with',b:p('The next four blocks are about building the forms. You only need these triggers for now.')+bank([['il faut que','it is necessary that, must'],['je veux que','I want (someone) to'],['pour que','so that'],['bien que','although']])}],
+ pools:{
+ q1:[
+  Q(WHICH,"Je veux que tu viennes.",['veux','viennes'],'viennes','The subjunctive sits in the <b>que</b> clause. '+f('Je veux')+' is the trigger, in the indicative.'),
+  Q(WHICH,"Il faut que nous partions.",['faut','partions'],'partions',f('Il faut')+' is the trigger. The verb after <b>que</b> carries the subjunctive.'),
+  Q(WHICH,"Elle est contente que vous soyez là.",['est','soyez'],'soyez','The feeling is stated in the indicative. What she feels it about goes in the subjunctive.'),
+  Q(WHICH,"Bien qu'il pleuve, nous sortons.",['pleuve','sortons'],'pleuve',f('Bien que')+' triggers the subjunctive in its own clause. '+f('Nous sortons')+' is a plain fact.'),
+  Q(WHICH,"Nous doutons qu'il ait raison.",['doutons','ait'],'ait','The doubt is stated in the indicative. The thing doubted goes in the subjunctive.'),
+  Q(WHICH,"Je te téléphone pour que tu saches la nouvelle.",['téléphone','saches'],'saches',f('Pour que')+' introduces a goal, not a fact, so its verb is in the subjunctive.'),
+  Q(WHICH,"Il est possible qu'elle soit malade.",['est','soit'],'soit','The judgment is in the indicative. The clause after <b>que</b> is in the subjunctive.'),
+  Q(WHICH,"Avant que tu partes, écoute-moi.",['partes','écoute'],'partes',f('Avant que')+' triggers the subjunctive. '+f('Écoute')+' is an imperative.'),
+  Q(WHICH,"Mes parents souhaitent que je devienne médecin.",['souhaitent','devienne'],'devienne','The wish is in the indicative. What is wished for is in the subjunctive.'),
+  Q(WHICH,"Je reste ici jusqu'à ce que tu reviennes.",['reste','reviennes'],'reviennes',f("Jusqu'à ce que")+' triggers the subjunctive in its own clause.')],
+ q2:[
+  Q(STRUCT,"Je veux ___ ce soir.",['sortir','que je sorte'],'sortir','I want, I go out: one subject. Use the infinitive.'),
+  Q(STRUCT,"Je veux ___ ce soir.",['que tu sortes','tu sortir'],'que tu sortes','I want, you go out: two subjects. Use que + subjunctive.'),
+  Q(STRUCT,"Elle est contente ___ ici.",["d'être","qu'elle soit"],"d'être",'She is glad, she is here: one subject. Use de + infinitive.'),
+  Q(STRUCT,"Elle est contente ___ ici.",['que nous soyons','de nous être'],'que nous soyons','She is glad, we are here: two subjects. Use que + subjunctive.'),
+  Q(STRUCT,"J'ai peur ___ en retard.",["d'être",'que je sois'],"d'être",'One subject on both sides. Use de + infinitive.'),
+  Q(STRUCT,"Nous préférons ___ à la maison.",['rester','que nous restions'],'rester','We prefer, we stay: one subject. Use the infinitive.'),
+  Q(STRUCT,"Nous préférons ___ à la maison.",['que vous restiez','vous rester'],'que vous restiez','We prefer, you stay: two subjects. Use que + subjunctive.'),
+  Q(STRUCT,"Je suis triste ___.",['de partir','que je parte'],'de partir','One subject on both sides. Use de + infinitive.'),
+  Q(STRUCT,"Je suis triste ___.",['que tu partes','de tu partir'],'que tu partes','I am sad, you leave: two subjects. Use que + subjunctive.'),
+  Q(STRUCT,"Elle souhaite ___ médecin.",['devenir',"qu'elle devienne"],'devenir','She wishes, she becomes: one subject. Use the infinitive.'),
+  Q(STRUCT,"Elle souhaite ___ médecin.",['que son fils devienne','son fils devenir'],'que son fils devienne','She wishes, her son becomes: two subjects. Use que + subjunctive.'),
+  Q(STRUCT,"J'aimerais ___ plus souvent.",['voyager','que je voyage'],'voyager','One subject on both sides. Use the infinitive.'),
+  Q(STRUCT,"Il regrette ___ si tard.",["d'arriver","qu'il arrive"],"d'arriver",'He regrets, he arrives: one subject. Use de + infinitive.'),
+  Q(STRUCT,"Il faut ___ plus d'eau.",['boire','que boire'],'boire','No specific subject at all. A general statement takes the infinitive.'),
+  Q(STRUCT,"Je veux ___ la vérité.",['que vous sachiez','vous savoir'],'que vous sachiez','I want, you know: two subjects. Use que + subjunctive.'),
+  Q(STRUCT,"Tu es content ___ tes amis ?",['de revoir','que tu revoies'],'de revoir','You are glad, you see them: one subject. Use de + infinitive.')]}},
+
+{id:'reg',part:1,title:'The regular recipe',goal:'Build the subjunctive of almost any verb from its ils form.',typed:1,
+ rule:'Take the ils form of the present. Drop -ent. Add -e, -es, -e, -ions, -iez, -ent.',
+ mix:[['c',6],['s',4]],
+ cards:[
+ {h:'The recipe',b:work(['Take the <b>ils</b> form of the present: '+f('ils finissent'),'Drop <b>-ent</b>: '+f('finiss-'),'Add the endings: <b>-e, -es, -e, -ions, -iez, -ent</b>'])+ct('finir')},
+ {h:'One set of endings',b:T_END+key('The same six endings serve almost every verb in French, whatever its group.')},
+ {h:'-er verbs: only nous and vous change',b:ct('parler')+note('Je, tu, il and ils look exactly like the present. Nous and vous look like the imparfait: '+f('parlions')+', '+f('parliez')+'.')},
+ {h:'-ir and -re verbs: you hear the difference',b:fr('tu finis → que tu {{finisses}}')+fr('il attend → qu\'il {{attende}}')+fr('je pars → que je {{parte}}')+key('The final consonant of the stem is pronounced: finisse, attende, parte, lise, écrive, dise, mette.')},
+ {h:'Verbs that look irregular but follow the recipe',b:bank([['lire','ils lisent → lise'],['écrire','ils écrivent → écrive'],['dire','ils disent → dise'],['mettre','ils mettent → mette'],['connaître','ils connaissent → connaisse'],['suivre','ils suivent → suive'],['vivre','ils vivent → vive'],['conduire','ils conduisent → conduise'],['ouvrir','ils ouvrent → ouvre'],['craindre','ils craignent → craigne']],'ils form → subjunctive')+note('When the stem ends in <b>i</b>, nous and vous get two: '+f('étudiions')+', '+f('riiez')+'.')}],
+ pools:{c:cpool(L1),s:[
+  S("Il faut que tu ___ ton travail avant midi.","finir","finisses","finis",IF),
+  S("Je veux que vous ___ plus lentement.","parler","parliez","parlez",VQ),
+  S("Il faut que nous ___ à cette lettre.","répondre","répondions","répondons",IF),
+  S("Bien que nous ___ beaucoup, nous sommes en retard.","travailler","travaillions","travaillons",BQ),
+  S("Je veux que tu ___ ce livre.","lire","lises","lis",VQ),
+  S("Il faut que j'___ à ma grand-mère.","écrire","écrive","écris",IF),
+  S("Parle plus fort pour que tout le monde t'___.","entendre","entende","entend",PQ),
+  S("Il faut que vous ___ un dessert.","choisir","choisissiez","choisissez",IF),
+  S("Je veux que tu ___ la vérité.","dire","dises","dis",VQ),
+  S("Il faut que le bébé ___ un peu.","dormir","dorme","dort",IF),
+  S("Je veux que tu ___ ton manteau.","mettre","mettes","mets",VQ),
+  S("Bien qu'elle ___ la ville, elle se perd souvent.","connaître","connaisse","connaît",BQ),
+  S("Il faut que nous ___ avant la nuit.","partir","partions","partons",IF),
+  S("Je veux que tu ___ mes conseils.","suivre","suives","suis",VQ),
+  S("Pour que tu ___ à l'examen, il faut étudier.","réussir","réussisses","réussis",PQ),
+  S("Il faut que nous ___ le français tous les jours.","étudier","étudiions","étudions",IF),
+  S("Je veux que tu m'___ devant la gare.","attendre","attendes","attends",VQ),
+  S("Bien qu'il ___ tard, il n'est jamais fatigué.","sortir","sorte","sort",BQ),
+  S("Il faut que vous ___ la porte à clé.","fermer","fermiez","fermez",IF),
+  S("Il faut que nous ___ les fenêtres.","ouvrir","ouvrions","ouvrons",IF),
+  S("Je veux que tu ___ moins vite.","conduire","conduises","conduis",VQ),
+  S("Il faut qu'elle ___ sa voiture.","vendre","vende","vend",IF),
+  S("Bien que tu ___ à Paris, tu parles peu français.","vivre","vives","vis",BQ),
+  S("Je veux que vous ___ cette chanson.","écouter","écoutiez","écoutez",VQ)]}},
+
+{id:'two',part:1,title:'Two-stem verbs',goal:'Handle verbs whose nous and vous forms use a different stem.',typed:1,
+ rule:'Je, tu, il, ils take the ils-stem. Nous and vous take the nous-stem. The endings never change.',
+ mix:[['c',6],['s',4]],
+ cards:[
+ {h:'Two stems, same endings',b:p('Some verbs change stem between <b>ils</b> and <b>nous</b> in the present. The subjunctive keeps both stems.')+work(['je, tu, il, ils: '+f('ils prennent')+' → '+f('prenn-'),'nous, vous: '+f('nous prenons')+' → '+f('pren-'),'Add the usual endings'])+ct('prendre')},
+ {h:'Nous and vous look like the imparfait',b:fr('que nous {{prenions}}, que vous {{preniez}}')+fr('que nous {{venions}}, que vous {{veniez}}')+fr('que nous {{buvions}}, que vous {{buviez}}')+key('If you know the imparfait, you already know the nous and vous forms of the subjunctive for these verbs.')},
+ {h:'The main two-stem verbs',b:BK_TWO},
+ {h:'Spelling-change -er verbs',b:BK_SPELL+note('These are the same changes you make in the present tense.')},
+ {h:'Verb families',b:p('Learn one, and the family follows.')+bank([['prendre','comprendre, apprendre'],['venir','devenir, revenir'],['tenir','obtenir']],'Model → same pattern')}],
+ pools:{c:cpool(L2),s:[
+  S("Il faut que tu ___ le bus de huit heures.","prendre","prennes","prends",IF),
+  S("Je veux que vous ___ dîner samedi.","venir","veniez","venez",VQ),
+  S("Il faut que nous ___ plus d'eau.","boire","buvions","buvons",IF),
+  S("Bien qu'il ___ travailler, il sort ce soir.","devoir","doive","doit",BQ),
+  S("Je veux que tu ___ ce film.","voir","voies","vois",VQ),
+  S("Il faut que vous ___ ce colis avant lundi.","envoyer","envoyiez","envoyez",IF),
+  S("Il faut que nous ___ du pain.","acheter","achetions","achetons",IF),
+  S("Je veux que vous m'___ ce soir.","appeler","appeliez","appelez",VQ),
+  S("Pour que tu ___ la leçon, je vais répéter.","comprendre","comprennes","comprends",PQ),
+  S("Il faut qu'elle ___ sa réponse demain.","recevoir","reçoive","reçoit",IF),
+  S("Bien que nous ___ son histoire, nous avons des doutes.","croire","croyions","croyons",BQ),
+  S("Je veux que tu ___ ta promesse.","tenir","tiennes","tiens",VQ),
+  S("Il faut que tu ___ plus patient.","devenir","deviennes","deviens",IF),
+  S("Il faut que vous ___ le français.","apprendre","appreniez","apprenez",IF),
+  S("Je veux qu'il ___ avant minuit.","revenir","revienne","revient",VQ),
+  S("Il faut que nous ___ cette lettre aujourd'hui.","envoyer","envoyions","envoyons",IF),
+  S("Je veux que tu ___ de l'eau, pas du soda.","boire","boives","bois",VQ),
+  S("Il faut que vous ___ un permis.","obtenir","obteniez","obtenez",IF),
+  S("Je l'appelle pour qu'elle ___ plus tôt.","venir","vienne","vient",PQ),
+  S("Bien que tu ___ partir, reste encore un peu.","devoir","doives","dois",BQ),
+  S("Il faut que nous ___ une décision.","prendre","prenions","prenons",IF),
+  S("Je veux que vous ___ ce musée.","voir","voyiez","voyez",VQ)]}},
+
+{id:'ea',part:1,title:'être and avoir',goal:'Memorize the two fully irregular verbs you will use most.',typed:1,
+ rule:'être: sois, sois, soit, soyons, soyez, soient. avoir: aie, aies, ait, ayons, ayez, aient.',
+ mix:[['c',6],['s',4]],
+ cards:[
+ {h:'être',b:ct('être')+note('No -e on je, tu, il: '+f('sois, sois, soit')+'. No i after the y: '+f('soyons, soyez')+'.')},
+ {h:'avoir',b:ct('avoir')+note('The il form ends in -t: '+f('ait')+'. No i after the y: '+f('ayons, ayez')+'.')},
+ {h:'You already know half of these',b:p('The imperative of être and avoir uses these same forms.')+fr('{{Sois}} sage !')+fr('{{Soyez}} prudents !')+fr('{{Ayez}} confiance !')+fr("N'{{ayons}} pas peur.")+key('If you can give an order with être or avoir, you have the subjunctive stem.')},
+ {h:'Same sound, different spelling',b:p(f('aie, aies, ait, aient')+' all sound the same. So do '+f('sois, soit, soient')+'. The points are lost in the spelling.')+tbl(['','je','tu','il','ils'],[['être','sois','sois','soi<b>t</b>','soi<b>ent</b>'],['avoir','ai<b>e</b>','ai<b>es</b>','ai<b>t</b>','ai<b>ent</b>']])}],
+ pools:{c:cpool(L4),s:[
+  S("Il faut que tu ___ à l'heure.","être","sois","es",IF),
+  S("Je veux que vous ___ patients.","être","soyez","êtes",VQ),
+  S("Bien qu'il ___ fatigué, il continue.","être","soit","est",BQ),
+  S("Il faut que nous ___ prêts à huit heures.","être","soyons","sommes",IF),
+  S("Je veux que tu ___ confiance en toi.","avoir","aies","as",VQ),
+  S("Bien qu'elle ___ peur, elle avance.","avoir","ait","a",BQ),
+  S("Il faut que vous ___ votre passeport.","avoir","ayez","avez",IF),
+  S("Bien que nous ___ le temps, nous restons ici.","avoir","ayons","avons",BQ),
+  S("Il faut que j'___ une réponse avant demain.","avoir","aie","ai",IF),
+  S("Je veux qu'ils ___ heureux.","être","soient","sont",VQ),
+  S("Bien qu'ils ___ beaucoup d'amis, ils sortent peu.","avoir","aient","ont",BQ),
+  S("Il faut que je ___ à la gare à midi.","être","sois","suis",IF),
+  S("Je veux que tu ___ gentil avec ta sœur.","être","sois","es",VQ),
+  S("Je répète pour que tout le monde ___ la même information.","avoir","ait","a",PQ),
+  S("Bien que vous ___ raison, il ne vous écoute pas.","avoir","ayez","avez",BQ),
+  S("Il faut qu'elle ___ là avant nous.","être","soit","est",IF),
+  S("Je veux que nous ___ d'accord.","être","soyons","sommes",VQ),
+  S("Bien que tu ___ jeune, tu comprends tout.","être","sois","es",BQ),
+  S("Il faut que les invités ___ une chaise.","avoir","aient","ont",IF),
+  S("Je veux que vous ___ le courage de parler.","avoir","ayez","avez",VQ)]}},
+
+{id:'irr',part:1,title:'The other irregulars',goal:'Learn faire, pouvoir, savoir, aller and vouloir, plus the impersonal forms.',typed:1,
+ rule:'fass-, puiss-, sach- for all six forms. aille / allions, veuille / voulions. il faille, il pleuve.',
+ mix:[['c',6],['s',4]],
+ cards:[
+ {h:'Three verbs, one new stem each',b:p('These take a stem you cannot predict, then the regular endings on all six forms.')+bank([['faire','fass-'],['pouvoir','puiss-'],['savoir','sach-']],'Verb → stem')+ct('faire')},
+ {h:'pouvoir and savoir',b:ct('pouvoir')+ct('savoir')},
+ {h:'aller and vouloir: an irregular boot',b:ct('aller')+ct('vouloir')+key('Nous and vous stay regular: allions, alliez, voulions, vouliez. The other four take aill- and veuill-.')},
+ {h:'Weather and necessity',b:p('Impersonal verbs only have an <b>il</b> form.')+fr("Bien qu'il {{pleuve}}, nous sortons.",'pleuvoir')+fr("Bien qu'il {{faille}} partir, je reste.",'falloir')},
+ {h:'The full irregular list',b:T_IRR+tn('These are the most frequent verbs in the language, so this is where the subjunctive is heard most: '+f("il faut que j'aille")+', '+f('bien que ce soit')+', '+f('pour que tu puisses')+'.')}],
+ pools:{c:cpool(L5),s:[
+  S("Il faut que tu ___ tes devoirs.","faire","fasses","fais",IF),
+  S("Je veux que vous ___ attention.","faire","fassiez","faites",VQ),
+  S("Bien qu'il ___ froid, nous sortons.","faire","fasse","fait",BQ),
+  S("Il faut que nous ___ les courses.","faire","fassions","faisons",IF),
+  S("Parle lentement pour que je ___ comprendre.","pouvoir","puisse","peux",PQ),
+  S("Bien que tu ___ venir, tu préfères rester.","pouvoir","puisses","peux",BQ),
+  S("Il faut que vous ___ nous aider.","pouvoir","puissiez","pouvez",IF),
+  S("Je veux que tu ___ la vérité.","savoir","saches","sais",VQ),
+  S("Il faut que nous ___ la date exacte.","savoir","sachions","savons",IF),
+  S("Bien qu'elle ___ nager, elle a peur de l'eau.","savoir","sache","sait",BQ),
+  S("Il faut que j'___ à la banque.","aller","aille","vais",IF),
+  S("Je veux que tu ___ chez le médecin.","aller","ailles","vas",VQ),
+  S("Il faut que nous ___ au marché.","aller","allions","allons",IF),
+  S("Bien qu'ils ___ souvent au cinéma, ils préfèrent lire.","aller","aillent","vont",BQ),
+  S("Je veux que vous ___ voir ce film.","aller","alliez","allez",VQ),
+  S("Bien qu'il ___ partir, il reste.","vouloir","veuille","veut",BQ),
+  S("Bien que vous ___ m'aider, c'est trop tard.","vouloir","vouliez","voulez",BQ),
+  S("Bien qu'il ___, nous allons à la plage.","pleuvoir","pleuve","pleut",BQ),
+  S("Bien qu'il ___ partir, restons encore un peu.","falloir","faille","faut",BQ),
+  S("Bien que tu ___ bien faire, tu compliques tout.","vouloir","veuilles","veux",BQ),
+  S("Je veux qu'ils ___ leur lit.","faire","fassent","font",VQ),
+  S("Pour que vous ___ où aller, voici un plan.","savoir","sachiez","savez",PQ),
+  S("Il faut qu'elle ___ dormir.","pouvoir","puisse","peut",IF),
+  S("Je veux qu'elle ___ à l'université.","aller","aille","va",VQ)]}},
+
+{id:'wo',part:2,title:'WEIRDOS: wishes and orders',goal:'Meet the seven families, then learn the two that impose a will on someone else.',
+ rule:'W: wanting, wishing, preferring, waiting. O: ordering, asking, allowing, forbidding. Both take the subjunctive. Espérer que takes the indicative.',
+ mix:[['t',4],['s',6]],
+ cards:[
+ {h:'WEIRDOS',b:T_WEIRDOS+key('One idea sits under all seven. The que clause is not presented as a plain fact. It is wanted, felt, judged, doubted or demanded.')},
+ {h:'W: wishes',b:p('Someone wants something from someone else.')+fr('[[Je veux que]] tu {{viennes}}.')+fr('[[Elle souhaite que]] vous {{fassiez}} un bon voyage.')+famBank('W')},
+ {h:'The espérer trap',b:p(f('Espérer que')+' looks like a wish, but it takes the <b>indicative</b>, often the future.')+ok("J'espère que tu viendras.")+no("J'espère que tu viennes.")+note(f('Souhaiter que')+' takes the subjunctive. '+f('Espérer que')+' does not.')},
+ {h:'O: orders',b:p('Demands, requests, permission and prohibition.')+fr('[[Le professeur exige que]] nous {{soyons}} à l\'heure.')+fr('[[Je propose que]] nous {{allions}} au restaurant.')+famBank('O')},
+ {h:'Que … ! on its own',b:p('A command aimed at a third person uses <b>que</b> + subjunctive, with no main clause.')+fr("Qu'il {{entre}} !",'Let him come in.')+fr("Qu'ils {{attendent}} !",'Let them wait.')+note(f('Vive la France !')+' is the same structure, frozen: '+f('vive')+' is the subjunctive of vivre.')}],
+ pools:{t:tpool(['W','O','Nw']).concat(['penser que','savoir que','dire que','il est certain que']),s:[
+  S("Je veux que tu ___ avec nous.","venir","viennes","viens",'vouloir que'),
+  S("Elle souhaite que vous ___ un bon voyage.","faire","fassiez","faites",'souhaiter que'),
+  S("Nous préférons que tu ___ là avant huit heures.","être","sois","es",'préférer que'),
+  S("J'aimerais que vous ___ plus souvent.","venir","veniez","venez",'aimer que'),
+  S("Mes parents désirent que je ___ médecin.","devenir","devienne","deviens",'désirer que'),
+  S("J'espère que tu ___ bien.","aller","ailles","vas",'espérer que','i'),
+  S("Nous espérons que vous ___ le temps de venir.","avoir","ayez","avez",'espérer que','i',['aurez']),
+  S("Il a envie que nous ___ en vacances ensemble.","partir","partions","partons",'avoir envie que'),
+  S("J'attends que tu ___ prêt.","être","sois","es",'attendre que'),
+  S("Elle tient à ce que tout ___ parfait.","être","soit","est",'tenir à ce que'),
+  S("J'ai hâte que tu ___ ma famille.","connaître","connaisses","connais",'avoir hâte que'),
+  S("Il aime mieux que nous ___ le train.","prendre","prenions","prenons",'aimer mieux que'),
+  S("J'espère qu'il ___ beau demain.","faire","fasse","fera",'espérer que','i',['fait']),
+  S("Je voudrais que tu ___ la vérité.","savoir","saches","sais",'vouloir que'),
+  S("Le professeur exige que nous ___ à l'heure.","être","soyons","sommes",'exiger que'),
+  S("Je demande que vous ___ attention.","faire","fassiez","faites",'demander que'),
+  S("Le médecin recommande que tu ___ plus d'eau.","boire","boives","bois",'recommander que'),
+  S("Ses parents interdisent qu'il ___ après minuit.","sortir","sorte","sort",'interdire que'),
+  S("Je propose que nous ___ au restaurant.","aller","allions","allons",'proposer que'),
+  S("Elle suggère que tu ___ un taxi.","prendre","prennes","prends",'suggérer que'),
+  S("Le directeur ordonne que tout le monde ___.","sortir","sorte","sort",'ordonner que'),
+  S("Ma mère permet que je ___ ce soir.","sortir","sorte","sors",'permettre que'),
+  S("Il insiste pour que vous ___ dîner.","venir","veniez","venez",'insister pour que'),
+  S("La pluie empêche que nous ___ dehors.","manger","mangions","mangeons",'empêcher que'),
+  S("J'accepte que tu ___ ma voiture.","prendre","prennes","prends",'accepter que'),
+  S("Elle refuse que nous ___ sans elle.","partir","partions","partons",'refuser que'),
+  S("Qu'il ___ tout de suite !","venir","vienne","vient",'Que … !'),
+  S("Nous avons besoin que tu ___ là demain.","être","sois","es",'avoir besoin que')]}},
+
+{id:'e',part:2,title:'E: emotions',goal:'Use the subjunctive after any feeling about what someone else does.',
+ rule:'A feeling + que: subjunctive, even when the fact is true. Same subject: de + infinitive.',
+ mix:[['t',2],['s',8]],
+ cards:[
+ {h:'E: emotions',b:p('A feeling about what someone else does or is. The most common shape is <b>être + adjective + que</b>.')+fr('[[Je suis content que]] tu {{sois}} là.')+bank([['content, heureux, ravi','glad, happy, delighted'],['triste, désolé, déçu','sad, sorry, disappointed'],['surpris, étonné','surprised, astonished'],['fâché, furieux','angry, furious'],['fier, soulagé','proud, relieved']],'être + … + que')},
+ {h:'Emotion verbs and expressions',b:bank([['avoir peur que','to be afraid'],['craindre que','to fear'],['regretter que','to regret'],["s'étonner que",'to be amazed'],["ça m'étonne que",'it surprises me'],['ça me plaît que','I like it that'],["c'est dommage que","it's a pity"],['avoir honte que','to be ashamed']])},
+ {h:'The fact can be true',b:fr('Je suis content que tu {{sois}} là.','You really are here.')+key('The subjunctive is not about whether something is true. It marks that the clause is seen through a feeling.')},
+ {h:'The extra ne',b:p('After '+f('avoir peur que')+' and '+f('craindre que')+', formal French adds a <b>ne</b> that does not mean “not”.')+fr("J'ai peur qu'il [[ne]] {{soit}} trop tard.","I'm afraid it is too late.")+tn('In reading, do not translate this ne as a negative. With no '+f('pas')+', the clause is still positive.')},
+ {h:'Same subject: de + infinitive',b:ok("Je suis content d'être là.")+ok('Je suis content que tu sois là.')+no('Je suis content que je sois là.')}],
+ pools:{t:tpool(['E']).concat(['espérer que','penser que','être sûr que','savoir que','il est certain que','croire que']),s:[
+  S("Je suis content que tu ___ là.","être","sois","es",'être content que'),
+  S("Elle est triste que vous ___ si tôt.","partir","partiez","partez",'être triste que'),
+  S("Nous sommes ravis que tu ___ venir.","pouvoir","puisses","peux",'être ravi que'),
+  S("Je regrette que tu ne ___ pas venir.","pouvoir","puisses","peux",'regretter que'),
+  S("J'ai peur qu'il ___ trop tard.","être","soit","est",'avoir peur que'),
+  S("Il est surpris que nous ___ son nom.","savoir","sachions","savons",'être surpris que'),
+  S("Je suis désolé que vous ___ malade.","être","soyez","êtes",'être désolé que'),
+  S("Elle est fière que son fils ___ ses examens.","réussir","réussisse","réussit",'être fier que'),
+  S("C'est dommage que tu n'___ pas le temps.","avoir","aies","as","c'est dommage que"),
+  S("Je crains qu'elle ne ___ pas.","comprendre","comprenne","comprend",'craindre que'),
+  S("Ça m'étonne que tu ___ ça.","dire","dises","dis","ça m'étonne que"),
+  S("Nous sommes heureux que vous ___ en bonne santé.","être","soyez","êtes",'être heureux que'),
+  S("Il est fâché que je ___ en retard.","être","sois","suis",'être fâché que'),
+  S("Je suis déçu que tu ne ___ pas.","venir","viennes","viens",'être déçu que'),
+  S("Elle est étonnée que nous ___ si tôt.","finir","finissions","finissons",'être étonné que'),
+  S("Je suis soulagé que tout ___ bien.","aller","aille","va",'être soulagé que'),
+  S("Ils sont furieux que nous ___ sans eux.","partir","partions","partons",'être furieux que'),
+  S("Ça me plaît que tu ___ des efforts.","faire","fasses","fais",'ça me plaît que'),
+  S("J'ai honte que mon chien ___ tant de bruit.","faire","fasse","fait",'avoir honte que'),
+  S("Elle s'étonne que vous ne ___ pas la réponse.","savoir","sachiez","savez","s'étonner que"),
+  S("Je suis content que nous ___ enfin le temps de parler.","avoir","ayons","avons",'être content que'),
+  S("Il a peur que tu ___ la mauvaise route.","prendre","prennes","prends",'avoir peur que'),
+  S("Je regrette que vous ___ si loin.","vivre","viviez","vivez",'regretter que'),
+  S("Nous sommes tristes qu'elle ___ quitter la ville.","devoir","doive","doit",'être triste que')]}},
+
+{id:'i',part:2,title:'I: impersonal expressions',goal:'Sort the il est … que expressions into judgment (subjunctive) and certainty (indicative).',
+ rule:'Necessity, possibility or a value judgment: subjunctive. Certainty or probability: indicative. No specific subject: infinitive.',
+ mix:[['t',4],['s',6]],
+ cards:[
+ {h:'I: impersonal expressions',b:p('The subject is an empty <b>il</b>. The expression judges the action: how necessary, possible, good or strange it is.')+fr('[[Il faut que]] tu {{sois}} patient.')+fr("[[Il est possible qu']]il {{pleuve}} demain.")+famBank('I')},
+ {h:'Certainty takes the indicative',b:famBank('Ni','These take the indicative')+key('If the expression says “this is a fact”, use the indicative. If it says how necessary, possible, good or odd something is, use the subjunctive.')},
+ {h:'Possible or probable?',b:tbl(['Expression','Mood'],[[f('il est possible que'),'subjunctive'],[f('il est peu probable que'),'subjunctive'],[f('il est probable que'),'<b>indicative</b>'],[f('il semble que'),'subjunctive'],[f('il me semble que'),'<b>indicative</b>']])+note('The line sits at “more likely than not”. '+f('Il me semble que')+' means “I think that”, so it behaves like a belief.')},
+ {h:'No specific subject: infinitive',b:ok('Il faut partir.')+ok('Il est important de bien dormir.')+ok('Il faut que tu partes.')+note('With '+f('il est')+' + adjective, the infinitive takes <b>de</b>.')}],
+ pools:{t:tpool(['I','Ni']),s:[
+  S("Il faut que tu ___ patient.","être","sois","es",'il faut que'),
+  S("Il est important que vous ___ bien.","dormir","dormiez","dormez",'il est important que'),
+  S("Il est possible qu'il ___ demain.","pleuvoir","pleuve","pleut",'il est possible que'),
+  S("Il est nécessaire que nous ___ une solution.","trouver","trouvions","trouvons",'il est nécessaire que'),
+  S("Il vaut mieux que tu ___ maintenant.","partir","partes","pars",'il vaut mieux que'),
+  S("Il se peut qu'elle ___ raison.","avoir","ait","a",'il se peut que'),
+  S("Il est temps que nous ___ à la maison.","rentrer","rentrions","rentrons",'il est temps que'),
+  S("Il est certain qu'il ___ raison.","avoir","ait","a",'il est certain que','i'),
+  S("Il est évident que tu ___ fatigué.","être","sois","es",'il est évident que','i'),
+  S("Il est probable qu'elle ___ en retard.","être","soit","est",'il est probable que','i',['sera']),
+  S("Il est peu probable qu'elle ___ en retard.","être","soit","est",'il est peu probable que'),
+  S("Il est normal que tu ___ nerveux.","être","sois","es",'il est normal que'),
+  S("Il est essentiel que vous ___ la vérité.","dire","disiez","dites",'il est essentiel que'),
+  S("Il semble que tu ___ raison.","avoir","aies","as",'il semble que'),
+  S("Il me semble que tu ___ raison.","avoir","aies","as",'il me semble que','i'),
+  S("Il est vrai que nous ___ en retard.","être","soyons","sommes",'il est vrai que','i'),
+  S("Il est impossible que tu ___ tout seul.","finir","finisses","finis",'il est impossible que'),
+  S("Il est rare qu'il ___ ici en mai.","pleuvoir","pleuve","pleut",'il est rare que'),
+  S("Il est préférable que nous ___ le train.","prendre","prenions","prenons",'il est préférable que'),
+  S("Il suffit que tu me ___ la vérité.","dire","dises","dis",'il suffit que'),
+  S("Il est bizarre qu'elle ne ___ pas.","répondre","réponde","répond",'il est bizarre que'),
+  S("Il est clair que vous ___ beaucoup de talent.","avoir","ayez","avez",'il est clair que','i'),
+  S("Il est urgent que tu ___ un médecin.","voir","voies","vois",'il est urgent que'),
+  S("Il est sûr que nous ___ gagner.","pouvoir","puissions","pouvons",'il est sûr que','i'),
+  S("Il paraît qu'il ___ très bien la région.","connaître","connaisse","connaît",'il paraît que','i'),
+  S("Il est utile que vous ___ une carte.","avoir","ayez","avez",'il est utile que'),
+  S("Il est indispensable que tu ___ ce document.","lire","lises","lis",'il est indispensable que'),
+  S("Il est étonnant qu'il ne ___ rien.","dire","dise","dit",'il est étonnant que')]}},
+
+{id:'d',part:2,title:'D: doubts',goal:'See how a belief flips to the subjunctive the moment it is negated.',
+ rule:'Doubt, denial or a negated belief: subjunctive. An affirmed belief or knowledge: indicative.',
+ mix:[['t',4],['s',6]],
+ cards:[
+ {h:'D: doubts',b:p('The speaker does not vouch for what follows.')+fr("[[Je doute qu']]il {{dise}} la vérité.")+fr("[[Il est douteux qu']]ils {{soient}} à l'heure.")+fr('[[Elle nie que]] son frère {{sache}} la réponse.')},
+ {h:'Belief flips with negation',b:T_FLIP+key('An affirmed belief is a fact for the speaker: indicative. A negated belief is a doubt: subjunctive.')},
+ {h:'See the flip',b:fr('Je pense que tu {{as}} raison.','indicative')+fr('Je ne pense pas que tu {{aies}} raison.','subjunctive')+fr('Je suis sûr que vous {{avez}} la bonne adresse.','indicative')+fr('Je ne suis pas sûr que vous {{ayez}} la bonne adresse.','subjunctive')},
+ {h:'Two traps',b:p(f('Se douter que')+' means to suspect, to be fairly sure. It takes the <b>indicative</b>.')+fr("Je me doute qu'il {{est}} fatigué.",'I suspect he is tired.')+p(f('Savoir que')+' and '+f('dire que')+' report facts, so they also take the indicative.')+note('In formal questions with inversion, '+f('penser')+' and '+f('croire')+' can take the subjunctive: '+f("Pensez-vous qu'il vienne ?"))}],
+ pools:{t:tpool(['D','Nd']),s:[
+  S("Je doute qu'il ___ la vérité.","dire","dise","dit",'douter que'),
+  S("Je ne pense pas que tu ___ raison.","avoir","aies","as",'ne pas penser que'),
+  S("Je pense que tu ___ raison.","avoir","aies","as",'penser que','i'),
+  S("Nous ne croyons pas qu'elle ___ venir.","pouvoir","puisse","peut",'ne pas croire que'),
+  S("Nous croyons qu'elle ___ venir.","pouvoir","puisse","peut",'croire que','i'),
+  S("Je ne suis pas sûr que vous ___ la bonne adresse.","avoir","ayez","avez",'ne pas être sûr que'),
+  S("Je suis sûr que vous ___ la bonne adresse.","avoir","ayez","avez",'être sûr que','i'),
+  S("Il est douteux qu'ils ___ à l'heure.","être","soient","sont",'il est douteux que'),
+  S("Il n'est pas certain que nous ___ partir demain.","pouvoir","puissions","pouvons","il n'est pas certain que"),
+  S("Elle nie que son frère ___ la réponse.","savoir","sache","sait",'nier que'),
+  S("Je ne trouve pas que ce film ___ intéressant.","être","soit","est",'ne pas trouver que'),
+  S("Je trouve que ce film ___ intéressant.","être","soit","est",'trouver que','i'),
+  S("Il n'est pas vrai que tu ___ trop vieux.","être","sois","es","il n'est pas vrai que"),
+  S("Je sais que tu ___ de ton mieux.","faire","fasses","fais",'savoir que','i'),
+  S("Je me doute qu'il ___ fatigué.","être","soit","est",'se douter que','i'),
+  S("Tu doutes que nous ___ finir à temps.","pouvoir","puissions","pouvons",'douter que'),
+  S("Elle n'est pas certaine que tu ___ le chemin.","connaître","connaisses","connais",'ne pas être certain que'),
+  S("Elle est certaine que tu ___ le chemin.","connaître","connaisses","connais",'être certain que','i'),
+  S("Je ne crois pas qu'il ___ beau demain.","faire","fasse","fait",'ne pas croire que'),
+  S("Il n'est pas sûr qu'elle ___ ce soir.","venir","vienne","vient","il n'est pas sûr que"),
+  S("Je ne pense pas que vous ___ le problème.","comprendre","compreniez","comprenez",'ne pas penser que'),
+  S("Il dit que nous ___ trop vite.","aller","allions","allons",'dire que','i'),
+  S("Je doute que tu ___ tout ce travail aujourd'hui.","finir","finisses","finis",'douter que'),
+  S("Nous pensons qu'il ___ trop tard.","être","soit","est",'penser que','i'),
+  S("Je ne suis pas sûr qu'elle ___ mon numéro.","avoir","ait","a",'ne pas être sûr que'),
+  S("Je crois que vous ___ la solution.","connaître","connaissiez","connaissez",'croire que','i')]}},
+
+{id:'rs',part:2,title:'R and S: relative clauses and superlatives',goal:'Use the subjunctive after qui or que when the thing is sought, missing or the extreme of its kind.',
+ rule:'Looking for it, or it does not exist: subjunctive. Known and real: indicative. After a superlative, le seul, le premier, le dernier: subjunctive.',
+ mix:[['s',8]],
+ cards:[
+ {h:'R: relative clauses',b:p('A clause with <b>qui</b> or <b>que</b> normally takes the indicative. It switches to the subjunctive when the person or thing is wanted but not found.')+fr("Je connais quelqu'un qui {{sait}} parler japonais.",'He exists: indicative.')+fr("Je cherche quelqu'un qui {{sache}} parler japonais.",'Maybe nobody does: subjunctive.')},
+ {h:'Three situations',b:tbl(['Situation','Signal','Mood'],[['Looking for, wanting',f('chercher, vouloir, avoir besoin de')+' + un / une','subjunctive'],['Nobody, nothing',f('personne, rien, aucun'),'subjunctive'],['Asking whether one exists',f('Connaissez-vous … ? Y a-t-il … ?'),'subjunctive'],['Known and real',f("je connais, j'ai, voici"),'<b>indicative</b>']])},
+ {h:'The article is a clue',b:fr('Je cherche [[un]] hôtel qui {{ait}} une piscine.','Any hotel, if one exists.')+fr("Je cherche [[l']]hôtel qui {{a}} une piscine.",'A specific hotel you know about.')},
+ {h:'S: superlatives',b:p('After <b>le plus, le moins, le meilleur, le pire</b> + noun + qui or que.')+fr("C'est [[le meilleur]] film que je {{connaisse}}.")+fr("C'est [[la plus belle]] ville que nous {{ayons}} dans la région.")},
+ {h:'The only, the first, the last',b:p('The same happens after <b>le seul, l\'unique, le premier, le dernier</b>.')+fr("C'est [[la seule]] personne qui {{puisse}} me comprendre.")+note('It softens the claim to “as far as I know”. Exercises and tests expect the subjunctive here.')}],
+ pools:{s:[
+  S("Je cherche quelqu'un qui ___ parler japonais.","savoir","sache","sait",'R?'),
+  S("Je connais quelqu'un qui ___ parler japonais.","savoir","sache","sait",'Rk','i'),
+  S("Il n'y a personne qui ___ m'aider.","pouvoir","puisse","peut",'R-'),
+  S("Nous cherchons un appartement qui ___ un balcon.","avoir","ait","a",'R?'),
+  S("Nous avons un appartement qui ___ un balcon.","avoir","ait","a",'Rk','i'),
+  S("Il n'y a rien qui me ___ plaisir.","faire","fasse","fait",'R-'),
+  S("Connaissez-vous un restaurant qui ___ ouvert le lundi ?","être","soit","est",'R?'),
+  S("Je voudrais un travail qui me ___ de voyager.","permettre","permette","permet",'R?'),
+  S("Elle a un travail qui lui ___ de voyager.","permettre","permette","permet",'Rk','i'),
+  S("Y a-t-il quelqu'un ici qui ___ conduire ?","savoir","sache","sait",'R?'),
+  S("Je ne connais personne qui ___ aussi bien la cuisine.","faire","fasse","fait",'R-'),
+  S("Ils cherchent une maison qui ne ___ pas trop loin du centre.","être","soit","est",'R?'),
+  S("J'ai trouvé une maison qui n'___ pas trop loin du centre.","être","soit","est",'Rk','i'),
+  S("Je cherche un livre qui ___ utile aux débutants.","être","soit","est",'R?'),
+  S("Voici un livre qui ___ utile aux débutants.","être","soit","est",'Rk','i'),
+  S("Il n'y a aucun train qui ___ avant six heures.","partir","parte","part",'R-'),
+  S("C'est le meilleur film que je ___.","connaître","connaisse","connais",'S'),
+  S("C'est la seule personne qui ___ me comprendre.","pouvoir","puisse","peut",'S'),
+  S("C'est le plus beau cadeau que tu ___ me faire.","pouvoir","puisses","peux",'S'),
+  S("Tu es le seul ami qui ___ la vérité.","savoir","sache","sait",'S'),
+  S("C'est le dernier train qui ___ à Lyon ce soir.","aller","aille","va",'S'),
+  S("C'est la meilleure décision que nous ___ prendre.","pouvoir","puissions","pouvons",'S'),
+  S("C'est le restaurant le plus cher que je ___.","connaître","connaisse","connais",'S'),
+  S("Elle est l'unique personne qui ___ la réponse.","avoir","ait","a",'S'),
+  S("C'est le pire hôtel que vous ___ choisir.","pouvoir","puissiez","pouvez",'S'),
+  S("C'est le premier étudiant qui ___ toutes les réponses.","savoir","sache","sait",'S'),
+  S("C'est la plus grande ville que nous ___ dans la région.","avoir","ayons","avons",'S'),
+  S("Voici le seul chemin qui ___ au village.","conduire","conduise","conduit",'S')]}},
+
+{id:'conj',part:2,title:'Outside WEIRDOS: conjunctions',goal:'Learn the linking words that demand the subjunctive on their own, and the ones that never do.',
+ rule:'Purpose, concession, before, until, unless, without: subjunctive. Cause, during, after, as soon as: indicative. Same subject: preposition + infinitive.',
+ mix:[['t',3],['q',2],['s',5]],
+ cards:[
+ {h:'Conjunctions that trigger on their own',b:p('Some linking words demand the subjunctive by themselves. No main-clause trigger is needed.')+fr("Je t'explique [[pour que]] tu {{comprennes}}.")+fr("[[Bien qu']]il {{soit}} tard, je continue.")},
+ {h:'The subjunctive conjunctions',b:bank([['pour que, afin que','so that'],['bien que, quoique','although'],['avant que','before'],["jusqu'à ce que",'until'],['en attendant que','while waiting for'],['à condition que, pourvu que','provided that'],['à moins que','unless'],['sans que','without'],['de peur que, de crainte que','for fear that']])+note(f('De sorte que')+' and '+f('de façon que')+' take the subjunctive for a purpose, and the indicative for a result that already happened.')},
+ {h:'Conjunctions that keep the indicative',b:famBank('Nc','These take the indicative')+key('Real, or already happened: indicative. Not real yet (a purpose, a condition, something before) or conceded: subjunctive.')},
+ {h:'avant que, après que',b:fr("Finis [[avant que]] nous {{partions}}.",'Not happened yet: subjunctive.')+fr("[[Après que]] le train {{part}}, le quai est vide.",'It happened: indicative.')},
+ {h:'Same subject: preposition + infinitive',b:T_INF+note(f('Bien que')+', '+f('quoique')+', '+f("jusqu'à ce que")+' and '+f('pourvu que')+' have no infinitive version. They keep que + subjunctive even with one subject.')},
+ {h:'Whatever, wherever',b:fr('[[Où que]] tu {{ailles}}, je te retrouverai.','wherever')+fr("[[Quoi qu']]il {{dise}}, elle ne l'écoute pas.",'whatever')+fr('[[Quel que]] {{soit}} le prix, je le prends.','whatever the price')+note(f('Quoique')+' in one word means although. '+f('Quoi que')+' in two words means whatever.')}],
+ pools:{t:tpool(['C','Nc']),
+ q:[
+  Q(STRUCT,"J'étudie ___ à l'examen.",['pour réussir','pour que je réussisse'],'pour réussir','I study, I pass: one subject. Use pour + infinitive.'),
+  Q(STRUCT,"J'étudie ___ fiers de moi.",['pour que mes parents soient','pour mes parents être'],'pour que mes parents soient','I study, my parents are proud: two subjects. Use pour que + subjunctive.'),
+  Q(STRUCT,"Je mange avant ___ au travail.",["d'aller","que j'aille"],"d'aller",'One subject on both sides. Use avant de + infinitive.'),
+  Q(STRUCT,"Je range la maison avant ___.",['que mes parents arrivent','de mes parents arriver'],'que mes parents arrivent','I tidy, my parents arrive: two subjects. Use avant que + subjunctive.'),
+  Q(STRUCT,"Il est parti ___ au revoir.",['sans dire',"sans qu'il dise"],'sans dire','He left, he said nothing: one subject. Use sans + infinitive.'),
+  Q(STRUCT,"Il est parti ___.",['sans que nous le sachions','sans nous le savoir'],'sans que nous le sachions','He left, we did not know: two subjects. Use sans que + subjunctive.'),
+  Q(STRUCT,"Nous travaillons ___ une maison.",["afin d'acheter",'afin que nous achetions'],"afin d'acheter",'One subject on both sides. Use afin de + infinitive.'),
+  Q(STRUCT,"Tu peux venir ___ à l'heure.",["à condition d'être",'à condition que tu sois'],"à condition d'être",'You come, you are on time: one subject. Use à condition de + infinitive.'),
+  Q(STRUCT,"Je prends un parapluie ___ mouillé.",["de peur d'être",'de peur que je sois'],"de peur d'être",'One subject on both sides. Use de peur de + infinitive.'),
+  Q(STRUCT,"Je parle lentement ___.",['pour que vous compreniez','pour vous comprendre'],'pour que vous compreniez','I speak, you understand: two subjects. Use pour que + subjunctive.'),
+  Q(STRUCT,"Elle travaille ___ fatiguée.",["bien qu'elle soit","bien d'être"],"bien qu'elle soit",'Bien que has no infinitive version. It keeps que + subjunctive even with one subject.'),
+  Q(STRUCT,"Téléphone-moi avant ___.",['de partir','que tu partes'],'de partir','You call, you leave: one subject. Use avant de + infinitive.')],
+ s:[
+  S("Je t'explique pour que tu ___.","comprendre","comprennes","comprends",'pour que'),
+  S("Bien qu'il ___ tard, je continue.","être","soit","est",'bien que'),
+  S("Finis ton travail avant que nous ___.","partir","partions","partons",'avant que'),
+  S("Reste ici jusqu'à ce que je ___.","revenir","revienne","reviens","jusqu'à ce que"),
+  S("Nous irons à la plage à moins qu'il ne ___.","pleuvoir","pleuve","pleut",'à moins que'),
+  S("Elle est sortie sans que je le ___.","savoir","sache","sais",'sans que'),
+  S("Tu peux sortir à condition que tu ___ tes devoirs.","finir","finisses","finis",'à condition que'),
+  S("Pourvu qu'il ___ beau demain !","faire","fasse","fait",'pourvu que'),
+  S("Quoiqu'elle ___ jeune, elle a beaucoup d'expérience.","être","soit","est",'quoique'),
+  S("Je note tout de peur que nous ___ quelque chose.","oublier","oubliions","oublions",'de peur que'),
+  S("Parlez plus fort afin que tout le monde ___ entendre.","pouvoir","puisse","peut",'afin que'),
+  S("En attendant qu'il ___, lisons un peu.","revenir","revienne","revient",'en attendant que'),
+  S("Je reste à la maison parce qu'il ___.","pleuvoir","pleuve","pleut",'parce que','i'),
+  S("Pendant que tu ___ la vaisselle, je range.","faire","fasses","fais",'pendant que','i'),
+  S("Dès que tu ___ prêt, nous partons.","être","sois","es",'dès que','i'),
+  S("Puisque vous ___ là, commençons.","être","soyez","êtes",'puisque','i'),
+  S("Après que le train ___, le quai est vide.","partir","parte","part",'après que','i'),
+  S("Elle lit tandis que nous ___ la télévision.","regarder","regardions","regardons",'tandis que','i'),
+  S("Depuis qu'il ___ à Lyon, il est plus heureux.","vivre","vive","vit",'depuis que','i'),
+  S("Vu que tu ___ le chemin, passe devant.","connaître","connaisses","connais",'vu que','i'),
+  S("Bien que nous ___ fatigués, nous continuons.","être","soyons","sommes",'bien que'),
+  S("Je lui écris pour qu'elle ___ la nouvelle.","savoir","sache","sait",'pour que'),
+  S("Appelle-moi avant que je ___.","sortir","sorte","sors",'avant que'),
+  S("Il travaille sans que personne ne le ___.","voir","voie","voit",'sans que'),
+  S("Je viendrai à moins que tu ne ___ pas d'accord.","être","sois","es",'à moins que'),
+  S("Où que tu ___, je te retrouverai.","aller","ailles","vas",'où que'),
+  S("Quoi qu'il ___, elle ne l'écoute pas.","dire","dise","dit",'quoi que'),
+  S("Attends jusqu'à ce que nous ___ prêts.","être","soyons","sommes","jusqu'à ce que"),
+  S("Alors que tu ___, je travaille.","dormir","dormes","dors",'alors que','i'),
+  S("Étant donné que nous ___ en retard, prenons un taxi.","être","soyons","sommes",'étant donné que','i')]}},
+
+{id:'mix',part:3,title:'Mastery: triggers and forms together',goal:'Decide the mood and build the form with nothing to lean on.',typed:2,
+ rule:'Own subject after que? Trigger or not? Then build the form: irregular, two-stem, or ils-stem + endings.',
+ mix:[['c',3],['k',3],['s',8]],
+ cards:[
+ {h:'The full decision path',b:PATH},
+ {h:'What the final check looks like',b:p('Fourteen questions, drawn from every earlier block: three bare forms from the harder verbs, three sentences where you name the trigger family, and eight sentences where you type the verb.')+key('Some of the eight take the indicative. Decide the mood before you conjugate.')+p('You need 12 of 14 on the first try. Each round draws a new set.')}],
+ pools:{}}
+];
+{const g=id=>B.find(b=>b.id===id).pools.s, TS=['wo','e','i','d','rs','conj'].flatMap(g), M=B[B.length-1];
+ M.pools={c:cpool(L2.concat(L4,L5)),k:TS.filter(x=>x.m==='s'),s:TS}}
+
+/* ---------- state ---------- */
+const KEY='fr_dossier_mastery_subj', OLDKEY='atelier-subj-v1'; /* NEVER change KEY: saved progress lives here (fr_dossier_ prefix = covered by the landing page backup) */
+try{if(localStorage.getItem(KEY)===null){const o=localStorage.getItem(OLDKEY);if(o!==null){localStorage.setItem(KEY,o);localStorage.removeItem(OLDKEY)}}}catch(e){}
+let ST={cleared:{},all:false,cur:0,seen:{}};
+try{Object.assign(ST,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+if(!ST.seen)ST.seen={};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const unlocked=i=>ST.all||i===0||(B[i-1].id in ST.cleared);
+const W={b:0,phase:'learn',card:0,deck:{},round:null,cur:null};
+W.b=Math.min(Math.max(ST.cur|0,0),B.length-1); if(!unlocked(W.b))W.b=0;
+const stage=$('#stage'),nav=$('#nav');
+const btn=(act,label,cls)=>`<button class="btn ${cls||''}" data-act="${act}" type="button">${label}</button>`;
+const getItem=(b,id)=>{const[k,i]=id.split(':');return{k,it:b.pools[k][+i]}};
+
+/* ---------- navigation ---------- */
+function renderNav(){let h='<button class="tool" id="navclose" type="button">Close</button>';
+  PARTS.forEach((pt,pi)=>{h+=`<h4>${pt}</h4><ol>`;
+    B.forEach((b,i)=>{if(b.part!==pi)return;const un=unlocked(i),dn=b.id in ST.cleared;
+      h+=`<li><button type="button" class="nb ${i===W.b?'cur':''} ${dn?'done':''} ${un?'':'lock'}" data-go="${i}" ${un?'':'aria-disabled="true"'}><span class="n">${i+1}</span><span>${b.title}</span><span class="st">${dn?'✓ '+ST.cleared[b.id]+'%':un?'':'locked'}</span></button></li>`});
+    h+='</ol>'});
+  h+=`<div class="navfoot"><small>Each block unlocks when you clear the one before it.</small><button type="button" data-foot="all">${ST.all?'Lock blocks again':'Unlock all blocks'}</button><button type="button" data-foot="reset">Reset my progress</button></div>`;
+  nav.innerHTML=h}
+function go(i){W.b=i;W.phase='learn';W.card=0;ST.cur=i;save();nav.classList.remove('open');render();window.scrollTo(0,0)}
+
+/* ---------- stage ---------- */
+function head(b,short){const i=B.indexOf(b);return`<p class="eyebrow">${PARTS[b.part]} · Block ${i+1} of ${B.length}</p><h2>${b.title}</h2>${short?'':`<p class="goal">${b.goal}</p>`}`}
+function render(){renderNav();const b=B[W.b];
+  stage.innerHTML=W.phase==='learn'?learn(b):W.phase==='check'?check(b):done(b);
+  if(W.phase==='check'){const a=$('#ans');if(a&&matchMedia('(pointer:fine)').matches)a.focus()}}
+function learn(b){const c=b.cards[W.card],last=W.card===b.cards.length-1;
+  return head(b)+`<section class="card"><p class="cardno">Lesson note ${W.card+1} of ${b.cards.length}</p><h3>${c.h}</h3>${fx(c.b)}</section><div class="pips" aria-hidden="true">${b.cards.map((_,i)=>`<i class="${i===W.card?'on':i<W.card?'seen':''}"></i>`).join('')}</div><div class="row">${W.card?btn('back','Back','ghost'):''}${btn(last?'start':'next',last?'Start the check':'Next')}${last?'':btn('start','Skip to the check','link')}</div>`}
+/* A round takes each kind's quota: last round's misses first, then questions not seen yet. The seen list resets only when a pool runs out. */
+function newRound(b){const d=W.deck[b.id]||(W.deck[b.id]={carry:[]}),seen=ST.seen[b.id]||(ST.seen[b.id]={});let ids=[];
+  b.mix.forEach(([k,n])=>{const all=b.pools[k].map((_,i)=>k+':'+i);n=Math.min(n,all.length);let sn=seen[k]||(seen[k]=[]);
+    let got=d.carry.filter(id=>id.startsWith(k+':')).slice(0,Math.ceil(n/2));
+    let fresh=shuffle(all.filter(id=>!sn.includes(id)&&!got.includes(id)));
+    if(fresh.length<n-got.length){sn.length=0;fresh=fresh.concat(shuffle(all.filter(id=>!got.includes(id)&&!fresh.includes(id))))}
+    got=got.concat(fresh.slice(0,n-got.length));got.forEach(id=>{if(!sn.includes(id))sn.push(id)});ids=ids.concat(got)});
+  d.carry=[];save();W.round={q:ids,first:{},n:ids.length};W.phase='check'}
+function check(b){const r=W.round,id=r.q[0],{k,it}=getItem(b,id),dn=Object.keys(r.first).length,retry=id in r.first;
+  W.cur={k,it,ok:true,answered:false};
+  return head(b,true)+`<aside class="rule"><b>Rule in play</b>${b.rule}</aside><div class="prog"><span>${retry?`Second try · ${r.q.length} left`:`Question ${dn+1} of ${r.n}`}</span><div class="bar"><i style="width:${dn/r.n*100}%"></i></div></div><section id="item">${itemHTML(b,k,it)}</section>`}
+const optsHTML=(o,ui)=>`<div class="opts" id="opts">${o.map(x=>`<button type="button" class="opt ${ui?'ui':'fr'}" data-o="${esc(x)}">${x}</button>`).join('')}</div>`;
+const typedHTML=()=>`<form id="tf" class="typed"><input id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Your answer"><button class="btn" type="submit">Check</button><span class="acc">${['à','â','ç','é','è','ê','î','ô','û'].map(c=>`<button type="button" class="chipk" data-ch="${c}" aria-label="Insert ${c}">${c}</button>`).join('')}</span></form>`;
+function itemHTML(b,k,it){const c=W.cur;
+  if(k[0]==='q')return`<p class="ask">${it.pr}</p><p class="fr big">${sent(it.s)}</p>${optsHTML(shuffle(it.o.slice()))}<div id="fb"></div>`;
+  if(k==='t'){const v=TR[it];return`<p class="ask">Subjunctive or indicative after this expression?</p><p class="fr big">${it} … <span class="gl">${v[2]}</span></p>${optsHTML(['Subjunctive','Indicative'],1)}<div id="fb"></div>`}
+  if(k==='k')return`<p class="ask">Which family triggers the subjunctive here?</p><p class="fr big">${sent(it.s,it.sub,'good')}</p>${optsHTML(FAMOPT,1)}<div id="fb"></div>`;
+  if(k==='c'){const v=VB[it.v],form=v.f[it.p],imp=v.f.filter(Boolean).length===1;c.right=form;
+    return`<p class="ask">Type the subjunctive form.</p><p class="fr big">${lead(it.p,form,imp)}<span class="slot" id="slot">&nbsp;</span> <span class="gl">(${it.v})</span></p>${typedHTML()}<div id="fb"></div>`}
+  c.right=it.m==='i'?it.ind:it.sub;c.typed=!!b.typed||Math.random()<.5;
+  const ask=b.typed===1?'Type the verb in the subjunctive.':c.typed?'Type the verb in the right form. It may be subjunctive or indicative.':'Choose the right form.';
+  return`<p class="ask">${ask}</p><p class="fr big">${sent(it.s)} <span class="gl">(${it.inf})</span></p>${c.typed?typedHTML():optsHTML(shuffle([it.sub,it.ind,it.inf]))}<div id="fb"></div>`}
+const clean=s=>norm(s).split(/[\s']/).pop();
+function diff(a,b){let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;let j=0;while(j<a.length-i&&j<b.length-i&&a[a.length-1-j]===b[b.length-1-j])j++;
+  return esc(a.slice(0,i))+'<s>'+(esc(a.slice(i,a.length-j))||'&nbsp;_&nbsp;')+'</s>'+esc(a.slice(a.length-j))}
+const row=(cls,h,body)=>`<div class="fbrow ${cls}"><h4>${h}</h4>${body}</div>`;
+const verdict=ok=>`<p class="v ${ok?'good':'bad'}">${ok?'✓ Correct':'✗ Not yet'}</p>`;
+function trigBox(k){const v=TR[k],c=v[0][0],sub=v[1]==='s';
+  return row('rb','The trigger',`<p><span class="fr">${v[4]||k}</span> <span class="gl">${v[2]}</span></p><p><b>${sub?(c==='C'?CAT.C:'WEIRDOS · '+CAT[c]):CAT.N}</b>: ${sub?'subjunctive':'indicative'}. ${v[3]||CNOTE[c]}</p>`)}
+function settle(ok,html,fill){const c=W.cur;c.answered=true;c.ok=c.ok&&ok;
+  const sl=$('#slot');if(sl&&fill!==undefined){sl.textContent=fill;sl.classList.add('good')}
+  const last=W.round.q.length===1&&c.ok;
+  $('#fb').innerHTML=`<div class="fb ${ok?'isgood':'isbad'}">${html}</div>${btn('adv',last?'See the result':'Next')}`;
+  const nb=$('[data-act="adv"]');if(nb)nb.focus()}
+function markOpts(choice,right){$('#opts').querySelectorAll('.opt').forEach(o=>{o.disabled=true;if(o.dataset.o===right)o.classList.add('right');else if(o.dataset.o===choice)o.classList.add('wrong')})}
+function lockTyped(){$('#ans').disabled=true;$('#tf button[type=submit]').disabled=true}
+function answer(choice,typed){const c=W.cur,it=c.it,k=c.k;if(c.answered)return;
+  if(k[0]==='q'){const ok=choice===it.a;markOpts(choice,it.a);settle(ok,verdict(ok)+row('rb','Why',`<p>${fx(it.why)}</p>`));return}
+  if(k==='t'){const right=TR[it][1]==='s'?'Subjunctive':'Indicative',ok=choice===right;markOpts(choice,right);settle(ok,verdict(ok)+trigBox(it));return}
+  if(k==='k'){const right=famLabel(it.tr),ok=choice===right;markOpts(choice,right);settle(ok,verdict(ok)+trigBox(it.tr));return}
+  if(k==='c'){const v=VB[it.v],t=clean(choice),ok=t===c.right;lockTyped();let why='';
+    if(!ok){const other=v.f.map((x,i)=>x===t&&i!==it.p?PN[i]:null).filter(Boolean);
+      why=row('yours','Why your answer fails',`<p>You wrote <span class="fr">${t?diff(t,c.right):'nothing'}</span>. ${other.length?`That is the form for <b>${other.join(' and ')}</b>.`:strip(t)===strip(c.right)&&t?'Check the accents: only an accent or a cedilla is off.':'Compare it with the form below.'}</p>`)}
+    settle(ok,verdict(ok)+why+row('so','How the form is built',`<p>${v.ex}</p>`)+row('info','The whole verb',ct(it.v,it.p)),c.right);return}
+  // sentence
+  const acc=[c.right].concat(it.alt||[]),other=it.m==='i'?it.sub:it.ind,t=typed?clean(choice):choice,ok=acc.includes(t);
+  if(typed)lockTyped();else markOpts(choice,c.right);
+  let why='';
+  if(!ok){let msg=t===other?(it.m==='s'?'That is the indicative. This trigger needs the subjunctive.':'That is the subjunctive. This expression takes the indicative.'):t===it.inf?'After que you need a conjugated verb with its own subject, not the infinitive.':t&&strip(t)===strip(c.right)?'Check the accents: only an accent or a cedilla is off.':t?'The mood may be right, but the form is not. Compare it with the form below.':'';
+    why=row('yours','Why your answer fails',`<p>${typed?`You wrote <span class="fr">${t?diff(t,c.right):'nothing'}</span>.`:`You chose <span class="fr"><s>${esc(choice)}</s></span>.`} ${msg}</p>`)}
+  const v=VB[it.inf];
+  settle(ok,verdict(ok)+why+trigBox(it.tr)+row('so','The form',`<p><span class="fr">${it.inf}</span> → <span class="fr"><b>${c.right}</b></span> <span class="gl">${it.m==='s'?'subjunctive':'indicative'}</span></p>${it.m==='s'&&v?`<p>${v.ex}</p>`:''}`),ok?t:c.right)}
+function advance(){const r=W.round,id=r.q.shift(),ok=W.cur.ok,b=B[W.b];
+  if(!(id in r.first)){r.first[id]=ok;if(!ok)W.deck[b.id].carry.push(id)}
+  if(!ok)r.q.push(id);
+  if(!r.q.length)W.phase='done';
+  render();window.scrollTo(0,0)}
+function done(b){const r=W.round,sc=Object.values(r.first).filter(Boolean).length,need=Math.ceil(r.n*.8-1e-9),pass=sc>=need,i=B.indexOf(b),nx=B[i+1];
+  if(pass){ST.cleared[b.id]=Math.max(ST.cleared[b.id]||0,Math.round(sc/r.n*100));save();renderNav()}
+  const body=pass
+    ?`<h3>Block cleared</h3><p>${nx?'The next block is open. If any of this still feels shaky, run another round first. Each round draws new questions.':'That was the last block. You have worked through the whole system. Come back and run this round again whenever you want a fresh set.'}</p><div class="row">${nx?btn('nextblock','Next: '+nx.title):''}${btn('again','Another round',nx?'ghost':'')}${btn('reread','Reread the lesson','link')}</div>`
+    :`<h3>Not solid yet</h3><p>You need ${need} of ${r.n} on the first try. The next block stays locked until this one holds. The questions you missed will come back next round, with new ones.</p><div class="row">${btn('again','Another round')}${btn('reread','Reread the lesson','ghost')}</div>`;
+  return head(b,true)+`<section class="card result"><p class="score">${sc}<small> of ${r.n} on the first try</small></p>${body}</section>`}
+
+/* ---------- reference sheet ---------- */
+function buildRef(){const sec=(h,b)=>`<section><h3>${h}</h3>${fx(b)}</section>`;
+  $('#ref').innerHTML=`<div class="in"><header><h2>Reference</h2><button class="tool" id="refclose" type="button">Close</button></header>`+
+    sec('The decision path',PATH)+sec('WEIRDOS',T_WEIRDOS)+sec('Endings',T_END)+sec('Irregular verbs',T_IRR)+sec('Two-stem verbs',BK_TWO+BK_SPELL)+
+    sec('W: wishes',famBank('W'))+sec('E: emotions',famBank('E'))+sec('I: impersonal expressions',famBank('I'))+sec('D: doubts',famBank('D')+T_FLIP)+sec('O: orders',famBank('O'))+
+    sec('Conjunctions with the subjunctive',famBank('C'))+sec('Same subject: infinitive',T_INF)+
+    sec('Indicative: no trigger',famBank('Nw')+famBank('Ni')+famBank('Nd')+famBank('Nc'))+`</div>`}
+
+/* ---------- events ---------- */
+stage.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.act){const b=B[W.b];switch(t.dataset.act){
+    case'next':W.card++;render();break;
+    case'back':W.card--;render();break;
+    case'start':case'again':newRound(b);render();window.scrollTo(0,0);break;
+    case'reread':W.phase='learn';W.card=0;render();window.scrollTo(0,0);break;
+    case'nextblock':go(W.b+1);break;
+    case'adv':advance();break}return}
+  if(t.dataset.o!==undefined){answer(t.dataset.o,false);return}
+  if(t.dataset.ch){const a=$('#ans');if(a.disabled)return;const s=a.selectionStart??a.value.length,en=a.selectionEnd??s;a.value=a.value.slice(0,s)+t.dataset.ch+a.value.slice(en);a.focus();a.setSelectionRange(s+1,s+1)}});
+stage.addEventListener('submit',e=>{e.preventDefault();if(e.target.id==='tf')answer($('#ans').value,true)});
+let armed=null;
+nav.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.id==='navclose'){nav.classList.remove('open');return}
+  if(t.dataset.go!==undefined){const i=+t.dataset.go;if(unlocked(i))go(i);return}
+  if(t.dataset.foot==='all'){ST.all=!ST.all;save();if(!unlocked(W.b))W.b=0;render();return}
+  if(t.dataset.foot==='reset'){if(armed!=='reset'){armed='reset';t.textContent='Tap again to erase all progress';setTimeout(()=>{armed=null;renderNav()},4000);return}
+    armed=null;ST={cleared:{},all:false,cur:0,seen:{}};save();W.deck={};go(0)}});
+$('#navbtn').addEventListener('click',()=>nav.classList.add('open'));
+$('#refbtn').addEventListener('click',()=>{if(!$('#ref').innerHTML)buildRef();$('#ref').hidden=false;$('#refclose').focus()});
+$('#ref').addEventListener('click',e=>{if(e.target.id==='refclose')$('#ref').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#ref').hidden=true;nav.classList.remove('open')}});
+
+/* ---------- theme: device by default; the masthead button forces light or dark, one choice (frTheme) for the whole site ---------- */
+(function(){const K='frTheme',b=$('#themeBtn'),root=document.documentElement,mq=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)');
+  const saved=()=>{try{const t=localStorage.getItem(K);return t==='light'||t==='dark'?t:null}catch(e){return null}};
+  const eff=()=>saved()||(mq&&mq.matches?'dark':'light');
+  function paint(){const s=saved(),e=eff();if(s)root.setAttribute('data-theme',s);else root.removeAttribute('data-theme');
+    b.textContent=e==='dark'?'\u263E':'\u2600';
+    const l=(e==='dark'?'Dark':'Light')+(s?'':' (device setting)')+' — click for '+(e==='dark'?'light':'dark')+(s?', Alt-click to follow the device':'');b.title=l;b.setAttribute('aria-label',l)}
+  b.addEventListener('click',ev=>{try{if(ev.altKey)localStorage.removeItem(K);else localStorage.setItem(K,eff()==='dark'?'light':'dark')}catch(e){}paint()});
+  if(mq&&mq.addEventListener)mq.addEventListener('change',paint);paint()})();
+render();
+</script>
+</body>
+</html>
