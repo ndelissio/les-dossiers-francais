@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pronoms relatifs · Mastery Lesson — v1.1.0</title>
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<style>
+/* Layout: a French school cahier. Block list on the left, one lesson card or one question at a time on the right. French is set in a serif, English coaching in a sans. */
+:root{
+  --paper:#f4f1e9; --surface:#fffdf8; --ink:#16243d; --muted:#4e5a72; --line:#e4ddcd;
+  --rule:rgba(42,74,143,.18); --margin:#c0392b; --accent:#2a4a8f; --accent-ink:#ffffff;
+  --prep-bg:#fbe3a6; --prep-ink:#4a3500; --ex-bg:#eef2fa; --note-bg:#f6ecdb; --note-ink:#7a4f08; --key-bg:#efe8fa; --key-ink:#5a2fa8; --test-bg:#dff0ee; --test-ink:#0d6259; --good:#1f6e3c; --good-bg:#e2efe7; --bad:#a93226; --bad-bg:#fbe9e7;
+  --display:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --french:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#B0ADC6; --line:#312E42;
+  --rule:rgba(167,151,255,.20); --margin:#FF8279; --accent:#A797FF; --accent-ink:#13121B;
+  --prep-bg:#5c4a10; --prep-ink:#ffe9ad; --ex-bg:#222A47; --note-bg:#36290F; --note-ink:#F2B45C; --key-bg:#30235A; --key-ink:#C9B3FF; --test-bg:#10363b; --test-ink:#7fd6df; --good:#6ED69C; --good-bg:#17321F; --bad:#FF8F87; --bad-bg:#3A1F22; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#B0ADC6; --line:#312E42;
+  --rule:rgba(167,151,255,.20); --margin:#FF8279; --accent:#A797FF; --accent-ink:#13121B;
+  --prep-bg:#5c4a10; --prep-ink:#ffe9ad; --ex-bg:#222A47; --note-bg:#36290F; --note-ink:#F2B45C; --key-bg:#30235A; --key-ink:#C9B3FF; --test-bg:#10363b; --test-ink:#7fd6df; --good:#6ED69C; --good-bg:#17321F; --bad:#FF8F87; --bad-bg:#3A1F22; color-scheme:dark }
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{max-width:66rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:1.1rem 3rem;display:grid;grid-template-columns:17rem minmax(0,1fr);gap:1.5rem 2.5rem}
+.top{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;border-bottom:1px solid var(--line);padding-bottom:.8rem}
+.top h1{font-size:1.15rem;margin:0;font-weight:700;letter-spacing:-.01em}
+.top .sub{color:var(--muted);font-size:.9rem;flex:1 1 12rem;min-width:0}
+.top .tools{display:flex;gap:.5rem}
+.tool{background:none;border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font-size:.9rem}
+.tool:hover{border-color:var(--accent)}
+#navbtn{display:none}
+nav h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:1.1rem 0 .35rem;font-weight:600}
+nav h4:first-child{margin-top:0}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.nb{display:grid;grid-template-columns:1.6rem minmax(0,1fr) auto;gap:.4rem;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-radius:6px;padding:.38rem .5rem;font-size:.93rem}
+.nb .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.8rem}
+.nb .st{font-size:.75rem;color:var(--muted)}
+.nb.done .st{color:var(--good);font-weight:700}
+.nb.cur{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-weight:600}
+.nb.lock{color:var(--muted);cursor:not-allowed;opacity:.65}
+.nb:not(.lock):hover{background:var(--surface)}
+.navfoot{margin-top:1.4rem;display:flex;flex-direction:column;gap:.3rem;align-items:flex-start}
+.navfoot button{background:none;border:0;padding:0;color:var(--muted);font-size:.8rem;text-decoration:underline}
+.navfoot small{color:var(--muted);font-size:.75rem}
+#navclose{display:none}
+main{min-width:0;max-width:42rem}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 .2rem;font-weight:600}
+h2{font-size:1.7rem;line-height:1.15;margin:0 0 .4rem;letter-spacing:-.02em;text-wrap:balance}
+.goal{color:var(--muted);margin:0 0 1.2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.75rem}
+.card h3{font-size:1.35rem;margin:0;letter-spacing:-.01em;text-wrap:balance;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.6rem}
+.cardno{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:-.45rem!important}
+.card p,.rule p{margin:0}
+.fr{font-family:var(--french);font-size:1.2rem;line-height:1.45}
+span.fr{font-size:1.12em}
+.fr.big{font-size:1.45rem;line-height:1.5;margin:.2rem 0 1rem;background:var(--surface);border:1px solid var(--line);padding:.9rem 1rem}
+.gl{font-family:var(--display);font-size:.85rem;color:var(--muted)}
+mark.prep{background:var(--prep-bg);color:var(--prep-ink);padding:0 .22em;border-radius:3px}
+b.pron{color:var(--accent);font-weight:600}
+u.ante{text-decoration:underline;text-decoration-color:var(--margin);text-decoration-thickness:2px;text-underline-offset:3px}
+.card p.ex::before,.fr.ok::before,.fr.no::before,.note::before,.key::before,.tn b:first-child,.wk h4,.bk h4,.fbrow h4,.ask::before{display:block;font-family:var(--display);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:0 0 .25rem;line-height:1.4}
+.card p.ex{background:var(--ex-bg);padding:.6rem .9rem}
+.card p.ex::before{content:"Example";color:var(--accent)}
+.card p.ex + p.ex{margin-top:-.75rem;padding-top:0}
+.card p.ex + p.ex::before{content:none}
+.fr.ok{background:var(--good-bg);padding:.6rem .9rem}
+.fr.ok::before{content:"✓ Correct French";color:var(--good)}
+.fr.no{background:var(--bad-bg);padding:.6rem .9rem}
+.fr.no::before{content:"✗ Wrong";color:var(--bad)}
+.note{background:var(--note-bg);padding:.6rem .9rem;font-size:.95rem}
+.note::before{content:"Note";color:var(--note-ink)}
+.key{background:var(--key-bg);padding:.6rem .9rem;font-weight:600}
+.key::before{content:"Key point";color:var(--key-ink)}
+.tn{background:var(--test-bg);padding:.6rem .9rem;font-size:.95rem}
+.tn b:first-child{color:var(--test-ink)}
+.wk,.bk{border:1px solid var(--line);padding:.7rem .9rem .8rem}
+.wk h4{color:var(--margin)}
+.bk h4{color:var(--accent)}
+#ref .bk{border:0;padding:0}
+#ref .bk h4{display:none}
+.ask::before{content:"Your task";color:var(--accent)}
+ol.work{list-style:none;counter-reset:w;margin:0;padding:0 0 0 1rem;border-left:2px solid var(--margin);background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% 2.2rem;background-position:0 2.15rem}
+ol.work li{counter-increment:w;line-height:2.2rem;padding-left:1.6rem;position:relative}
+ol.work li::before{content:counter(w);position:absolute;left:0;font-size:.8rem;color:var(--muted);font-weight:600}
+ol.path{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:.45rem}
+ul.bank{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.1rem 1.5rem}
+ul.bank li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.2rem .6rem;border-bottom:1px solid var(--rule);padding:.3rem 0}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding:.3rem .8rem .3rem 0}
+td{padding:.4rem .8rem .4rem 0;border-top:1px solid var(--line);vertical-align:baseline}
+.pips{display:flex;gap:.35rem;margin:1rem 0}
+.pips i{height:4px;flex:1;max-width:3rem;background:var(--line);border-radius:2px}
+.pips i.seen{background:var(--muted)}
+.pips i.on{background:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.btn{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:.6rem 1.2rem;font-weight:600}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.btn.link{background:none;border-color:transparent;color:var(--muted);font-weight:400;text-decoration:underline;padding-inline:.4rem}
+.rule{padding:.7rem .9rem;font-size:.95rem;margin-bottom:1.1rem;background:var(--key-bg)}
+.rule b:first-child{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--key-ink);margin-bottom:.2rem}
+.prog{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--muted);margin-bottom:1rem;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.ask{margin:0 0 .3rem;font-weight:600}
+.hint{color:var(--muted);font-size:.9rem;margin:0 0 .4rem}
+.slot{display:inline-block;min-width:5.5em;border-bottom:2px solid var(--accent);text-align:center;font-weight:600;padding:0 .3em}
+.slot.good{color:var(--good);border-color:var(--good)}
+.opts{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1rem}
+.opt{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:.5rem .95rem;font-size:1.15rem}
+.opt.ui{font-family:var(--display);font-size:.95rem}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.right{border-color:var(--good);background:var(--good-bg);color:var(--good);opacity:1;font-weight:600}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad);opacity:1;text-decoration:line-through}
+.typed{display:flex;flex-wrap:wrap;gap:.6rem;align-items:flex-end;margin-bottom:1rem}
+#ans{flex:1 1 12rem;min-width:0;font-family:var(--french);font-size:1.4rem;color:var(--ink);background-color:var(--surface);background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% .8rem;border:0;border-left:2px solid var(--margin);border-bottom:2px solid var(--accent);padding:.55rem .8rem;border-radius:0}
+.acc{display:flex;gap:.3rem}
+.chipk{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.4rem .7rem;font-family:var(--french);font-size:1.1rem}
+.fb{border:2px solid var(--line);background:var(--surface);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1rem}
+.fb.isgood{border-color:var(--good)}
+.fb.isbad{border-color:var(--bad)}
+.fb p{margin:0}
+.fbrow{padding:.55rem .8rem}
+.fbrow.yours{background:var(--bad-bg)}
+.fbrow.yours h4{color:var(--bad)}
+.fbrow.rb{background:var(--ex-bg)}
+.fbrow.rb h4{color:var(--accent)}
+.fbrow.so{background:var(--key-bg)}
+.fbrow.so h4{color:var(--key-ink)}
+.fbrow.info{background:var(--note-bg)}
+.fbrow.info h4{color:var(--note-ink)}
+.v{font-weight:700;font-size:1.25rem}
+.v.good{color:var(--good)} .v.bad{color:var(--bad)}
+.yours s{color:var(--bad);font-family:var(--french);font-size:1.1em}
+.lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-right:.4rem}
+.result h3{font-size:1.4rem;margin:0}
+.score{font-size:2.6rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.score small{font-size:1rem;color:var(--muted);font-weight:400}
+#ref{position:fixed;inset:0;z-index:30;background:var(--paper);overflow:auto;padding:max(1rem,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(2rem,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#ref .in{max-width:46rem;margin:0 auto;display:flex;flex-direction:column;gap:1.4rem}
+#ref header{display:flex;justify-content:space-between;align-items:center}
+#ref h2{margin:0}
+#ref h3{font-size:1.05rem;margin:0 0 .5rem}
+#ref section{display:flex;flex-direction:column;gap:.6rem}
+@media (max-width:56rem){
+  .app{grid-template-columns:minmax(0,1fr)}
+  #navbtn{display:inline-block}
+  nav{display:none}
+  nav.open{display:block;position:fixed;inset:0;z-index:20;background:var(--paper);overflow:auto;padding:max(1rem,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(2rem,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  nav.open #navclose{display:inline-block;margin-bottom:1rem}
+  h2{font-size:1.45rem}
+  .fr.big{font-size:1.3rem}
+  .card{padding:1.1rem}
+}
+@media (prefers-reduced-motion:no-preference){ .bar i{transition:width .25s} }
+/* dossier masthead, footer and theme button */
+.top .brand{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem}
+.backlink{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);text-decoration:none;margin:0 0 .35rem;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.backlink:hover{color:var(--accent);border-color:var(--accent)}
+.top .eyebrow{margin:0}
+.top .tools{align-items:center}
+.themebtn{appearance:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:17px;line-height:1;display:grid;place-items:center;padding:0}
+.themebtn:hover{border-color:var(--accent)}
+.app>footer{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem;font-size:.8rem;color:var(--muted);line-height:1.55}
+.app>footer strong{color:var(--ink)}
+.changelog summary{cursor:pointer;margin-top:.4rem}
+.changelog span{display:block;margin-top:.35rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <a class="backlink" href="/mastery/">‹ Mastery lessons</a>
+      <div class="eyebrow">Mastery lesson · v1.1.0</div>
+      <h1>Pronoms relatifs</h1>
+    </div>
+    <span class="sub">dont, lequel, and the prepositions behind them</span>
+    <span class="tools">
+      <button class="tool" id="navbtn" type="button">Blocks</button>
+      <button class="tool" id="refbtn" type="button">Reference</button>
+      <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
+    </span>
+  </header>
+  <nav id="nav" aria-label="Lesson blocks"></nav>
+  <main id="stage"></main>
+  <footer>
+    <strong>Mastery lesson · Pronoms relatifs · v1.1.0</strong> — relative pronouns from the ground up: qui, que, où, dont, the lequel family and the prepositions verbs take. 15 blocks, 258 questions. Each block unlocks when you pass the check before it (80% on the first try). Progress is saved in this browser.<br>
+    <details class="changelog"><summary>Changelog</summary>
+    <span>v1.1.0 (16 Nov 2026): <strong>First release in Les Dossiers Français.</strong> 15 lesson blocks with a check after each, a Reference sheet, light and dark mode. Accents always count in typed answers.</span>
+    </details>
+  </footer>
+</div>
+<div id="ref" hidden></div>
+
+<script>
+/* ---------- small helpers ---------- */
+const $=(s,e=document)=>e.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[’`´]/g,"'").replace(/\s+/g,' ').trim();
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'');
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const fx=s=>s.replace(/\[\[(.+?)\]\]/g,'<mark class="prep">$1</mark>').replace(/\{\{(.+?)\}\}/g,'<b class="pron">$1</b>').replace(/__(.+?)__/g,'<u class="ante">$1</u>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+const sent=(s,fill,cls)=>fx(s.replace('___','\u0001')).replace('\u0001',`<span class="slot ${cls||''}" id="slot">${fill||'&nbsp;'}</span>`);
+const p=s=>`<p>${s}</p>`, f=s=>`<span class="fr">${s}</span>`, key=s=>`<p class="key">${s}</p>`,
+  fr=(s,g)=>`<p class="fr ex">${s}${g?` <span class="gl">${g}</span>`:''}</p>`,
+  ok=s=>`<p class="fr ok">${s}</p>`, no=s=>`<p class="fr no">${s}</p>`,
+  note=s=>`<p class="note">${s}</p>`, tn=s=>`<p class="tn"><b>DLPT and OPI</b>${s}</p>`,
+  work=a=>`<div class="wk"><h4>Step by step</h4><ol class="work">${a.map(x=>`<li>${x}</li>`).join('')}</ol></div>`,
+  bank=a=>`<div class="bk"><h4>Learn these</h4><ul class="bank">${a.map(([v,g])=>`<li><span class="fr">${v.replace(/ (à|de|sur|contre|pour|avec|dans|par|en)$/,' [[$1]]')}</span><span class="gl">${g}</span></li>`).join('')}</ul></div>`,
+  tbl=(h,r)=>`<div class="tw"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${r.map(x=>`<tr>${x.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+/* ---------- item builders ---------- */
+const P=(s,a,rb,g,o,x)=>({t:'p',s,a,rb,g:g.slice(0,2),per:g[2]==='p',o,...(x||{})});
+const G=(s,vs,v,a,rb,g,o,x)=>({...P(s,a,rb,g,o,x),t:'g',vs,v});
+const Q=(pr,s,o,a,why,fix)=>({t:'q',pr,s,o,a,why,fix});
+const V=(v,a,gl,n,h)=>({t:'v',v,a,gl,n,h});
+const O4=['qui','que','dont','où'];
+const PREPS=['—','à','de','sur','contre','pour','avec','dans','par','en'];
+const F={ms:'lequel',fs:'laquelle',mp:'lesquels',fp:'lesquelles'};
+const GN={ms:'masculine singular',fs:'feminine singular',mp:'masculine plural',fp:'feminine plural'};
+const JOBS=['Subject: it does the verb','Direct object: no preposition','After de','After another preposition'];
+const JQ='What job does the underlined noun have inside the clause?';
+const SQ='Who or what does the verb in bold?';
+const NOEN='English has no preposition here. French does.';
+const DIR='English adds a preposition. French takes the noun directly.';
+
+/* ---------- shared reference pieces ---------- */
+const T_LEQ=tbl(['','Singular','Plural'],[['Masculine','{{lequel}}','{{lesquels}}'],['Feminine','{{laquelle}}','{{lesquelles}}']]);
+const T_A=tbl(['à +','becomes'],[['lequel','{{auquel}}'],['laquelle','{{à laquelle}} <span class="gl">no change</span>'],['lesquels','{{auxquels}}'],['lesquelles','{{auxquelles}}']]);
+const T_DE=tbl(['de +','becomes'],[['lequel','{{duquel}}'],['laquelle','{{de laquelle}} <span class="gl">no change</span>'],['lesquels','{{desquels}}'],['lesquelles','{{desquelles}}']]);
+const L_COMP=bank([['près de','near'],['à côté de','next to'],['en face de','across from'],['au milieu de','in the middle of'],['autour de','around'],['au bord de','at the edge of'],['au-dessus de','above'],['au pied de','at the foot of'],['à cause de','because of'],['à propos de','about'],['au sujet de','about'],['loin de','far from']]);
+const BK_A1=bank([['penser à','think about'],['réfléchir à','think over'],['répondre à','answer'],['participer à','take part in'],['assister à','attend'],["s'intéresser à",'be interested in'],['renoncer à','give up'],['tenir à','care about'],["s'habituer à",'get used to'],["s'opposer à",'oppose'],['résister à','resist'],['obéir à','obey'],['jouer à','play a game or sport'],['faire attention à','pay attention to']]);
+const BK_A2=bank([['parler à','talk to'],['téléphoner à','call'],['écrire à','write to'],['répondre à','answer'],['demander à','ask'],['plaire à','please'],['ressembler à','look like'],['faire confiance à','trust'],["s'adresser à",'speak to'],['donner / prêter / envoyer quelque chose à','give / lend / send']]);
+const BK_D1=bank([['parler de','talk about'],['avoir besoin de','need'],['avoir envie de','want'],['avoir peur de','be afraid of'],['se souvenir de','remember'],["s'occuper de",'take care of'],['se servir de','use'],['rêver de','dream of'],['dépendre de','depend on'],['profiter de','make the most of'],['discuter de','discuss']]);
+const BK_D2=bank([['se méfier de','be wary of'],['se plaindre de','complain about'],['douter de','doubt'],['se moquer de','make fun of'],['manquer de','lack'],['changer de','change'],["s'approcher de",'approach'],["s'apercevoir de",'notice'],['se rendre compte de','realize'],['jouer de','play an instrument'],['être fier / content / sûr / responsable de','proud / happy / sure / in charge']]);
+const BK_SUR=bank([['compter sur','count on'],['reposer sur','be based on'],["s'appuyer sur",'rely on'],['travailler sur','work on'],['insister sur','stress'],['se concentrer sur','focus on'],['donner sur','look out onto']]);
+const BK_CP=bank([['lutter contre','fight'],['se battre contre','fight against'],['protester contre','protest'],['voter contre','vote against'],['voter pour','vote for'],['se battre pour','fight for'],['travailler pour','work for'],["s'inquiéter pour",'worry about']]);
+const BK_ETC=bank([['se marier avec','marry'],["être d'accord avec",'agree with'],['discuter avec','talk with'],['se disputer avec','argue with'],['sortir avec','go out with'],['entrer dans','enter'],['vivre dans','live in'],['passer par','go through'],['avoir confiance en','trust']]);
+const BK_DIR=bank([['attendre','wait <b>for</b>'],['chercher','look <b>for</b>'],['écouter','listen <b>to</b>'],['regarder','look <b>at</b>'],['demander','ask <b>for</b>'],['payer','pay <b>for</b>']]);
+const BK_LINK=bank([['continuer à','keep doing'],['commencer à','start to'],['réussir à','manage to'],['apprendre à','learn to'],['décider de','decide to'],['essayer de','try to'],['oublier de','forget to'],['refuser de','refuse to'],['avoir envie de','feel like'],['finir par','end up']]);
+const PATH=`<ol class="path"><li><b>Find the clause's verb.</b> If verbs are chained, take the last one.</li><li><b>Find its subject.</b> It may sit after the verb. If nothing else does the verb, the blank is {{qui}}.</li><li><b>Rebuild</b> the clause with the noun put back.</li><li><b>Read the small word</b> before the noun. None: {{que}}. Bare de: {{dont}}. Place or time: {{où}}. Anything else: keep it.</li><li><b>Person or thing?</b> Person: preposition + {{qui}}. Thing: the {{lequel}} family.</li><li><b>Agree and contract.</b> Match the antecedent's gender and number. à + le- gives au-, de + le- gives du-.</li></ol>`;
+
+const PARTS=['The method','The pronouns','Verbs and their prepositions','Traps and mastery'];
+
+/* ---------- the course ---------- */
+const B=[
+{id:'job',part:0,title:'One noun, two sentences',goal:'Learn the single move behind every relative pronoun: rebuild the clause.',n:6,
+ rule:'Rebuild the clause with the noun put back. Subject: qui. Direct object: que. After de: dont. After another preposition: preposition + qui or lequel.',
+ cards:[
+ {h:'A relative pronoun replaces a repeated noun',b:p('Two sentences share a noun. French joins them and swaps the second mention for a relative pronoun.')+fr("J'ai __un voisin__. __Ce voisin__ parle trop.")+fr("J'ai __un voisin__ {{qui}} parle trop.")+key('The shared noun is the <b>antecedent</b>. The pronoun sits right after it.')},
+ {h:"The noun's job picks the pronoun",b:p('Look at the second sentence only. What job does the repeated noun have there?')+tbl(['Job','Second sentence','Pronoun'],[['does the verb',f('Ce voisin parle.'),'{{qui}}'],['receives the verb directly',f('Je connais ce voisin.'),'{{que}}'],['comes after de',f('Je parle [[de]] ce voisin.'),'{{dont}}'],['comes after another preposition',f('Je travaille [[avec]] ce voisin.'),'preposition + {{qui}} or {{lequel}}']])+p('You already use the first two. This course is about the last two.')},
+ {h:'The method: rebuild the clause',b:p('In an exercise you only see the joined sentence. Undo the join.')+work(['Clause: '+f("le stylo <span class=\"slot\">&nbsp;</span> j'écris"),'Put the noun back: '+f("j'écris [[avec]] ce stylo"),'Read the small word before the noun: [[avec]]'])+key('If the rebuilt sentence needs a small word before the noun, the pronoun must carry that word. English can drop it or leave it at the end. French never can.')}],
+ items:[
+ Q(JQ,"__Le film__ ___ nous regardons est long.",JOBS,JOBS[1],'Rebuild: '+f('nous regardons ce film')+'. Nothing stands between the verb and the noun.',1),
+ Q(JQ,"__La voisine__ ___ chante tous les matins est sympathique.",JOBS,JOBS[0],'Rebuild: '+f('cette voisine chante')+'. She does the verb.',1),
+ Q(JQ,"__Le stylo__ ___ j'écris est neuf.",JOBS,JOBS[3],'Rebuild: '+f("j'écris [[avec]] ce stylo")+'.',1),
+ Q(JQ,"__Le livre__ ___ j'ai besoin est à la bibliothèque.",JOBS,JOBS[2],'Rebuild: '+f("j'ai besoin [[de]] ce livre")+'.',1),
+ Q(JQ,"__La chaise__ ___ le chat dort est vieille.",JOBS,JOBS[3],'Rebuild: '+f('le chat dort [[sur]] cette chaise')+'.',1),
+ Q(JQ,"__Le gâteau__ ___ ma mère prépare sent bon.",JOBS,JOBS[1],'Rebuild: '+f('ma mère prépare ce gâteau')+'. Nothing stands between the verb and the noun.',1),
+ Q(JQ,"__La ville__ ___ nous rêvons est loin.",JOBS,JOBS[2],'Rebuild: '+f('nous rêvons [[de]] cette ville')+'.',1),
+ Q(JQ,"__Le train__ ___ arrive est en retard.",JOBS,JOBS[0],'Rebuild: '+f('ce train arrive')+'. It does the verb.',1),
+ Q(JQ,"__Les clés__ ___ j'ai perdues étaient dans mon sac.",JOBS,JOBS[1],'Rebuild: '+f("j'ai perdu ces clés")+'. Nothing stands between the verb and the noun.',1),
+ Q(JQ,"__Le collègue__ ___ je déjeune est drôle.",JOBS,JOBS[3],'Rebuild: '+f('je déjeune [[avec]] ce collègue')+'.',1),
+ Q(JQ,"__Le bruit__ ___ tu te plains vient de la rue.",JOBS,JOBS[2],'Rebuild: '+f('tu te plains [[de]] ce bruit')+'.',1),
+ Q(JQ,"__La boîte__ ___ je range mes photos est pleine.",JOBS,JOBS[3],'Rebuild: '+f('je range mes photos [[dans]] cette boîte')+'.',1)]},
+
+{id:'subj',part:0,title:'Who does the verb?',goal:'Find the real subject of the clause, even when it hides after the verb.',n:6,
+ rule:"Find the clause's verb, then ask who or what does it. If the clause already has a subject, the blank can't be qui.",
+ cards:[
+ {h:'The subject can sit after the verb',b:p('After a relative pronoun, written French often flips the subject and the verb. The meaning does not change.')+fr('les mesures {{que}} le gouvernement propose')+fr('les mesures {{que}} propose le gouvernement')+p('Both mean “the measures the government proposes”.')},
+ {h:'Ask who does the verb',b:p("Word order won't tell you. Ask who or what does the action.")+fr("le principe <span class=\"slot\">&nbsp;</span> s'appuient ces décisions")+p('What relies on something? '+f('Ces décisions.')+' They are the subject, even though they come last.')+note('Agreement confirms it: '+f("s'appuient")+' is plural, '+f('le principe')+' is singular.')},
+ {h:'Why it matters',b:key('A blank followed by a verb looks like {{qui}}. It is {{qui}} only if nothing else in the clause does the verb.')+fr('les arbres {{qui}} bordent la rue','The trees do the lining. The blank is the subject.')+fr('les mesures {{que}} propose le maire','The mayor does the proposing. The blank is not the subject.')+tn('This flipped order is common in news writing, so expect it in DLPT reading and in fill-in items.')}],
+ items:[
+ Q(SQ,"Les mesures ___ **propose** le gouvernement sont critiquées.",['les mesures','le gouvernement'],'le gouvernement',f('Propose')+' is singular, like '+f('le gouvernement')+'. The measures are what it proposes, so the blank can\'t be qui.'),
+ Q(SQ,"Les arbres ___ **bordent** la rue sont centenaires.",['les arbres','la rue'],'les arbres',f('Bordent')+' is plural, like '+f('les arbres')+'. The street is what they line. Here the blank is the subject: qui.'),
+ Q(SQ,"Le principe ___ **s'appuient** ces décisions est simple.",['le principe','ces décisions'],'ces décisions',f("S'appuient")+' is plural and '+f('le principe')+' is singular. The decisions do the relying.'),
+ Q(SQ,"La chanson ___ **chantent** les enfants est ancienne.",['la chanson','les enfants'],'les enfants',f('Chantent')+' is plural. The children sing. The song is what they sing.'),
+ Q(SQ,"La femme ___ **dirige** cette école est jeune.",['la femme','cette école'],'la femme','A school can\'t direct a woman. '+f('Cette école')+' is what she directs, so the blank is the subject: qui.'),
+ Q(SQ,"Le village ___ **vivent** mes grands-parents est petit.",['le village','mes grands-parents'],'mes grands-parents',f('Vivent')+' is plural. The grandparents do the living.'),
+ Q(SQ,"Les valeurs ___ **s'inspirent** ces textes sont anciennes.",['les valeurs','ces textes'],'ces textes','Texts draw on values, not the reverse. '+f('Ces textes')+' does the verb.'),
+ Q(SQ,"Le journal ___ **lisent** mes parents est local.",['le journal','mes parents'],'mes parents',f('Lisent')+' is plural. The parents read. The newspaper is what they read.'),
+ Q(SQ,"Les étudiants ___ **suivent** ce cours sont nombreux.",['les étudiants','ce cours'],'les étudiants',f('Suivent')+' is plural, like '+f('les étudiants')+'. The course is what they take. The blank is the subject: qui.'),
+ Q(SQ,"Le pont ___ **passent** les camions est étroit.",['le pont','les camions'],'les camions',f('Passent')+' is plural. The trucks do the passing.'),
+ Q(SQ,"Les voisins ___ **font** du bruit déménagent bientôt.",['les voisins','le bruit'],'les voisins','The neighbors make the noise. Nothing else in the clause can do the verb, so the blank is the subject: qui.'),
+ Q(SQ,"La maison ___ **habite** ma tante est grande.",['la maison','ma tante'],'ma tante','A house doesn\'t live in an aunt. '+f('Ma tante')+' does the verb.')]},
+
+{id:'dont1',part:1,title:'dont: de + noun',goal:'Use dont whenever the verb needs de before the noun.',n:6,
+ rule:'Rebuild the clause. Verb + noun directly: que. Verb + de + noun: dont. Dont never changes form and already contains de.',
+ cards:[
+ {h:'Some verbs need de',b:p("Many French verbs can't take a noun directly. They need <b>de</b> first.")+bank([['parler de','talk about'],['avoir besoin de','need'],['se souvenir de','remember'],['rêver de','dream of'],['avoir peur de','be afraid of'],["s'occuper de",'take care of'],['se servir de','use']])},
+ {h:'de + noun becomes dont',b:work(['Two sentences: '+f("Voici le livre. J'ai besoin [[de]] ce livre."),'Swap '+f('de ce livre')+' for {{dont}} and move it to the front.','Result: '+f("Voici le livre {{dont}} j'ai besoin.")])+key('{{Dont}} never changes. Masculine, feminine, plural, people, things: always {{dont}}.')},
+ {h:'dont already contains de',b:p("The <b>de</b> is inside {{dont}}. Don't write it again.")+ok('le film {{dont}} je parle')+no('le film dont je parle de')+no('le film de que je parle')},
+ {h:'que or dont? Test the verb',b:p('Say the verb with the noun right after it. If that works, use {{que}}. If you need <b>de</b>, use {{dont}}.')+fr('je lis ce livre → le livre {{que}} je lis')+fr('je parle [[de]] ce livre → le livre {{dont}} je parle')+tn('One clean {{dont}} sentence in the OPI shows you can handle complex structures.')}],
+ items:[
+ P("Le film ___ tout le monde parle sort demain.","dont","tout le monde parle [[de]] ce film","ms",O4),
+ P("Le dictionnaire ___ j'ai besoin est cher.","dont","j'ai besoin [[de]] ce dictionnaire","ms",O4),
+ P("Le dictionnaire ___ j'utilise est vieux.","que","j'utilise ce dictionnaire","ms",O4),
+ P("La voisine ___ je me souviens habitait au troisième étage.","dont","je me souviens [[de]] cette voisine","fsp",O4),
+ P("Les vacances ___ nous rêvons coûtent cher.","dont","nous rêvons [[de]] ces vacances","fp"),
+ P("Le chien ___ Marie a peur est très gros.","dont","Marie a peur [[de]] ce chien","ms",O4),
+ P("Le chien ___ Marie promène est très gros.","que","Marie promène ce chien","ms",O4),
+ P("L'ordinateur ___ je me sers est lent.","dont","je me sers [[de]] cet ordinateur","ms"),
+ P("Les enfants ___ Julie s'occupe sont calmes.","dont","Julie s'occupe [[de]] ces enfants","mpp",O4),
+ P("Le gâteau ___ sent si bon est pour ce soir.","qui","ce gâteau sent bon","ms",O4),
+ P("La réunion ___ nous parlons a lieu lundi.","dont","nous parlons [[de]] cette réunion","fs"),
+ P("Le roman ___ je lis est passionnant.","que","je lis ce roman","ms",O4)]},
+
+{id:'dont2',part:1,title:'dont: whose, and after adjectives',goal:'Spot the other places de hides: between two nouns and after adjectives.',n:6,
+ rule:'de + noun gives dont, whatever the de hangs on: a verb (parler de), a noun (la couleur de), an adjective (fier de). After dont, keep the article: dont le, dont la, dont les.',
+ cards:[
+ {h:'de also links two nouns',b:p('<b>De</b> shows belonging: '+f('la couleur [[de]] ce sac')+', the color of this bag.')+work([f("J'aime ce sac. La couleur [[de]] ce sac me plaît."),'Swap '+f('de ce sac')+' for {{dont}}.',f('le sac {{dont}} la couleur me plaît')])+p('English says “the bag <b>whose</b> color I like”.')},
+ {h:'Keep the article after dont',b:p('English: whose + noun. French: {{dont}} + <b>le, la, les</b> + noun.')+ok('la voisine {{dont}} le fils joue du piano')+no('la voisine dont fils joue du piano')+note('Signal in an exercise: the blank is followed directly by an article and a noun that belongs to the antecedent.')},
+ {h:'Adjectives with de',b:p('Some adjectives take <b>de</b> too, so they also give {{dont}}.')+bank([['être fier de','proud of'],['être content de','happy with'],['être sûr de','sure of'],['être responsable de','in charge of'],['être amoureux de','in love with']])+fr('le résultat {{dont}} elle est fière')},
+ {h:'dont can mean “including”',b:p('After a number or a group, {{dont}} means “of which” or “including”.')+fr('Elle a trois chats, {{dont}} deux sont noirs.')+tn('News texts use this constantly: '+f('vingt pays, {{dont}} la France')+'.')}],
+ items:[
+ P("Le sac ___ la couleur me plaît est à Marie.","dont","la couleur [[de]] ce sac me plaît","ms",O4,{wh:1}),
+ P("L'écrivain ___ le dernier roman a gagné un prix habite ici.","dont","le dernier roman [[de]] cet écrivain","msp",O4,{wh:1}),
+ P("La voisine ___ le fils joue du piano est professeure.","dont","le fils [[de]] cette voisine","fsp",O4,{wh:1}),
+ P("Le résultat ___ Léa est fière est excellent.","dont","Léa est fière [[de]] ce résultat","ms",O4,{n:'Adjectives count too: fier de, content de, sûr de.'}),
+ P("Le résultat ___ Paul a obtenu est excellent.","que","Paul a obtenu ce résultat","ms",O4),
+ P("Les amis ___ la maison est au bord de la mer nous invitent.","dont","la maison [[de]] ces amis","mpp",undefined,{wh:1}),
+ P("C'est un collègue ___ je suis sûr.","dont","je suis sûr [[de]] ce collègue","msp",O4),
+ P("Elle a trois chats, ___ deux sont noirs.","dont","deux [[de]] ces chats sont noirs","mp",O4,{n:'Here dont means “of which”.'}),
+ P("Le restaurant ___ le chef est italien est complet.","dont","le chef [[de]] ce restaurant","ms",undefined,{wh:1}),
+ P("Le restaurant ___ nous préférons est complet.","que","nous préférons ce restaurant","ms",O4),
+ P("La ville ___ le maire est très jeune attire les touristes.","dont","le maire [[de]] cette ville","fs",O4,{wh:1}),
+ P("Le projet ___ ils sont responsables avance bien.","dont","ils sont responsables [[de]] ce projet","ms")]},
+
+{id:'prepqui',part:1,title:'People: preposition + qui',goal:'Carry any preposition to the front and add qui when the noun is a person.',n:6,
+ rule:'Person + preposition: preposition + qui (à qui, avec qui, chez qui, sur qui). Person + bare de: dont. A preposition is never followed by que.',
+ cards:[
+ {h:'People after a preposition',b:p('The rebuilt sentence has a preposition other than a bare <b>de</b>, and the noun is a person. Keep the preposition and add {{qui}}.')+work([f('Je travaille [[avec]] cette collègue.'),f('la collègue [[avec]] {{qui}} je travaille')])+fr('à qui · avec qui · pour qui · chez qui · sur qui · sans qui · contre qui')},
+ {h:'The preposition moves to the front',b:p('English can leave it at the end or drop it: “the colleague I work with”. French puts it before {{qui}}, every time.')+ok("l'ami [[à]] {{qui}} j'écris")+no("l'ami qui j'écris à")},
+ {h:'This qui is not the subject',b:p('After a preposition, {{qui}} just means “whom”. The clause still has its own subject.')+fr('la collègue [[avec]] {{qui}} <strong>je</strong> travaille')+note('Never '+f('avec que')+' or '+f('à que')+'. {{Que}} cannot follow a preposition.')},
+ {h:'A bare de still gives dont',b:p('For a person after a bare <b>de</b>, the normal choice is still {{dont}}.')+fr("l'ami {{dont}} je parle")+key('So for people: bare <b>de</b> gives {{dont}}. Any other preposition gives preposition + {{qui}}.')}],
+ items:[
+ P("La collègue ___ je travaille le mardi est en vacances.","avec qui","je travaille [[avec]] cette collègue","fsp",['avec qui','à qui','dont','que']),
+ P("L'ami ___ j'ai écrit une lettre habite à Nice.","à qui","j'ai écrit une lettre [[à]] cet ami","msp",['à qui','avec qui','que','dont']),
+ P("Les voisins ___ nous dînons samedi sont italiens.","chez qui","nous dînons [[chez]] ces voisins","mpp",['chez qui','que','dont','où']),
+ P("L'ami ___ je me souviens le mieux s'appelle Hugo.","dont","je me souviens [[de]] cet ami","msp",['dont','à qui','que','avec qui']),
+ P("La personne ___ j'ai acheté ce cadeau adore le chocolat.","pour qui","j'ai acheté ce cadeau [[pour]] cette personne","fsp",['pour qui','que','sur qui','où']),
+ P("L'amie ___ je compte toujours s'appelle Inès.","sur qui","je compte [[sur]] cette amie","fsp",['sur qui','à qui','que','dont']),
+ P("Le professeur ___ nous avons posé la question a souri.","à qui","nous avons posé la question [[à]] ce professeur","msp",['à qui','que','dont','pour qui']),
+ P("Le garçon ___ elle sort depuis un an est musicien.","avec qui","elle sort [[avec]] ce garçon","msp"),
+ P("La dame ___ a téléphoné ce matin rappellera.","qui","cette dame a téléphoné","fsp",['qui','que','à qui','dont']),
+ P("La dame ___ j'ai rencontrée hier est médecin.","que","j'ai rencontré cette dame","fsp",['qui','que','à qui','avec qui']),
+ P("L'oncle ___ j'habite cet été vit à la campagne.","chez qui","j'habite [[chez]] cet oncle","msp",undefined,{alt:['avec qui','avec lequel']}),
+ P("La cousine ___ je téléphone chaque dimanche vit au Canada.","à qui","je téléphone [[à]] cette cousine","fsp")]},
+
+{id:'lequel',part:1,title:'Things: the lequel family',goal:'After a preposition, give a thing its lequel form and make it agree.',n:6,
+ rule:"Preposition + thing: preposition + lequel, laquelle, lesquels or lesquelles. Take the preposition from the rebuilt clause, then the form from the antecedent's gender and number.",
+ cards:[
+ {h:'Things need lequel',b:p('After a preposition, {{qui}} is for people only. For a thing, use {{lequel}}. It agrees with the antecedent.')+T_LEQ+note('It is just <b>le, la, les</b> + <b>quel, quelle, quels, quelles</b>, written as one word.')},
+ {h:'Build it in two moves',b:work(['Rebuild: '+f("j'écris [[avec]] ce stylo")+'. Preposition: [[avec]].','Antecedent: '+f('le stylo')+', masculine singular. Form: {{lequel}}.',f("le stylo [[avec]] {{lequel}} j'écris")])+fr('la table [[sur]] {{laquelle}} je travaille')+fr('les raisons [[pour]] {{lesquelles}} il est parti')},
+ {h:'Agree with the antecedent only',b:key('The form copies the noun before the blank. Ignore every other noun in the clause.')+fr('__la boîte__ [[dans]] {{laquelle}} je range mes outils')+note(f('Laquelle')+' agrees with '+f('la boîte')+', not with '+f('mes outils')+'.')},
+ {h:'Lequel for people?',b:p('Possible, and formal. Everyday French prefers {{qui}} for people.')+fr('la personne [[avec]] {{qui}} il habite','everyday')+fr('la personne [[avec]] {{laquelle}} il habite','formal, written')+note('After <b>parmi</b> and <b>entre</b>, use the lequel family even for people: '+f('les étudiants [[parmi]] {{lesquels}}')+'.')+tn('Use {{qui}} for people in the OPI. Expect both forms in DLI quizzes and DLPT reading.')}],
+ items:[
+ P("Le stylo ___ j'écris est neuf.","avec lequel","j'écris [[avec]] ce stylo","ms",['avec lequel','avec laquelle','avec qui','que']),
+ P("La chaise ___ je suis assis est fragile.","sur laquelle","je suis assis [[sur]] cette chaise","fs",['sur lequel','sur laquelle','que','dont']),
+ P("Les raisons ___ il est parti restent floues.","pour lesquelles","il est parti [[pour]] ces raisons","fp",['pour lesquels','pour lesquelles','que','dont']),
+ P("Le tiroir ___ je range mes clés est coincé.","dans lequel","je range mes clés [[dans]] ce tiroir","ms",['dans lequel','dans laquelle','dans qui','que']),
+ P("Les lunettes ___ je ne vois rien sont cassées.","sans lesquelles","je ne vois rien [[sans]] ces lunettes","fp",['sans lesquelles','sans lesquels','sans qui','que']),
+ P("Les amis ___ je voyage aiment la montagne.","avec qui","je voyage [[avec]] ces amis","mpp",['avec qui','avec que','que','dont']),
+ P("La boîte ___ j'ai mis les photos est sous le lit.","dans laquelle","j'ai mis les photos [[dans]] cette boîte","fs",undefined,{alt:['où']}),
+ P("Les outils ___ il travaille sont neufs.","avec lesquels","il travaille [[avec]] ces outils","mp"),
+ P("Le canapé ___ le chat dort est tout neuf.","sur lequel","le chat dort [[sur]] ce canapé","ms",['sur lequel','sur laquelle','sur qui','que']),
+ P("Les deux villes ___ il hésite sont loin d'ici.","entre lesquelles","il hésite [[entre]] ces deux villes","fp",['entre lesquelles','entre lesquels','entre qui','que']),
+ P("La raison ___ je t'appelle est simple.","pour laquelle","je t'appelle [[pour]] cette raison","fs"),
+ P("Le sac ___ je porte mes livres est lourd.","dans lequel","je porte mes livres [[dans]] ce sac","ms",undefined,{alt:['où']})]},
+
+{id:'auquel',part:1,title:'à + lequel: auquel',goal:'Contract à with lequel, and tell que, dont and auquel apart by the verb.',n:6,
+ rule:'Verb + à + thing: auquel (m. sing.), à laquelle (f. sing.), auxquels (m. pl.), auxquelles (f. pl.). Verb + à + person: à qui.',
+ cards:[
+ {h:'à + lequel contracts',b:p('You know <b>à + le = au</b> and <b>à + les = aux</b>. The same thing happens inside {{lequel}}.')+T_A},
+ {h:'When you need it',b:p('The rebuilt clause has <b>à</b> + a thing.')+work([f('Je pense [[à]] ce projet.'),'à + lequel, masculine singular',f('le projet {{auquel}} je pense')])+fr('penser à · répondre à · participer à · assister à · s\'intéresser à · réfléchir à · jouer à')},
+ {h:'One noun, three verbs',b:key('The verb decides. Same noun, three pronouns:')+fr('le projet {{que}} je prépare','préparer + noun')+fr('le projet {{dont}} je parle','parler de')+fr('le projet {{auquel}} je pense','penser à')},
+ {h:'à + a person',b:fr("l'ami [[à]] {{qui}} j'écris")+p('For a person, '+f('à qui')+' is the everyday form. '+f('Auquel')+' and '+f('à laquelle')+' are the formal versions.')}],
+ items:[
+ P("Le projet ___ je pense est ambitieux.","auquel","je pense [[à]] ce projet","ms",['auquel','à laquelle','dont','que']),
+ P("La question ___ il a répondu était difficile.","à laquelle","il a répondu [[à]] cette question","fs",['auquel','à laquelle','que','dont']),
+ P("Les réunions ___ j'assiste sont trop longues.","auxquelles","j'assiste [[à]] ces réunions","fp",['auxquels','auxquelles','que','dont']),
+ P("Les sports ___ elle s'intéresse sont rares.","auxquels","elle s'intéresse [[à]] ces sports","mp",['auxquels','auxquelles','dont','que']),
+ P("Le concours ___ nous participons a lieu en mai.","auquel","nous participons [[à]] ce concours","ms"),
+ P("La lettre ___ je réponds vient de ma tante.","à laquelle","je réponds [[à]] cette lettre","fs"),
+ P("Les jeux ___ les enfants jouent sont bruyants.","auxquels","les enfants jouent [[à]] ces jeux","mp"),
+ P("Le problème ___ tu parles est connu.","dont","tu parles [[de]] ce problème","ms",['dont','auquel','que','à laquelle']),
+ P("Le problème ___ tu réfléchis est complexe.","auquel","tu réfléchis [[à]] ce problème","ms",['dont','auquel','que','à laquelle']),
+ P("L'ami ___ j'écris vit en Suisse.","à qui","j'écris [[à]] cet ami","msp",['à qui','que','dont','auxquels']),
+ P("Le problème ___ tu as résolu était complexe.","que","tu as résolu ce problème","ms",['dont','auquel','que','à laquelle']),
+ P("Les questions ___ je pense sont importantes.","auxquelles","je pense [[à]] ces questions","fp")]},
+
+{id:'duquel',part:1,title:'de + lequel: duquel, and why not dont',goal:'Use duquel after compound prepositions, and keep dont for a bare de.',n:6,
+ rule:'Bare de: dont. Compound preposition ending in de (près de, à côté de, en face de): duquel, de laquelle, desquels, desquelles, or de qui for a person.',
+ cards:[
+ {h:'Prepositions that end in de',b:p('Some prepositions are several words long and end in <b>de</b>.')+L_COMP},
+ {h:'de + lequel contracts',b:T_DE+work([f("J'habite [[près de]] ce parc."),'près + de + lequel',f("le parc [[près]] {{duquel}} j'habite")])},
+ {h:'Why not dont?',b:p("{{Dont}} swallows a <b>de</b> that hangs directly on a verb, a noun or an adjective. Here the <b>de</b> is welded to another word. You can't cut "+f('près de')+' in half.')+ok("le parc [[près]] {{duquel}} j'habite")+no("le parc près dont j'habite")+no("le parc dont j'habite près")},
+ {h:'The quick test',b:p('Look at what stands around the blank.')+tbl(['You see','Use','Example'],[['a bare blank, verb takes de','{{dont}}',f('le parc {{dont}} je parle')],['près, à côté, en face… before the blank','{{duquel}} family',f("le parc près {{duquel}} j'habite")],['article + noun right after the blank','{{dont}}',f("le parc {{dont}} l'entrée est fermée")]])},
+ {h:'People, and grâce à',b:p('For a person, use '+f('de qui')+': '+f("la voisine [[à côté de]] {{qui}} j'habite")+'.')+p(f('Grâce à')+' ends in <b>à</b>, so it follows the à pattern:')+fr("l'aide [[grâce]] {{à laquelle}} j'ai réussi")+fr("l'ami [[grâce]] {{à qui}} j'ai réussi")}],
+ items:[
+ P("Le parc près ___ j'habite est immense.","duquel","j'habite [[près de]] ce parc","ms",['dont','duquel','de laquelle','auquel'],{cp:1}),
+ P("La gare en face ___ se trouve le café est fermée.","de laquelle","le café se trouve [[en face de]] cette gare","fs",['dont','duquel','de laquelle','desquelles'],{cp:1}),
+ P("Les arbres à côté ___ nous avons pique-niqué sont des chênes.","desquels","nous avons pique-niqué [[à côté de]] ces arbres","mp",['dont','desquels','desquelles','auxquels'],{cp:1}),
+ P("Le parc ___ je t'ai parlé est immense.","dont","je t'ai parlé [[de]] ce parc","ms",['dont','duquel','auquel','que']),
+ P("La rivière au bord ___ ils campent est froide.","de laquelle","ils campent [[au bord de]] cette rivière","fs",undefined,{cp:1}),
+ P("Le lac ___ la profondeur reste inconnue attire les plongeurs.","dont","la profondeur [[de]] ce lac","ms",['dont','duquel','que','auquel'],{wh:1}),
+ P("Les montagnes au pied ___ se trouve le village sont enneigées.","desquelles","le village se trouve [[au pied de]] ces montagnes","fp",undefined,{cp:1}),
+ P("L'ami grâce ___ j'ai trouvé ce travail s'appelle Karim.","à qui","j'ai trouvé ce travail [[grâce à]] cet ami","msp",['à qui','de qui','dont','duquel'],{n:'Grâce à ends in à.'}),
+ P("Le bâtiment au milieu ___ il y a un jardin est une école.","duquel","il y a un jardin [[au milieu de]] ce bâtiment","ms",undefined,{cp:1}),
+ P("Les fenêtres au-dessus ___ pendent des fleurs donnent sur la rue.","desquelles","des fleurs pendent [[au-dessus de]] ces fenêtres","fp",['dont','desquels','desquelles','auxquelles'],{cp:1}),
+ P("La voisine à côté ___ j'habite est très discrète.","de qui","j'habite [[à côté de]] cette voisine","fsp",['de qui','dont','duquel','à qui'],{cp:1}),
+ P("La bourse grâce ___ elle étudie est généreuse.","à laquelle","elle étudie [[grâce à]] cette bourse","fs",['à laquelle','de laquelle','dont','auquel'],{n:'Grâce à ends in à.'}),
+ P("Le sujet à propos ___ ils se disputent est sans importance.","duquel","ils se disputent [[à propos de]] ce sujet","ms",['dont','duquel','de laquelle','auquel'],{cp:1})]},
+
+{id:'ou',part:1,title:'où and its limits',goal:'Know exactly when où works, and when a place noun needs something else.',n:6,
+ rule:'où = a place or a time, where dans, sur or à would fit. Never a person. A place noun that is a direct object takes que. After de it takes dont.',
+ cards:[
+ {h:'où: a place or a time',b:fr("la ville {{où}} j'habite")+fr('le jour {{où}} je suis arrivé')+note('For a time, French uses {{où}}, never '+f('quand')+': '+f('le jour où')+', not '+f('le jour quand')+'.')},
+ {h:'où is a shortcut',b:p('For a place, {{où}} stands for <b>dans, sur</b> or <b>à</b> + lequel. Both are correct.')+fr("la maison {{où}} j'ai grandi")+fr("la maison [[dans]] {{laquelle}} j'ai grandi")+p("When the position is more precise, {{où}} can't say it. Keep the preposition and use lequel.")+fr('le pont [[sous]] {{lequel}} passe le bateau')},
+ {h:'Never for a person',b:p('{{Où}} cannot refer to a person, even with a verb like '+f('habiter')+'.')+ok('la personne [[avec]] {{qui}} il habite')+ok('les amis [[chez]] {{qui}} je dîne')+no('la personne où il habite')},
+ {h:'A place is not always où',b:key('Check the job first. If the verb takes the place directly, it is {{que}}. If the verb takes <b>de</b>, it is {{dont}}.')+fr("la ville {{où}} j'habite",'habiter dans')+fr('la ville {{que}} je visite','visiter + noun')+fr('la ville {{dont}} je rêve','rêver de')}],
+ items:[
+ P("Le quartier ___ j'ai grandi a beaucoup changé.","où","j'ai grandi [[dans]] ce quartier","ms",['où','que','dont','chez qui']),
+ P("Les cousins ___ je passe l'été vivent en Bretagne.","chez qui","je passe l'été [[chez]] ces cousins","mpp",['où','chez qui','que','dont']),
+ P("L'année ___ elle est née, il a neigé en mai.","où","elle est née cette année-là","fs",['où','que','quand','dont']),
+ P("La personne ___ il habite travaille de nuit.","avec qui","il habite [[avec]] cette personne","fsp",['où','avec qui','que','dont']),
+ P("La maison ___ j'ai grandi est à vendre.","où","j'ai grandi [[dans]] cette maison","fs",['où','que','dont','chez qui'],{n:'Dans laquelle is also correct here.'}),
+ P("L'arbre ___ nous avons garé la voiture est un chêne.","sous lequel","nous avons garé la voiture [[sous]] cet arbre","ms",['sous lequel','sous laquelle','que','dont']),
+ P("Le moment ___ je l'ai vu, j'ai compris.","où","je l'ai vu à ce moment-là","ms",['où','que','quand','dont']),
+ P("Le médecin ___ je vais demain est très occupé.","chez qui","je vais [[chez]] ce médecin","msp",['où','chez qui','que','à laquelle']),
+ P("La région ___ nous visitons est célèbre pour ses vins.","que","nous visitons cette région","fs",['où','que','dont','dans laquelle']),
+ P("Le pays ___ je rêve a un climat doux.","dont","je rêve [[de]] ce pays","ms",['où','que','dont','auquel']),
+ P("Le jour ___ nous attendons arrive enfin.","que","nous attendons ce jour","ms",['où','que','dont','auquel']),
+ P("Le village ___ vivent mes grands-parents est minuscule.","où","mes grands-parents vivent [[dans]] ce village","ms",['où','qui','que','dont'])]},
+
+{id:'va',part:2,title:'Verbs that take à',goal:'Learn the à verbs as fixed units, then use them in relative clauses.',n:8,
+ rule:'Verbs with à. Thing: auquel, à laquelle, auxquels, auxquelles. Person: à qui. If the rebuilt clause needs à, que is impossible.',
+ cards:[
+ {h:"From here on, it's vocabulary",b:p('You have the whole system. What decides the answer now is knowing which preposition each verb takes. Learn the verb and its preposition as one unit: not '+f('penser')+', but '+f('penser à')+'.')+fr('verb + [[à]] + thing → {{auquel}} family')+fr('verb + [[à]] + person → {{à qui}}')},
+ {h:'à + a thing',b:BK_A1},
+ {h:'à + a person',b:BK_A2},
+ {h:'Where English misleads you',b:p('English uses no preposition with these. French needs <b>à</b>, so {{que}} is wrong.')+bank([['téléphoner à','call someone'],['répondre à','answer'],['obéir à','obey'],['résister à','resist'],['ressembler à','resemble'],['assister à','attend'],['renoncer à','give up'],['plaire à','please']])+ok('la question {{à laquelle}} je réponds')+no('la question que je réponds')}],
+ items:[
+ V("assister ___ une réunion","à","to attend a meeting",NOEN),
+ V("téléphoner ___ quelqu'un","à","to call someone",NOEN),
+ V("s'intéresser ___ quelque chose","à","to be interested in something"),
+ P("Le concert ___ nous avons assisté était magnifique.","auquel","nous avons assisté [[à]] ce concert","ms"),
+ V("obéir ___ une règle","à","to obey a rule",NOEN),
+ P("L'amie ___ je téléphone le soir vit à Lyon.","à qui","je téléphone [[à]] cette amie","fsp"),
+ V("regarder ___ un film","—","to watch a film"),
+ P("Les règles ___ il obéit sont strictes.","auxquelles","il obéit [[à]] ces règles","fp"),
+ V("renoncer ___ un projet","à","to give up a project",NOEN),
+ V("tenir ___ une tradition","à","to care about a tradition"),
+ V("ressembler ___ quelqu'un","à","to look like someone",NOEN),
+ P("La tradition ___ ma famille tient le plus est le repas du dimanche.","à laquelle","ma famille tient [[à]] cette tradition","fs"),
+ V("avoir besoin ___ quelque chose","de","to need something"),
+ P("Le projet ___ ils ont renoncé coûtait trop cher.","auquel","ils ont renoncé [[à]] ce projet","ms",['auquel','dont','que','à laquelle']),
+ P("La personne ___ elle ressemble le plus est sa grand-mère.","à qui","elle ressemble [[à]] cette personne","fsp",['à qui','que','dont','avec qui']),
+ P("Le film ___ nous regardons est très long.","que","nous regardons ce film","ms",['qui','que','auquel','dont']),
+ V("résister ___ quelque chose","à","to resist something",NOEN),
+ V("s'habituer ___ un horaire","à","to get used to a schedule"),
+ V("participer ___ un concours","à","to take part in a contest"),
+ P("Les changements ___ je m'habitue sont nombreux.","auxquels","je m'habitue [[à]] ces changements","mp"),
+ V("plaire ___ quelqu'un","à","to please someone",NOEN),
+ P("La tentation ___ il résiste est forte.","à laquelle","il résiste [[à]] cette tentation","fs",['à laquelle','que','dont','auquel']),
+ V("rencontrer ___ quelqu'un","—","to meet someone"),
+ P("Les débats ___ elle participe sont animés.","auxquels","elle participe [[à]] ces débats","mp"),
+ V("s'opposer ___ une décision","à","to oppose a decision",NOEN),
+ V("faire confiance ___ quelqu'un","à","to trust someone",NOEN),
+ V("répondre ___ une question","à","to answer a question",NOEN),
+ P("La décision ___ je m'oppose a été prise hier.","à laquelle","je m'oppose [[à]] cette décision","fs"),
+ P("Le film ___ plaît aux enfants passe ce soir.","qui","ce film plaît aux enfants","ms",['qui','que','auquel','dont']),
+ V("penser ___ quelqu'un","à","to think about someone")]},
+
+{id:'vde',part:2,title:'Verbs that take de',goal:'Learn the de verbs as fixed units. Every one of them gives dont.',n:8,
+ rule:'Verb + bare de: dont, for people and things. Jouer à + game, jouer de + instrument.',
+ cards:[
+ {h:'Verbs with de give dont',b:p('Any verb or expression built with a bare <b>de</b> gives {{dont}}, for people and things alike.')+fr('se souvenir [[de]] ce nom → le nom {{dont}} je me souviens')},
+ {h:'Everyday de verbs',b:BK_D1},
+ {h:'More de verbs',b:BK_D2},
+ {h:'Where English misleads you',b:p('English uses no preposition, or a different one. French needs <b>de</b>.')+bank([['se souvenir de','remember something'],['avoir besoin de','need something'],['se servir de','use something'],['douter de','doubt something'],["s'approcher de",'approach something'],['dépendre de','depend <b>on</b>']])+note(f('Jouer [[à]]')+' a game, '+f('jouer [[de]]')+' an instrument: '+f('le jeu {{auquel}} il joue')+', '+f('le piano {{dont}} il joue')+'.')}],
+ items:[
+ V("se souvenir ___ quelque chose","de","to remember something",NOEN),
+ V("se servir ___ un outil","de","to use a tool",NOEN),
+ V("dépendre ___ quelque chose","de","to depend on something"),
+ P("Le nom ___ je me souviens commence par un B.","dont","je me souviens [[de]] ce nom","ms"),
+ V("penser ___ quelque chose","à","to think about something"),
+ P("L'outil ___ il se sert est dangereux.","dont","il se sert [[de]] cet outil","ms",['dont','que','auquel','avec lequel']),
+ V("se méfier ___ quelqu'un","de","to be wary of someone"),
+ P("La météo ___ tout dépend change vite.","dont","tout dépend [[de]] la météo","fs",['dont','que','sur laquelle','à laquelle']),
+ V("se plaindre ___ quelque chose","de","to complain about something"),
+ V("profiter ___ une occasion","de","to make the most of an opportunity"),
+ V("chercher ___ quelque chose","—","to look for something",DIR),
+ P("Les offres ___ je me méfie arrivent par courriel.","dont","je me méfie [[de]] ces offres","fp"),
+ P("Le bruit ___ les voisins se plaignent vient du bar.","dont","les voisins se plaignent [[de]] ce bruit","ms"),
+ P("Le voyage ___ ils rêvent coûte cher.","dont","ils rêvent [[de]] ce voyage","ms",['dont','auquel','que','duquel']),
+ P("Le voyage ___ ils pensent coûte cher.","auquel","ils pensent [[à]] ce voyage","ms",['dont','auquel','que','duquel']),
+ V("douter ___ quelque chose","de","to doubt something",NOEN),
+ V("s'occuper ___ quelqu'un","de","to take care of someone"),
+ V("changer ___ avis","de","to change one's mind"),
+ P("L'occasion ___ elle a profité ne reviendra pas.","dont","elle a profité [[de]] cette occasion","fs",['dont','que','à laquelle','qui']),
+ P("Le piano ___ elle joue appartenait à sa mère.","dont","elle joue [[de]] ce piano","ms",['dont','auquel','que','duquel'],{n:'Jouer de + instrument.'}),
+ P("Le jeu ___ ils jouent dure des heures.","auquel","ils jouent [[à]] ce jeu","ms",['dont','auquel','que','duquel'],{n:'Jouer à + game or sport.'}),
+ V("répondre ___ quelqu'un","à","to answer someone",NOEN),
+ V("manquer ___ temps","de","to lack time",NOEN),
+ P("Le jardin ___ Luc s'occupe est magnifique.","dont","Luc s'occupe [[de]] ce jardin","ms"),
+ V("se moquer ___ quelqu'un","de","to make fun of someone"),
+ V("s'approcher ___ quelque chose","de","to approach something",NOEN),
+ V("avoir envie ___ quelque chose","de","to want something",NOEN),
+ P("Le jardin ___ Luc arrose est magnifique.","que","Luc arrose ce jardin","ms",['dont','que','auquel','qui']),
+ V("rêver ___ quelque chose","de","to dream of something")]},
+
+{id:'vautres',part:2,title:'Verbs with sur, contre, pour, avec, dans, par, en',goal:"Keep each verb's own preposition and attach qui or lequel to it.",n:8,
+ rule:"Keep the verb's preposition (sur, contre, pour, avec, dans, par, en). Then qui for a person, or lequel, laquelle, lesquels, lesquelles for a thing.",
+ cards:[
+ {h:'Every other preposition works the same way',b:p('Keep the preposition. Then add {{qui}} for a person or the {{lequel}} form for a thing.')+fr("compter [[sur]] un ami → l'ami [[sur]] {{qui}} je compte")+fr("lutter [[contre]] une idée → l'idée [[contre]] {{laquelle}} je lutte")},
+ {h:'sur',b:BK_SUR},
+ {h:'contre and pour',b:BK_CP},
+ {h:'avec, dans, par, en',b:BK_ETC},
+ {h:'par and the passive',b:p('In the passive voice, the doer comes after <b>par</b>. A relative clause keeps it.')+fr('Ce roman a été écrit [[par]] cet auteur.')+fr("l'auteur [[par]] {{qui}} ce roman a été écrit")+note('Two ways to say “trust”: '+f('faire confiance [[à]]')+' and '+f('avoir confiance [[en]]')+'.')}],
+ items:[
+ V("compter ___ quelqu'un","sur","to count on someone"),
+ V("lutter ___ une injustice","contre","to fight an injustice"),
+ V("entrer ___ une pièce","dans","to enter a room",NOEN),
+ P("Les amis ___ je compte sont peu nombreux.","sur qui","je compte [[sur]] ces amis","mpp"),
+ V("reposer ___ un principe","sur","to be based on a principle"),
+ P("Les injustices ___ ils luttent existent partout.","contre lesquelles","ils luttent [[contre]] ces injustices","fp"),
+ V("écouter ___ la radio","—","to listen to the radio",DIR),
+ P("Le principe ___ repose cette théorie est simple.","sur lequel","cette théorie repose [[sur]] ce principe","ms",['sur lequel','que','qui','dont']),
+ V("se marier ___ quelqu'un","avec","to marry someone",NOEN),
+ V("travailler ___ un dossier","sur","to work on a file"),
+ V("être d'accord ___ quelqu'un","avec","to agree with someone"),
+ P("Le dossier ___ je travaille est urgent.","sur lequel","je travaille [[sur]] ce dossier","ms",['sur lequel','que','dont','auquel']),
+ P("L'homme ___ elle s'est mariée est architecte.","avec qui","elle s'est mariée [[avec]] cet homme","msp",['avec qui','que','sur qui','dont']),
+ P("La pièce ___ elle est entrée était vide.","dans laquelle","elle est entrée [[dans]] cette pièce","fs",undefined,{alt:['où']}),
+ V("protester ___ une décision","contre","to protest a decision",NOEN),
+ V("dépendre ___ quelque chose","de","to depend on something"),
+ V("voter ___ un candidat","pour","to vote for a candidate",'','You support this candidate.'),
+ V("insister ___ un détail","sur","to stress a detail",NOEN),
+ P("La décision ___ ils protestent a été annulée.","contre laquelle","ils protestent [[contre]] cette décision","fs"),
+ P("Les détails ___ il insiste sont importants.","sur lesquels","il insiste [[sur]] ces détails","mp"),
+ V("passer ___ un village","par","to go through a village",'','On the way to somewhere else.'),
+ V("avoir confiance ___ quelqu'un","en","to trust someone",'Avoir confiance en, but faire confiance à.'),
+ P("Les villages ___ nous sommes passés étaient charmants.","par lesquels","nous sommes passés [[par]] ces villages","mp",undefined,{alt:['où']}),
+ P("La personne ___ j'ai le plus confiance est ma sœur.","en qui","j'ai confiance [[en]] cette personne","fsp",['en qui','à qui','que','dont'],{n:'Avoir confiance en. Faire confiance à.'}),
+ V("se disputer ___ quelqu'un","avec","to argue with someone"),
+ V("se battre ___ une cause","pour","to fight for a cause",'','You defend this cause.'),
+ V("participer ___ un débat","à","to take part in a debate"),
+ P("L'auteur ___ ce roman a été écrit reste anonyme.","par qui","ce roman a été écrit [[par]] cet auteur","msp",['par qui','que','dont','à qui'],{n:'Passive voice: the doer takes par.'}),
+ P("La cause ___ elle se bat est juste.","pour laquelle","elle se bat [[pour]] cette cause","fs",['pour laquelle','que','à laquelle','dont']),
+ P("Les idées ___ je suis d'accord sont rares.","avec lesquelles","je suis d'accord [[avec]] ces idées","fp")]},
+
+{id:'direct',part:2,title:'Where English and French disagree',goal:'Stop translating through English. Rebuild in French and listen for the small word.',n:8,
+ rule:'Direct in French, so que: attendre, chercher, écouter, regarder, demander, payer. Preposition in French even when English has none: téléphoner à, répondre à, obéir à, assister à, entrer dans, se souvenir de, se servir de.',
+ cards:[
+ {h:'French verbs that take the noun directly',b:p('English adds a preposition to these. French does not, so the pronoun is {{que}}.')+BK_DIR+ok("le bus {{que}} j'attends")+no("le bus pour lequel j'attends")},
+ {h:'And the reverse',b:p('English takes the noun directly. French needs a preposition, so {{que}} is wrong.')+bank([['téléphoner à','call'],['répondre à','answer'],['obéir à','obey'],['assister à','attend'],['entrer dans','enter'],['se souvenir de','remember'],['avoir besoin de','need'],['se servir de','use'],['se marier avec','marry']])},
+ {h:'Rebuild in French',b:key('The English sentence is not evidence. Rebuild the clause in French and listen for the small word.')+work([f("la chanson <span class=\"slot\">&nbsp;</span> j'écoute"),'French: '+f("j'écoute cette chanson")+'. No small word.',f("la chanson {{que}} j'écoute")])}],
+ items:[
+ V("attendre ___ quelqu'un","—","to wait for someone",DIR),
+ V("chercher ___ ses clés","—","to look for one's keys",DIR),
+ V("téléphoner ___ quelqu'un","à","to call someone",NOEN),
+ P("Le bus ___ j'attends est en retard.","que","j'attends ce bus","ms",['que','pour lequel','auquel','dont']),
+ V("écouter ___ une chanson","—","to listen to a song",DIR),
+ P("Les clés ___ je cherche sont dans ta poche.","que","je cherche ces clés","fp",['que','pour lesquelles','auxquelles','dont']),
+ V("entrer ___ un magasin","dans","to enter a shop",NOEN),
+ P("Les questions ___ il a répondu étaient simples.","auxquelles","il a répondu [[à]] ces questions","fp",['que','auxquelles','dont','auxquels']),
+ V("regarder ___ un tableau","—","to look at a painting",DIR),
+ V("se souvenir ___ quelque chose","de","to remember something",NOEN),
+ V("demander ___ l'addition","—","to ask for the bill",DIR),
+ P("La chanson ___ nous écoutons date de 1980.","que","nous écoutons cette chanson","fs",['que','à laquelle','dont','qui']),
+ P("Le stylo ___ je me sers fuit.","dont","je me sers [[de]] ce stylo","ms",['que','dont','avec lequel','auquel']),
+ P("Le tableau ___ Léa regarde est célèbre.","que","Léa regarde ce tableau","ms",['que','auquel','dont','sur lequel']),
+ P("Le magasin ___ nous sommes entrés vend des livres anciens.","dans lequel","nous sommes entrés [[dans]] ce magasin","ms",['que','dans lequel','dont','auquel']),
+ V("payer ___ un repas","—","to pay for a meal",DIR),
+ V("répondre ___ une lettre","à","to answer a letter",NOEN),
+ V("se servir ___ un stylo","de","to use a pen",NOEN),
+ V("assister ___ un spectacle","à","to attend a show",NOEN),
+ P("Le repas ___ Marc a payé était délicieux.","que","Marc a payé ce repas","ms",['que','pour lequel','dont','auquel']),
+ P("La musique ___ je m'intéresse vient du Mali.","à laquelle","je m'intéresse [[à]] cette musique","fs",['que','à laquelle','dont','dans laquelle']),
+ P("L'amie ___ j'attends arrive de Paris.","que","j'attends cette amie","fsp",['que','pour qui','à qui','dont']),
+ P("L'amie ___ je téléphone arrive de Paris.","à qui","je téléphone [[à]] cette amie","fsp",['que','pour qui','à qui','dont']),
+ P("Le prix ___ le vendeur a demandé est trop élevé.","que","le vendeur a demandé ce prix","ms",['que','pour lequel','auquel','dont'])]},
+
+{id:'owner',part:3,title:'Which verb owns the blank?',goal:'Ignore prepositions that only link two verbs. Rebuild with the last verb.',n:6,
+ rule:'When verbs are chained (continuer à, décider de, finir par + infinitive), ignore the linking word. Rebuild with the last verb, the one that still needs the noun.',
+ cards:[
+ {h:'Prepositions that belong to another verb',b:p('Some verbs link to an infinitive with <b>à</b>, <b>de</b> or <b>par</b>. That small word only connects the two verbs.')+BK_LINK},
+ {h:'The noun belongs to the last verb',b:work([f('une cause <span class="slot">&nbsp;</span> nous devons continuer à nous battre'),'Chain of verbs: '+f('devons → continuer à → nous battre'),'Which verb still needs the noun? '+f('nous battre [[pour]] une cause'),f('une cause [[pour]] {{laquelle}} nous devons continuer à nous battre')])+key('The <b>à</b> of '+f('continuer à')+' has nothing to do with the blank.')},
+ {h:'Cross out the helpers',b:p('Strip the clause down to its last verb. Rebuild with that verb alone.')+fr("le livre <span class=\"slot\">&nbsp;</span> j'ai oublié de rendre")+fr('rendre ce livre → {{que}}')+fr('le concours <span class="slot">&nbsp;</span> il a décidé de participer')+fr('participer [[à]] ce concours → {{auquel}}')}],
+ items:[
+ G("La cause ___ nous avons décidé de consacrer notre temps est importante.",['décider','consacrer'],'consacrer',"à laquelle","consacrer notre temps [[à]] cette cause","fs",['dont','de laquelle','à laquelle','que']),
+ G("Le projet ___ ils ont fini par renoncer était trop cher.",['finir','renoncer'],'renoncer',"auquel","renoncer [[à]] ce projet","ms",['par lequel','auquel','dont','que']),
+ G("Les collègues ___ elle a commencé à travailler sont accueillants.",['commencer','travailler'],'travailler',"avec qui","travailler [[avec]] ces collègues","mpp",['à qui','avec qui','que','dont']),
+ G("Le livre ___ j'ai oublié de rendre est sur mon bureau.",['oublier','rendre'],'rendre',"que","rendre ce livre","ms",['dont','que','duquel','auquel']),
+ G("Le problème ___ il refuse de parler est sérieux.",['refuser','parler'],'parler',"dont","parler [[de]] ce problème","ms",['dont','que','auquel','duquel']),
+ G("La règle ___ les enfants ont appris à obéir est simple.",['apprendre','obéir'],'obéir',"à laquelle","obéir [[à]] cette règle","fs",['à laquelle','que','dont','auquel']),
+ G("Les amis ___ nous essayons de téléphoner ne répondent pas.",['essayer','téléphoner'],'téléphoner',"à qui","téléphoner [[à]] ces amis","mpp",['dont','de qui','à qui','que']),
+ G("L'outil ___ elle a réussi à se servir est compliqué.",['réussir','se servir'],'se servir',"dont","se servir [[de]] cet outil","ms",['auquel','dont','que','à laquelle']),
+ G("Le concours ___ il a décidé de participer a lieu en juin.",['décider','participer'],'participer',"auquel","participer [[à]] ce concours","ms",['dont','duquel','auquel','que']),
+ G("La chanson ___ j'ai envie d'écouter passe à la radio.",['avoir envie','écouter'],'écouter',"que","écouter cette chanson","fs",['dont','que','à laquelle','de laquelle']),
+ G("Les idées ___ il continue à lutter sont dangereuses.",['continuer','lutter'],'lutter',"contre lesquelles","lutter [[contre]] ces idées","fp",['auxquelles','contre lesquelles','que','dont']),
+ G("La ville ___ elle rêve de retourner est Lisbonne.",['rêver','retourner'],'retourner',"où","retourner [[dans]] cette ville","fs",['dont','où','que','de laquelle'])]},
+
+{id:'mix',part:3,title:'Mastery: everything, no options',goal:'Type the missing piece from scratch, as in a real fill-in exercise.',n:12,shuf:1,
+ rule:'Last verb, then its subject, then rebuild, then read the small word, then person or thing, then agree and contract.',
+ cards:[
+ {h:'The full decision path',b:PATH},
+ {h:'What the final check looks like',b:p('Twelve sentences, typed answers, no options and no prepositions given. Type the whole missing piece, preposition included. You need 10 of 12 on the first try.')+p('Missed sentences come back until you get them right. Each round draws a different set.')}],
+ items:[
+ P("Les valeurs ___ s'inspirent ces textes sont anciennes.","dont","ces textes s'inspirent [[de]] ces valeurs","fp"),
+ P("Le principe ___ s'appuient ces décisions est simple.","sur lequel","ces décisions s'appuient [[sur]] ce principe","ms"),
+ P("Les mesures ___ propose le maire sont populaires.","que","le maire propose ces mesures","fp"),
+ P("La ville autour ___ s'étendent des champs est très ancienne.","de laquelle","des champs s'étendent [[autour de]] cette ville","fs",undefined,{cp:1}),
+ P("Les traditions ___ ma famille tient beaucoup viennent de Sicile.","auxquelles","ma famille tient [[à]] ces traditions","fp"),
+ P("Le médecin ___ je suis allé hier est très patient.","chez qui","je suis allé [[chez]] ce médecin","msp"),
+ P("Le voisin ___ le chien aboie toute la nuit est en voyage.","dont","le chien [[de]] ce voisin","msp",undefined,{wh:1}),
+ P("Les problèmes ___ nous devons réfléchir sont nombreux.","auxquels","réfléchir [[à]] ces problèmes","mp",undefined,{alt:['sur lesquels']}),
+ P("La loi ___ les habitants protestent sera modifiée.","contre laquelle","les habitants protestent [[contre]] cette loi","fs"),
+ P("Le pays ___ elle rêve de retourner est le Portugal.","où","retourner [[dans]] ce pays","ms",undefined,{alt:['dans lequel','auquel'],n:'Rêver de only introduces retourner.'}),
+ P("Les collègues ___ je compte pour finir ce dossier sont fiables.","sur qui","je compte [[sur]] ces collègues","mpp"),
+ P("La chanson ___ tout le monde écoute date de 1975.","que","tout le monde écoute cette chanson","fs"),
+ P("Le lac près ___ nous campons est très profond.","duquel","nous campons [[près de]] ce lac","ms",undefined,{cp:1}),
+ P("Les outils ___ il a besoin sont dans le garage.","dont","il a besoin [[de]] ces outils","mp"),
+ P("La femme ___ il a fini par se marier est italienne.","avec qui","se marier [[avec]] cette femme","fsp",undefined,{n:'Finir par only introduces se marier.'}),
+ P("Le jour ___ ils se sont rencontrés, il neigeait.","où","ils se sont rencontrés ce jour-là","ms"),
+ P("Les réunions ___ elle refuse d'assister ont lieu le vendredi.","auxquelles","assister [[à]] ces réunions","fp",undefined,{n:'Refuser de only introduces assister.'}),
+ P("Le journal ___ lisent mes parents est local.","que","mes parents lisent ce journal","ms"),
+ P("La raison ___ je t'écris est simple.","pour laquelle","je t'écris [[pour]] cette raison","fs"),
+ P("Les enfants ___ la mère est médecin sont dans ma classe.","dont","la mère [[de]] ces enfants","mpp",undefined,{wh:1}),
+ P("Le film ___ a gagné le prix sort en mai.","qui","ce film a gagné le prix","ms"),
+ P("La boîte ___ je garde mes lettres est en métal.","dans laquelle","je garde mes lettres [[dans]] cette boîte","fs",undefined,{alt:['où']}),
+ P("Les amis grâce ___ j'ai déménagé habitent à côté.","à qui","j'ai déménagé [[grâce à]] ces amis","mpp"),
+ P("L'équipe ___ elle travaille depuis mars est très soudée.","avec laquelle","elle travaille [[avec]] cette équipe","fs",undefined,{alt:['dans laquelle','pour laquelle','où']})]}
+];
+
+/* ---------- grammar engine: classify an answer, explain right and wrong ---------- */
+function parse(x){const s=norm(x);
+  if(['qui','que','où','dont','quand'].includes(s))return{k:s};
+  const c={auquel:['à','ms'],auxquels:['à','mp'],auxquelles:['à','fp'],duquel:['de','ms'],desquels:['de','mp'],desquelles:['de','fp']}[s];
+  if(c)return{k:'l',prep:c[0],g:c[1]};
+  let m=s.match(/^(.+) qui$/);if(m)return{k:'pq',prep:m[1]};
+  m=s.match(/^(.+) (lequel|laquelle|lesquels|lesquelles)$/);if(m)return{k:'l',prep:m[1],g:Object.keys(F).find(g=>F[g]===m[2])};
+  if(/^.+ que$/.test(s))return{k:'pque'};
+  return{k:'?'}}
+function lequelForm(prep,g){
+  if(prep==='à')return{ms:'auquel',fs:'à laquelle',mp:'auxquels',fp:'auxquelles'}[g];
+  if(prep==='de')return{ms:'duquel',fs:'de laquelle',mp:'desquels',fp:'desquelles'}[g];
+  return prep+' '+F[g]}
+function accepted(it){const a=[it.a,...(it.alt||[])],r=parse(it.a);
+  if(r.k==='pq')a.push(lequelForm(r.prep,it.g));   // formal lequel form is also right for a person
+  return a}
+function because(it){const r=parse(it.a),A=`<b>${it.a}</b>`;
+  switch(r.k){
+    case'qui':return`The noun does the verb and no preposition is involved: ${A}.`;
+    case'que':return`Nothing stands between the verb and the noun: ${A}.`;
+    case'où':return`A place or a time, with no precise preposition to keep: ${A}.`;
+    case'dont':return it.wh?`<i>de</i> links two nouns (“whose”): ${A}, then the article and the noun.`:`A bare <i>de</i> before the noun: de + noun = ${A}.`;
+    case'pq':return it.cp?`Compound preposition ending in <i>de</i> + a person: ${A}.`:`<i>${r.prep}</i> + a person: ${A}.`;
+    case'l':{const gn=GN[r.g];
+      if(it.cp)return`Compound preposition ending in <i>de</i> + a ${gn} noun: de + ${F[r.g]} = ${A}.`;
+      if(r.prep==='à')return`<i>à</i> + a ${gn} thing: à + ${F[r.g]} = ${A}.`;
+      return`<i>${r.prep}</i> + a ${gn} thing: ${A}.`}}
+  return''}
+function whyNot(ch,it){const c=parse(ch),r=parse(it.a),C=`<b>${esc(ch)}</b>`;
+  const needs=it.cp?'The compound preposition ends in <i>de</i>.':r.prep?`This clause needs <i>${r.prep}</i>.`:r.k==='dont'?'This clause needs <i>de</i>.':'';
+  const plain=['que','qui','où'].includes(r.k);
+  switch(c.k){
+    case'que':return r.k==='qui'?`${C} is a direct object. Here the noun does the verb itself.`:r.k==='où'?`${C} needs a verb that takes the noun directly. This one doesn't.`:`${C} only works when nothing stands between the verb and the noun. ${needs}`;
+    case'qui':return`Bare ${C} makes the noun the subject. Here something else does the verb.`;
+    case'où':return it.per?`${C} never refers to a person.`:r.k==='que'?`A place or time noun is not automatically ${C}. This verb takes the noun directly.`:r.k==='dont'?`A place noun is not automatically ${C}. This verb takes <i>de</i>.`:`${C} only replaces a place or a time. It can't carry this preposition.`;
+    case'dont':return it.cp?`${C} can't follow a compound preposition. The <i>de</i> belongs to that preposition and can't be cut off.`:r.prep?`${C} contains <i>de</i>. ${needs}`:`${C} contains <i>de</i>. There is no <i>de</i> in this clause.`;
+    case'quand':return`${C} is never a relative pronoun. For a time, use <b>où</b>.`;
+    case'pque':return'A preposition is never followed by <b>que</b>.';
+    case'pq':
+      if(r.k==='dont')return'A bare <i>de</i> gives <b>dont</b>, for people too.';
+      if(plain)return'No preposition is needed here.';
+      if(!it.per)return`${C} is for people. A thing needs the lequel family.`;
+      return`Wrong preposition. ${needs}`;
+    case'l':
+      if(r.k==='dont')return c.prep==='de'?'The duquel family is only for compound prepositions such as <i>près de</i>. A bare <i>de</i> gives <b>dont</b>.':'This clause needs a bare <i>de</i>, which gives <b>dont</b>.';
+      if(plain)return'No preposition is needed here.';
+      if(c.prep!==r.prep)return`Wrong preposition. ${needs}`;
+      return`Right preposition, wrong agreement. The antecedent is ${GN[it.g]}.`}
+  return"That isn't a form that works here."}
+
+/* ---------- state ---------- */
+const KEY='fr_dossier_mastery_pr', OLDKEY='atelier-pr-v1'; /* NEVER change KEY: saved progress lives here (fr_dossier_ prefix = covered by the landing page backup) */
+try{if(localStorage.getItem(KEY)===null){const o=localStorage.getItem(OLDKEY);if(o!==null){localStorage.setItem(KEY,o);localStorage.removeItem(OLDKEY)}}}catch(e){}
+let S={cleared:{},all:false,cur:0};
+try{Object.assign(S,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const unlocked=i=>S.all||i===0||(B[i-1].id in S.cleared);
+const W={b:0,phase:'learn',card:0,deck:{},round:null,cur:null};
+W.b=Math.min(Math.max(S.cur|0,0),B.length-1); if(!unlocked(W.b))W.b=0;
+const stage=$('#stage'),nav=$('#nav');
+const btn=(act,label,cls)=>`<button class="btn ${cls||''}" data-act="${act}" type="button">${label}</button>`;
+
+/* ---------- navigation ---------- */
+function renderNav(){let h='<button class="tool" id="navclose" type="button">Close</button>';
+  PARTS.forEach((pt,pi)=>{h+=`<h4>${pt}</h4><ol>`;
+    B.forEach((b,i)=>{if(b.part!==pi)return;const un=unlocked(i),dn=b.id in S.cleared;
+      h+=`<li><button type="button" class="nb ${i===W.b?'cur':''} ${dn?'done':''} ${un?'':'lock'}" data-go="${i}" ${un?'':'aria-disabled="true"'}><span class="n">${i+1}</span><span>${b.title}</span><span class="st">${dn?'✓ '+S.cleared[b.id]+'%':un?'':'locked'}</span></button></li>`});
+    h+='</ol>'});
+  h+=`<div class="navfoot"><small>Each block unlocks when you clear the one before it.</small><button type="button" data-foot="all">${S.all?'Lock blocks again':'Unlock all blocks'}</button><button type="button" data-foot="reset">Reset my progress</button></div>`;
+  nav.innerHTML=h}
+function go(i){W.b=i;W.phase='learn';W.card=0;S.cur=i;save();nav.classList.remove('open');render();window.scrollTo(0,0)}
+
+/* ---------- stage ---------- */
+function head(b,short){const i=B.indexOf(b);return`<p class="eyebrow">${PARTS[b.part]} · Block ${i+1} of ${B.length}</p><h2>${b.title}</h2>${short?'':`<p class="goal">${b.goal}</p>`}`}
+function render(){renderNav();const b=B[W.b];
+  stage.innerHTML=W.phase==='learn'?learn(b):W.phase==='check'?check(b):done(b);
+  if(W.phase==='check'){const a=$('#ans');if(a&&matchMedia('(pointer:fine)').matches)a.focus()}}
+function learn(b){const c=b.cards[W.card],last=W.card===b.cards.length-1;
+  return head(b)+`<section class="card"><p class="cardno">Lesson note ${W.card+1} of ${b.cards.length}</p><h3>${c.h}</h3>${fx(c.b)}</section><div class="pips" aria-hidden="true">${b.cards.map((_,i)=>`<i class="${i===W.card?'on':i<W.card?'seen':''}"></i>`).join('')}</div><div class="row">${W.card?btn('back','Back','ghost'):''}${btn(last?'start':'next',last?'Start the check':'Next')}${last?'':btn('start','Skip to the check','link')}</div>`}
+function newRound(b){const d=W.deck[b.id]||(W.deck[b.id]={p:0,carry:[]}),n=Math.min(b.n,b.items.length);let ids=[];
+  d.carry.forEach(i=>{if(ids.length<Math.ceil(n/2)&&!ids.includes(i))ids.push(i)});
+  if(b.shuf){shuffle([...b.items.keys()]).forEach(i=>{if(ids.length<n&&!ids.includes(i))ids.push(i)})}
+  else while(ids.length<n){const i=d.p%b.items.length;d.p++;if(!ids.includes(i))ids.push(i)}
+  d.carry=[];W.round={q:ids,first:{},n};W.phase='check'}
+function check(b){const r=W.round,it=b.items[r.q[0]],dn=Object.keys(r.first).length,retry=r.q[0] in r.first;
+  W.cur={it,ok:true,answered:false};
+  return head(b,true)+`<aside class="rule"><b>Rule in play</b>${b.rule}</aside><div class="prog"><span>${retry?`Second try · ${r.q.length} left`:`Question ${dn+1} of ${r.n}`}</span><div class="bar"><i style="width:${dn/r.n*100}%"></i></div></div><section id="item">${itemHTML(it)}</section>`}
+const optsHTML=(o,ui)=>`<div class="opts" id="opts">${o.map(x=>`<button type="button" class="opt ${ui?'ui':'fr'}" data-o="${esc(x)}">${x==='—'?'none':x}</button>`).join('')}</div>`;
+function itemHTML(it){
+  if(it.t==='q')return`<p class="ask">${it.pr}</p><p class="fr big">${sent(it.s)}</p>${optsHTML(it.fix?it.o:shuffle(it.o.slice()),it.fix)}<div id="fb"></div>`;
+  if(it.t==='v')return`<p class="ask">Which preposition does this verb take?</p>${it.h?`<p class="hint">${it.h}</p>`:''}<p class="fr big">${sent(it.v)}</p>${optsHTML(PREPS)}<div id="fb"></div>`;
+  if(it.t==='g')return`<p class="ask">Step 1. Which verb does the blank belong to?</p><p class="fr big">${sent(it.s)}</p><div class="opts" id="g1">${it.vs.map(x=>`<button type="button" class="opt fr" data-g="${esc(x)}">${x}</button>`).join('')}</div><div id="gfb"></div><div id="g2" hidden><p class="ask">Step 2. Fill the blank.</p>${optsHTML(shuffle(it.o.slice()))}</div><div id="fb"></div>`;
+  if(it.o)return`<p class="ask">Fill the blank.</p><p class="fr big">${sent(it.s)}</p>${optsHTML(shuffle(it.o.slice()))}<div id="fb"></div>`;
+  return`<p class="ask">Type the missing piece. Include the preposition if one is needed.</p><p class="fr big">${sent(it.s)}</p><form id="tf" class="typed"><input id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Your answer"><span class="acc">${['à','ù'].map(c=>`<button type="button" class="chipk" data-ch="${c}" aria-label="Insert ${c}">${c}</button>`).join('')}</span><button class="btn" type="submit">Check</button></form><div id="fb"></div>`}
+function gradeP(it,choice,typed){const acc=accepted(it),n=norm(choice);const hit=acc.find(x=>norm(x)===n);
+  /* accents always count (dossier standard): an accent slip is a miss, named as such */
+  const slip=!hit&&typed&&n?acc.find(x=>strip(norm(x))===strip(n)):null;
+  let h;
+  const alt=hit&&norm(hit)!==norm(it.a);
+  if(hit)h=`<p class="v good">✓ Correct</p>${alt?`<div class="fbrow info"><h4>Note</h4><p>Accepted. The answer you will see most often is <b>${it.a}</b>.</p></div>`:''}`;
+  else h=`<p class="v bad">✗ Not yet</p><div class="fbrow yours"><h4>Why your answer fails</h4><p>${typed?`You wrote <s>${esc(choice)||'nothing'}</s>.`:`You chose <s>${esc(choice)}</s>.`} ${slip?`Check the accents: only an accent is off. It is <b>${slip}</b>.`:n?whyNot(choice,it):''}</p></div>`;
+  h+=`<div class="fbrow rb"><h4>Rebuild the clause</h4><p class="fr">${fx(it.rb)}</p></div><div class="fbrow so"><h4>So the answer is</h4><p>${because(it)}${it.n?' '+it.n:''}</p></div>`;
+  return{ok:!!hit,h,fill:hit||it.a}}
+function settle(ok,html,fill){const c=W.cur;c.answered=true;c.ok=c.ok&&ok;
+  const sl=$('#slot');if(sl&&fill!==undefined){if(fill===''){sl.remove()}else{sl.textContent=fill;sl.classList.add('good')}}
+  const last=W.round.q.length===1&&c.ok;
+  $('#fb').innerHTML=`<div class="fb ${ok?'isgood':'isbad'}">${html}</div>${btn('adv',last?'See the result':'Next')}`;
+  const nb=$('[data-act="adv"]');if(nb)nb.focus()}
+function markOpts(box,choice,right){box.querySelectorAll('.opt').forEach(o=>{o.disabled=true;const v=o.dataset.o??o.dataset.g;if(v===right)o.classList.add('right');else if(v===choice)o.classList.add('wrong')})}
+function answer(choice,typed){const c=W.cur,it=c.it;if(c.answered)return;
+  if(it.t==='q'){const ok=choice===it.a;markOpts($('#opts'),choice,it.a);settle(ok,`<p class="v ${ok?'good':'bad'}">${ok?'✓ Correct':'✗ Not yet'}</p><div class="fbrow rb"><h4>Why</h4><p>${fx(it.why)}</p></div>`);return}
+  if(it.t==='v'){const ok=choice===it.a;markOpts($('#opts'),choice,it.a);
+    const full=it.a==='—'?it.v.replace(' ___',''):it.v.replace('___','[['+it.a+']]');
+    const rem=it.n||(it.a==='—'?'No preposition. The noun follows the verb directly.':'');
+    settle(ok,`<p class="v ${ok?'good':'bad'}">${ok?'✓ Correct':'✗ Not yet'}</p><div class="fbrow rb"><h4>The verb with its preposition</h4><p><span class="fr">${fx(full)}</span> <span class="gl">${it.gl}</span></p></div>${rem?`<div class="fbrow so"><h4>Remember</h4><p>${rem}</p></div>`:''}`,it.a==='—'?'':it.a);return}
+  const res=gradeP(it,choice,typed);
+  if(!typed){const box=$('#g2')||$('#item');markOpts(box.querySelector('#opts'),choice,it.a)}else{$('#ans').disabled=true;$('#tf button[type=submit]').disabled=true}
+  settle(res.ok,res.h,res.fill)}
+function stepG(choice){const c=W.cur,it=c.it;if(c.g1)return;c.g1=true;const ok=choice===it.v;c.ok=ok;
+  $('#g1').querySelectorAll('.opt').forEach(o=>{o.disabled=true;if(o.dataset.g===it.v)o.classList.add('right');else if(o.dataset.g===choice)o.classList.add('wrong')});
+  const other=it.vs.find(x=>x!==it.v);
+  $('#gfb').innerHTML=`<div class="fb ${ok?'isgood':'isbad'}"><p class="v ${ok?'good':'bad'}">${ok?'✓ Right':'✗ Not that one'}</p><p><span class="fr">${other}</span> only introduces the next verb. The noun belongs to <span class="fr"><b>${it.v}</b></span>.</p></div>`;
+  $('#g2').hidden=false}
+function advance(){const r=W.round,i=r.q.shift(),ok=W.cur.ok,b=B[W.b];
+  if(!(i in r.first)){r.first[i]=ok;if(!ok)W.deck[b.id].carry.push(i)}
+  if(!ok)r.q.push(i);
+  if(!r.q.length)W.phase='done';
+  render();window.scrollTo(0,0)}
+function done(b){const r=W.round,sc=Object.values(r.first).filter(Boolean).length,need=Math.ceil(r.n*.8-1e-9),pass=sc>=need,i=B.indexOf(b),nx=B[i+1];
+  if(pass){S.cleared[b.id]=Math.max(S.cleared[b.id]||0,Math.round(sc/r.n*100));save();renderNav()}
+  const body=pass
+    ?`<h3>Block cleared</h3><p>${nx?'The next block is open. If any of this still feels shaky, run another round first. Each round brings new sentences.':'That was the last block. You have worked through the whole system.'}</p><div class="row">${nx?btn('nextblock','Next: '+nx.title):''}${btn('again','Another round','ghost')}${btn('reread','Reread the lesson','link')}</div>`
+    :`<h3>Not solid yet</h3><p>You need ${need} of ${r.n} on the first try. The next block stays locked until this one holds. The sentences you missed will come back in the next round.</p><div class="row">${btn('again','Another round')}${btn('reread','Reread the lesson','ghost')}</div>`;
+  return head(b,true)+`<section class="card result"><p class="score">${sc}<small> of ${r.n} on the first try</small></p>${body}</section>`}
+
+/* ---------- reference sheet ---------- */
+function buildRef(){const sec=(h,b)=>`<section><h3>${h}</h3>${fx(b)}</section>`;
+  $('#ref').innerHTML=`<div class="in"><header><h2>Reference</h2><button class="tool" id="refclose" type="button">Close</button></header>`+
+    sec('The decision path',PATH)+sec('The lequel family',T_LEQ+T_A+T_DE)+sec('Compound prepositions ending in de',L_COMP)+
+    sec('Verbs with à + a thing',BK_A1)+sec('Verbs with à + a person',BK_A2)+sec('Verbs with de',BK_D1+BK_D2)+
+    sec('Verbs with sur',BK_SUR)+sec('Verbs with contre and pour',BK_CP)+sec('Verbs with avec, dans, par, en',BK_ETC)+
+    sec('Direct in French (use que)',BK_DIR)+sec('Linking verbs: ignore their preposition',BK_LINK)+`</div>`}
+
+/* ---------- events ---------- */
+stage.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.act){const b=B[W.b];switch(t.dataset.act){
+    case'next':W.card++;render();break;
+    case'back':W.card--;render();break;
+    case'start':case'again':newRound(b);render();window.scrollTo(0,0);break;
+    case'reread':W.phase='learn';W.card=0;render();window.scrollTo(0,0);break;
+    case'nextblock':go(W.b+1);break;
+    case'adv':advance();break}return}
+  if(t.dataset.g!==undefined){stepG(t.dataset.g);return}
+  if(t.dataset.o!==undefined){answer(t.dataset.o,false);return}
+  if(t.dataset.ch){const a=$('#ans');if(a.disabled)return;const s=a.selectionStart??a.value.length,en=a.selectionEnd??s;a.value=a.value.slice(0,s)+t.dataset.ch+a.value.slice(en);a.focus();a.setSelectionRange(s+1,s+1)}});
+stage.addEventListener('submit',e=>{e.preventDefault();if(e.target.id==='tf')answer($('#ans').value,true)});
+let armed=null;
+nav.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.id==='navclose'){nav.classList.remove('open');return}
+  if(t.dataset.go!==undefined){const i=+t.dataset.go;if(unlocked(i))go(i);return}
+  if(t.dataset.foot==='all'){S.all=!S.all;save();if(!unlocked(W.b))W.b=0;render();return}
+  if(t.dataset.foot==='reset'){if(armed!=='reset'){armed='reset';t.textContent='Tap again to erase all progress';setTimeout(()=>{armed=null;renderNav()},4000);return}
+    armed=null;S={cleared:{},all:false,cur:0};save();W.deck={};go(0)}});
+$('#navbtn').addEventListener('click',()=>nav.classList.add('open'));
+$('#refbtn').addEventListener('click',()=>{if(!$('#ref').innerHTML)buildRef();$('#ref').hidden=false;$('#refclose').focus()});
+$('#ref').addEventListener('click',e=>{if(e.target.id==='refclose')$('#ref').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#ref').hidden=true;nav.classList.remove('open')}});
+
+/* ---------- theme: device by default; the masthead button forces light or dark, one choice (frTheme) for the whole site ---------- */
+(function(){const K='frTheme',b=$('#themeBtn'),root=document.documentElement,mq=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)');
+  const saved=()=>{try{const t=localStorage.getItem(K);return t==='light'||t==='dark'?t:null}catch(e){return null}};
+  const eff=()=>saved()||(mq&&mq.matches?'dark':'light');
+  function paint(){const s=saved(),e=eff();if(s)root.setAttribute('data-theme',s);else root.removeAttribute('data-theme');
+    b.textContent=e==='dark'?'\u263E':'\u2600';
+    const l=(e==='dark'?'Dark':'Light')+(s?'':' (device setting)')+' — click for '+(e==='dark'?'light':'dark')+(s?', Alt-click to follow the device':'');b.title=l;b.setAttribute('aria-label',l)}
+  b.addEventListener('click',ev=>{try{if(ev.altKey)localStorage.removeItem(K);else localStorage.setItem(K,eff()==='dark'?'light':'dark')}catch(e){}paint()});
+  if(mq&&mq.addEventListener)mq.addEventListener('change',paint);paint()})();
+render();
+</script>
+</body>
+</html>
