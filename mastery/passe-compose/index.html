@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Passé composé · Mastery Lesson — v1.0.0</title>
+<script>try{var t=localStorage.getItem("frTheme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<style>
+/* Layout: a French school cahier. Block list on the left, one lesson card or one question at a time on the right. French is set in a serif, English coaching in a sans. */
+:root{
+  --paper:#f4f1e9; --surface:#fffdf8; --ink:#16243d; --muted:#4e5a72; --line:#e4ddcd;
+  --rule:rgba(42,74,143,.18); --margin:#c0392b; --accent:#2a4a8f; --accent-ink:#ffffff;
+  --prep-bg:#fbe3a6; --prep-ink:#4a3500; --ex-bg:#eef2fa; --note-bg:#f6ecdb; --note-ink:#7a4f08; --key-bg:#efe8fa; --key-ink:#5a2fa8; --test-bg:#dff0ee; --test-ink:#0d6259; --good:#1f6e3c; --good-bg:#e2efe7; --bad:#a93226; --bad-bg:#fbe9e7;
+  --display:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --french:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#B0ADC6; --line:#312E42;
+  --rule:rgba(167,151,255,.20); --margin:#FF8279; --accent:#A797FF; --accent-ink:#13121B;
+  --prep-bg:#5c4a10; --prep-ink:#ffe9ad; --ex-bg:#222A47; --note-bg:#36290F; --note-ink:#F2B45C; --key-bg:#30235A; --key-ink:#C9B3FF; --test-bg:#10363b; --test-ink:#7fd6df; --good:#6ED69C; --good-bg:#17321F; --bad:#FF8F87; --bad-bg:#3A1F22; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#13121B; --surface:#1C1A27; --ink:#ECEAF5; --muted:#B0ADC6; --line:#312E42;
+  --rule:rgba(167,151,255,.20); --margin:#FF8279; --accent:#A797FF; --accent-ink:#13121B;
+  --prep-bg:#5c4a10; --prep-ink:#ffe9ad; --ex-bg:#222A47; --note-bg:#36290F; --note-ink:#F2B45C; --key-bg:#30235A; --key-ink:#C9B3FF; --test-bg:#10363b; --test-ink:#7fd6df; --good:#6ED69C; --good-bg:#17321F; --bad:#FF8F87; --bad-bg:#3A1F22; color-scheme:dark }
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{max-width:66rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:1.1rem 3rem;display:grid;grid-template-columns:17rem minmax(0,1fr);gap:1.5rem 2.5rem}
+.top{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;border-bottom:1px solid var(--line);padding-bottom:.8rem}
+.top h1{font-size:1.15rem;margin:0;font-weight:700;letter-spacing:-.01em}
+.top .sub{color:var(--muted);font-size:.9rem;flex:1 1 12rem;min-width:0}
+.top .tools{display:flex;gap:.5rem}
+.tool{background:none;border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;font-size:.9rem}
+.tool:hover{border-color:var(--accent)}
+#navbtn{display:none}
+nav h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:1.1rem 0 .35rem;font-weight:600}
+nav h4:first-child{margin-top:0}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.nb{display:grid;grid-template-columns:1.6rem minmax(0,1fr) auto;gap:.4rem;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-radius:6px;padding:.38rem .5rem;font-size:.93rem}
+.nb .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.8rem}
+.nb .st{font-size:.75rem;color:var(--muted)}
+.nb.done .st{color:var(--good);font-weight:700}
+.nb.cur{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-weight:600}
+.nb.lock{color:var(--muted);cursor:not-allowed;opacity:.65}
+.nb:not(.lock):hover{background:var(--surface)}
+.navfoot{margin-top:1.4rem;display:flex;flex-direction:column;gap:.3rem;align-items:flex-start}
+.navfoot button{background:none;border:0;padding:0;color:var(--muted);font-size:.8rem;text-decoration:underline}
+.navfoot small{color:var(--muted);font-size:.75rem}
+#navclose{display:none}
+main{min-width:0;max-width:42rem}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 .2rem;font-weight:600}
+h2{font-size:1.7rem;line-height:1.15;margin:0 0 .4rem;letter-spacing:-.02em;text-wrap:balance}
+.goal{color:var(--muted);margin:0 0 1.2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.75rem}
+.card h3{font-size:1.35rem;margin:0;letter-spacing:-.01em;text-wrap:balance;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.6rem}
+.cardno{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:-.45rem!important}
+.card p,.rule p{margin:0}
+.fr{font-family:var(--french);font-size:1.2rem;line-height:1.45}
+span.fr{font-size:1.12em}
+.fr.big{font-size:1.45rem;line-height:1.5;margin:.2rem 0 1rem;background:var(--surface);border:1px solid var(--line);padding:.9rem 1rem}
+.gl{font-family:var(--display);font-size:.85rem;color:var(--muted)}
+mark.prep{background:var(--prep-bg);color:var(--prep-ink);padding:0 .22em;border-radius:3px}
+b.pron{color:var(--accent);font-weight:600}
+u.ante{text-decoration:underline;text-decoration-color:var(--margin);text-decoration-thickness:2px;text-underline-offset:3px}
+.card p.ex::before,.fr.ok::before,.fr.no::before,.note::before,.key::before,.tn b:first-child,.wk h4,.bk h4,.fbrow h4,.ask::before{display:block;font-family:var(--display);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:0 0 .25rem;line-height:1.4}
+.card p.ex{background:var(--ex-bg);padding:.6rem .9rem}
+.card p.ex::before{content:"Example";color:var(--accent)}
+.card p.ex + p.ex{margin-top:-.75rem;padding-top:0}
+.card p.ex + p.ex::before{content:none}
+.fr.ok{background:var(--good-bg);padding:.6rem .9rem}
+.fr.ok::before{content:"✓ Correct French";color:var(--good)}
+.fr.no{background:var(--bad-bg);padding:.6rem .9rem}
+.fr.no::before{content:"✗ Wrong";color:var(--bad)}
+.note{background:var(--note-bg);padding:.6rem .9rem;font-size:.95rem}
+.note::before{content:"Note";color:var(--note-ink)}
+.key{background:var(--key-bg);padding:.6rem .9rem;font-weight:600}
+.key::before{content:"Key point";color:var(--key-ink)}
+.tn{background:var(--test-bg);padding:.6rem .9rem;font-size:.95rem}
+.tn b:first-child{color:var(--test-ink)}
+.wk,.bk{border:1px solid var(--line);padding:.7rem .9rem .8rem}
+.wk h4{color:var(--margin)}
+.bk h4{color:var(--accent)}
+#ref .bk{border:0;padding:0}
+#ref .bk h4{display:none}
+.ask::before{content:"Your task";color:var(--accent)}
+ol.work{list-style:none;counter-reset:w;margin:0;padding:0 0 0 1rem;border-left:2px solid var(--margin);background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% 2.2rem;background-position:0 2.15rem}
+ol.work li{counter-increment:w;line-height:2.2rem;padding-left:1.6rem;position:relative}
+ol.work li::before{content:counter(w);position:absolute;left:0;font-size:.8rem;color:var(--muted);font-weight:600}
+ol.path{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:.45rem}
+ul.bank{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.1rem 1.5rem}
+ul.bank li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.2rem .6rem;border-bottom:1px solid var(--rule);padding:.3rem 0}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding:.3rem .8rem .3rem 0}
+td{padding:.4rem .8rem .4rem 0;border-top:1px solid var(--line);vertical-align:baseline}
+.pips{display:flex;gap:.35rem;margin:1rem 0}
+.pips i{height:4px;flex:1;max-width:3rem;background:var(--line);border-radius:2px}
+.pips i.seen{background:var(--muted)}
+.pips i.on{background:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.btn{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:.6rem 1.2rem;font-weight:600}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.btn.link{background:none;border-color:transparent;color:var(--muted);font-weight:400;text-decoration:underline;padding-inline:.4rem}
+.rule{padding:.7rem .9rem;font-size:.95rem;margin-bottom:1.1rem;background:var(--key-bg)}
+.rule b:first-child{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--key-ink);margin-bottom:.2rem}
+.prog{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--muted);margin-bottom:1rem;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.ask{margin:0 0 .3rem;font-weight:600}
+.hint{color:var(--muted);font-size:.9rem;margin:0 0 .4rem}
+.slot{display:inline-block;min-width:5.5em;border-bottom:2px solid var(--accent);text-align:center;font-weight:600;padding:0 .3em}
+.slot.good{color:var(--good);border-color:var(--good)}
+.opts{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1rem}
+.opt{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:.5rem .95rem;font-size:1.15rem}
+.opt.ui{font-family:var(--display);font-size:.95rem}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.right{border-color:var(--good);background:var(--good-bg);color:var(--good);opacity:1;font-weight:600}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad);opacity:1;text-decoration:line-through}
+.typed{display:flex;flex-wrap:wrap;gap:.6rem;align-items:flex-end;margin-bottom:1rem}
+#ans{flex:1 1 12rem;min-width:0;font-family:var(--french);font-size:1.4rem;color:var(--ink);background-color:var(--surface);background-image:linear-gradient(var(--rule) 1px,transparent 1px);background-size:100% .8rem;border:0;border-left:2px solid var(--margin);border-bottom:2px solid var(--accent);padding:.55rem .8rem;border-radius:0}
+.acc{display:flex;gap:.3rem}
+.chipk{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.4rem .7rem;font-family:var(--french);font-size:1.1rem}
+.fb{border:2px solid var(--line);background:var(--surface);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1rem}
+.fb.isgood{border-color:var(--good)}
+.fb.isbad{border-color:var(--bad)}
+.fb p{margin:0}
+.fbrow{padding:.55rem .8rem}
+.fbrow.yours{background:var(--bad-bg)}
+.fbrow.yours h4{color:var(--bad)}
+.fbrow.rb{background:var(--ex-bg)}
+.fbrow.rb h4{color:var(--accent)}
+.fbrow.so{background:var(--key-bg)}
+.fbrow.so h4{color:var(--key-ink)}
+.fbrow.info{background:var(--note-bg)}
+.fbrow.info h4{color:var(--note-ink)}
+.v{font-weight:700;font-size:1.25rem}
+.v.good{color:var(--good)} .v.bad{color:var(--bad)}
+.yours s{color:var(--bad);font-family:var(--french);font-size:1.1em}
+.lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-right:.4rem}
+.result h3{font-size:1.4rem;margin:0}
+.score{font-size:2.6rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.score small{font-size:1rem;color:var(--muted);font-weight:400}
+#ref{position:fixed;inset:0;z-index:30;background:var(--paper);overflow:auto;padding:max(1rem,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(2rem,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#ref .in{max-width:46rem;margin:0 auto;display:flex;flex-direction:column;gap:1.4rem}
+#ref header{display:flex;justify-content:space-between;align-items:center}
+#ref h2{margin:0}
+#ref h3{font-size:1.05rem;margin:0 0 .5rem}
+#ref section{display:flex;flex-direction:column;gap:.6rem}
+@media (max-width:56rem){
+  .app{grid-template-columns:minmax(0,1fr)}
+  #navbtn{display:inline-block}
+  nav{display:none}
+  nav.open{display:block;position:fixed;inset:0;z-index:20;background:var(--paper);overflow:auto;padding:max(1rem,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(2rem,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  nav.open #navclose{display:inline-block;margin-bottom:1rem}
+  h2{font-size:1.45rem}
+  .fr.big{font-size:1.3rem}
+  .card{padding:1.1rem}
+}
+@media (prefers-reduced-motion:no-preference){ .bar i{transition:width .25s} }
+.typed .acc{flex:1 1 100%;flex-wrap:wrap}
+.fr s{color:var(--bad)}
+.note a,.app>footer a{color:var(--accent)}
+/* dossier masthead, footer and theme button */
+.top .brand{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem}
+.backlink{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);text-decoration:none;margin:0 0 .35rem;padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.backlink:hover{color:var(--accent);border-color:var(--accent)}
+.top .eyebrow{margin:0}
+.top .tools{align-items:center}
+.themebtn{appearance:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:17px;line-height:1;display:grid;place-items:center;padding:0}
+.themebtn:hover{border-color:var(--accent)}
+.app>footer{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1rem;font-size:.8rem;color:var(--muted);line-height:1.55}
+.app>footer strong{color:var(--ink)}
+.changelog summary{cursor:pointer;margin-top:.4rem}
+.changelog span{display:block;margin-top:.35rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <a class="backlink" href="/mastery/">‹ Mastery lessons</a>
+      <div class="eyebrow">Mastery lesson · v1.0.0</div>
+      <h1>Passé composé</h1>
+    </div>
+    <span class="sub">avoir and être, participles, agreement and word order</span>
+    <span class="tools">
+      <button class="tool" id="navbtn" type="button">Blocks</button>
+      <button class="tool" id="refbtn" type="button">Reference</button>
+      <button type="button" class="themebtn" id="themeBtn" aria-label="Theme"></button>
+    </span>
+  </header>
+  <nav id="nav" aria-label="Lesson blocks"></nav>
+  <main id="stage"></main>
+  <footer>
+    <strong>Mastery lesson · Passé composé · v1.0.0</strong> — the whole passé composé, from the ground up: the two pieces, regular and irregular participles, avoir or être (including the verbs that switch and the pronominal verbs), agreement, negation, questions, adverbs and pronouns. 13 blocks, 353 questions. Each block unlocks when you pass the check before it (80% on the first try). Progress is saved in this browser. Choosing between the passé composé and the imparfait is a separate lesson.<br>
+    <details class="changelog"><summary>Changelog</summary>
+    <span>v1.0.0 (18 Nov 2026): <strong>First release.</strong> 13 lesson blocks with a check after each, a Reference sheet, light and dark mode. Accents, the spelling of the auxiliary and the reflexive pronoun always count in typed answers.</span>
+    </details>
+  </footer>
+</div>
+<div id="ref" hidden></div>
+
+<script>
+/* ---------- small helpers ---------- */
+const $=(s,e=document)=>e.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[’`´]/g,"'").replace(/\s+/g,' ').trim();
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'');
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const fx=s=>s.replace(/\[\[(.+?)\]\]/g,'<mark class="prep">$1</mark>').replace(/\{\{(.+?)\}\}/g,'<b class="pron">$1</b>').replace(/__(.+?)__/g,'<u class="ante">$1</u>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+const sent=(s,fill,cls)=>fx(s.replace('___','\u0001')).replace('\u0001',`<span class="slot ${cls||''}" id="slot">${fill||'&nbsp;'}</span>`);
+const p=s=>`<p>${s}</p>`, f=s=>`<span class="fr">${s}</span>`, key=s=>`<p class="key">${s}</p>`,
+  fr=(s,g)=>`<p class="fr ex">${s}${g?` <span class="gl">${g}</span>`:''}</p>`,
+  ok=s=>`<p class="fr ok">${s}</p>`, no=s=>`<p class="fr no">${s}</p>`,
+  note=s=>`<p class="note">${s}</p>`, tn=s=>`<p class="tn"><b>DLPT and OPI</b>${s}</p>`,
+  work=a=>`<div class="wk"><h4>Step by step</h4><ol class="work">${a.map(x=>`<li>${x}</li>`).join('')}</ol></div>`,
+  bank=a=>`<div class="bk"><h4>Learn these</h4><ul class="bank">${a.map(([v,g])=>`<li><span class="fr">${v.replace(/ (à|de|sur|contre|pour|avec|dans|par|en)$/,' [[$1]]')}</span><span class="gl">${g}</span></li>`).join('')}</ul></div>`,
+  tbl=(h,r)=>`<div class="tw"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${r.map(x=>`<tr>${x.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+/* ---------- item builders ---------- */
+const ETRE=new Set(['aller','venir','arriver','partir','entrer','sortir','monter','descendre','rester','tomber','naître','mourir','devenir','revenir','rentrer','retourner','passer']);
+/* participles: every infinitive used in the lesson */
+const PT={manger:'mangé',parler:'parlé',travailler:'travaillé',regarder:'regardé',acheter:'acheté',nettoyer:'nettoyé',décorer:'décoré',ranger:'rangé',oublier:'oublié',emménager:'emménagé',louer:'loué',payer:'payé',fermer:'fermé',préparer:'préparé',visiter:'visité',chanter:'chanté',jouer:'joué',écouter:'écouté',commencer:'commencé',voyager:'voyagé',aider:'aidé',inviter:'invité',trouver:'trouvé',laver:'lavé',partager:'partagé',emprunter:'emprunté',chercher:'cherché',commander:'commandé',marcher:'marché',nager:'nagé',habiter:'habité',planter:'planté',raconter:'raconté',envoyer:'envoyé',déposer:'déposé',rencontrer:'rencontré',téléphoner:'téléphoné',danser:'dansé',couper:'coupé',casser:'cassé',
+ finir:'fini',choisir:'choisi',réussir:'réussi',remplir:'rempli',grandir:'grandi',dormir:'dormi',
+ vendre:'vendu',attendre:'attendu',entendre:'entendu',perdre:'perdu',répondre:'répondu',rendre:'rendu',
+ prendre:'pris',comprendre:'compris',apprendre:'appris',surprendre:'surpris',mettre:'mis',permettre:'permis',promettre:'promis',remettre:'remis',voir:'vu',lire:'lu',boire:'bu',vouloir:'voulu',pouvoir:'pu',savoir:'su',connaître:'connu',croire:'cru',recevoir:'reçu',devoir:'dû',dire:'dit',écrire:'écrit',conduire:'conduit',traduire:'traduit',construire:'construit',faire:'fait',peindre:'peint',craindre:'craint',éteindre:'éteint',ouvrir:'ouvert',offrir:'offert',découvrir:'découvert',couvrir:'couvert',souffrir:'souffert',avoir:'eu',être:'été',vivre:'vécu',courir:'couru',rire:'ri',suivre:'suivi',plaire:'plu',pleuvoir:'plu',tenir:'tenu',obtenir:'obtenu',prévenir:'prévenu',retenir:'retenu',
+ naître:'né',mourir:'mort',venir:'venu',devenir:'devenu',revenir:'revenu',aller:'allé',arriver:'arrivé',partir:'parti',entrer:'entré',sortir:'sorti',monter:'monté',descendre:'descendu',rester:'resté',tomber:'tombé',rentrer:'rentré',retourner:'retourné',passer:'passé',
+ 'se réveiller':'réveillé','se laver':'lavé','se brosser':'brossé','se coucher':'couché','se lever':'levé',"s'habiller":'habillé','se maquiller':'maquillé','se doucher':'douché','se promener':'promené','se précipiter':'précipité',"s'asseoir":'assis',"s'endormir":'endormi','se retrouver':'retrouvé','se disputer':'disputé','se voir':'vu','se regarder':'regardé','se rencontrer':'rencontré','se préparer':'préparé','se couper':'coupé','se casser':'cassé','se parler':'parlé','se téléphoner':'téléphoné',"s'écrire":'écrit','se plaire':'plu','se dire':'dit',"s'offrir":'offert'};
+const AVO=['ai','as','a','avons','avez','ont'], ETR=['suis','es','est','sommes','êtes','sont'];
+const RFA=['me suis',"t'es","s'est",'nous sommes','vous êtes','se sont'];      // reflexive pronoun + être
+const RFV=["m'ai","t'as","s'a",'nous avons','vous avez','se ont'];              // the same pronoun with avoir: the typical wrong choice
+const SUBJ={'je.m':{p:0,g:'m',n:'s',h:'m.'},'je.f':{p:0,g:'f',n:'s',h:'f.'},'tu.m':{p:1,g:'m',n:'s',h:'m.'},'tu.f':{p:1,g:'f',n:'s',h:'f.'},
+ il:{p:2,g:'m',n:'s'},elle:{p:2,g:'f',n:'s'},'nous.m':{p:3,g:'m',n:'p',h:'m.'},'nous.f':{p:3,g:'f',n:'p',h:'f.'},
+ 'vous.ms':{p:4,g:'m',n:'s',h:'m. sing.'},'vous.fs':{p:4,g:'f',n:'s',h:'f. sing.'},'vous.mp':{p:4,g:'m',n:'p',h:'m. pl.'},'vous.fp':{p:4,g:'f',n:'p',h:'f. pl.'},
+ ils:{p:5,g:'m',n:'p'},elles:{p:5,g:'f',n:'p'}};
+const OA={ms:'',fs:'e',mp:'s',fp:'es'};
+const GNL={'':'masculine singular',e:'feminine singular',s:'masculine plural',es:'feminine plural'};
+const pf=(b,ag)=>!ag?b:(/[sx]$/.test(b)&&ag==='s')?b:b+ag;
+const sa=sj=>(sj.g==='f'?'e':'')+(sj.n==='p'?'s':'');
+const forms=b=>[...new Set([b,b+'e',/[sx]$/.test(b)?b:b+'s',b+'es'])];
+const bare=inf=>inf.replace(/^(se |s')/,'');
+const regular=inf=>{const b=bare(inf);return /er$/.test(b)?b.slice(0,-2)+'é':/ir$/.test(b)?b.slice(0,-2)+'i':b.slice(0,-2)+'u'};
+
+/* the expected answer, as parts, so it can be built, varied and explained */
+function buildE(inf,w,o){
+  const sj=SUBJ[w];if(!sj)throw new Error('subject '+w);
+  const base=PT[inf];if(!base)throw new Error('no participle for '+inf);
+  const refl=o.refl!==undefined?!!o.refl:/^(se |s')/.test(inf);
+  const fam=o.fam||(refl?'e':(ETRE.has(inf)?'e':'a'));
+  let ag;if('ag' in o)ag=o.ag;else if(refl)ag=o.noag?'':sa(sj);else if(fam==='e')ag=sa(sj);else ag=o.cod?OA[o.cod]:'';
+  return{inf,base,fam,w,sj,p:sj.p,refl,ag,neg:o.neg||null,nm:'std'};
+}
+const auxOf=E=>(E.fam==='e'?ETR:AVO)[E.p];
+const core=E=>E.refl?(E.fam==='e'?RFA:RFV)[E.p]:auxOf(E);
+const nePart=c=>/^[aeiouhâêîôûéèà]/.test(c)?"n'"+c:'ne '+c;
+function compose(E){
+  const pt=pf(E.base,E.ag),c=core(E);
+  if(!E.neg)return c+' '+pt;
+  const m=E.nm||'std',ne=nePart(c),pers=E.neg==='personne';
+  if(m==='noNe')return pers?c+' '+pt+' personne':c+' '+E.neg+' '+pt;
+  if(m==='after')return ne+' '+pt+' '+E.neg;
+  if(m==='wrap')return c+' ne '+E.neg+' '+pt;
+  if(m==='swap')return pers?ne+' personne '+pt:ne+' '+pt+' '+E.neg;
+  return pers?ne+' '+pt+' personne':ne+' '+E.neg+' '+pt}
+const agLabel=sj=>GNL[sa(sj)];
+
+/* ---------- checking an answer: which part is wrong? ---------- */
+const PRN=['je',"j'",'tu','il','elle','on','nous','vous','ils','elles'], NEGW=['pas','jamais','plus','rien','personne'], RFS=['me','te','se','nous','vous',"m'","t'","s'"];
+const tok=s=>norm(s).replace(/[?.!,]+$/,'').replace(/(^|\s)([a-zà-ÿ]{1,2})'/g,"$1$2' ").split(' ').filter(Boolean);
+const isAux=x=>AVO.includes(x)||ETR.includes(x);
+function famWhy(E,o){const v=`<i>${E.inf}</i>`;
+  if(E.refl)return'pronominal verbs always take être';
+  if(E.fam==='e')return o.sw?`${v} with no direct object takes être`:`${v} is one of the être verbs`;
+  return o.sw?`${v} with a direct object takes avoir`:`${v} takes avoir`}
+function diagF(it,raw){
+  const E=it.E;let T=tok(raw);const EK=tok(it.a);
+  if(!T.length)return{ok:false,msg:'The blank is empty.'};
+  if(T.length===EK.length+1&&PRN.includes(T[0]))T=T.slice(1);
+  if(T.join(' ')===EK.join(' '))return{ok:true,msg:''};
+  if(strip(T.join(' '))===strip(EK.join(' ')))return{ok:false,msg:'Check the accents: only an accent is off.'};
+  const iAux=T.findIndex(isAux),iNe=T.findIndex(x=>x==="n'"||x==='ne'),iNeg=T.findIndex(x=>NEGW.includes(x));
+  let iPt=-1;for(let i=T.length-1;i>=0;i--){if(!NEGW.includes(T[i])){iPt=i;break}}
+  const pt=iPt>=0?T[iPt]:'',no=m=>({ok:false,msg:m});
+  if(E.neg){
+    if(iNe<0)return no(`Negation needs <b>ne</b> (n’ before a vowel) before the auxiliary: <b>${nePart(core(E))}</b>.`);
+    if(iNeg<0)return no(`This negation needs <b>${E.neg}</b>.`);
+    if(T[iNeg]!==E.neg)return no(`The negative word here is <b>${E.neg}</b>.`);
+    if(iAux>=0&&iNe>iAux)return no('<b>ne</b> goes before the auxiliary (and before a reflexive pronoun).');
+    if(E.neg==='personne'){if(iNeg<iPt)return no('<b>personne</b> goes after the participle.')}
+    else if(iNeg>iPt)return no(E.neg==='rien'?'<b>rien</b> goes before the participle.':`<b>${E.neg}</b> goes right after the auxiliary, before the participle.`);
+  }else if(iNe>=0||iNeg>=0)return no('This sentence is not negative.');
+  if(E.refl){const ir=T.findIndex((x,i)=>RFS.includes(x)&&(iAux<0||i<iAux)),want=tok(RFA[E.p])[0];
+    if(ir<0)return no(`Pronominal verbs need the reflexive pronoun before the auxiliary: <b>${RFA[E.p]}</b>.`);
+    if(T[ir]!==want)return no(`The reflexive pronoun must match the subject: <b>${want}</b>.`)}
+  if(iAux<0)return no('The passé composé needs an auxiliary (avoir or être) before the participle.');
+  const fam=AVO.includes(T[iAux])?'a':'e';
+  if(fam!==E.fam)return no(`<b>${T[iAux]}</b> is a form of ${fam==='a'?'avoir':'être'}, but ${famWhy(E,it.o||{})}.`);
+  if(T[iAux]!==auxOf(E))return no(`The auxiliary must agree with the subject: <b>${auxOf(E)}</b>.`);
+  if(!forms(E.base).includes(pt))return no(pt===bare(E.inf)?'After the auxiliary you need the participle, not the infinitive.':`The participle of <i>${E.inf}</i> is <b>${E.base}</b>.`);
+  const want=pf(E.base,E.ag);
+  if(pt!==want){
+    if(!E.ag)return no(E.fam==='e'&&!E.refl?`The subject is ${agLabel(E.sj)}, so the participle stays <b>${E.base}</b>.`:E.refl?`${(it.o&&it.o.noag&&it.o.noag!==true)?it.o.noag+' ':''}No agreement here: the participle stays <b>${E.base}</b>.`:`With avoir the participle only agrees with a direct object placed before the verb. There is none here: <b>${E.base}</b>.`);
+    return no(E.refl?`The reflexive pronoun is the direct object, so the participle agrees with the subject (${agLabel(E.sj)}): <b>${want}</b>.`:E.fam==='e'?`With être the participle agrees with the subject (${agLabel(E.sj)}): <b>${want}</b>.`:`The direct object ${it.o&&it.o.ob?'<b>'+it.o.ob+'</b> ':''}comes before the verb, so the participle agrees: <b>${want}</b>.`)}
+  return no('Compare your answer with the correct form below.')}
+function diagP(it,raw){
+  let T=tok(raw);if(!T.length)return{ok:false,msg:'The blank is empty.'};
+  const want=it.a;
+  if(T.length>1&&T.slice(0,-1).every(isAux))T=[T[T.length-1]];
+  if(T.length===1&&T[0]===norm(want))return{ok:true,msg:''};
+  if(T.length>1)return{ok:false,msg:`Only the participle goes in the blank: <b>${want}</b>.`};
+  const x=T[0];
+  if(strip(x)===strip(norm(want)))return{ok:false,msg:'Check the accents: only an accent is off.'};
+  const fs=forms(it.base);
+  if(!fs.includes(x))return{ok:false,msg:x===bare(it.inf)?'After the auxiliary you need the participle, not the infinitive.':(x===regular(it.inf)&&regular(it.inf)!==it.base)?`<i>${it.inf}</i> does not follow the regular pattern. Its participle is <b>${it.base}</b>.`:`The participle of <i>${it.inf}</i> is <b>${it.base}</b>.`};
+  if(it.ag===undefined)return{ok:false,msg:`Compare your answer with the correct form below.`};
+  return{ok:false,msg:it.ag?`The participle must agree: ${it.ry}`:`No agreement here: ${it.rn}`}}
+const nz=s=>norm(s).replace(/\s*[?.!]+$/,'').replace(/\s+/g,' ');
+function diagZ(it,raw){const t=nz(raw);if(!t)return{ok:false,msg:'The answer is empty.'};
+  const acc=it.a.map(nz);if(acc.includes(t))return{ok:true,msg:''};
+  if(acc.some(a=>strip(a)===strip(t)))return{ok:false,msg:'Check the accents: only an accent is off.'};
+  return{ok:false,msg:(it.x&&it.x[t])||'Compare your answer with the correct one below.'}}
+
+/* ---------- explanations (shown after every answer) ---------- */
+function whyF(E,o){
+  const v=`<i>${E.inf}</i>`,sj=E.sj;let s='';
+  if(E.refl)s+=`${v} is pronominal, so it takes <b>être</b>, with the reflexive pronoun first: <b>${RFA[E.p]}</b>. `;
+  else if(E.fam==='e')s+=o.sw?`${v} with no direct object (<b>${o.sw}</b>) takes <b>être</b>. `:`${v} is one of the <b>être</b> verbs. `;
+  else s+=o.sw?`${v} with a direct object (<b>${o.sw}</b>) takes <b>avoir</b>. `:`${v} takes <b>avoir</b>. `;
+  if(E.refl)s+=E.ag?`The reflexive pronoun is the direct object, so the participle agrees with the subject: <b>${pf(E.base,E.ag)}</b>. `:`${o.noag&&o.noag!==true?o.noag+' ':''}The participle does not agree: <b>${E.base}</b>. `;
+  else if(E.fam==='e')s+=E.ag?`The participle agrees with the subject (${agLabel(sj)}): <b>${pf(E.base,E.ag)}</b>. `:`The subject is masculine singular, so the participle stays <b>${E.base}</b>. `;
+  else s+=E.ag?`The direct object ${o.ob?'<b>'+o.ob+'</b> ':''}comes before the verb, so the participle agrees: <b>${pf(E.base,E.ag)}</b>. `:`With avoir the participle stays <b>${E.base}</b>. `;
+  if(E.neg){s+=E.neg==='personne'?'<b>ne</b> goes before the auxiliary and <b>personne</b> after the participle.':E.neg==='rien'?'<b>ne</b> goes before the auxiliary and <b>rien</b> right after it.':`<b>ne … ${E.neg}</b> wraps the auxiliary.`}
+  return s.trim()}
+
+/* ---------- item constructors ---------- */
+/* F: a full form (auxiliary + participle, with negation or a reflexive pronoun when needed). The subject stays in the sentence. */
+function F(s,inf,w,o){o=o||{};const E=buildE(inf,w,o);const sj=E.sj,a=compose(E);
+  const hint=o.nh?'':(sj.h||'');
+  const g=(E.neg?'ne … '+E.neg+' · ':'')+inf+(hint?' · '+hint:'');
+  /* a masculine singular subject makes the wrong-agreement choices implausible, and je + a plain verb gives the answer away by elision: typed only */
+  const T=!!o.T||(sa(sj)===''&&!E.neg&&!E.refl&&!o.ch)||(sj.p===0&&!E.neg&&!E.refl);
+  return{t:'f',s,inf,w,E,a,o,g,T,je1:sj.p===0&&!E.neg&&!E.refl,why:o.why||whyF(E,o)}}
+/* P: participle only. kind = agreement of the preceding direct object (ms fs mp fp), or after / en / ind for no agreement */
+const PWHY={after:'The object comes after the verb, so the participle stays as it is.',en:'<b>en</b> never makes the participle agree.',ind:'<b>lui</b> and <b>leur</b> are indirect objects (parler à, téléphoner à), so the participle stays as it is.'};
+function Pp(s,inf,kind,o){o=o||{};const base=PT[inf];if(!base)throw new Error('no participle '+inf);
+  const ag=kind==='base'?undefined:(OA[kind]!==undefined?OA[kind]:'');const a=ag===undefined?base:pf(base,ag);
+  const ry=kind==='base'?'':`${o.ob||'the object'} comes before the verb (${GNL[ag]}).`;
+  const rn=kind==='base'?'':(PWHY[kind]||`${o.ob||'the object'} is masculine singular, so there is no ending.`);
+  const why=o.why||(kind==='base'?`The participle of <i>${inf}</i> is <b>${base}</b>.`:ag?`<b>${o.ob}</b> comes before the verb and is ${GNL[ag]}, so the participle agrees: <b>${a}</b>.`:PWHY[kind]?PWHY[kind]+` <b>${a}</b>.`:`${o.ob} is masculine singular, so the participle has no ending: <b>${a}</b>.`);
+  return{t:'p',s,inf,base,a,ag,ry,rn,o:o.opts||null,T:!!o.T||kind==='base'&&!o.opts,why,wrongs:o.wrongs||null,kind,ng:!!o.ng}}
+/* Z: a free phrase, typed; a = accepted answers, full = the answer as shown */
+const Z=(pr,s,a,why,x)=>({t:'z',pr,s,a:Array.isArray(a)?a:[a],full:Array.isArray(a)?a[0]:a,why,x:x||null});
+/* Q: a choice with one right answer; x = reason for each wrong option */
+const Q=(pr,s,o,a,why,x)=>({t:'q',pr,s,o,a,why:why||'',x:x||null});
+/* ordered wrong options for a full form, no clue in how many have a reflexive pronoun or a negation */
+function variantsF(it){const E=it.E,out=[];const mk=(ch)=>compose(Object.assign({},E,ch));
+  const tog=E.ag?'':(sa(E.sj)||'e');
+  if(E.neg){const ms=['noNe','after','wrap'];ms.forEach(m=>out.push(mk({nm:m})));if(E.neg==='rien'||E.neg==='personne')out[1]=mk({nm:'swap'})}
+  else{const sw=E.fam==='e'?'a':'e';
+    out.push(mk({ag:E.ag?'':tog}));out.push(mk({fam:sw}));out.push(mk({fam:sw,ag:E.ag?'':tog}));
+    if(E.ag&&sa(E.sj)&&E.ag!==sa(E.sj)){out.push(mk({ag:sa(E.sj)}))}
+    out.push(mk({ag:E.ag==='e'?'s':'e'}))}
+  return [...new Set(out)].filter(x=>x!==it.a)}
+function optsF(it){const v=variantsF(it);return shuffle([it.a,...v.slice(0,3)])}
+function optsP(it){if(it.o)return shuffle(it.o.slice());
+  const c=[it.a,...forms(it.base),regular(it.inf)].filter((x,i,a)=>a.indexOf(x)===i);
+  const wr=c.filter(x=>x!==it.a).slice(0,3);return shuffle([it.a,...wr])}
+
+const en=s=>'“'+s+'”';
+/* ---------- shared reference pieces ---------- */
+const T_AUX=tbl(['Subject','avoir','être'],[['je',"j'ai",'suis'],['tu','as','es'],['il / elle / on','a','est'],['nous','avons','sommes'],['vous','avez','êtes'],['ils / elles','ont','sont']]);
+const L_ETRE=bank([['aller','go'],['venir','come'],['arriver','arrive'],['partir','leave'],['entrer','enter'],['sortir','go out'],['monter','go up'],['descendre','go down'],['rester','stay'],['tomber','fall'],['naître','be born'],['mourir','die'],['devenir','become'],['revenir','come back'],['rentrer','go back in, come home'],['retourner','go back'],['passer','pass by']]);
+const T_SW=tbl(['Verb','No direct object: être','Direct object: avoir'],[['descendre',f('Il est descendu à la cave.'),f('Il a descendu la valise.')],['monter',f('Elle est montée au premier étage.'),f('Elle a monté les courses.')],['sortir',f('Nous sommes sortis à huit heures.'),f('Nous avons sorti le chien.')],['rentrer',f('Tu es rentré tard.'),f('Tu as rentré la voiture.')],['retourner',f('Ils sont retournés à Paris.'),f('Ils ont retourné la carte.')],['passer',f('Elle est passée chez nous.'),f('Elle a passé une heure ici.')],['entrer',f('Elle est entrée dans la cuisine.'),f('Elle a entré le code.')]]);
+const T_PRON=tbl(['Subject','Passé composé'],[['je',f('me suis levé(e)')],['tu',f("t'es levé(e)")],['il / elle',f("s'est levé(e)")],['nous',f('nous sommes levé(e)s')],['vous',f('vous êtes levé(e)(s)')],['ils / elles',f('se sont levé(e)s')]]);
+const T_AGR=tbl(['Auxiliary','The participle agrees with','Example'],[['être','the subject',f('Elles sont arrivées.')],['être, pronominal','the subject, if the reflexive pronoun is the direct object',f("Elle s'est lavée. · Elle s'est lavé les mains.")],['avoir','a direct object before the verb, and nothing else',f("la lettre que j'ai écrite · J'ai écrit la lettre.")]]);
+const T_ENDS=tbl(['','m. sing.','f. sing.','m. pl.','f. pl.'],[['partir','parti','partie','partis','parties'],['naître','né','née','nés','nées'],['mourir','mort','morte','morts','mortes'],['venir','venu','venue','venus','venues'],['prendre','pris','prise','pris','prises']]);
+const T_NEG=tbl(['Pattern','Example'],[['ne + auxiliary + pas + participle',f("Je n'ai pas fini.")],['ne + auxiliary + jamais / plus + participle',f("Elle n'est jamais venue.")],['ne + auxiliary + rien + participle',f("Nous n'avons rien vu.")],['ne + auxiliary + participle + personne',f("Je n'ai vu personne.")],['after a negation, un / une / des → de',f("Je n'ai pas acheté de lampe.")]]);
+const PATH=`<ol class="path"><li><b>Pronominal verb?</b> Yes: {{être}}, with the reflexive pronoun first (me suis, t'es, s'est…).</li><li><b>One of the 17 être verbs?</b> Yes: {{être}}. But descendre, monter, sortir, rentrer, retourner, passer and entrer take {{avoir}} when a direct object follows.</li><li><b>Anything else:</b> {{avoir}}.</li><li><b>The participle:</b> -é, -i or -u for regular verbs, or the irregular family.</li><li><b>Agreement:</b> être agrees with the subject. A pronominal verb agrees only if the reflexive pronoun is the direct object. avoir agrees only with a direct object before the verb.</li><li><b>Small words:</b> ne goes before the auxiliary, pas and rien right after it, personne after the participle. Pronouns go before the auxiliary. Short adverbs sit between the two parts.</li></ol>`;
+const PARTS=['The idea','Participles','The auxiliary','Agreement','Word order','Mastery'];
+
+/* ---------- the course ---------- */
+const WR=(map)=>map;   // readability: per-option reasons
+const B=[
+{id:'two',part:0,title:'Two pieces',goal:'See what the passé composé is made of, and when French uses it.',n:6,
+ rule:'Passé composé = avoir or être in the present + a past participle. One French form covers I ate, I have eaten and I did eat.',
+ cards:[
+ {h:'Two pieces, one tense',b:p('The passé composé is built from two pieces. Here the auxiliary is yellow and the participle is blue.')+fr("J'[[ai]] {{mangé}} une pomme.",'I ate an apple.')+tbl(['Piece','Job','Example'],[['auxiliary (avoir or être, in the present)','shows who did it',f('[[ai]], [[as]], [[a]], [[avons]]')],['past participle','carries the meaning',f('{{mangé}}, {{fini}}, {{vendu}}')]])+key('Only the auxiliary changes with the subject. The participle carries the verb.')},
+ {h:'One French form, three English forms',b:p('English chooses between “ate” and “have eaten”. French does not.')+tbl(['English','French'],[['I ate an apple.',f("J'[[ai]] {{mangé}} une pomme.")],['I have eaten an apple.',f("J'[[ai]] {{mangé}} une pomme.")],['I did eat an apple.',f("J'[[ai]] {{mangé}} une pomme.")],['Did you eat?',f('Tu [[as]] {{mangé}} ?')]])},
+ {h:'Where English misleads you',b:p('Two English patterns do not carry straight across.')+fr("I have lived here for five years, and I still do.")+ok("J'habite ici depuis cinq ans.")+no("J'ai habité ici depuis cinq ans.")+note('If it is still true now, French uses the <b>present</b> with depuis. The passé composé is for something finished.')+fr('She has gone to the market.')+fr('Elle [[est]] {{allée}} au marché.')+note('English says <b>have</b>, but for some verbs French uses <b>être</b>. You will meet them in the auxiliary blocks.')},
+ {h:'When French uses it',b:p('For an event that is finished, usually with a time marker.')+fr('Hier, nous [[avons]] {{visité}} le musée.','Yesterday, we visited the museum.')+fr('Ce matin, elle [[a]] {{pris}} le bus.')+fr('Soudain, le téléphone [[a]] {{sonné}}.')+note('Descriptions and habits use another tense. That choice is a separate lesson. Here, every sentence is a finished event.')+tn('Telling what happened is what the OPI listens for. A clean passé composé is the base of every story.')}],
+ items:[
+ Q('Which French sentence matches “We ate at noon yesterday”?','',["Nous avons mangé à midi hier.","Nous mangeons à midi hier.","Nous mangions à midi hier.","Nous mangerons à midi hier."],"Nous avons mangé à midi hier.",'A finished event on a stated day: passé composé.',{"Nous mangeons à midi hier.":'Present tense. Yesterday is over, so the sentence needs a past tense.',"Nous mangions à midi hier.":'This is the imparfait, for background and habits. A finished event on a stated day takes the passé composé.',"Nous mangerons à midi hier.":'Future tense. Yesterday is in the past.'}),
+ Q('Which French sentence matches “Have you finished your homework?”','',["As-tu fini tes devoirs ?","Finis-tu tes devoirs ?","Finissais-tu tes devoirs ?","Finiras-tu tes devoirs ?"],"As-tu fini tes devoirs ?",'English “have finished” asks about a completed action: passé composé.',{"Finis-tu tes devoirs ?":'Present tense: are you finishing. “Have you finished” asks about a completed action.',"Finissais-tu tes devoirs ?":'Imparfait: were you finishing. Not a completed action.',"Finiras-tu tes devoirs ?":'Future tense: will you finish.'}),
+ Q('Which French sentence matches “Did she buy the bread?”','',["Elle a acheté le pain ?","Elle achète le pain ?","Elle achetait le pain ?","Elle achètera le pain ?"],"Elle a acheté le pain ?",'English “did buy” is one completed action: passé composé.',{"Elle achète le pain ?":'Present tense: does she buy.',"Elle achetait le pain ?":'Imparfait: was she buying, or used to buy.',"Elle achètera le pain ?":'Future tense: will she buy.'}),
+ Q('Which French sentence matches “They called me last night”?','',["Ils m'ont appelé hier soir.","Ils m'appellent hier soir.","Ils m'appelaient hier soir.","Ils m'appelleront hier soir."],"Ils m'ont appelé hier soir.",'A finished event with a time marker: passé composé.',{"Ils m'appellent hier soir.":'Present tense. Last night is over.',"Ils m'appelaient hier soir.":'Imparfait. A single call last night is a finished event.',"Ils m'appelleront hier soir.":'Future tense. Last night is over.'}),
+ Q('Which sentence matches “I have lived here for five years”? (and I still do)','',["J'habite ici depuis cinq ans.","J'ai habité ici depuis cinq ans.","J'ai habité ici pendant cinq ans.","J'habitais ici depuis cinq ans."],"J'habite ici depuis cinq ans.",'Still true now: present tense with depuis.',{"J'ai habité ici depuis cinq ans.":'The passé composé is for something finished. This is still true, so French uses the present with depuis.',"J'ai habité ici pendant cinq ans.":'This means “I lived here for five years” and stopped. Here it is still true.',"J'habitais ici depuis cinq ans.":'The imparfait describes the past. Here it is true now.'}),
+ Q('Which sentence matches “We have been waiting for an hour”? (and we still are)','',["Nous attendons depuis une heure.","Nous avons attendu depuis une heure.","Nous attendions depuis une heure.","Nous avons attendu pendant une heure."],"Nous attendons depuis une heure.",'Still true now: present tense with depuis.',{"Nous avons attendu depuis une heure.":'The passé composé is for something finished. The waiting is not over.',"Nous attendions depuis une heure.":'The imparfait describes the past. The waiting is still going on.',"Nous avons attendu pendant une heure.":'This means we waited for an hour and it ended.'}),
+ Q('Which French sentence matches “He has arrived”?','',["Il est arrivé.","Il a arrivé.","Il est arrivée.","Il a arrivée."],"Il est arrivé.",'Arriver takes être, and il is masculine singular: no ending.',{"Il a arrivé.":'English says have, but arriver takes être.',"Il est arrivée.":'Il is masculine. The -e is for a feminine subject.',"Il a arrivée.":'Wrong auxiliary and a feminine ending. Arriver takes être, and il is masculine.'}),
+ Q('In « Il a fini ses devoirs. », which word is the participle?','',["a","fini","ses","devoirs"],"fini",'<b>a</b> is the auxiliary. <b>fini</b> is the participle of finir.',{a:'This is the auxiliary (avoir).',ses:'A possessive adjective.',devoirs:'The noun the verb acts on.'}),
+ Q('In « Nous avons chanté hier. », which word is the auxiliary?','',["Nous","avons","chanté","hier"],"avons",'<b>avons</b> is avoir for nous. <b>chanté</b> is the participle.',{Nous:'This is the subject.',"chanté":'This is the participle.',hier:'A time word.'}),
+ Q('In « Elle est partie à huit heures. », which word is the participle?','',["Elle","est","partie","huit"],"partie",'<b>est</b> is the auxiliary (être). <b>partie</b> is parti with -e for elle.',{Elle:'This is the subject.',est:'This is the auxiliary (être).',huit:'A number.'}),
+ Q('Which of these is a passé composé?','',["Tu as ouvert la porte.","Tu ouvres la porte.","Tu ouvrais la porte.","Tu ouvriras la porte."],"Tu as ouvert la porte.",'<b>as</b> + <b>ouvert</b>: auxiliary + participle.',{"Tu ouvres la porte.":'Present tense: one word.',"Tu ouvrais la porte.":'Imparfait: one word.',"Tu ouvriras la porte.":'Future tense: one word.'}),
+ Q('Which of these is a passé composé?','',["Ils sont rentrés tard.","Ils rentrent tard.","Ils rentraient tard.","Ils rentreront tard."],"Ils sont rentrés tard.",'<b>sont</b> + <b>rentrés</b>: auxiliary + participle.',{"Ils rentrent tard.":'Present tense: one word.',"Ils rentraient tard.":'Imparfait: one word.',"Ils rentreront tard.":'Future tense: one word.'}),
+ Q('Choose the verb phrase that fits.','Hier soir, nous ___ au cinéma.',["sommes allés","allions","irons","allons"],"sommes allés",'<b>Hier soir</b> marks a finished event: passé composé.',{allions:'Imparfait: for background and habits. A single evening that is over is a finished event.',irons:'Future tense. Hier soir is in the past.',allons:'Present tense. Hier soir is in the past.'}),
+ Q('Choose the verb phrase that fits.','Soudain, le téléphone ___.',["a sonné","sonnait","sonnera","sonne"],"a sonné",'<b>Soudain</b> introduces a sudden, finished event: passé composé.',{sonnait:'Imparfait: for background. Soudain introduces an event.',sonnera:'Future tense.',sonne:'Present tense.'}),
+ Q('Choose the verb phrase that fits.','La semaine dernière, elles ___ à Rome.',["sont allées","allaient","iront","vont"],"sont allées",'<b>La semaine dernière</b> marks a finished event: passé composé.',{allaient:'Imparfait: for background and habits. A trip last week that is over is a finished event.',iront:'Future tense. La semaine dernière is in the past.',vont:'Present tense. La semaine dernière is in the past.'}),
+ Q('Choose the verb phrase that fits.','Ce matin, ___ un café.',["j'ai bu","je bois","je buvais","je boirai"],"j'ai bu",'<b>Ce matin</b> marks a finished event: passé composé.',{"je bois":'Present tense.',"je buvais":'Imparfait: for habits and background. One coffee this morning is a finished event.',"je boirai":'Future tense.'}),
+ Q('Choose the verb phrase that fits.','Il y a deux jours, tu ___ ce film.',["as vu","vois","voyais","verras"],"as vu",'<b>Il y a deux jours</b> marks a finished event: passé composé.',{vois:'Present tense.',voyais:'Imparfait: for habits and background. A film two days ago is a finished event.',verras:'Future tense.'})]},
+
+{id:'avoir',part:0,title:'avoir + participle',goal:'Build the passé composé of regular verbs with avoir, in every person.',n:8,typed:1,
+ rule:'avoir in the present + the participle. -er verbs end in -é, -ir verbs in -i, -re verbs in -u.',
+ cards:[
+ {h:'avoir + participle',b:work(['Pick the subject: nous','Write avoir for that subject: avons','Add the participle of the verb: mangé'])+fr('Nous [[avons]] {{mangé}}.')+tbl(['Subject','Passé composé'],[['je',f("j'[[ai]] {{mangé}}")],['tu',f('tu [[as]] {{mangé}}')],['il / elle / on',f('il [[a]] {{mangé}}')],['nous',f('nous [[avons]] {{mangé}}')],['vous',f('vous [[avez]] {{mangé}}')],['ils / elles',f('ils [[ont]] {{mangé}}')]])},
+ {h:'Making the participle',b:tbl(['Infinitive ends in','Participle','Example'],[['-er','-é',f('manger → {{mangé}}')],['-ir','-i',f('finir → {{fini}}')],['-re','-u',f('vendre → {{vendu}}')]])+note('The participle keeps the spelling of the stem: <b>commencé</b> (no cedilla), <b>voyagé</b>, <b>nettoyé</b>. The ending is é, not e: <b>acheté</b>.')},
+ {h:'The participle does not change',b:p('With avoir, the participle stays the same whoever the subject is.')+fr('Il [[a]] {{fini}}. Elle [[a]] {{fini}}. Ils [[ont]] {{fini}}. Elles [[ont]] {{fini}}.')+key('Only the auxiliary changes. A direct object placed before the verb can change this: block 9.')+tn('In speech, only the auxiliary tells the listener who did it: j’ai, tu as, il a. Say them cleanly.')}],
+ items:[
+ F("Hier, j'___ la salle de bain.",'nettoyer','je.m',{nh:1}),F("Tu ___ le salon pour la fête.",'décorer','tu.m',{nh:1}),F("Elle ___ ses clés hier soir.",'oublier','elle',{nh:1}),F("Nous ___ un gâteau pour la fête.",'partager','nous.m',{nh:1}),F("Vous ___ la porte du garage.",'fermer','vous.mp',{nh:1}),F("Ils ___ dans cette maison la semaine dernière.",'emménager','ils',{nh:1}),
+ F("Marie ___ un livre à la bibliothèque.",'emprunter','elle',{nh:1}),F("Mes parents ___ une nouvelle voiture.",'acheter','ils',{nh:1}),F("Tu ___ le dîner pour tout le monde.",'préparer','tu.m',{nh:1}),F("Hier, j'___ longtemps mes clés.",'chercher','je.m',{nh:1}),F("Nous ___ les devoirs à huit heures.",'commencer','nous.m',{nh:1}),F("Il ___ toute la nuit.",'voyager','il',{nh:1}),
+ F("Elle ___ son travail à six heures.",'finir','elle',{nh:1}),F("Nous ___ un nouveau canapé.",'choisir','nous.m',{nh:1}),F("Vous ___ à l'examen.",'réussir','vous.mp',{nh:1}),F("Tu ___ les verres.",'remplir','tu.m',{nh:1}),F("Les enfants ___ pendant l'été.",'grandir','ils',{nh:1}),
+ F("Hier, j'___ ma vieille voiture.",'vendre','je.m',{nh:1}),F("Elle ___ ses amis au café.",'attendre','elle',{nh:1}),F("Vous ___ la question.",'entendre','vous.mp',{nh:1}),F("Ils ___ leur téléphone.",'perdre','ils',{nh:1}),F("Tu ___ au message.",'répondre','tu.m',{nh:1}),
+ F("Nous ___ le chemin.",'trouver','nous.m',{nh:1}),F("Elles ___ les fenêtres.",'nettoyer','elles',{nh:1}),
+ Q('Which form is spelled correctly?','',["tu as commencé","tu as commençé","tu as commence","tu as commencer"],"tu as commencé",'Before é the c stays plain: commencé. The ç is only before a, o or u.',{"tu as commençé":'The cedilla is only before a, o or u. Before é the c stays plain.',"tu as commence":'The é is missing: -er verbs end in -é in the participle.',"tu as commencer":'The infinitive. After the auxiliary, use the participle.'}),
+ Q('Which form is spelled correctly?','',["elle a voyagé","elle a voyager","elle a voyage","elle a voyagée"],"elle a voyagé",'Voyager → voyagé. With avoir the participle does not agree with the subject.',{"elle a voyager":'The infinitive. After the auxiliary, use the participle.',"elle a voyage":'The é is missing: -er verbs end in -é in the participle.',"elle a voyagée":'With avoir the participle does not agree with the subject.'}),
+ Q('Which form is spelled correctly?','',["il a acheté","il a achété","il a acheter","il a achète"],"il a acheté",'Acheter → acheté. The é is at the end.',{"il a achété":'The é goes at the end of the participle: acheté.',"il a acheter":'The infinitive. After the auxiliary, use the participle.',"il a achète":'This is a present-tense spelling. The participle ends in é.'}),
+ Q('Which form is spelled correctly?','',["nous avons vendu","nous avons vendé","nous avons vend","nous avons vendre"],"nous avons vendu",'-re verbs take -u: vendre → vendu.',{"nous avons vendé":'-er verbs take -é. Vendre is a -re verb: vendu.',"nous avons vend":'This is the present stem. Add -u: vendu.',"nous avons vendre":'The infinitive. After the auxiliary, use the participle.'})]},
+
+{id:'irr1',part:1,title:'Irregular participles: the families',goal:'Group the irregular participles by pattern, so they are families and not forty separate facts.',n:8,ty:.5,
+ rule:'Irregular participles come in families: -is, -u, -it, -t, -ert. Compounds follow their base verb.',
+ cards:[
+ {h:'Patterns, not a list',b:p('Many common verbs have an irregular participle, but they fall into families.')+tbl(['Family','Verbs'],[['-is',f('mettre {{mis}} · prendre {{pris}} · apprendre {{appris}} · comprendre {{compris}} · permettre {{permis}}')],['-it',f('dire {{dit}} · écrire {{écrit}} · conduire {{conduit}} · traduire {{traduit}}')],['-t',f('faire {{fait}} · peindre {{peint}} · craindre {{craint}}')],['-ert',f('ouvrir {{ouvert}} · offrir {{offert}} · découvrir {{découvert}} · souffrir {{souffert}}')]])},
+ {h:'The -u family, and the odd ones',b:tbl(['Pattern','Verbs'],[['-u',f('voir {{vu}} · lire {{lu}} · boire {{bu}} · vouloir {{voulu}} · pouvoir {{pu}} · savoir {{su}} · connaître {{connu}} · croire {{cru}} · recevoir {{reçu}} · devoir {{dû}}')],['odd ones',f('avoir {{eu}} · être {{été}} · vivre {{vécu}} · naître {{né}} · mourir {{mort}}')]])+key('Accents to remember: <b>été</b> (two), <b>dû</b>, <b>reçu</b>, <b>vécu</b>.')},
+ {h:'Compounds follow the base verb',b:p('Learn the base verb and every compound comes free.')+tbl(['Base','Compounds'],[['prendre → pris',f('comprendre {{compris}} · apprendre {{appris}} · surprendre {{surpris}}')],['mettre → mis',f('permettre {{permis}} · promettre {{promis}} · remettre {{remis}}')],['venir → venu',f('devenir {{devenu}} · revenir {{revenu}}')],['tenir → tenu',f('obtenir {{obtenu}} · retenir {{retenu}}')],['ouvrir → ouvert',f('découvrir {{découvert}} · couvrir {{couvert}}')]])},
+ {h:'A wrong guess is regular',b:no("J'ai prendu un café.")+no("Il a écrivé une lettre.")+ok("J'ai pris un café.")+ok("Il a écrit une lettre.")+note('Learners often regularise these: <b>prendu</b>, <b>mettu</b>, <b>écrivé</b>. The regular rule does not apply to these verbs.')}],
+ items:[
+ Pp("Nous avons ___ le train de huit heures.",'prendre','base',{opts:['pris','prendu','prit','pri']}),Pp("Tu as ___ la leçon ?",'comprendre','base',{opts:['compris','comprendu','comprit','compri']}),Pp("Ils ont ___ trois nouveaux mots.",'apprendre','base',{opts:['appris','apprendu','apprit','appri']}),
+ Pp("Elle a ___ son manteau.",'mettre','base',{opts:['mis','mettu','mit','mettre']}),Pp("Le professeur a ___ les téléphones.",'permettre','base',{opts:['permis','permettu','permit','permetté']}),Pp("Vous avez ___ de venir.",'promettre','base',{opts:['promis','promettu','promit','prometté']}),
+ Pp("Hier, j'ai ___ un bon film.",'voir','base',{opts:['vu','voyu','voi','voit']}),Pp("Il a ___ ce roman en deux jours.",'lire','base',{opts:['lu','lisé','lit','lisu']}),Pp("Nous avons ___ du café.",'boire','base',{opts:['bu','boivu','boi','boit']}),
+ Pp("Elle a ___ partir tôt.",'vouloir','base',{opts:['voulu','vouli','veulu','vou']}),Pp("Tu n'as pas ___ venir.",'pouvoir','base',{opts:['pu','pouvu','pouvé','peu']}),Pp("Ils n'ont pas ___ la réponse.",'savoir','base',{opts:['su','savu','savé','sai']}),
+ Pp("Hier, j'ai ___ ta sœur.",'connaître','base',{opts:['connu','connaîtu','connaissé','connait']}),Pp("Nous avons ___ cette histoire.",'croire','base',{opts:['cru','croyu','croi','croivu']}),Pp("Elle a ___ ta lettre.",'recevoir','base',{opts:['reçu','recevu','receu','recevé']}),
+ Pp("Vous avez ___ la vérité.",'dire','base',{opts:['dit','disé','dis','dité']}),Pp("Hier, j'ai ___ trois lettres.",'écrire','base',{opts:['écrit','écrivé','écrivu','écrie']}),Pp("Il a ___ toute la nuit.",'conduire','base',{opts:['conduit','conduisé','conduisu','conduie']}),
+ Pp("Qu'est-ce que tu as ___ hier ?",'faire','base',{opts:['fait','faisé','faire','fais']}),Pp("Elle a ___ les murs.",'peindre','base',{opts:['peint','peindu','peindé','peignu']}),Pp("Il a ___ la fenêtre.",'ouvrir','base',{opts:['ouvert','ouvri','ouvrit','ouvru']}),
+ Pp("Nous avons ___ des fleurs.",'offrir','base',{opts:['offert','offri','offrit','offru']}),Pp("Ils ont ___ une vieille carte.",'découvrir','base',{opts:['découvert','découvri','découvru','découvrit']}),Pp("Hier, nous avons ___ de la chance.",'avoir','base',{opts:['eu','avu','avé','ayu']}),Pp("Il a ___ très gentil.",'être','base',{opts:['été','étu','éte','étai']})]},
+
+{id:'irr2',part:1,title:'Irregular participles: recall',goal:'Produce the irregular participles from the infinitive alone, with their accents.',n:10,typed:1,
+ rule:'Irregular participles come in families: -is, -u, -it, -t, -ert. Compounds follow their base verb.',
+ cards:[
+ {h:'The -is, -it, -t and -ert families',b:bank([['prendre → pris','take'],['comprendre → compris','understand'],['apprendre → appris','learn'],['surprendre → surpris','surprise'],['mettre → mis','put'],['permettre → permis','allow'],['promettre → promis','promise'],['remettre → remis','put back'],['dire → dit','say'],['écrire → écrit','write'],['conduire → conduit','drive'],['traduire → traduit','translate'],['construire → construit','build'],['faire → fait','do, make'],['peindre → peint','paint'],['craindre → craint','fear'],['éteindre → éteint','turn off'],['ouvrir → ouvert','open'],['offrir → offert','offer'],['découvrir → découvert','discover'],['couvrir → couvert','cover'],['souffrir → souffert','suffer']])},
+ {h:'The -u family',b:bank([['voir → vu','see'],['lire → lu','read'],['boire → bu','drink'],['vouloir → voulu','want'],['pouvoir → pu','be able'],['savoir → su','know'],['connaître → connu','know (a person)'],['croire → cru','believe'],['recevoir → reçu','receive'],['devoir → dû','have to, owe'],['courir → couru','run'],['plaire → plu','please'],['pleuvoir → plu','rain'],['tenir → tenu','hold'],['obtenir → obtenu','obtain'],['venir → venu','come'],['devenir → devenu','become'],['revenir → revenu','come back']])},
+ {h:'The odd ones',b:bank([['avoir → eu','have'],['être → été','be'],['vivre → vécu','live'],['naître → né','be born'],['mourir → mort','die'],['suivre → suivi','follow'],['rire → ri','laugh']])+key('Accents count: <b>été</b>, <b>dû</b>, <b>reçu</b>, <b>vécu</b>, <b>né</b>.')}],
+ items:['prendre','comprendre','apprendre','surprendre','mettre','permettre','promettre','remettre','voir','lire','boire','vouloir','pouvoir','savoir','connaître','croire','recevoir','devoir','dire','écrire','conduire','traduire','faire','peindre','craindre','éteindre','ouvrir','offrir','découvrir','couvrir','souffrir','avoir','être','vivre','courir','rire','suivre','plaire','tenir','obtenir','naître','mourir','venir','devenir','revenir'].map(v=>Pp('Participe passé : '+v+' → ___',v,'base',{ng:1}))},
+
+{id:'etre',part:2,title:'The être verbs',goal:'Know which verbs take être, and treat everything else as avoir.',n:8,ty:.5,
+ rule:'Seventeen verbs of movement and change of state take être. Every other verb takes avoir.',
+ cards:[
+ {h:'Seventeen verbs take être',b:p('Most verbs take avoir. A short list of verbs of movement and change of state take être.')+L_ETRE},
+ {h:'A memory aid: DR MRS VANDERTRAMPP',b:p('The first letters of the 17 verbs spell a phrase many students use.')+fr('**D**evenir · **R**evenir · **M**onter · **R**ester · **S**ortir · **V**enir · **A**ller · **N**aître · **D**escendre · **E**ntrer · **R**entrer · **T**omber · **R**etourner · **A**rriver · **M**ourir · **P**artir · **P**asser')+note('The phrase gives you the list. It does not tell you which verbs take avoir instead, or when an être verb switches. The next notes do.')},
+ {h:'Movement and change, in pairs',b:tbl(['Pair','Idea'],[['aller · venir','go and come'],['entrer · sortir','in and out'],['monter · descendre','up and down'],['arriver · partir','arrive and leave'],['naître · mourir','birth and death'],['devenir · revenir','become, and come back'],['rester · tomber · rentrer · retourner · passer','stay, fall, go home, go back, pass by']])},
+ {h:'Everything else takes avoir',b:ok('Elle est partie à huit heures.')+ok('Elle a mangé à huit heures.')+note('Not every verb of movement takes être. <b>marcher</b>, <b>courir</b>, <b>nager</b> and <b>voyager</b> take avoir: elle a nagé. So do <b>vivre</b>, <b>habiter</b> and <b>dormir</b>.')+key('Look-alikes take avoir: <b>prévenir</b> (from the venir family), <b>tenir</b>, <b>obtenir</b> and <b>retenir</b>. But <b>devenir</b> and <b>revenir</b> take être.')},
+ {h:'Careful: some of them switch',b:fr('Je [[suis]] {{descendu}} au sous-sol.')+fr("J'[[ai]] {{descendu}} les escaliers.")+note('<b>descendre</b>, <b>monter</b>, <b>sortir</b>, <b>rentrer</b>, <b>retourner</b>, <b>passer</b> and <b>entrer</b> take avoir when a direct object follows. Block 7 drills this. For now, with no object, they take être.')}],
+ items:[
+ F("Hier, elle ___ au marché.",'aller','elle'),F("Mes cousins ___ chez nous dimanche dernier.",'venir','ils'),F("Le train ___ en retard ce matin.",'arriver','il'),F("Les invités ___ à minuit.",'partir','ils'),F("Les enfants ___ dans la classe.",'entrer','ils'),F("Mes sœurs ___ avec leurs amies.",'sortir','elles'),F("Nous ___ au deuxième étage.",'monter','nous.f'),F("Vous ___ à la gare de Lyon.",'descendre','vous.mp'),F("Elles ___ à la maison toute la journée.",'rester','elles'),F("La petite fille ___ dans la rue.",'tomber','elle'),F("Ma grand-mère ___ en 1945.",'naître','elle'),F("Son grand-père ___ l'année dernière.",'mourir','il'),F("Elles ___ de très bonnes amies.",'devenir','elles'),F("Nous ___ de vacances hier.",'revenir','nous.m'),F("Tu ___ tard hier soir.",'rentrer','tu.f'),F("Ils ___ à Paris l'été dernier.",'retourner','ils'),F("Elle ___ chez nous après le travail.",'passer','elle'),
+ F("Elles ___ deux heures dans la forêt.",'marcher','elles'),F("Nous ___ en Espagne l'été dernier.",'voyager','nous.f'),F("Elle ___ dix kilomètres ce matin.",'courir','elle'),F("Les filles ___ dans la mer.",'nager','elles'),F("Vous ___ jusqu'à midi.",'dormir','vous.fp'),F("Mes grands-parents ___ à Nantes pendant vingt ans.",'vivre','ils'),F("Elle ___ trois ans à Lille.",'habiter','elle'),F("Elle ___ ses parents.",'prévenir','elle'),F("Elles ___ une bonne note.",'obtenir','elles'),F("Nous ___ notre promesse.",'tenir','nous.f'),F("Ils ___ tard hier soir.",'travailler','ils'),F("Les enfants ___ toute la soirée.",'rire','ils'),F("Il ___ pendant tout le week-end.",'pleuvoir','il'),
+ Q('Which verb takes être in the passé composé?','',['danser','tomber','regarder','nager'],'tomber','<b>tomber</b> is one of the 17 être verbs.',{danser:'<b>danser</b> takes avoir: elle a dansé.',regarder:'<b>regarder</b> takes avoir.',nager:'<b>nager</b> takes avoir, even though it is movement: elle a nagé.'}),
+ Q('Which verb takes être in the passé composé?','',['habiter','naître','dormir','voyager'],'naître','<b>naître</b> is one of the 17 être verbs.',{habiter:'<b>habiter</b> takes avoir.',dormir:'<b>dormir</b> takes avoir.',voyager:'<b>voyager</b> is movement, but it takes avoir: j’ai voyagé.'}),
+ Q('Which verb takes être in the passé composé?','',['chanter','rester','manger','parler'],'rester','<b>rester</b> is one of the 17 être verbs.',{chanter:'<b>chanter</b> takes avoir.',manger:'<b>manger</b> takes avoir.',parler:'<b>parler</b> takes avoir.'}),
+ Q('Which verb takes avoir in the passé composé?','',['aller','venir','marcher','arriver'],'marcher','<b>marcher</b> is movement, but it is not on the list: j’ai marché.',{aller:'<b>aller</b> is one of the 17 être verbs.',venir:'<b>venir</b> is one of the 17 être verbs.',arriver:'<b>arriver</b> is one of the 17 être verbs.'}),
+ Q('Which verb takes avoir in the passé composé?','',['partir','nager','entrer','rester'],'nager','<b>nager</b> is not on the list: il a nagé.',{partir:'<b>partir</b> is one of the 17 être verbs.',entrer:'<b>entrer</b> is one of the 17 être verbs.',rester:'<b>rester</b> is one of the 17 être verbs.'}),
+ Q('Which verb takes avoir in the passé composé?','',['naître','mourir','courir','devenir'],'courir','<b>courir</b> is not on the list: elle a couru.',{naître:'<b>naître</b> is one of the 17 être verbs.',mourir:'<b>mourir</b> is one of the 17 être verbs.',devenir:'<b>devenir</b> is one of the 17 être verbs.'})]},
+
+{id:'agr',part:2,title:'être and agreement',goal:'Make the participle agree with the subject when the auxiliary is être.',n:8,ty:.6,
+ rule:'With être, the participle agrees with the subject: -e for feminine, -s for plural, -es for feminine plural.',
+ cards:[
+ {h:'The participle agrees with the subject',b:tbl(['Subject','Ending','Example'],[['masculine singular','—',f('il est allé')],['feminine singular','-e',f('elle est allée')],['masculine plural','-s',f('ils sont allés')],['feminine plural','-es',f('elles sont allées')]])+key('Add -e for a woman, -s for more than one, -es for more than one woman.')},
+ {h:'Mixed groups',b:fr('Paul et Marie sont arrivés.','a mixed group: masculine plural')+fr('Anne et Sophie sont arrivées.','two women: feminine plural')+note('One man in a group makes it masculine plural.')},
+ {h:'je, tu, nous, vous: the speaker decides',b:p('These pronouns have no gender of their own. Look at who is speaking, or who is being spoken to.')+fr('Marie dit : « Je suis née à Lyon. »')+fr('Paul dit : « Je suis né à Lyon. »')+fr('Vous êtes arrivées, Anne et Sophie ?')+note('Polite vous for one person agrees in the singular: Madame, vous êtes arrivée à quelle heure ?')},
+ {h:'Endings that need care',b:T_ENDS+note('<b>né</b> keeps its accent: née, nés, nées. <b>mort</b> adds the ending to the t: morte.')}],
+ items:[
+ F("Ma sœur ___ en 1982.",'naître','elle'),F("Les oiseaux ___ à leur nid.",'revenir','ils'),F("Les filles ___ au quatrième étage.",'monter','elles'),F("Madame Daumier ___ chez elle après le travail.",'rentrer','elle'),F("Nous ___ vous voir hier.",'passer','nous.m'),F("Vous ___ à quelle heure ?",'venir','vous.fs'),F("Jean et Paul ___ hier soir.",'partir','ils'),F("Anne et Sophie ___ ce matin.",'arriver','elles'),F("Jean et Sophie ___ à la maison.",'rester','ils'),F("Je ___ à Lyon.",'naître','je.f'),F("Tu ___ de bonne heure.",'sortir','tu.f'),F("Nous ___ à la montagne.",'aller','nous.f'),F("Ils ___ dans la cuisine.",'entrer','ils'),F("Les enfants ___ dans l'escalier.",'tomber','ils'),F("Ses grands-parents ___ en 2010.",'mourir','ils'),F("Elles ___ avocates.",'devenir','elles'),F("Vous ___ de Londres hier ?",'revenir','vous.mp'),F("Vous ___ très tôt.",'partir','vous.fp'),F("Mes parents ___ à la cave.",'descendre','ils',{sw:'à la cave'}),F("La directrice ___ dans le bureau.",'entrer','elle'),F("Notre train ___ à midi.",'arriver','il'),F("Mon frère ___ de l'école à cinq heures.",'rentrer','il'),F("Elles ___ chez des amis.",'aller','elles'),F("Nous ___ à Paris l'an dernier.",'retourner','nous.m'),F("Je ___ en 1998.",'naître','je.m'),F("Mes cousines ___ dimanche.",'venir','elles'),F("Les deux sœurs ___ en retard.",'arriver','elles'),F("Léa et Chloé ___ chez le médecin.",'passer','elles'),F("Max et Léa ___ au cinéma.",'aller','ils'),F("Nous ___ de la gare à pied.",'partir','nous.f'),
+ Q('Which sentence is correct?','',["Marie et Paul sont arrivés.","Marie et Paul sont arrivées.","Marie et Paul est arrivés.","Marie et Paul sont arrivé."],"Marie et Paul sont arrivés.",'A group with at least one man is masculine plural: -s.',{"Marie et Paul sont arrivées.":'Feminine plural is for a group of women only. Paul is in the group.',"Marie et Paul est arrivés.":'Two people: the auxiliary is plural, sont.',"Marie et Paul sont arrivé.":'A plural subject needs -s on the participle.'}),
+ Q('A woman is speaking. Which sentence is correct?','',["Je suis née à Lyon.","Je suis né à Lyon.","J'ai née à Lyon.","Je suis nées à Lyon."],"Je suis née à Lyon.",'The speaker is a woman, so the participle takes -e.',{"Je suis né à Lyon.":'The speaker is a woman: née.',"J'ai née à Lyon.":'Naître takes être.',"Je suis nées à Lyon.":'Je is one person: no -s.'}),
+ Q('Said to one woman. Which sentence is correct?','',["Madame, vous êtes arrivée à quelle heure ?","Madame, vous êtes arrivé à quelle heure ?","Madame, vous êtes arrivées à quelle heure ?","Madame, vous avez arrivée à quelle heure ?"],"Madame, vous êtes arrivée à quelle heure ?",'Polite vous for one woman: singular and feminine, arrivée.',{"Madame, vous êtes arrivé à quelle heure ?":'The person is a woman: arrivée.',"Madame, vous êtes arrivées à quelle heure ?":'One person, so no -s.',"Madame, vous avez arrivée à quelle heure ?":'Arriver takes être.'})]},
+
+{id:'switch',part:2,title:'Verbs that switch auxiliary',goal:'Tell être from avoir for the verbs that can take both, by checking for a direct object.',n:8,ty:.5,
+ rule:'descendre, monter, sortir, rentrer, retourner, passer and entrer take être with no direct object and avoir with one.',
+ cards:[
+ {h:'The same verb, two auxiliaries',b:fr('Je [[suis]] {{descendu}} au sous-sol.','I went down to the basement.')+fr("J'[[ai]] {{descendu}} les escaliers.",'I went down the stairs.')+note('The verb did not change. What follows it did.')},
+ {h:'The test: is there a direct object?',b:work(['Say the verb with what follows it.','Is there a noun that answers “what?” or “whom?”, with no preposition?','Yes: avoir. No: être.'])+fr('Elle [[a]] {{sorti}} <b>la poubelle</b>.')+fr('Elle [[est]] {{sortie}} <b>de la maison</b>.')+key('<b>de la maison</b> starts with a preposition, so it is not a direct object.')},
+ {h:'The seven verbs',b:T_SW},
+ {h:'Agreement follows the auxiliary',b:p('With être, the participle agrees with the subject. With avoir and an object after the verb, it does not.')+fr('Elles [[sont]] {{descendues}}.')+fr('Elles [[ont]] {{descendu}} les escaliers.')+tn('A wrong auxiliary here is an error a rater hears. Check for the object before you choose.')}],
+ items:[
+ F("Elle ___ les escaliers.",'descendre','elle',{fam:'a',sw:'les escaliers'}),F("Elle ___ à la cave.",'descendre','elle',{sw:'à la cave'}),F("Nous ___ la valise du grenier.",'descendre','nous.f',{fam:'a',sw:'la valise'}),F("Nous ___ du bus à la gare.",'descendre','nous.f',{sw:'du bus, à la gare'}),
+ F("Ils ___ la rue Franklin.",'monter','ils',{fam:'a',sw:'la rue Franklin'}),F("Ils ___ dans le train.",'monter','ils',{sw:'dans le train'}),F("Vous ___ les courses.",'monter','vous.mp',{fam:'a',sw:'les courses'}),F("Vous ___ au troisième étage.",'monter','vous.mp',{sw:'au troisième étage'}),
+ F("Elle ___ son portefeuille.",'sortir','elle',{fam:'a',sw:'son portefeuille'}),F("Elle ___ de la maison à huit heures.",'sortir','elle',{sw:'de la maison'}),F("Tu ___ le chien hier soir.",'sortir','tu.m',{fam:'a',sw:'le chien'}),F("Tu ___ avec tes amis.",'sortir','tu.m',{sw:'avec tes amis'}),
+ F("Elles ___ la voiture dans le garage.",'rentrer','elles',{fam:'a',sw:'la voiture'}),F("Elles ___ à minuit.",'rentrer','elles',{sw:'à minuit'}),F("Nous ___ les chaises avant la pluie.",'rentrer','nous.m',{fam:'a',sw:'les chaises'}),F("Nous ___ tard.",'rentrer','nous.m',{sw:'tard'}),
+ F("Il ___ la crêpe.",'retourner','il',{fam:'a',sw:'la crêpe'}),F("Il ___ à Paris.",'retourner','il',{sw:'à Paris'}),F("Elles ___ la carte.",'retourner','elles',{fam:'a',sw:'la carte'}),F("Elles ___ chez leurs parents.",'retourner','elles',{sw:'chez leurs parents'}),
+ F("Elle ___ une heure ici.",'passer','elle',{fam:'a',sw:'une heure'}),F("Elle ___ chez nous.",'passer','elle',{sw:'chez nous'}),F("Nous ___ nos vacances à Nice.",'passer','nous.f',{fam:'a',sw:'nos vacances'}),F("Nous ___ à la poste.",'passer','nous.f',{sw:'à la poste'}),F("Ils ___ l'examen hier.",'passer','ils',{fam:'a',sw:"l'examen"}),F("Ils ___ devant chez nous.",'passer','ils',{sw:'devant chez nous'}),
+ F("Elle ___ le code.",'entrer','elle',{fam:'a',sw:'le code'}),F("Elle ___ dans la cuisine.",'entrer','elle',{sw:'dans la cuisine'}),
+ Q('Which sentence is correct?','',["Elle a monté les valises.","Elle est montée les valises.","Elle a montée les valises.","Elle est monté les valises."],"Elle a monté les valises.",'<b>les valises</b> is a direct object after the verb: avoir, and no agreement.',{"Elle est montée les valises.":'With a direct object, monter takes avoir.',"Elle a montée les valises.":'With avoir, the participle does not agree with the subject. The object comes after the verb.',"Elle est monté les valises.":'With a direct object, monter takes avoir.'}),
+ Q('Which sentence is correct?','',["Il est descendu à la cave.","Il a descendu à la cave.","Il est descendue à la cave.","Il a descendue à la cave."],"Il est descendu à la cave.",'<b>à la cave</b> starts with a preposition: no direct object, so être. Il is masculine: no ending.',{"Il a descendu à la cave.":'No direct object here, so descendre takes être.',"Il est descendue à la cave.":'Il is masculine: no -e.',"Il a descendue à la cave.":'No direct object, so être. And il is masculine.'}),
+ Q('The speakers are men. Which sentence is correct?','',["Nous avons sorti le chien.","Nous sommes sortis le chien.","Nous avons sortis le chien.","Nous sommes sorti le chien."],"Nous avons sorti le chien.",'<b>le chien</b> is a direct object after the verb: avoir, and no agreement.',{"Nous sommes sortis le chien.":'With a direct object, sortir takes avoir.',"Nous avons sortis le chien.":'With avoir, the participle does not agree with the subject.',"Nous sommes sorti le chien.":'With a direct object, sortir takes avoir.'}),
+ Q('Which sentence is correct?','',["Elles sont rentrées tard.","Elles ont rentré tard.","Elles sont rentré tard.","Elles ont rentrées tard."],"Elles sont rentrées tard.",'No direct object: être, and the participle agrees with elles.',{"Elles ont rentré tard.":'No direct object here, so rentrer takes être.',"Elles sont rentré tard.":'With être the participle agrees with the subject: rentrées.',"Elles ont rentrées tard.":'No direct object, so être.'})]},
+
+{id:'refl',part:2,title:'Pronominal verbs',goal:'Build the passé composé of pronominal verbs, and decide when the participle agrees.',n:8,ty:.6,
+ rule:'Pronominal verbs always take être, with the reflexive pronoun before it. The participle agrees only if the reflexive pronoun is the direct object.',
+ cards:[
+ {h:'Always être, with the pronoun first',b:T_PRON+note('The pronoun comes right before the auxiliary: <b>me suis</b>, <b>t’es</b>, <b>s’est</b>.')},
+ {h:'Usually the participle agrees',b:fr("Nadia [[s'est]] {{réveillée}}.")+fr('Ils [[se sont]] {{levés}} tôt.')+key('The reflexive pronoun usually stands for the subject, as a direct object. Then the participle agrees with the subject.')},
+ {h:'No agreement: the object comes after',b:fr("Elle [[s'est]] {{lavée}}.",'she washed herself')+fr("Elle [[s'est]] {{lavé}} les mains.",'she washed her hands')+note('When another direct object follows the verb (<b>les mains</b>, <b>les dents</b>, <b>les cheveux</b>), the pronoun means “for herself”. The participle stays masculine singular.')},
+ {h:'No agreement: parler à, téléphoner à',b:p('Test: could the pronoun be replaced by <b>à</b> + someone? If yes, it is indirect and the participle does not agree.')+fr('Elles [[se sont]] {{parlé}}.','parler à')+fr('Elles [[se sont]] {{téléphoné}}.','téléphoner à')+fr('Elles [[se sont]] {{regardées}}.','regarder: no à, so the pronoun is direct')+note('Indirect: <b>se parler, se téléphoner, s’écrire, se dire, se plaire, s’offrir</b>. Direct: <b>se voir, se regarder, se rencontrer, se retrouver, se disputer</b>.')}],
+ items:[
+ F("Nadia ___ à sept heures.",'se réveiller','elle'),F("Elle ___ devant le miroir.",'se maquiller','elle'),F("Elle ___ en cinq minutes.","s'habiller",'elle'),F("Hier, je ___ tard.",'se coucher','je.m'),F("Vous ___ après le match.",'se doucher','vous.mp'),F("Nous ___ à neuf heures.",'se lever','nous.f'),F("Tu ___ à la montagne.",'se promener','tu.f'),F("Ils ___ devant la porte.",'se retrouver','ils'),F("Elles ___ hier soir.",'se disputer','elles'),F("Elle ___ sur le canapé.","s'asseoir",'elle'),F("Mes frères ___ à dix heures.","s'endormir",'ils'),F("Les enfants ___ au bord de la rivière.",'se précipiter','ils'),F("Ils ___ au marché.",'se voir','ils'),F("Elles ___ à la gare.",'se rencontrer','elles'),F("Marie et Paul ___ longuement.",'se regarder','ils'),F("Nous ___ en dix minutes.",'se préparer','nous.m'),F("Vous ___ trop tard.",'se coucher','vous.fs'),F("Ce matin, je ___ à sept heures.",'se réveiller','je.f'),
+ F("Elle ___ les dents.",'se brosser','elle',{noag:'<b>les dents</b> is the direct object and comes after the verb.'}),F("Elle ___ le visage.",'se laver','elle',{noag:'<b>le visage</b> is the direct object and comes after the verb.'}),F("Ils ___ les mains.",'se laver','ils',{noag:'<b>les mains</b> is the direct object and comes after the verb.'}),F("Nous ___ les cheveux.",'se couper','nous.f',{noag:'<b>les cheveux</b> is the direct object and comes after the verb.'}),F("Elle ___ la jambe.",'se casser','elle',{noag:'<b>la jambe</b> is the direct object and comes after the verb.'}),
+ F("Elles ___ au téléphone.",'se parler','elles',{noag:'<i>Parler</i> is parler <b>à</b> quelqu’un: the pronoun is indirect.'}),F("Les voisins ___ hier.",'se téléphoner','ils',{noag:'<i>Téléphoner</i> is téléphoner <b>à</b> quelqu’un: the pronoun is indirect.'}),F("Elles ___ toute la journée.","s'écrire",'elles',{noag:'<i>Écrire</i> is écrire <b>à</b> quelqu’un: the pronoun is indirect.'}),F("Ils ___ dès le premier jour.",'se plaire','ils',{noag:'<i>Plaire</i> is plaire <b>à</b> quelqu’un: the pronoun is indirect.'}),F("Nous ___ la vérité.",'se dire','nous.m',{noag:'<b>la vérité</b> is the direct object and comes after the verb.'}),F("Elle ___ un cadeau.","s'offrir",'elle',{noag:'<b>un cadeau</b> is the direct object and comes after the verb.'}),F("Elles ___ les ongles.",'se couper','elles',{noag:'<b>les ongles</b> is the direct object and comes after the verb.'}),
+ Q('Which sentence is correct?','',["Elle s'est lavé les mains.","Elle s'est lavée les mains.","Elle s'a lavé les mains.","Elle est lavé les mains."],"Elle s'est lavé les mains.",'<b>les mains</b> is the direct object, after the verb. The pronoun is indirect, so no agreement.',{"Elle s'est lavée les mains.":'With les mains after the verb, the participle does not agree.',"Elle s'a lavé les mains.":'Pronominal verbs take être: s’est.',"Elle est lavé les mains.":'The reflexive pronoun is missing.'}),
+ Q('Which sentence is correct?','',["Elles se sont parlé.","Elles se sont parlées.","Elles se ont parlé.","Elles sont parlé."],"Elles se sont parlé.",'Parler à: the pronoun is indirect, so the participle does not agree.',{"Elles se sont parlées.":'Parler takes à, so the pronoun is indirect: no agreement.',"Elles se ont parlé.":'The auxiliary is être: sont.',"Elles sont parlé.":'The reflexive pronoun is missing.'}),
+ Q('Which sentence is correct?','',["Ils se sont levés tôt.","Ils se sont levé tôt.","Ils s'ont levés tôt.","Ils sont levés tôt."],"Ils se sont levés tôt.",'Se lever: the pronoun is the direct object, so the participle agrees with ils.',{"Ils se sont levé tôt.":'The reflexive pronoun is the direct object here, so the participle agrees: levés.',"Ils s'ont levés tôt.":'The auxiliary is être: sont.',"Ils sont levés tôt.":'The reflexive pronoun is missing.'}),
+ Q('A group of women is speaking. Which sentence is correct?','',["Nous nous sommes retrouvées.","Nous nous sommes retrouvé.","Nous nous avons retrouvées.","Nous sommes retrouvées."],"Nous nous sommes retrouvées.",'Se retrouver: direct, so the participle agrees with nous (feminine plural).',{"Nous nous sommes retrouvé.":'The pronoun is direct and nous is feminine plural: retrouvées.',"Nous nous avons retrouvées.":'Pronominal verbs take être: sommes.',"Nous sommes retrouvées.":'The reflexive pronoun is missing: nous nous sommes.'})]},
+
+{id:'cod',part:3,title:'A direct object before the verb',goal:'Make the participle agree with a direct object that comes before avoir.',n:8,ty:.5,
+ rule:'With avoir, the participle agrees with a direct object placed before the verb: le, la, l’, les, que, quel + noun. An object after the verb changes nothing.',
+ cards:[
+ {h:'The object after the verb: no agreement',b:fr("J'[[ai]] {{acheté}} la robe.")+fr('Ils [[ont]] {{vu}} les photos.')+key('When the object comes after the verb, the participle stays as it is.')},
+ {h:'The object before the verb: agreement',b:fr("La robe ? Je <b>l'</b>[[ai]] {{achetée}}.",'l’ = la robe, feminine')+fr('Les photos ? Je <b>les</b> [[ai]] {{vues}}.')+tbl(['The object before the verb is','Participle'],[['masculine singular (le, l’)','no ending'],['feminine singular (la, l’)','-e'],['masculine plural (les)','-s'],['feminine plural (les)','-es']])+note('<b>l’</b> can be masculine or feminine. Look at what it stands for.')},
+ {h:'Three ways an object gets before the verb',b:tbl(['Way','Example'],[['pronoun: le, la, l’, les',f("Je les [[ai]] {{vues}}.")],['que (relative)',f("la lettre que j'[[ai]] {{écrite}}")],['quel / quelle / quels / quelles + noun',f('Quelle robe [[as]]-tu {{choisie}} ?')]])+note('For que, see also block 5 of Relative pronouns, part 1: Qui, que, où.')},
+ {h:'No agreement: en, lui, leur',b:fr("Des pommes ? J'en [[ai]] {{mangé}}.")+fr('Mes parents ? Je leur [[ai]] {{parlé}}.')+note('<b>en</b> never makes the participle agree. <b>lui</b> and <b>leur</b> are indirect objects (parler à, téléphoner à). Choosing between le, lui, leur and en is covered in the object-pronoun lessons.')+tn('This agreement is heard only in a few participles (écrite, prise, faite, mise). It always counts in writing.')}],
+ items:[
+ Pp("Les photos ? Je les ai ___ hier.",'prendre','fp',{ob:'les (= les photos)'}),Pp("La lettre ? Je l'ai ___ ce matin.",'écrire','fs',{ob:"l' (= la lettre)"}),Pp("Mes clés ? Je les ai ___.",'perdre','fp',{ob:'les (= mes clés)'}),Pp("Le film ? Nous l'avons ___ hier.",'voir','ms',{ob:"l' (= le film)"}),Pp("Ces histoires ? Elle les a ___.",'entendre','fp',{ob:'les (= ces histoires)'}),Pp("Le pain ? Je l'ai ___ ce matin.",'acheter','ms',{ob:"l' (= le pain)"}),
+ Pp("Les chaussures qu'elle a ___ sont petites.",'acheter','fp',{ob:'que (= les chaussures)'}),Pp("La robe que tu as ___ est jolie.",'choisir','fs',{ob:'que (= la robe)'}),Pp("Les amis que nous avons ___ arrivent.",'inviter','mp',{ob:'que (= les amis)'}),Pp("Les fleurs que ma mère a ___ sentent bon.",'planter','fp',{ob:'que (= les fleurs)'}),Pp("Voilà la voiture qu'il a ___.",'vendre','fs',{ob:'que (= la voiture)'}),Pp("Les histoires qu'il a ___ sont drôles.",'raconter','fp',{ob:'que (= les histoires)'}),
+ Pp("Quelle robe as-tu ___ ?",'choisir','fs',{ob:'quelle robe'}),Pp("Quels livres avez-vous ___ ?",'lire','mp',{ob:'quels livres'}),Pp("Quelles photos a-t-il ___ ?",'prendre','fp',{ob:'quelles photos'}),
+ Pp("La pomme ? Elle l'a ___.",'manger','fs',{ob:"l' (= la pomme)"}),Pp("Les devoirs ? Vous les avez ___ ?",'finir','mp',{ob:'les (= les devoirs)'}),Pp("Les enfants ? Nous les avons ___ à l'école.",'déposer','mp',{ob:'les (= les enfants)'}),Pp("Ma cousine ? Je l'ai ___ à la gare.",'rencontrer','fs',{ob:"l' (= ma cousine)"}),Pp("Les exercices ? Je les ai ___ ce matin.",'faire','mp',{ob:'les (= les exercices)'}),Pp("La question ? Tu l'as ___ ?",'comprendre','fs',{ob:"l' (= la question)"}),Pp("Les lettres ? Je les ai ___ hier.",'envoyer','fp',{ob:'les (= les lettres)'}),
+ Pp("J'ai ___ la lettre.",'écrire','after'),Pp("Elle a ___ les photos.",'prendre','after'),Pp("Nous avons ___ la voiture.",'vendre','after'),Pp("Ils ont ___ leurs clés.",'perdre','after'),
+ Pp("Des pommes ? J'en ai ___ trois.",'manger','en'),Pp("Tes parents ? Je leur ai ___ hier.",'parler','ind'),Pp("Ta sœur ? Je lui ai ___ ce matin.",'téléphoner','ind')]},
+
+{id:'neg',part:4,title:'Negation',goal:'Place ne … pas, jamais, plus, rien and personne correctly around the auxiliary and the participle.',n:8,ty:.6,
+ rule:'ne goes before the auxiliary. pas, jamais, plus and rien follow it. personne follows the participle. After a negation, un, une and des become de.',
+ cards:[
+ {h:'ne … pas wraps the auxiliary',b:fr("Je <b>n'</b>[[ai]] <b>pas</b> {{fini}}.")+fr("Elle <b>n'</b>[[est]] <b>pas</b> {{arrivée}}.")+note('<b>ne</b> becomes <b>n’</b> before a vowel: n’ai, n’as, n’a, n’est. Before a consonant it stays <b>ne</b>: ne suis, ne sommes, ne sont.')},
+ {h:'jamais, plus and rien follow the auxiliary',b:tbl(['Word','Meaning','Example'],[['jamais','never',f("Elle n'[[est]] jamais {{venue}}.")],['plus','no longer',f("Il n'[[a]] plus {{téléphoné}}.")],['rien','nothing',f("Nous n'[[avons]] rien {{vu}}.")]])},
+ {h:'personne goes after the participle',b:fr("Je n'[[ai]] rien {{vu}}.")+fr("Je n'[[ai]] {{vu}} personne.")+key('<b>rien</b> sits before the participle. <b>personne</b> sits after it.')},
+ {h:'After a negation, un, une and des become de',b:fr("J'[[ai]] {{acheté}} une lampe.")+fr("Je n'[[ai]] pas {{acheté}} <b>de</b> lampe.")+fr("Nous n'[[avons]] pas {{mangé}} <b>de</b> pain.")+fr("Je n'[[ai]] pas {{pris}} <b>d'</b>eau.")+note('Before a vowel: <b>d’</b>. The definite article does not change: Je n’ai pas vu <b>le</b> film.')+tn('Putting ne around the auxiliary, every time, is basic accuracy for the DLPT writing-style items and the OPI.')}],
+ items:[
+ F("Je ___ la vaisselle hier.",'faire','je.m',{neg:'pas'}),F("Tu ___ ta chambre.",'ranger','tu.m',{neg:'pas'}),F("Il ___ la cuisine.",'nettoyer','il',{neg:'pas'}),F("Nous ___ ce studio.",'louer','nous.m',{neg:'pas'}),F("Vous ___ la porte.",'fermer','vous.mp',{neg:'pas'}),F("Ils ___ le loyer ce mois-ci.",'payer','ils',{neg:'pas'}),F("Elle ___ à la fête.",'aller','elle',{neg:'pas'}),F("Ils ___ hier.",'venir','ils',{neg:'pas'}),F("Nous ___ à l'heure.",'arriver','nous.f',{neg:'pas'}),F("Elles ___ en vacances.",'partir','elles',{neg:'pas'}),
+ F("Elle ___ de lait.",'boire','elle',{neg:'jamais'}),F("Tu ___ à Paris.",'aller','tu.m',{neg:'jamais'}),F("Il ___ à ses parents.",'téléphoner','il',{neg:'plus'}),F("Ils ___ au café.",'aller','ils',{neg:'plus'}),
+ F("Au cours, nous ___.",'comprendre','nous.m',{neg:'rien'}),F("Moi, je ___.",'dire','je.f',{neg:'rien'}),F("Vous ___ dans le bruit.",'entendre','vous.fp',{neg:'rien'}),
+ F("Il ___ au parc.",'voir','il',{neg:'personne'}),F("Nous ___ à la fête.",'connaître','nous.f',{neg:'personne'}),F("Elles ___ au cinéma.",'rencontrer','elles',{neg:'personne'}),F("Tu ___ au magasin.",'rencontrer','tu.m',{neg:'personne'}),
+ F("Ce matin, elle ___.",'se réveiller','elle',{neg:'pas'}),F("Ce soir-là, nous ___.",'se disputer','nous.m',{neg:'pas'}),F("Avant, ils ___.",'se parler','ils',{neg:'jamais',noag:'<i>Parler</i> is parler <b>à</b> quelqu’un: the pronoun is indirect.'}),F("Hier, tu ___ tôt.",'se coucher','tu.f',{neg:'pas'}),
+ Q('Which article completes the sentence?',"Elle n'a pas acheté ___ lampe. (not any lamp)",['de','une','la','des'],'de','After a negation, un, une and des become <b>de</b>.',{une:'Un, une and des become de after a negation.',la:'La lampe would mean one particular lamp. The cue is “not any”.',des:'Des also becomes de after a negation, and lampe is singular.'}),
+ Q('Which article completes the sentence?',"Nous n'avons pas mangé ___ pain. (not any bread)",['de','du','le','des'],'de','After a negation, the partitive (du, de la, des) becomes <b>de</b>.',{du:'Du becomes de after a negation.',le:'Le pain would mean one particular loaf. The cue is “not any”.',des:'Pain is singular, and des would become de after a negation anyway.'}),
+ Q('Which article completes the sentence?',"Je n'ai pas pris ___ eau. (not any water)",["d'","de l'","l'","de la"],"d'",'After a negation the partitive becomes <b>de</b>, written <b>d’</b> before a vowel.',{"de l'":'After a negation, de l’ becomes d’.',"l'":"L'eau would mean one particular water. The cue is “not any”.","de la":'After a negation, de la becomes de, written d’ before a vowel.'}),
+ Q('Which article completes the sentence?',"Ils n'ont pas acheté ___ fruits. (not any fruit)",['de','des','les','du'],'de','After a negation, des becomes <b>de</b>.',{des:'Des becomes de after a negation.',les:'Les fruits would mean particular fruit. The cue is “not any”.',du:'Fruits is plural, and du would become de after a negation anyway.'})]},
+
+{id:'quest',part:4,title:'Questions, adverbs and pronouns',goal:'Place the other small words: question forms, short adverbs like déjà and bien, and object pronouns.',n:8,
+ rule:'est-ce que keeps the order; inversion puts the auxiliary first (As-tu fini ?). Short adverbs sit between the auxiliary and the participle. An object pronoun goes before the auxiliary.',
+ cards:[
+ {h:'Questions: est-ce que or inversion',b:fr('Est-ce que tu [[as]] {{fini}} ?')+fr('[[As]]-tu {{fini}} ?')+fr('[[Est]]-elle {{arrivée}} ?')+note('Inversion moves the auxiliary before the subject, with a hyphen. The participle stays behind and still agrees.')+key('Between two vowels, add <b>-t-</b>: <b>a-t-il</b> fini ? <b>a-t-elle</b> fini ? <b>a-t-on</b> fini ?')},
+ {h:'Question words come first',b:fr('Où [[avez]]-vous {{mangé}} ?')+fr("Qu'est-ce que tu [[as]] {{fait}} ?")+fr('Pourquoi [[est]]-elle {{partie}} ?')},
+ {h:'Short adverbs sit in the middle',b:fr("J'[[ai]] <b>déjà</b> {{fini}}.")+fr('Elle [[a]] <b>bien</b> {{dormi}}.')+fr('Nous [[avons]] <b>trop</b> {{mangé}}.')+note('<b>déjà</b>, <b>bien</b>, <b>trop</b> go between the auxiliary and the participle. Time words such as hier and ce matin go at the start or the end of the sentence.')},
+ {h:'Object pronouns go before the auxiliary',b:fr("Je <b>l'</b>[[ai]] {{vu}}.")+fr('Elle <b>les</b> [[a]] {{prises}}.')+fr("Je ne <b>l'</b>[[ai]] pas {{vu}}.")+key('Order: <b>ne</b>, pronoun, auxiliary, <b>pas</b>, participle.')+note('Choosing the pronoun is covered in the object-pronoun lessons. Here only the position matters.')}],
+ items:[
+ Q('Which question is correct?','',["As-tu fini ton travail ?","As tu fini ton travail ?","Tu as-fini ton travail ?","As-tu ton travail fini ?"],"As-tu fini ton travail ?",'Inversion: auxiliary, hyphen, subject, participle.',{"As tu fini ton travail ?":'Inversion needs a hyphen: as-tu.',"Tu as-fini ton travail ?":'In inversion the auxiliary comes first, then the subject.',"As-tu ton travail fini ?":'The object goes after the participle: as-tu fini ton travail.'}),
+ Q('Which question is correct?','',["Est-elle arrivée à l'heure ?","Est elle arrivée à l'heure ?","Elle est-arrivée à l'heure ?","Est-elle arrivé à l'heure ?"],"Est-elle arrivée à l'heure ?",'The participle still agrees with elle: arrivée.',{"Est elle arrivée à l'heure ?":'Inversion needs a hyphen: est-elle.',"Elle est-arrivée à l'heure ?":'In inversion the auxiliary comes first, then the subject.',"Est-elle arrivé à l'heure ?":'The participle agrees with elle: arrivée.'}),
+ Q('Which question is correct?','',["A-t-il téléphoné ?","A il téléphoné ?","A-il téléphoné ?","At-il téléphoné ?"],"A-t-il téléphoné ?",'Between two vowels (a + il), French adds -t-: a-t-il.',{"A il téléphoné ?":'Inversion needs hyphens, and a -t- between the two vowels: a-t-il.',"A-il téléphoné ?":'Two vowels meet. Add -t-: a-t-il.',"At-il téléphoné ?":'The auxiliary is a. The -t- is added between the hyphens: a-t-il.'}),
+ Q('Which question is correct?','',["Où avez-vous mangé ?","Où vous avez-mangé ?","Avez-vous où mangé ?","Où mangé avez-vous ?"],"Où avez-vous mangé ?",'Question word, auxiliary, subject, participle.',{"Où vous avez-mangé ?":'The auxiliary goes before the subject, and the participle stays behind: avez-vous mangé.',"Avez-vous où mangé ?":'The question word comes first.',"Où mangé avez-vous ?":'The auxiliary comes before the participle.'}),
+ Q('Which question is correct?','',["Qu'est-ce que tu as fait ?","Qu'est-ce que as-tu fait ?","Qu'est-ce que tu fait as ?","Qu'est-ce tu as fait ?"],"Qu'est-ce que tu as fait ?",'After est-ce que, the order stays normal: tu as fait.',{"Qu'est-ce que as-tu fait ?":'After est-ce que, keep the normal order: tu as.',"Qu'est-ce que tu fait as ?":'The auxiliary comes before the participle.',"Qu'est-ce tu as fait ?":'The full form is qu’est-ce que.'}),
+ Z('Type the missing words.','Où ___ ? (inversion · dormir · tu)','as-tu dormi','Inversion puts the auxiliary before the subject, with a hyphen: <b>as-tu dormi</b>.'),
+ Z('Type the missing words.','Pourquoi ___ ? (est-ce que · partir · elle)',["est-ce qu'elle est partie"],'<b>est-ce que</b> keeps the normal order. Que becomes qu’ before elle: <b>est-ce qu’elle est partie</b>.'),
+ Z('Type the missing words.','Quand ___ ? (inversion · arriver · vous, m. pl.)','êtes-vous arrivés','Inversion with être, and the participle agrees with vous (masculine plural): <b>êtes-vous arrivés</b>.'),
+ Z('Type the missing words.','___ ? (inversion · ils · finir)','ont-ils fini','Inversion puts the auxiliary before the subject: <b>ont-ils fini</b>. No -t-: ont ends in a consonant.'),
+ Z('Type the missing words.','___ ? (inversion · elle · sortir)','est-elle sortie','Inversion with être, and the participle agrees with elle: <b>est-elle sortie</b>.'),
+ Z('Type the missing words.','___ le film ? (inversion · il · voir)','a-t-il vu','Inversion with -t- between the two vowels: <b>a-t-il vu</b>.'),
+ Q('Which sentence puts the adverb in the right place?','',["Elle a déjà mangé.","Elle a mangé déjà.","Elle déjà a mangé.","Elle a déjà manger."],"Elle a déjà mangé.",'A short adverb sits between the auxiliary and the participle.',{"Elle a mangé déjà.":'Déjà goes between the auxiliary and the participle.',"Elle déjà a mangé.":'The adverb goes after the auxiliary, not before it.',"Elle a déjà manger.":'The infinitive. After the auxiliary, use the participle: mangé.'}),
+ Q('Which sentence puts the adverb in the right place?','',["Nous avons bien dormi.","Nous avons dormi bien.","Nous bien avons dormi.","Nous avons bien dormir."],"Nous avons bien dormi.",'A short adverb sits between the auxiliary and the participle.',{"Nous avons dormi bien.":'Bien goes between the auxiliary and the participle.',"Nous bien avons dormi.":'The adverb goes after the auxiliary, not before it.',"Nous avons bien dormir.":'The infinitive. After the auxiliary, use the participle: dormi.'}),
+ Q('Which sentence puts the adverb in the right place?','',["Ils ont trop mangé.","Ils ont mangé trop.","Ils trop ont mangé.","Ils ont trop manger."],"Ils ont trop mangé.",'A short adverb sits between the auxiliary and the participle.',{"Ils ont mangé trop.":'Trop goes between the auxiliary and the participle.',"Ils trop ont mangé.":'The adverb goes after the auxiliary, not before it.',"Ils ont trop manger.":'The infinitive. After the auxiliary, use the participle: mangé.'}),
+ Q('Which sentence puts the adverb in the right place?','',["Il est déjà parti.","Il est parti déjà.","Il déjà est parti.","Il a déjà parti."],"Il est déjà parti.",'A short adverb sits between the auxiliary and the participle.',{"Il est parti déjà.":'Déjà goes between the auxiliary and the participle.',"Il déjà est parti.":'The adverb goes after the auxiliary, not before it.',"Il a déjà parti.":'Partir takes être.'}),
+ Q('Which sentence puts the adverb in the right place?','',["Tu as bien compris.","Tu as compris bien.","Tu bien as compris.","Tu as bien comprendu."],"Tu as bien compris.",'A short adverb sits between the auxiliary and the participle.',{"Tu as compris bien.":'Bien goes between the auxiliary and the participle.',"Tu bien as compris.":'The adverb goes after the auxiliary, not before it.',"Tu as bien comprendu.":'Comprendre is irregular: compris.'}),
+ Q('Which sentence puts the adverb in the right place?','',["Elles ont trop travaillé.","Elles ont travaillé trop.","Elles trop ont travaillé.","Elles sont trop travaillé."],"Elles ont trop travaillé.",'A short adverb sits between the auxiliary and the participle.',{"Elles ont travaillé trop.":'Trop goes between the auxiliary and the participle.',"Elles trop ont travaillé.":'The adverb goes after the auxiliary, not before it.',"Elles sont trop travaillé.":'Travailler takes avoir.'}),
+ Q("Replace the object with a pronoun: J'ai acheté le pain.",'',["Je l'ai acheté.","J'ai l'acheté.","Je l'a acheté.","J'ai acheté l'."],"Je l'ai acheté.",'The pronoun goes before the auxiliary. Le is masculine: no ending.',{"J'ai l'acheté.":'The pronoun goes before the auxiliary, not before the participle.',"Je l'a acheté.":'The auxiliary is ai for je.',"J'ai acheté l'.":'The pronoun goes before the auxiliary.'}),
+ Q('Replace the object with a pronoun: Elle a pris les photos.','',["Elle les a prises.","Elle a les prises.","Elle les a pris.","Elle les a prise."],"Elle les a prises.",'The pronoun goes before the auxiliary, and les (feminine plural) makes the participle agree: prises.',{"Elle a les prises.":'The pronoun goes before the auxiliary.',"Elle les a pris.":'Les comes before the verb, so the participle agrees: prises.',"Elle les a prise.":'Les is plural: prises.'}),
+ Q('Replace the object with a pronoun: Je n’ai pas vu le film.','',["Je ne l'ai pas vu.","Je ne l'ai vu pas.","Je l'ai ne pas vu.","Je n'ai pas le vu."],"Je ne l'ai pas vu.",'Order: ne, pronoun, auxiliary, pas, participle.',{"Je ne l'ai vu pas.":'Pas goes right after the auxiliary.',"Je l'ai ne pas vu.":'Ne goes first, before the pronoun.',"Je n'ai pas le vu.":'The pronoun goes before the auxiliary.'}),
+ Q('Replace the object with a pronoun: Nous avons lu la lettre.','',["Nous l'avons lue.","Nous l'avons lu.","Nous avons la lue.","Nous la avons lue."],"Nous l'avons lue.",'La becomes l’ before the auxiliary, and the feminine object makes the participle agree: lue.',{"Nous l'avons lu.":'L’ stands for la lettre, which is feminine: lue.',"Nous avons la lue.":'The pronoun goes before the auxiliary.',"Nous la avons lue.":'La becomes l’ before a vowel: l’avons.'}),
+ Z('Replace the underlined object with a pronoun.',"J'ai acheté __le pain__.","je l'ai acheté",'The pronoun goes before the auxiliary, and le is masculine: <b>je l’ai acheté</b>.'),
+ Z('Replace the underlined object with a pronoun.','Nous avons vu __les films__.','nous les avons vus','The pronoun goes before the auxiliary, and les (masculine plural) makes the participle agree: <b>nous les avons vus</b>.'),
+ Z('Replace the underlined object with a pronoun.','Elle a mangé __la pomme__.',"elle l'a mangée",'La becomes l’ before the auxiliary, and the participle agrees: <b>elle l’a mangée</b>.'),
+ Z('Replace the underlined object with a pronoun.',"Tu n'as pas fini __les devoirs__.",'tu ne les as pas finis','Order: ne, pronoun, auxiliary, pas, participle, with agreement: <b>tu ne les as pas finis</b>.'),
+ Z('Replace the underlined object with a pronoun.',"Ils n'ont pas vu __le match__.","ils ne l'ont pas vu",'Order: ne, pronoun, auxiliary, pas, participle: <b>ils ne l’ont pas vu</b>.'),
+ Z('Replace the underlined object with a pronoun.','Vous avez ouvert __les fenêtres__.','vous les avez ouvertes','The pronoun goes before the auxiliary, and les (feminine plural) makes the participle agree: <b>vous les avez ouvertes</b>.')]},
+
+{id:'which',part:5,title:'Which one is right?',goal:'Spot the one correct sentence among four, each wrong in a different way.',n:8,
+ rule:'Check in order: the auxiliary, the participle, the agreement, then the small words.',
+ cards:[
+ {h:'Check in this order',b:work(['Auxiliary: avoir or être, and does it match the subject?','Participle: the right form for this verb?','Agreement: être with the subject; avoir only with an object before the verb.','Small words: ne around the auxiliary, pronouns before it.'])+key('Each wrong sentence breaks exactly one of these.')},
+ {h:'The common traps',b:tbl(['Wrong','Right','Why'],[[f('Elle a allée'),f('Elle est allée'),'aller takes être'],[f('Ils ont descendu à la cave'),f('Ils sont descendus à la cave'),'no object: être'],[f("J'ai prendu"),f("J'ai pris"),'irregular participle'],[f('Elle s’est lavée les mains'),f('Elle s’est lavé les mains'),'the object comes after'],[f("J'ai pas fini"),f("Je n'ai pas fini"),'ne is missing']])}],
+ items:[
+ Q('Which sentence is correct?','',["Mes cousines sont venues dimanche.","Mes cousines ont venu dimanche.","Mes cousines sont venu dimanche.","Mes cousines sont venir dimanche."],"Mes cousines sont venues dimanche.",'Venir takes être, and the participle agrees with the feminine plural subject: venues.',{"Mes cousines ont venu dimanche.":'Venir takes être, not avoir.',"Mes cousines sont venu dimanche.":'The participle must agree with the subject: venues.',"Mes cousines sont venir dimanche.":'The infinitive. After the auxiliary, use the participle.'}),
+ Q('Which sentence is correct?','',["Nous avons fini nos devoirs.","Nous sommes finis nos devoirs.","Nous avons finis nos devoirs.","Nous avons fin nos devoirs."],"Nous avons fini nos devoirs.",'Finir takes avoir, and the object comes after the verb: no agreement.',{"Nous sommes finis nos devoirs.":'Finir takes avoir, not être.',"Nous avons finis nos devoirs.":'With avoir, the participle does not agree with the subject.',"Nous avons fin nos devoirs.":'The participle of finir is fini.'}),
+ Q('Which sentence is correct?','',["Elle s'est levée à sept heures.","Elle est levée à sept heures.","Elle s'est levé à sept heures.","Elle s'a levée à sept heures."],"Elle s'est levée à sept heures.",'Pronominal verb: reflexive pronoun + être, and the pronoun is direct, so the participle agrees.',{"Elle est levée à sept heures.":'The reflexive pronoun is missing: s’est.',"Elle s'est levé à sept heures.":'The pronoun is the direct object, so the participle agrees: levée.',"Elle s'a levée à sept heures.":'Pronominal verbs take être: s’est.'}),
+ Q('Which sentence is correct?','',["Les photos que j'ai prises sont belles.","Les photos que j'ai pris sont belles.","Les photos que je suis prises sont belles.","Les photos que j'ai prendu sont belles."],"Les photos que j'ai prises sont belles.",'Que stands for les photos, which comes before the verb: the participle agrees.',{"Les photos que j'ai pris sont belles.":'The object (que = les photos) comes before the verb, so the participle agrees: prises.',"Les photos que je suis prises sont belles.":'Prendre takes avoir.',"Les photos que j'ai prendu sont belles.":'Prendre is irregular: pris.'}),
+ Q('Which sentence is correct?','',["Il n'a pas fini.","Il a pas fini.","Il n'a fini pas.","Il ne pas a fini."],"Il n'a pas fini.",'ne … pas wraps the auxiliary.',{"Il a pas fini.":'In writing, ne is needed: il n’a pas fini.',"Il n'a fini pas.":'Pas goes right after the auxiliary.',"Il ne pas a fini.":'Ne and pas wrap the auxiliary: n’a pas.'}),
+ Q('Which sentence is correct?','',["Ils sont descendus à la cave.","Ils ont descendu à la cave.","Ils sont descendu à la cave.","Ils sont descendues à la cave."],"Ils sont descendus à la cave.",'No direct object: être, and the participle agrees with ils: descendus.',{"Ils ont descendu à la cave.":'No direct object, so descendre takes être.',"Ils sont descendu à la cave.":'With être the participle agrees with the subject: descendus.',"Ils sont descendues à la cave.":'Ils is masculine: descendus, not descendues.'}),
+ Q('Which sentence is correct?','',["J'ai descendu les escaliers.","Je suis descendu les escaliers.","J'ai descendus les escaliers.","J'ai descendre les escaliers."],"J'ai descendu les escaliers.",'<b>les escaliers</b> is a direct object after the verb: avoir, and no agreement.',{"Je suis descendu les escaliers.":'With a direct object, descendre takes avoir.',"J'ai descendus les escaliers.":'The object comes after the verb: no agreement.',"J'ai descendre les escaliers.":'The infinitive. After the auxiliary, use the participle.'}),
+ Q('Which sentence is correct?','',["Elles se sont écrit toute la semaine.","Elles se sont écrites toute la semaine.","Elles sont écrit toute la semaine.","Elles se ont écrit toute la semaine."],"Elles se sont écrit toute la semaine.",'Écrire à: the pronoun is indirect, so no agreement.',{"Elles se sont écrites toute la semaine.":'Écrire takes à, so the pronoun is indirect: no agreement.',"Elles sont écrit toute la semaine.":'The reflexive pronoun is missing.',"Elles se ont écrit toute la semaine.":'The auxiliary is être: sont.'}),
+ Q('Which sentence is correct?','',["Elle est née en 1990.","Elle a née en 1990.","Elle est né en 1990.","Elle est nés en 1990."],"Elle est née en 1990.",'Naître takes être, and elle is feminine singular: née.',{"Elle a née en 1990.":'Naître takes être.',"Elle est né en 1990.":'Elle is feminine: née.',"Elle est nés en 1990.":'Elle is one person: no -s.'}),
+ Q('Two women are speaking. Which sentence is correct?','',["Nous nous sommes lavées.","Nous nous sommes lavé.","Nous avons lavées.","Nous nous avons lavées."],"Nous nous sommes lavées.",'Se laver, direct pronoun: être, and the participle agrees with nous (feminine plural).',{"Nous nous sommes lavé.":'The pronoun is direct and nous is feminine plural: lavées.',"Nous avons lavées.":'The reflexive pronoun is missing, and avoir is the wrong auxiliary.',"Nous nous avons lavées.":'Pronominal verbs take être: sommes.'}),
+ Q('Which sentence is correct?','',["Tu n'as rien vu.","Tu n'as vu rien.","Tu ne as rien vu.","Tu n'as rien vue."],"Tu n'as rien vu.",'rien sits before the participle, right after the auxiliary.',{"Tu n'as vu rien.":'Rien goes before the participle: n’as rien vu.',"Tu ne as rien vu.":'Ne becomes n’ before a vowel: n’as.',"Tu n'as rien vue.":'Nothing comes before the verb as an object that agrees: vu.'}),
+ Q('About Marie. Which sentence is correct?','',["Je ne l'ai pas vue.","Je ne l'ai pas vu.","Je l'ai ne pas vue.","Je n'ai pas la vue."],"Je ne l'ai pas vue.",'L’ stands for Marie (feminine), so the participle agrees: vue.',{"Je ne l'ai pas vu.":'L’ stands for Marie, a woman: vue.',"Je l'ai ne pas vue.":'Ne goes first, before the pronoun.',"Je n'ai pas la vue.":'The pronoun goes before the auxiliary.'}),
+ Q('Which sentence is correct?','',["Vous avez bien dormi ?","Vous avez dormi bien ?","Vous êtes bien dormi ?","Vous avez bien dormis ?"],"Vous avez bien dormi ?",'Dormir takes avoir, bien sits in the middle, and the participle does not agree.',{"Vous avez dormi bien ?":'Bien goes between the auxiliary and the participle.',"Vous êtes bien dormi ?":'Dormir takes avoir.',"Vous avez bien dormis ?":'With avoir the participle does not agree with the subject.'}),
+ Q('Which sentence is correct?','',["Elles ont marché deux heures.","Elles sont marché deux heures.","Elles sont marchées deux heures.","Elles ont marchées deux heures."],"Elles ont marché deux heures.",'Marcher is movement, but it takes avoir. No agreement.',{"Elles sont marché deux heures.":'Marcher is not one of the 17: avoir.',"Elles sont marchées deux heures.":'Marcher takes avoir, so no agreement with the subject.',"Elles ont marchées deux heures.":'With avoir the participle does not agree with the subject.'}),
+ Q('Which sentence is correct?','',["Où as-tu mis mes clés ?","Où as-tu mettu mes clés ?","Où as-tu mises mes clés ?","Où as tu mis mes clés ?"],"Où as-tu mis mes clés ?",'Mettre → mis. Inversion needs a hyphen. Mes clés comes after the verb: no agreement.',{"Où as-tu mettu mes clés ?":'Mettre is irregular: mis.',"Où as-tu mises mes clés ?":'Mes clés comes after the verb: no agreement.',"Où as tu mis mes clés ?":'Inversion needs a hyphen: as-tu.'}),
+ Q('Which sentence is correct?','',["Les enfants sont rentrés tard.","Les enfants ont rentré tard.","Les enfants sont rentré tard.","Les enfants sont rentrer tard."],"Les enfants sont rentrés tard.",'No direct object: être, and the participle agrees with les enfants.',{"Les enfants ont rentré tard.":'No direct object, so rentrer takes être.',"Les enfants sont rentré tard.":'A plural subject needs -s: rentrés.',"Les enfants sont rentrer tard.":'The infinitive. After the auxiliary, use the participle.'}),
+ Q('Which sentence is correct?','',["Ma sœur a passé une heure ici.","Ma sœur est passée une heure ici.","Ma sœur a passée une heure ici.","Ma sœur est passé une heure ici."],"Ma sœur a passé une heure ici.",'<b>une heure</b> is a direct object after the verb: avoir, and no agreement.',{"Ma sœur est passée une heure ici.":'With a direct object, passer takes avoir.',"Ma sœur a passée une heure ici.":'The object comes after the verb: no agreement.',"Ma sœur est passé une heure ici.":'With a direct object, passer takes avoir.'}),
+ Q('Which sentence is correct?','',["Quelle robe as-tu choisie ?","Quelle robe as-tu choisi ?","Quelle robe es-tu choisie ?","Quelle robe as-tu choisis ?"],"Quelle robe as-tu choisie ?",'Quelle robe comes before the verb and is feminine singular: choisie.',{"Quelle robe as-tu choisi ?":'The object comes before the verb: choisie.',"Quelle robe es-tu choisie ?":'Choisir takes avoir.',"Quelle robe as-tu choisis ?":'Robe is singular: choisie.'})]},
+
+{id:'mastery',part:5,title:'Mastery: everything, typed',goal:'Write the whole phrase from scratch: auxiliary, participle, agreement and the small words.',n:12,typed:1,shuf:1,
+ rule:'Pronominal verb: être, with the pronoun first. One of the 17: être, unless an object follows. Otherwise avoir. Then agree, then the small words.',
+ cards:[
+ {h:'The full recipe',b:PATH},
+ {h:'What the final check looks like',b:p('Twelve questions, all typed: full phrases with agreement, negation, pronominal verbs and irregular participles.')+note('Accents count: <b>été</b>, <b>né</b>, <b>reçu</b>. Spell the auxiliary and the reflexive pronoun exactly: <b>t’es</b>, <b>s’est</b>.')}],
+ items:[]}
+];
+/* the mastery pool: every typed question of the lesson, except the ones where je + a plain verb gives the auxiliary away */
+B[B.length-1].items=['avoir','irr2','etre','agr','switch','refl','cod','neg','quest'].flatMap(id=>B.find(b=>b.id===id).items).filter(it=>(it.t==='f'&&!it.je1)||it.t==='p'&&!it.o||it.t==='z');
+
+/* stable mixed order inside each block, so a round is never all one kind */
+{let sd=11;const rnd=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648;B.forEach(b=>{if(b.shuf)return;for(let i=b.items.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[b.items[i],b.items[j]]=[b.items[j],b.items[i]]}})}
+
+/* ---------- state ---------- */
+const KEY='fr_dossier_mastery_pc'; /* NEVER change KEY: saved progress lives here (fr_dossier_ prefix = covered by the landing page backup) */
+let S={cleared:{},all:false,cur:0};
+try{Object.assign(S,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const unlocked=i=>S.all||i===0||(B[i-1].id in S.cleared);
+const W={b:0,phase:'learn',card:0,deck:{},round:null,cur:null};
+W.b=Math.min(Math.max(S.cur|0,0),B.length-1); if(!unlocked(W.b))W.b=0;
+const stage=$('#stage'),nav=$('#nav');
+const btn=(act,label,cls)=>`<button class="btn ${cls||''}" data-act="${act}" type="button">${label}</button>`;
+
+/* ---------- navigation ---------- */
+function renderNav(){let h='<button class="tool" id="navclose" type="button">Close</button>';
+  PARTS.forEach((pt,pi)=>{h+=`<h4>${pt}</h4><ol>`;
+    B.forEach((b,i)=>{if(b.part!==pi)return;const un=unlocked(i),dn=b.id in S.cleared;
+      h+=`<li><button type="button" class="nb ${i===W.b?'cur':''} ${dn?'done':''} ${un?'':'lock'}" data-go="${i}" ${un?'':'aria-disabled="true"'}><span class="n">${i+1}</span><span>${b.title}</span><span class="st">${dn?'✓ '+S.cleared[b.id]+'%':un?'':'locked'}</span></button></li>`});
+    h+='</ol>'});
+  h+=`<div class="navfoot"><small>Each block unlocks when you clear the one before it.</small><button type="button" data-foot="all">${S.all?'Lock blocks again':'Unlock all blocks'}</button><button type="button" data-foot="reset">Reset my progress</button></div>`;
+  nav.innerHTML=h}
+function go(i){W.b=i;W.phase='learn';W.card=0;S.cur=i;save();nav.classList.remove('open');render();window.scrollTo(0,0)}
+
+/* ---------- stage ---------- */
+function head(b,short){const i=B.indexOf(b);return`<p class="eyebrow">${PARTS[b.part]} · Block ${i+1} of ${B.length}</p><h2>${b.title}</h2>${short?'':`<p class="goal">${b.goal}</p>`}`}
+function render(){renderNav();const b=B[W.b];
+  stage.innerHTML=W.phase==='learn'?learn(b):W.phase==='check'?check(b):done(b);
+  if(W.phase==='check'){const a=$('#ans');if(a&&matchMedia('(pointer:fine)').matches)a.focus()}}
+function learn(b){const c=b.cards[W.card],last=W.card===b.cards.length-1;
+  return head(b)+`<section class="card"><p class="cardno">Lesson note ${W.card+1} of ${b.cards.length}</p><h3>${c.h}</h3>${fx(c.b)}</section><div class="pips" aria-hidden="true">${b.cards.map((_,i)=>`<i class="${i===W.card?'on':i<W.card?'seen':''}"></i>`).join('')}</div><div class="row">${W.card?btn('back','Back','ghost'):''}${btn(last?'start':'next',last?'Start the check':'Next')}${last?'':btn('start','Skip to the check','link')}</div>`}
+function newRound(b){const d=W.deck[b.id]||(W.deck[b.id]={p:Math.floor(Math.random()*b.items.length),carry:[]}),n=Math.min(b.n,b.items.length);let ids=[];
+  d.carry.forEach(i=>{if(ids.length<Math.ceil(n/2)&&!ids.includes(i))ids.push(i)});
+  if(b.shuf){shuffle([...b.items.keys()]).forEach(i=>{if(ids.length<n&&!ids.includes(i))ids.push(i)})}
+  else while(ids.length<n){const i=d.p%b.items.length;d.p++;if(!ids.includes(i))ids.push(i)}
+  d.carry=[];W.round={q:ids,first:{},n};W.phase='check'}
+function check(b){const r=W.round,it=b.items[r.q[0]],dn=Object.keys(r.first).length,retry=r.q[0] in r.first;
+  W.cur={it,ok:true,answered:false};
+  return head(b,true)+`<aside class="rule"><b>Rule in play</b>${b.rule}</aside><div class="prog"><span>${retry?`Second try · ${r.q.length} left`:`Question ${dn+1} of ${r.n}`}</span><div class="bar"><i style="width:${dn/r.n*100}%"></i></div></div><section id="item">${itemHTML(it)}</section>`}
+const optsHTML=o=>`<div class="opts" id="opts">${o.map(x=>`<button type="button" class="opt fr" data-o="${esc(x)}">${esc(x)}</button>`).join('')}</div>`;
+const typedHTML=()=>`<form id="tf" class="typed"><input id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Your answer"><button class="btn" type="submit">Check</button><span class="acc">${['à','â','ç','é','è','ê','î','ô','ù','û'].map(c=>`<button type="button" class="chipk" data-ch="${c}" aria-label="Insert ${c}">${c}</button>`).join('')}</span></form>`;
+function itemHTML(it){const c=W.cur,b=B[W.b];
+  if(it.t==='q')return`<p class="ask">${it.pr}</p>${it.s?`<p class="fr big">${sent(it.s)}</p>`:''}${optsHTML(shuffle(it.o.slice()))}<div id="fb"></div>`;
+  if(it.t==='z')return`<p class="ask">${it.pr}</p><p class="fr big">${sent(it.s)}</p>${typedHTML()}<div id="fb"></div>`;
+  c.typed=!!b.typed||!!it.T||(!!b.ty&&Math.random()<b.ty);
+  if(it.t==='p'){const o=c.typed?null:optsP(it),ask=c.typed?'Type the past participle.':'Choose the right form of the participle.';
+    return`<p class="ask">${ask}</p><p class="fr big">${sent(it.s)}${it.ng?'':` <span class="gl">(${it.inf})</span>`}</p>${c.typed?typedHTML():optsHTML(o)}<div id="fb"></div>`}
+  const o=c.typed?null:optsF(it);
+  return`<p class="ask">${c.typed?'Type the missing verb phrase.':'Choose the right form.'}</p><p class="fr big">${sent(it.s)} <span class="gl">(${it.g})</span></p>${c.typed?typedHTML():optsHTML(o)}<div id="fb"></div>`}
+function diff(a,b){let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;let j=0;while(j<a.length-i&&j<b.length-i&&a[a.length-1-j]===b[b.length-1-j])j++;
+  return esc(a.slice(0,i))+'<s>'+(esc(a.slice(i,a.length-j))||'&nbsp;_&nbsp;')+'</s>'+esc(a.slice(a.length-j))}
+const verdict=ok=>`<p class="v ${ok?'good':'bad'}">${ok?'✓ Correct':'✗ Not yet'}</p>`;
+function settle(ok,html,fill){const c=W.cur;c.answered=true;c.ok=c.ok&&ok;
+  const sl=$('#slot');if(sl&&fill!==undefined){let t=fill;if(/^___/.test(c.it.s||''))t=t[0].toUpperCase()+t.slice(1);sl.textContent=t;sl.classList.add('good')}
+  const last=W.round.q.length===1&&c.ok;
+  $('#fb').innerHTML=`<div class="fb ${ok?'isgood':'isbad'}">${html}</div>${btn('adv',last?'See the result':'Next')}`;
+  const nb=$('[data-act="adv"]');if(nb)nb.focus()}
+function markOpts(choice,right){$('#opts').querySelectorAll('.opt').forEach(o=>{o.disabled=true;if(o.dataset.o===right)o.classList.add('right');else if(o.dataset.o===choice)o.classList.add('wrong')})}
+function lockTyped(){$('#ans').disabled=true;$('#tf button[type=submit]').disabled=true}
+function answer(choice,typed){const c=W.cur,it=c.it;if(c.answered)return;
+  if(it.t==='q'){const ok=choice===it.a;markOpts(choice,it.a);
+    const yr=!ok&&it.x&&it.x[choice]?`<div class="fbrow yours"><h4>Why your answer fails</h4><p>You chose <span class="fr"><s>${esc(choice)}</s></span>. ${it.x[choice]}</p></div>`:'';
+    settle(ok,verdict(ok)+yr+`<div class="fbrow rb"><h4>Why</h4><p>${fx(it.why)}</p></div>`,/___/.test(it.s||'')?it.a:undefined);return}
+  const dg=it.t==='z'?diagZ:it.t==='p'?diagP:diagF;
+  let r;
+  if(typed){lockTyped();r=dg(it,choice)}
+  else{markOpts(choice,it.a);r=choice===it.a?{ok:true,msg:''}:dg(it,choice);r.ok=choice===it.a}
+  const ok=r.ok,right=it.t==='z'?it.full:it.a;
+  const you=ok?'':`<div class="fbrow yours"><h4>Why your answer fails</h4><p>${typed?`You wrote <span class="fr">${nz(choice)?diff(nz(choice),nz(right)):'nothing'}</span>.`:`You chose <span class="fr"><s>${esc(choice)}</s></span>.`} ${r.msg}</p></div>`;
+  const full=it.t==='z'?`<div class="fbrow rb"><h4>The full answer</h4><p class="fr">${esc(right.charAt(0).toUpperCase()+right.slice(1))}</p></div>`:'';
+  settle(ok,verdict(ok)+you+`<div class="fbrow so"><h4>Why</h4><p>${fx(it.why)}</p></div>`+full,it.t==='z'?(/___/.test(it.s)?it.full:undefined):it.a)}
+
+function advance(){const r=W.round,i=r.q.shift(),ok=W.cur.ok,b=B[W.b];
+  if(!(i in r.first)){r.first[i]=ok;if(!ok)W.deck[b.id].carry.push(i)}
+  if(!ok)r.q.push(i);
+  if(!r.q.length)W.phase='done';
+  render();window.scrollTo(0,0)}
+function done(b){const r=W.round,sc=Object.values(r.first).filter(Boolean).length,need=Math.ceil(r.n*.8-1e-9),pass=sc>=need,i=B.indexOf(b),nx=B[i+1];
+  if(pass){S.cleared[b.id]=Math.max(S.cleared[b.id]||0,Math.round(sc/r.n*100));save();renderNav()}
+  const body=pass
+    ?`<h3>Block cleared</h3><p>${nx?'The next block is open. If any of this still feels shaky, run another round first. Each round brings new sentences.':'That was the last block. You have worked through the whole system.'}</p><div class="row">${nx?btn('nextblock','Next: '+nx.title):''}${btn('again','Another round','ghost')}${btn('reread','Reread the lesson','link')}</div>`
+    :`<h3>Not solid yet</h3><p>You need ${need} of ${r.n} on the first try. The next block stays locked until this one holds. The sentences you missed will come back in the next round.</p><div class="row">${btn('again','Another round')}${btn('reread','Reread the lesson','ghost')}</div>`;
+  return head(b,true)+`<section class="card result"><p class="score">${sc}<small> of ${r.n} on the first try</small></p>${body}</section>`}
+
+/* ---------- reference sheet ---------- */
+function buildRef(){const sec=(h,b)=>`<section><h3>${h}</h3>${fx(b)}</section>`;
+  const irr=B.find(b=>b.id==='irr2').cards.map(c=>c.b).join('');
+  $('#ref').innerHTML=`<div class="in"><header><h2>Reference</h2><button class="tool" id="refclose" type="button">Close</button></header>`+
+    sec('The recipe',PATH)+sec('avoir and être',T_AUX)+sec('The 17 être verbs',L_ETRE+fr('**D**evenir · **R**evenir · **M**onter · **R**ester · **S**ortir · **V**enir · **A**ller · **N**aître · **D**escendre · **E**ntrer · **R**entrer · **T**omber · **R**etourner · **A**rriver · **M**ourir · **P**artir · **P**asser'))+
+    sec('Verbs that switch auxiliary',T_SW)+sec('Pronominal verbs',T_PRON)+sec('Agreement',T_AGR+T_ENDS)+sec('Irregular participles',irr)+sec('Negation',T_NEG)+
+    sec('Questions, adverbs and pronouns',fr('Est-ce que tu {{as}} fini ? · {{As}}-tu fini ? · {{A}}-t-il fini ?')+fr("J'ai {{déjà}} fini. · Elle a {{bien}} dormi.")+fr("Je {{l'}}ai vu. · Je ne {{l'}}ai pas vu."))+'</div>'}
+
+/* ---------- events ---------- */
+stage.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.act){const b=B[W.b];switch(t.dataset.act){
+    case'next':W.card++;render();break;
+    case'back':W.card--;render();break;
+    case'start':case'again':newRound(b);render();window.scrollTo(0,0);break;
+    case'reread':W.phase='learn';W.card=0;render();window.scrollTo(0,0);break;
+    case'nextblock':go(W.b+1);break;
+    case'adv':advance();break}return}
+  if(t.dataset.o!==undefined){answer(t.dataset.o,false);return}
+  if(t.dataset.ch){const a=$('#ans');if(a.disabled)return;const s=a.selectionStart??a.value.length,en=a.selectionEnd??s;a.value=a.value.slice(0,s)+t.dataset.ch+a.value.slice(en);a.focus();a.setSelectionRange(s+1,s+1)}});
+stage.addEventListener('submit',e=>{e.preventDefault();if(e.target.id==='tf')answer($('#ans').value,true)});
+let armed=null;
+nav.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.id==='navclose'){nav.classList.remove('open');return}
+  if(t.dataset.go!==undefined){const i=+t.dataset.go;if(unlocked(i))go(i);return}
+  if(t.dataset.foot==='all'){S.all=!S.all;save();if(!unlocked(W.b))W.b=0;render();return}
+  if(t.dataset.foot==='reset'){if(armed!=='reset'){armed='reset';t.textContent='Tap again to erase all progress';setTimeout(()=>{armed=null;renderNav()},4000);return}
+    armed=null;S={cleared:{},all:false,cur:0};save();W.deck={};go(0)}});
+$('#navbtn').addEventListener('click',()=>nav.classList.add('open'));
+$('#refbtn').addEventListener('click',()=>{if(!$('#ref').innerHTML)buildRef();$('#ref').hidden=false;$('#refclose').focus()});
+$('#ref').addEventListener('click',e=>{if(e.target.id==='refclose')$('#ref').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#ref').hidden=true;nav.classList.remove('open')}});
+
+/* ---------- theme: device by default; the masthead button forces light or dark, one choice (frTheme) for the whole site ---------- */
+(function(){const K='frTheme',b=$('#themeBtn'),root=document.documentElement,mq=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)');
+  const saved=()=>{try{const t=localStorage.getItem(K);return t==='light'||t==='dark'?t:null}catch(e){return null}};
+  const eff=()=>saved()||(mq&&mq.matches?'dark':'light');
+  function paint(){const s=saved(),e=eff();if(s)root.setAttribute('data-theme',s);else root.removeAttribute('data-theme');
+    b.textContent=e==='dark'?'\u263E':'\u2600';
+    const l=(e==='dark'?'Dark':'Light')+(s?'':' (device setting)')+' — click for '+(e==='dark'?'light':'dark')+(s?', Alt-click to follow the device':'');b.title=l;b.setAttribute('aria-label',l)}
+  b.addEventListener('click',ev=>{try{if(ev.altKey)localStorage.removeItem(K);else localStorage.setItem(K,eff()==='dark'?'light':'dark')}catch(e){}paint()});
+  if(mq&&mq.addEventListener)mq.addEventListener('change',paint);paint()})();
+render();
+</script>
+</body>
+</html>
